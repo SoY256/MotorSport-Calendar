@@ -6,6 +6,7 @@ class AppStrings {
   bool get _en => language == AppLanguage.english;
 
   String get calendar => _en ? 'Calendar' : 'Kalendarz';
+  String get list => _en ? 'List' : 'Lista';
   String get weekend => _en ? 'Weekend' : 'Weekend';
   String get standings => _en ? 'Standings' : 'Klasyfikacja';
   String get settings => _en ? 'Settings' : 'Ustawienia';
@@ -26,7 +27,15 @@ class AppStrings {
   String get selectEvent => _en ? 'Select an event' : 'Wybierz wydarzenie';
   String get noResults =>
       _en ? 'Results are not available yet' : 'Wyniki nie są jeszcze dostępne';
-  String get results => _en ? 'Results' : 'Wyniki';
+  String get results => _en ? 'Details' : 'Szczegóły';
+  String get month => _en ? 'Month' : 'Miesiąc';
+  String get week => _en ? 'Week' : 'Tydzień';
+  String get previous => _en ? 'Previous' : 'Poprzedni';
+  String get next => _en ? 'Next' : 'Następny';
+  String get plannedSessions =>
+      _en ? 'Scheduled sessions' : 'Zaplanowane sesje';
+  String get circuitLength => _en ? 'Circuit length' : 'Długość toru';
+  String get lapRecord => _en ? 'Lap record' : 'Rekord toru';
   String get drivers => _en ? 'Drivers' : 'Kierowcy';
   String get constructors => _en ? 'Constructors' : 'Konstruktorzy';
   String get points => _en ? 'PTS' : 'PKT';

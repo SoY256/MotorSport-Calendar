@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -6,6 +8,7 @@ import '../../../core/widgets/app_logo.dart';
 import '../../settings/domain/app_settings.dart';
 import '../../settings/presentation/settings_controller.dart';
 import '../../settings/presentation/theme_controller.dart';
+import '../domain/circuit_metadata.dart';
 import '../domain/race_event.dart';
 import 'calendar_providers.dart';
 
@@ -27,6 +30,11 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
     final calendar = ref.watch(calendarProvider);
     final wide = MediaQuery.sizeOf(context).width >= 850;
     final destinations = [
+      NavigationDestination(
+        icon: const Icon(Icons.view_agenda_outlined),
+        selectedIcon: const Icon(Icons.view_agenda),
+        label: strings.list,
+      ),
       NavigationDestination(
         icon: const Icon(Icons.calendar_month_outlined),
         selectedIcon: const Icon(Icons.calendar_month),
@@ -61,23 +69,32 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
           orElse: () => _nearestEvent(data.events),
         );
         return switch (_page) {
-          0 => _CalendarPage(
+          0 => _ListPage(
             data: data,
             settings: settings,
             strings: strings,
             onEventTap: (event) => setState(() {
               _selectedEventId = event.id;
-              _page = 1;
+              _page = 2;
             }),
           ),
-          1 => _ResultsPage(
+          1 => _CalendarGridPage(
+            data: data,
+            settings: settings,
+            strings: strings,
+            onEventTap: (event) => setState(() {
+              _selectedEventId = event.id;
+              _page = 2;
+            }),
+          ),
+          2 => _ResultsPage(
             data: data,
             selected: selected,
             settings: settings,
             strings: strings,
             onSelected: (event) => setState(() => _selectedEventId = event.id),
           ),
-          2 => _StandingsPage(strings: strings),
+          3 => _StandingsPage(strings: strings),
           _ => _SettingsPage(settings: settings, strings: strings),
         };
       },
@@ -186,8 +203,8 @@ class _PageFrame extends StatelessWidget {
   );
 }
 
-class _CalendarPage extends ConsumerWidget {
-  const _CalendarPage({
+class _ListPage extends ConsumerWidget {
+  const _ListPage({
     required this.data,
     required this.settings,
     required this.strings,
@@ -506,6 +523,231 @@ class _EventCard extends StatelessWidget {
   }
 }
 
+class _CalendarGridPage extends StatefulWidget {
+  const _CalendarGridPage({
+    required this.data,
+    required this.settings,
+    required this.strings,
+    required this.onEventTap,
+  });
+  final CalendarData data;
+  final AppSettings settings;
+  final AppStrings strings;
+  final ValueChanged<RaceEvent> onEventTap;
+
+  @override
+  State<_CalendarGridPage> createState() => _CalendarGridPageState();
+}
+
+class _CalendarGridPageState extends State<_CalendarGridPage> {
+  bool _month = true;
+  late DateTime _anchor = DateTime.now();
+
+  DateTime _dateFor(RaceSession session) {
+    final parts = widget.settings.timeMode == EventTimeMode.track
+        ? _trackParts(session)
+        : null;
+    return parts == null
+        ? session.startTimeUtc.toLocal()
+        : DateTime(_anchor.year, parts[0], parts[1]);
+  }
+
+  List<RaceEvent> _eventsOn(DateTime day) => widget.data.events
+      .where(
+        (event) =>
+            !event.cancelled &&
+            event.sessions.any((session) {
+              final date = _dateFor(session);
+              return date.year == day.year &&
+                  date.month == day.month &&
+                  date.day == day.day;
+            }),
+      )
+      .toList();
+
+  void _openDay(DateTime day) {
+    final events = _eventsOn(day);
+    if (events.isEmpty) return;
+    if (events.length == 1) {
+      widget.onEventTap(events.first);
+      return;
+    }
+    showModalBottomSheet<void>(
+      context: context,
+      builder: (context) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: events
+              .map(
+                (event) => ListTile(
+                  leading: const Icon(Icons.sports_score),
+                  title: Text(event.name),
+                  subtitle: Text(event.circuit.name),
+                  onTap: () {
+                    Navigator.pop(context);
+                    widget.onEventTap(event);
+                  },
+                ),
+              )
+              .toList(),
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final first = _month
+        ? DateTime(_anchor.year, _anchor.month)
+        : DateTime(
+            _anchor.year,
+            _anchor.month,
+            _anchor.day,
+          ).subtract(Duration(days: _anchor.weekday - 1));
+    final leading = _month ? first.weekday - 1 : 0;
+    final count = _month
+        ? DateTime(_anchor.year, _anchor.month + 1, 0).day + leading
+        : 7;
+    final cells = _month ? ((count + 6) ~/ 7) * 7 : 7;
+    final title = _month
+        ? '${_monthName(_anchor.month, widget.strings.language)} ${_anchor.year}'
+        : '${_date(first, widget.strings.language)} – ${_date(first.add(const Duration(days: 6)), widget.strings.language)}';
+    return _PageFrame(
+      title: widget.strings.calendar,
+      subtitle: widget.strings.timesInZone,
+      child: Column(
+        children: [
+          SegmentedButton<bool>(
+            segments: [
+              ButtonSegment(value: true, label: Text(widget.strings.month)),
+              ButtonSegment(value: false, label: Text(widget.strings.week)),
+            ],
+            selected: {_month},
+            onSelectionChanged: (value) => setState(() => _month = value.first),
+          ),
+          const SizedBox(height: 14),
+          Card(
+            clipBehavior: Clip.antiAlias,
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    IconButton(
+                      tooltip: widget.strings.previous,
+                      onPressed: () => setState(
+                        () => _anchor = _month
+                            ? DateTime(_anchor.year, _anchor.month - 1)
+                            : _anchor.subtract(const Duration(days: 7)),
+                      ),
+                      icon: const Icon(Icons.chevron_left),
+                    ),
+                    Expanded(
+                      child: Text(
+                        title,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(fontWeight: FontWeight.w900),
+                      ),
+                    ),
+                    IconButton(
+                      tooltip: widget.strings.next,
+                      onPressed: () => setState(
+                        () => _anchor = _month
+                            ? DateTime(_anchor.year, _anchor.month + 1)
+                            : _anchor.add(const Duration(days: 7)),
+                      ),
+                      icon: const Icon(Icons.chevron_right),
+                    ),
+                  ],
+                ),
+                const Divider(height: 1),
+                LayoutBuilder(
+                  builder: (context, gridConstraints) => GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 7,
+                      childAspectRatio: gridConstraints.maxWidth >= 700
+                          ? (_month ? 1.55 : 1.35)
+                          : (_month ? .72 : .55),
+                    ),
+                    itemCount: cells,
+                    itemBuilder: (context, index) {
+                      final offset = index - leading;
+                      if (_month && (offset < 0 || offset >= count - leading)) {
+                        return const SizedBox.shrink();
+                      }
+                      final day = first.add(
+                        Duration(days: _month ? offset : index),
+                      );
+                      final events = _eventsOn(day);
+                      final today = DateTime.now();
+                      final isToday =
+                          day.year == today.year &&
+                          day.month == today.month &&
+                          day.day == today.day;
+                      return InkWell(
+                        onTap: events.isEmpty ? null : () => _openDay(day),
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Theme.of(context).dividerColor
+                                  .withValues(alpha: .35),
+                            ),
+                            color: isToday
+                                ? Theme.of(context).colorScheme.primaryContainer
+                                      .withValues(alpha: .5)
+                                : null,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(6),
+                            child: Column(
+                              children: [
+                                Text(
+                                  '${day.day}',
+                                  style: TextStyle(
+                                    fontWeight: isToday
+                                        ? FontWeight.w900
+                                        : FontWeight.w600,
+                                  ),
+                                ),
+                                if (events.isNotEmpty) ...[
+                                  const Spacer(),
+                                  Icon(
+                                    Icons.sports_score,
+                                    size: 18,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .primary,
+                                  ),
+                                  if (!_month)
+                                    Text(
+                                      events.first.name,
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.center,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .labelSmall,
+                                    ),
+                                  const Spacer(),
+                                ],
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class _ResultsPage extends ConsumerWidget {
   const _ResultsPage({
     required this.data,
@@ -551,6 +793,8 @@ class _ResultsPage extends ConsumerWidget {
                 onSelected(data.events.firstWhere((event) => event.id == id)),
           ),
           const SizedBox(height: 16),
+          _CircuitInfoCard(event: selected, strings: strings),
+          const SizedBox(height: 16),
           results.when(
             loading: () => const Padding(
               padding: EdgeInsets.all(32),
@@ -561,32 +805,191 @@ class _ResultsPage extends ConsumerWidget {
               strings: strings,
               onRetry: () => ref.invalidate(eventResultsProvider(selected)),
             ),
-            data: (data) => data.sessions.isEmpty
-                ? _EmptyCard(
-                    icon: Icons.hourglass_empty,
-                    message: strings.noResults,
-                  )
-                : Column(
+            data: (data) {
+              final completed = selected.endsAt.isBefore(
+                DateTime.now().toUtc(),
+              );
+              if (!completed) {
+                final sessions = [...selected.sessions]
+                  ..sort((a, b) => a.startTimeUtc.compareTo(b.startTimeUtc));
+                return Card(
+                  child: Column(
                     children: [
-                      for (
-                        var index = 0;
-                        index < data.sessions.length;
-                        index++
-                      ) ...[
-                        _SessionResultsCard(
-                          session: data.sessions[index],
-                          strings: strings,
+                      ListTile(
+                        leading: const Icon(Icons.schedule),
+                        title: Text(
+                          strings.plannedSessions,
+                          style: const TextStyle(fontWeight: FontWeight.w900),
                         ),
-                        if (index < data.sessions.length - 1)
-                          const SizedBox(height: 12),
-                      ],
+                      ),
+                      const Divider(height: 1),
+                      for (final session in sessions)
+                        ListTile(
+                          title: Text(
+                            _sessionLabel(session.type, session.name, strings),
+                            style: const TextStyle(fontWeight: FontWeight.w800),
+                          ),
+                          subtitle: Text(_zoneName(session, settings, strings)),
+                          trailing: Text(
+                            '${_sessionDate(session, settings)}\n${_sessionTime(session, settings.timeMode)}',
+                            textAlign: TextAlign.end,
+                            style: const TextStyle(fontWeight: FontWeight.w800),
+                          ),
+                        ),
                     ],
                   ),
+                );
+              }
+              final sessions = [...data.sessions]
+                ..sort(
+                  (a, b) =>
+                      _resultOrder(a.type).compareTo(_resultOrder(b.type)),
+                );
+              return sessions.isEmpty
+                  ? _EmptyCard(
+                      icon: Icons.hourglass_empty,
+                      message: strings.noResults,
+                    )
+                  : Column(
+                      children: [
+                        for (
+                          var index = 0;
+                          index < sessions.length;
+                          index++
+                        ) ...[
+                          _SessionResultsCard(
+                            session: sessions[index],
+                            strings: strings,
+                          ),
+                          if (index < sessions.length - 1)
+                            const SizedBox(height: 12),
+                        ],
+                      ],
+                    );
+            },
           ),
         ],
       ),
     );
   }
+}
+
+class _CircuitInfoCard extends StatelessWidget {
+  const _CircuitInfoCard({required this.event, required this.strings});
+  final RaceEvent event;
+  final AppStrings strings;
+
+  @override
+  Widget build(BuildContext context) {
+    final metadata = metadataForCircuit(event.circuit.name);
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final info = Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  event.circuit.name,
+                  style: const TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  [
+                    event.circuit.locality,
+                    event.circuit.country,
+                  ].whereType<String>().join(', '),
+                ),
+                const SizedBox(height: 14),
+                Text(
+                  '${strings.circuitLength}: ${metadata.lengthKm?.toStringAsFixed(3) ?? '–'} km',
+                ),
+                const SizedBox(height: 6),
+                Text('${strings.lapRecord}: ${metadata.lapRecord ?? '–'}'),
+              ],
+            );
+            final graphic = SizedBox(
+              width: 190,
+              height: 110,
+              child: CustomPaint(
+                painter: _CircuitPainter(
+                  event.circuit.name,
+                  Theme.of(context).colorScheme.primary,
+                ),
+              ),
+            );
+            if (constraints.maxWidth < 600) {
+              return Column(
+                children: [
+                  graphic,
+                  const SizedBox(height: 10),
+                  Align(alignment: Alignment.centerLeft, child: info),
+                ],
+              );
+            }
+            return Row(
+              children: [
+                graphic,
+                const SizedBox(width: 22),
+                Expanded(child: info),
+              ],
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class _CircuitPainter extends CustomPainter {
+  _CircuitPainter(this.seed, this.color);
+  final String seed;
+  final Color color;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final hash = seed.codeUnits.fold<int>(0, (value, item) => value + item);
+    final points = <Offset>[];
+    for (var i = 0; i < 12; i++) {
+      final angle = i * 3.14159 * 2 / 12;
+      final wobble = .62 + ((hash >> (i % 8)) & 3) * .09;
+      points.add(
+        Offset(
+          size.width / 2 + size.width * .42 * wobble * math.cos(angle),
+          size.height / 2 + size.height * .42 * wobble * math.sin(angle),
+        ),
+      );
+    }
+    final path = Path()..moveTo(points.first.dx, points.first.dy);
+    for (final point in points.skip(1)) {
+      path.lineTo(point.dx, point.dy);
+    }
+    path.close();
+    canvas.drawPath(
+      path,
+      Paint()
+        ..color = color
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 8
+        ..strokeCap = StrokeCap.round
+        ..strokeJoin = StrokeJoin.round,
+    );
+    canvas.drawPath(
+      path,
+      Paint()
+        ..color = Colors.white.withValues(alpha: .8)
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 2,
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant _CircuitPainter oldDelegate) =>
+      oldDelegate.seed != seed || oldDelegate.color != color;
 }
 
 class _SessionResultsCard extends StatelessWidget {
@@ -723,7 +1126,13 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
                             (item) => _StandingRow(
                               position: item.position,
                               title: '${item.givenName} ${item.familyName}',
-                              subtitle: item.teamIds.join(' • '),
+                              subtitle: item.teamIds.map(_teamName).join(' • '),
+                              color: _teamColor(
+                                item.teamIds.isEmpty
+                                    ? null
+                                    : item.teamIds.first,
+                              ),
+                              flag: _nationalityFlag(item.nationality),
                               points: item.points,
                               wins: item.wins,
                               strings: strings,
@@ -736,6 +1145,8 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
                               position: item.position,
                               title: item.name,
                               subtitle: '',
+                              color: _teamColor(item.id),
+                              flag: null,
                               points: item.points,
                               wins: item.wins,
                               strings: strings,
@@ -759,6 +1170,8 @@ class _StandingRow extends StatelessWidget {
     required this.points,
     required this.wins,
     required this.strings,
+    required this.color,
+    required this.flag,
   });
   final int position;
   final String title;
@@ -766,6 +1179,8 @@ class _StandingRow extends StatelessWidget {
   final double points;
   final int wins;
   final AppStrings strings;
+  final Color color;
+  final String? flag;
 
   @override
   Widget build(BuildContext context) => Column(
@@ -784,13 +1199,32 @@ class _StandingRow extends StatelessWidget {
                 ),
               ),
             ),
+            Container(
+              width: 5,
+              height: 38,
+              margin: const EdgeInsets.only(right: 12),
+              decoration: BoxDecoration(
+                color: color,
+                borderRadius: BorderRadius.circular(4),
+              ),
+            ),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    title,
-                    style: const TextStyle(fontWeight: FontWeight.w800),
+                  Row(
+                    children: [
+                      if (flag != null) ...[
+                        Text(flag!, style: const TextStyle(fontSize: 20)),
+                        const SizedBox(width: 8),
+                      ],
+                      Flexible(
+                        child: Text(
+                          title,
+                          style: const TextStyle(fontWeight: FontWeight.w800),
+                        ),
+                      ),
+                    ],
                   ),
                   if (subtitle.isNotEmpty)
                     Text(
@@ -1006,6 +1440,64 @@ String _sessionLabel(String type, String original, AppStrings strings) {
     _ => original,
   };
 }
+
+int _resultOrder(String type) => switch (type) {
+  'R' => 0,
+  'SPRINT' => 1,
+  'Q' => 2,
+  'SQ' => 3,
+  'FP3' => 4,
+  'FP2' => 5,
+  'FP1' => 6,
+  _ => 7,
+};
+
+String _teamName(String id) => switch (id) {
+  'red_bull' => 'Oracle Red Bull Racing',
+  'rb' => 'Visa Cash App Racing Bulls',
+  'alpine' => 'BWT Alpine F1 Team',
+  'haas' => 'MoneyGram Haas F1 Team',
+  'aston_martin' => 'Aston Martin Aramco',
+  'cadillac' => 'Cadillac Formula 1 Team',
+  'mercedes' => 'Mercedes-AMG Petronas',
+  'ferrari' => 'Scuderia Ferrari HP',
+  'mclaren' => 'McLaren Formula 1 Team',
+  'williams' => 'Atlassian Williams F1 Team',
+  'audi' => 'Audi Revolut F1 Team',
+  _ => id.replaceAll('_', ' '),
+};
+
+Color _teamColor(String? id) => switch (id) {
+  'mercedes' => const Color(0xFF00D7B6),
+  'ferrari' => const Color(0xFFED1131),
+  'mclaren' => const Color(0xFFF47600),
+  'red_bull' => const Color(0xFF4781D7),
+  'rb' => const Color(0xFF6C98FF),
+  'alpine' => const Color(0xFF00A1E8),
+  'haas' => const Color(0xFF9C9FA2),
+  'audi' => const Color(0xFFF50537),
+  'williams' => const Color(0xFF1868DB),
+  'aston_martin' => const Color(0xFF229971),
+  'cadillac' => const Color(0xFFB8B8B8),
+  _ => Colors.grey,
+};
+
+String _nationalityFlag(String nationality) => switch (nationality) {
+  'Italian' => '🇮🇹',
+  'British' => '🇬🇧',
+  'Monegasque' => '🇲🇨',
+  'Dutch' => '🇳🇱',
+  'Australian' => '🇦🇺',
+  'French' => '🇫🇷',
+  'Spanish' => '🇪🇸',
+  'German' => '🇩🇪',
+  'Brazilian' => '🇧🇷',
+  'Canadian' => '🇨🇦',
+  'New Zealander' => '🇳🇿',
+  'Mexican' => '🇲🇽',
+  'American' => '🇺🇸',
+  _ => '🏁',
+};
 
 String _zoneName(
   RaceSession session,

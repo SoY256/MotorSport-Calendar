@@ -197,6 +197,7 @@ class DriverStanding {
     required this.code,
     required this.givenName,
     required this.familyName,
+    required this.nationality,
     required this.teamIds,
   });
 
@@ -208,6 +209,7 @@ class DriverStanding {
     code: json['code'] as String? ?? '',
     givenName: json['givenName'] as String,
     familyName: json['familyName'] as String,
+    nationality: json['nationality'] as String? ?? '',
     teamIds: (json['teamIds'] as List<dynamic>).cast<String>(),
   );
 
@@ -218,6 +220,7 @@ class DriverStanding {
   final String code;
   final String givenName;
   final String familyName;
+  final String nationality;
   final List<String> teamIds;
 }
 

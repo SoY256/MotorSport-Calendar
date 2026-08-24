@@ -19,6 +19,21 @@ void main() {
     );
     await tester.pumpAndSettle();
 
+    await tester.tap(find.text('Kalendarz'));
+    await tester.pump(const Duration(milliseconds: 300));
+    expect(find.text('Miesiąc'), findsOneWidget);
+    expect(find.text('Tydzień'), findsOneWidget);
+    await tester.tap(find.text('Tydzień'));
+    await tester.pump(const Duration(milliseconds: 300));
+    await tester.tap(find.text('Lista'));
+    await tester.pump(const Duration(milliseconds: 300));
+
+    await tester.tap(find.text('Szczegóły'));
+    await tester.pumpAndSettle();
+    expect(find.text('Zaplanowane sesje'), findsOneWidget);
+    await tester.tap(find.text('Lista'));
+    await tester.pump(const Duration(milliseconds: 300));
+
     expect(find.text('Sezon 2026'), findsOneWidget);
     expect(find.text('Australian Grand Prix'), findsOneWidget);
     expect(find.text('Ukryj poprzednie wydarzenia'), findsOneWidget);
@@ -37,9 +52,12 @@ void main() {
       () => Future<void>.delayed(const Duration(milliseconds: 100)),
     );
     await tester.pump(const Duration(milliseconds: 500));
-    expect(find.text('Wyniki'), findsWidgets);
-    await tester.tap(find.text('Trening 1'));
-    await tester.pump(const Duration(milliseconds: 500));
+    expect(find.text('Szczegóły'), findsWidgets);
+    expect(find.textContaining('Długość toru'), findsOneWidget);
+    expect(
+      tester.getTopLeft(find.text('Wyścig')).dy,
+      lessThan(tester.getTopLeft(find.text('Kwalifikacje')).dy),
+    );
     expect(find.text('Charles Leclerc'), findsWidgets);
 
     await tester.tap(find.text('Klasyfikacja'));
@@ -56,6 +74,7 @@ void main() {
     await tester.tap(find.text('Angielski'));
     await tester.pump(const Duration(milliseconds: 500));
     expect(find.text('Calendar'), findsOneWidget);
+    expect(find.text('List'), findsOneWidget);
     expect(find.text('Track local time'), findsOneWidget);
 
     await tester.tap(find.text('Track local time'));
