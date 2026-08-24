@@ -238,13 +238,18 @@ String? circuitAssetFor(String name) {
     'Phoenix Raceway' => 'phoenix',
     'Milwaukee Mile' => 'milwaukee',
     'World Wide Technology Raceway' => 'gateway',
-    'Streets of St. Petersburg' => 'st-petersburg.jpg',
-    'Streets of Arlington' => 'arlington.jpg',
+    'Streets of St. Petersburg' => 'st-petersburg.png',
+    'Streets of Arlington' => 'arlington.png',
     'Streets of Markham' => 'markham.jpg',
     'Streets of Washington, D.C.' => 'washington-dc.jpg',
     _ => null,
   };
   return asset == null
       ? null
-      : 'assets/circuits/$asset${asset.endsWith('.jpg') ? '' : '.svg'}';
+      : 'assets/circuits/$asset${asset.contains('.') ? '' : '.svg'}';
 }
+
+int circuitQuarterTurns(String name) => switch (name) {
+  'Streets of St. Petersburg' => 1,
+  _ => 0,
+};

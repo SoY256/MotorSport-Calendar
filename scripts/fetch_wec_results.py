@@ -124,9 +124,20 @@ def main() -> None:
     calendar = json.loads((root / "calendar.json").read_text(encoding="utf-8"))["data"]
     updated = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
     nationalities = entry_nationalities(fetch(ENTRY_LIST_URL))
+    driver_wins: dict[str, int] = {}
+    manufacturer_wins: dict[str, int] = {}
     for event, code in zip(calendar, EVENTS):
         url = classification_url(code)
         rows = parse_rows(fetch(url), nationalities)
+        hypercar_winner = next((row for row in rows if row["components"]["category"] == "HYPERCAR"), None)
+        if hypercar_winner:
+            for driver in hypercar_winner["driver"]["givenName"].split(" / "):
+                surname = driver.split()[-1].upper()
+                driver_wins[surname] = driver_wins.get(surname, 0) + 1
+            combined = f"{hypercar_winner['team']['name']} {hypercar_winner['components']['car']}"
+            manufacturer = next((name for name in MANUFACTURER_COLORS if name.lower() in combined.lower()), None)
+            if manufacturer:
+                manufacturer_wins[slug(manufacturer)] = manufacturer_wins.get(slug(manufacturer), 0) + 1
         payload = {"schemaVersion": 1, "lastSuccessfulUpdate": updated,
                    "source": {"name": "fia-wec-alkamel-official-timing", "url": url},
                    "data": {"eventId": event["id"], "sessions": [{"type": "R", "name": "Race", "startTimeUtc": event["sessions"][-1]["startTimeUtc"], "results": rows}]}}
@@ -136,11 +147,13 @@ def main() -> None:
     driver_doc = json.loads(driver_path.read_text(encoding="utf-8"))
     for driver in driver_doc["data"]:
         driver["teamColors"] = [STANDING_COLORS.get(team_id, "#607D8B") for team_id in driver.get("teamIds", [])]
+        driver["wins"] = driver_wins.get(driver["familyName"].split()[-1].upper(), 0)
     driver_path.write_text(json.dumps(driver_doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     team_path = root / "standings_teams.json"
     team_doc = json.loads(team_path.read_text(encoding="utf-8"))
     for team in team_doc["data"]:
         team["color"] = STANDING_COLORS.get(team["id"], "#607D8B")
+        team["wins"] = manufacturer_wins.get(team["id"], 0)
     team_path.write_text(json.dumps(team_doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 

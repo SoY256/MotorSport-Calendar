@@ -496,6 +496,9 @@ class _NextRaceHero extends StatelessWidget {
                                 fit: BoxFit.contain,
                                 tint: Colors.white,
                                 semanticsLabel: event.circuit.name,
+                                quarterTurns: circuitQuarterTurns(
+                                  event.circuit.name,
+                                ),
                               ),
                             ),
                           ),
@@ -1144,29 +1147,36 @@ class _CircuitAsset extends StatelessWidget {
     required this.fit,
     required this.semanticsLabel,
     this.tint,
+    this.quarterTurns = 0,
   });
 
   final String path;
   final BoxFit fit;
   final String semanticsLabel;
   final Color? tint;
+  final int quarterTurns;
 
   @override
-  Widget build(BuildContext context) => path.endsWith('.svg')
-      ? SvgPicture.asset(
-          path,
-          fit: fit,
-          colorFilter: tint == null
-              ? null
-              : ColorFilter.mode(tint!, BlendMode.srcIn),
-          semanticsLabel: semanticsLabel,
-        )
-      : Image.asset(
-          path,
-          fit: fit,
-          semanticLabel: semanticsLabel,
-          filterQuality: FilterQuality.high,
-        );
+  Widget build(BuildContext context) => RotatedBox(
+    quarterTurns: quarterTurns,
+    child: path.endsWith('.svg')
+        ? SvgPicture.asset(
+            path,
+            fit: fit,
+            colorFilter: tint == null
+                ? null
+                : ColorFilter.mode(tint!, BlendMode.srcIn),
+            semanticsLabel: semanticsLabel,
+          )
+        : Image.asset(
+            path,
+            fit: fit,
+            color: tint,
+            colorBlendMode: tint == null ? null : BlendMode.srcIn,
+            semanticLabel: semanticsLabel,
+            filterQuality: FilterQuality.high,
+          ),
+  );
 }
 
 class _CircuitInfoCard extends StatelessWidget {
@@ -1213,10 +1223,10 @@ class _CircuitInfoCard extends StatelessWidget {
               style: const TextStyle(fontSize: 48),
               semanticsLabel: event.circuit.country,
             );
-            final graphic = Container(
-              width: 190,
-              height: 110,
-              padding: const EdgeInsets.all(14),
+            Widget circuitGraphic({double? width, double? height}) => Container(
+              width: width ?? 220,
+              height: height ?? 130,
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
@@ -1243,27 +1253,33 @@ class _CircuitInfoCard extends StatelessWidget {
                       fit: BoxFit.contain,
                       tint: Theme.of(context).colorScheme.primary,
                       semanticsLabel: event.circuit.name,
+                      quarterTurns: circuitQuarterTurns(event.circuit.name),
                     ),
             );
             if (constraints.maxWidth < 600) {
-              return Column(
+              return Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(child: graphic),
-                      const SizedBox(width: 16),
-                      flag,
-                    ],
+                  circuitGraphic(width: 132, height: 118),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(right: 44),
+                          child: info,
+                        ),
+                        Positioned(right: 0, top: 0, child: flag),
+                      ],
+                    ),
                   ),
-                  const SizedBox(height: 10),
-                  Align(alignment: Alignment.centerLeft, child: info),
                 ],
               );
             }
             return Row(
               children: [
-                graphic,
+                circuitGraphic(),
                 const SizedBox(width: 22),
                 Expanded(child: info),
                 const SizedBox(width: 18),
@@ -1825,15 +1841,10 @@ class _CategorySelectionCard extends StatelessWidget {
                                 Expanded(
                                   child: Padding(
                                     padding: const EdgeInsets.only(right: 26),
-                                    child: item.$3.endsWith('.svg')
-                                        ? SvgPicture.asset(
-                                            item.$3,
-                                            fit: BoxFit.contain,
-                                          )
-                                        : Image.asset(
-                                            item.$3,
-                                            fit: BoxFit.contain,
-                                          ),
+                                    child: _BrandLogo(
+                                      path: item.$3,
+                                      label: item.$2,
+                                    ),
                                   ),
                                 ),
                                 const SizedBox(height: 8),
@@ -1858,6 +1869,68 @@ class _CategorySelectionCard extends StatelessWidget {
       ),
     ),
   );
+}
+
+class _BrandLogo extends StatelessWidget {
+  const _BrandLogo({required this.path, required this.label});
+  final String path;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    Widget image = path.endsWith('.svg')
+        ? SvgPicture.asset(path, fit: BoxFit.contain)
+        : Image.asset(
+            path,
+            fit: BoxFit.contain,
+            filterQuality: FilterQuality.high,
+          );
+    if (path.endsWith('indycar.png')) {
+      image = Row(
+        children: [
+          SizedBox(
+            width: 74,
+            height: 40,
+            child: ClipRect(
+              child: Transform.scale(
+                scale: 1.8,
+                alignment: Alignment.centerLeft,
+                child: Image.asset(
+                  path,
+                  fit: BoxFit.cover,
+                  alignment: Alignment.centerLeft,
+                  filterQuality: FilterQuality.high,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(width: 8),
+          Expanded(
+            child: Text(
+              label,
+              style: const TextStyle(
+                color: Color(0xFF151515),
+                fontSize: 17,
+                fontWeight: FontWeight.w900,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+          ),
+        ],
+      );
+    }
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: const Color(0x22000000)),
+      ),
+      child: image,
+    );
+  }
 }
 
 class _EmptyCard extends StatelessWidget {
