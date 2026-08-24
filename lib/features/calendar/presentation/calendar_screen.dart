@@ -21,6 +21,7 @@ class CalendarScreen extends ConsumerStatefulWidget {
 class _CalendarScreenState extends ConsumerState<CalendarScreen> {
   int _page = 0;
   String? _selectedEventId;
+  String? _activeSeriesId;
 
   @override
   Widget build(BuildContext context) {
@@ -66,9 +67,16 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
         final availableSeries = data.events
             .map((event) => event.seriesId)
             .toSet();
-        final selectedSeries = settings.motorsportCategories.intersection(
+        final enabledSeries = settings.motorsportCategories.intersection(
           availableSeries,
         );
+        if (_activeSeriesId != null &&
+            !enabledSeries.contains(_activeSeriesId)) {
+          _activeSeriesId = null;
+        }
+        final selectedSeries = _activeSeriesId == null
+            ? enabledSeries
+            : {_activeSeriesId!};
         final visibleEvents = data.events
             .where((event) => selectedSeries.contains(event.seriesId))
             .toList();
@@ -78,7 +86,7 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
                 (event) => event.id == _selectedEventId,
                 orElse: () => _nearestEvent(visibleEvents),
               );
-        return switch (_page) {
+        final page = switch (_page) {
           0 => _ListPage(
             data: data,
             availableSeries: availableSeries,
@@ -129,6 +137,20 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
           ),
           _ => _SettingsPage(settings: settings, strings: strings),
         };
+        return Column(
+          children: [
+            _SeriesTabsBar(
+              available: enabledSeries,
+              active: _activeSeriesId,
+              language: settings.language,
+              onChanged: (value) => setState(() {
+                _activeSeriesId = value;
+                _selectedEventId = null;
+              }),
+            ),
+            Expanded(child: page),
+          ],
+        );
       },
     );
 
@@ -168,6 +190,89 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
             ),
     );
   }
+}
+
+class _SeriesTabsBar extends StatelessWidget {
+  const _SeriesTabsBar({
+    required this.available,
+    required this.active,
+    required this.language,
+    required this.onChanged,
+  });
+  final Set<String> available;
+  final String? active;
+  final AppLanguage language;
+  final ValueChanged<String?> onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    final ids = available.toList()..sort();
+    return Material(
+      color: Theme.of(context).colorScheme.surfaceContainerLow,
+      child: SizedBox(
+        height: 58,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+          children: [
+            _SeriesTab(
+              label: language == AppLanguage.polish ? 'Wszystkie' : 'All',
+              selected: active == null,
+              onTap: () => onChanged(null),
+            ),
+            for (final id in ids) ...[
+              const SizedBox(width: 8),
+              _SeriesTab(
+                label: _seriesLabel(id),
+                color: _seriesColor(id),
+                selected: active == id,
+                onTap: () => onChanged(id),
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _SeriesTab extends StatelessWidget {
+  const _SeriesTab({
+    required this.label,
+    required this.selected,
+    required this.onTap,
+    this.color,
+  });
+  final String label;
+  final bool selected;
+  final VoidCallback onTap;
+  final Color? color;
+
+  @override
+  Widget build(BuildContext context) => Material(
+    color: selected
+        ? (color ?? Theme.of(context).colorScheme.primary)
+        : Colors.transparent,
+    shape: StadiumBorder(
+      side: BorderSide(
+        color: selected ? Colors.transparent : Theme.of(context).dividerColor,
+      ),
+    ),
+    child: InkWell(
+      customBorder: const StadiumBorder(),
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+        child: Text(
+          label,
+          style: TextStyle(
+            color: selected ? Colors.white : null,
+            fontWeight: FontWeight.w900,
+          ),
+        ),
+      ),
+    ),
+  );
 }
 
 class _PageFrame extends StatelessWidget {
@@ -276,16 +381,6 @@ class _ListPage extends ConsumerWidget {
       ],
       child: Column(
         children: [
-          Align(
-            alignment: Alignment.centerRight,
-            child: _SeriesFilterButton(
-              available: availableSeries,
-              selected: selectedSeries,
-              strings: strings,
-              onChanged: onSeriesChanged,
-            ),
-          ),
-          const SizedBox(height: 14),
           if (matching.isNotEmpty)
             _NextRaceHero(
               event: _nearestEvent(matching),
@@ -643,12 +738,6 @@ class _CalendarGridPageState extends State<_CalendarGridPage> {
                 onSelectionChanged: (value) =>
                     setState(() => _month = value.first),
               ),
-              _SeriesFilterButton(
-                available: widget.availableSeries,
-                selected: widget.selectedSeries,
-                strings: widget.strings,
-                onChanged: widget.onSeriesChanged,
-              ),
             ],
           ),
           const SizedBox(height: 14),
@@ -752,17 +841,23 @@ class _CalendarGridPageState extends State<_CalendarGridPage> {
                                       : FontWeight.w600,
                                 ),
                               ),
-                              if (events.isNotEmpty) const Spacer(),
-                              for (final event in events)
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 3),
-                                  child: _CalendarEventMarker(
-                                    event: event,
-                                    showName: !_month,
-                                    onTap: () => widget.onEventTap(event),
+                              if (events.isNotEmpty)
+                                Expanded(
+                                  child: ListView.separated(
+                                    padding: const EdgeInsets.only(top: 3),
+                                    itemCount: events.length,
+                                    separatorBuilder: (_, _) =>
+                                        const SizedBox(height: 3),
+                                    itemBuilder: (context, eventIndex) =>
+                                        _CalendarEventMarker(
+                                          event: events[eventIndex],
+                                          showName: !_month,
+                                          onTap: () => widget.onEventTap(
+                                            events[eventIndex],
+                                          ),
+                                        ),
                                   ),
                                 ),
-                              if (events.isNotEmpty) const Spacer(),
                             ],
                           ),
                         ),
@@ -777,58 +872,6 @@ class _CalendarGridPageState extends State<_CalendarGridPage> {
       ),
     );
   }
-}
-
-class _SeriesFilterButton extends StatelessWidget {
-  const _SeriesFilterButton({
-    required this.available,
-    required this.selected,
-    required this.strings,
-    required this.onChanged,
-  });
-  final Set<String> available;
-  final Set<String> selected;
-  final AppStrings strings;
-  final ValueChanged<Set<String>> onChanged;
-
-  @override
-  Widget build(BuildContext context) => MenuAnchor(
-    builder: (context, controller, child) => OutlinedButton.icon(
-      onPressed: controller.isOpen ? controller.close : controller.open,
-      icon: const Icon(Icons.filter_alt_outlined),
-      label: Text(
-        '${strings.categories} • ${strings.selectedCategories(selected.length)}',
-      ),
-    ),
-    menuChildren: (available.toList()..sort())
-        .map<Widget>(
-          (series) => MenuItemButton(
-            closeOnActivate: false,
-            onPressed: () {
-              final next = {...selected};
-              next.contains(series) ? next.remove(series) : next.add(series);
-              onChanged(next);
-            },
-            leadingIcon: Checkbox(
-              value: selected.contains(series),
-              onChanged: (_) {
-                final next = {...selected};
-                next.contains(series) ? next.remove(series) : next.add(series);
-                onChanged(next);
-              },
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                _SeriesBadge(seriesId: series),
-                const SizedBox(width: 10),
-                Text(_seriesLabel(series)),
-              ],
-            ),
-          ),
-        )
-        .toList(),
-  );
 }
 
 class _SeriesBadge extends StatelessWidget {
@@ -1067,9 +1110,30 @@ class _CircuitInfoCard extends StatelessWidget {
                 Text('${strings.lapRecord}: ${metadata.lapRecord ?? '–'}'),
               ],
             );
-            final graphic = SizedBox(
+            final flag = Text(
+              _countryFlag(event.circuit.countryCode),
+              style: const TextStyle(fontSize: 48),
+              semanticsLabel: event.circuit.country,
+            );
+            final graphic = Container(
               width: 190,
               height: 110,
+              padding: const EdgeInsets.all(14),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Theme.of(context).colorScheme.primaryContainer,
+                    Theme.of(context).colorScheme.surfaceContainerHighest,
+                  ],
+                ),
+                borderRadius: BorderRadius.circular(18),
+                border: Border.all(
+                  color: Theme.of(context).colorScheme.primary
+                      .withValues(alpha: .35),
+                ),
+              ),
               child: asset == null
                   ? Icon(
                       Icons.route,
@@ -1089,7 +1153,14 @@ class _CircuitInfoCard extends StatelessWidget {
             if (constraints.maxWidth < 600) {
               return Column(
                 children: [
-                  graphic,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(child: graphic),
+                      const SizedBox(width: 16),
+                      flag,
+                    ],
+                  ),
                   const SizedBox(height: 10),
                   Align(alignment: Alignment.centerLeft, child: info),
                 ],
@@ -1100,6 +1171,8 @@ class _CircuitInfoCard extends StatelessWidget {
                 graphic,
                 const SizedBox(width: 22),
                 Expanded(child: info),
+                const SizedBox(width: 18),
+                flag,
               ],
             );
           },
@@ -1198,7 +1271,6 @@ class _StandingsPage extends ConsumerStatefulWidget {
 
 class _StandingsPageState extends ConsumerState<_StandingsPage> {
   bool _drivers = true;
-  String? _seriesId;
 
   @override
   Widget build(BuildContext context) {
@@ -1212,60 +1284,37 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
         ),
       );
     }
-    final series =
-        _seriesId != null && widget.availableSeries.contains(_seriesId)
-        ? _seriesId!
-        : widget.availableSeries.contains('f1')
+    final series = widget.availableSeries.contains('f1')
         ? 'f1'
         : (widget.availableSeries.toList()..sort()).first;
     final standings = ref.watch(standingsProvider(series));
     final strings = widget.strings;
+    final supportsTeams = {'f1', 'wec', 'imsa'}.contains(series);
+    final showDrivers = !supportsTeams || _drivers;
     return _PageFrame(
       title: strings.standings,
       subtitle: '${_seriesLabel(series)} • 2026',
       child: Column(
         children: [
-          DropdownButtonFormField<String>(
-            initialValue: series,
-            decoration: InputDecoration(
-              labelText: strings.championship,
-              border: const OutlineInputBorder(),
+          if (supportsTeams)
+            SegmentedButton<bool>(
+              segments: [
+                ButtonSegment(
+                  value: true,
+                  icon: const Icon(Icons.person),
+                  label: Text(strings.drivers),
+                ),
+                ButtonSegment(
+                  value: false,
+                  icon: const Icon(Icons.groups),
+                  label: Text(strings.constructors),
+                ),
+              ],
+              selected: {_drivers},
+              onSelectionChanged: (value) =>
+                  setState(() => _drivers = value.first),
             ),
-            items: (widget.availableSeries.toList()..sort())
-                .map(
-                  (id) => DropdownMenuItem(
-                    value: id,
-                    child: Row(
-                      children: [
-                        _SeriesBadge(seriesId: id),
-                        const SizedBox(width: 10),
-                        Text(_seriesLabel(id)),
-                      ],
-                    ),
-                  ),
-                )
-                .toList(),
-            onChanged: (value) => setState(() => _seriesId = value),
-          ),
-          const SizedBox(height: 16),
-          SegmentedButton<bool>(
-            segments: [
-              ButtonSegment(
-                value: true,
-                icon: const Icon(Icons.person),
-                label: Text(strings.drivers),
-              ),
-              ButtonSegment(
-                value: false,
-                icon: const Icon(Icons.groups),
-                label: Text(strings.constructors),
-              ),
-            ],
-            selected: {_drivers},
-            onSelectionChanged: (value) =>
-                setState(() => _drivers = value.first),
-          ),
-          const SizedBox(height: 16),
+          if (supportsTeams) const SizedBox(height: 16),
           standings.when(
             loading: () => const Padding(
               padding: EdgeInsets.all(32),
@@ -1278,7 +1327,7 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
             ),
             data: (data) => Card(
               child: Column(
-                children: _drivers
+                children: showDrivers
                     ? data.drivers
                           .map(
                             (item) => _StandingRow(
@@ -1432,6 +1481,8 @@ class _SettingsPage extends ConsumerWidget {
             items: const [
               ('f1', 'F1', 'assets/brands/f1.svg'),
               ('imsa', 'IMSA', 'assets/brands/imsa.svg'),
+              ('indycar', 'INDYCAR', 'assets/brands/indycar.png'),
+              ('indynxt', 'INDY NXT', 'assets/brands/indycar.png'),
               ('wec', 'WEC', 'assets/brands/wec.svg'),
             ],
             selected: settings.motorsportCategories,
@@ -1757,6 +1808,21 @@ String _teamName(String id) => switch (id) {
   'haas' => 'MoneyGram Haas F1 Team',
   'aston_martin' => 'Aston Martin Aramco',
   'cadillac' => 'Cadillac Formula 1 Team',
+  'chip_ganassi' => 'Chip Ganassi Racing',
+  'andretti' => 'Andretti Global',
+  'arrow_mclaren' => 'Arrow McLaren',
+  'penske' => 'Team Penske',
+  'meyer_shank' => 'Meyer Shank Racing',
+  'juncos' => 'Juncos Hollinger Racing',
+  'hmd' => 'HMD Motorsports',
+  'cape' => 'Cape Motorsports',
+  'foyt' => 'A.J. Foyt Enterprises',
+  'abel' => 'Abel Motorsports',
+  'cusick' => 'Cusick Morgan Motorsports',
+  'toyota' => 'Toyota Gazoo Racing',
+  'bmw' => 'BMW M Team WRT',
+  'corvette' => 'Corvette Racing',
+  'porsche' => 'Porsche',
   'mercedes' => 'Mercedes-AMG Petronas',
   'ferrari' => 'Scuderia Ferrari HP',
   'mclaren' => 'McLaren Formula 1 Team',
@@ -1777,6 +1843,21 @@ Color _teamColor(String? id) => switch (id) {
   'williams' => const Color(0xFF1868DB),
   'aston_martin' => const Color(0xFF229971),
   'cadillac' => const Color(0xFFB8B8B8),
+  'chip_ganassi' => const Color(0xFF0B5BA7),
+  'andretti' => const Color(0xFFE31B23),
+  'arrow_mclaren' => const Color(0xFFFF6C0C),
+  'penske' => const Color(0xFF143B78),
+  'meyer_shank' => const Color(0xFFE91E63),
+  'juncos' => const Color(0xFF4A148C),
+  'hmd' => const Color(0xFF202A44),
+  'cape' => const Color(0xFF00A3E0),
+  'foyt' => const Color(0xFFD71920),
+  'abel' => const Color(0xFF111111),
+  'cusick' => const Color(0xFF8BC34A),
+  'toyota' => const Color(0xFFE50000),
+  'bmw' => const Color(0xFF0066B1),
+  'corvette' => const Color(0xFFFFD600),
+  'porsche' => const Color(0xFFD50000),
   _ => Colors.grey,
 };
 
@@ -1794,6 +1875,11 @@ String _nationalityFlag(String nationality) => switch (nationality) {
   'New Zealander' => '🇳🇿',
   'Mexican' => '🇲🇽',
   'American' => '🇺🇸',
+  'Danish' => '🇩🇰',
+  'Swedish' => '🇸🇪',
+  'Polish' => '🇵🇱',
+  'Japanese' => '🇯🇵',
+  'South African' => '🇿🇦',
   _ => '🏁',
 };
 
@@ -1803,6 +1889,8 @@ String _seriesLabel(String id) => switch (id.toLowerCase()) {
   'f3' => 'F3',
   'wec' => 'WEC',
   'imsa' => 'IMSA',
+  'indycar' => 'INDYCAR',
+  'indynxt' => 'INDY NXT',
   _ => id.toUpperCase(),
 };
 
@@ -1812,6 +1900,8 @@ Color _seriesColor(String id) => switch (id.toLowerCase()) {
   'f3' => const Color(0xFF7B1FA2),
   'wec' => const Color(0xFF00695C),
   'imsa' => const Color(0xFFEF6C00),
+  'indycar' => const Color(0xFFD71920),
+  'indynxt' => const Color(0xFFE31837),
   _ => const Color(0xFF455A64),
 };
 

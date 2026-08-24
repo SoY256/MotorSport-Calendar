@@ -30,6 +30,8 @@ GitHub Actions runs the same tests and refreshes data every six hours. The workf
 
 The bundled 2026 WEC and IMSA calendars are curated from the official [FIA WEC](https://www.fiawec.com/) and [IMSA WeatherTech](https://www.imsa.com/weathertech/weathertech-2026-schedule/) schedules by `scripts/seed_endurance_data.py`.
 
+The 2026 INDYCAR and INDY NXT calendars and driver standings come from the official [INDYCAR](https://www.indycar.com/) and [INDY NXT](https://www.indynxt.com/) sites and are published by `scripts/seed_indy_data.py`.
+
 ## Flutter application
 
 The application uses a feature-first structure with Riverpod, a shared light/dark design system, responsive phone/desktop navigation, and a complete offline season snapshot. It includes:
@@ -55,5 +57,7 @@ CI verifies formatting, static analysis, widget and visual-regression tests, and
 ## Circuit assets
 
 The bundled circuit layout SVGs come from the open-source [F1DB](https://github.com/f1db/f1db) project and are used under CC BY 4.0. A copy of the license is included at `assets/circuits/F1DB-LICENSE.txt`.
+
+Additional endurance layouts are adapted from the open [Pixelsonly Racing Circuits](https://github.com/pixelsonly/pixelsonly-racing-circuits) collection; per-file Wikimedia licensing and attribution is included at `assets/circuits/PIXELSONLY-ASSET-LICENSES.md`. Selected IndyCar layouts come from the public iRacing track-map CDN and are used for circuit identification only.
 
 F1, FIA WEC and IMSA marks remain trademarks of their respective owners. Their Wikimedia logo files are used only to identify the selected series. The iRacing logo is sourced from Wikimedia Commons under CC BY 4.0; the Le Mans Ultimate artwork is sourced from its official Steam media.

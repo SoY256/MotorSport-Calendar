@@ -1,0 +1,418 @@
+{
+  "schemaVersion": 1,
+  "lastSuccessfulUpdate": "2026-08-24T12:00:00Z",
+  "source": {
+    "name": "official-indycar",
+    "url": "https://www.indycar.com/"
+  },
+  "data": [
+    {
+      "id": "indynxt-2026-1",
+      "seriesId": "indynxt",
+      "season": 2026,
+      "round": 1,
+      "name": "St. Petersburg",
+      "cancelled": false,
+      "circuit": {
+        "id": "streets-of-st.-petersburg",
+        "name": "Streets of St. Petersburg",
+        "locality": "St. Petersburg",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-03-01T17:00:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/01-race.json"
+    },
+    {
+      "id": "indynxt-2026-2",
+      "seriesId": "indynxt",
+      "season": 2026,
+      "round": 2,
+      "name": "Arlington",
+      "cancelled": false,
+      "circuit": {
+        "id": "streets-of-arlington",
+        "name": "Streets of Arlington",
+        "locality": "Arlington",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-03-15T17:30:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/02-race.json"
+    },
+    {
+      "id": "indynxt-2026-3",
+      "seriesId": "indynxt",
+      "season": 2026,
+      "round": 3,
+      "name": "Barber Race 1",
+      "cancelled": false,
+      "circuit": {
+        "id": "barber-motorsports-park",
+        "name": "Barber Motorsports Park",
+        "locality": "Birmingham",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-03-29T17:00:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/03-race.json"
+    },
+    {
+      "id": "indynxt-2026-4",
+      "seriesId": "indynxt",
+      "season": 2026,
+      "round": 4,
+      "name": "Barber Race 2",
+      "cancelled": false,
+      "circuit": {
+        "id": "barber-motorsports-park",
+        "name": "Barber Motorsports Park",
+        "locality": "Birmingham",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-03-30T17:00:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/04-race.json"
+    },
+    {
+      "id": "indynxt-2026-5",
+      "seriesId": "indynxt",
+      "season": 2026,
+      "round": 5,
+      "name": "IMS Road Race 1",
+      "cancelled": false,
+      "circuit": {
+        "id": "indianapolis-motor-speedway-road-course",
+        "name": "Indianapolis Motor Speedway Road Course",
+        "locality": "Indianapolis",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-05-09T20:30:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/05-race.json"
+    },
+    {
+      "id": "indynxt-2026-6",
+      "seriesId": "indynxt",
+      "season": 2026,
+      "round": 6,
+      "name": "IMS Road Race 2",
+      "cancelled": false,
+      "circuit": {
+        "id": "indianapolis-motor-speedway-road-course",
+        "name": "Indianapolis Motor Speedway Road Course",
+        "locality": "Indianapolis",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-05-10T20:30:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/06-race.json"
+    },
+    {
+      "id": "indynxt-2026-7",
+      "seriesId": "indynxt",
+      "season": 2026,
+      "round": 7,
+      "name": "Detroit",
+      "cancelled": false,
+      "circuit": {
+        "id": "detroit-street-circuit",
+        "name": "Detroit Street Circuit",
+        "locality": "Detroit",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-05-31T16:30:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/07-race.json"
+    },
+    {
+      "id": "indynxt-2026-8",
+      "seriesId": "indynxt",
+      "season": 2026,
+      "round": 8,
+      "name": "WWTR",
+      "cancelled": false,
+      "circuit": {
+        "id": "world-wide-technology-raceway",
+        "name": "World Wide Technology Raceway",
+        "locality": "Madison",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-06-08T01:00:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/08-race.json"
+    },
+    {
+      "id": "indynxt-2026-9",
+      "seriesId": "indynxt",
+      "season": 2026,
+      "round": 9,
+      "name": "Road America Race 1",
+      "cancelled": false,
+      "circuit": {
+        "id": "road-america",
+        "name": "Road America",
+        "locality": "Elkhart Lake",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-06-21T18:00:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/09-race.json"
+    },
+    {
+      "id": "indynxt-2026-10",
+      "seriesId": "indynxt",
+      "season": 2026,
+      "round": 10,
+      "name": "Road America Race 2",
+      "cancelled": false,
+      "circuit": {
+        "id": "road-america",
+        "name": "Road America",
+        "locality": "Elkhart Lake",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-06-22T18:00:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/10-race.json"
+    },
+    {
+      "id": "indynxt-2026-11",
+      "seriesId": "indynxt",
+      "season": 2026,
+      "round": 11,
+      "name": "Mid-Ohio Race 1",
+      "cancelled": false,
+      "circuit": {
+        "id": "mid-ohio-sports-car-course",
+        "name": "Mid-Ohio Sports Car Course",
+        "locality": "Lexington",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-07-05T16:30:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/11-race.json"
+    },
+    {
+      "id": "indynxt-2026-12",
+      "seriesId": "indynxt",
+      "season": 2026,
+      "round": 12,
+      "name": "Mid-Ohio Race 2",
+      "cancelled": false,
+      "circuit": {
+        "id": "mid-ohio-sports-car-course",
+        "name": "Mid-Ohio Sports Car Course",
+        "locality": "Lexington",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-07-06T16:30:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/12-race.json"
+    },
+    {
+      "id": "indynxt-2026-13",
+      "seriesId": "indynxt",
+      "season": 2026,
+      "round": 13,
+      "name": "Nashville",
+      "cancelled": false,
+      "circuit": {
+        "id": "nashville-superspeedway",
+        "name": "Nashville Superspeedway",
+        "locality": "Lebanon",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-07-19T19:00:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/13-race.json"
+    },
+    {
+      "id": "indynxt-2026-14",
+      "seriesId": "indynxt",
+      "season": 2026,
+      "round": 14,
+      "name": "Portland",
+      "cancelled": false,
+      "circuit": {
+        "id": "portland-international-raceway",
+        "name": "Portland International Raceway",
+        "locality": "Portland",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-08-09T20:00:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/14-race.json"
+    },
+    {
+      "id": "indynxt-2026-15",
+      "seriesId": "indynxt",
+      "season": 2026,
+      "round": 15,
+      "name": "Milwaukee 2",
+      "cancelled": false,
+      "circuit": {
+        "id": "milwaukee-mile",
+        "name": "Milwaukee Mile",
+        "locality": "West Allis",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-08-30T17:00:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/15-race.json"
+    },
+    {
+      "id": "indynxt-2026-16",
+      "seriesId": "indynxt",
+      "season": 2026,
+      "round": 16,
+      "name": "Laguna Seca Race 1",
+      "cancelled": false,
+      "circuit": {
+        "id": "weathertech-raceway-laguna-seca",
+        "name": "WeatherTech Raceway Laguna Seca",
+        "locality": "Monterey",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-09-06T18:30:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/16-race.json"
+    },
+    {
+      "id": "indynxt-2026-17",
+      "seriesId": "indynxt",
+      "season": 2026,
+      "round": 17,
+      "name": "Laguna Seca Race 2",
+      "cancelled": false,
+      "circuit": {
+        "id": "weathertech-raceway-laguna-seca",
+        "name": "WeatherTech Raceway Laguna Seca",
+        "locality": "Monterey",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-09-07T18:30:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/17-race.json"
+    }
+  ]
+}

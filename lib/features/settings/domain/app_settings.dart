@@ -7,7 +7,13 @@ class AppSettings {
     this.language = AppLanguage.polish,
     this.timeMode = EventTimeMode.local,
     this.showPastEvents = true,
-    this.motorsportCategories = const {'f1', 'wec', 'imsa'},
+    this.motorsportCategories = const {
+      'f1',
+      'imsa',
+      'indycar',
+      'indynxt',
+      'wec',
+    },
     this.esportCategories = const <String>{},
   });
 

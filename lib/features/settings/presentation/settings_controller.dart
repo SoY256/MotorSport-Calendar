@@ -30,14 +30,27 @@ class SettingsController extends Notifier<AppSettings> {
     final timeMode = await preferences.getString('timeMode');
     final showPast = await preferences.getBool('showPastEvents');
     final motorsport = await preferences.getStringList('motorsportCategories');
+    final categorySchema = await preferences.getInt('categorySchema');
     final esport = await preferences.getStringList('esportCategories');
     state = AppSettings(
       language: language == 'en' ? AppLanguage.english : AppLanguage.polish,
       timeMode: timeMode == 'track' ? EventTimeMode.track : EventTimeMode.local,
       showPastEvents: showPast ?? true,
-      motorsportCategories: motorsport?.toSet() ?? const {'f1', 'wec', 'imsa'},
+      motorsportCategories: categorySchema == 3
+          ? (motorsport?.toSet() ??
+                const {'f1', 'imsa', 'indycar', 'indynxt', 'wec'})
+          : const {'f1', 'imsa', 'indycar', 'indynxt', 'wec'},
       esportCategories: esport?.toSet() ?? const <String>{},
     );
+    if (categorySchema != 3) {
+      unawaited(preferences.setInt('categorySchema', 3));
+      unawaited(
+        preferences.setStringList(
+          'motorsportCategories',
+          state.motorsportCategories.toList(),
+        ),
+      );
+    }
   }
 
   void setMotorsportCategories(Set<String> value) {

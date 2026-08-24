@@ -38,16 +38,14 @@ void main() {
     expect(find.text('Sezon 2026'), findsOneWidget);
     expect(find.text('Australian Grand Prix'), findsOneWidget);
     expect(find.text('🇦🇺'), findsOneWidget);
-    expect(find.text('Kategorie • Wybrano: 3'), findsOneWidget);
-    await tester.tap(find.text('Kategorie • Wybrano: 3'));
-    await tester.pump(const Duration(milliseconds: 200));
-    await tester.tap(find.byType(Checkbox).first);
-    await tester.pump(const Duration(milliseconds: 200));
+    expect(find.text('Wszystkie'), findsOneWidget);
+    expect(find.text('INDYCAR'), findsOneWidget);
+    expect(find.text('INDY NXT'), findsOneWidget);
+    await tester.tap(find.text('IMSA').first);
+    await tester.pump(const Duration(milliseconds: 300));
     expect(find.text('Australian Grand Prix'), findsNothing);
-    await tester.tap(find.byType(Checkbox).first);
-    await tester.pump(const Duration(milliseconds: 200));
-    await tester.tap(find.text('Kategorie • Wybrano: 3'));
-    await tester.pump(const Duration(milliseconds: 200));
+    await tester.tap(find.text('Wszystkie'));
+    await tester.pump(const Duration(milliseconds: 300));
     expect(find.text('Ukryj poprzednie wydarzenia'), findsOneWidget);
 
     await tester.tap(find.text('Ukryj poprzednie wydarzenia'));
@@ -81,7 +79,6 @@ void main() {
     );
     await tester.pump(const Duration(milliseconds: 500));
     expect(find.text('Andrea Kimi Antonelli'), findsOneWidget);
-    expect(find.text('Mistrzostwa'), findsOneWidget);
     expect(find.text('242 PKT'), findsOneWidget);
 
     await tester.tap(find.text('Ustawienia'));

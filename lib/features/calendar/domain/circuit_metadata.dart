@@ -152,6 +152,36 @@ const _circuitMetadata = <String, CircuitMetadata>{
     lengthKm: 4.088,
     lapRecord: null,
   ),
+  'Streets of St. Petersburg': CircuitMetadata(
+    lengthKm: 2.897,
+    lapRecord: null,
+  ),
+  'Phoenix Raceway': CircuitMetadata(lengthKm: 1.645, lapRecord: null),
+  'Streets of Arlington': CircuitMetadata(lengthKm: 4.394, lapRecord: null),
+  'Barber Motorsports Park': CircuitMetadata(lengthKm: 3.830, lapRecord: null),
+  'Indianapolis Motor Speedway Road Course': CircuitMetadata(
+    lengthKm: 3.925,
+    lapRecord: null,
+  ),
+  'World Wide Technology Raceway': CircuitMetadata(
+    lengthKm: 2.012,
+    lapRecord: null,
+  ),
+  'Mid-Ohio Sports Car Course': CircuitMetadata(
+    lengthKm: 3.634,
+    lapRecord: null,
+  ),
+  'Nashville Superspeedway': CircuitMetadata(lengthKm: 2.145, lapRecord: null),
+  'Portland International Raceway': CircuitMetadata(
+    lengthKm: 3.166,
+    lapRecord: null,
+  ),
+  'Streets of Markham': CircuitMetadata(lengthKm: 3.520, lapRecord: null),
+  'Streets of Washington, D.C.': CircuitMetadata(
+    lengthKm: 2.736,
+    lapRecord: null,
+  ),
+  'Milwaukee Mile': CircuitMetadata(lengthKm: 1.609, lapRecord: null),
 };
 
 CircuitMetadata metadataForCircuit(String name) =>
@@ -194,6 +224,20 @@ String? circuitAssetFor(String name) {
     'Watkins Glen International' => 'watkins-glen',
     'Canadian Tire Motorsport Park' => 'mosport',
     'Indianapolis Motor Speedway' => 'indianapolis',
+    'Indianapolis Motor Speedway Road Course' => 'indianapolis',
+    'Circuit de la Sarthe' => 'le-mans',
+    'Daytona International Speedway' => 'daytona',
+    'WeatherTech Raceway Laguna Seca' => 'laguna-seca',
+    'Road America' => 'road-america',
+    'Virginia International Raceway' => 'vir',
+    'Michelin Raceway Road Atlanta' => 'road-atlanta',
+    'Portland International Raceway' => 'portland',
+    'Barber Motorsports Park' => 'barber',
+    'Mid-Ohio Sports Car Course' => 'mid-ohio',
+    'Nashville Superspeedway' => 'nashville',
+    'Phoenix Raceway' => 'phoenix',
+    'Milwaukee Mile' => 'milwaukee',
+    'World Wide Technology Raceway' => 'gateway',
     _ => null,
   };
   return asset == null ? null : 'assets/circuits/$asset.svg';

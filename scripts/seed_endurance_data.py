@@ -60,6 +60,11 @@ IMSA_DRIVERS = [
     (3, 2121, "Harry", "King", "British", "porsche"),
     (3, 2121, "Nick", "Tandy", "British", "porsche"),
 ]
+IMSA_TEAMS = [
+    (1, 2142, "bmw", "BMW M Team RLL"),
+    (2, 2127, "corvette", "Corvette Racing"),
+    (3, 2121, "porsche", "Porsche Penske Motorsport"),
+]
 
 
 def write(path: Path, payload: dict) -> None:
@@ -128,5 +133,5 @@ def update_indexes() -> None:
 
 if __name__ == "__main__":
     publish_series("wec", WEC, "https://www.fiawec.com/en/season/2026", WEC_DRIVERS, WEC_TEAMS)
-    publish_series("imsa", IMSA, "https://www.imsa.com/weathertech/weathertech-2026-schedule/", IMSA_DRIVERS, [])
+    publish_series("imsa", IMSA, "https://www.imsa.com/weathertech/weathertech-2026-schedule/", IMSA_DRIVERS, IMSA_TEAMS)
     update_indexes()
