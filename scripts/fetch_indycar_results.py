@@ -13,6 +13,19 @@ ROOT = Path(__file__).resolve().parents[1]
 API = "https://www.indycar.com/api/results"
 SERIES_ID = "b856a4f1-e85c-4fac-8c36-fd58d962227a"
 HEADERS = {"User-Agent": "MotorSport-Calendar/0.1 (+https://github.com/SoY256/MotorSport-Calendar)"}
+DRIVER_COUNTRIES = {
+    "alex-palou": "ESP", "kyle-kirkwood": "USA", "christian-lundgaard": "DNK", "david-malukas": "USA",
+    "pato-o-ward": "MEX", "josef-newgarden": "USA", "marcus-ericsson": "SWE", "felix-rosenqvist": "SWE",
+    "scott-mclaughlin": "NZL", "will-power": "AUS", "rinus-veekay": "NLD", "scott-dixon": "NZL",
+    "kyffin-simpson": "CYM", "graham-rahal": "USA", "marcus-armstrong": "NZL", "alexander-rossi": "USA",
+    "santino-ferrucci": "USA", "romain-grosjean": "FRA", "nolan-siegel": "USA", "louis-foster": "GBR",
+    "dennis-hauger": "NOR", "christian-rasmussen": "DNK", "caio-collet": "BRA", "mick-schumacher": "DEU",
+    "sting-ray-robb": "USA", "conor-daly": "USA", "takuma-sato": "JPN", "jack-harvey": "GBR",
+    "jacob-abel": "USA", "helio-castroneves": "BRA", "ed-carpenter": "USA", "ryan-hunter-reay": "USA",
+    "katherine-legge": "GBR",
+}
+TEAM_COLORS = {"chip-ganassi-racing": "#0B5BA7", "andretti-global": "#E31B23", "arrow-mclaren": "#FF6C0C",
+               "team-penske": "#143B78", "meyer-shank-w-curb-agajanian": "#E91E63", "juncos-hollinger-racing": "#4A148C"}
 
 
 def get(url: str):
@@ -45,8 +58,8 @@ def main() -> None:
             driver_teams[raw.get("DriverName") or ""] = slug(team)
             rows.append({
                 "position": raw.get("PositionFinish"), "positionText": str(raw.get("PositionFinish") or "–"),
-                "driver": {"id": slug(raw.get("DriverName") or "driver"), "code": "", "givenName": raw.get("FirstName"), "familyName": raw.get("LastName")},
-                "team": {"id": slug(team), "name": team, "color": "#D71920"},
+                "driver": {"id": slug(raw.get("DriverName") or "driver"), "code": "", "givenName": raw.get("FirstName"), "familyName": raw.get("LastName"), "nationality": DRIVER_COUNTRIES.get(slug(raw.get("DriverName") or ""))},
+                "team": {"id": slug(team), "name": team, "color": TEAM_COLORS.get(slug(team), "#D71920")},
                 "carNumber": raw.get("CarNumber"), "time": raw.get("ElapsedTime") or raw.get("Difference"),
                 "laps": raw.get("LapsComplete"), "points": raw.get("PointsEarned"), "status": raw.get("Status"),
                 "classified": raw.get("Status") == "Running", "components": {},
@@ -71,7 +84,8 @@ def main() -> None:
         drivers.append({"position": raw.get("OverallPosition"), "points": raw.get("TotalPoints", 0),
                         "wins": raw.get("TotalWins", 0), "id": slug(name), "code": "",
                         "givenName": parts[0], "familyName": parts[-1] if len(parts) > 1 else "",
-                        "nationality": None, "teamIds": [driver_teams[name]] if name in driver_teams else []})
+                        "nationality": DRIVER_COUNTRIES.get(slug(name)), "teamIds": [driver_teams[name]] if name in driver_teams else [],
+                        "teamNames": [next((row["team"]["name"] for event in events if event.get("resultsPath") for row in json.loads((root / event["resultsPath"]).read_text(encoding="utf-8"))["data"]["sessions"][0]["results"] if row["driver"]["id"] == slug(name)), "")]})
     driver_doc = {"schemaVersion": 1, "lastSuccessfulUpdate": updated,
                   "source": {"name": "official-indycar", "url": f"{API}/YearPointSummary?year=2026&id={SERIES_ID}"},
                   "data": drivers}

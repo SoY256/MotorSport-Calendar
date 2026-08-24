@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-08-24T11:31:48.434561Z",
+  "lastSuccessfulUpdate": "2026-08-24T11:48:49.686834Z",
   "source": {
     "name": "official-indycar",
     "url": "https://www.indycar.com/api/results/EventsSessionDetails?id=6733"
@@ -20,12 +20,13 @@
               "id": "alex-palou",
               "code": "",
               "givenName": "Alex",
-              "familyName": "Palou"
+              "familyName": "Palou",
+              "nationality": "ESP"
             },
             "team": {
               "id": "chip-ganassi-racing",
               "name": "Chip Ganassi Racing",
-              "color": "#D71920"
+              "color": "#0B5BA7"
             },
             "carNumber": "10",
             "time": "01:55:03.4235",
@@ -42,12 +43,13 @@
               "id": "felix-rosenqvist",
               "code": "",
               "givenName": "Felix",
-              "familyName": "Rosenqvist"
+              "familyName": "Rosenqvist",
+              "nationality": "SWE"
             },
             "team": {
               "id": "meyer-shank-w-curb-agajanian",
               "name": "Meyer Shank w/ Curb-Agajanian",
-              "color": "#D71920"
+              "color": "#E91E63"
             },
             "carNumber": "60",
             "time": "01:55:07.5402",
@@ -64,12 +66,13 @@
               "id": "will-power",
               "code": "",
               "givenName": "Will",
-              "familyName": "Power"
+              "familyName": "Power",
+              "nationality": "AUS"
             },
             "team": {
               "id": "andretti-global",
               "name": "Andretti Global",
-              "color": "#D71920"
+              "color": "#E31B23"
             },
             "carNumber": "26",
             "time": "01:55:11.4860",
@@ -86,12 +89,13 @@
               "id": "rinus-veekay",
               "code": "",
               "givenName": "Rinus",
-              "familyName": "VeeKay"
+              "familyName": "VeeKay",
+              "nationality": "NLD"
             },
             "team": {
               "id": "juncos-hollinger-racing",
               "name": "Juncos Hollinger Racing",
-              "color": "#D71920"
+              "color": "#4A148C"
             },
             "carNumber": "76",
             "time": "01:55:20.0002",
@@ -108,7 +112,8 @@
               "id": "kyle-kirkwood",
               "code": "",
               "givenName": "Kyle",
-              "familyName": "Kirkwood"
+              "familyName": "Kirkwood",
+              "nationality": "USA"
             },
             "team": {
               "id": "andretti-global-w-curb-agajanian",
@@ -130,12 +135,13 @@
               "id": "marcus-ericsson",
               "code": "",
               "givenName": "Marcus",
-              "familyName": "Ericsson"
+              "familyName": "Ericsson",
+              "nationality": "SWE"
             },
             "team": {
               "id": "andretti-global",
               "name": "Andretti Global",
-              "color": "#D71920"
+              "color": "#E31B23"
             },
             "carNumber": "28",
             "time": "01:55:23.4556",
@@ -152,12 +158,13 @@
               "id": "scott-mclaughlin",
               "code": "",
               "givenName": "Scott",
-              "familyName": "McLaughlin"
+              "familyName": "McLaughlin",
+              "nationality": "NZL"
             },
             "team": {
               "id": "team-penske",
               "name": "Team Penske",
-              "color": "#D71920"
+              "color": "#143B78"
             },
             "carNumber": "3",
             "time": "01:55:24.8476",
@@ -174,12 +181,13 @@
               "id": "josef-newgarden",
               "code": "",
               "givenName": "Josef",
-              "familyName": "Newgarden"
+              "familyName": "Newgarden",
+              "nationality": "USA"
             },
             "team": {
               "id": "team-penske",
               "name": "Team Penske",
-              "color": "#D71920"
+              "color": "#143B78"
             },
             "carNumber": "2",
             "time": "01:55:25.5259",
@@ -196,12 +204,13 @@
               "id": "christian-lundgaard",
               "code": "",
               "givenName": "Christian",
-              "familyName": "Lundgaard"
+              "familyName": "Lundgaard",
+              "nationality": "DNK"
             },
             "team": {
               "id": "arrow-mclaren",
               "name": "Arrow McLaren",
-              "color": "#D71920"
+              "color": "#FF6C0C"
             },
             "carNumber": "7",
             "time": "01:55:29.1735",
@@ -218,12 +227,13 @@
               "id": "kyffin-simpson",
               "code": "",
               "givenName": "Kyffin",
-              "familyName": "Simpson"
+              "familyName": "Simpson",
+              "nationality": "CYM"
             },
             "team": {
               "id": "chip-ganassi-racing",
               "name": "Chip Ganassi Racing",
-              "color": "#D71920"
+              "color": "#0B5BA7"
             },
             "carNumber": "8",
             "time": "01:55:32.7018",
@@ -240,12 +250,13 @@
               "id": "pato-o-ward",
               "code": "",
               "givenName": "Pato",
-              "familyName": "O'Ward"
+              "familyName": "O'Ward",
+              "nationality": "MEX"
             },
             "team": {
               "id": "arrow-mclaren",
               "name": "Arrow McLaren",
-              "color": "#D71920"
+              "color": "#FF6C0C"
             },
             "carNumber": "5",
             "time": "01:55:36.5135",
@@ -262,12 +273,13 @@
               "id": "david-malukas",
               "code": "",
               "givenName": "David",
-              "familyName": "Malukas"
+              "familyName": "Malukas",
+              "nationality": "USA"
             },
             "team": {
               "id": "team-penske",
               "name": "Team Penske",
-              "color": "#D71920"
+              "color": "#143B78"
             },
             "carNumber": "12",
             "time": "01:55:37.4473",
@@ -284,7 +296,8 @@
               "id": "dennis-hauger",
               "code": "",
               "givenName": "Dennis",
-              "familyName": "Hauger"
+              "familyName": "Hauger",
+              "nationality": "NOR"
             },
             "team": {
               "id": "dale-coyne-racing",
@@ -306,12 +319,13 @@
               "id": "scott-dixon",
               "code": "",
               "givenName": "Scott",
-              "familyName": "Dixon"
+              "familyName": "Dixon",
+              "nationality": "NZL"
             },
             "team": {
               "id": "chip-ganassi-racing",
               "name": "Chip Ganassi Racing",
-              "color": "#D71920"
+              "color": "#0B5BA7"
             },
             "carNumber": "9",
             "time": "01:55:46.8733",
@@ -328,7 +342,8 @@
               "id": "louis-foster",
               "code": "",
               "givenName": "Louis",
-              "familyName": "Foster"
+              "familyName": "Foster",
+              "nationality": "GBR"
             },
             "team": {
               "id": "rahal-letterman-lanigan-racing",
@@ -350,7 +365,8 @@
               "id": "mick-schumacher",
               "code": "",
               "givenName": "Mick",
-              "familyName": "Schumacher"
+              "familyName": "Schumacher",
+              "nationality": "DEU"
             },
             "team": {
               "id": "rahal-letterman-lanigan-racing",
@@ -372,7 +388,8 @@
               "id": "romain-grosjean",
               "code": "",
               "givenName": "Romain",
-              "familyName": "Grosjean"
+              "familyName": "Grosjean",
+              "nationality": "FRA"
             },
             "team": {
               "id": "dale-coyne-racing",
@@ -394,12 +411,13 @@
               "id": "nolan-siegel",
               "code": "",
               "givenName": "Nolan",
-              "familyName": "Siegel"
+              "familyName": "Siegel",
+              "nationality": "USA"
             },
             "team": {
               "id": "arrow-mclaren",
               "name": "Arrow McLaren",
-              "color": "#D71920"
+              "color": "#FF6C0C"
             },
             "carNumber": "6",
             "time": "01:56:02.8963",
@@ -416,7 +434,8 @@
               "id": "alexander-rossi",
               "code": "",
               "givenName": "Alexander",
-              "familyName": "Rossi"
+              "familyName": "Rossi",
+              "nationality": "USA"
             },
             "team": {
               "id": "ecr",
@@ -438,7 +457,8 @@
               "id": "caio-collet",
               "code": "",
               "givenName": "Caio",
-              "familyName": "Collet"
+              "familyName": "Collet",
+              "nationality": "BRA"
             },
             "team": {
               "id": "a-j-foyt-enterprises",
@@ -460,7 +480,8 @@
               "id": "santino-ferrucci",
               "code": "",
               "givenName": "Santino",
-              "familyName": "Ferrucci"
+              "familyName": "Ferrucci",
+              "nationality": "USA"
             },
             "team": {
               "id": "a-j-foyt-enterprises",
@@ -482,12 +503,13 @@
               "id": "sting-ray-robb",
               "code": "",
               "givenName": "Sting Ray",
-              "familyName": "Robb"
+              "familyName": "Robb",
+              "nationality": "USA"
             },
             "team": {
               "id": "juncos-hollinger-racing",
               "name": "Juncos Hollinger Racing",
-              "color": "#D71920"
+              "color": "#4A148C"
             },
             "carNumber": "77",
             "time": "01:55:20.6073",
@@ -504,7 +526,8 @@
               "id": "graham-rahal",
               "code": "",
               "givenName": "Graham",
-              "familyName": "Rahal"
+              "familyName": "Rahal",
+              "nationality": "USA"
             },
             "team": {
               "id": "rahal-letterman-lanigan-racing",
@@ -526,7 +549,8 @@
               "id": "christian-rasmussen",
               "code": "",
               "givenName": "Christian",
-              "familyName": "Rasmussen"
+              "familyName": "Rasmussen",
+              "nationality": "DNK"
             },
             "team": {
               "id": "ecr",
@@ -548,12 +572,13 @@
               "id": "marcus-armstrong",
               "code": "",
               "givenName": "Marcus",
-              "familyName": "Armstrong"
+              "familyName": "Armstrong",
+              "nationality": "NZL"
             },
             "team": {
               "id": "meyer-shank-w-curb-agajanian",
               "name": "Meyer Shank w/ Curb-Agajanian",
-              "color": "#D71920"
+              "color": "#E91E63"
             },
             "carNumber": "66",
             "time": "00:46:50.7670",

@@ -97,6 +97,7 @@ class DriverIdentity {
     required this.code,
     required this.givenName,
     required this.familyName,
+    this.nationality,
   });
 
   factory DriverIdentity.fromJson(Map<String, dynamic> json) => DriverIdentity(
@@ -104,12 +105,15 @@ class DriverIdentity {
     code: json['code'] as String? ?? '',
     givenName: json['givenName'] as String? ?? '',
     familyName: json['familyName'] as String? ?? '',
+    nationality:
+        json['nationality'] as String? ?? json['countryCode'] as String?,
   );
 
   final String id;
   final String code;
   final String givenName;
   final String familyName;
+  final String? nationality;
 }
 
 class SessionResult {
@@ -122,6 +126,7 @@ class SessionResult {
     required this.time,
     required this.points,
     required this.status,
+    required this.category,
   });
 
   factory SessionResult.fromJson(Map<String, dynamic> json) {
@@ -135,6 +140,8 @@ class SessionResult {
       time: json['time'] as String?,
       points: (json['points'] as num?)?.toDouble(),
       status: json['status'] as String?,
+      category:
+          (json['components'] as Map<String, dynamic>?)?['category'] as String?,
     );
   }
 
@@ -146,6 +153,7 @@ class SessionResult {
   final String? time;
   final double? points;
   final String? status;
+  final String? category;
 }
 
 class SessionResults {
@@ -199,6 +207,8 @@ class DriverStanding {
     required this.familyName,
     required this.nationality,
     required this.teamIds,
+    required this.teamNames,
+    required this.category,
   });
 
   factory DriverStanding.fromJson(Map<String, dynamic> json) => DriverStanding(
@@ -211,6 +221,8 @@ class DriverStanding {
     familyName: json['familyName'] as String,
     nationality: json['nationality'] as String? ?? '',
     teamIds: (json['teamIds'] as List<dynamic>).cast<String>(),
+    teamNames: (json['teamNames'] as List<dynamic>? ?? const []).cast<String>(),
+    category: json['category'] as String?,
   );
 
   final int position;
@@ -222,6 +234,8 @@ class DriverStanding {
   final String familyName;
   final String nationality;
   final List<String> teamIds;
+  final List<String> teamNames;
+  final String? category;
 }
 
 class TeamStanding {
@@ -231,6 +245,7 @@ class TeamStanding {
     required this.wins,
     required this.id,
     required this.name,
+    required this.category,
   });
 
   factory TeamStanding.fromJson(Map<String, dynamic> json) => TeamStanding(
@@ -239,6 +254,7 @@ class TeamStanding {
     wins: json['wins'] as int,
     id: json['id'] as String,
     name: json['name'] as String,
+    category: json['category'] as String?,
   );
 
   final int position;
@@ -246,6 +262,7 @@ class TeamStanding {
   final int wins;
   final String id;
   final String name;
+  final String? category;
 }
 
 class StandingsData {

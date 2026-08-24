@@ -466,32 +466,46 @@ class _NextRaceHero extends StatelessWidget {
             child: IgnorePointer(
               child: Align(
                 alignment: Alignment.centerRight,
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 18),
-                  child: Text(
-                    _countryFlag(event.circuit.countryCode),
-                    style: const TextStyle(fontSize: 132, height: 1),
+                child: FractionallySizedBox(
+                  widthFactor: .48,
+                  child: Row(
+                    textDirection: TextDirection.ltr,
+                    children: [
+                      SizedBox(
+                        width: 64,
+                        height: 64,
+                        child: Opacity(
+                          opacity: .62,
+                          child: FittedBox(
+                            fit: BoxFit.contain,
+                            child: Text(
+                              _countryFlag(event.circuit.countryCode),
+                              style: const TextStyle(fontSize: 64, height: 1),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 18),
+                      if (circuitAsset != null)
+                        Expanded(
+                          child: ClipRect(
+                            child: Opacity(
+                              opacity: .42,
+                              child: _CircuitAsset(
+                                path: circuitAsset,
+                                fit: BoxFit.contain,
+                                tint: Colors.white,
+                                semanticsLabel: event.circuit.name,
+                              ),
+                            ),
+                          ),
+                        ),
+                    ],
                   ),
                 ),
               ),
             ),
           ),
-          if (circuitAsset != null)
-            Positioned(
-              right: 16,
-              top: 18,
-              bottom: 18,
-              width: 235,
-              child: Opacity(
-                opacity: .42,
-                child: _CircuitAsset(
-                  path: circuitAsset,
-                  fit: BoxFit.contain,
-                  tint: Colors.white,
-                  semanticsLabel: event.circuit.name,
-                ),
-              ),
-            ),
           Positioned.fill(
             child: DecoratedBox(
               decoration: BoxDecoration(
@@ -1305,6 +1319,11 @@ class _SessionResultsCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 10),
+                Text(
+                  _nationalityFlag(result.driver.nationality),
+                  style: const TextStyle(fontSize: 20),
+                ),
+                const SizedBox(width: 8),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -1314,7 +1333,10 @@ class _SessionResultsCard extends StatelessWidget {
                         style: const TextStyle(fontWeight: FontWeight.w800),
                       ),
                       Text(
-                        result.teamName,
+                        [
+                          result.teamName,
+                          if (result.category != null) result.category!,
+                        ].join(' • '),
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ],
@@ -1352,6 +1374,7 @@ class _StandingsPage extends ConsumerStatefulWidget {
 
 class _StandingsPageState extends ConsumerState<_StandingsPage> {
   bool _drivers = true;
+  String _imsaCategory = 'GTP';
 
   @override
   Widget build(BuildContext context) {
@@ -1406,43 +1429,79 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
               strings: strings,
               onRetry: () => ref.invalidate(standingsProvider(series)),
             ),
-            data: (data) => Card(
-              child: Column(
-                children: showDrivers
-                    ? data.drivers
-                          .map(
-                            (item) => _StandingRow(
-                              position: item.position,
-                              title: '${item.givenName} ${item.familyName}',
-                              subtitle: item.teamIds.map(_teamName).join(' • '),
-                              color: _teamColor(
-                                item.teamIds.isEmpty
-                                    ? null
-                                    : item.teamIds.first,
-                              ),
-                              flag: _nationalityFlag(item.nationality),
-                              points: item.points,
-                              wins: item.wins,
-                              strings: strings,
-                            ),
-                          )
-                          .toList()
-                    : data.teams
-                          .map(
-                            (item) => _StandingRow(
-                              position: item.position,
-                              title: item.name,
-                              subtitle: '',
-                              color: _teamColor(item.id),
-                              flag: null,
-                              points: item.points,
-                              wins: item.wins,
-                              strings: strings,
-                            ),
-                          )
-                          .toList(),
-              ),
-            ),
+            data: (data) {
+              final drivers = series == 'imsa'
+                  ? data.drivers.where((item) => item.category == _imsaCategory)
+                  : data.drivers;
+              final teams = series == 'imsa'
+                  ? data.teams.where((item) => item.category == _imsaCategory)
+                  : data.teams;
+              return Column(
+                children: [
+                  if (series == 'imsa')
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: SegmentedButton<String>(
+                        segments: const [
+                          ButtonSegment(value: 'GTP', label: Text('GTP')),
+                          ButtonSegment(value: 'LMP2', label: Text('LMP2')),
+                          ButtonSegment(
+                            value: 'GTD PRO',
+                            label: Text('GTD PRO'),
+                          ),
+                          ButtonSegment(value: 'GTD', label: Text('GTD')),
+                        ],
+                        selected: {_imsaCategory},
+                        onSelectionChanged: (value) =>
+                            setState(() => _imsaCategory = value.first),
+                      ),
+                    ),
+                  if (series == 'imsa') const SizedBox(height: 16),
+                  Card(
+                    child: Column(
+                      children: showDrivers
+                          ? drivers
+                                .map(
+                                  (item) => _StandingRow(
+                                    position: item.position,
+                                    title:
+                                        '${item.givenName} ${item.familyName}',
+                                    subtitle: item.teamNames.isNotEmpty
+                                        ? item.teamNames.join(' • ')
+                                        : item.teamIds
+                                              .map(_teamName)
+                                              .join(' • '),
+                                    color: _teamColor(
+                                      item.teamIds.isEmpty
+                                          ? null
+                                          : item.teamIds.first,
+                                    ),
+                                    flag: _nationalityFlag(item.nationality),
+                                    points: item.points,
+                                    wins: item.wins,
+                                    strings: strings,
+                                  ),
+                                )
+                                .toList()
+                          : teams
+                                .map(
+                                  (item) => _StandingRow(
+                                    position: item.position,
+                                    title: item.name,
+                                    subtitle: '',
+                                    color: _teamColor(item.id),
+                                    flag: null,
+                                    points: item.points,
+                                    wins: item.wins,
+                                    strings: strings,
+                                  ),
+                                )
+                                .toList(),
+                    ),
+                  ),
+                ],
+              );
+            },
           ),
         ],
       ),
@@ -1966,38 +2025,78 @@ Color _teamColor(String? id) => switch (id) {
   _ => Colors.grey,
 };
 
-String _nationalityFlag(String nationality) => switch (nationality) {
-  'Italian' => '🇮🇹',
-  'British' => '🇬🇧',
-  'Monegasque' => '🇲🇨',
-  'Dutch' => '🇳🇱',
-  'Australian' => '🇦🇺',
-  'French' => '🇫🇷',
-  'Spanish' => '🇪🇸',
-  'German' => '🇩🇪',
-  'Brazilian' => '🇧🇷',
-  'Canadian' => '🇨🇦',
-  'New Zealander' => '🇳🇿',
-  'Mexican' => '🇲🇽',
-  'American' => '🇺🇸',
-  'Danish' => '🇩🇰',
-  'Swedish' => '🇸🇪',
-  'Polish' => '🇵🇱',
-  'Japanese' => '🇯🇵',
-  'Bulgarian' => '🇧🇬',
-  'Irish' => '🇮🇪',
-  'Indian' => '🇮🇳',
-  'Norwegian' => '🇳🇴',
-  'Thai' => '🇹🇭',
-  'Paraguayan' => '🇵🇾',
-  'Colombian' => '🇨🇴',
-  'Finnish' => '🇫🇮',
-  'Chinese' => '🇨🇳',
-  'Sri Lankan' => '🇱🇰',
-  'Singaporean' => '🇸🇬',
-  'South African' => '🇿🇦',
-  _ => '🏁',
-};
+String _nationalityFlag(String? nationality) {
+  if (nationality?.contains(',') ?? false) {
+    return nationality!
+        .split(',')
+        .map((country) => _nationalityFlag(country.trim()))
+        .join();
+  }
+  return switch (nationality?.toUpperCase()) {
+    'USA' || 'US' => '🇺🇸',
+    'GBR' || 'GB' => '🇬🇧',
+    'ESP' || 'ES' => '🇪🇸',
+    'DNK' || 'DK' => '🇩🇰',
+    'SWE' || 'SE' => '🇸🇪',
+    'NZL' || 'NZ' => '🇳🇿',
+    'NLD' || 'NL' => '🇳🇱',
+    'BRA' || 'BR' => '🇧🇷',
+    'MEX' || 'MX' => '🇲🇽',
+    'FRA' || 'FR' => '🇫🇷',
+    'DEU' || 'GER' || 'DE' => '🇩🇪',
+    'JPN' || 'JP' => '🇯🇵',
+    'POL' || 'PL' => '🇵🇱',
+    'CAN' || 'CA' => '🇨🇦',
+    'ITA' || 'IT' => '🇮🇹',
+    'AUS' || 'AU' => '🇦🇺',
+    'COL' || 'CO' => '🇨🇴',
+    'NOR' || 'NO' => '🇳🇴',
+    'CHE' || 'CH' => '🇨🇭',
+    'BEL' || 'BE' => '🇧🇪',
+    'PRT' || 'POR' || 'PT' => '🇵🇹',
+    'ARG' || 'AR' => '🇦🇷',
+    'AUT' || 'AT' => '🇦🇹',
+    'ZAF' || 'ZA' => '🇿🇦',
+    'IRL' || 'IE' => '🇮🇪',
+    'VEN' || 'VE' => '🇻🇪',
+    'CHL' || 'CL' => '🇨🇱',
+    'URY' || 'UY' => '🇺🇾',
+    'TUR' || 'TR' => '🇹🇷',
+    'ROU' || 'RO' => '🇷🇴',
+    'KOR' || 'KR' => '🇰🇷',
+    'CYM' || 'KY' => '🇰🇾',
+    'ITALIAN' => '🇮🇹',
+    'BRITISH' => '🇬🇧',
+    'MONEGASQUE' => '🇲🇨',
+    'DUTCH' => '🇳🇱',
+    'AUSTRALIAN' => '🇦🇺',
+    'FRENCH' => '🇫🇷',
+    'SPANISH' => '🇪🇸',
+    'GERMAN' => '🇩🇪',
+    'BRAZILIAN' => '🇧🇷',
+    'CANADIAN' => '🇨🇦',
+    'NEW ZEALANDER' => '🇳🇿',
+    'MEXICAN' => '🇲🇽',
+    'AMERICAN' => '🇺🇸',
+    'DANISH' => '🇩🇰',
+    'SWEDISH' => '🇸🇪',
+    'POLISH' => '🇵🇱',
+    'JAPANESE' => '🇯🇵',
+    'BULGARIAN' => '🇧🇬',
+    'IRISH' => '🇮🇪',
+    'INDIAN' => '🇮🇳',
+    'NORWEGIAN' => '🇳🇴',
+    'THAI' => '🇹🇭',
+    'PARAGUAYAN' => '🇵🇾',
+    'COLOMBIAN' => '🇨🇴',
+    'FINNISH' => '🇫🇮',
+    'CHINESE' => '🇨🇳',
+    'SRI LANKAN' => '🇱🇰',
+    'SINGAPOREAN' => '🇸🇬',
+    'SOUTH AFRICAN' => '🇿🇦',
+    _ => '🏁',
+  };
+}
 
 String _seriesLabel(String id) => switch (id.toLowerCase()) {
   'f1' => 'F1',

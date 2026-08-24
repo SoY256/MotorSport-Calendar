@@ -20,6 +20,10 @@ EVENTS = [
     "18_VIRginia International Raceway",
 ]
 HEADERS = {"User-Agent": "MotorSport-Calendar/0.1 (+https://github.com/SoY256/MotorSport-Calendar)"}
+MANUFACTURER_COLORS = {"Acura": "#E40521", "Aston Martin": "#006F62", "BMW": "#0066B1",
+                       "Cadillac": "#D4AF37", "Chevrolet": "#F2C500", "Corvette": "#F2C500",
+                       "Ferrari": "#E10600", "Ford": "#003478", "Lamborghini": "#DDB321",
+                       "Lexus": "#222222", "Mercedes-AMG": "#00A19C", "Porsche": "#D5001C"}
 
 
 def fetch(url: str) -> bytes:
@@ -37,30 +41,48 @@ def result_url(event_code: str) -> str:
     hrefs = re.findall(r'href="([^"]+/\d{8,}_Race/(?:[^"/]+/)?03_Results_Race_[^"/]+\.JSON)"', html, re.I)
     if not hrefs:
         raise RuntimeError(f"No IMSA race JSON for {event_code}")
-    official = [href for href in hrefs if "Unofficial" not in href]
-    return urljoin(BASE, (official or hrefs)[-1])
+    weathertech = [href for href in hrefs if "WeatherTech" in href]
+    if not weathertech:
+        raise RuntimeError(f"No IMSA WeatherTech race JSON for {event_code}")
+    official = [href for href in weathertech if "Unofficial" not in href]
+    return urljoin(BASE, (official or weathertech)[-1])
+
+
+def manufacturer_color(vehicle: str) -> str:
+    return next((color for make, color in MANUFACTURER_COLORS.items() if make.lower() in vehicle.lower()), "#EF6C00")
 
 
 def main() -> None:
     root = ROOT / "assets" / "data" / "imsa" / "2026"
     calendar = json.loads((root / "calendar.json").read_text(encoding="utf-8"))["data"]
     updated = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+    driver_countries: dict[str, str] = {}
+    driver_teams: dict[str, tuple[str, str]] = {}
     for event, event_code in zip(calendar, EVENTS):
         url = result_url(event_code)
         raw = json.loads(fetch(url).decode("utf-8-sig"))
         rows = []
         for item in raw.get("classification", []):
             drivers = item.get("drivers") or []
+            for driver in drivers:
+                full_name = f"{driver.get('firstname', '')} {driver.get('surname', '')}".strip()
+                if driver.get("country"):
+                    driver_countries[full_name] = driver["country"]
             names = " / ".join(f"{driver.get('firstname', '')} {driver.get('surname', '')}".strip() for driver in drivers)
             team = item.get("team") or ""
+            for driver in drivers:
+                full_name = f"{driver.get('firstname', '')} {driver.get('surname', '')}".strip()
+                driver_teams[full_name] = (slug(team), team)
+            manufacturer = item.get("vehicle") or ""
             rows.append({
                 "position": item.get("position"), "positionText": str(item.get("position") or "–"),
-                "driver": {"id": slug(names), "code": item.get("number"), "givenName": names, "familyName": ""},
-                "team": {"id": slug(team), "name": team, "color": "#EF6C00"}, "carNumber": item.get("number"),
+                "driver": {"id": slug(names), "code": item.get("number"), "givenName": names, "familyName": "",
+                           "nationality": ",".join(driver.get("country") for driver in drivers if driver.get("country")) or None},
+                "team": {"id": slug(team), "name": team, "color": manufacturer_color(manufacturer)}, "carNumber": item.get("number"),
                 "time": item.get("elapsed_time") or item.get("gap_first"),
                 "laps": int(item["laps"]) if str(item.get("laps", "")).isdigit() else None,
                 "points": None, "status": item.get("status"), "classified": not item.get("not_finished", False),
-                "components": {"car": item.get("vehicle"), "category": item.get("class")},
+                "components": {"car": item.get("vehicle"), "category": (item.get("class") or "").replace("GTDPRO", "GTD PRO")},
             })
         if not rows:
             raise RuntimeError(f"No IMSA rows for {event_code}")
@@ -84,14 +106,16 @@ def main() -> None:
                 base = {"points": item.get("total_points", 0), "wins": 0, "category": category}
                 if kind == "drivers":
                     parts = name.rsplit(" ", 1)
-                    base.update({"id": slug(name), "code": "", "givenName": parts[0], "familyName": parts[-1] if len(parts) > 1 else "", "nationality": None, "teamIds": []})
+                    team_id, team_name = driver_teams.get(name, ("", ""))
+                    base.update({"id": slug(name), "code": "", "givenName": parts[0], "familyName": parts[-1] if len(parts) > 1 else "", "nationality": driver_countries.get(name), "teamIds": [team_id] if team_id else [], "teamNames": [team_name] if team_name else []})
                 else:
                     base.update({"id": slug(name), "name": name, "nationality": None})
                 entries.append(base)
         entries.sort(key=lambda item: (item.get("category", ""), -float(item["points"])))
         category_positions: dict[str, int] = {}
         for item in entries:
-            category = item.pop("category")
+            category = item["category"].replace("GTDPRO", "GTD PRO")
+            item["category"] = category
             category_positions[category] = category_positions.get(category, 0) + 1
             item["position"] = category_positions[category]
         standings_doc = {"schemaVersion": 1, "lastSuccessfulUpdate": updated,
