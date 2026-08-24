@@ -9,6 +9,8 @@ class AppSettings {
     this.showPastEvents = true,
     this.motorsportCategories = const {
       'f1',
+      'f2',
+      'f3',
       'imsa',
       'indycar',
       'indynxt',

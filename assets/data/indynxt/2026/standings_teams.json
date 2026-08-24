@@ -1,9 +1,74 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-08-24T12:00:00Z",
+  "lastSuccessfulUpdate": "2026-08-24T11:32:34.500999Z",
   "source": {
-    "name": "official-indycar",
-    "url": "https://www.indycar.com/"
+    "name": "derived-from-official-indynxt-results",
+    "url": "https://www.indynxt.com/Results"
   },
-  "data": []
+  "data": [
+    {
+      "position": 1,
+      "points": 1504.0,
+      "wins": 0,
+      "id": "hmd-motorsports",
+      "name": "Hmd Motorsports",
+      "nationality": null
+    },
+    {
+      "position": 2,
+      "points": 1333.0,
+      "wins": 0,
+      "id": "andretti-global",
+      "name": "Andretti Global",
+      "nationality": null
+    },
+    {
+      "position": 3,
+      "points": 1054.0,
+      "wins": 0,
+      "id": "abel-motorsports",
+      "name": "Abel Motorsports",
+      "nationality": null
+    },
+    {
+      "position": 4,
+      "points": 782.0,
+      "wins": 0,
+      "id": "cape-motorsports-powered-by-ecr",
+      "name": "Cape Motorsports Powered By Ecr",
+      "nationality": null
+    },
+    {
+      "position": 5,
+      "points": 771.0,
+      "wins": 0,
+      "id": "chip-ganassi-racing",
+      "name": "Chip Ganassi Racing",
+      "nationality": null
+    },
+    {
+      "position": 6,
+      "points": 528.0,
+      "wins": 0,
+      "id": "a-j-foyt-enterprises",
+      "name": "A J Foyt Enterprises",
+      "nationality": null
+    },
+    {
+      "position": 7,
+      "points": 490.0,
+      "wins": 0,
+      "id": "cusick-morgan-motorsports",
+      "name": "Cusick Morgan Motorsports",
+      "nationality": null
+    },
+    {
+      "position": 8,
+      "points": 340.0,
+      "wins": 0,
+      "id": "juncos-hollinger-racing",
+      "name": "Juncos Hollinger Racing",
+      "nationality": null
+    }
+  ]
 }

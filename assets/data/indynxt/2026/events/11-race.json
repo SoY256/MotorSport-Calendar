@@ -1,12 +1,548 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-08-24T12:00:00Z",
+  "lastSuccessfulUpdate": "2026-08-24T11:32:34.500999Z",
   "source": {
-    "name": "official-indycar",
-    "url": "https://www.indycar.com/"
+    "name": "official-indynxt",
+    "url": "https://www.indynxt.com/api/results/EventsSessionDetails?id=6761"
   },
   "data": {
     "eventId": "indynxt-2026-11",
-    "sessions": []
+    "sessions": [
+      {
+        "type": "R",
+        "name": "Race",
+        "startTimeUtc": "2026-07-05T16:30:00Z",
+        "results": [
+          {
+            "position": 1,
+            "positionText": "1",
+            "driver": {
+              "id": "enzo-fittipaldi",
+              "code": "",
+              "givenName": "Enzo",
+              "familyName": "Fittipaldi"
+            },
+            "team": {
+              "id": "hmd-motorsports",
+              "name": "HMD Motorsports",
+              "color": "#E31837"
+            },
+            "carNumber": "67",
+            "time": "00:47:56.8636",
+            "laps": 35,
+            "points": 54,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 2,
+            "positionText": "2",
+            "driver": {
+              "id": "tymek-kucharczyk",
+              "code": "",
+              "givenName": "Tymek",
+              "familyName": "Kucharczyk"
+            },
+            "team": {
+              "id": "hmd-motorsports",
+              "name": "HMD Motorsports",
+              "color": "#E31837"
+            },
+            "carNumber": "71",
+            "time": "00:47:58.7639",
+            "laps": 35,
+            "points": 40,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 3,
+            "positionText": "3",
+            "driver": {
+              "id": "jack-beeton",
+              "code": "",
+              "givenName": "Jack",
+              "familyName": "Beeton"
+            },
+            "team": {
+              "id": "hmd-motorsports",
+              "name": "HMD Motorsports",
+              "color": "#E31837"
+            },
+            "carNumber": "45",
+            "time": "00:48:03.5631",
+            "laps": 35,
+            "points": 35,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 4,
+            "positionText": "4",
+            "driver": {
+              "id": "salvador-de-alba",
+              "code": "",
+              "givenName": "Salvador",
+              "familyName": "de Alba"
+            },
+            "team": {
+              "id": "hmd-motorsports",
+              "name": "HMD Motorsports",
+              "color": "#E31837"
+            },
+            "carNumber": "17",
+            "time": "00:48:04.3802",
+            "laps": 35,
+            "points": 33,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 5,
+            "positionText": "5",
+            "driver": {
+              "id": "lochie-hughes",
+              "code": "",
+              "givenName": "Lochie",
+              "familyName": "Hughes"
+            },
+            "team": {
+              "id": "andretti-global",
+              "name": "Andretti Global",
+              "color": "#E31837"
+            },
+            "carNumber": "26",
+            "time": "00:48:06.3860",
+            "laps": 35,
+            "points": 30,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 6,
+            "positionText": "6",
+            "driver": {
+              "id": "alessandro-de-tullio",
+              "code": "",
+              "givenName": "Alessandro",
+              "familyName": "de Tullio"
+            },
+            "team": {
+              "id": "a-j-foyt-enterprises",
+              "name": "A.J. Foyt Enterprises",
+              "color": "#E31837"
+            },
+            "carNumber": "14",
+            "time": "00:48:08.1800",
+            "laps": 35,
+            "points": 28,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 7,
+            "positionText": "7",
+            "driver": {
+              "id": "nikita-johnson",
+              "code": "",
+              "givenName": "Nikita",
+              "familyName": "Johnson"
+            },
+            "team": {
+              "id": "cape-motorsports-powered-by-ecr",
+              "name": "Cape Motorsports powered by ECR",
+              "color": "#E31837"
+            },
+            "carNumber": "21",
+            "time": "00:48:08.8466",
+            "laps": 35,
+            "points": 26,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 8,
+            "positionText": "8",
+            "driver": {
+              "id": "max-garcia",
+              "code": "",
+              "givenName": "Max",
+              "familyName": "Garcia"
+            },
+            "team": {
+              "id": "abel-motorsports",
+              "name": "Abel Motorsports",
+              "color": "#E31837"
+            },
+            "carNumber": "12",
+            "time": "00:48:09.4033",
+            "laps": 35,
+            "points": 24,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 9,
+            "positionText": "9",
+            "driver": {
+              "id": "myles-rowe",
+              "code": "",
+              "givenName": "Myles",
+              "familyName": "Rowe"
+            },
+            "team": {
+              "id": "abel-motorsports",
+              "name": "Abel Motorsports",
+              "color": "#E31837"
+            },
+            "carNumber": "99",
+            "time": "00:48:09.8572",
+            "laps": 35,
+            "points": 22,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 10,
+            "positionText": "10",
+            "driver": {
+              "id": "max-taylor",
+              "code": "",
+              "givenName": "Max",
+              "familyName": "Taylor"
+            },
+            "team": {
+              "id": "andretti-global",
+              "name": "Andretti Global",
+              "color": "#E31837"
+            },
+            "carNumber": "28",
+            "time": "00:48:10.3844",
+            "laps": 35,
+            "points": 20,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 11,
+            "positionText": "11",
+            "driver": {
+              "id": "josh-pierson",
+              "code": "",
+              "givenName": "Josh",
+              "familyName": "Pierson"
+            },
+            "team": {
+              "id": "andretti-global",
+              "name": "Andretti Global",
+              "color": "#E31837"
+            },
+            "carNumber": "29",
+            "time": "00:48:11.9619",
+            "laps": 35,
+            "points": 19,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 12,
+            "positionText": "12",
+            "driver": {
+              "id": "jordan-missig",
+              "code": "",
+              "givenName": "Jordan",
+              "familyName": "Missig"
+            },
+            "team": {
+              "id": "abel-motorsports",
+              "name": "Abel Motorsports",
+              "color": "#E31837"
+            },
+            "carNumber": "48",
+            "time": "00:48:12.7458",
+            "laps": 35,
+            "points": 18,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 13,
+            "positionText": "13",
+            "driver": {
+              "id": "niels-koolen",
+              "code": "",
+              "givenName": "Niels",
+              "familyName": "Koolen"
+            },
+            "team": {
+              "id": "chip-ganassi-racing",
+              "name": "Chip Ganassi Racing",
+              "color": "#E31837"
+            },
+            "carNumber": "10",
+            "time": "00:48:13.2179",
+            "laps": 35,
+            "points": 17,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 14,
+            "positionText": "14",
+            "driver": {
+              "id": "matteo-nannini",
+              "code": "",
+              "givenName": "Matteo",
+              "familyName": "Nannini"
+            },
+            "team": {
+              "id": "cape-motorsports-powered-by-ecr",
+              "name": "Cape Motorsports powered by ECR",
+              "color": "#E31837"
+            },
+            "carNumber": "20",
+            "time": "00:48:14.9683",
+            "laps": 35,
+            "points": 16,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 15,
+            "positionText": "15",
+            "driver": {
+              "id": "seb-murray",
+              "code": "",
+              "givenName": "Seb",
+              "familyName": "Murray"
+            },
+            "team": {
+              "id": "andretti-global",
+              "name": "Andretti Global",
+              "color": "#E31837"
+            },
+            "carNumber": "27",
+            "time": "00:48:21.8511",
+            "laps": 35,
+            "points": 15,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 16,
+            "positionText": "16",
+            "driver": {
+              "id": "bryce-aron",
+              "code": "",
+              "givenName": "Bryce",
+              "familyName": "Aron"
+            },
+            "team": {
+              "id": "chip-ganassi-racing",
+              "name": "Chip Ganassi Racing",
+              "color": "#E31837"
+            },
+            "carNumber": "9",
+            "time": "00:48:22.3298",
+            "laps": 35,
+            "points": 14,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 17,
+            "positionText": "17",
+            "driver": {
+              "id": "colin-kaminsky",
+              "code": "",
+              "givenName": "Colin",
+              "familyName": "Kaminsky"
+            },
+            "team": {
+              "id": "abel-motorsports",
+              "name": "Abel Motorsports",
+              "color": "#E31837"
+            },
+            "carNumber": "57",
+            "time": "00:48:22.8086",
+            "laps": 35,
+            "points": 13,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 18,
+            "positionText": "18",
+            "driver": {
+              "id": "nicholas-monteiro",
+              "code": "",
+              "givenName": "Nicholas",
+              "familyName": "Monteiro"
+            },
+            "team": {
+              "id": "a-j-foyt-enterprises",
+              "name": "A.J. Foyt Enterprises",
+              "color": "#E31837"
+            },
+            "carNumber": "4",
+            "time": "00:48:23.3463",
+            "laps": 35,
+            "points": 12,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 19,
+            "positionText": "19",
+            "driver": {
+              "id": "alexander-koreiba",
+              "code": "",
+              "givenName": "Alexander",
+              "familyName": "Koreiba"
+            },
+            "team": {
+              "id": "juncos-hollinger-racing",
+              "name": "Juncos Hollinger Racing",
+              "color": "#E31837"
+            },
+            "carNumber": "75",
+            "time": "00:48:23.6932",
+            "laps": 35,
+            "points": 11,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 20,
+            "positionText": "20",
+            "driver": {
+              "id": "james-roe",
+              "code": "",
+              "givenName": "James",
+              "familyName": "Roe"
+            },
+            "team": {
+              "id": "chip-ganassi-racing",
+              "name": "Chip Ganassi Racing",
+              "color": "#E31837"
+            },
+            "carNumber": "8",
+            "time": "00:48:24.0885",
+            "laps": 35,
+            "points": 10,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 21,
+            "positionText": "21",
+            "driver": {
+              "id": "carson-etter",
+              "code": "",
+              "givenName": "Carson",
+              "familyName": "Etter"
+            },
+            "team": {
+              "id": "chip-ganassi-racing",
+              "name": "Chip Ganassi Racing",
+              "color": "#E31837"
+            },
+            "carNumber": "11",
+            "time": "00:48:27.2068",
+            "laps": 35,
+            "points": 9,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 22,
+            "positionText": "22",
+            "driver": {
+              "id": "jm-correa",
+              "code": "",
+              "givenName": "JM",
+              "familyName": "Correa"
+            },
+            "team": {
+              "id": "cusick-morgan-motorsports",
+              "name": "Cusick Morgan Motorsports",
+              "color": "#E31837"
+            },
+            "carNumber": "68",
+            "time": "00:48:25.5373",
+            "laps": 34,
+            "points": 8,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 23,
+            "positionText": "23",
+            "driver": {
+              "id": "nicolas-stati",
+              "code": "",
+              "givenName": "Nicolas",
+              "familyName": "Stati"
+            },
+            "team": {
+              "id": "cusick-morgan-motorsports",
+              "name": "Cusick Morgan Motorsports",
+              "color": "#E31837"
+            },
+            "carNumber": "15",
+            "time": "00:48:24.6626",
+            "laps": 30,
+            "points": 7,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 24,
+            "positionText": "24",
+            "driver": {
+              "id": "nolan-allaer",
+              "code": "",
+              "givenName": "Nolan",
+              "familyName": "Allaer"
+            },
+            "team": {
+              "id": "juncos-hollinger-racing",
+              "name": "Juncos Hollinger Racing",
+              "color": "#E31837"
+            },
+            "carNumber": "76",
+            "time": "00:14:21.0663",
+            "laps": 10,
+            "points": 6,
+            "status": "Mechanical",
+            "classified": false,
+            "components": {}
+          }
+        ]
+      }
+    ]
   }
 }

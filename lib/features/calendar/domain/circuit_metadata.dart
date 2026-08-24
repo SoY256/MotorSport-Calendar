@@ -238,7 +238,13 @@ String? circuitAssetFor(String name) {
     'Phoenix Raceway' => 'phoenix',
     'Milwaukee Mile' => 'milwaukee',
     'World Wide Technology Raceway' => 'gateway',
+    'Streets of St. Petersburg' => 'st-petersburg.jpg',
+    'Streets of Arlington' => 'arlington.jpg',
+    'Streets of Markham' => 'markham.jpg',
+    'Streets of Washington, D.C.' => 'washington-dc.jpg',
     _ => null,
   };
-  return asset == null ? null : 'assets/circuits/$asset.svg';
+  return asset == null
+      ? null
+      : 'assets/circuits/$asset${asset.endsWith('.jpg') ? '' : '.svg'}';
 }

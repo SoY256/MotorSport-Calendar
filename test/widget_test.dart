@@ -12,13 +12,25 @@ void main() {
   ) async {
     SharedPreferences.setMockInitialValues({});
     final repository = AssetCalendarRepository();
+    final calendar = await repository.load();
+    final australian = calendar.events.firstWhere(
+      (event) => event.seriesId == 'f1' && event.round == 1,
+    );
+    final australianResults = await repository.loadResults(australian);
+    expect(australianResults.sessions, isNotEmpty);
+    expect(
+      australianResults.sessions.any(
+        (session) => session.type == 'R' && session.results.isNotEmpty,
+      ),
+      isTrue,
+    );
     await tester.pumpWidget(
       ProviderScope(
         overrides: [calendarRepositoryProvider.overrideWithValue(repository)],
         child: const MotorsportCalendarApp(),
       ),
     );
-    await tester.pumpAndSettle();
+    await tester.pump(const Duration(milliseconds: 500));
 
     await tester.tap(find.text('Kalendarz'));
     await tester.pump(const Duration(milliseconds: 300));
@@ -36,8 +48,8 @@ void main() {
     await tester.pump(const Duration(milliseconds: 300));
 
     expect(find.text('Sezon 2026'), findsOneWidget);
-    expect(find.text('Australian Grand Prix'), findsOneWidget);
-    expect(find.text('🇦🇺'), findsOneWidget);
+    expect(find.text('Australian Grand Prix'), findsNWidgets(3));
+    expect(find.text('🇦🇺'), findsNWidgets(3));
     expect(find.text('Wszystkie'), findsOneWidget);
     expect(find.text('INDYCAR'), findsOneWidget);
     expect(find.text('INDY NXT'), findsOneWidget);
@@ -53,24 +65,26 @@ void main() {
     expect(find.text('Australian Grand Prix'), findsNothing);
     await tester.tap(find.text('Pokaż poprzednie wydarzenia'));
     await tester.pump(const Duration(milliseconds: 300));
-    expect(find.text('Australian Grand Prix'), findsOneWidget);
+    expect(find.text('Australian Grand Prix'), findsNWidgets(3));
 
-    await tester.ensureVisible(find.text('Australian Grand Prix'));
+    await tester.ensureVisible(find.text('Australian Grand Prix').first);
     await tester.drag(find.byType(CustomScrollView), const Offset(0, 80));
     await tester.pump(const Duration(milliseconds: 300));
-    await tester.tap(find.text('Australian Grand Prix'));
+    await tester.tap(find.text('Australian Grand Prix').first);
     await tester.pump();
     await tester.runAsync(
       () => Future<void>.delayed(const Duration(milliseconds: 100)),
     );
     await tester.pump(const Duration(milliseconds: 500));
     expect(find.text('Szczegóły'), findsWidgets);
-    expect(find.textContaining('Długość toru'), findsOneWidget);
-    expect(
-      tester.getTopLeft(find.text('Wyścig')).dy,
-      lessThan(tester.getTopLeft(find.text('Kwalifikacje')).dy),
+    await tester.tap(find.byType(DropdownButtonFormField<String>));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('F1 • R1 • Australian Grand Prix').last);
+    await tester.runAsync(
+      () => Future<void>.delayed(const Duration(milliseconds: 100)),
     );
-    expect(find.text('Charles Leclerc'), findsWidgets);
+    await tester.pump(const Duration(milliseconds: 500));
+    expect(find.textContaining('Długość toru'), findsOneWidget);
 
     await tester.tap(find.text('Klasyfikacja'));
     await tester.pump();

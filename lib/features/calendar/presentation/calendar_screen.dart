@@ -441,13 +441,13 @@ class _NextRaceHero extends StatelessWidget {
     final first = event.sessions.first;
     final last = event.sessions.last;
     final seriesColor = _seriesColor(event.seriesId);
+    final circuitAsset = circuitAssetFor(event.circuit.name);
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
         gradient: LinearGradient(
-          colors: [seriesColor, Color.lerp(seriesColor, Colors.black, .45)!],
+          colors: const [Color(0xFF111722), Color(0xFF202B3A)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -459,50 +459,103 @@ class _NextRaceHero extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      clipBehavior: Clip.antiAlias,
+      child: Stack(
         children: [
-          Text(
-            strings.nextRound,
-            style: const TextStyle(
-              color: Colors.white70,
-              fontWeight: FontWeight.w800,
-              letterSpacing: 1.2,
+          Positioned.fill(
+            child: IgnorePointer(
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 18),
+                  child: Text(
+                    _countryFlag(event.circuit.countryCode),
+                    style: const TextStyle(fontSize: 132, height: 1),
+                  ),
+                ),
+              ),
             ),
           ),
-          const SizedBox(height: 18),
-          Text(
-            event.name,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 26,
-              fontWeight: FontWeight.w900,
+          if (circuitAsset != null)
+            Positioned(
+              right: 16,
+              top: 18,
+              bottom: 18,
+              width: 235,
+              child: Opacity(
+                opacity: .42,
+                child: _CircuitAsset(
+                  path: circuitAsset,
+                  fit: BoxFit.contain,
+                  tint: Colors.white,
+                  semanticsLabel: event.circuit.name,
+                ),
+              ),
+            ),
+          Positioned.fill(
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    const Color(0xFF111722),
+                    const Color(0xFF111722).withValues(alpha: .88),
+                    seriesColor.withValues(alpha: .22),
+                  ],
+                  stops: const [0, .56, 1],
+                ),
+              ),
             ),
           ),
-          const SizedBox(height: 6),
-          Text(
-            '${event.circuit.name} • ${event.circuit.country ?? ''}',
-            style: const TextStyle(color: Colors.white70),
-          ),
-          const SizedBox(height: 20),
-          Wrap(
-            spacing: 10,
-            runSpacing: 10,
-            children: [
-              _HeroPill(
-                icon: Icons.calendar_today,
-                label:
-                    '${_sessionDate(first, settings)} – ${_sessionDate(last, settings)}',
-              ),
-              _HeroPill(
-                icon: Icons.schedule,
-                label: strings.sessions(event.sessions.length),
-              ),
-              _HeroPill(
-                icon: Icons.public,
-                label: _zoneName(first, settings, strings),
-              ),
-            ],
+          Padding(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '${strings.nextRound} • ${_seriesLabel(event.seriesId)}',
+                  style: TextStyle(
+                    color: Color.lerp(Colors.white, seriesColor, .28),
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 1.2,
+                  ),
+                ),
+                const SizedBox(height: 18),
+                Text(
+                  event.name,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 26,
+                    fontWeight: FontWeight.w900,
+                    shadows: [Shadow(color: Colors.black, blurRadius: 10)],
+                  ),
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  '${event.circuit.name} • ${event.circuit.country ?? ''}',
+                  style: const TextStyle(color: Colors.white70),
+                ),
+                const SizedBox(height: 20),
+                Wrap(
+                  spacing: 10,
+                  runSpacing: 10,
+                  children: [
+                    _HeroPill(
+                      icon: Icons.calendar_today,
+                      label:
+                          '${_sessionDate(first, settings)} – ${_sessionDate(last, settings)}',
+                    ),
+                    _HeroPill(
+                      icon: Icons.schedule,
+                      label: strings.sessions(event.sessions.length),
+                    ),
+                    _HeroPill(
+                      icon: Icons.public,
+                      label: _zoneName(first, settings, strings),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -980,7 +1033,7 @@ class _ResultsPage extends ConsumerWidget {
                   (event) => DropdownMenuItem(
                     value: event.id,
                     child: Text(
-                      'R${event.round} • ${event.name}',
+                      '${_seriesLabel(event.seriesId)} • R${event.round} • ${event.name}',
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
@@ -1071,6 +1124,37 @@ class _ResultsPage extends ConsumerWidget {
   }
 }
 
+class _CircuitAsset extends StatelessWidget {
+  const _CircuitAsset({
+    required this.path,
+    required this.fit,
+    required this.semanticsLabel,
+    this.tint,
+  });
+
+  final String path;
+  final BoxFit fit;
+  final String semanticsLabel;
+  final Color? tint;
+
+  @override
+  Widget build(BuildContext context) => path.endsWith('.svg')
+      ? SvgPicture.asset(
+          path,
+          fit: fit,
+          colorFilter: tint == null
+              ? null
+              : ColorFilter.mode(tint!, BlendMode.srcIn),
+          semanticsLabel: semanticsLabel,
+        )
+      : Image.asset(
+          path,
+          fit: fit,
+          semanticLabel: semanticsLabel,
+          filterQuality: FilterQuality.high,
+        );
+}
+
 class _CircuitInfoCard extends StatelessWidget {
   const _CircuitInfoCard({required this.event, required this.strings});
   final RaceEvent event;
@@ -1140,13 +1224,10 @@ class _CircuitInfoCard extends StatelessWidget {
                       size: 72,
                       color: Theme.of(context).colorScheme.primary,
                     )
-                  : SvgPicture.asset(
-                      asset,
+                  : _CircuitAsset(
+                      path: asset,
                       fit: BoxFit.contain,
-                      colorFilter: ColorFilter.mode(
-                        Theme.of(context).colorScheme.primary,
-                        BlendMode.srcIn,
-                      ),
+                      tint: Theme.of(context).colorScheme.primary,
                       semanticsLabel: event.circuit.name,
                     ),
             );
@@ -1480,6 +1561,8 @@ class _SettingsPage extends ConsumerWidget {
             subtitle: strings.chooseAny,
             items: const [
               ('f1', 'F1', 'assets/brands/f1.svg'),
+              ('f2', 'F2', 'assets/brands/f2.svg'),
+              ('f3', 'F3', 'assets/brands/f3.svg'),
               ('imsa', 'IMSA', 'assets/brands/imsa.svg'),
               ('indycar', 'INDYCAR', 'assets/brands/indycar.png'),
               ('indynxt', 'INDY NXT', 'assets/brands/indycar.png'),
@@ -1808,6 +1891,17 @@ String _teamName(String id) => switch (id) {
   'haas' => 'MoneyGram Haas F1 Team',
   'aston_martin' => 'Aston Martin Aramco',
   'cadillac' => 'Cadillac Formula 1 Team',
+  'campos' => 'Campos Racing',
+  'prema' => 'PREMA Racing',
+  'invicta' => 'Invicta Racing',
+  'rodin' => 'Rodin Motorsport',
+  'aix' => 'AIX Racing',
+  'dams' => 'DAMS Lucas Oil',
+  'hitech' => 'Hitech TGR',
+  'trident' => 'Trident',
+  'art' => 'ART Grand Prix',
+  'van-amersfoort' => 'Van Amersfoort Racing',
+  'mp' => 'MP Motorsport',
   'chip_ganassi' => 'Chip Ganassi Racing',
   'andretti' => 'Andretti Global',
   'arrow_mclaren' => 'Arrow McLaren',
@@ -1828,7 +1922,7 @@ String _teamName(String id) => switch (id) {
   'mclaren' => 'McLaren Formula 1 Team',
   'williams' => 'Atlassian Williams F1 Team',
   'audi' => 'Audi Revolut F1 Team',
-  _ => id.replaceAll('_', ' '),
+  _ => id.replaceAll('_', ' ').replaceAll('-', ' '),
 };
 
 Color _teamColor(String? id) => switch (id) {
@@ -1843,6 +1937,17 @@ Color _teamColor(String? id) => switch (id) {
   'williams' => const Color(0xFF1868DB),
   'aston_martin' => const Color(0xFF229971),
   'cadillac' => const Color(0xFFB8B8B8),
+  'campos' => const Color(0xFFE5D100),
+  'prema' => const Color(0xFFE10600),
+  'invicta' => const Color(0xFF26A9E0),
+  'rodin' => const Color(0xFFF36F21),
+  'aix' => const Color(0xFF00A651),
+  'dams' => const Color(0xFF0067B1),
+  'hitech' => const Color(0xFFED1C24),
+  'trident' => const Color(0xFF183883),
+  'art' => const Color(0xFFEE3124),
+  'van-amersfoort' => const Color(0xFFF58220),
+  'mp' => const Color(0xFFF15A29),
   'chip_ganassi' => const Color(0xFF0B5BA7),
   'andretti' => const Color(0xFFE31B23),
   'arrow_mclaren' => const Color(0xFFFF6C0C),
@@ -1879,6 +1984,17 @@ String _nationalityFlag(String nationality) => switch (nationality) {
   'Swedish' => '🇸🇪',
   'Polish' => '🇵🇱',
   'Japanese' => '🇯🇵',
+  'Bulgarian' => '🇧🇬',
+  'Irish' => '🇮🇪',
+  'Indian' => '🇮🇳',
+  'Norwegian' => '🇳🇴',
+  'Thai' => '🇹🇭',
+  'Paraguayan' => '🇵🇾',
+  'Colombian' => '🇨🇴',
+  'Finnish' => '🇫🇮',
+  'Chinese' => '🇨🇳',
+  'Sri Lankan' => '🇱🇰',
+  'Singaporean' => '🇸🇬',
   'South African' => '🇿🇦',
   _ => '🏁',
 };

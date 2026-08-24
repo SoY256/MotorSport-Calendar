@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-08-24T12:00:00Z",
+  "lastSuccessfulUpdate": "2026-08-24T11:31:48.434561Z",
   "source": {
     "name": "official-indycar",
-    "url": "https://www.indycar.com/standings/"
+    "url": "https://www.indycar.com/api/results/YearPointSummary?year=2026&id=b856a4f1-e85c-4fac-8c36-fd58d962227a"
   },
   "data": [
     {
@@ -14,9 +14,9 @@
       "code": "",
       "givenName": "Alex",
       "familyName": "Palou",
-      "nationality": "Spanish",
+      "nationality": null,
       "teamIds": [
-        "chip_ganassi"
+        "chip-ganassi-racing"
       ]
     },
     {
@@ -27,9 +27,9 @@
       "code": "",
       "givenName": "Kyle",
       "familyName": "Kirkwood",
-      "nationality": "American",
+      "nationality": null,
       "teamIds": [
-        "andretti"
+        "andretti-global-w-curb-agajanian"
       ]
     },
     {
@@ -40,9 +40,9 @@
       "code": "",
       "givenName": "Christian",
       "familyName": "Lundgaard",
-      "nationality": "Danish",
+      "nationality": null,
       "teamIds": [
-        "arrow_mclaren"
+        "arrow-mclaren"
       ]
     },
     {
@@ -53,87 +53,386 @@
       "code": "",
       "givenName": "David",
       "familyName": "Malukas",
-      "nationality": "American",
+      "nationality": null,
       "teamIds": [
-        "penske"
+        "team-penske"
       ]
     },
     {
       "position": 5,
       "points": 399,
       "wins": 1,
-      "id": "pato-o'ward",
+      "id": "pato-o-ward",
       "code": "",
       "givenName": "Pato",
       "familyName": "O'Ward",
-      "nationality": "Mexican",
+      "nationality": null,
       "teamIds": [
-        "arrow_mclaren"
+        "arrow-mclaren"
       ]
     },
     {
       "position": 6,
-      "points": 352,
+      "points": 376,
       "wins": 2,
       "id": "josef-newgarden",
       "code": "",
       "givenName": "Josef",
       "familyName": "Newgarden",
-      "nationality": "American",
+      "nationality": null,
       "teamIds": [
-        "penske"
+        "team-penske"
       ]
     },
     {
       "position": 7,
-      "points": 345,
-      "wins": 0,
-      "id": "scott-mclaughlin",
-      "code": "",
-      "givenName": "Scott",
-      "familyName": "McLaughlin",
-      "nationality": "New Zealander",
-      "teamIds": [
-        "penske"
-      ]
-    },
-    {
-      "position": 8,
-      "points": 344,
-      "wins": 1,
-      "id": "felix-rosenqvist",
-      "code": "",
-      "givenName": "Felix",
-      "familyName": "Rosenqvist",
-      "nationality": "Swedish",
-      "teamIds": [
-        "meyer_shank"
-      ]
-    },
-    {
-      "position": 9,
-      "points": 329,
+      "points": 361,
       "wins": 1,
       "id": "marcus-ericsson",
       "code": "",
       "givenName": "Marcus",
       "familyName": "Ericsson",
-      "nationality": "Swedish",
+      "nationality": null,
       "teamIds": [
-        "andretti"
+        "andretti-global"
+      ]
+    },
+    {
+      "position": 8,
+      "points": 355,
+      "wins": 1,
+      "id": "felix-rosenqvist",
+      "code": "",
+      "givenName": "Felix",
+      "familyName": "Rosenqvist",
+      "nationality": null,
+      "teamIds": [
+        "meyer-shank-w-curb-agajanian"
+      ]
+    },
+    {
+      "position": 9,
+      "points": 354,
+      "wins": 0,
+      "id": "scott-mclaughlin",
+      "code": "",
+      "givenName": "Scott",
+      "familyName": "McLaughlin",
+      "nationality": null,
+      "teamIds": [
+        "team-penske"
       ]
     },
     {
       "position": 10,
-      "points": 295,
+      "points": 328,
+      "wins": 0,
+      "id": "will-power",
+      "code": "",
+      "givenName": "Will",
+      "familyName": "Power",
+      "nationality": null,
+      "teamIds": [
+        "andretti-global"
+      ]
+    },
+    {
+      "position": 11,
+      "points": 302,
       "wins": 0,
       "id": "rinus-veekay",
       "code": "",
       "givenName": "Rinus",
       "familyName": "VeeKay",
-      "nationality": "Dutch",
+      "nationality": null,
       "teamIds": [
-        "juncos"
+        "juncos-hollinger-racing"
+      ]
+    },
+    {
+      "position": 12,
+      "points": 290,
+      "wins": 0,
+      "id": "scott-dixon",
+      "code": "",
+      "givenName": "Scott",
+      "familyName": "Dixon",
+      "nationality": null,
+      "teamIds": [
+        "chip-ganassi-racing"
+      ]
+    },
+    {
+      "position": 13,
+      "points": 282,
+      "wins": 0,
+      "id": "kyffin-simpson",
+      "code": "",
+      "givenName": "Kyffin",
+      "familyName": "Simpson",
+      "nationality": null,
+      "teamIds": [
+        "chip-ganassi-racing"
+      ]
+    },
+    {
+      "position": 14,
+      "points": 276,
+      "wins": 0,
+      "id": "graham-rahal",
+      "code": "",
+      "givenName": "Graham",
+      "familyName": "Rahal",
+      "nationality": null,
+      "teamIds": [
+        "rahal-letterman-lanigan-racing"
+      ]
+    },
+    {
+      "position": 15,
+      "points": 257,
+      "wins": 0,
+      "id": "marcus-armstrong",
+      "code": "",
+      "givenName": "Marcus",
+      "familyName": "Armstrong",
+      "nationality": null,
+      "teamIds": [
+        "meyer-shank-w-curb-agajanian"
+      ]
+    },
+    {
+      "position": 16,
+      "points": 236,
+      "wins": 0,
+      "id": "alexander-rossi",
+      "code": "",
+      "givenName": "Alexander",
+      "familyName": "Rossi",
+      "nationality": null,
+      "teamIds": [
+        "ecr"
+      ]
+    },
+    {
+      "position": 17,
+      "points": 234,
+      "wins": 0,
+      "id": "santino-ferrucci",
+      "code": "",
+      "givenName": "Santino",
+      "familyName": "Ferrucci",
+      "nationality": null,
+      "teamIds": [
+        "a-j-foyt-enterprises"
+      ]
+    },
+    {
+      "position": 18,
+      "points": 229,
+      "wins": 0,
+      "id": "romain-grosjean",
+      "code": "",
+      "givenName": "Romain",
+      "familyName": "Grosjean",
+      "nationality": null,
+      "teamIds": [
+        "dale-coyne-racing"
+      ]
+    },
+    {
+      "position": 19,
+      "points": 223,
+      "wins": 0,
+      "id": "nolan-siegel",
+      "code": "",
+      "givenName": "Nolan",
+      "familyName": "Siegel",
+      "nationality": null,
+      "teamIds": [
+        "arrow-mclaren"
+      ]
+    },
+    {
+      "position": 20,
+      "points": 212,
+      "wins": 0,
+      "id": "louis-foster",
+      "code": "",
+      "givenName": "Louis",
+      "familyName": "Foster",
+      "nationality": null,
+      "teamIds": [
+        "rahal-letterman-lanigan-racing"
+      ]
+    },
+    {
+      "position": 21,
+      "points": 204,
+      "wins": 0,
+      "id": "dennis-hauger",
+      "code": "",
+      "givenName": "Dennis",
+      "familyName": "Hauger",
+      "nationality": null,
+      "teamIds": [
+        "dale-coyne-racing"
+      ]
+    },
+    {
+      "position": 22,
+      "points": 180,
+      "wins": 0,
+      "id": "christian-rasmussen",
+      "code": "",
+      "givenName": "Christian",
+      "familyName": "Rasmussen",
+      "nationality": null,
+      "teamIds": [
+        "ecr"
+      ]
+    },
+    {
+      "position": 23,
+      "points": 180,
+      "wins": 0,
+      "id": "caio-collet",
+      "code": "",
+      "givenName": "Caio",
+      "familyName": "Collet",
+      "nationality": null,
+      "teamIds": [
+        "a-j-foyt-enterprises"
+      ]
+    },
+    {
+      "position": 24,
+      "points": 170,
+      "wins": 0,
+      "id": "mick-schumacher",
+      "code": "",
+      "givenName": "Mick",
+      "familyName": "Schumacher",
+      "nationality": null,
+      "teamIds": [
+        "rahal-letterman-lanigan-racing"
+      ]
+    },
+    {
+      "position": 25,
+      "points": 155,
+      "wins": 0,
+      "id": "sting-ray-robb",
+      "code": "",
+      "givenName": "Sting Ray",
+      "familyName": "Robb",
+      "nationality": null,
+      "teamIds": [
+        "juncos-hollinger-racing"
+      ]
+    },
+    {
+      "position": 26,
+      "points": 24,
+      "wins": 0,
+      "id": "conor-daly",
+      "code": "",
+      "givenName": "Conor",
+      "familyName": "Daly",
+      "nationality": null,
+      "teamIds": [
+        "dreyer-reinbold-racing"
+      ]
+    },
+    {
+      "position": 27,
+      "points": 20,
+      "wins": 0,
+      "id": "takuma-sato",
+      "code": "",
+      "givenName": "Takuma",
+      "familyName": "Sato",
+      "nationality": null,
+      "teamIds": [
+        "rahal-letterman-lanigan-racing"
+      ]
+    },
+    {
+      "position": 28,
+      "points": 8,
+      "wins": 0,
+      "id": "jack-harvey",
+      "code": "",
+      "givenName": "Jack",
+      "familyName": "Harvey",
+      "nationality": null,
+      "teamIds": [
+        "dreyer-reinbold-racing"
+      ]
+    },
+    {
+      "position": 29,
+      "points": 6,
+      "wins": 0,
+      "id": "jacob-abel",
+      "code": "",
+      "givenName": "Jacob",
+      "familyName": "Abel",
+      "nationality": null,
+      "teamIds": [
+        "abel-motorsports"
+      ]
+    },
+    {
+      "position": 30,
+      "points": 5,
+      "wins": 0,
+      "id": "helio-castroneves",
+      "code": "",
+      "givenName": "Helio",
+      "familyName": "Castroneves",
+      "nationality": null,
+      "teamIds": [
+        "meyer-shank-w-curb-agajanian"
+      ]
+    },
+    {
+      "position": 31,
+      "points": 5,
+      "wins": 0,
+      "id": "ed-carpenter",
+      "code": "",
+      "givenName": "Ed",
+      "familyName": "Carpenter",
+      "nationality": null,
+      "teamIds": [
+        "ecr"
+      ]
+    },
+    {
+      "position": 32,
+      "points": 5,
+      "wins": 0,
+      "id": "ryan-hunter-reay",
+      "code": "",
+      "givenName": "Ryan",
+      "familyName": "Hunter-Reay",
+      "nationality": null,
+      "teamIds": [
+        "arrow-mclaren"
+      ]
+    },
+    {
+      "position": 33,
+      "points": 5,
+      "wins": 0,
+      "id": "katherine-legge",
+      "code": "",
+      "givenName": "Katherine",
+      "familyName": "Legge",
+      "nationality": null,
+      "teamIds": [
+        "hmd-motorsports-w-aj-foyt-racing"
       ]
     }
   ]

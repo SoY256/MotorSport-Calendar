@@ -1,12 +1,545 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-08-24T10:00:00Z",
+  "lastSuccessfulUpdate": "2026-08-24T11:24:06.298285Z",
   "source": {
-    "name": "official-championship",
-    "url": "https://www.imsa.com/weathertech/weathertech-2026-schedule/"
+    "name": "imsa-alkamel-official-timing",
+    "url": "https://imsa.results.alkamelcloud.com/Results/26_2026/02_Daytona%20International%20Speedway/04_Historic%20Sportscar%20Racing/202601240850_Race/03_Results_Race_Official.JSON"
   },
   "data": {
     "eventId": "imsa-2026-1",
-    "sessions": []
+    "sessions": [
+      {
+        "type": "R",
+        "name": "Race",
+        "startTimeUtc": "2026-01-24T18:40:00Z",
+        "results": [
+          {
+            "position": 1,
+            "positionText": "1",
+            "driver": {
+              "id": "james-matthews",
+              "code": "4A",
+              "givenName": "James Matthews",
+              "familyName": ""
+            },
+            "team": {
+              "id": "james-matthews",
+              "name": "James Matthews",
+              "color": "#EF6C00"
+            },
+            "carNumber": "4A",
+            "time": "30:20.478",
+            "laps": 15,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "1996 Riley & Scott Mk IIIa",
+              "category": "Prototype"
+            }
+          },
+          {
+            "position": 2,
+            "positionText": "2",
+            "driver": {
+              "id": "jim-farley",
+              "code": "4",
+              "givenName": "Jim Farley",
+              "familyName": ""
+            },
+            "team": {
+              "id": "jim-farley",
+              "name": "Jim Farley",
+              "color": "#EF6C00"
+            },
+            "carNumber": "4",
+            "time": "30:29.252",
+            "laps": 15,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "2002 Riley & Scott Mk III",
+              "category": "Prototype"
+            }
+          },
+          {
+            "position": 3,
+            "positionText": "3",
+            "driver": {
+              "id": "todd-sloan",
+              "code": "60",
+              "givenName": "Todd Sloan",
+              "familyName": ""
+            },
+            "team": {
+              "id": "todd-sloan",
+              "name": "Todd Sloan",
+              "color": "#EF6C00"
+            },
+            "carNumber": "60",
+            "time": "30:49.998",
+            "laps": 15,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "2006 Riley XI/DP",
+              "category": "Prototype"
+            }
+          },
+          {
+            "position": 4,
+            "positionText": "4",
+            "driver": {
+              "id": "chip-vance",
+              "code": "10",
+              "givenName": "Chip Vance",
+              "familyName": ""
+            },
+            "team": {
+              "id": "chip-vance",
+              "name": "Chip Vance",
+              "color": "#EF6C00"
+            },
+            "carNumber": "10",
+            "time": "31:06.246",
+            "laps": 15,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "2003 Riley XI/DP",
+              "category": "Prototype"
+            }
+          },
+          {
+            "position": 5,
+            "positionText": "5",
+            "driver": {
+              "id": "florent-moulin",
+              "code": "92",
+              "givenName": "Florent Moulin",
+              "familyName": ""
+            },
+            "team": {
+              "id": "florent-moulin",
+              "name": "Florent Moulin",
+              "color": "#EF6C00"
+            },
+            "carNumber": "92",
+            "time": "31:13.812",
+            "laps": 15,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "2000 Dodge Viper GTS-R",
+              "category": "GT"
+            }
+          },
+          {
+            "position": 6,
+            "positionText": "6",
+            "driver": {
+              "id": "colin-dougherty",
+              "code": "43",
+              "givenName": "Colin Dougherty",
+              "familyName": ""
+            },
+            "team": {
+              "id": "michael-potapow",
+              "name": "Michael Potapow",
+              "color": "#EF6C00"
+            },
+            "carNumber": "43",
+            "time": "31:51.005",
+            "laps": 15,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "2001 Porsche 996 GT3 RS",
+              "category": "GT"
+            }
+          },
+          {
+            "position": 7,
+            "positionText": "7",
+            "driver": {
+              "id": "cory-friedman",
+              "code": "14",
+              "givenName": "Cory Friedman",
+              "familyName": ""
+            },
+            "team": {
+              "id": "cory-friedman",
+              "name": "Cory Friedman",
+              "color": "#EF6C00"
+            },
+            "carNumber": "14",
+            "time": "31:54.821",
+            "laps": 15,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "1995 Porsche 993 RSR/3.8",
+              "category": "GT"
+            }
+          },
+          {
+            "position": 8,
+            "positionText": "8",
+            "driver": {
+              "id": "ben-hedrick",
+              "code": "22",
+              "givenName": "Ben Hedrick",
+              "familyName": ""
+            },
+            "team": {
+              "id": "ben-hedrick",
+              "name": "Ben Hedrick",
+              "color": "#EF6C00"
+            },
+            "carNumber": "22",
+            "time": "31:57.154",
+            "laps": 15,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "2008 Porsche 997 GT3 Cup",
+              "category": "GT"
+            }
+          },
+          {
+            "position": 9,
+            "positionText": "9",
+            "driver": {
+              "id": "michael-levitas",
+              "code": "36",
+              "givenName": "Michael Levitas",
+              "familyName": ""
+            },
+            "team": {
+              "id": "michael-levitas",
+              "name": "Michael Levitas",
+              "color": "#EF6C00"
+            },
+            "carNumber": "36",
+            "time": "30:21.454",
+            "laps": 14,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "2005 Porsche 996 GT3 Cup",
+              "category": "GT"
+            }
+          },
+          {
+            "position": 10,
+            "positionText": "10",
+            "driver": {
+              "id": "craig-conway",
+              "code": "29",
+              "givenName": "Craig Conway",
+              "familyName": ""
+            },
+            "team": {
+              "id": "craig-conway",
+              "name": "Craig Conway",
+              "color": "#EF6C00"
+            },
+            "carNumber": "29",
+            "time": "30:27.167",
+            "laps": 14,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "2007 Porsche 997 GT3 Cup/3.6",
+              "category": "GT"
+            }
+          },
+          {
+            "position": 11,
+            "positionText": "11",
+            "driver": {
+              "id": "michael-potapow",
+              "code": "22A",
+              "givenName": "Michael Potapow",
+              "familyName": ""
+            },
+            "team": {
+              "id": "colin-dougherty",
+              "name": "Colin Dougherty",
+              "color": "#EF6C00"
+            },
+            "carNumber": "22A",
+            "time": "30:31.221",
+            "laps": 14,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "2005 Porsche 996 GT3 Cup",
+              "category": "GT"
+            }
+          },
+          {
+            "position": 12,
+            "positionText": "12",
+            "driver": {
+              "id": "danny-stewart",
+              "code": "34",
+              "givenName": "Danny Stewart",
+              "familyName": ""
+            },
+            "team": {
+              "id": "danny-stewart",
+              "name": "Danny Stewart",
+              "color": "#EF6C00"
+            },
+            "carNumber": "34",
+            "time": "30:57.592",
+            "laps": 14,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "2000 Porsche 996 GT3 R",
+              "category": "GT"
+            }
+          },
+          {
+            "position": 13,
+            "positionText": "13",
+            "driver": {
+              "id": "jeremy-fletcher",
+              "code": "62",
+              "givenName": "Jeremy Fletcher",
+              "familyName": ""
+            },
+            "team": {
+              "id": "jeremy-fletcher",
+              "name": "Jeremy Fletcher",
+              "color": "#EF6C00"
+            },
+            "carNumber": "62",
+            "time": "31:49.356",
+            "laps": 14,
+            "points": null,
+            "status": "Classified",
+            "classified": false,
+            "components": {
+              "car": "1991 Mazda RX-7 4-rotor IMSA",
+              "category": "GT"
+            }
+          },
+          {
+            "position": 14,
+            "positionText": "14",
+            "driver": {
+              "id": "mark-paterniti",
+              "code": "08",
+              "givenName": "Mark Paterniti",
+              "familyName": ""
+            },
+            "team": {
+              "id": "mark-paterniti",
+              "name": "Mark Paterniti",
+              "color": "#EF6C00"
+            },
+            "carNumber": "08",
+            "time": "32:02.146",
+            "laps": 14,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "2005 Mazda RX-8",
+              "category": "GT"
+            }
+          },
+          {
+            "position": 15,
+            "positionText": "15",
+            "driver": {
+              "id": "tom-long",
+              "code": "202",
+              "givenName": "Tom Long",
+              "familyName": ""
+            },
+            "team": {
+              "id": "tom-long",
+              "name": "Tom Long",
+              "color": "#EF6C00"
+            },
+            "carNumber": "202",
+            "time": "20:14.438",
+            "laps": 9,
+            "points": null,
+            "status": "Classified",
+            "classified": false,
+            "components": {
+              "car": "1989 Mazda 767/767B",
+              "category": "Prototype"
+            }
+          },
+          {
+            "position": 16,
+            "positionText": "16",
+            "driver": {
+              "id": "chris-ronson-sr",
+              "code": "54",
+              "givenName": "Chris Ronson Sr",
+              "familyName": ""
+            },
+            "team": {
+              "id": "chris-ronson-sr",
+              "name": "Chris Ronson Sr",
+              "color": "#EF6C00"
+            },
+            "carNumber": "54",
+            "time": "18:23.549",
+            "laps": 8,
+            "points": null,
+            "status": "Classified",
+            "classified": false,
+            "components": {
+              "car": "2010 Oreca FLM09",
+              "category": "Prototype"
+            }
+          },
+          {
+            "position": 17,
+            "positionText": "17",
+            "driver": {
+              "id": "zak-brown",
+              "code": "61",
+              "givenName": "Zak Brown",
+              "familyName": ""
+            },
+            "team": {
+              "id": "zak-brown",
+              "name": "Zak Brown",
+              "color": "#EF6C00"
+            },
+            "carNumber": "61",
+            "time": "7:36.864",
+            "laps": 3,
+            "points": null,
+            "status": "Classified",
+            "classified": false,
+            "components": {
+              "car": "1990 Jaguar XJR-10",
+              "category": "Prototype"
+            }
+          },
+          {
+            "position": 18,
+            "positionText": "18",
+            "driver": {
+              "id": "theo-ruijgh",
+              "code": "23",
+              "givenName": "Theo Ruijgh",
+              "familyName": ""
+            },
+            "team": {
+              "id": "theo-ruijgh",
+              "name": "Theo Ruijgh",
+              "color": "#EF6C00"
+            },
+            "carNumber": "23",
+            "time": "5:43.612",
+            "laps": 2,
+            "points": null,
+            "status": "Classified",
+            "classified": false,
+            "components": {
+              "car": "1997 Porsche 993 RSR/3.8",
+              "category": "GT"
+            }
+          },
+          {
+            "position": 19,
+            "positionText": "19",
+            "driver": {
+              "id": "owen-adelman",
+              "code": "54A",
+              "givenName": "Owen Adelman",
+              "familyName": ""
+            },
+            "team": {
+              "id": "owen-adelman",
+              "name": "Owen Adelman",
+              "color": "#EF6C00"
+            },
+            "carNumber": "54A",
+            "time": "",
+            "laps": 0,
+            "points": null,
+            "status": "Not Started",
+            "classified": true,
+            "components": {
+              "car": "2004 Doran JE4",
+              "category": "Prototype"
+            }
+          },
+          {
+            "position": 20,
+            "positionText": "20",
+            "driver": {
+              "id": "graham-adelman",
+              "code": "27",
+              "givenName": "Graham Adelman",
+              "familyName": ""
+            },
+            "team": {
+              "id": "graham-adelman",
+              "name": "Graham Adelman",
+              "color": "#EF6C00"
+            },
+            "carNumber": "27",
+            "time": "",
+            "laps": 0,
+            "points": null,
+            "status": "Not Started",
+            "classified": true,
+            "components": {
+              "car": "1999 Ferrari 333SP",
+              "category": "Prototype"
+            }
+          },
+          {
+            "position": 21,
+            "positionText": "21",
+            "driver": {
+              "id": "chris-liebenberg",
+              "code": "55",
+              "givenName": "Chris Liebenberg",
+              "familyName": ""
+            },
+            "team": {
+              "id": "chris-liebenberg",
+              "name": "Chris Liebenberg",
+              "color": "#EF6C00"
+            },
+            "carNumber": "55",
+            "time": "",
+            "laps": 0,
+            "points": null,
+            "status": "Not Started",
+            "classified": true,
+            "components": {
+              "car": "2006 Saleen S7R",
+              "category": "GT"
+            }
+          }
+        ]
+      }
+    ]
   }
 }

@@ -36,14 +36,14 @@ class SettingsController extends Notifier<AppSettings> {
       language: language == 'en' ? AppLanguage.english : AppLanguage.polish,
       timeMode: timeMode == 'track' ? EventTimeMode.track : EventTimeMode.local,
       showPastEvents: showPast ?? true,
-      motorsportCategories: categorySchema == 3
+      motorsportCategories: categorySchema == 4
           ? (motorsport?.toSet() ??
-                const {'f1', 'imsa', 'indycar', 'indynxt', 'wec'})
-          : const {'f1', 'imsa', 'indycar', 'indynxt', 'wec'},
+                const {'f1', 'f2', 'f3', 'imsa', 'indycar', 'indynxt', 'wec'})
+          : const {'f1', 'f2', 'f3', 'imsa', 'indycar', 'indynxt', 'wec'},
       esportCategories: esport?.toSet() ?? const <String>{},
     );
-    if (categorySchema != 3) {
-      unawaited(preferences.setInt('categorySchema', 3));
+    if (categorySchema != 4) {
+      unawaited(preferences.setInt('categorySchema', 4));
       unawaited(
         preferences.setStringList(
           'motorsportCategories',
