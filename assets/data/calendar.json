@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "lastSuccessfulUpdate": "2026-08-24T12:00:00Z",
+  "source": {
+    "name": "bundled-snapshot",
+    "url": "https://www.formula1.com/en/racing/2026"
+  },
+  "data": [
+    {
+      "id": "f1-2026-13",
+      "seriesId": "f1",
+      "season": 2026,
+      "round": 13,
+      "name": "Italian Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "monza",
+        "name": "Autodromo Nazionale Monza",
+        "locality": "Monza",
+        "country": "Italy",
+        "countryCode": "ITA"
+      },
+      "sessions": [
+        {"type": "FP1", "name": "Practice 1", "startTimeUtc": "2026-09-04T11:30:00Z", "cancelled": false},
+        {"type": "FP2", "name": "Practice 2", "startTimeUtc": "2026-09-04T15:00:00Z", "cancelled": false},
+        {"type": "FP3", "name": "Practice 3", "startTimeUtc": "2026-09-05T10:30:00Z", "cancelled": false},
+        {"type": "Q", "name": "Qualifying", "startTimeUtc": "2026-09-05T14:00:00Z", "cancelled": false},
+        {"type": "R", "name": "Race", "startTimeUtc": "2026-09-06T13:00:00Z", "cancelled": false}
+      ]
+    },
+    {
+      "id": "f1-2026-14",
+      "seriesId": "f1",
+      "season": 2026,
+      "round": 14,
+      "name": "Spanish Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "madring",
+        "name": "Madring",
+        "locality": "Madrid",
+        "country": "Spain",
+        "countryCode": "ESP"
+      },
+      "sessions": [
+        {"type": "FP1", "name": "Practice 1", "startTimeUtc": "2026-09-11T11:30:00Z", "cancelled": false},
+        {"type": "FP2", "name": "Practice 2", "startTimeUtc": "2026-09-11T15:00:00Z", "cancelled": false},
+        {"type": "FP3", "name": "Practice 3", "startTimeUtc": "2026-09-12T10:30:00Z", "cancelled": false},
+        {"type": "Q", "name": "Qualifying", "startTimeUtc": "2026-09-12T14:00:00Z", "cancelled": false},
+        {"type": "R", "name": "Race", "startTimeUtc": "2026-09-13T13:00:00Z", "cancelled": false}
+      ]
+    },
+    {
+      "id": "f1-2026-15",
+      "seriesId": "f1",
+      "season": 2026,
+      "round": 15,
+      "name": "Azerbaijan Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "baku",
+        "name": "Baku City Circuit",
+        "locality": "Baku",
+        "country": "Azerbaijan",
+        "countryCode": "AZE"
+      },
+      "sessions": [
+        {"type": "FP1", "name": "Practice 1", "startTimeUtc": "2026-09-24T08:30:00Z", "cancelled": false},
+        {"type": "FP2", "name": "Practice 2", "startTimeUtc": "2026-09-24T12:00:00Z", "cancelled": false},
+        {"type": "FP3", "name": "Practice 3", "startTimeUtc": "2026-09-25T08:30:00Z", "cancelled": false},
+        {"type": "Q", "name": "Qualifying", "startTimeUtc": "2026-09-25T12:00:00Z", "cancelled": false},
+        {"type": "R", "name": "Race", "startTimeUtc": "2026-09-26T11:00:00Z", "cancelled": false}
+      ]
+    },
+    {
+      "id": "f1-2026-17",
+      "seriesId": "f1",
+      "season": 2026,
+      "round": 17,
+      "name": "Singapore Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "marina-bay",
+        "name": "Marina Bay Street Circuit",
+        "locality": "Singapore",
+        "country": "Singapore",
+        "countryCode": "SGP"
+      },
+      "sessions": [
+        {"type": "FP1", "name": "Practice 1", "startTimeUtc": "2026-10-09T09:30:00Z", "cancelled": false},
+        {"type": "SQ", "name": "Sprint Qualifying", "startTimeUtc": "2026-10-09T13:30:00Z", "cancelled": false},
+        {"type": "SPRINT", "name": "Sprint Race", "startTimeUtc": "2026-10-10T09:00:00Z", "cancelled": false},
+        {"type": "Q", "name": "Qualifying", "startTimeUtc": "2026-10-10T13:00:00Z", "cancelled": false},
+        {"type": "R", "name": "Race", "startTimeUtc": "2026-10-11T12:00:00Z", "cancelled": false}
+      ]
+    }
+  ]
+}

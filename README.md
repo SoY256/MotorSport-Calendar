@@ -27,3 +27,16 @@ python scripts/fetch_data.py --year 2026
 ```
 
 GitHub Actions runs the same tests and refreshes data every six hours. The workflow can also be started manually with an optional season year.
+
+## Flutter application
+
+The application uses a feature-first structure with Riverpod, a shared light/dark design system, responsive phone/desktop navigation, and an offline calendar snapshot. It tries the versioned GitHub data first and falls back to the bundled asset when the network is unavailable.
+
+```bash
+flutter pub get
+flutter analyze
+flutter test
+flutter run
+```
+
+CI verifies formatting, static analysis, widget and visual-regression tests, and both web and Android builds.

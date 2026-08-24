@@ -1,0 +1,27 @@
+name: Flutter application
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.47.1"
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - run: dart format --output=none --set-exit-if-changed lib test
+      - run: flutter analyze
+      # Pixel goldens are generated on Windows and are intentionally verified locally.
+      - run: flutter test --exclude-tags golden
+      - run: flutter build web --release
+      - run: flutter build apk --debug
