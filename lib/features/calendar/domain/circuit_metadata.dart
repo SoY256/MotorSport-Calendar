@@ -107,37 +107,94 @@ const _circuitMetadata = <String, CircuitMetadata>{
     lengthKm: 5.543,
     lapRecord: '1:34.080 • Sebastian Vettel (2017)',
   ),
+  'Imola Circuit': CircuitMetadata(lengthKm: 4.909, lapRecord: null),
+  'Circuit de la Sarthe': CircuitMetadata(lengthKm: 13.626, lapRecord: null),
+  'Fuji Speedway': CircuitMetadata(lengthKm: 4.563, lapRecord: null),
+  'Bahrain International Circuit': CircuitMetadata(
+    lengthKm: 5.412,
+    lapRecord: null,
+  ),
+  'Daytona International Speedway': CircuitMetadata(
+    lengthKm: 5.729,
+    lapRecord: null,
+  ),
+  'Sebring International Raceway': CircuitMetadata(
+    lengthKm: 6.019,
+    lapRecord: null,
+  ),
+  'Long Beach Street Circuit': CircuitMetadata(
+    lengthKm: 3.167,
+    lapRecord: null,
+  ),
+  'WeatherTech Raceway Laguna Seca': CircuitMetadata(
+    lengthKm: 3.602,
+    lapRecord: null,
+  ),
+  'Detroit Street Circuit': CircuitMetadata(lengthKm: 2.736, lapRecord: null),
+  'Watkins Glen International': CircuitMetadata(
+    lengthKm: 5.472,
+    lapRecord: null,
+  ),
+  'Canadian Tire Motorsport Park': CircuitMetadata(
+    lengthKm: 3.957,
+    lapRecord: null,
+  ),
+  'Road America': CircuitMetadata(lengthKm: 6.437, lapRecord: null),
+  'Virginia International Raceway': CircuitMetadata(
+    lengthKm: 5.263,
+    lapRecord: null,
+  ),
+  'Indianapolis Motor Speedway': CircuitMetadata(
+    lengthKm: 3.925,
+    lapRecord: null,
+  ),
+  'Michelin Raceway Road Atlanta': CircuitMetadata(
+    lengthKm: 4.088,
+    lapRecord: null,
+  ),
 };
 
 CircuitMetadata metadataForCircuit(String name) =>
     _circuitMetadata[name] ??
     const CircuitMetadata(lengthKm: null, lapRecord: null);
 
-String circuitAssetFor(String name) =>
-    'assets/circuits/${switch (name) {
-      'Albert Park Grand Prix Circuit' => 'albert-park',
-      'Shanghai International Circuit' => 'shanghai',
-      'Suzuka Circuit' || 'Suzuka International Racing Course' => 'suzuka',
-      'Miami International Autodrome' => 'miami',
-      'Circuit Gilles Villeneuve' => 'montreal',
-      'Circuit de Monaco' => 'monaco',
-      'Circuit de Barcelona-Catalunya' => 'catalunya',
-      'Red Bull Ring' => 'red-bull-ring',
-      'Silverstone Circuit' => 'silverstone',
-      'Circuit de Spa-Francorchamps' => 'spa',
-      'Hungaroring' => 'hungaroring',
-      'Circuit Park Zandvoort' || 'Circuit Zandvoort' => 'zandvoort',
-      'Autodromo Nazionale di Monza' => 'monza',
-      'Madring' => 'madring',
-      'Baku City Circuit' => 'baku',
-      'Sepang International Circuit' => 'sepang',
-      'Marina Bay Street Circuit' => 'marina-bay',
-      'Circuit of the Americas' => 'austin',
-      'Autódromo Hermanos Rodríguez' => 'mexico-city',
-      'Autódromo José Carlos Pace' => 'interlagos',
-      'Las Vegas Strip Street Circuit' => 'las-vegas',
-      'Losail International Circuit' || 'Lusail International Circuit' => 'lusail',
-      'Yas Marina Circuit' => 'yas-marina',
-      'Jeddah Corniche Circuit' => 'jeddah',
-      _ => 'silverstone',
-    }}.svg';
+String? circuitAssetFor(String name) {
+  final asset = switch (name) {
+    'Albert Park Grand Prix Circuit' => 'albert-park',
+    'Shanghai International Circuit' => 'shanghai',
+    'Suzuka Circuit' || 'Suzuka International Racing Course' => 'suzuka',
+    'Miami International Autodrome' => 'miami',
+    'Circuit Gilles Villeneuve' => 'montreal',
+    'Circuit de Monaco' => 'monaco',
+    'Circuit de Barcelona-Catalunya' => 'catalunya',
+    'Red Bull Ring' => 'red-bull-ring',
+    'Silverstone Circuit' => 'silverstone',
+    'Circuit de Spa-Francorchamps' => 'spa',
+    'Hungaroring' => 'hungaroring',
+    'Circuit Park Zandvoort' || 'Circuit Zandvoort' => 'zandvoort',
+    'Autodromo Nazionale di Monza' => 'monza',
+    'Madring' => 'madring',
+    'Baku City Circuit' => 'baku',
+    'Sepang International Circuit' => 'sepang',
+    'Marina Bay Street Circuit' => 'marina-bay',
+    'Circuit of the Americas' => 'austin',
+    'Autódromo Hermanos Rodríguez' => 'mexico-city',
+    'Autódromo José Carlos Pace' => 'interlagos',
+    'Las Vegas Strip Street Circuit' => 'las-vegas',
+    'Losail International Circuit' ||
+    'Lusail International Circuit' => 'lusail',
+    'Yas Marina Circuit' => 'yas-marina',
+    'Jeddah Corniche Circuit' => 'jeddah',
+    'Imola Circuit' => 'imola',
+    'Fuji Speedway' => 'fuji',
+    'Bahrain International Circuit' => 'bahrain',
+    'Sebring International Raceway' => 'sebring',
+    'Long Beach Street Circuit' => 'long-beach',
+    'Detroit Street Circuit' => 'detroit',
+    'Watkins Glen International' => 'watkins-glen',
+    'Canadian Tire Motorsport Park' => 'mosport',
+    'Indianapolis Motor Speedway' => 'indianapolis',
+    _ => null,
+  };
+  return asset == null ? null : 'assets/circuits/$asset.svg';
+}

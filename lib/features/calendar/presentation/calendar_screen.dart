@@ -21,8 +21,6 @@ class CalendarScreen extends ConsumerStatefulWidget {
 class _CalendarScreenState extends ConsumerState<CalendarScreen> {
   int _page = 0;
   String? _selectedEventId;
-  final Set<String> _selectedSeries = {};
-  bool _seriesInitialized = false;
 
   @override
   Widget build(BuildContext context) {
@@ -68,24 +66,26 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
         final availableSeries = data.events
             .map((event) => event.seriesId)
             .toSet();
-        if (!_seriesInitialized) {
-          _selectedSeries.addAll(availableSeries);
-          _seriesInitialized = true;
-        }
-        final selected = data.events.firstWhere(
-          (event) => event.id == _selectedEventId,
-          orElse: () => _nearestEvent(data.events),
+        final selectedSeries = settings.motorsportCategories.intersection(
+          availableSeries,
         );
+        final visibleEvents = data.events
+            .where((event) => selectedSeries.contains(event.seriesId))
+            .toList();
+        final selected = visibleEvents.isEmpty
+            ? null
+            : visibleEvents.firstWhere(
+                (event) => event.id == _selectedEventId,
+                orElse: () => _nearestEvent(visibleEvents),
+              );
         return switch (_page) {
           0 => _ListPage(
             data: data,
             availableSeries: availableSeries,
-            selectedSeries: _selectedSeries,
-            onSeriesChanged: (series) => setState(() {
-              _selectedSeries
-                ..clear()
-                ..addAll(series);
-            }),
+            selectedSeries: selectedSeries,
+            onSeriesChanged: ref
+                .read(settingsProvider.notifier)
+                .setMotorsportCategories,
             settings: settings,
             strings: strings,
             onEventTap: (event) => setState(() {
@@ -96,12 +96,10 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
           1 => _CalendarGridPage(
             data: data,
             availableSeries: availableSeries,
-            selectedSeries: _selectedSeries,
-            onSeriesChanged: (series) => setState(() {
-              _selectedSeries
-                ..clear()
-                ..addAll(series);
-            }),
+            selectedSeries: selectedSeries,
+            onSeriesChanged: ref
+                .read(settingsProvider.notifier)
+                .setMotorsportCategories,
             settings: settings,
             strings: strings,
             onEventTap: (event) => setState(() {
@@ -109,16 +107,25 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
               _page = 2;
             }),
           ),
-          2 => _ResultsPage(
+          2 when selected != null => _ResultsPage(
             data: data,
             selected: selected,
+            selectedSeries: selectedSeries,
             settings: settings,
             strings: strings,
             onSelected: (event) => setState(() => _selectedEventId = event.id),
           ),
+          2 => _PageFrame(
+            title: strings.results,
+            subtitle: '',
+            child: _EmptyCard(
+              icon: Icons.category_outlined,
+              message: strings.chooseAny,
+            ),
+          ),
           3 => _StandingsPage(
             strings: strings,
-            availableSeries: availableSeries,
+            availableSeries: selectedSeries,
           ),
           _ => _SettingsPage(settings: settings, strings: strings),
         };
@@ -893,12 +900,14 @@ class _ResultsPage extends ConsumerWidget {
   const _ResultsPage({
     required this.data,
     required this.selected,
+    required this.selectedSeries,
     required this.settings,
     required this.strings,
     required this.onSelected,
   });
   final CalendarData data;
   final RaceEvent selected;
+  final Set<String> selectedSeries;
   final AppSettings settings;
   final AppStrings strings;
   final ValueChanged<RaceEvent> onSelected;
@@ -919,7 +928,11 @@ class _ResultsPage extends ConsumerWidget {
             ),
             isExpanded: true,
             items: data.events
-                .where((event) => !event.cancelled)
+                .where(
+                  (event) =>
+                      !event.cancelled &&
+                      selectedSeries.contains(event.seriesId),
+                )
                 .map(
                   (event) => DropdownMenuItem(
                     value: event.id,
@@ -1023,6 +1036,7 @@ class _CircuitInfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final metadata = metadataForCircuit(event.circuit.name);
+    final asset = circuitAssetFor(event.circuit.name);
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -1056,15 +1070,21 @@ class _CircuitInfoCard extends StatelessWidget {
             final graphic = SizedBox(
               width: 190,
               height: 110,
-              child: SvgPicture.asset(
-                circuitAssetFor(event.circuit.name),
-                fit: BoxFit.contain,
-                colorFilter: ColorFilter.mode(
-                  Theme.of(context).colorScheme.primary,
-                  BlendMode.srcIn,
-                ),
-                semanticsLabel: event.circuit.name,
-              ),
+              child: asset == null
+                  ? Icon(
+                      Icons.route,
+                      size: 72,
+                      color: Theme.of(context).colorScheme.primary,
+                    )
+                  : SvgPicture.asset(
+                      asset,
+                      fit: BoxFit.contain,
+                      colorFilter: ColorFilter.mode(
+                        Theme.of(context).colorScheme.primary,
+                        BlendMode.srcIn,
+                      ),
+                      semanticsLabel: event.circuit.name,
+                    ),
             );
             if (constraints.maxWidth < 600) {
               return Column(
@@ -1182,12 +1202,27 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final series = _seriesId ?? widget.availableSeries.first;
+    if (widget.availableSeries.isEmpty) {
+      return _PageFrame(
+        title: widget.strings.standings,
+        subtitle: '',
+        child: _EmptyCard(
+          icon: Icons.category_outlined,
+          message: widget.strings.chooseAny,
+        ),
+      );
+    }
+    final series =
+        _seriesId != null && widget.availableSeries.contains(_seriesId)
+        ? _seriesId!
+        : widget.availableSeries.contains('f1')
+        ? 'f1'
+        : (widget.availableSeries.toList()..sort()).first;
     final standings = ref.watch(standingsProvider(series));
     final strings = widget.strings;
     return _PageFrame(
       title: strings.standings,
-      subtitle: 'F1 • 2026',
+      subtitle: '${_seriesLabel(series)} • 2026',
       child: Column(
         children: [
           DropdownButtonFormField<String>(
@@ -1391,6 +1426,33 @@ class _SettingsPage extends ConsumerWidget {
       subtitle: strings.customize,
       child: Column(
         children: [
+          _CategorySelectionCard(
+            title: strings.motorsportCategories,
+            subtitle: strings.chooseAny,
+            items: const [
+              ('f1', 'F1', 'assets/brands/f1.svg'),
+              ('imsa', 'IMSA', 'assets/brands/imsa.svg'),
+              ('wec', 'WEC', 'assets/brands/wec.svg'),
+            ],
+            selected: settings.motorsportCategories,
+            onToggle: (id) {
+              final next = {...settings.motorsportCategories};
+              next.contains(id) ? next.remove(id) : next.add(id);
+              controller.setMotorsportCategories(next);
+            },
+          ),
+          const SizedBox(height: 12),
+          _CategorySelectionCard(
+            title: strings.esportCategories,
+            subtitle: strings.chooseAny,
+            items: const [
+              ('iracing', 'iRacing', 'assets/brands/iracing.png'),
+              ('lmu', 'Le Mans Ultimate', 'assets/brands/lmu.jpg'),
+            ],
+            selected: settings.esportCategories,
+            onToggle: controller.toggleEsportCategory,
+          ),
+          const SizedBox(height: 12),
           Card(
             child: SwitchListTile(
               secondary: const Icon(Icons.dark_mode_outlined),
@@ -1485,6 +1547,119 @@ class _SettingsPage extends ConsumerWidget {
       ),
     );
   }
+}
+
+class _CategorySelectionCard extends StatelessWidget {
+  const _CategorySelectionCard({
+    required this.title,
+    required this.subtitle,
+    required this.items,
+    required this.selected,
+    required this.onToggle,
+  });
+  final String title;
+  final String subtitle;
+  final List<(String, String, String)> items;
+  final Set<String> selected;
+  final ValueChanged<String> onToggle;
+
+  @override
+  Widget build(BuildContext context) => Card(
+    child: Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
+          ),
+          const SizedBox(height: 4),
+          Text(subtitle, style: Theme.of(context).textTheme.bodySmall),
+          const SizedBox(height: 14),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              final width = constraints.maxWidth >= 700
+                  ? (constraints.maxWidth - 24) / 3
+                  : (constraints.maxWidth - 12) / 2;
+              return Wrap(
+                spacing: 12,
+                runSpacing: 12,
+                children: items.map((item) {
+                  final active = selected.contains(item.$1);
+                  return SizedBox(
+                    width: width,
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(16),
+                      onTap: () => onToggle(item.$1),
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 180),
+                        height: 116,
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: active
+                              ? Theme.of(context).colorScheme.primaryContainer
+                              : Theme.of(context).colorScheme.surfaceContainer,
+                          border: Border.all(
+                            color: active
+                                ? Theme.of(context).colorScheme.primary
+                                : Theme.of(context).dividerColor,
+                            width: active ? 2 : 1,
+                          ),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Stack(
+                          children: [
+                            Align(
+                              alignment: Alignment.topRight,
+                              child: Icon(
+                                active
+                                    ? Icons.check_circle
+                                    : Icons.circle_outlined,
+                                color: active
+                                    ? Theme.of(context).colorScheme.primary
+                                    : null,
+                              ),
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(right: 26),
+                                    child: item.$3.endsWith('.svg')
+                                        ? SvgPicture.asset(
+                                            item.$3,
+                                            fit: BoxFit.contain,
+                                          )
+                                        : Image.asset(
+                                            item.$3,
+                                            fit: BoxFit.contain,
+                                          ),
+                                  ),
+                                ),
+                                const SizedBox(height: 8),
+                                Text(
+                                  item.$2,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                }).toList(),
+              );
+            },
+          ),
+        ],
+      ),
+    ),
+  );
 }
 
 class _EmptyCard extends StatelessWidget {

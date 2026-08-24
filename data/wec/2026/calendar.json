@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "lastSuccessfulUpdate": "2026-08-24T10:00:00Z",
+  "source": {
+    "name": "official-championship",
+    "url": "https://www.fiawec.com/en/season/2026"
+  },
+  "data": [
+    {
+      "id": "wec-2026-1",
+      "seriesId": "wec",
+      "season": 2026,
+      "round": 1,
+      "name": "6 Hours of Imola",
+      "cancelled": false,
+      "circuit": {
+        "id": "imola-circuit",
+        "name": "Imola Circuit",
+        "locality": "Imola",
+        "country": "Italy",
+        "countryCode": "ITA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-04-19T11:00:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/01-6-hours-of-imola.json"
+    },
+    {
+      "id": "wec-2026-2",
+      "seriesId": "wec",
+      "season": 2026,
+      "round": 2,
+      "name": "6 Hours of Spa-Francorchamps",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit-de-spa-francorchamps",
+        "name": "Circuit de Spa-Francorchamps",
+        "locality": "Stavelot",
+        "country": "Belgium",
+        "countryCode": "BEL"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-05-09T12:00:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/02-6-hours-of-spa-francorchamps.json"
+    },
+    {
+      "id": "wec-2026-3",
+      "seriesId": "wec",
+      "season": 2026,
+      "round": 3,
+      "name": "24 Hours of Le Mans",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit-de-la-sarthe",
+        "name": "Circuit de la Sarthe",
+        "locality": "Le Mans",
+        "country": "France",
+        "countryCode": "FRA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-06-13T14:00:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/03-24-hours-of-le-mans.json"
+    },
+    {
+      "id": "wec-2026-4",
+      "seriesId": "wec",
+      "season": 2026,
+      "round": 4,
+      "name": "6 Hours of São Paulo",
+      "cancelled": false,
+      "circuit": {
+        "id": "autódromo-josé-carlos-pace",
+        "name": "Autódromo José Carlos Pace",
+        "locality": "São Paulo",
+        "country": "Brazil",
+        "countryCode": "BRA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-07-12T14:30:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/04-6-hours-of-sao-paulo.json"
+    },
+    {
+      "id": "wec-2026-5",
+      "seriesId": "wec",
+      "season": 2026,
+      "round": 5,
+      "name": "Lone Star Le Mans",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit-of-the-americas",
+        "name": "Circuit of the Americas",
+        "locality": "Austin",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-09-06T17:00:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/05-lone-star-le-mans.json"
+    },
+    {
+      "id": "wec-2026-6",
+      "seriesId": "wec",
+      "season": 2026,
+      "round": 6,
+      "name": "6 Hours of Fuji",
+      "cancelled": false,
+      "circuit": {
+        "id": "fuji-speedway",
+        "name": "Fuji Speedway",
+        "locality": "Oyama",
+        "country": "Japan",
+        "countryCode": "JPN"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-09-27T02:00:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/06-6-hours-of-fuji.json"
+    },
+    {
+      "id": "wec-2026-7",
+      "seriesId": "wec",
+      "season": 2026,
+      "round": 7,
+      "name": "Qatar 1812 km",
+      "cancelled": false,
+      "circuit": {
+        "id": "lusail-international-circuit",
+        "name": "Lusail International Circuit",
+        "locality": "Lusail",
+        "country": "Qatar",
+        "countryCode": "QAT"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-10-24T12:00:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/07-qatar-1812-km.json"
+    },
+    {
+      "id": "wec-2026-8",
+      "seriesId": "wec",
+      "season": 2026,
+      "round": 8,
+      "name": "8 Hours of Bahrain",
+      "cancelled": false,
+      "circuit": {
+        "id": "bahrain-international-circuit",
+        "name": "Bahrain International Circuit",
+        "locality": "Sakhir",
+        "country": "Bahrain",
+        "countryCode": "BHR"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-11-07T11:00:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/08-8-hours-of-bahrain.json"
+    }
+  ]
+}

@@ -29,11 +29,35 @@ class SettingsController extends Notifier<AppSettings> {
     final language = await preferences.getString('language');
     final timeMode = await preferences.getString('timeMode');
     final showPast = await preferences.getBool('showPastEvents');
+    final motorsport = await preferences.getStringList('motorsportCategories');
+    final esport = await preferences.getStringList('esportCategories');
     state = AppSettings(
       language: language == 'en' ? AppLanguage.english : AppLanguage.polish,
       timeMode: timeMode == 'track' ? EventTimeMode.track : EventTimeMode.local,
       showPastEvents: showPast ?? true,
+      motorsportCategories: motorsport?.toSet() ?? const {'f1', 'wec', 'imsa'},
+      esportCategories: esport?.toSet() ?? const <String>{},
     );
+  }
+
+  void setMotorsportCategories(Set<String> value) {
+    state = state.copyWith(motorsportCategories: {...value});
+    final preferences = _getPreferences();
+    if (preferences != null) {
+      unawaited(
+        preferences.setStringList('motorsportCategories', value.toList()),
+      );
+    }
+  }
+
+  void toggleEsportCategory(String id) {
+    final next = {...state.esportCategories};
+    next.contains(id) ? next.remove(id) : next.add(id);
+    state = state.copyWith(esportCategories: next);
+    final preferences = _getPreferences();
+    if (preferences != null) {
+      unawaited(preferences.setStringList('esportCategories', next.toList()));
+    }
   }
 
   void setLanguage(AppLanguage value) {

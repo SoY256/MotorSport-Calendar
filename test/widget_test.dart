@@ -38,15 +38,15 @@ void main() {
     expect(find.text('Sezon 2026'), findsOneWidget);
     expect(find.text('Australian Grand Prix'), findsOneWidget);
     expect(find.text('🇦🇺'), findsOneWidget);
-    expect(find.text('Kategorie • Wybrano: 1'), findsOneWidget);
-    await tester.tap(find.text('Kategorie • Wybrano: 1'));
+    expect(find.text('Kategorie • Wybrano: 3'), findsOneWidget);
+    await tester.tap(find.text('Kategorie • Wybrano: 3'));
     await tester.pump(const Duration(milliseconds: 200));
-    await tester.tap(find.byType(Checkbox));
+    await tester.tap(find.byType(Checkbox).first);
     await tester.pump(const Duration(milliseconds: 200));
     expect(find.text('Australian Grand Prix'), findsNothing);
-    await tester.tap(find.byType(Checkbox));
+    await tester.tap(find.byType(Checkbox).first);
     await tester.pump(const Duration(milliseconds: 200));
-    await tester.tap(find.text('Kategorie • Wybrano: 1'));
+    await tester.tap(find.text('Kategorie • Wybrano: 3'));
     await tester.pump(const Duration(milliseconds: 200));
     expect(find.text('Ukryj poprzednie wydarzenia'), findsOneWidget);
 
@@ -86,12 +86,22 @@ void main() {
 
     await tester.tap(find.text('Ustawienia'));
     await tester.pump(const Duration(milliseconds: 500));
+    expect(find.text('Kategorie Motorsport'), findsOneWidget);
+    expect(find.text('E-Sport'), findsOneWidget);
+    expect(find.text('IMSA'), findsWidgets);
+    expect(find.text('WEC'), findsWidgets);
+    expect(find.text('iRacing'), findsOneWidget);
+    expect(find.text('Le Mans Ultimate'), findsOneWidget);
+    await tester.ensureVisible(find.text('Angielski'));
+    await tester.pump(const Duration(milliseconds: 300));
     await tester.tap(find.text('Angielski'));
     await tester.pump(const Duration(milliseconds: 500));
     expect(find.text('Calendar'), findsOneWidget);
     expect(find.text('List'), findsOneWidget);
     expect(find.text('Track local time'), findsOneWidget);
 
+    await tester.ensureVisible(find.text('Track local time'));
+    await tester.pump(const Duration(milliseconds: 300));
     await tester.tap(find.text('Track local time'));
     await tester.pump(const Duration(milliseconds: 500));
     expect(find.text('Event time'), findsOneWidget);

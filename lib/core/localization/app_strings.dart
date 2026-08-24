@@ -40,6 +40,12 @@ class AppStrings {
   String selectedCategories(int count) =>
       _en ? '$count selected' : 'Wybrano: $count';
   String get championship => _en ? 'Championship' : 'Mistrzostwa';
+  String get motorsportCategories =>
+      _en ? 'Motorsport categories' : 'Kategorie Motorsport';
+  String get esportCategories => _en ? 'E-Sport' : 'E-Sport';
+  String get chooseAny => _en
+      ? 'Choose any number of categories'
+      : 'Wybierz dowolną liczbę kategorii';
   String get drivers => _en ? 'Drivers' : 'Kierowcy';
   String get constructors => _en ? 'Constructors' : 'Konstruktorzy';
   String get points => _en ? 'PTS' : 'PKT';

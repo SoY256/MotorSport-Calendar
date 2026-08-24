@@ -91,8 +91,9 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
 
   @override
   Future<CalendarData> load() async {
+    final local = await fallback.load();
     final manifest = await _remote('manifest.json');
-    if (manifest == null) return fallback.load();
+    if (manifest == null) return local;
     final calendars = await Future.wait(
       (manifest['availableSeries'] as List<dynamic>).map((item) {
         final series = item as Map<String, dynamic>;
@@ -103,8 +104,19 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
         return _remote('$id/$season/calendar.json');
       }),
     );
-    if (calendars.any((calendar) => calendar == null)) return fallback.load();
-    return _mergeCalendars(calendars.cast<Map<String, dynamic>>());
+    if (calendars.any((calendar) => calendar == null)) return local;
+    final remote = _mergeCalendars(calendars.cast<Map<String, dynamic>>());
+    final events = <String, RaceEvent>{
+      for (final event in local.events) event.id: event,
+      for (final event in remote.events) event.id: event,
+    }.values.toList()..sort((a, b) => a.startsAt.compareTo(b.startsAt));
+    return CalendarData(
+      schemaVersion: local.schemaVersion,
+      updatedAt: remote.updatedAt.isAfter(local.updatedAt)
+          ? remote.updatedAt
+          : local.updatedAt,
+      events: events,
+    );
   }
 
   @override

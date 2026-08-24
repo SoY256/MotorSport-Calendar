@@ -1,0 +1,274 @@
+{
+  "schemaVersion": 1,
+  "lastSuccessfulUpdate": "2026-08-24T10:00:00Z",
+  "source": {
+    "name": "official-championship",
+    "url": "https://www.imsa.com/weathertech/weathertech-2026-schedule/"
+  },
+  "data": [
+    {
+      "id": "imsa-2026-1",
+      "seriesId": "imsa",
+      "season": 2026,
+      "round": 1,
+      "name": "Rolex 24 at Daytona",
+      "cancelled": false,
+      "circuit": {
+        "id": "daytona-international-speedway",
+        "name": "Daytona International Speedway",
+        "locality": "Daytona Beach",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-01-24T18:40:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/01-rolex-24-at-daytona.json"
+    },
+    {
+      "id": "imsa-2026-2",
+      "seriesId": "imsa",
+      "season": 2026,
+      "round": 2,
+      "name": "Twelve Hours of Sebring",
+      "cancelled": false,
+      "circuit": {
+        "id": "sebring-international-raceway",
+        "name": "Sebring International Raceway",
+        "locality": "Sebring",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-03-21T14:10:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/02-twelve-hours-of-sebring.json"
+    },
+    {
+      "id": "imsa-2026-3",
+      "seriesId": "imsa",
+      "season": 2026,
+      "round": 3,
+      "name": "Acura Grand Prix of Long Beach",
+      "cancelled": false,
+      "circuit": {
+        "id": "long-beach-street-circuit",
+        "name": "Long Beach Street Circuit",
+        "locality": "Long Beach",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-04-18T20:00:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/03-acura-grand-prix-of-long-beach.json"
+    },
+    {
+      "id": "imsa-2026-4",
+      "seriesId": "imsa",
+      "season": 2026,
+      "round": 4,
+      "name": "WeatherTech Raceway Laguna Seca",
+      "cancelled": false,
+      "circuit": {
+        "id": "weathertech-raceway-laguna-seca",
+        "name": "WeatherTech Raceway Laguna Seca",
+        "locality": "Monterey",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-05-03T19:00:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/04-weathertech-raceway-laguna-seca.json"
+    },
+    {
+      "id": "imsa-2026-5",
+      "seriesId": "imsa",
+      "season": 2026,
+      "round": 5,
+      "name": "Detroit Sports Car Classic",
+      "cancelled": false,
+      "circuit": {
+        "id": "detroit-street-circuit",
+        "name": "Detroit Street Circuit",
+        "locality": "Detroit",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-05-30T19:00:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/05-detroit-sports-car-classic.json"
+    },
+    {
+      "id": "imsa-2026-6",
+      "seriesId": "imsa",
+      "season": 2026,
+      "round": 6,
+      "name": "Six Hours of The Glen",
+      "cancelled": false,
+      "circuit": {
+        "id": "watkins-glen-international",
+        "name": "Watkins Glen International",
+        "locality": "Watkins Glen",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-06-28T14:00:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/06-six-hours-of-the-glen.json"
+    },
+    {
+      "id": "imsa-2026-7",
+      "seriesId": "imsa",
+      "season": 2026,
+      "round": 7,
+      "name": "Chevrolet Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "canadian-tire-motorsport-park",
+        "name": "Canadian Tire Motorsport Park",
+        "locality": "Bowmanville",
+        "country": "Canada",
+        "countryCode": "CAN"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-07-12T16:00:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/07-chevrolet-grand-prix.json"
+    },
+    {
+      "id": "imsa-2026-8",
+      "seriesId": "imsa",
+      "season": 2026,
+      "round": 8,
+      "name": "Motul SportsCar Endurance Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "road-america",
+        "name": "Road America",
+        "locality": "Elkhart Lake",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-08-02T16:00:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/08-motul-sportscar-endurance-grand-prix.json"
+    },
+    {
+      "id": "imsa-2026-9",
+      "seriesId": "imsa",
+      "season": 2026,
+      "round": 9,
+      "name": "Michelin GT Challenge at VIR",
+      "cancelled": false,
+      "circuit": {
+        "id": "virginia-international-raceway",
+        "name": "Virginia International Raceway",
+        "locality": "Alton",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-08-23T16:10:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/09-michelin-gt-challenge-at-vir.json"
+    },
+    {
+      "id": "imsa-2026-10",
+      "seriesId": "imsa",
+      "season": 2026,
+      "round": 10,
+      "name": "Battle on the Bricks",
+      "cancelled": false,
+      "circuit": {
+        "id": "indianapolis-motor-speedway",
+        "name": "Indianapolis Motor Speedway",
+        "locality": "Indianapolis",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-09-20T19:00:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/10-battle-on-the-bricks.json"
+    },
+    {
+      "id": "imsa-2026-11",
+      "seriesId": "imsa",
+      "season": 2026,
+      "round": 11,
+      "name": "Motul Petit Le Mans",
+      "cancelled": false,
+      "circuit": {
+        "id": "michelin-raceway-road-atlanta",
+        "name": "Michelin Raceway Road Atlanta",
+        "locality": "Braselton",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-10-03T16:00:00Z",
+          "cancelled": false
+        }
+      ],
+      "resultsPath": "events/11-motul-petit-le-mans.json"
+    }
+  ]
+}
