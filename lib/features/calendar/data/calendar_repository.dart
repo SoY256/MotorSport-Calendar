@@ -92,58 +92,72 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
   @override
   Future<CalendarData> load() async {
     final local = await fallback.load();
-    final manifest = await _remote('manifest.json');
-    if (manifest == null) return local;
-    final calendars = await Future.wait(
-      (manifest['availableSeries'] as List<dynamic>).map((item) {
-        final series = item as Map<String, dynamic>;
-        final id = series['id'] as String;
-        final seasons = (series['availableSeasons'] as List<dynamic>)
-            .cast<int>();
-        final season = seasons.reduce((a, b) => a > b ? a : b);
-        return _remote('$id/$season/calendar.json');
-      }),
-    );
-    if (calendars.any((calendar) => calendar == null)) return local;
-    final remote = _mergeCalendars(calendars.cast<Map<String, dynamic>>());
-    final events = <String, RaceEvent>{
-      for (final event in local.events) event.id: event,
-      for (final event in remote.events) event.id: event,
-    }.values.toList()..sort((a, b) => a.startsAt.compareTo(b.startsAt));
-    return CalendarData(
-      schemaVersion: local.schemaVersion,
-      updatedAt: remote.updatedAt.isAfter(local.updatedAt)
-          ? remote.updatedAt
-          : local.updatedAt,
-      events: events,
-    );
+    try {
+      final manifest = await _remote('manifest.json');
+      if (manifest == null) return local;
+      final calendars = await Future.wait(
+        (manifest['availableSeries'] as List<dynamic>).map((item) {
+          final series = item as Map<String, dynamic>;
+          final id = series['id'] as String;
+          final seasons = (series['availableSeasons'] as List<dynamic>)
+              .cast<int>();
+          final season = seasons.reduce((a, b) => a > b ? a : b);
+          return _remote('$id/$season/calendar.json');
+        }),
+      );
+      if (calendars.any((calendar) => calendar == null)) return local;
+      final remote = _mergeCalendars(calendars.cast<Map<String, dynamic>>());
+      final events = <String, RaceEvent>{
+        for (final event in local.events) event.id: event,
+        for (final event in remote.events) event.id: event,
+      }.values.toList()..sort((a, b) => a.startsAt.compareTo(b.startsAt));
+      return CalendarData(
+        schemaVersion: local.schemaVersion,
+        updatedAt: remote.updatedAt.isAfter(local.updatedAt)
+            ? remote.updatedAt
+            : local.updatedAt,
+        events: events,
+      );
+    } on Object {
+      return local;
+    }
   }
 
   @override
   Future<EventResults> loadResults(RaceEvent event) async {
-    final json = await _remote('${event.seriesId}/2026/${event.resultsPath}');
-    return json == null
-        ? fallback.loadResults(event)
-        : EventResults.fromJson(json);
+    try {
+      final json = await _remote('${event.seriesId}/2026/${event.resultsPath}');
+      return json == null
+          ? await fallback.loadResults(event)
+          : EventResults.fromJson(json);
+    } on Object {
+      return await fallback.loadResults(event);
+    }
   }
 
   @override
   Future<StandingsData> loadStandings(String seriesId) async {
-    final documents = await Future.wait([
-      _remote('$seriesId/2026/standings_drivers.json'),
-      _remote('$seriesId/2026/standings_teams.json'),
-    ]);
-    if (documents.any((document) => document == null)) {
-      return fallback.loadStandings(seriesId);
+    try {
+      final documents = await Future.wait([
+        _remote('$seriesId/2026/standings_drivers.json'),
+        _remote('$seriesId/2026/standings_teams.json'),
+      ]);
+      if (documents.any((document) => document == null)) {
+        return await fallback.loadStandings(seriesId);
+      }
+      return StandingsData(
+        drivers: (documents[0]!['data'] as List<dynamic>)
+            .map(
+              (item) => DriverStanding.fromJson(item as Map<String, dynamic>),
+            )
+            .toList(growable: false),
+        teams: (documents[1]!['data'] as List<dynamic>)
+            .map((item) => TeamStanding.fromJson(item as Map<String, dynamic>))
+            .toList(growable: false),
+      );
+    } on Object {
+      return await fallback.loadStandings(seriesId);
     }
-    return StandingsData(
-      drivers: (documents[0]!['data'] as List<dynamic>)
-          .map((item) => DriverStanding.fromJson(item as Map<String, dynamic>))
-          .toList(growable: false),
-      teams: (documents[1]!['data'] as List<dynamic>)
-          .map((item) => TeamStanding.fromJson(item as Map<String, dynamic>))
-          .toList(growable: false),
-    );
   }
 }
 

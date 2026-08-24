@@ -1391,7 +1391,7 @@ class _StandingsPage extends ConsumerStatefulWidget {
 
 class _StandingsPageState extends ConsumerState<_StandingsPage> {
   bool _drivers = true;
-  String _imsaCategory = 'GTP';
+  String _standingsCategory = 'GTP';
 
   @override
   Widget build(BuildContext context) {
@@ -1412,6 +1412,13 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
     final strings = widget.strings;
     final supportsTeams = {'f1', 'wec', 'imsa'}.contains(series);
     final showDrivers = !supportsTeams || _drivers;
+    final hasClassStandings = {'wec', 'imsa'}.contains(series);
+    final categories = series == 'wec'
+        ? const ['HYPERCAR', 'LMGT3']
+        : const ['GTP', 'LMP2', 'GTD PRO', 'GTD'];
+    final selectedCategory = categories.contains(_standingsCategory)
+        ? _standingsCategory
+        : categories.first;
     return _PageFrame(
       title: strings.standings,
       subtitle: '${_seriesLabel(series)} • 2026',
@@ -1447,33 +1454,36 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
               onRetry: () => ref.invalidate(standingsProvider(series)),
             ),
             data: (data) {
-              final drivers = series == 'imsa'
-                  ? data.drivers.where((item) => item.category == _imsaCategory)
+              final drivers = hasClassStandings
+                  ? data.drivers.where(
+                      (item) => item.category == selectedCategory,
+                    )
                   : data.drivers;
-              final teams = series == 'imsa'
-                  ? data.teams.where((item) => item.category == _imsaCategory)
+              final teams = hasClassStandings
+                  ? data.teams.where(
+                      (item) => item.category == selectedCategory,
+                    )
                   : data.teams;
               return Column(
                 children: [
-                  if (series == 'imsa')
+                  if (hasClassStandings)
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: SegmentedButton<String>(
-                        segments: const [
-                          ButtonSegment(value: 'GTP', label: Text('GTP')),
-                          ButtonSegment(value: 'LMP2', label: Text('LMP2')),
-                          ButtonSegment(
-                            value: 'GTD PRO',
-                            label: Text('GTD PRO'),
-                          ),
-                          ButtonSegment(value: 'GTD', label: Text('GTD')),
-                        ],
-                        selected: {_imsaCategory},
+                        segments: categories
+                            .map(
+                              (category) => ButtonSegment(
+                                value: category,
+                                label: Text(category),
+                              ),
+                            )
+                            .toList(growable: false),
+                        selected: {selectedCategory},
                         onSelectionChanged: (value) =>
-                            setState(() => _imsaCategory = value.first),
+                            setState(() => _standingsCategory = value.first),
                       ),
                     ),
-                  if (series == 'imsa') const SizedBox(height: 16),
+                  if (hasClassStandings) const SizedBox(height: 16),
                   Card(
                     child: Column(
                       children: showDrivers
@@ -1602,6 +1612,7 @@ class _StandingRow extends StatelessWidget {
                 ],
               ),
             ),
+            const SizedBox(width: 8),
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
@@ -1640,13 +1651,13 @@ class _SettingsPage extends ConsumerWidget {
             title: strings.motorsportCategories,
             subtitle: strings.chooseAny,
             items: const [
-              ('f1', 'F1', 'assets/brands/f1.svg'),
-              ('f2', 'F2', 'assets/brands/f2.svg'),
-              ('f3', 'F3', 'assets/brands/f3.svg'),
+              ('f1', 'F1', 'assets/brands/f1-official.svg'),
+              ('f2', 'F2', 'assets/brands/f2-official.svg'),
+              ('f3', 'F3', 'assets/brands/f3-official.svg'),
               ('imsa', 'IMSA', 'assets/brands/imsa.svg'),
-              ('indycar', 'INDYCAR', 'assets/brands/indycar.png'),
-              ('indynxt', 'INDY NXT', 'assets/brands/indycar.png'),
-              ('wec', 'WEC', 'assets/brands/wec.svg'),
+              ('indycar', 'INDYCAR', 'assets/brands/indycar-official.png'),
+              ('indynxt', 'INDY NXT', 'assets/brands/indynxt-official.png'),
+              ('wec', 'WEC', 'assets/brands/wec-official.png'),
             ],
             selected: settings.motorsportCategories,
             onToggle: (id) {
@@ -1660,8 +1671,8 @@ class _SettingsPage extends ConsumerWidget {
             title: strings.esportCategories,
             subtitle: strings.chooseAny,
             items: const [
-              ('iracing', 'iRacing', 'assets/brands/iracing.png'),
-              ('lmu', 'Le Mans Ultimate', 'assets/brands/lmu.jpg'),
+              ('iracing', 'iRacing', 'assets/brands/iracing-official.svg'),
+              ('lmu', 'Le Mans Ultimate', 'assets/brands/lmu-official.svg'),
             ],
             selected: settings.esportCategories,
             onToggle: controller.toggleEsportCategory,
@@ -1841,10 +1852,7 @@ class _CategorySelectionCard extends StatelessWidget {
                                 Expanded(
                                   child: Padding(
                                     padding: const EdgeInsets.only(right: 26),
-                                    child: _BrandLogo(
-                                      path: item.$3,
-                                      label: item.$2,
-                                    ),
+                                    child: _BrandLogo(path: item.$3),
                                   ),
                                 ),
                                 const SizedBox(height: 8),
@@ -1872,12 +1880,12 @@ class _CategorySelectionCard extends StatelessWidget {
 }
 
 class _BrandLogo extends StatelessWidget {
-  const _BrandLogo({required this.path, required this.label});
+  const _BrandLogo({required this.path});
   final String path;
-  final String label;
 
   @override
   Widget build(BuildContext context) {
+    final darkPlate = path.endsWith('wec-official.png');
     Widget image = path.endsWith('.svg')
         ? SvgPicture.asset(path, fit: BoxFit.contain)
         : Image.asset(
@@ -1885,46 +1893,12 @@ class _BrandLogo extends StatelessWidget {
             fit: BoxFit.contain,
             filterQuality: FilterQuality.high,
           );
-    if (path.endsWith('indycar.png')) {
-      image = Row(
-        children: [
-          SizedBox(
-            width: 74,
-            height: 40,
-            child: ClipRect(
-              child: Transform.scale(
-                scale: 1.8,
-                alignment: Alignment.centerLeft,
-                child: Image.asset(
-                  path,
-                  fit: BoxFit.cover,
-                  alignment: Alignment.centerLeft,
-                  filterQuality: FilterQuality.high,
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(width: 8),
-          Expanded(
-            child: Text(
-              label,
-              style: const TextStyle(
-                color: Color(0xFF151515),
-                fontSize: 17,
-                fontWeight: FontWeight.w900,
-                fontStyle: FontStyle.italic,
-              ),
-            ),
-          ),
-        ],
-      );
-    }
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: darkPlate ? const Color(0xFF15151E) : Colors.white,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: const Color(0x22000000)),
       ),

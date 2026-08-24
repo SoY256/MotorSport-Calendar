@@ -12,6 +12,36 @@ void main() {
     expect(const AppSettings().language, AppLanguage.english);
   });
 
+  test(
+    'WEC standings include complete Hypercar and LMGT3 classifications',
+    () async {
+      final standings = await AssetCalendarRepository().loadStandings('wec');
+      final hypercarDrivers = standings.drivers.where(
+        (item) => item.category == 'HYPERCAR',
+      );
+      final lmgt3Drivers = standings.drivers.where(
+        (item) => item.category == 'LMGT3',
+      );
+      final hypercarTeams = standings.teams.where(
+        (item) => item.category == 'HYPERCAR',
+      );
+      final lmgt3Teams = standings.teams.where(
+        (item) => item.category == 'LMGT3',
+      );
+
+      expect(hypercarDrivers, hasLength(51));
+      expect(lmgt3Drivers, hasLength(58));
+      expect(hypercarTeams, hasLength(8));
+      expect(lmgt3Teams, hasLength(18));
+      expect(
+        standings.drivers.every((item) => item.nationality.isNotEmpty),
+        isTrue,
+      );
+      expect(standings.drivers.any((item) => item.wins > 0), isTrue);
+      expect(standings.teams.any((item) => item.wins > 0), isTrue);
+    },
+  );
+
   testWidgets('calendar, results, standings and settings work end to end', (
     tester,
   ) async {
