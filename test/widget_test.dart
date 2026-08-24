@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart' as http;
+import 'package:http/testing.dart';
 import 'package:motor_sport_calendar/app/app.dart';
 import 'package:motor_sport_calendar/features/calendar/data/calendar_repository.dart';
 import 'package:motor_sport_calendar/features/calendar/presentation/calendar_providers.dart';
@@ -41,6 +43,83 @@ void main() {
       expect(standings.teams.any((item) => item.wins > 0), isTrue);
     },
   );
+
+  test(
+    'truncated remote standings cannot replace complete bundled data',
+    () async {
+      final repository = NetworkFirstCalendarRepository(
+        fallback: AssetCalendarRepository(),
+        client: MockClient(
+          (_) async => http.Response(
+            '{"data":[]}',
+            200,
+            headers: {'content-type': 'application/json'},
+          ),
+        ),
+      );
+
+      final standings = await repository.loadStandings('wec');
+
+      expect(standings.drivers, hasLength(109));
+      expect(standings.teams, hasLength(26));
+      expect(standings.drivers.any((item) => item.wins > 0), isTrue);
+    },
+  );
+
+  test(
+    'remote F1 results without flags fall back to bundled results',
+    () async {
+      final fallback = AssetCalendarRepository();
+      final calendar = await fallback.load();
+      final event = calendar.events.firstWhere(
+        (item) => item.seriesId == 'f1' && item.round == 1,
+      );
+      final repository = NetworkFirstCalendarRepository(
+        fallback: fallback,
+        client: MockClient(
+          (_) async => http.Response(
+            '''{"data":{"eventId":"incomplete","sessions":[{"type":"R","name":"Race","startTimeUtc":"2026-01-01T00:00:00Z","results":[{"position":1,"positionText":"1","driver":{"id":"x","givenName":"Test","familyName":"Driver"},"team":{"name":"Test Team","color":"#000000"},"components":{}}]}]}}''',
+            200,
+            headers: {'content-type': 'application/json'},
+          ),
+        ),
+      );
+
+      final results = await repository.loadResults(event);
+
+      expect(results.sessions, isNotEmpty);
+      expect(
+        results.sessions
+            .expand((session) => session.results)
+            .every((result) => (result.driver.nationality ?? '').isNotEmpty),
+        isTrue,
+      );
+    },
+  );
+
+  testWidgets('calendar fits a narrow phone without overflow', (tester) async {
+    SharedPreferences.setMockInitialValues({});
+    tester.view.physicalSize = const Size(360, 800);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          calendarRepositoryProvider.overrideWithValue(
+            AssetCalendarRepository(),
+          ),
+        ],
+        child: const MotorsportCalendarApp(),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Calendar'));
+    await tester.pumpAndSettle();
+
+    expect(tester.takeException(), isNull);
+  });
 
   testWidgets('calendar, results, standings and settings work end to end', (
     tester,

@@ -659,7 +659,8 @@ class _EventCard extends StatelessWidget {
                             ),
                           ),
                         ),
-                        if (completed)
+                        if (completed &&
+                            MediaQuery.sizeOf(context).width >= 520)
                           Container(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 7,
@@ -951,24 +952,28 @@ class _SeriesBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-    constraints: BoxConstraints(minWidth: compact ? 28 : 38),
+    width: compact ? 18 : null,
+    height: compact ? 18 : null,
+    constraints: BoxConstraints(minWidth: compact ? 18 : 38),
     padding: EdgeInsets.symmetric(
-      horizontal: compact ? 4 : 7,
-      vertical: compact ? 2 : 4,
+      horizontal: compact ? 2 : 7,
+      vertical: compact ? 1 : 4,
     ),
     decoration: BoxDecoration(
       color: _seriesColor(seriesId),
       borderRadius: BorderRadius.circular(6),
     ),
-    child: Text(
-      _seriesLabel(seriesId),
-      textAlign: TextAlign.center,
-      style: TextStyle(
-        color: Colors.white,
-        fontSize: compact ? 8 : 11,
-        fontWeight: FontWeight.w900,
-      ),
-    ),
+    child: compact
+        ? const Icon(Icons.sports_motorsports, color: Colors.white, size: 12)
+        : Text(
+            _seriesLabel(seriesId),
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 11,
+              fontWeight: FontWeight.w900,
+            ),
+          ),
   );
 }
 

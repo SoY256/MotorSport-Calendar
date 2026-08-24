@@ -107,6 +107,7 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
       );
       if (calendars.any((calendar) => calendar == null)) return local;
       final remote = _mergeCalendars(calendars.cast<Map<String, dynamic>>());
+      if (!remote.updatedAt.isAfter(local.updatedAt)) return local;
       final events = <String, RaceEvent>{
         for (final event in local.events) event.id: event,
         for (final event in remote.events) event.id: event,
@@ -127,9 +128,12 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
   Future<EventResults> loadResults(RaceEvent event) async {
     try {
       final json = await _remote('${event.seriesId}/2026/${event.resultsPath}');
-      return json == null
-          ? await fallback.loadResults(event)
-          : EventResults.fromJson(json);
+      if (json == null) return await fallback.loadResults(event);
+      final remote = EventResults.fromJson(json);
+      final hasIncompleteDrivers = remote.sessions
+          .expand((session) => session.results)
+          .any((result) => (result.driver.nationality ?? '').isEmpty);
+      return hasIncompleteDrivers ? await fallback.loadResults(event) : remote;
     } on Object {
       return await fallback.loadResults(event);
     }
@@ -137,15 +141,16 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
 
   @override
   Future<StandingsData> loadStandings(String seriesId) async {
+    final local = await fallback.loadStandings(seriesId);
     try {
       final documents = await Future.wait([
         _remote('$seriesId/2026/standings_drivers.json'),
         _remote('$seriesId/2026/standings_teams.json'),
       ]);
       if (documents.any((document) => document == null)) {
-        return await fallback.loadStandings(seriesId);
+        return local;
       }
-      return StandingsData(
+      final remote = StandingsData(
         drivers: (documents[0]!['data'] as List<dynamic>)
             .map(
               (item) => DriverStanding.fromJson(item as Map<String, dynamic>),
@@ -155,8 +160,30 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
             .map((item) => TeamStanding.fromJson(item as Map<String, dynamic>))
             .toList(growable: false),
       );
+      final localMaxPoints = local.drivers.fold<double>(
+        0,
+        (value, item) => item.points > value ? item.points : value,
+      );
+      final remoteMaxPoints = remote.drivers.fold<double>(
+        0,
+        (value, item) => item.points > value ? item.points : value,
+      );
+      final localWins = local.drivers.fold<int>(
+        0,
+        (value, item) => value + item.wins,
+      );
+      final remoteWins = remote.drivers.fold<int>(
+        0,
+        (value, item) => value + item.wins,
+      );
+      final complete =
+          remote.drivers.length >= local.drivers.length &&
+          remote.teams.length >= local.teams.length &&
+          remoteMaxPoints >= localMaxPoints &&
+          remoteWins >= localWins;
+      return complete ? remote : local;
     } on Object {
-      return await fallback.loadStandings(seriesId);
+      return local;
     }
   }
 }
