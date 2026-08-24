@@ -18,6 +18,10 @@ const _circuitMetadata = <String, CircuitMetadata>{
     lengthKm: 5.807,
     lapRecord: '1:30.983 • Lewis Hamilton (2019)',
   ),
+  'Suzuka Circuit': CircuitMetadata(
+    lengthKm: 5.807,
+    lapRecord: '1:30.983 • Lewis Hamilton (2019)',
+  ),
   'Miami International Autodrome': CircuitMetadata(
     lengthKm: 5.412,
     lapRecord: '1:29.708 • Max Verstappen (2023)',
@@ -54,6 +58,10 @@ const _circuitMetadata = <String, CircuitMetadata>{
     lengthKm: 4.259,
     lapRecord: '1:11.097 • Lewis Hamilton (2021)',
   ),
+  'Circuit Park Zandvoort': CircuitMetadata(
+    lengthKm: 4.259,
+    lapRecord: '1:11.097 • Lewis Hamilton (2021)',
+  ),
   'Autodromo Nazionale di Monza': CircuitMetadata(
     lengthKm: 5.793,
     lapRecord: '1:21.046 • Rubens Barrichello (2004)',
@@ -62,6 +70,7 @@ const _circuitMetadata = <String, CircuitMetadata>{
     lengthKm: 6.003,
     lapRecord: '1:43.009 • Charles Leclerc (2019)',
   ),
+  'Madring': CircuitMetadata(lengthKm: 5.474, lapRecord: null),
   'Marina Bay Street Circuit': CircuitMetadata(
     lengthKm: 4.940,
     lapRecord: '1:35.867 • Lewis Hamilton (2023)',
@@ -86,6 +95,10 @@ const _circuitMetadata = <String, CircuitMetadata>{
     lengthKm: 5.419,
     lapRecord: '1:22.384 • Lando Norris (2024)',
   ),
+  'Losail International Circuit': CircuitMetadata(
+    lengthKm: 5.419,
+    lapRecord: '1:22.384 • Lando Norris (2024)',
+  ),
   'Yas Marina Circuit': CircuitMetadata(
     lengthKm: 5.281,
     lapRecord: '1:26.103 • Max Verstappen (2021)',
@@ -99,3 +112,32 @@ const _circuitMetadata = <String, CircuitMetadata>{
 CircuitMetadata metadataForCircuit(String name) =>
     _circuitMetadata[name] ??
     const CircuitMetadata(lengthKm: null, lapRecord: null);
+
+String circuitAssetFor(String name) =>
+    'assets/circuits/${switch (name) {
+      'Albert Park Grand Prix Circuit' => 'albert-park',
+      'Shanghai International Circuit' => 'shanghai',
+      'Suzuka Circuit' || 'Suzuka International Racing Course' => 'suzuka',
+      'Miami International Autodrome' => 'miami',
+      'Circuit Gilles Villeneuve' => 'montreal',
+      'Circuit de Monaco' => 'monaco',
+      'Circuit de Barcelona-Catalunya' => 'catalunya',
+      'Red Bull Ring' => 'red-bull-ring',
+      'Silverstone Circuit' => 'silverstone',
+      'Circuit de Spa-Francorchamps' => 'spa',
+      'Hungaroring' => 'hungaroring',
+      'Circuit Park Zandvoort' || 'Circuit Zandvoort' => 'zandvoort',
+      'Autodromo Nazionale di Monza' => 'monza',
+      'Madring' => 'madring',
+      'Baku City Circuit' => 'baku',
+      'Sepang International Circuit' => 'sepang',
+      'Marina Bay Street Circuit' => 'marina-bay',
+      'Circuit of the Americas' => 'austin',
+      'Autódromo Hermanos Rodríguez' => 'mexico-city',
+      'Autódromo José Carlos Pace' => 'interlagos',
+      'Las Vegas Strip Street Circuit' => 'las-vegas',
+      'Losail International Circuit' || 'Lusail International Circuit' => 'lusail',
+      'Yas Marina Circuit' => 'yas-marina',
+      'Jeddah Corniche Circuit' => 'jeddah',
+      _ => 'silverstone',
+    }}.svg';

@@ -49,3 +49,7 @@ flutter run
 On Windows, `run_app.bat` starts the web version using the bundled Flutter SDK. The debug Android package is created at `build/app/outputs/flutter-apk/app-debug.apk`.
 
 CI verifies formatting, static analysis, widget and visual-regression tests, and both web and Android builds.
+
+## Circuit assets
+
+The bundled circuit layout SVGs come from the open-source [F1DB](https://github.com/f1db/f1db) project and are used under CC BY 4.0. A copy of the license is included at `assets/circuits/F1DB-LICENSE.txt`.

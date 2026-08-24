@@ -13,6 +13,7 @@ dependencies:
   flutter_riverpod: ^3.4.2
   http: ^1.6.0
   shared_preferences: ^2.5.5
+  flutter_svg: ^2.2.1
 
 dev_dependencies:
   flutter_test:
@@ -25,3 +26,4 @@ flutter:
     - assets/data/
     - assets/data/f1/2026/
     - assets/data/f1/2026/events/
+    - assets/circuits/

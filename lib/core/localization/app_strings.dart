@@ -36,6 +36,10 @@ class AppStrings {
       _en ? 'Scheduled sessions' : 'Zaplanowane sesje';
   String get circuitLength => _en ? 'Circuit length' : 'Długość toru';
   String get lapRecord => _en ? 'Lap record' : 'Rekord toru';
+  String get categories => _en ? 'Categories' : 'Kategorie';
+  String selectedCategories(int count) =>
+      _en ? '$count selected' : 'Wybrano: $count';
+  String get championship => _en ? 'Championship' : 'Mistrzostwa';
   String get drivers => _en ? 'Drivers' : 'Kierowcy';
   String get constructors => _en ? 'Constructors' : 'Konstruktorzy';
   String get points => _en ? 'PTS' : 'PKT';

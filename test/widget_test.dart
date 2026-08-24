@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:motor_sport_calendar/app/app.dart';
@@ -36,6 +37,17 @@ void main() {
 
     expect(find.text('Sezon 2026'), findsOneWidget);
     expect(find.text('Australian Grand Prix'), findsOneWidget);
+    expect(find.text('🇦🇺'), findsOneWidget);
+    expect(find.text('Kategorie • Wybrano: 1'), findsOneWidget);
+    await tester.tap(find.text('Kategorie • Wybrano: 1'));
+    await tester.pump(const Duration(milliseconds: 200));
+    await tester.tap(find.byType(Checkbox));
+    await tester.pump(const Duration(milliseconds: 200));
+    expect(find.text('Australian Grand Prix'), findsNothing);
+    await tester.tap(find.byType(Checkbox));
+    await tester.pump(const Duration(milliseconds: 200));
+    await tester.tap(find.text('Kategorie • Wybrano: 1'));
+    await tester.pump(const Duration(milliseconds: 200));
     expect(find.text('Ukryj poprzednie wydarzenia'), findsOneWidget);
 
     await tester.tap(find.text('Ukryj poprzednie wydarzenia'));
@@ -46,6 +58,8 @@ void main() {
     expect(find.text('Australian Grand Prix'), findsOneWidget);
 
     await tester.ensureVisible(find.text('Australian Grand Prix'));
+    await tester.drag(find.byType(CustomScrollView), const Offset(0, 80));
+    await tester.pump(const Duration(milliseconds: 300));
     await tester.tap(find.text('Australian Grand Prix'));
     await tester.pump();
     await tester.runAsync(
@@ -67,6 +81,7 @@ void main() {
     );
     await tester.pump(const Duration(milliseconds: 500));
     expect(find.text('Andrea Kimi Antonelli'), findsOneWidget);
+    expect(find.text('Mistrzostwa'), findsOneWidget);
     expect(find.text('242 PKT'), findsOneWidget);
 
     await tester.tap(find.text('Ustawienia'));

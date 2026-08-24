@@ -18,6 +18,9 @@ final eventResultsProvider = FutureProvider.family<EventResults, RaceEvent>((
   return ref.watch(calendarRepositoryProvider).loadResults(event);
 });
 
-final standingsProvider = FutureProvider<StandingsData>((ref) {
-  return ref.watch(calendarRepositoryProvider).loadStandings();
+final standingsProvider = FutureProvider.family<StandingsData, String>((
+  ref,
+  seriesId,
+) {
+  return ref.watch(calendarRepositoryProvider).loadStandings(seriesId);
 });

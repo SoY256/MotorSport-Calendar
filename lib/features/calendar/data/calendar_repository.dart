@@ -8,14 +8,13 @@ import '../domain/race_event.dart';
 abstract interface class CalendarRepository {
   Future<CalendarData> load();
   Future<EventResults> loadResults(RaceEvent event);
-  Future<StandingsData> loadStandings();
+  Future<StandingsData> loadStandings(String seriesId);
 }
 
 class AssetCalendarRepository implements CalendarRepository {
   AssetCalendarRepository({AssetBundle? bundle})
     : _bundle = bundle ?? rootBundle;
 
-  static const _seasonRoot = 'assets/data/f1/2026';
   final AssetBundle _bundle;
 
   Future<Map<String, dynamic>> _json(String path) async {
@@ -24,18 +23,35 @@ class AssetCalendarRepository implements CalendarRepository {
   }
 
   @override
-  Future<CalendarData> load() async =>
-      CalendarData.fromJson(await _json('$_seasonRoot/calendar.json'));
+  Future<CalendarData> load() async {
+    final manifest = await _json('assets/data/manifest.json');
+    final calendars = await Future.wait(
+      (manifest['availableSeries'] as List<dynamic>).map((item) {
+        final series = item as Map<String, dynamic>;
+        final id = series['id'] as String;
+        final seasons = (series['availableSeasons'] as List<dynamic>)
+            .cast<int>();
+        final season = seasons.reduce((a, b) => a > b ? a : b);
+        return _json('assets/data/$id/$season/calendar.json');
+      }),
+    );
+    return _mergeCalendars(calendars);
+  }
 
   @override
   Future<EventResults> loadResults(RaceEvent event) async =>
-      EventResults.fromJson(await _json('$_seasonRoot/${event.resultsPath}'));
+      EventResults.fromJson(
+        await _json(
+          'assets/data/${event.seriesId}/${event.season}/${event.resultsPath}',
+        ),
+      );
 
   @override
-  Future<StandingsData> loadStandings() async {
+  Future<StandingsData> loadStandings(String seriesId) async {
+    final seasonRoot = 'assets/data/$seriesId/2026';
     final documents = await Future.wait([
-      _json('$_seasonRoot/standings_drivers.json'),
-      _json('$_seasonRoot/standings_teams.json'),
+      _json('$seasonRoot/standings_drivers.json'),
+      _json('$seasonRoot/standings_teams.json'),
     ]);
     return StandingsData(
       drivers: (documents[0]['data'] as List<dynamic>)
@@ -52,8 +68,8 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
   NetworkFirstCalendarRepository({required this.fallback, http.Client? client})
     : _client = client ?? http.Client();
 
-  static final _root = Uri.parse(
-    'https://raw.githubusercontent.com/SoY256/MotorSport-Calendar/main/data/f1/2026/',
+  static final _dataRoot = Uri.parse(
+    'https://raw.githubusercontent.com/SoY256/MotorSport-Calendar/main/data/',
   );
 
   final CalendarRepository fallback;
@@ -62,7 +78,7 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
   Future<Map<String, dynamic>?> _remote(String path) async {
     try {
       final response = await _client
-          .get(_root.resolve(path))
+          .get(_dataRoot.resolve(path))
           .timeout(const Duration(seconds: 8));
       if (response.statusCode == 200) {
         return jsonDecode(response.body) as Map<String, dynamic>;
@@ -75,26 +91,38 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
 
   @override
   Future<CalendarData> load() async {
-    final json = await _remote('calendar.json');
-    return json == null ? fallback.load() : CalendarData.fromJson(json);
+    final manifest = await _remote('manifest.json');
+    if (manifest == null) return fallback.load();
+    final calendars = await Future.wait(
+      (manifest['availableSeries'] as List<dynamic>).map((item) {
+        final series = item as Map<String, dynamic>;
+        final id = series['id'] as String;
+        final seasons = (series['availableSeasons'] as List<dynamic>)
+            .cast<int>();
+        final season = seasons.reduce((a, b) => a > b ? a : b);
+        return _remote('$id/$season/calendar.json');
+      }),
+    );
+    if (calendars.any((calendar) => calendar == null)) return fallback.load();
+    return _mergeCalendars(calendars.cast<Map<String, dynamic>>());
   }
 
   @override
   Future<EventResults> loadResults(RaceEvent event) async {
-    final json = await _remote(event.resultsPath);
+    final json = await _remote('${event.seriesId}/2026/${event.resultsPath}');
     return json == null
         ? fallback.loadResults(event)
         : EventResults.fromJson(json);
   }
 
   @override
-  Future<StandingsData> loadStandings() async {
+  Future<StandingsData> loadStandings(String seriesId) async {
     final documents = await Future.wait([
-      _remote('standings_drivers.json'),
-      _remote('standings_teams.json'),
+      _remote('$seriesId/2026/standings_drivers.json'),
+      _remote('$seriesId/2026/standings_teams.json'),
     ]);
     if (documents.any((document) => document == null)) {
-      return fallback.loadStandings();
+      return fallback.loadStandings(seriesId);
     }
     return StandingsData(
       drivers: (documents[0]!['data'] as List<dynamic>)
@@ -105,4 +133,18 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
           .toList(growable: false),
     );
   }
+}
+
+CalendarData _mergeCalendars(List<Map<String, dynamic>> documents) {
+  final calendars = documents.map(CalendarData.fromJson).toList();
+  final events = calendars.expand((calendar) => calendar.events).toList()
+    ..sort((a, b) => a.startsAt.compareTo(b.startsAt));
+  final updatedAt = calendars
+      .map((calendar) => calendar.updatedAt)
+      .reduce((a, b) => a.isAfter(b) ? a : b);
+  return CalendarData(
+    schemaVersion: calendars.first.schemaVersion,
+    updatedAt: updatedAt,
+    events: events,
+  );
 }
