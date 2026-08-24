@@ -660,6 +660,24 @@ class _CalendarGridPageState extends State<_CalendarGridPage> {
                   ],
                 ),
                 const Divider(height: 1),
+                Row(
+                  children: _weekdayNames(widget.strings.language)
+                      .map(
+                        (day) => Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8),
+                            child: Text(
+                              day,
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context).textTheme.labelMedium
+                                  ?.copyWith(fontWeight: FontWeight.w900),
+                            ),
+                          ),
+                        ),
+                      )
+                      .toList(),
+                ),
+                const Divider(height: 1),
                 LayoutBuilder(
                   builder: (context, gridConstraints) => GridView.builder(
                     shrinkWrap: true,
@@ -1590,3 +1608,8 @@ String _date(DateTime value, AppLanguage language) =>
 String _time(DateTime value) => '${_two(value.hour)}:${_two(value.minute)}';
 String _dateTime(DateTime value, AppLanguage language) =>
     '${_date(value, language)} ${value.year}, ${_time(value)}';
+
+List<String> _weekdayNames(AppLanguage language) =>
+    language == AppLanguage.english
+    ? const ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']
+    : const ['PON', 'WT', 'ŚR', 'CZW', 'PT', 'SOB', 'NIE'];
