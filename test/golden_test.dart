@@ -4,9 +4,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:motor_sport_calendar/app/app.dart';
 import 'package:motor_sport_calendar/features/calendar/data/calendar_repository.dart';
 import 'package:motor_sport_calendar/features/calendar/presentation/calendar_providers.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   testWidgets('phone calendar visual regression', (tester) async {
+    SharedPreferences.setMockInitialValues({});
     tester.view.physicalSize = const Size(390, 844);
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.resetPhysicalSize);

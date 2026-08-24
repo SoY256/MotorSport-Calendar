@@ -13,6 +13,7 @@ def schedule_payload():
                     "country": "Australia", "country_code": "AUS"},
         "schedule": [
             {"code": "FP1", "title": "Practice 1", "timestamp": "2026-03-06T01:30:00Z",
+             "local_timestamp": "2026-03-06 12:30:00+11:00", "timezone": "Australia/Melbourne",
              "sessions": [{"is_cancelled": False}]},
             {"code": "SQ", "title": "Sprint Qualifying", "timestamp": "2026-03-06T05:30:00+00:00",
              "sessions": [{"is_cancelled": False}]},
@@ -29,6 +30,9 @@ class AdapterTests(unittest.TestCase):
         event = adapt_schedule(schedule_payload(), 2026)[0]
         self.assertEqual(["FP1", "SQ", "SPRINT", "R"], [item["type"] for item in event["sessions"]])
         self.assertTrue(all(item["startTimeUtc"].endswith("Z") for item in event["sessions"]))
+        self.assertEqual("2026-03-06 12:30:00+11:00", event["sessions"][0]["startTimeTrack"])
+        self.assertEqual("Australia/Melbourne", event["sessions"][0]["trackTimeZone"])
+        self.assertEqual("events/01-australian-grand-prix.json", event["resultsPath"])
 
     def test_result_does_not_leak_upstream_shape(self):
         payload = {"data": {"code": "R", "title": "Race", "timestamp": "2026-03-08T04:00:00Z", "results": [{

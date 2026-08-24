@@ -1,59 +1,88 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/localization/app_strings.dart';
 import '../../../core/widgets/app_logo.dart';
+import '../../settings/domain/app_settings.dart';
+import '../../settings/presentation/settings_controller.dart';
 import '../../settings/presentation/theme_controller.dart';
 import '../domain/race_event.dart';
 import 'calendar_providers.dart';
 
 class CalendarScreen extends ConsumerStatefulWidget {
   const CalendarScreen({super.key});
+
   @override
   ConsumerState<CalendarScreen> createState() => _CalendarScreenState();
 }
 
 class _CalendarScreenState extends ConsumerState<CalendarScreen> {
   int _page = 0;
+  String? _selectedEventId;
 
   @override
   Widget build(BuildContext context) {
+    final settings = ref.watch(settingsProvider);
+    final strings = AppStrings(settings.language);
     final calendar = ref.watch(calendarProvider);
     final wide = MediaQuery.sizeOf(context).width >= 850;
+    final destinations = [
+      NavigationDestination(
+        icon: const Icon(Icons.calendar_month_outlined),
+        selectedIcon: const Icon(Icons.calendar_month),
+        label: strings.calendar,
+      ),
+      NavigationDestination(
+        icon: const Icon(Icons.flag_outlined),
+        selectedIcon: const Icon(Icons.flag),
+        label: strings.results,
+      ),
+      NavigationDestination(
+        icon: const Icon(Icons.emoji_events_outlined),
+        selectedIcon: const Icon(Icons.emoji_events),
+        label: strings.standings,
+      ),
+      NavigationDestination(
+        icon: const Icon(Icons.tune_outlined),
+        selectedIcon: const Icon(Icons.tune),
+        label: strings.settings,
+      ),
+    ];
     final content = calendar.when(
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (error, _) => _ErrorState(
         message: error.toString(),
+        strings: strings,
         onRetry: () => ref.invalidate(calendarProvider),
       ),
-      data: (data) => switch (_page) {
-        0 => _CalendarPage(data: data),
-        1 => _WeekendPage(data: data),
-        2 => _StandingsPage(data: data),
-        _ => const _SettingsPage(),
+      data: (data) {
+        final selected = data.events.firstWhere(
+          (event) => event.id == _selectedEventId,
+          orElse: () => _nearestEvent(data.events),
+        );
+        return switch (_page) {
+          0 => _CalendarPage(
+            data: data,
+            settings: settings,
+            strings: strings,
+            onEventTap: (event) => setState(() {
+              _selectedEventId = event.id;
+              _page = 1;
+            }),
+          ),
+          1 => _ResultsPage(
+            data: data,
+            selected: selected,
+            settings: settings,
+            strings: strings,
+            onSelected: (event) => setState(() => _selectedEventId = event.id),
+          ),
+          2 => _StandingsPage(strings: strings),
+          _ => _SettingsPage(settings: settings, strings: strings),
+        };
       },
     );
-    final destinations = const [
-      NavigationDestination(
-        icon: Icon(Icons.calendar_month_outlined),
-        selectedIcon: Icon(Icons.calendar_month),
-        label: 'Kalendarz',
-      ),
-      NavigationDestination(
-        icon: Icon(Icons.flag_outlined),
-        selectedIcon: Icon(Icons.flag),
-        label: 'Weekend',
-      ),
-      NavigationDestination(
-        icon: Icon(Icons.emoji_events_outlined),
-        selectedIcon: Icon(Icons.emoji_events),
-        label: 'Klasyfikacja',
-      ),
-      NavigationDestination(
-        icon: Icon(Icons.tune_outlined),
-        selectedIcon: Icon(Icons.tune),
-        label: 'Ustawienia',
-      ),
-    ];
+
     return Scaffold(
       body: SafeArea(
         child: Row(
@@ -113,7 +142,7 @@ class _PageFrame extends StatelessWidget {
         title: const AppLogo(),
         actions: actions,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor
-            .withValues(alpha: .92),
+            .withValues(alpha: .94),
       ),
       SliverToBoxAdapter(
         child: Center(
@@ -158,108 +187,162 @@ class _PageFrame extends StatelessWidget {
 }
 
 class _CalendarPage extends ConsumerWidget {
-  const _CalendarPage({required this.data});
+  const _CalendarPage({
+    required this.data,
+    required this.settings,
+    required this.strings,
+    required this.onEventTap,
+  });
   final CalendarData data;
+  final AppSettings settings;
+  final AppStrings strings;
+  final ValueChanged<RaceEvent> onEventTap;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) => _PageFrame(
-    title: 'Sezon ${data.events.first.season}',
-    subtitle: '${data.events.length} rund • godziny w Twojej strefie czasowej',
-    actions: [
-      IconButton(
-        tooltip: 'Odśwież dane',
-        onPressed: () => ref.invalidate(calendarProvider),
-        icon: const Icon(Icons.refresh_rounded),
-      ),
-      const SizedBox(width: 8),
-    ],
-    child: Column(
-      children: [
-        _NextRaceHero(event: _nearestEvent(data.events)),
-        const SizedBox(height: 18),
-        for (final event in data.events) ...[
-          _EventCard(event: event),
-          const SizedBox(height: 12),
-        ],
-        Padding(
-          padding: const EdgeInsets.only(top: 8),
-          child: Text(
-            'Dane zaktualizowano ${_dateTime(data.updatedAt.toLocal())}',
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final now = DateTime.now().toUtc();
+    final events = settings.showPastEvents
+        ? data.events
+        : data.events.where((event) => event.endsAt.isAfter(now)).toList();
+    return _PageFrame(
+      title: '${strings.season} ${data.events.first.season}',
+      subtitle:
+          '${strings.rounds(data.events.where((event) => !event.cancelled).length)} • ${strings.timesInZone}',
+      actions: [
+        IconButton(
+          tooltip: strings.refresh,
+          onPressed: () => ref.invalidate(calendarProvider),
+          icon: const Icon(Icons.refresh_rounded),
         ),
+        const SizedBox(width: 8),
       ],
-    ),
-  );
+      child: Column(
+        children: [
+          _NextRaceHero(
+            event: _nearestEvent(data.events),
+            settings: settings,
+            strings: strings,
+          ),
+          const SizedBox(height: 14),
+          Card(
+            child: SwitchListTile(
+              secondary: const Icon(Icons.history_rounded),
+              title: Text(
+                settings.showPastEvents ? strings.hidePast : strings.showPast,
+                style: const TextStyle(fontWeight: FontWeight.w800),
+              ),
+              value: settings.showPastEvents,
+              onChanged: ref.read(settingsProvider.notifier).setShowPastEvents,
+            ),
+          ),
+          const SizedBox(height: 14),
+          if (events.isEmpty)
+            _EmptyCard(icon: Icons.event_busy, message: strings.noUpcoming)
+          else
+            for (final event in events) ...[
+              _EventCard(
+                event: event,
+                settings: settings,
+                strings: strings,
+                completed: event.endsAt.isBefore(now),
+                onTap: () => onEventTap(event),
+              ),
+              const SizedBox(height: 12),
+            ],
+          Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Text(
+              '${strings.updated}: ${_dateTime(data.updatedAt.toLocal(), settings.language)}',
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 class _NextRaceHero extends StatelessWidget {
-  const _NextRaceHero({required this.event});
+  const _NextRaceHero({
+    required this.event,
+    required this.settings,
+    required this.strings,
+  });
   final RaceEvent event;
+  final AppSettings settings;
+  final AppStrings strings;
 
   @override
-  Widget build(BuildContext context) => Container(
-    width: double.infinity,
-    padding: const EdgeInsets.all(24),
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(24),
-      gradient: const LinearGradient(
-        colors: [Color(0xFFE10600), Color(0xFF8A0501)],
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
+  Widget build(BuildContext context) {
+    final first = event.sessions.first;
+    final last = event.sessions.last;
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(24),
+        gradient: const LinearGradient(
+          colors: [Color(0xFFE10600), Color(0xFF8A0501)],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFFE10600).withValues(alpha: .24),
+            blurRadius: 28,
+            offset: const Offset(0, 12),
+          ),
+        ],
       ),
-      boxShadow: [
-        BoxShadow(
-          color: const Color(0xFFE10600).withValues(alpha: .24),
-          blurRadius: 28,
-          offset: const Offset(0, 12),
-        ),
-      ],
-    ),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          'NAJBLIŻSZA RUNDA',
-          style: TextStyle(
-            color: Colors.white70,
-            fontWeight: FontWeight.w800,
-            letterSpacing: 1.2,
-          ),
-        ),
-        const SizedBox(height: 18),
-        Text(
-          event.name,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 26,
-            fontWeight: FontWeight.w900,
-          ),
-        ),
-        const SizedBox(height: 6),
-        Text(
-          '${event.circuit.name} • ${event.circuit.country ?? ''}',
-          style: const TextStyle(color: Colors.white70),
-        ),
-        const SizedBox(height: 20),
-        Wrap(
-          spacing: 10,
-          runSpacing: 10,
-          children: [
-            _HeroPill(
-              icon: Icons.calendar_today,
-              label:
-                  '${_date(event.startsAt.toLocal())} – ${_date(event.endsAt.toLocal())}',
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            strings.nextRound,
+            style: const TextStyle(
+              color: Colors.white70,
+              fontWeight: FontWeight.w800,
+              letterSpacing: 1.2,
             ),
-            _HeroPill(
-              icon: Icons.schedule,
-              label: '${event.sessions.length} sesji',
+          ),
+          const SizedBox(height: 18),
+          Text(
+            event.name,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 26,
+              fontWeight: FontWeight.w900,
             ),
-          ],
-        ),
-      ],
-    ),
-  );
+          ),
+          const SizedBox(height: 6),
+          Text(
+            '${event.circuit.name} • ${event.circuit.country ?? ''}',
+            style: const TextStyle(color: Colors.white70),
+          ),
+          const SizedBox(height: 20),
+          Wrap(
+            spacing: 10,
+            runSpacing: 10,
+            children: [
+              _HeroPill(
+                icon: Icons.calendar_today,
+                label:
+                    '${_sessionDate(first, settings)} – ${_sessionDate(last, settings)}',
+              ),
+              _HeroPill(
+                icon: Icons.schedule,
+                label: strings.sessions(event.sessions.length),
+              ),
+              _HeroPill(
+                icon: Icons.public,
+                label: _zoneName(first, settings, strings),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 class _HeroPill extends StatelessWidget {
@@ -291,117 +374,130 @@ class _HeroPill extends StatelessWidget {
 }
 
 class _EventCard extends StatelessWidget {
-  const _EventCard({required this.event});
+  const _EventCard({
+    required this.event,
+    required this.settings,
+    required this.strings,
+    required this.completed,
+    required this.onTap,
+  });
   final RaceEvent event;
+  final AppSettings settings;
+  final AppStrings strings;
+  final bool completed;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     final race = event.sessions.last;
     return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(18),
-        child: Row(
-          children: [
-            Container(
-              width: 52,
-              height: 58,
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primaryContainer,
-                borderRadius: BorderRadius.circular(14),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(20),
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.all(18),
+          child: Row(
+            children: [
+              Container(
+                width: 52,
+                height: 58,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'R${event.round ?? '–'}',
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                    Text(
+                      _sessionMonth(race, settings),
+                      style: const TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+              const SizedBox(width: 15),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            event.name,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ),
+                        ),
+                        if (completed)
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 7,
+                              vertical: 3,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .surfaceContainerHighest,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Text(
+                              strings.completed,
+                              style: const TextStyle(
+                                fontSize: 10,
+                                fontWeight: FontWeight.w800,
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      '${event.circuit.countryCode ?? ''}  ${event.circuit.name}',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        fontSize: 13,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 10),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    'R${event.round ?? '–'}',
+                    _sessionDate(race, settings),
+                    style: const TextStyle(fontWeight: FontWeight.w800),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    _sessionTime(race, settings.timeMode),
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.primary,
                       fontWeight: FontWeight.w900,
                     ),
                   ),
-                  Text(
-                    _month(race.startTimeUtc.toLocal()),
-                    style: const TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
                 ],
               ),
-            ),
-            const SizedBox(width: 15),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    event.name,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    '${event.circuit.countryCode ?? ''}  ${event.circuit.name}',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.onSurfaceVariant,
-                      fontSize: 13,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(width: 10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  _date(race.startTimeUtc.toLocal()),
-                  style: const TextStyle(fontWeight: FontWeight.w800),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  _time(race.startTimeUtc.toLocal()),
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.primary,
-                    fontWeight: FontWeight.w900,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _WeekendPage extends StatelessWidget {
-  const _WeekendPage({required this.data});
-  final CalendarData data;
-
-  @override
-  Widget build(BuildContext context) {
-    final event = _nearestEvent(data.events);
-    return _PageFrame(
-      title: event.name,
-      subtitle:
-          '${event.circuit.name}, ${event.circuit.locality ?? event.circuit.country ?? ''}',
-      child: Card(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            children: [
-              for (var index = 0; index < event.sessions.length; index++)
-                _SessionRow(
-                  session: event.sessions[index],
-                  last: index == event.sessions.length - 1,
-                ),
+              const SizedBox(width: 4),
+              const Icon(Icons.chevron_right),
             ],
           ),
         ),
@@ -410,128 +506,443 @@ class _WeekendPage extends StatelessWidget {
   }
 }
 
-class _SessionRow extends StatelessWidget {
-  const _SessionRow({required this.session, required this.last});
-  final RaceSession session;
-  final bool last;
+class _ResultsPage extends ConsumerWidget {
+  const _ResultsPage({
+    required this.data,
+    required this.selected,
+    required this.settings,
+    required this.strings,
+    required this.onSelected,
+  });
+  final CalendarData data;
+  final RaceEvent selected;
+  final AppSettings settings;
+  final AppStrings strings;
+  final ValueChanged<RaceEvent> onSelected;
 
   @override
-  Widget build(BuildContext context) => IntrinsicHeight(
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Column(
-          children: [
-            Container(
-              width: 12,
-              height: 12,
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary,
-                shape: BoxShape.circle,
-              ),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final results = ref.watch(eventResultsProvider(selected));
+    return _PageFrame(
+      title: strings.results,
+      subtitle: '${selected.name} • ${selected.circuit.name}',
+      child: Column(
+        children: [
+          DropdownButtonFormField<String>(
+            initialValue: selected.id,
+            decoration: InputDecoration(
+              labelText: strings.selectEvent,
+              border: const OutlineInputBorder(),
             ),
-            if (!last)
-              Expanded(
-                child: Container(
-                  width: 2,
-                  color: Theme.of(context).colorScheme.outlineVariant,
-                ),
-              ),
-          ],
-        ),
-        const SizedBox(width: 16),
-        Expanded(
-          child: Padding(
-            padding: EdgeInsets.only(bottom: last ? 0 : 24),
+            isExpanded: true,
+            items: data.events
+                .where((event) => !event.cancelled)
+                .map(
+                  (event) => DropdownMenuItem(
+                    value: event.id,
+                    child: Text(
+                      'R${event.round} • ${event.name}',
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                )
+                .toList(),
+            onChanged: (id) =>
+                onSelected(data.events.firstWhere((event) => event.id == id)),
+          ),
+          const SizedBox(height: 16),
+          results.when(
+            loading: () => const Padding(
+              padding: EdgeInsets.all(32),
+              child: CircularProgressIndicator(),
+            ),
+            error: (error, _) => _ErrorState(
+              message: error.toString(),
+              strings: strings,
+              onRetry: () => ref.invalidate(eventResultsProvider(selected)),
+            ),
+            data: (data) => data.sessions.isEmpty
+                ? _EmptyCard(
+                    icon: Icons.hourglass_empty,
+                    message: strings.noResults,
+                  )
+                : Column(
+                    children: [
+                      for (
+                        var index = 0;
+                        index < data.sessions.length;
+                        index++
+                      ) ...[
+                        _SessionResultsCard(
+                          session: data.sessions[index],
+                          strings: strings,
+                        ),
+                        if (index < data.sessions.length - 1)
+                          const SizedBox(height: 12),
+                      ],
+                    ],
+                  ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _SessionResultsCard extends StatelessWidget {
+  const _SessionResultsCard({required this.session, required this.strings});
+  final SessionResults session;
+  final AppStrings strings;
+
+  @override
+  Widget build(BuildContext context) => Card(
+    child: ExpansionTile(
+      initiallyExpanded: session.type == 'R' || session.type == 'SPRINT',
+      title: Text(
+        _sessionLabel(session.type, session.name, strings),
+        style: const TextStyle(fontWeight: FontWeight.w900),
+      ),
+      subtitle: Text(
+        '${_date(session.startTimeUtc.toLocal(), strings.language)} • ${session.results.length}',
+      ),
+      children: [
+        const Divider(height: 1),
+        for (final result in session.results)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
             child: Row(
               children: [
-                Expanded(
+                SizedBox(
+                  width: 34,
                   child: Text(
-                    session.name,
-                    style: const TextStyle(fontWeight: FontWeight.w800),
+                    result.positionText,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w900,
+                    ),
                   ),
                 ),
-                Text(
-                  '${_date(session.startTimeUtc.toLocal())}  ${_time(session.startTimeUtc.toLocal())}',
+                Container(
+                  width: 4,
+                  height: 34,
+                  decoration: BoxDecoration(
+                    color: _hexColor(result.teamColor),
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '${result.driver.givenName} ${result.driver.familyName}',
+                        style: const TextStyle(fontWeight: FontWeight.w800),
+                      ),
+                      Text(
+                        result.teamName,
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                    ],
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      result.time ?? result.status ?? '–',
+                      style: const TextStyle(fontWeight: FontWeight.w700),
+                    ),
+                    if (result.points != null)
+                      Text(
+                        '${_number(result.points!)} ${strings.points}',
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                  ],
                 ),
               ],
             ),
           ),
-        ),
       ],
     ),
   );
 }
 
-class _StandingsPage extends StatelessWidget {
-  const _StandingsPage({required this.data});
-  final CalendarData data;
+class _StandingsPage extends ConsumerStatefulWidget {
+  const _StandingsPage({required this.strings});
+  final AppStrings strings;
   @override
-  Widget build(BuildContext context) => _PageFrame(
-    title: 'Klasyfikacja',
-    subtitle: 'Kierowcy i konstruktorzy • sezon ${data.events.first.season}',
-    child: const _InformationCard(
-      icon: Icons.emoji_events_rounded,
-      title: 'Klasyfikacja jest gotowa po stronie danych',
-      message: 'Widok tabel zostanie zasilony plikami standings po pierwszym udanym przebiegu GitHub Actions.',
-    ),
+  ConsumerState<_StandingsPage> createState() => _StandingsPageState();
+}
+
+class _StandingsPageState extends ConsumerState<_StandingsPage> {
+  bool _drivers = true;
+
+  @override
+  Widget build(BuildContext context) {
+    final standings = ref.watch(standingsProvider);
+    final strings = widget.strings;
+    return _PageFrame(
+      title: strings.standings,
+      subtitle: 'F1 • 2026',
+      child: Column(
+        children: [
+          SegmentedButton<bool>(
+            segments: [
+              ButtonSegment(
+                value: true,
+                icon: const Icon(Icons.person),
+                label: Text(strings.drivers),
+              ),
+              ButtonSegment(
+                value: false,
+                icon: const Icon(Icons.groups),
+                label: Text(strings.constructors),
+              ),
+            ],
+            selected: {_drivers},
+            onSelectionChanged: (value) =>
+                setState(() => _drivers = value.first),
+          ),
+          const SizedBox(height: 16),
+          standings.when(
+            loading: () => const Padding(
+              padding: EdgeInsets.all(32),
+              child: CircularProgressIndicator(),
+            ),
+            error: (error, _) => _ErrorState(
+              message: error.toString(),
+              strings: strings,
+              onRetry: () => ref.invalidate(standingsProvider),
+            ),
+            data: (data) => Card(
+              child: Column(
+                children: _drivers
+                    ? data.drivers
+                          .map(
+                            (item) => _StandingRow(
+                              position: item.position,
+                              title: '${item.givenName} ${item.familyName}',
+                              subtitle: item.teamIds.join(' • '),
+                              points: item.points,
+                              wins: item.wins,
+                              strings: strings,
+                            ),
+                          )
+                          .toList()
+                    : data.teams
+                          .map(
+                            (item) => _StandingRow(
+                              position: item.position,
+                              title: item.name,
+                              subtitle: '',
+                              points: item.points,
+                              wins: item.wins,
+                              strings: strings,
+                            ),
+                          )
+                          .toList(),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _StandingRow extends StatelessWidget {
+  const _StandingRow({
+    required this.position,
+    required this.title,
+    required this.subtitle,
+    required this.points,
+    required this.wins,
+    required this.strings,
+  });
+  final int position;
+  final String title;
+  final String subtitle;
+  final double points;
+  final int wins;
+  final AppStrings strings;
+
+  @override
+  Widget build(BuildContext context) => Column(
+    children: [
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 13),
+        child: Row(
+          children: [
+            SizedBox(
+              width: 38,
+              child: Text(
+                '$position',
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
+            ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(fontWeight: FontWeight.w800),
+                  ),
+                  if (subtitle.isNotEmpty)
+                    Text(
+                      subtitle,
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                ],
+              ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  '${_number(points)} ${strings.points}',
+                  style: const TextStyle(fontWeight: FontWeight.w900),
+                ),
+                Text(
+                  '${strings.wins}: $wins',
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+      const Divider(height: 1),
+    ],
   );
 }
 
 class _SettingsPage extends ConsumerWidget {
-  const _SettingsPage();
+  const _SettingsPage({required this.settings, required this.strings});
+  final AppSettings settings;
+  final AppStrings strings;
+
   @override
-  Widget build(BuildContext context, WidgetRef ref) => _PageFrame(
-    title: 'Ustawienia',
-    subtitle: 'Dopasuj aplikację do siebie',
-    child: Card(
-      child: SwitchListTile(
-        secondary: const Icon(Icons.dark_mode_outlined),
-        title: const Text(
-          'Tryb ciemny',
-          style: TextStyle(fontWeight: FontWeight.w800),
-        ),
-        subtitle: const Text('Ten sam design system, inne kolory'),
-        value: Theme.of(context).brightness == Brightness.dark,
-        onChanged: (_) => ref
-            .read(themeModeProvider.notifier)
-            .toggle(Theme.of(context).brightness),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final controller = ref.read(settingsProvider.notifier);
+    return _PageFrame(
+      title: strings.settings,
+      subtitle: strings.customize,
+      child: Column(
+        children: [
+          Card(
+            child: SwitchListTile(
+              secondary: const Icon(Icons.dark_mode_outlined),
+              title: Text(
+                strings.darkMode,
+                style: const TextStyle(fontWeight: FontWeight.w800),
+              ),
+              subtitle: Text(strings.darkModeHint),
+              value: Theme.of(context).brightness == Brightness.dark,
+              onChanged: (_) => ref
+                  .read(themeModeProvider.notifier)
+                  .toggle(Theme.of(context).brightness),
+            ),
+          ),
+          const SizedBox(height: 12),
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      const Icon(Icons.language),
+                      const SizedBox(width: 12),
+                      Text(
+                        strings.languageLabel,
+                        style: const TextStyle(fontWeight: FontWeight.w800),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 14),
+                  SegmentedButton<AppLanguage>(
+                    segments: [
+                      ButtonSegment(
+                        value: AppLanguage.polish,
+                        label: Text(strings.polish),
+                      ),
+                      ButtonSegment(
+                        value: AppLanguage.english,
+                        label: Text(strings.english),
+                      ),
+                    ],
+                    selected: {settings.language},
+                    onSelectionChanged: (value) =>
+                        controller.setLanguage(value.first),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 12),
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      const Icon(Icons.schedule),
+                      const SizedBox(width: 12),
+                      Text(
+                        strings.eventTime,
+                        style: const TextStyle(fontWeight: FontWeight.w800),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 14),
+                  SegmentedButton<EventTimeMode>(
+                    segments: [
+                      ButtonSegment(
+                        value: EventTimeMode.local,
+                        icon: const Icon(Icons.home),
+                        label: Text(strings.localTime),
+                      ),
+                      ButtonSegment(
+                        value: EventTimeMode.track,
+                        icon: const Icon(Icons.sports_score),
+                        label: Text(strings.trackTime),
+                      ),
+                    ],
+                    selected: {settings.timeMode},
+                    onSelectionChanged: (value) =>
+                        controller.setTimeMode(value.first),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
-    ),
-  );
+    );
+  }
 }
 
-class _InformationCard extends StatelessWidget {
-  const _InformationCard({
-    required this.icon,
-    required this.title,
-    required this.message,
-  });
+class _EmptyCard extends StatelessWidget {
+  const _EmptyCard({required this.icon, required this.message});
   final IconData icon;
-  final String title;
   final String message;
   @override
   Widget build(BuildContext context) => Card(
     child: Padding(
-      padding: const EdgeInsets.all(28),
+      padding: const EdgeInsets.all(32),
       child: Column(
         children: [
-          Icon(icon, size: 48, color: Theme.of(context).colorScheme.primary),
-          const SizedBox(height: 16),
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.titleLarge
-                ?.copyWith(fontWeight: FontWeight.w900),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            message,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.onSurfaceVariant,
-            ),
-          ),
+          Icon(icon, size: 44),
+          const SizedBox(height: 12),
+          Text(message, textAlign: TextAlign.center),
         ],
       ),
     ),
@@ -539,8 +950,13 @@ class _InformationCard extends StatelessWidget {
 }
 
 class _ErrorState extends StatelessWidget {
-  const _ErrorState({required this.message, required this.onRetry});
+  const _ErrorState({
+    required this.message,
+    required this.strings,
+    required this.onRetry,
+  });
   final String message;
+  final AppStrings strings;
   final VoidCallback onRetry;
   @override
   Widget build(BuildContext context) => Center(
@@ -551,9 +967,9 @@ class _ErrorState extends StatelessWidget {
         children: [
           const Icon(Icons.cloud_off_rounded, size: 52),
           const SizedBox(height: 12),
-          const Text(
-            'Nie udało się wczytać kalendarza',
-            style: TextStyle(fontWeight: FontWeight.w900),
+          Text(
+            strings.loadingError,
+            style: const TextStyle(fontWeight: FontWeight.w900),
           ),
           const SizedBox(height: 6),
           Text(message, textAlign: TextAlign.center),
@@ -561,7 +977,7 @@ class _ErrorState extends StatelessWidget {
           FilledButton.icon(
             onPressed: onRetry,
             icon: const Icon(Icons.refresh),
-            label: const Text('Spróbuj ponownie'),
+            label: Text(strings.retry),
           ),
         ],
       ),
@@ -573,11 +989,80 @@ RaceEvent _nearestEvent(List<RaceEvent> events) {
   final now = DateTime.now().toUtc();
   return events.cast<RaceEvent?>().firstWhere(
     (event) => event!.endsAt.isAfter(now) && !event.cancelled,
-    orElse: () => events.last,
+    orElse: () => events.where((event) => !event.cancelled).last,
   )!;
 }
 
-const _months = [
+String _sessionLabel(String type, String original, AppStrings strings) {
+  if (strings.language == AppLanguage.english) return original;
+  return switch (type) {
+    'FP1' => 'Trening 1',
+    'FP2' => 'Trening 2',
+    'FP3' => 'Trening 3',
+    'SQ' => 'Kwalifikacje sprintu',
+    'SPRINT' => 'Sprint',
+    'Q' => 'Kwalifikacje',
+    'R' => 'Wyścig',
+    _ => original,
+  };
+}
+
+String _zoneName(
+  RaceSession session,
+  AppSettings settings,
+  AppStrings strings,
+) {
+  if (settings.timeMode == EventTimeMode.local) return strings.localTime;
+  return session.trackTimeZone?.split('/').last.replaceAll('_', ' ') ??
+      strings.trackTime;
+}
+
+List<int>? _trackParts(RaceSession session) {
+  final value = session.startTimeTrack;
+  if (value == null || value.length < 16) return null;
+  return [
+    int.parse(value.substring(5, 7)),
+    int.parse(value.substring(8, 10)),
+    int.parse(value.substring(11, 13)),
+    int.parse(value.substring(14, 16)),
+  ];
+}
+
+String _sessionDate(RaceSession session, AppSettings settings) {
+  final track = settings.timeMode == EventTimeMode.track
+      ? _trackParts(session)
+      : null;
+  if (track != null) {
+    return '${_two(track[1])} ${_monthName(track[0], settings.language)}';
+  }
+  return _date(session.startTimeUtc.toLocal(), settings.language);
+}
+
+String _sessionMonth(RaceSession session, AppSettings settings) {
+  final track = settings.timeMode == EventTimeMode.track
+      ? _trackParts(session)
+      : null;
+  return _monthName(
+    track?[0] ?? session.startTimeUtc.toLocal().month,
+    settings.language,
+  );
+}
+
+String _sessionTime(RaceSession session, EventTimeMode mode) {
+  final track = mode == EventTimeMode.track ? _trackParts(session) : null;
+  if (track != null) return '${_two(track[2])}:${_two(track[3])}';
+  return _time(session.startTimeUtc.toLocal());
+}
+
+Color _hexColor(String? value) {
+  if (value == null) return Colors.grey;
+  return Color(int.parse(value.replaceFirst('#', '0xFF')));
+}
+
+String _number(double value) => value == value.roundToDouble()
+    ? value.toInt().toString()
+    : value.toStringAsFixed(1);
+const _monthsPl = [
   'STY',
   'LUT',
   'MAR',
@@ -591,9 +1076,25 @@ const _months = [
   'LIS',
   'GRU',
 ];
+const _monthsEn = [
+  'JAN',
+  'FEB',
+  'MAR',
+  'APR',
+  'MAY',
+  'JUN',
+  'JUL',
+  'AUG',
+  'SEP',
+  'OCT',
+  'NOV',
+  'DEC',
+];
 String _two(int value) => value.toString().padLeft(2, '0');
-String _month(DateTime value) => _months[value.month - 1];
-String _date(DateTime value) => '${_two(value.day)} ${_month(value)}';
+String _monthName(int month, AppLanguage language) =>
+    (language == AppLanguage.english ? _monthsEn : _monthsPl)[month - 1];
+String _date(DateTime value, AppLanguage language) =>
+    '${_two(value.day)} ${_monthName(value.month, language)}';
 String _time(DateTime value) => '${_two(value.hour)}:${_two(value.minute)}';
-String _dateTime(DateTime value) =>
-    '${_date(value)} ${value.year}, ${_time(value)}';
+String _dateTime(DateTime value, AppLanguage language) =>
+    '${_date(value, language)} ${value.year}, ${_time(value)}';

@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   flutter_riverpod: ^3.4.2
   http: ^1.6.0
+  shared_preferences: ^2.5.5
 
 dev_dependencies:
   flutter_test:
@@ -21,4 +22,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/data/calendar.json
+    - assets/data/
+    - assets/data/f1/2026/
+    - assets/data/f1/2026/events/

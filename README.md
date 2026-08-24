@@ -30,7 +30,14 @@ GitHub Actions runs the same tests and refreshes data every six hours. The workf
 
 ## Flutter application
 
-The application uses a feature-first structure with Riverpod, a shared light/dark design system, responsive phone/desktop navigation, and an offline calendar snapshot. It tries the versioned GitHub data first and falls back to the bundled asset when the network is unavailable.
+The application uses a feature-first structure with Riverpod, a shared light/dark design system, responsive phone/desktop navigation, and a complete offline season snapshot. It includes:
+
+- the complete season calendar with an option to show or hide past events;
+- session results for completed rounds and driver/constructor standings;
+- Polish and English interfaces;
+- event times displayed either in the user's local time or the circuit's local time.
+
+It tries the versioned GitHub data first and falls back to the bundled files when the network is unavailable.
 
 ```bash
 flutter pub get
@@ -38,5 +45,7 @@ flutter analyze
 flutter test
 flutter run
 ```
+
+On Windows, `run_app.bat` starts the web version using the bundled Flutter SDK. The debug Android package is created at `build/app/outputs/flutter-apk/app-debug.apk`.
 
 CI verifies formatting, static analysis, widget and visual-regression tests, and both web and Android builds.

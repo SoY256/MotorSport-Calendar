@@ -100,6 +100,8 @@ def adapt_schedule(payload: dict[str, Any], year: int) -> list[dict[str, Any]]:
                 "type": "SPRINT" if code in {"SR", "S"} else code,
                 "name": raw_session.get("title") or code,
                 "startTimeUtc": utc_timestamp(raw_session.get("timestamp")),
+                "startTimeTrack": raw_session.get("local_timestamp"),
+                "trackTimeZone": raw_session.get("timezone"),
                 "cancelled": any(bool(item.get("is_cancelled")) for item in raw_session.get("sessions", [])),
             })
         if not sessions:
@@ -109,8 +111,11 @@ def adapt_schedule(payload: dict[str, Any], year: int) -> list[dict[str, Any]]:
             raise DataValidationError(f"Active event {name} has no round number")
         if not all(isinstance(item, str) and item for item in (event_id, name, circuit.get("name"))):
             raise DataValidationError("Event identity is incomplete")
+        results_filename = (f"{number:02d}-{slugify(name)}.json" if number
+                            else f"cancelled-{slugify(name)}.json")
         events.append({
             "id": event_id, "seriesId": "f1", "season": year, "round": number, "name": name,
+            "resultsPath": f"events/{results_filename}",
             "cancelled": bool(race.get("is_cancelled")),
             "circuit": {
                 "id": circuit.get("id"), "name": circuit["name"], "locality": circuit.get("locality"),

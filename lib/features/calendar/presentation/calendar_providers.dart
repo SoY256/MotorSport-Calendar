@@ -10,3 +10,14 @@ final calendarRepositoryProvider = Provider<CalendarRepository>((ref) {
 final calendarProvider = FutureProvider<CalendarData>((ref) {
   return ref.watch(calendarRepositoryProvider).load();
 });
+
+final eventResultsProvider = FutureProvider.family<EventResults, RaceEvent>((
+  ref,
+  event,
+) {
+  return ref.watch(calendarRepositoryProvider).loadResults(event);
+});
+
+final standingsProvider = FutureProvider<StandingsData>((ref) {
+  return ref.watch(calendarRepositoryProvider).loadStandings();
+});
