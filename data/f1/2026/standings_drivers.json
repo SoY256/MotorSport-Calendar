@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 1,
+  "lastSuccessfulUpdate": "2026-08-24T13:14:39.795592Z",
+  "source": {
+    "name": "jolpica-f1",
+    "url": "https://api.jolpi.ca/ergast/f1/2026/driverstandings.json"
+  },
+  "data": [
+    {
+      "position": 1,
+      "points": 242.0,
+      "wins": 6,
+      "id": "antonelli",
+      "code": "ANT",
+      "givenName": "Andrea Kimi",
+      "familyName": "Antonelli",
+      "nationality": "Italian",
+      "teamIds": [
+        "mercedes"
+      ]
+    },
+    {
+      "position": 2,
+      "points": 183.0,
+      "wins": 2,
+      "id": "russell",
+      "code": "RUS",
+      "givenName": "George",
+      "familyName": "Russell",
+      "nationality": "British",
+      "teamIds": [
+        "mercedes"
+      ]
+    },
+    {
+      "position": 3,
+      "points": 183.0,
+      "wins": 1,
+      "id": "hamilton",
+      "code": "HAM",
+      "givenName": "Lewis",
+      "familyName": "Hamilton",
+      "nationality": "British",
+      "teamIds": [
+        "ferrari"
+      ]
+    },
+    {
+      "position": 4,
+      "points": 159.0,
+      "wins": 2,
+      "id": "norris",
+      "code": "NOR",
+      "givenName": "Lando",
+      "familyName": "Norris",
+      "nationality": "British",
+      "teamIds": [
+        "mclaren"
+      ]
+    },
+    {
+      "position": 5,
+      "points": 155.0,
+      "wins": 1,
+      "id": "leclerc",
+      "code": "LEC",
+      "givenName": "Charles",
+      "familyName": "Leclerc",
+      "nationality": "Monegasque",
+      "teamIds": [
+        "ferrari"
+      ]
+    },
+    {
+      "position": 6,
+      "points": 112.0,
+      "wins": 0,
+      "id": "max_verstappen",
+      "code": "VER",
+      "givenName": "Max",
+      "familyName": "Verstappen",
+      "nationality": "Dutch",
+      "teamIds": [
+        "red_bull"
+      ]
+    },
+    {
+      "position": 7,
+      "points": 104.0,
+      "wins": 0,
+      "id": "piastri",
+      "code": "PIA",
+      "givenName": "Oscar",
+      "familyName": "Piastri",
+      "nationality": "Australian",
+      "teamIds": [
+        "mclaren"
+      ]
+    },
+    {
+      "position": 8,
+      "points": 68.0,
+      "wins": 0,
+      "id": "hadjar",
+      "code": "HAD",
+      "givenName": "Isack",
+      "familyName": "Hadjar",
+      "nationality": "French",
+      "teamIds": [
+        "red_bull"
+      ]
+    },
+    {
+      "position": 9,
+      "points": 49.0,
+      "wins": 0,
+      "id": "lawson",
+      "code": "LAW",
+      "givenName": "Liam",
+      "familyName": "Lawson",
+      "nationality": "New Zealander",
+      "teamIds": [
+        "rb",
+        "red_bull"
+      ]
+    },
+    {
+      "position": 10,
+      "points": 44.0,
+      "wins": 0,
+      "id": "gasly",
+      "code": "GAS",
+      "givenName": "Pierre",
+      "familyName": "Gasly",
+      "nationality": "French",
+      "teamIds": [
+        "alpine"
+      ]
+    },
+    {
+      "position": 11,
+      "points": 23.0,
+      "wins": 0,
+      "id": "arvid_lindblad",
+      "code": "LIN",
+      "givenName": "Arvid",
+      "familyName": "Lindblad",
+      "nationality": "British",
+      "teamIds": [
+        "rb"
+      ]
+    },
+    {
+      "position": 12,
+      "points": 19.0,
+      "wins": 0,
+      "id": "colapinto",
+      "code": "COL",
+      "givenName": "Franco",
+      "familyName": "Colapinto",
+      "nationality": "Argentine",
+      "teamIds": [
+        "alpine"
+      ]
+    },
+    {
+      "position": 13,
+      "points": 18.0,
+      "wins": 0,
+      "id": "bearman",
+      "code": "BEA",
+      "givenName": "Oliver",
+      "familyName": "Bearman",
+      "nationality": "British",
+      "teamIds": [
+        "haas"
+      ]
+    },
+    {
+      "position": 14,
+      "points": 10.0,
+      "wins": 0,
+      "id": "bortoleto",
+      "code": "BOR",
+      "givenName": "Gabriel",
+      "familyName": "Bortoleto",
+      "nationality": "Brazilian",
+      "teamIds": [
+        "audi"
+      ]
+    },
+    {
+      "position": 15,
+      "points": 6.0,
+      "wins": 0,
+      "id": "hulkenberg",
+      "code": "HUL",
+      "givenName": "Nico",
+      "familyName": "Hülkenberg",
+      "nationality": "German",
+      "teamIds": [
+        "audi"
+      ]
+    },
+    {
+      "position": 16,
+      "points": 6.0,
+      "wins": 0,
+      "id": "sainz",
+      "code": "SAI",
+      "givenName": "Carlos",
+      "familyName": "Sainz",
+      "nationality": "Spanish",
+      "teamIds": [
+        "williams"
+      ]
+    },
+    {
+      "position": 17,
+      "points": 5.0,
+      "wins": 0,
+      "id": "albon",
+      "code": "ALB",
+      "givenName": "Alexander",
+      "familyName": "Albon",
+      "nationality": "Thai",
+      "teamIds": [
+        "williams"
+      ]
+    },
+    {
+      "position": 18,
+      "points": 3.0,
+      "wins": 0,
+      "id": "ocon",
+      "code": "OCO",
+      "givenName": "Esteban",
+      "familyName": "Ocon",
+      "nationality": "French",
+      "teamIds": [
+        "haas"
+      ]
+    },
+    {
+      "position": 19,
+      "points": 3.0,
+      "wins": 0,
+      "id": "alonso",
+      "code": "ALO",
+      "givenName": "Fernando",
+      "familyName": "Alonso",
+      "nationality": "Spanish",
+      "teamIds": [
+        "aston_martin"
+      ]
+    },
+    {
+      "position": 20,
+      "points": 0.0,
+      "wins": 0,
+      "id": "tsunoda",
+      "code": "TSU",
+      "givenName": "Yuki",
+      "familyName": "Tsunoda",
+      "nationality": "Japanese",
+      "teamIds": [
+        "rb"
+      ]
+    },
+    {
+      "position": 21,
+      "points": 0.0,
+      "wins": 0,
+      "id": "stroll",
+      "code": "STR",
+      "givenName": "Lance",
+      "familyName": "Stroll",
+      "nationality": "Canadian",
+      "teamIds": [
+        "aston_martin"
+      ]
+    },
+    {
+      "position": 22,
+      "points": 0.0,
+      "wins": 0,
+      "id": "bottas",
+      "code": "BOT",
+      "givenName": "Valtteri",
+      "familyName": "Bottas",
+      "nationality": "Finnish",
+      "teamIds": [
+        "cadillac"
+      ]
+    },
+    {
+      "position": 23,
+      "points": 0.0,
+      "wins": 0,
+      "id": "perez",
+      "code": "PER",
+      "givenName": "Sergio",
+      "familyName": "Pérez",
+      "nationality": "Mexican",
+      "teamIds": [
+        "cadillac"
+      ]
+    }
+  ]
+}
