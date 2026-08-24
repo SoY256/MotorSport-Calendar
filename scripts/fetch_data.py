@@ -140,7 +140,8 @@ def adapt_result(payload: dict[str, Any]) -> dict[str, Any]:
         results.append({
             "position": raw.get("position"), "positionText": raw.get("position_text"),
             "driver": {"id": driver.get("id"), "code": driver.get("abbreviation"),
-                       "givenName": driver.get("given_name"), "familyName": driver.get("family_name")},
+                       "givenName": driver.get("given_name"), "familyName": driver.get("family_name"),
+                       "nationality": driver.get("country_code") or driver.get("nationality")},
             "team": {"id": team.get("id"), "name": team.get("name"), "color": team.get("primary_color")},
             "carNumber": raw.get("car_number"), "time": raw.get("time"), "laps": raw.get("laps"),
             "points": raw.get("points"), "status": raw.get("status"),

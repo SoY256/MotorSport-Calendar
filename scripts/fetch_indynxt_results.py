@@ -18,6 +18,9 @@ DRIVER_COUNTRIES = {
     "alexander-koreiba": "USA", "nicholas-monteiro": "BRA", "carson-etter": "USA", "ricardo-escotto": "MEX",
     "nolan-allaer": "USA", "jacob-abel": "USA", "bart-harrison": "USA", "yuven-sundaramoorthy": "USA",
 }
+TEAM_COLORS = {"hmd-motorsports": "#202A44", "andretti-global": "#E31B23", "abel-motorsports": "#111111",
+               "cape-motorsports-powered-by-ecr": "#00A3E0", "chip-ganassi-racing": "#0B5BA7",
+               "a-j-foyt-enterprises": "#D71920", "cusick-morgan-motorsports": "#8BC34A", "juncos-hollinger-racing": "#4A148C"}
 
 
 def main() -> None:
@@ -44,7 +47,7 @@ def main() -> None:
             rows.append({
                 "position": raw.get("PositionFinish"), "positionText": str(raw.get("PositionFinish") or "–"),
                 "driver": {"id": slug(raw.get("DriverName") or "driver"), "code": "", "givenName": raw.get("FirstName"), "familyName": raw.get("LastName"), "nationality": DRIVER_COUNTRIES.get(slug(raw.get("DriverName") or ""))},
-                "team": {"id": team_id, "name": team, "color": "#E31837"}, "carNumber": raw.get("CarNumber"),
+                "team": {"id": team_id, "name": team, "color": TEAM_COLORS.get(team_id, "#607D8B")}, "carNumber": raw.get("CarNumber"),
                 "time": raw.get("ElapsedTime") or raw.get("Difference"), "laps": raw.get("LapsComplete"),
                 "points": raw.get("PointsEarned"), "status": raw.get("Status"), "classified": raw.get("Status") == "Running", "components": {},
             })
@@ -63,12 +66,13 @@ def main() -> None:
                         "wins": raw.get("TotalWins", 0), "id": slug(name), "code": "",
                         "givenName": parts[0], "familyName": parts[-1] if len(parts) > 1 else "",
                         "nationality": DRIVER_COUNTRIES.get(slug(name)), "teamIds": [driver_teams[name]] if name in driver_teams else [],
-                        "teamNames": [team_names[driver_teams[name]]] if name in driver_teams else []})
+                        "teamNames": [team_names[driver_teams[name]]] if name in driver_teams else [],
+                        "teamColors": [TEAM_COLORS.get(driver_teams[name], "#607D8B")] if name in driver_teams else []})
     driver_doc = {"schemaVersion": 1, "lastSuccessfulUpdate": updated,
                   "source": {"name": "official-indynxt", "url": f"{API}/YearPointSummary?year=2026&id={SERIES_ID}"}, "data": drivers}
     (root / "standings_drivers.json").write_text(json.dumps(driver_doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     teams = [{"position": position, "points": points, "wins": 0, "id": team_id,
-              "name": team_names.get(team_id, team_id.replace("-", " ").title()), "nationality": None}
+              "name": team_names.get(team_id, team_id.replace("-", " ").title()), "color": TEAM_COLORS.get(team_id, "#607D8B"), "nationality": None}
              for position, (team_id, points) in enumerate(sorted(entrant_points.items(), key=lambda item: item[1], reverse=True), 1)]
     team_doc = {"schemaVersion": 1, "lastSuccessfulUpdate": updated,
                 "source": {"name": "derived-from-official-indynxt-results", "url": "https://www.indynxt.com/Results"}, "data": teams}

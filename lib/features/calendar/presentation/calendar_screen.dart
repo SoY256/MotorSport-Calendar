@@ -472,15 +472,15 @@ class _NextRaceHero extends StatelessWidget {
                     textDirection: TextDirection.ltr,
                     children: [
                       SizedBox(
-                        width: 64,
-                        height: 64,
+                        width: 94,
+                        height: 82,
                         child: Opacity(
-                          opacity: .62,
+                          opacity: .86,
                           child: FittedBox(
                             fit: BoxFit.contain,
                             child: Text(
                               _countryFlag(event.circuit.countryCode),
-                              style: const TextStyle(fontSize: 64, height: 1),
+                              style: const TextStyle(fontSize: 82, height: 1),
                             ),
                           ),
                         ),
@@ -1296,7 +1296,8 @@ class _SessionResultsCard extends StatelessWidget {
       children: [
         const Divider(height: 1),
         for (final result in session.results)
-          Padding(
+          Container(
+            color: _categoryColor(result.category).withValues(alpha: .11),
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
             child: Row(
               children: [
@@ -1471,11 +1472,13 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
                                         : item.teamIds
                                               .map(_teamName)
                                               .join(' • '),
-                                    color: _teamColor(
-                                      item.teamIds.isEmpty
-                                          ? null
-                                          : item.teamIds.first,
-                                    ),
+                                    color: item.teamColors.isNotEmpty
+                                        ? _hexColor(item.teamColors.first)
+                                        : _teamColor(
+                                            item.teamIds.isEmpty
+                                                ? null
+                                                : item.teamIds.first,
+                                          ),
                                     flag: _nationalityFlag(item.nationality),
                                     points: item.points,
                                     wins: item.wins,
@@ -1489,7 +1492,9 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
                                     position: item.position,
                                     title: item.name,
                                     subtitle: '',
-                                    color: _teamColor(item.id),
+                                    color: item.color == null
+                                        ? _teamColor(item.id)
+                                        : _hexColor(item.color),
                                     flag: null,
                                     points: item.points,
                                     wins: item.wins,
@@ -2036,10 +2041,10 @@ String _nationalityFlag(String? nationality) {
     'USA' || 'US' => '🇺🇸',
     'GBR' || 'GB' => '🇬🇧',
     'ESP' || 'ES' => '🇪🇸',
-    'DNK' || 'DK' => '🇩🇰',
+    'DNK' || 'DEN' || 'DK' => '🇩🇰',
     'SWE' || 'SE' => '🇸🇪',
     'NZL' || 'NZ' => '🇳🇿',
-    'NLD' || 'NL' => '🇳🇱',
+    'NLD' || 'NED' || 'NL' => '🇳🇱',
     'BRA' || 'BR' => '🇧🇷',
     'MEX' || 'MX' => '🇲🇽',
     'FRA' || 'FR' => '🇫🇷',
@@ -2051,12 +2056,12 @@ String _nationalityFlag(String? nationality) {
     'AUS' || 'AU' => '🇦🇺',
     'COL' || 'CO' => '🇨🇴',
     'NOR' || 'NO' => '🇳🇴',
-    'CHE' || 'CH' => '🇨🇭',
+    'CHE' || 'SUI' || 'CH' => '🇨🇭',
     'BEL' || 'BE' => '🇧🇪',
     'PRT' || 'POR' || 'PT' => '🇵🇹',
     'ARG' || 'AR' => '🇦🇷',
     'AUT' || 'AT' => '🇦🇹',
-    'ZAF' || 'ZA' => '🇿🇦',
+    'ZAF' || 'RSA' || 'ZA' => '🇿🇦',
     'IRL' || 'IE' => '🇮🇪',
     'VEN' || 'VE' => '🇻🇪',
     'CHL' || 'CL' => '🇨🇱',
@@ -2064,6 +2069,12 @@ String _nationalityFlag(String? nationality) {
     'TUR' || 'TR' => '🇹🇷',
     'ROU' || 'RO' => '🇷🇴',
     'KOR' || 'KR' => '🇰🇷',
+    'CHN' || 'CN' => '🇨🇳',
+    'EST' || 'EE' => '🇪🇪',
+    'IDN' || 'INA' || 'ID' => '🇮🇩',
+    'RUS' || 'RU' => '🇷🇺',
+    'QAT' || 'QA' => '🇶🇦',
+    'LUX' || 'LU' => '🇱🇺',
     'CYM' || 'KY' => '🇰🇾',
     'ITALIAN' => '🇮🇹',
     'BRITISH' => '🇬🇧',
@@ -2186,6 +2197,14 @@ Color _hexColor(String? value) {
   if (value == null) return Colors.grey;
   return Color(int.parse(value.replaceFirst('#', '0xFF')));
 }
+
+Color _categoryColor(String? category) => switch (category) {
+  'GTP' => const Color(0xFFE10600),
+  'LMP2' => const Color(0xFF1976D2),
+  'GTD PRO' => const Color(0xFFFFC107),
+  'GTD' => const Color(0xFF43A047),
+  _ => Colors.transparent,
+};
 
 String _number(double value) => value == value.roundToDouble()
     ? value.toInt().toString()

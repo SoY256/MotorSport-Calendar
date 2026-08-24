@@ -4,13 +4,18 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:motor_sport_calendar/app/app.dart';
 import 'package:motor_sport_calendar/features/calendar/data/calendar_repository.dart';
 import 'package:motor_sport_calendar/features/calendar/presentation/calendar_providers.dart';
+import 'package:motor_sport_calendar/features/settings/domain/app_settings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
+  test('fresh installations default to English', () {
+    expect(const AppSettings().language, AppLanguage.english);
+  });
+
   testWidgets('calendar, results, standings and settings work end to end', (
     tester,
   ) async {
-    SharedPreferences.setMockInitialValues({});
+    SharedPreferences.setMockInitialValues({'language': 'pl'});
     final repository = AssetCalendarRepository();
     final calendar = await repository.load();
     final australian = calendar.events.firstWhere(

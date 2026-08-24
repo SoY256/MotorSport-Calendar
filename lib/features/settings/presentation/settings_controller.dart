@@ -33,7 +33,7 @@ class SettingsController extends Notifier<AppSettings> {
     final categorySchema = await preferences.getInt('categorySchema');
     final esport = await preferences.getStringList('esportCategories');
     state = AppSettings(
-      language: language == 'en' ? AppLanguage.english : AppLanguage.polish,
+      language: language == 'pl' ? AppLanguage.polish : AppLanguage.english,
       timeMode: timeMode == 'track' ? EventTimeMode.track : EventTimeMode.local,
       showPastEvents: showPast ?? true,
       motorsportCategories: categorySchema == 4

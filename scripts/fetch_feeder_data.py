@@ -74,6 +74,7 @@ TEAM_NAMES = {
     "art": "ART Grand Prix", "van-amersfoort": "Van Amersfoort Racing", "mp": "MP Motorsport",
 }
 TEAM_COLOURS = {"campos": "#E5D100", "prema": "#E10600", "invicta": "#26A9E0", "rodin": "#F36F21", "aix": "#00A651", "dams": "#0067B1", "hitech": "#ED1C24", "trident": "#183883", "art": "#EE3124", "van-amersfoort": "#F58220", "mp": "#F15A29"}
+DRIVER_NATIONALITIES = {f"{given} {family}": nationality for values in DRIVERS.values() for given, family, nationality, _, _ in values}
 
 
 def slug(value: str) -> str:
@@ -119,7 +120,7 @@ def result_row(raw: dict, position: int) -> dict:
     colour = raw.get("teamColourCode") or "777777"
     return {
         "position": int(raw.get("positionNumber") or position), "positionText": raw.get("displayPosition") or str(position),
-        "driver": {"id": slug(f"{raw.get('driverFirstName', '')}-{raw.get('driverLastName', '')}"), "code": raw.get("driverTLA"), "givenName": raw.get("driverFirstName"), "familyName": raw.get("driverLastName")},
+        "driver": {"id": slug(f"{raw.get('driverFirstName', '')}-{raw.get('driverLastName', '')}"), "code": raw.get("driverTLA"), "givenName": raw.get("driverFirstName"), "familyName": raw.get("driverLastName"), "nationality": raw.get("driverCountryCode") or raw.get("countryCode") or DRIVER_NATIONALITIES.get(f"{raw.get('driverFirstName', '')} {raw.get('driverLastName', '')}")},
         "team": {"id": slug(team_name), "name": team_name, "color": f"#{colour.lstrip('#')}"},
         "carNumber": raw.get("racingNumber"), "time": raw.get("displayTime") or raw.get("raceTime") or raw.get("gapToLeader"),
         "laps": int(raw["lapsCompleted"]) if str(raw.get("lapsCompleted", "")).isdigit() else None,

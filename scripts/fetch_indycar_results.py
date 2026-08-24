@@ -24,8 +24,11 @@ DRIVER_COUNTRIES = {
     "jacob-abel": "USA", "helio-castroneves": "BRA", "ed-carpenter": "USA", "ryan-hunter-reay": "USA",
     "katherine-legge": "GBR",
 }
-TEAM_COLORS = {"chip-ganassi-racing": "#0B5BA7", "andretti-global": "#E31B23", "arrow-mclaren": "#FF6C0C",
-               "team-penske": "#143B78", "meyer-shank-w-curb-agajanian": "#E91E63", "juncos-hollinger-racing": "#4A148C"}
+TEAM_COLORS = {"chip-ganassi-racing": "#0B5BA7", "andretti-global": "#E31B23", "andretti-global-w-curb-agajanian": "#E31B23",
+               "arrow-mclaren": "#FF6C0C", "team-penske": "#143B78", "meyer-shank-w-curb-agajanian": "#E91E63",
+               "juncos-hollinger-racing": "#4A148C", "rahal-letterman-lanigan-racing": "#1F4E79",
+               "a-j-foyt-enterprises": "#D71920", "ecr": "#00529B", "dale-coyne-racing": "#222222",
+               "dreyer-reinbold-racing": "#C0A062", "abel-motorsports": "#111111", "hmd-motorsports-w-aj-foyt-racing": "#202A44"}
 
 
 def get(url: str):
@@ -85,22 +88,25 @@ def main() -> None:
                         "wins": raw.get("TotalWins", 0), "id": slug(name), "code": "",
                         "givenName": parts[0], "familyName": parts[-1] if len(parts) > 1 else "",
                         "nationality": DRIVER_COUNTRIES.get(slug(name)), "teamIds": [driver_teams[name]] if name in driver_teams else [],
-                        "teamNames": [next((row["team"]["name"] for event in events if event.get("resultsPath") for row in json.loads((root / event["resultsPath"]).read_text(encoding="utf-8"))["data"]["sessions"][0]["results"] if row["driver"]["id"] == slug(name)), "")]})
+                        "teamNames": [next((row["team"]["name"] for event in events if event.get("resultsPath") for row in json.loads((root / event["resultsPath"]).read_text(encoding="utf-8"))["data"]["sessions"][0]["results"] if row["driver"]["id"] == slug(name)), "")],
+                        "teamColors": [TEAM_COLORS.get(driver_teams[name], "#607D8B")] if name in driver_teams else []})
     driver_doc = {"schemaVersion": 1, "lastSuccessfulUpdate": updated,
                   "source": {"name": "official-indycar", "url": f"{API}/YearPointSummary?year=2026&id={SERIES_ID}"},
                   "data": drivers}
     (root / "standings_drivers.json").write_text(json.dumps(driver_doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    team_names = {
-        "chip_ganassi": "Chip Ganassi Racing", "andretti": "Andretti Global",
-        "arrow_mclaren": "Arrow McLaren", "penske": "Team Penske",
-        "meyer_shank": "Meyer Shank Racing", "juncos": "Juncos Hollinger Racing",
-    }
+    team_names = {team_id: next((name for name, value in driver_teams.items() if value == team_id), team_id) for team_id in set(driver_teams.values())}
+    for event in events:
+        if not event.get("resultsPath"): continue
+        sessions = json.loads((root / event["resultsPath"]).read_text(encoding="utf-8"))["data"]["sessions"]
+        if not sessions: continue
+        for row in sessions[0]["results"]:
+            team_names[row["team"]["id"]] = row["team"]["name"]
     totals: dict[str, float] = {}
     for driver in drivers:
         for team_id in driver.get("teamIds", []):
             totals[team_id] = totals.get(team_id, 0) + float(driver.get("points", 0))
     teams = [{"position": position, "points": points, "wins": 0, "id": team_id,
-              "name": team_names.get(team_id, team_id.replace("_", " ").title()), "nationality": None}
+              "name": team_names.get(team_id, team_id.replace("-", " ").title()), "color": TEAM_COLORS.get(team_id, "#607D8B"), "nationality": None}
              for position, (team_id, points) in enumerate(sorted(totals.items(), key=lambda item: item[1], reverse=True), 1)]
     team_doc = {"schemaVersion": 1, "lastSuccessfulUpdate": updated,
                 "source": {"name": "derived-from-official-indycar-driver-standings", "url": "https://www.indycar.com/standings/"},

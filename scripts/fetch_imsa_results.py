@@ -57,7 +57,8 @@ def main() -> None:
     calendar = json.loads((root / "calendar.json").read_text(encoding="utf-8"))["data"]
     updated = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
     driver_countries: dict[str, str] = {}
-    driver_teams: dict[str, tuple[str, str]] = {}
+    driver_teams: dict[str, tuple[str, str, str]] = {}
+    car_teams: dict[tuple[str, str], tuple[str, str, str]] = {}
     for event, event_code in zip(calendar, EVENTS):
         url = result_url(event_code)
         raw = json.loads(fetch(url).decode("utf-8-sig"))
@@ -70,10 +71,13 @@ def main() -> None:
                     driver_countries[full_name] = driver["country"]
             names = " / ".join(f"{driver.get('firstname', '')} {driver.get('surname', '')}".strip() for driver in drivers)
             team = item.get("team") or ""
+            manufacturer = item.get("vehicle") or ""
+            team_color = manufacturer_color(manufacturer)
+            item_category = (item.get("class") or "").replace("GTDPRO", "GTD PRO")
+            car_teams[(item_category, str(item.get("number") or ""))] = (slug(team), team, team_color)
             for driver in drivers:
                 full_name = f"{driver.get('firstname', '')} {driver.get('surname', '')}".strip()
-                driver_teams[full_name] = (slug(team), team)
-            manufacturer = item.get("vehicle") or ""
+                driver_teams[full_name] = (slug(team), team, team_color)
             rows.append({
                 "position": item.get("position"), "positionText": str(item.get("position") or "–"),
                 "driver": {"id": slug(names), "code": item.get("number"), "givenName": names, "familyName": "",
@@ -106,10 +110,12 @@ def main() -> None:
                 base = {"points": item.get("total_points", 0), "wins": 0, "category": category}
                 if kind == "drivers":
                     parts = name.rsplit(" ", 1)
-                    team_id, team_name = driver_teams.get(name, ("", ""))
-                    base.update({"id": slug(name), "code": "", "givenName": parts[0], "familyName": parts[-1] if len(parts) > 1 else "", "nationality": driver_countries.get(name), "teamIds": [team_id] if team_id else [], "teamNames": [team_name] if team_name else []})
+                    team_id, team_name, team_color = driver_teams.get(name, ("", "", ""))
+                    base.update({"id": slug(name), "code": "", "givenName": parts[0], "familyName": parts[-1] if len(parts) > 1 else "", "nationality": driver_countries.get(name), "teamIds": [team_id] if team_id else [], "teamNames": [team_name] if team_name else [], "teamColors": [team_color] if team_color else []})
                 else:
-                    base.update({"id": slug(name), "name": name, "nationality": None})
+                    normalized_category = category.replace("GTDPRO", "GTD PRO")
+                    team_id, team_name, team_color = car_teams.get((normalized_category, str(name)), (slug(name), name, "#607D8B"))
+                    base.update({"id": team_id, "name": f"{team_name} · #{name}" if team_name != name else name, "color": team_color, "nationality": None})
                 entries.append(base)
         entries.sort(key=lambda item: (item.get("category", ""), -float(item["points"])))
         category_positions: dict[str, int] = {}

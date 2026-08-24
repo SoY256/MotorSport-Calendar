@@ -208,6 +208,7 @@ class DriverStanding {
     required this.nationality,
     required this.teamIds,
     required this.teamNames,
+    required this.teamColors,
     required this.category,
   });
 
@@ -222,6 +223,8 @@ class DriverStanding {
     nationality: json['nationality'] as String? ?? '',
     teamIds: (json['teamIds'] as List<dynamic>).cast<String>(),
     teamNames: (json['teamNames'] as List<dynamic>? ?? const []).cast<String>(),
+    teamColors: (json['teamColors'] as List<dynamic>? ?? const [])
+        .cast<String>(),
     category: json['category'] as String?,
   );
 
@@ -235,6 +238,7 @@ class DriverStanding {
   final String nationality;
   final List<String> teamIds;
   final List<String> teamNames;
+  final List<String> teamColors;
   final String? category;
 }
 
@@ -246,6 +250,7 @@ class TeamStanding {
     required this.id,
     required this.name,
     required this.category,
+    required this.color,
   });
 
   factory TeamStanding.fromJson(Map<String, dynamic> json) => TeamStanding(
@@ -255,6 +260,7 @@ class TeamStanding {
     id: json['id'] as String,
     name: json['name'] as String,
     category: json['category'] as String?,
+    color: json['color'] as String?,
   );
 
   final int position;
@@ -263,6 +269,7 @@ class TeamStanding {
   final String id;
   final String name;
   final String? category;
+  final String? color;
 }
 
 class StandingsData {

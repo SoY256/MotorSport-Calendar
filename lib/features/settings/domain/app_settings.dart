@@ -4,7 +4,7 @@ enum EventTimeMode { local, track }
 
 class AppSettings {
   const AppSettings({
-    this.language = AppLanguage.polish,
+    this.language = AppLanguage.english,
     this.timeMode = EventTimeMode.local,
     this.showPastEvents = true,
     this.motorsportCategories = const {
