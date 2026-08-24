@@ -1,0 +1,22 @@
+name: motor_sport_calendar
+description: A demo Flutter app for MotorSport Calendar theme showcase.
+publish_to: 'none'
+version: 0.0.1
+
+environment:
+  sdk: ">=2.18.0 <3.0.0"
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.3.6
+  http: ^0.13.6
+  google_fonts: ^4.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
