@@ -12,6 +12,7 @@ class AppStrings {
   String get settings => _en ? 'Settings' : 'Ustawienia';
   String get season => _en ? 'Season' : 'Sezon';
   String rounds(int count) => _en ? '$count rounds' : '$count rund';
+  String events(int count) => _en ? '$count events' : '$count wydarzeń';
   String get timesInZone =>
       _en ? 'times in the selected time zone' : 'godziny w wybranej strefie';
   String get nextRound => _en ? 'NEXT ROUND' : 'NAJBLIŻSZA RUNDA';

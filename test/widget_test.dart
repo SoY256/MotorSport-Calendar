@@ -7,6 +7,7 @@ import 'package:motor_sport_calendar/app/app.dart';
 import 'package:motor_sport_calendar/features/calendar/data/calendar_repository.dart';
 import 'package:motor_sport_calendar/features/calendar/presentation/calendar_providers.dart';
 import 'package:motor_sport_calendar/features/settings/domain/app_settings.dart';
+import 'package:motor_sport_calendar/features/settings/presentation/settings_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
@@ -155,6 +156,46 @@ void main() {
     expect(find.text('iRacing'), findsNothing);
     expect(find.text('Le Mans Ultimate'), findsNothing);
     expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('list subtitle reflects visible events and selected time mode', (
+    tester,
+  ) async {
+    SharedPreferences.setMockInitialValues({});
+    final repository = AssetCalendarRepository();
+    final calendar = await repository.load();
+    final visibleCount = calendar.events
+        .where((event) => event.seriesId == 'f1')
+        .length;
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [calendarRepositoryProvider.overrideWithValue(repository)],
+        child: const MotorsportCalendarApp(),
+      ),
+    );
+    await tester.pump(const Duration(seconds: 1));
+
+    expect(
+      find.text('${calendar.events.length} events • My local time'),
+      findsOneWidget,
+    );
+    await tester.tap(find.text('F1'));
+    await tester.pump(const Duration(milliseconds: 300));
+    expect(find.text('$visibleCount events • My local time'), findsOneWidget);
+
+    final container = ProviderScope.containerOf(
+      tester.element(find.byType(MotorsportCalendarApp)),
+    );
+    container.read(settingsProvider.notifier).setTimeMode(EventTimeMode.track);
+    await tester.pump(const Duration(milliseconds: 300));
+    expect(
+      find.text('$visibleCount events • Track local time'),
+      findsOneWidget,
+    );
+    expect(
+      find.textContaining('times in the selected time zone'),
+      findsNothing,
+    );
   });
 
   testWidgets('calendar, results, standings and settings work end to end', (

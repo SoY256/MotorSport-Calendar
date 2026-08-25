@@ -370,7 +370,7 @@ class _ListPage extends ConsumerWidget {
     return _PageFrame(
       title: '${strings.season} ${data.events.first.season}',
       subtitle:
-          '${strings.rounds(data.events.where((event) => !event.cancelled).length)} • ${strings.timesInZone}',
+          '${strings.events(events.length)} • ${settings.timeMode == EventTimeMode.local ? strings.localTime : strings.trackTime}',
       actions: [
         IconButton(
           tooltip: strings.refresh,
@@ -1681,8 +1681,8 @@ class _SettingsPage extends ConsumerWidget {
               (
                 'iracing',
                 'iRacing',
-                'assets/brands/iracing-official-light.svg',
-                'assets/brands/iracing-official-dark.svg',
+                'assets/brands/iracing-official-light.png',
+                'assets/brands/iracing-official-dark.png',
               ),
               (
                 'lmu',
@@ -1907,6 +1907,8 @@ class _BrandLogo extends StatelessWidget {
     final resolvedPath = isDark && darkPath != null ? darkPath! : path;
     final isWec = path.endsWith('wec-official.png');
     final isLmu = path.endsWith('lmu-official.svg');
+    final isIracing = path.contains('iracing-official');
+    final isF1 = path.endsWith('f1-official.svg');
     final fallback = Center(
       child: Text(
         fallbackLabel,
@@ -1917,7 +1919,7 @@ class _BrandLogo extends StatelessWidget {
     Widget image = resolvedPath.endsWith('.svg')
         ? SvgPicture.asset(
             resolvedPath,
-            fit: BoxFit.contain,
+            fit: isF1 ? BoxFit.fitWidth : BoxFit.contain,
             placeholderBuilder: (_) => fallback,
             errorBuilder: (_, _, _) => fallback,
           )
@@ -1930,12 +1932,14 @@ class _BrandLogo extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: double.infinity,
-      padding: const EdgeInsets.all(10),
+      padding: EdgeInsets.all(isF1 ? 2 : 10),
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         color: isWec
             ? const Color(0xFF203B78)
-            : (isLmu ? const Color(0xFF171A21) : Colors.white),
+            : (isLmu || (isIracing && isDark)
+                  ? const Color(0xFF171A21)
+                  : Colors.white),
         borderRadius: BorderRadius.circular(11),
       ),
       child: image,
