@@ -1648,13 +1648,23 @@ class _SettingsPage extends ConsumerWidget {
             title: strings.motorsportCategories,
             subtitle: strings.chooseAny,
             items: const [
-              ('f1', 'F1', 'assets/brands/f1-official.svg'),
-              ('f2', 'F2', 'assets/brands/f2-official.svg'),
-              ('f3', 'F3', 'assets/brands/f3-official.svg'),
-              ('imsa', 'IMSA', 'assets/brands/imsa.svg'),
-              ('indycar', 'INDYCAR', 'assets/brands/indycar-official.png'),
-              ('indynxt', 'INDY NXT', 'assets/brands/indynxt-official.png'),
-              ('wec', 'WEC', 'assets/brands/wec-official.png'),
+              ('f1', 'F1', 'assets/brands/f1-official.svg', null),
+              ('f2', 'F2', 'assets/brands/f2-official.svg', null),
+              ('f3', 'F3', 'assets/brands/f3-official.svg', null),
+              ('imsa', 'IMSA', 'assets/brands/imsa.svg', null),
+              (
+                'indycar',
+                'INDYCAR',
+                'assets/brands/indycar-official.png',
+                null,
+              ),
+              (
+                'indynxt',
+                'INDY NXT',
+                'assets/brands/indynxt-official.png',
+                null,
+              ),
+              ('wec', 'WEC', 'assets/brands/wec-official.png', null),
             ],
             selected: settings.motorsportCategories,
             onToggle: (id) {
@@ -1668,8 +1678,18 @@ class _SettingsPage extends ConsumerWidget {
             title: strings.esportCategories,
             subtitle: strings.chooseAny,
             items: const [
-              ('iracing', 'iRacing', 'assets/brands/iracing-official.svg'),
-              ('lmu', 'Le Mans Ultimate', 'assets/brands/lmu-official.svg'),
+              (
+                'iracing',
+                'iRacing',
+                'assets/brands/iracing-official-light.svg',
+                'assets/brands/iracing-official-dark.svg',
+              ),
+              (
+                'lmu',
+                'Le Mans Ultimate',
+                'assets/brands/lmu-official.svg',
+                null,
+              ),
             ],
             selected: settings.esportCategories,
             onToggle: controller.toggleEsportCategory,
@@ -1781,7 +1801,7 @@ class _CategorySelectionCard extends StatelessWidget {
   });
   final String title;
   final String subtitle;
-  final List<(String, String, String)> items;
+  final List<(String, String, String, String?)> items;
   final Set<String> selected;
   final ValueChanged<String> onToggle;
 
@@ -1817,7 +1837,7 @@ class _CategorySelectionCard extends StatelessWidget {
                       child: AnimatedContainer(
                         duration: const Duration(milliseconds: 180),
                         height: 116,
-                        padding: const EdgeInsets.all(12),
+                        padding: const EdgeInsets.all(6),
                         decoration: BoxDecoration(
                           color: active
                               ? Theme.of(context).colorScheme.primaryContainer
@@ -1832,34 +1852,29 @@ class _CategorySelectionCard extends StatelessWidget {
                         ),
                         child: Stack(
                           children: [
-                            Align(
-                              alignment: Alignment.topRight,
-                              child: Icon(
-                                active
-                                    ? Icons.check_circle
-                                    : Icons.circle_outlined,
-                                color: active
-                                    ? Theme.of(context).colorScheme.primary
-                                    : null,
+                            Positioned.fill(
+                              child: _BrandLogo(
+                                path: item.$3,
+                                darkPath: item.$4,
+                                fallbackLabel: item.$2,
                               ),
                             ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(right: 26),
-                                    child: _BrandLogo(path: item.$3),
-                                  ),
+                            Align(
+                              alignment: Alignment.topRight,
+                              child: DecoratedBox(
+                                decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                  shape: BoxShape.circle,
                                 ),
-                                const SizedBox(height: 8),
-                                Text(
-                                  item.$2,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.w900,
-                                  ),
+                                child: Icon(
+                                  active
+                                      ? Icons.check_circle
+                                      : Icons.circle_outlined,
+                                  color: active
+                                      ? Theme.of(context).colorScheme.primary
+                                      : const Color(0xFF455A64),
                                 ),
-                              ],
+                              ),
                             ),
                           ],
                         ),
@@ -1877,27 +1892,51 @@ class _CategorySelectionCard extends StatelessWidget {
 }
 
 class _BrandLogo extends StatelessWidget {
-  const _BrandLogo({required this.path});
+  const _BrandLogo({
+    required this.path,
+    required this.fallbackLabel,
+    this.darkPath,
+  });
   final String path;
+  final String? darkPath;
+  final String fallbackLabel;
 
   @override
   Widget build(BuildContext context) {
-    final darkPlate = path.endsWith('wec-official.png');
-    Widget image = path.endsWith('.svg')
-        ? SvgPicture.asset(path, fit: BoxFit.contain)
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final resolvedPath = isDark && darkPath != null ? darkPath! : path;
+    final isWec = path.endsWith('wec-official.png');
+    final isLmu = path.endsWith('lmu-official.svg');
+    final fallback = Center(
+      child: Text(
+        fallbackLabel,
+        textAlign: TextAlign.center,
+        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
+      ),
+    );
+    Widget image = resolvedPath.endsWith('.svg')
+        ? SvgPicture.asset(
+            resolvedPath,
+            fit: BoxFit.contain,
+            placeholderBuilder: (_) => fallback,
+            errorBuilder: (_, _, _) => fallback,
+          )
         : Image.asset(
-            path,
+            resolvedPath,
             fit: BoxFit.contain,
             filterQuality: FilterQuality.high,
+            errorBuilder: (_, _, _) => fallback,
           );
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      height: double.infinity,
+      padding: const EdgeInsets.all(10),
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
-        color: darkPlate ? const Color(0xFF15151E) : Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: const Color(0x22000000)),
+        color: isWec
+            ? const Color(0xFF203B78)
+            : (isLmu ? const Color(0xFF171A21) : Colors.white),
+        borderRadius: BorderRadius.circular(11),
       ),
       child: image,
     );

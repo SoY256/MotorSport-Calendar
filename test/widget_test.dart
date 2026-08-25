@@ -134,6 +134,29 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
+  testWidgets('settings tiles use logos without visible name captions', (
+    tester,
+  ) async {
+    SharedPreferences.setMockInitialValues({});
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          calendarRepositoryProvider.overrideWithValue(
+            AssetCalendarRepository(),
+          ),
+        ],
+        child: const MotorsportCalendarApp(),
+      ),
+    );
+    await tester.pump(const Duration(seconds: 1));
+    await tester.tap(find.text('Settings'));
+    await tester.pump(const Duration(seconds: 1));
+
+    expect(find.text('iRacing'), findsNothing);
+    expect(find.text('Le Mans Ultimate'), findsNothing);
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets('calendar, results, standings and settings work end to end', (
     tester,
   ) async {
