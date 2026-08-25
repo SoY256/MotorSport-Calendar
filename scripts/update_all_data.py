@@ -132,6 +132,11 @@ def main() -> int:
             env = os.environ.copy()
             env["MOTORSPORT_DATA_ROOT"] = str(staged)
             run("add_session_durations.py", env, str(staged))
+            # Portrait URLs are identity-bound metadata from official series
+            # profile pages and can change with driver line-ups.
+            portrait_env = os.environ.copy()
+            portrait_env["PORTRAIT_SINGLE_ROOT"] = str(staged)
+            run("enrich_driver_portraits.py", portrait_env)
 
             write_indexes(staged)
             validate(staged)

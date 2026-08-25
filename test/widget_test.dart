@@ -111,6 +111,28 @@ void main() {
     },
   );
 
+  test(
+    'official driver portraits are attached to supported standings',
+    () async {
+      final repository = AssetCalendarRepository();
+      final expectedMinimum = {
+        'f1': 20,
+        'f2': 17,
+        'f3': 24,
+        'indycar': 30,
+        'indynxt': 28,
+      };
+      for (final entry in expectedMinimum.entries) {
+        final standings = await repository.loadStandings(entry.key);
+        expect(
+          standings.drivers.where((driver) => driver.imageUrl != null).length,
+          greaterThanOrEqualTo(entry.value),
+          reason: entry.key,
+        );
+      }
+    },
+  );
+
   testWidgets('calendar fits a narrow phone without overflow', (tester) async {
     SharedPreferences.setMockInitialValues({});
     tester.view.physicalSize = const Size(360, 800);
@@ -157,6 +179,35 @@ void main() {
 
     expect(find.text('iRacing'), findsNothing);
     expect(find.text('Le Mans Ultimate'), findsNothing);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('portrait standings fit a narrow phone', (tester) async {
+    SharedPreferences.setMockInitialValues({});
+    tester.view.physicalSize = const Size(360, 800);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          calendarRepositoryProvider.overrideWithValue(
+            AssetCalendarRepository(),
+          ),
+        ],
+        child: const MotorsportCalendarApp(),
+      ),
+    );
+    addTearDown(() => tester.pumpWidget(const SizedBox.shrink()));
+    await tester.runAsync(
+      () => Future<void>.delayed(const Duration(milliseconds: 200)),
+    );
+    await tester.pump(const Duration(seconds: 1));
+    await tester.tap(find.text('Standings'));
+    await tester.runAsync(
+      () => Future<void>.delayed(const Duration(milliseconds: 200)),
+    );
+    await tester.pump(const Duration(seconds: 1));
     expect(tester.takeException(), isNull);
   });
 

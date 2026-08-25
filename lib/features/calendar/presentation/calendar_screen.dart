@@ -1662,6 +1662,9 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
                                                 : item.teamIds.first,
                                           ),
                                     flag: _nationalityFlag(item.nationality),
+                                    imageUrl: item.imageUrl,
+                                    initials:
+                                        '${item.givenName.isEmpty ? '' : item.givenName[0]}${item.familyName.isEmpty ? '' : item.familyName[0]}',
                                     points: item.points,
                                     strings: strings,
                                   ),
@@ -1677,6 +1680,8 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
                                         ? _teamColor(item.id)
                                         : _hexColor(item.color),
                                     flag: null,
+                                    imageUrl: null,
+                                    initials: '',
                                     points: item.points,
                                     strings: strings,
                                   ),
@@ -1703,6 +1708,8 @@ class _StandingRow extends StatelessWidget {
     required this.strings,
     required this.color,
     required this.flag,
+    required this.imageUrl,
+    required this.initials,
   });
   final int position;
   final String title;
@@ -1711,6 +1718,8 @@ class _StandingRow extends StatelessWidget {
   final AppStrings strings;
   final Color color;
   final String? flag;
+  final String? imageUrl;
+  final String initials;
 
   @override
   Widget build(BuildContext context) => Column(
@@ -1765,6 +1774,23 @@ class _StandingRow extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 8),
+            if (imageUrl != null) ...[
+              SizedBox(
+                width: 52,
+                height: 58,
+                child: Image.network(
+                  imageUrl!,
+                  fit: BoxFit.contain,
+                  alignment: Alignment.bottomCenter,
+                  errorBuilder: (_, _, _) =>
+                      _DriverInitials(initials: initials),
+                ),
+              ),
+              const SizedBox(width: 8),
+            ] else if (initials.isNotEmpty) ...[
+              _DriverInitials(initials: initials),
+              const SizedBox(width: 8),
+            ],
             Text(
               '${_number(points)} ${strings.points}',
               style: const TextStyle(fontWeight: FontWeight.w900),
@@ -1774,6 +1800,23 @@ class _StandingRow extends StatelessWidget {
       ),
       const Divider(height: 1),
     ],
+  );
+}
+
+class _DriverInitials extends StatelessWidget {
+  const _DriverInitials({required this.initials});
+  final String initials;
+
+  @override
+  Widget build(BuildContext context) => Container(
+    width: 46,
+    height: 46,
+    alignment: Alignment.center,
+    decoration: BoxDecoration(
+      color: Theme.of(context).colorScheme.surfaceContainerHighest,
+      shape: BoxShape.circle,
+    ),
+    child: Text(initials, style: const TextStyle(fontWeight: FontWeight.w900)),
   );
 }
 

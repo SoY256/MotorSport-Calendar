@@ -105,6 +105,16 @@ def embedded_array(html: str, key: str) -> list[dict]:
     return value
 
 
+def official_portraits(series: str) -> dict[str, str]:
+    number = 2 if series == "f2" else 3
+    html = page(f"https://www.fiaformula{number}.com/en/drivers")
+    portraits: dict[str, str] = {}
+    pattern = r'href="/en/drivers/([^"]+)"[\s\S]*?<img src="([^"]+right\.webp)" alt="" role="presentation"'
+    for profile, image in re.findall(pattern, html, re.I):
+        portraits[slug(profile)] = image.replace("&amp;", "&")
+    return portraits
+
+
 def session_objects(html: str) -> list[dict]:
     decoder = json.JSONDecoder()
     found: dict[str, dict] = {}
@@ -186,6 +196,7 @@ def build(series: str) -> None:
     write(OUT / series / "2026" / "calendar.json", events, base)
 
     standings_url = f"https://www.fiaformula{2 if series == 'f2' else 3}.com/en/standings/2026/drivers"
+    portraits = official_portraits(series)
     raw_drivers = embedded_array(page(standings_url), "standings")
     drivers = []
     for raw in raw_drivers:
@@ -202,6 +213,7 @@ def build(series: str) -> None:
             "familyName": family,
             "nationality": metadata.get("nationality"),
             "teamIds": [metadata["teamId"]] if metadata.get("teamId") else [],
+            "imageUrl": portraits.get(driver_id),
         })
     write(OUT / series / "2026" / "standings_drivers.json", drivers, standings_url)
     teams_url = standings_url.replace("drivers", "teams")

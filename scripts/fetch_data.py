@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import shutil
 import tempfile
 import time
@@ -15,6 +16,11 @@ from threading import Lock
 from typing import Any
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
+
+try:
+    from http_retry import read
+except ModuleNotFoundError:  # Imported as scripts.fetch_data by unit tests.
+    from scripts.http_retry import read
 
 SCHEMA_VERSION = 1
 SOURCE_NAME = "jolpica-f1"
@@ -182,6 +188,21 @@ def write_json(path: Path, value: Any) -> None:
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def official_f1_portraits() -> dict[str, str]:
+    html = read(
+        "https://www.formula1.com/en/drivers",
+        {"User-Agent": USER_AGENT, "Accept": "text/html"},
+    ).decode("utf-8", "replace")
+    portraits: dict[str, str] = {}
+    for image, name in re.findall(
+        r'<img src="([^"]+right\.webp)" alt="([^"]+)" role="presentation"',
+        html,
+        re.I,
+    ):
+        portraits[slugify(name)] = image.replace("&amp;", "&")
+    return portraits
+
+
 def build(client: JsonClient, output: Path, year: int) -> None:
     now = datetime.now(timezone.utc)
     updated = now.isoformat().replace("+00:00", "Z")
@@ -235,12 +256,19 @@ def build(client: JsonClient, output: Path, year: int) -> None:
                     else f"cancelled-{slugify(event['name'])}.json")
         write_json(season_dir / "events" / filename,
                    document({"eventId": event["id"], "sessions": session_results}, updated, schedule_url))
+    portraits = official_f1_portraits()
     for kind, endpoint, filename in (
         ("drivers", "driverstandings", "standings_drivers.json"),
         ("teams", "constructorstandings", "standings_teams.json"),
     ):
         url = f"{API_ROOT}/ergast/f1/{year}/{endpoint}.json"
-        write_json(season_dir / filename, document(adapt_standings(client.get(url), kind), updated, url))
+        standings = adapt_standings(client.get(url), kind)
+        if kind == "drivers":
+            for driver in standings:
+                driver["imageUrl"] = portraits.get(
+                    slugify(f"{driver['givenName']} {driver['familyName']}")
+                )
+        write_json(season_dir / filename, document(standings, updated, url))
     write_json(output / "series.json", document(
         [{"id": "f1", "name": "Formula 1", "shortName": "F1", "color": "#E10600"}], updated, schedule_url))
     write_json(output / "manifest.json", {

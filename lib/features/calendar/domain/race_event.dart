@@ -216,6 +216,7 @@ class DriverStanding {
     required this.teamNames,
     required this.teamColors,
     required this.category,
+    required this.imageUrl,
   });
 
   factory DriverStanding.fromJson(Map<String, dynamic> json) => DriverStanding(
@@ -232,6 +233,7 @@ class DriverStanding {
     teamColors: (json['teamColors'] as List<dynamic>? ?? const [])
         .cast<String>(),
     category: json['category'] as String?,
+    imageUrl: json['imageUrl'] as String?,
   );
 
   final int position;
@@ -246,6 +248,7 @@ class DriverStanding {
   final List<String> teamNames;
   final List<String> teamColors;
   final String? category;
+  final String? imageUrl;
 }
 
 class TeamStanding {
