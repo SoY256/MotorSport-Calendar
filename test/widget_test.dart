@@ -41,6 +41,19 @@ void main() {
       );
       expect(standings.drivers.any((item) => item.wins > 0), isTrue);
       expect(standings.teams.any((item) => item.wins > 0), isTrue);
+
+      final hypercarById = {for (final item in hypercarDrivers) item.id: item};
+      expect(hypercarById['rene-rast']!.points, 75);
+      expect(hypercarById['robin-frijns']!.points, 75);
+      expect(hypercarById['kamui-kobayashi']!.points, 75);
+      expect(hypercarById['mike-conway']!.points, 75);
+      expect(hypercarById['nyck-de-vries']!.points, 75);
+
+      final manufacturers = {for (final item in hypercarTeams) item.name: item};
+      expect(manufacturers['Toyota']!.position, 1);
+      expect(manufacturers['Toyota']!.points, 132);
+      expect(manufacturers['BMW']!.position, 2);
+      expect(manufacturers['BMW']!.points, 127);
     },
   );
 
@@ -208,6 +221,7 @@ void main() {
     await tester.pump(const Duration(milliseconds: 500));
     expect(find.text('Andrea Kimi Antonelli'), findsOneWidget);
     expect(find.text('242 PKT'), findsOneWidget);
+    expect(find.textContaining('Wygrane:'), findsNothing);
 
     await tester.tap(find.text('Ustawienia'));
     await tester.pump(const Duration(milliseconds: 500));

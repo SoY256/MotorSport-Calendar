@@ -1424,6 +1424,11 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
     final selectedCategory = categories.contains(_standingsCategory)
         ? _standingsCategory
         : categories.first;
+    final teamClassificationLabel = series == 'wec'
+        ? (selectedCategory == 'HYPERCAR'
+              ? strings.manufacturers
+              : strings.teams)
+        : (series == 'imsa' ? strings.teams : strings.constructors);
     return _PageFrame(
       title: strings.standings,
       subtitle: '${_seriesLabel(series)} • 2026',
@@ -1440,7 +1445,7 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
                 ButtonSegment(
                   value: false,
                   icon: const Icon(Icons.groups),
-                  label: Text(strings.constructors),
+                  label: Text(teamClassificationLabel),
                 ),
               ],
               selected: {_drivers},
@@ -1512,7 +1517,6 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
                                           ),
                                     flag: _nationalityFlag(item.nationality),
                                     points: item.points,
-                                    wins: item.wins,
                                     strings: strings,
                                   ),
                                 )
@@ -1528,7 +1532,6 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
                                         : _hexColor(item.color),
                                     flag: null,
                                     points: item.points,
-                                    wins: item.wins,
                                     strings: strings,
                                   ),
                                 )
@@ -1551,7 +1554,6 @@ class _StandingRow extends StatelessWidget {
     required this.title,
     required this.subtitle,
     required this.points,
-    required this.wins,
     required this.strings,
     required this.color,
     required this.flag,
@@ -1560,7 +1562,6 @@ class _StandingRow extends StatelessWidget {
   final String title;
   final String subtitle;
   final double points;
-  final int wins;
   final AppStrings strings;
   final Color color;
   final String? flag;
@@ -1618,18 +1619,9 @@ class _StandingRow extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 8),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  '${_number(points)} ${strings.points}',
-                  style: const TextStyle(fontWeight: FontWeight.w900),
-                ),
-                Text(
-                  '${strings.wins}: $wins',
-                  style: Theme.of(context).textTheme.bodySmall,
-                ),
-              ],
+            Text(
+              '${_number(points)} ${strings.points}',
+              style: const TextStyle(fontWeight: FontWeight.w900),
             ),
           ],
         ),

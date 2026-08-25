@@ -48,6 +48,8 @@ class AppStrings {
       : 'Wybierz dowolną liczbę kategorii';
   String get drivers => _en ? 'Drivers' : 'Kierowcy';
   String get constructors => _en ? 'Constructors' : 'Konstruktorzy';
+  String get manufacturers => _en ? 'Manufacturers' : 'Producenci';
+  String get teams => _en ? 'Teams' : 'Zespoły';
   String get points => _en ? 'PTS' : 'PKT';
   String get wins => _en ? 'Wins' : 'Wygrane';
   String get customize =>
