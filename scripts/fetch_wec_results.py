@@ -5,19 +5,20 @@ from __future__ import annotations
 import io
 import html as html_lib
 import json
+import os
 import re
 import sys
 import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote, urljoin
-from urllib.request import Request, urlopen
+
+from http_retry import read
 
 import pdfplumber
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "https://fiawec.alkamelsystems.com/"
-EVENTS = ["01_IMOLA", "02_SPA FRANCORCHAMPS", "03_LE MANS", "04_SAO PAULO"]
 HEADERS = {"User-Agent": "MotorSport-Calendar/0.1 (+https://github.com/SoY256/MotorSport-Calendar)"}
 ENTRY_LIST_URL = "https://www.fiawec.com/umbrella_media/wec26-entrylist-a4-6936d72065269710536636.pdf"
 STANDINGS_URL = "https://www.fiawec.com/en/season/2026"
@@ -55,8 +56,13 @@ KNOWN_DRIVER_COUNTRIES = {
 
 
 def fetch(url: str) -> bytes:
-    with urlopen(Request(url, headers=HEADERS), timeout=60) as response:
-        return response.read()
+    return read(url, HEADERS)
+
+
+def completed_event_codes() -> list[str]:
+    html = fetch(f"{BASE}?season=15_2026").decode("utf-8", "replace")
+    codes = set(re.findall(r'<option[^>]+value="(\d+_[^"]+)"', html, re.I))
+    return sorted(code for code in codes if not re.fullmatch(r"\d+_20\d{2}(?:-20\d{2})?", code))
 
 
 def slug(value: str) -> str:
@@ -242,13 +248,15 @@ def parse_rows(pdf: bytes, nationalities: dict[str, str]) -> list[dict]:
 
 
 def main() -> None:
-    root = ROOT / "assets" / "data" / "wec" / "2026"
+    data_root = Path(os.environ.get("MOTORSPORT_DATA_ROOT", ROOT / "assets" / "data"))
+    root = data_root / "wec" / "2026"
     calendar = json.loads((root / "calendar.json").read_text(encoding="utf-8"))["data"]
+    events = completed_event_codes()
     updated = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
     nationalities = entry_nationalities(fetch(ENTRY_LIST_URL))
     driver_wins: dict[tuple[str, str], int] = {}
     team_wins: dict[tuple[str, str], int] = {}
-    for event, code in zip(calendar, EVENTS):
+    for event, code in zip(calendar, events):
         url = classification_url(code)
         rows = parse_rows(fetch(url), nationalities)
         for category in ("HYPERCAR", "LMGT3"):

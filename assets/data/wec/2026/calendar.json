@@ -25,7 +25,8 @@
           "type": "R",
           "name": "Race",
           "startTimeUtc": "2026-04-19T11:00:00Z",
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 360
         }
       ],
       "resultsPath": "events/01-6-hours-of-imola.json"
@@ -49,7 +50,8 @@
           "type": "R",
           "name": "Race",
           "startTimeUtc": "2026-05-09T12:00:00Z",
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 360
         }
       ],
       "resultsPath": "events/02-6-hours-of-spa-francorchamps.json"
@@ -73,7 +75,8 @@
           "type": "R",
           "name": "Race",
           "startTimeUtc": "2026-06-13T14:00:00Z",
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 1440
         }
       ],
       "resultsPath": "events/03-24-hours-of-le-mans.json"
@@ -97,7 +100,8 @@
           "type": "R",
           "name": "Race",
           "startTimeUtc": "2026-07-12T14:30:00Z",
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 360
         }
       ],
       "resultsPath": "events/04-6-hours-of-sao-paulo.json"
@@ -121,7 +125,8 @@
           "type": "R",
           "name": "Race",
           "startTimeUtc": "2026-09-06T17:00:00Z",
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 360
         }
       ],
       "resultsPath": "events/05-lone-star-le-mans.json"
@@ -145,7 +150,8 @@
           "type": "R",
           "name": "Race",
           "startTimeUtc": "2026-09-27T02:00:00Z",
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 360
         }
       ],
       "resultsPath": "events/06-6-hours-of-fuji.json"
@@ -169,7 +175,8 @@
           "type": "R",
           "name": "Race",
           "startTimeUtc": "2026-10-24T12:00:00Z",
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 600
         }
       ],
       "resultsPath": "events/07-qatar-1812-km.json"
@@ -193,7 +200,8 @@
           "type": "R",
           "name": "Race",
           "startTimeUtc": "2026-11-07T11:00:00Z",
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 480
         }
       ],
       "resultsPath": "events/08-8-hours-of-bahrain.json"

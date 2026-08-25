@@ -3,11 +3,13 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.request import Request, urlopen
+
+from http_retry import read
 
 ROOT = Path(__file__).resolve().parents[1]
 API = "https://www.indycar.com/api/results"
@@ -32,8 +34,7 @@ TEAM_COLORS = {"chip-ganassi-racing": "#0B5BA7", "andretti-global": "#E31B23", "
 
 
 def get(url: str):
-    with urlopen(Request(url, headers=HEADERS), timeout=45) as response:
-        return json.loads(response.read().decode("utf-8"))
+    return json.loads(read(url, HEADERS, timeout=45).decode("utf-8"))
 
 
 def slug(value: str) -> str:
@@ -42,7 +43,8 @@ def slug(value: str) -> str:
 
 
 def main() -> None:
-    root = ROOT / "assets" / "data" / "indycar" / "2026"
+    data_root = Path(os.environ.get("MOTORSPORT_DATA_ROOT", ROOT / "assets" / "data"))
+    root = data_root / "indycar" / "2026"
     calendar_doc = json.loads((root / "calendar.json").read_text(encoding="utf-8"))
     official = get(f"{API}/SeasonDropDown?id={SERIES_ID}")
     season = next(item for item in official if item["Year"] == "2026")

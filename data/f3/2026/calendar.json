@@ -1,0 +1,532 @@
+{
+  "schemaVersion": 1,
+  "lastSuccessfulUpdate": "2026-08-25T09:11:22.544650Z",
+  "source": {
+    "name": "official-formula-series",
+    "url": "https://www.fiaformula3.com/en/racing/2026"
+  },
+  "data": [
+    {
+      "id": "f3-2026-1",
+      "seriesId": "f3",
+      "season": 2026,
+      "round": 1,
+      "name": "Australian Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "albert-park-grand-prix-circuit",
+        "name": "Albert Park Grand Prix Circuit",
+        "locality": "Melbourne",
+        "country": "Australia",
+        "countryCode": "AUS"
+      },
+      "sessions": [
+        {
+          "type": "FP1",
+          "name": "Practice",
+          "startTimeUtc": "2026-03-05T21:50:00Z",
+          "startTimeTrack": "2026-03-06T08:50:00",
+          "trackTimeZone": "Australia/Melbourne",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "Q",
+          "name": "Qualifying",
+          "startTimeUtc": "2026-03-06T03:00:00Z",
+          "startTimeTrack": "2026-03-06T14:00:00",
+          "trackTimeZone": "Australia/Melbourne",
+          "cancelled": false,
+          "durationMinutes": 30
+        },
+        {
+          "type": "SPRINT",
+          "name": "Sprint Race",
+          "startTimeUtc": "2026-03-07T00:15:00Z",
+          "startTimeTrack": "2026-03-07T11:15:00",
+          "trackTimeZone": "Australia/Melbourne",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "R",
+          "name": "Feature Race",
+          "startTimeUtc": "2026-03-07T21:50:00Z",
+          "startTimeTrack": "2026-03-08T08:50:00",
+          "trackTimeZone": "Australia/Melbourne",
+          "cancelled": false,
+          "durationMinutes": 120
+        }
+      ],
+      "resultsPath": "events/01-australian-grand-prix.json"
+    },
+    {
+      "id": "f3-2026-2",
+      "seriesId": "f3",
+      "season": 2026,
+      "round": 2,
+      "name": "Monaco Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit-de-monaco",
+        "name": "Circuit de Monaco",
+        "locality": "Monte Carlo",
+        "country": "Monaco",
+        "countryCode": "MCO"
+      },
+      "sessions": [
+        {
+          "type": "FP1",
+          "name": "Practice",
+          "startTimeUtc": "2026-06-04T11:25:00Z",
+          "startTimeTrack": "2026-06-04T13:25:00",
+          "trackTimeZone": "Europe/Monaco",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "FP1",
+          "name": "Qualifying A",
+          "startTimeUtc": "2026-06-05T09:05:00Z",
+          "startTimeTrack": "2026-06-05T11:05:00",
+          "trackTimeZone": "Europe/Monaco",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "FP1",
+          "name": "Qualifying B",
+          "startTimeUtc": "2026-06-05T09:29:00Z",
+          "startTimeTrack": "2026-06-05T11:29:00",
+          "trackTimeZone": "Europe/Monaco",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "SPRINT",
+          "name": "Sprint Race",
+          "startTimeUtc": "2026-06-06T08:45:00Z",
+          "startTimeTrack": "2026-06-06T10:45:00",
+          "trackTimeZone": "Europe/Monaco",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "R",
+          "name": "Feature Race",
+          "startTimeUtc": "2026-06-07T05:45:00Z",
+          "startTimeTrack": "2026-06-07T07:45:00",
+          "trackTimeZone": "Europe/Monaco",
+          "cancelled": false,
+          "durationMinutes": 120
+        }
+      ],
+      "resultsPath": "events/02-monaco-grand-prix.json"
+    },
+    {
+      "id": "f3-2026-3",
+      "seriesId": "f3",
+      "season": 2026,
+      "round": 3,
+      "name": "Barcelona Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit-de-barcelona-catalunya",
+        "name": "Circuit de Barcelona-Catalunya",
+        "locality": "Barcelona",
+        "country": "Spain",
+        "countryCode": "ESP"
+      },
+      "sessions": [
+        {
+          "type": "FP1",
+          "name": "Practice",
+          "startTimeUtc": "2026-06-12T07:55:00Z",
+          "startTimeTrack": "2026-06-12T09:55:00",
+          "trackTimeZone": "Europe/Madrid",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "Q",
+          "name": "Qualifying",
+          "startTimeUtc": "2026-06-12T13:00:00Z",
+          "startTimeTrack": "2026-06-12T15:00:00",
+          "trackTimeZone": "Europe/Madrid",
+          "cancelled": false,
+          "durationMinutes": 30
+        },
+        {
+          "type": "SPRINT",
+          "name": "Sprint Race",
+          "startTimeUtc": "2026-06-13T08:05:00Z",
+          "startTimeTrack": "2026-06-13T10:05:00",
+          "trackTimeZone": "Europe/Madrid",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "R",
+          "name": "Feature Race",
+          "startTimeUtc": "2026-06-14T06:40:00Z",
+          "startTimeTrack": "2026-06-14T08:40:00",
+          "trackTimeZone": "Europe/Madrid",
+          "cancelled": false,
+          "durationMinutes": 120
+        }
+      ],
+      "resultsPath": "events/03-barcelona-grand-prix.json"
+    },
+    {
+      "id": "f3-2026-4",
+      "seriesId": "f3",
+      "season": 2026,
+      "round": 4,
+      "name": "Austrian Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "red-bull-ring",
+        "name": "Red Bull Ring",
+        "locality": "Spielberg",
+        "country": "Austria",
+        "countryCode": "AUT"
+      },
+      "sessions": [
+        {
+          "type": "FP1",
+          "name": "Practice",
+          "startTimeUtc": "2026-06-26T07:55:00Z",
+          "startTimeTrack": "2026-06-26T09:55:00",
+          "trackTimeZone": "Europe/Vienna",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "Q",
+          "name": "Qualifying",
+          "startTimeUtc": "2026-06-26T13:00:00Z",
+          "startTimeTrack": "2026-06-26T15:00:00",
+          "trackTimeZone": "Europe/Vienna",
+          "cancelled": false,
+          "durationMinutes": 30
+        },
+        {
+          "type": "SPRINT",
+          "name": "Sprint Race",
+          "startTimeUtc": "2026-06-27T08:05:00Z",
+          "startTimeTrack": "2026-06-27T10:05:00",
+          "trackTimeZone": "Europe/Vienna",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "R",
+          "name": "Feature Race",
+          "startTimeUtc": "2026-06-28T06:40:00Z",
+          "startTimeTrack": "2026-06-28T08:40:00",
+          "trackTimeZone": "Europe/Vienna",
+          "cancelled": false,
+          "durationMinutes": 120
+        }
+      ],
+      "resultsPath": "events/04-austrian-grand-prix.json"
+    },
+    {
+      "id": "f3-2026-5",
+      "seriesId": "f3",
+      "season": 2026,
+      "round": 5,
+      "name": "British Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "silverstone-circuit",
+        "name": "Silverstone Circuit",
+        "locality": "Silverstone",
+        "country": "United Kingdom",
+        "countryCode": "GBR"
+      },
+      "sessions": [
+        {
+          "type": "FP1",
+          "name": "Practice",
+          "startTimeUtc": "2026-07-03T07:50:00Z",
+          "startTimeTrack": "2026-07-03T08:50:00",
+          "trackTimeZone": "Europe/London",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "Q",
+          "name": "Qualifying",
+          "startTimeUtc": "2026-07-03T13:00:00Z",
+          "startTimeTrack": "2026-07-03T14:00:00",
+          "trackTimeZone": "Europe/London",
+          "cancelled": false,
+          "durationMinutes": 30
+        },
+        {
+          "type": "SPRINT",
+          "name": "Sprint Race",
+          "startTimeUtc": "2026-07-04T08:35:00Z",
+          "startTimeTrack": "2026-07-04T09:35:00",
+          "trackTimeZone": "Europe/London",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "R",
+          "name": "Feature Race",
+          "startTimeUtc": "2026-07-05T07:25:00Z",
+          "startTimeTrack": "2026-07-05T08:25:00",
+          "trackTimeZone": "Europe/London",
+          "cancelled": false,
+          "durationMinutes": 120
+        }
+      ],
+      "resultsPath": "events/05-british-grand-prix.json"
+    },
+    {
+      "id": "f3-2026-6",
+      "seriesId": "f3",
+      "season": 2026,
+      "round": 6,
+      "name": "Belgian Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit-de-spa-francorchamps",
+        "name": "Circuit de Spa-Francorchamps",
+        "locality": "Stavelot",
+        "country": "Belgium",
+        "countryCode": "BEL"
+      },
+      "sessions": [
+        {
+          "type": "FP1",
+          "name": "Practice",
+          "startTimeUtc": "2026-07-17T07:55:00Z",
+          "startTimeTrack": "2026-07-17T09:55:00",
+          "trackTimeZone": "Europe/Brussels",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "Q",
+          "name": "Qualifying",
+          "startTimeUtc": "2026-07-17T13:00:00Z",
+          "startTimeTrack": "2026-07-17T15:00:00",
+          "trackTimeZone": "Europe/Brussels",
+          "cancelled": false,
+          "durationMinutes": 30
+        },
+        {
+          "type": "SPRINT",
+          "name": "Sprint Race",
+          "startTimeUtc": "2026-07-18T08:00:00Z",
+          "startTimeTrack": "2026-07-18T10:00:00",
+          "trackTimeZone": "Europe/Brussels",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "R",
+          "name": "Feature Race",
+          "startTimeUtc": "2026-07-19T06:30:00Z",
+          "startTimeTrack": "2026-07-19T08:30:00",
+          "trackTimeZone": "Europe/Brussels",
+          "cancelled": false,
+          "durationMinutes": 120
+        }
+      ],
+      "resultsPath": "events/06-belgian-grand-prix.json"
+    },
+    {
+      "id": "f3-2026-7",
+      "seriesId": "f3",
+      "season": 2026,
+      "round": 7,
+      "name": "Hungarian Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "hungaroring",
+        "name": "Hungaroring",
+        "locality": "Budapest",
+        "country": "Hungary",
+        "countryCode": "HUN"
+      },
+      "sessions": [
+        {
+          "type": "FP1",
+          "name": "Practice",
+          "startTimeUtc": "2026-07-24T07:55:00Z",
+          "startTimeTrack": "2026-07-24T09:55:00",
+          "trackTimeZone": "Europe/Budapest",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "Q",
+          "name": "Qualifying",
+          "startTimeUtc": "2026-07-24T13:00:00Z",
+          "startTimeTrack": "2026-07-24T15:00:00",
+          "trackTimeZone": "Europe/Budapest",
+          "cancelled": false,
+          "durationMinutes": 30
+        },
+        {
+          "type": "SPRINT",
+          "name": "Sprint Race",
+          "startTimeUtc": "2026-07-25T08:05:00Z",
+          "startTimeTrack": "2026-07-25T10:05:00",
+          "trackTimeZone": "Europe/Budapest",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "R",
+          "name": "Feature Race",
+          "startTimeUtc": "2026-07-26T06:40:00Z",
+          "startTimeTrack": "2026-07-26T08:40:00",
+          "trackTimeZone": "Europe/Budapest",
+          "cancelled": false,
+          "durationMinutes": 120
+        }
+      ],
+      "resultsPath": "events/07-hungarian-grand-prix.json"
+    },
+    {
+      "id": "f3-2026-8",
+      "seriesId": "f3",
+      "season": 2026,
+      "round": 8,
+      "name": "Italian Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "autodromo-nazionale-di-monza",
+        "name": "Autodromo Nazionale di Monza",
+        "locality": "Monza",
+        "country": "Italy",
+        "countryCode": "ITA"
+      },
+      "sessions": [
+        {
+          "type": "FP1",
+          "name": "Practice",
+          "startTimeUtc": "2026-09-04T06:35:00Z",
+          "startTimeTrack": "2026-09-04T08:35:00",
+          "trackTimeZone": "Europe/Rome",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "FP1",
+          "name": "Qualifying A",
+          "startTimeUtc": "2026-09-04T12:00:00Z",
+          "startTimeTrack": "2026-09-04T14:00:00",
+          "trackTimeZone": "Europe/Rome",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "FP1",
+          "name": "Qualifying B",
+          "startTimeUtc": "2026-09-04T12:20:00Z",
+          "startTimeTrack": "2026-09-04T14:20:00",
+          "trackTimeZone": "Europe/Rome",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "SPRINT",
+          "name": "Sprint Race",
+          "startTimeUtc": "2026-09-05T07:30:00Z",
+          "startTimeTrack": "2026-09-05T09:30:00",
+          "trackTimeZone": "Europe/Rome",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "R",
+          "name": "Feature Race",
+          "startTimeUtc": "2026-09-06T06:15:00Z",
+          "startTimeTrack": "2026-09-06T08:15:00",
+          "trackTimeZone": "Europe/Rome",
+          "cancelled": false,
+          "durationMinutes": 120
+        }
+      ],
+      "resultsPath": "events/08-italian-grand-prix.json"
+    },
+    {
+      "id": "f3-2026-9",
+      "seriesId": "f3",
+      "season": 2026,
+      "round": 9,
+      "name": "Madrid Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "madring",
+        "name": "Madring",
+        "locality": "Madrid",
+        "country": "Spain",
+        "countryCode": "ESP"
+      },
+      "sessions": [
+        {
+          "type": "FP1",
+          "name": "Practice",
+          "startTimeUtc": "2026-09-11T08:05:00Z",
+          "startTimeTrack": "2026-09-11T10:05:00",
+          "trackTimeZone": "Europe/Madrid",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "FP1",
+          "name": "Qualifying 1",
+          "startTimeUtc": "2026-09-11T16:25:00Z",
+          "startTimeTrack": "2026-09-11T18:25:00",
+          "trackTimeZone": "Europe/Madrid",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "FP1",
+          "name": "Qualifying 2",
+          "startTimeUtc": "2026-09-11T16:55:00Z",
+          "startTimeTrack": "2026-09-11T18:55:00",
+          "trackTimeZone": "Europe/Madrid",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "SPRINT",
+          "name": "Sprint Race",
+          "startTimeUtc": "2026-09-12T09:05:00Z",
+          "startTimeTrack": "2026-09-12T11:05:00",
+          "trackTimeZone": "Europe/Madrid",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "FP1",
+          "name": "Feature Race 1",
+          "startTimeUtc": "2026-09-12T16:00:00Z",
+          "startTimeTrack": "2026-09-12T18:00:00",
+          "trackTimeZone": "Europe/Madrid",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "FP1",
+          "name": "Feature Race 2",
+          "startTimeUtc": "2026-09-13T07:55:00Z",
+          "startTimeTrack": "2026-09-13T09:55:00",
+          "trackTimeZone": "Europe/Madrid",
+          "cancelled": false,
+          "durationMinutes": 45
+        }
+      ],
+      "resultsPath": "events/09-madrid-grand-prix.json"
+    }
+  ]
+}

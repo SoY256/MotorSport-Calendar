@@ -3,22 +3,17 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote, urljoin
-from urllib.request import Request, urlopen
+
+from http_retry import read
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "https://imsa.results.alkamelcloud.com/"
-EVENTS = [
-    "02_Daytona International Speedway", "06_Sebring International Raceway",
-    "07_Long Beach Street Circuit", "09_Weathertech Raceway Laguna Seca",
-    "11_Detroit Street Course", "14_Watkins Glen International",
-    "15_Canadian Tire Motorsport Park", "16_Road America",
-    "18_VIRginia International Raceway",
-]
 HEADERS = {"User-Agent": "MotorSport-Calendar/0.1 (+https://github.com/SoY256/MotorSport-Calendar)"}
 MANUFACTURER_COLORS = {"Acura": "#E40521", "Aston Martin": "#006F62", "BMW": "#0066B1",
                        "Cadillac": "#D4AF37", "Chevrolet": "#F2C500", "Corvette": "#F2C500",
@@ -32,8 +27,18 @@ TEAM_COLORS = {"Crowdstrike Racing by APR": "#E31B23", "Inter Europol Competitio
 
 
 def fetch(url: str) -> bytes:
-    with urlopen(Request(url, headers=HEADERS), timeout=60) as response:
-        return response.read()
+    return read(url, HEADERS)
+
+
+def completed_event_codes() -> list[str]:
+    html = fetch(f"{BASE}?season=26_2026").decode("utf-8", "replace")
+    codes = set(re.findall(r'<option[^>]+value="(\d+_[^"]+)"', html, re.I))
+    excluded = ("(AEC)", "Test", "ROAR")
+    return sorted(
+        code for code in codes
+        if not any(label in code for label in excluded)
+        and not re.fullmatch(r"\d+_20\d{2}", code)
+    )
 
 
 def slug(value: str) -> str:
@@ -62,16 +67,24 @@ def entrant_color(team: str, vehicle: str) -> str:
 
 
 def main() -> None:
-    root = ROOT / "assets" / "data" / "imsa" / "2026"
+    data_root = Path(os.environ.get("MOTORSPORT_DATA_ROOT", ROOT / "assets" / "data"))
+    root = data_root / "imsa" / "2026"
     calendar = json.loads((root / "calendar.json").read_text(encoding="utf-8"))["data"]
+    events = []
+    for event_code in completed_event_codes():
+        try:
+            events.append((event_code, result_url(event_code)))
+        except RuntimeError:
+            # The official index also contains support series. Only an event
+            # exposing an IMSA WeatherTech race classification belongs here.
+            continue
     updated = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
     driver_countries: dict[str, str] = {}
     driver_teams: dict[str, tuple[str, str, str]] = {}
     car_teams: dict[tuple[str, str], tuple[str, str, str]] = {}
     driver_wins: dict[tuple[str, str], int] = {}
     team_wins: dict[tuple[str, str], int] = {}
-    for event, event_code in zip(calendar, EVENTS):
-        url = result_url(event_code)
+    for event, (event_code, url) in zip(calendar, events):
         raw = json.loads(fetch(url).decode("utf-8-sig"))
         rows = []
         winning_classes: set[str] = set()
@@ -114,7 +127,9 @@ def main() -> None:
         (root / event["resultsPath"]).write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(f"{event['name']}: {len(rows)}")
 
-    standings_html = fetch(f"{BASE}?season=26_2026&evvent={quote(EVENTS[-1])}").decode("utf-8", "replace")
+    if not events:
+        raise RuntimeError("No completed official IMSA events found")
+    standings_html = fetch(f"{BASE}?season=26_2026&evvent={quote(events[-1][0])}").decode("utf-8", "replace")
     for kind, pattern, filename in (
         ("drivers", r'href="([^"]+IWSC[^\"]+Drivers\.json)"', "standings_drivers.json"),
         ("teams", r'href="([^"]+IWSC[^\"]+Teams\.json)"', "standings_teams.json"),

@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-08-24T12:00:00Z",
+  "lastSuccessfulUpdate": "2026-08-25T09:12:06.165856Z",
   "source": {
     "name": "official-indycar",
-    "url": "https://www.indycar.com/standings/"
+    "url": "https://www.indycar.com/api/results/YearPointSummary?year=2026&id=b856a4f1-e85c-4fac-8c36-fd58d962227a"
   },
   "data": [
     {
@@ -14,9 +14,15 @@
       "code": "",
       "givenName": "Alex",
       "familyName": "Palou",
-      "nationality": "Spanish",
+      "nationality": "ESP",
       "teamIds": [
-        "chip_ganassi"
+        "chip-ganassi-racing"
+      ],
+      "teamNames": [
+        "Chip Ganassi Racing"
+      ],
+      "teamColors": [
+        "#0B5BA7"
       ]
     },
     {
@@ -27,9 +33,15 @@
       "code": "",
       "givenName": "Kyle",
       "familyName": "Kirkwood",
-      "nationality": "American",
+      "nationality": "USA",
       "teamIds": [
-        "andretti"
+        "andretti-global-w-curb-agajanian"
+      ],
+      "teamNames": [
+        "Andretti Global w/ Curb-Agajanian"
+      ],
+      "teamColors": [
+        "#E31B23"
       ]
     },
     {
@@ -40,9 +52,15 @@
       "code": "",
       "givenName": "Christian",
       "familyName": "Lundgaard",
-      "nationality": "Danish",
+      "nationality": "DNK",
       "teamIds": [
-        "arrow_mclaren"
+        "arrow-mclaren"
+      ],
+      "teamNames": [
+        "Arrow McLaren"
+      ],
+      "teamColors": [
+        "#FF6C0C"
       ]
     },
     {
@@ -53,87 +71,566 @@
       "code": "",
       "givenName": "David",
       "familyName": "Malukas",
-      "nationality": "American",
+      "nationality": "USA",
       "teamIds": [
-        "penske"
+        "team-penske"
+      ],
+      "teamNames": [
+        "Team Penske"
+      ],
+      "teamColors": [
+        "#143B78"
       ]
     },
     {
       "position": 5,
       "points": 399,
       "wins": 1,
-      "id": "pato-o'ward",
+      "id": "pato-o-ward",
       "code": "",
       "givenName": "Pato",
       "familyName": "O'Ward",
-      "nationality": "Mexican",
+      "nationality": "MEX",
       "teamIds": [
-        "arrow_mclaren"
+        "arrow-mclaren"
+      ],
+      "teamNames": [
+        "Arrow McLaren"
+      ],
+      "teamColors": [
+        "#FF6C0C"
       ]
     },
     {
       "position": 6,
-      "points": 352,
+      "points": 376,
       "wins": 2,
       "id": "josef-newgarden",
       "code": "",
       "givenName": "Josef",
       "familyName": "Newgarden",
-      "nationality": "American",
+      "nationality": "USA",
       "teamIds": [
-        "penske"
+        "team-penske"
+      ],
+      "teamNames": [
+        "Team Penske"
+      ],
+      "teamColors": [
+        "#143B78"
       ]
     },
     {
       "position": 7,
-      "points": 345,
-      "wins": 0,
-      "id": "scott-mclaughlin",
-      "code": "",
-      "givenName": "Scott",
-      "familyName": "McLaughlin",
-      "nationality": "New Zealander",
-      "teamIds": [
-        "penske"
-      ]
-    },
-    {
-      "position": 8,
-      "points": 344,
-      "wins": 1,
-      "id": "felix-rosenqvist",
-      "code": "",
-      "givenName": "Felix",
-      "familyName": "Rosenqvist",
-      "nationality": "Swedish",
-      "teamIds": [
-        "meyer_shank"
-      ]
-    },
-    {
-      "position": 9,
-      "points": 329,
+      "points": 361,
       "wins": 1,
       "id": "marcus-ericsson",
       "code": "",
       "givenName": "Marcus",
       "familyName": "Ericsson",
-      "nationality": "Swedish",
+      "nationality": "SWE",
       "teamIds": [
-        "andretti"
+        "andretti-global"
+      ],
+      "teamNames": [
+        "Andretti Global"
+      ],
+      "teamColors": [
+        "#E31B23"
+      ]
+    },
+    {
+      "position": 8,
+      "points": 355,
+      "wins": 1,
+      "id": "felix-rosenqvist",
+      "code": "",
+      "givenName": "Felix",
+      "familyName": "Rosenqvist",
+      "nationality": "SWE",
+      "teamIds": [
+        "meyer-shank-w-curb-agajanian"
+      ],
+      "teamNames": [
+        "Meyer Shank w/ Curb-Agajanian"
+      ],
+      "teamColors": [
+        "#E91E63"
+      ]
+    },
+    {
+      "position": 9,
+      "points": 354,
+      "wins": 0,
+      "id": "scott-mclaughlin",
+      "code": "",
+      "givenName": "Scott",
+      "familyName": "McLaughlin",
+      "nationality": "NZL",
+      "teamIds": [
+        "team-penske"
+      ],
+      "teamNames": [
+        "Team Penske"
+      ],
+      "teamColors": [
+        "#143B78"
       ]
     },
     {
       "position": 10,
-      "points": 295,
+      "points": 328,
+      "wins": 0,
+      "id": "will-power",
+      "code": "",
+      "givenName": "Will",
+      "familyName": "Power",
+      "nationality": "AUS",
+      "teamIds": [
+        "andretti-global"
+      ],
+      "teamNames": [
+        "Andretti Global"
+      ],
+      "teamColors": [
+        "#E31B23"
+      ]
+    },
+    {
+      "position": 11,
+      "points": 302,
       "wins": 0,
       "id": "rinus-veekay",
       "code": "",
       "givenName": "Rinus",
       "familyName": "VeeKay",
-      "nationality": "Dutch",
+      "nationality": "NLD",
       "teamIds": [
-        "juncos"
+        "juncos-hollinger-racing"
+      ],
+      "teamNames": [
+        "Juncos Hollinger Racing"
+      ],
+      "teamColors": [
+        "#4A148C"
+      ]
+    },
+    {
+      "position": 12,
+      "points": 290,
+      "wins": 0,
+      "id": "scott-dixon",
+      "code": "",
+      "givenName": "Scott",
+      "familyName": "Dixon",
+      "nationality": "NZL",
+      "teamIds": [
+        "chip-ganassi-racing"
+      ],
+      "teamNames": [
+        "Chip Ganassi Racing"
+      ],
+      "teamColors": [
+        "#0B5BA7"
+      ]
+    },
+    {
+      "position": 13,
+      "points": 282,
+      "wins": 0,
+      "id": "kyffin-simpson",
+      "code": "",
+      "givenName": "Kyffin",
+      "familyName": "Simpson",
+      "nationality": "CYM",
+      "teamIds": [
+        "chip-ganassi-racing"
+      ],
+      "teamNames": [
+        "Chip Ganassi Racing"
+      ],
+      "teamColors": [
+        "#0B5BA7"
+      ]
+    },
+    {
+      "position": 14,
+      "points": 276,
+      "wins": 0,
+      "id": "graham-rahal",
+      "code": "",
+      "givenName": "Graham",
+      "familyName": "Rahal",
+      "nationality": "USA",
+      "teamIds": [
+        "rahal-letterman-lanigan-racing"
+      ],
+      "teamNames": [
+        "Rahal Letterman Lanigan Racing"
+      ],
+      "teamColors": [
+        "#1F4E79"
+      ]
+    },
+    {
+      "position": 15,
+      "points": 257,
+      "wins": 0,
+      "id": "marcus-armstrong",
+      "code": "",
+      "givenName": "Marcus",
+      "familyName": "Armstrong",
+      "nationality": "NZL",
+      "teamIds": [
+        "meyer-shank-w-curb-agajanian"
+      ],
+      "teamNames": [
+        "Meyer Shank w/ Curb-Agajanian"
+      ],
+      "teamColors": [
+        "#E91E63"
+      ]
+    },
+    {
+      "position": 16,
+      "points": 236,
+      "wins": 0,
+      "id": "alexander-rossi",
+      "code": "",
+      "givenName": "Alexander",
+      "familyName": "Rossi",
+      "nationality": "USA",
+      "teamIds": [
+        "ecr"
+      ],
+      "teamNames": [
+        "ECR"
+      ],
+      "teamColors": [
+        "#00529B"
+      ]
+    },
+    {
+      "position": 17,
+      "points": 234,
+      "wins": 0,
+      "id": "santino-ferrucci",
+      "code": "",
+      "givenName": "Santino",
+      "familyName": "Ferrucci",
+      "nationality": "USA",
+      "teamIds": [
+        "a-j-foyt-enterprises"
+      ],
+      "teamNames": [
+        "A.J. Foyt Enterprises"
+      ],
+      "teamColors": [
+        "#D71920"
+      ]
+    },
+    {
+      "position": 18,
+      "points": 229,
+      "wins": 0,
+      "id": "romain-grosjean",
+      "code": "",
+      "givenName": "Romain",
+      "familyName": "Grosjean",
+      "nationality": "FRA",
+      "teamIds": [
+        "dale-coyne-racing"
+      ],
+      "teamNames": [
+        "Dale Coyne Racing"
+      ],
+      "teamColors": [
+        "#222222"
+      ]
+    },
+    {
+      "position": 19,
+      "points": 223,
+      "wins": 0,
+      "id": "nolan-siegel",
+      "code": "",
+      "givenName": "Nolan",
+      "familyName": "Siegel",
+      "nationality": "USA",
+      "teamIds": [
+        "arrow-mclaren"
+      ],
+      "teamNames": [
+        "Arrow McLaren"
+      ],
+      "teamColors": [
+        "#FF6C0C"
+      ]
+    },
+    {
+      "position": 20,
+      "points": 212,
+      "wins": 0,
+      "id": "louis-foster",
+      "code": "",
+      "givenName": "Louis",
+      "familyName": "Foster",
+      "nationality": "GBR",
+      "teamIds": [
+        "rahal-letterman-lanigan-racing"
+      ],
+      "teamNames": [
+        "Rahal Letterman Lanigan Racing"
+      ],
+      "teamColors": [
+        "#1F4E79"
+      ]
+    },
+    {
+      "position": 21,
+      "points": 204,
+      "wins": 0,
+      "id": "dennis-hauger",
+      "code": "",
+      "givenName": "Dennis",
+      "familyName": "Hauger",
+      "nationality": "NOR",
+      "teamIds": [
+        "dale-coyne-racing"
+      ],
+      "teamNames": [
+        "Dale Coyne Racing"
+      ],
+      "teamColors": [
+        "#222222"
+      ]
+    },
+    {
+      "position": 22,
+      "points": 180,
+      "wins": 0,
+      "id": "christian-rasmussen",
+      "code": "",
+      "givenName": "Christian",
+      "familyName": "Rasmussen",
+      "nationality": "DNK",
+      "teamIds": [
+        "ecr"
+      ],
+      "teamNames": [
+        "ECR"
+      ],
+      "teamColors": [
+        "#00529B"
+      ]
+    },
+    {
+      "position": 23,
+      "points": 180,
+      "wins": 0,
+      "id": "caio-collet",
+      "code": "",
+      "givenName": "Caio",
+      "familyName": "Collet",
+      "nationality": "BRA",
+      "teamIds": [
+        "a-j-foyt-enterprises"
+      ],
+      "teamNames": [
+        "A.J. Foyt Enterprises"
+      ],
+      "teamColors": [
+        "#D71920"
+      ]
+    },
+    {
+      "position": 24,
+      "points": 170,
+      "wins": 0,
+      "id": "mick-schumacher",
+      "code": "",
+      "givenName": "Mick",
+      "familyName": "Schumacher",
+      "nationality": "DEU",
+      "teamIds": [
+        "rahal-letterman-lanigan-racing"
+      ],
+      "teamNames": [
+        "Rahal Letterman Lanigan Racing"
+      ],
+      "teamColors": [
+        "#1F4E79"
+      ]
+    },
+    {
+      "position": 25,
+      "points": 155,
+      "wins": 0,
+      "id": "sting-ray-robb",
+      "code": "",
+      "givenName": "Sting Ray",
+      "familyName": "Robb",
+      "nationality": "USA",
+      "teamIds": [
+        "juncos-hollinger-racing"
+      ],
+      "teamNames": [
+        "Juncos Hollinger Racing"
+      ],
+      "teamColors": [
+        "#4A148C"
+      ]
+    },
+    {
+      "position": 26,
+      "points": 24,
+      "wins": 0,
+      "id": "conor-daly",
+      "code": "",
+      "givenName": "Conor",
+      "familyName": "Daly",
+      "nationality": "USA",
+      "teamIds": [
+        "dreyer-reinbold-racing"
+      ],
+      "teamNames": [
+        "Dreyer & Reinbold Racing"
+      ],
+      "teamColors": [
+        "#C0A062"
+      ]
+    },
+    {
+      "position": 27,
+      "points": 20,
+      "wins": 0,
+      "id": "takuma-sato",
+      "code": "",
+      "givenName": "Takuma",
+      "familyName": "Sato",
+      "nationality": "JPN",
+      "teamIds": [
+        "rahal-letterman-lanigan-racing"
+      ],
+      "teamNames": [
+        "Rahal Letterman Lanigan Racing"
+      ],
+      "teamColors": [
+        "#1F4E79"
+      ]
+    },
+    {
+      "position": 28,
+      "points": 8,
+      "wins": 0,
+      "id": "jack-harvey",
+      "code": "",
+      "givenName": "Jack",
+      "familyName": "Harvey",
+      "nationality": "GBR",
+      "teamIds": [
+        "dreyer-reinbold-racing"
+      ],
+      "teamNames": [
+        "Dreyer & Reinbold Racing"
+      ],
+      "teamColors": [
+        "#C0A062"
+      ]
+    },
+    {
+      "position": 29,
+      "points": 6,
+      "wins": 0,
+      "id": "jacob-abel",
+      "code": "",
+      "givenName": "Jacob",
+      "familyName": "Abel",
+      "nationality": "USA",
+      "teamIds": [
+        "abel-motorsports"
+      ],
+      "teamNames": [
+        "Abel Motorsports"
+      ],
+      "teamColors": [
+        "#111111"
+      ]
+    },
+    {
+      "position": 30,
+      "points": 5,
+      "wins": 0,
+      "id": "helio-castroneves",
+      "code": "",
+      "givenName": "Helio",
+      "familyName": "Castroneves",
+      "nationality": "BRA",
+      "teamIds": [
+        "meyer-shank-w-curb-agajanian"
+      ],
+      "teamNames": [
+        "Meyer Shank w/ Curb-Agajanian"
+      ],
+      "teamColors": [
+        "#E91E63"
+      ]
+    },
+    {
+      "position": 31,
+      "points": 5,
+      "wins": 0,
+      "id": "ed-carpenter",
+      "code": "",
+      "givenName": "Ed",
+      "familyName": "Carpenter",
+      "nationality": "USA",
+      "teamIds": [
+        "ecr"
+      ],
+      "teamNames": [
+        "ECR"
+      ],
+      "teamColors": [
+        "#00529B"
+      ]
+    },
+    {
+      "position": 32,
+      "points": 5,
+      "wins": 0,
+      "id": "ryan-hunter-reay",
+      "code": "",
+      "givenName": "Ryan",
+      "familyName": "Hunter-Reay",
+      "nationality": "USA",
+      "teamIds": [
+        "arrow-mclaren"
+      ],
+      "teamNames": [
+        "Arrow McLaren"
+      ],
+      "teamColors": [
+        "#FF6C0C"
+      ]
+    },
+    {
+      "position": 33,
+      "points": 5,
+      "wins": 0,
+      "id": "katherine-legge",
+      "code": "",
+      "givenName": "Katherine",
+      "familyName": "Legge",
+      "nationality": "GBR",
+      "teamIds": [
+        "hmd-motorsports-w-aj-foyt-racing"
+      ],
+      "teamNames": [
+        "HMD Motorsports w/ AJ Foyt Racing"
+      ],
+      "teamColors": [
+        "#202A44"
       ]
     }
   ]

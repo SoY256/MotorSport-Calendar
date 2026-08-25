@@ -9,7 +9,7 @@ import tempfile
 import time
 import unicodedata
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from threading import Lock
 from typing import Any
@@ -190,21 +190,43 @@ def build(client: JsonClient, output: Path, year: int) -> None:
     season_dir = output / "f1" / str(year)
     write_json(season_dir / "calendar.json", document(events, updated, schedule_url))
     results_by_event: dict[str, list[dict[str, Any]]] = {event["id"]: [] for event in events}
-    jobs: dict[Any, str] = {}
-    with ThreadPoolExecutor(max_workers=4) as pool:
+    for event in events:
+        existing_path = season_dir / event["resultsPath"]
+        if existing_path.is_file():
+            try:
+                existing = json.loads(existing_path.read_text(encoding="utf-8"))["data"]
+                if existing.get("eventId") == event["id"] and isinstance(existing.get("sessions"), list):
+                    results_by_event[event["id"]] = existing["sessions"]
+            except (KeyError, TypeError, json.JSONDecodeError):
+                pass
+    jobs: dict[Any, tuple[str, str, bool]] = {}
+    with ThreadPoolExecutor(max_workers=1) as pool:
         for event in events:
             for session in event["sessions"]:
                 start = datetime.fromisoformat(session["startTimeUtc"].replace("Z", "+00:00"))
                 if start > now or session["cancelled"]:
                     continue
+                existing_session = next(
+                    (item for item in results_by_event[event["id"]] if item.get("type") == session["type"]),
+                    None,
+                )
+                # Historical classifications are immutable. Re-query only missing
+                # sessions and the current live window, which avoids upstream rate
+                # limits during the six-hour refresh.
+                if existing_session is not None and start < now - timedelta(hours=12):
+                    continue
                 code = {"SPRINT": "SR"}.get(session["type"], session["type"])
                 url = f"{API_ROOT}/f1/alpha/results/{event['id']}/{code}/"
-                jobs[pool.submit(client.get, url)] = event["id"]
+                jobs[pool.submit(client.get, url)] = (event["id"], session["type"], existing_session is not None)
         for future in as_completed(jobs):
+            event_id, session_type, had_existing = jobs[future]
             try:
-                results_by_event[jobs[future]].append(adapt_result(future.result()))
+                fresh = adapt_result(future.result())
+                results_by_event[event_id] = [
+                    item for item in results_by_event[event_id] if item.get("type") != session_type
+                ] + [fresh]
             except RuntimeError as error:
-                if "HTTP Error 404" not in str(error):
+                if not had_existing and "HTTP Error 404" not in str(error):
                     raise
     session_order = {code: index for index, code in enumerate(("FP1", "FP2", "FP3", "SQ", "SPRINT", "Q", "R"))}
     for event in events:

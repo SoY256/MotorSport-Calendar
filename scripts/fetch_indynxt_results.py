@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import os
+from pathlib import Path
 from datetime import datetime, timezone
 
 from fetch_indycar_results import ROOT, get, slug
@@ -24,7 +26,8 @@ TEAM_COLORS = {"hmd-motorsports": "#202A44", "andretti-global": "#E31B23", "abel
 
 
 def main() -> None:
-    root = ROOT / "assets" / "data" / "indynxt" / "2026"
+    data_root = Path(os.environ.get("MOTORSPORT_DATA_ROOT", ROOT / "assets" / "data"))
+    root = data_root / "indynxt" / "2026"
     calendar_doc = json.loads((root / "calendar.json").read_text(encoding="utf-8"))
     official = get(f"{API}/SeasonDropDown?id={SERIES_ID}")
     season = next(item for item in official if item["Year"] == "2026")

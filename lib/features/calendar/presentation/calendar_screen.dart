@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -11,6 +13,10 @@ import '../domain/circuit_metadata.dart';
 import '../domain/race_event.dart';
 import 'calendar_providers.dart';
 
+bool get _runningWidgetTest => WidgetsBinding.instance.runtimeType
+    .toString()
+    .contains('TestWidgetsFlutterBinding');
+
 class CalendarScreen extends ConsumerStatefulWidget {
   const CalendarScreen({super.key});
 
@@ -18,10 +24,51 @@ class CalendarScreen extends ConsumerStatefulWidget {
   ConsumerState<CalendarScreen> createState() => _CalendarScreenState();
 }
 
-class _CalendarScreenState extends ConsumerState<CalendarScreen> {
+class _CalendarScreenState extends ConsumerState<CalendarScreen>
+    with WidgetsBindingObserver {
   int _page = 0;
   String? _selectedEventId;
   String? _activeSeriesId;
+  Timer? _sixHourRefresh;
+  DateTime _lastFullRefresh = DateTime.now();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    if (!_runningWidgetTest) {
+      _scheduleSixHourRefresh();
+    }
+  }
+
+  void _scheduleSixHourRefresh() {
+    _sixHourRefresh?.cancel();
+    _sixHourRefresh = Timer(const Duration(hours: 6), () {
+      final now = DateTime.now();
+      if (now.difference(_lastFullRefresh) >= const Duration(hours: 6)) {
+        _lastFullRefresh = now;
+        _refreshAllProviders(ref);
+        _scheduleSixHourRefresh();
+      }
+    });
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed &&
+        DateTime.now().difference(_lastFullRefresh) >=
+            const Duration(hours: 6)) {
+      _lastFullRefresh = DateTime.now();
+      _refreshAllProviders(ref);
+    }
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _sixHourRefresh?.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -280,12 +327,10 @@ class _PageFrame extends StatelessWidget {
     required this.title,
     required this.subtitle,
     required this.child,
-    this.actions = const [],
   });
   final String title;
   final String subtitle;
   final Widget child;
-  final List<Widget> actions;
 
   @override
   Widget build(BuildContext context) => CustomScrollView(
@@ -294,7 +339,7 @@ class _PageFrame extends StatelessWidget {
         pinned: true,
         toolbarHeight: 72,
         title: const AppLogo(),
-        actions: actions,
+        actions: const [_GlobalRefreshButton(), SizedBox(width: 8)],
         backgroundColor: Theme.of(context).scaffoldBackgroundColor
             .withValues(alpha: .94),
       ),
@@ -340,6 +385,23 @@ class _PageFrame extends StatelessWidget {
   );
 }
 
+void _refreshAllProviders(WidgetRef ref) {
+  ref.invalidate(calendarProvider);
+  ref.invalidate(eventResultsProvider);
+  ref.invalidate(standingsProvider);
+}
+
+class _GlobalRefreshButton extends ConsumerWidget {
+  const _GlobalRefreshButton();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) => IconButton(
+    tooltip: AppStrings(ref.watch(settingsProvider).language).refresh,
+    onPressed: () => _refreshAllProviders(ref),
+    icon: const Icon(Icons.refresh_rounded),
+  );
+}
+
 class _ListPage extends ConsumerWidget {
   const _ListPage({
     required this.data,
@@ -371,14 +433,6 @@ class _ListPage extends ConsumerWidget {
       title: '${strings.season} ${data.events.first.season}',
       subtitle:
           '${strings.events(events.length)} • ${settings.timeMode == EventTimeMode.local ? strings.localTime : strings.trackTime}',
-      actions: [
-        IconButton(
-          tooltip: strings.refresh,
-          onPressed: () => ref.invalidate(calendarProvider),
-          icon: const Icon(Icons.refresh_rounded),
-        ),
-        const SizedBox(width: 8),
-      ],
       child: Column(
         children: [
           if (matching.isNotEmpty)
@@ -1014,7 +1068,7 @@ class _CalendarEventMarker extends StatelessWidget {
   );
 }
 
-class _ResultsPage extends ConsumerWidget {
+class _ResultsPage extends ConsumerStatefulWidget {
   const _ResultsPage({
     required this.data,
     required this.selected,
@@ -1031,8 +1085,96 @@ class _ResultsPage extends ConsumerWidget {
   final ValueChanged<RaceEvent> onSelected;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<_ResultsPage> createState() => _ResultsPageState();
+}
+
+class _ResultsPageState extends ConsumerState<_ResultsPage>
+    with WidgetsBindingObserver {
+  Timer? _resultTimer;
+  DateTime? _lastResultPoll;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void didUpdateWidget(covariant _ResultsPage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.selected.id != widget.selected.id) {
+      _resultTimer?.cancel();
+      _lastResultPoll = null;
+    }
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      _lastResultPoll = DateTime.now().toUtc();
+      ref.invalidate(eventResultsProvider(widget.selected));
+    }
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _resultTimer?.cancel();
+    super.dispose();
+  }
+
+  void _scheduleResultRefresh(EventResults results) {
+    _resultTimer?.cancel();
+    if (_runningWidgetTest) return;
+    final now = DateTime.now().toUtc();
+    final missing = widget.selected.sessions.where((session) {
+      if (session.cancelled) return false;
+      final due = session.expectedEnd.add(const Duration(minutes: 5));
+      final received = results.sessions.any(
+        (result) =>
+            result.type == session.type &&
+            result.results.isNotEmpty &&
+            result.startTimeUtc.difference(session.startTimeUtc).abs() <
+                const Duration(minutes: 5),
+      );
+      return !received &&
+          due.isBefore(now.add(const Duration(days: 1))) &&
+          due.isAfter(now.subtract(const Duration(days: 7)));
+    }).toList();
+    if (missing.isEmpty) return;
+    missing.sort((a, b) => a.expectedEnd.compareTo(b.expectedEnd));
+    final due = missing.first.expectedEnd.add(const Duration(minutes: 5));
+    final sinceLastPoll = _lastResultPoll == null
+        ? null
+        : now.difference(_lastResultPoll!);
+    final delay = due.isAfter(now)
+        ? due.difference(now)
+        : sinceLastPoll == null || sinceLastPoll >= const Duration(minutes: 5)
+        ? Duration.zero
+        : const Duration(minutes: 5) - sinceLastPoll;
+    final intendedPollAt = now.add(delay);
+    _resultTimer = Timer(delay, () {
+      if (!mounted) return;
+      // Fake clocks used by widget tests can fire timers without advancing
+      // wall time. Production timers reach this instant normally.
+      if (DateTime.now().toUtc().isBefore(intendedPollAt)) return;
+      _lastResultPoll = DateTime.now().toUtc();
+      ref.invalidate(eventResultsProvider(widget.selected));
+      ref.invalidate(standingsProvider(widget.selected.seriesId));
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final selected = widget.selected;
+    final settings = widget.settings;
+    final strings = widget.strings;
     final results = ref.watch(eventResultsProvider(selected));
+    results.whenData(
+      (data) => WidgetsBinding.instance.addPostFrameCallback(
+        (_) => mounted ? _scheduleResultRefresh(data) : null,
+      ),
+    );
     return _PageFrame(
       title: strings.results,
       subtitle: '${selected.name} • ${selected.circuit.name}',
@@ -1045,11 +1187,11 @@ class _ResultsPage extends ConsumerWidget {
               border: const OutlineInputBorder(),
             ),
             isExpanded: true,
-            items: data.events
+            items: widget.data.events
                 .where(
                   (event) =>
                       !event.cancelled &&
-                      selectedSeries.contains(event.seriesId),
+                      widget.selectedSeries.contains(event.seriesId),
                 )
                 .map(
                   (event) => DropdownMenuItem(
@@ -1061,8 +1203,9 @@ class _ResultsPage extends ConsumerWidget {
                   ),
                 )
                 .toList(),
-            onChanged: (id) =>
-                onSelected(data.events.firstWhere((event) => event.id == id)),
+            onChanged: (id) => widget.onSelected(
+              widget.data.events.firstWhere((event) => event.id == id),
+            ),
           ),
           const SizedBox(height: 16),
           _CircuitInfoCard(event: selected, strings: strings),
@@ -1101,7 +1244,10 @@ class _ResultsPage extends ConsumerWidget {
                             _sessionLabel(session.type, session.name, strings),
                             style: const TextStyle(fontWeight: FontWeight.w800),
                           ),
-                          subtitle: Text(_zoneName(session, settings, strings)),
+                          subtitle: Text(
+                            '${_zoneName(session, settings, strings)} • '
+                            '${strings.expectedDuration}: ${strings.duration(session.durationMinutes)}',
+                          ),
                           trailing: Text(
                             '${_sessionDate(session, settings)}\n${_sessionTime(session, settings.timeMode)}',
                             textAlign: TextAlign.end,

@@ -1,12 +1,566 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-08-24T10:00:00Z",
+  "lastSuccessfulUpdate": "2026-08-25T09:11:44.564736Z",
   "source": {
-    "name": "official-championship",
-    "url": "https://www.imsa.com/weathertech/weathertech-2026-schedule/"
+    "name": "imsa-alkamel-official-timing",
+    "url": "https://imsa.results.alkamelcloud.com/Results/26_2026/11_Detroit%20Street%20Course/01_IMSA%20WeatherTech%20SportsCar%20Championship/202605301610_Race/03_Results_Race_Provisional.JSON"
   },
   "data": {
     "eventId": "imsa-2026-5",
-    "sessions": []
+    "sessions": [
+      {
+        "type": "R",
+        "name": "Race",
+        "startTimeUtc": "2026-05-30T19:00:00Z",
+        "results": [
+          {
+            "position": 1,
+            "positionText": "1",
+            "driver": {
+              "id": "jack-aitken-earl-bamber",
+              "code": "31",
+              "givenName": "Jack Aitken / Earl Bamber",
+              "familyName": "",
+              "nationality": "GBR,NZL"
+            },
+            "team": {
+              "id": "cadillac-whelen",
+              "name": "Cadillac Whelen",
+              "color": "#D4AF37"
+            },
+            "carNumber": "31",
+            "time": "1:40:37.110",
+            "laps": 82,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "Cadillac V-Series.R",
+              "category": "GTP"
+            }
+          },
+          {
+            "position": 2,
+            "positionText": "2",
+            "driver": {
+              "id": "philipp-eng-marco-wittmann",
+              "code": "25",
+              "givenName": "Philipp Eng / Marco Wittmann",
+              "familyName": "",
+              "nationality": "AUT,DEU"
+            },
+            "team": {
+              "id": "bmw-m-team-wrt",
+              "name": "BMW M Team WRT",
+              "color": "#0066B1"
+            },
+            "carNumber": "25",
+            "time": "1:40:43.133",
+            "laps": 82,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "BMW M Hybrid V8",
+              "category": "GTP"
+            }
+          },
+          {
+            "position": 3,
+            "positionText": "3",
+            "driver": {
+              "id": "ricky-taylor-filipe-albuquerque",
+              "code": "10",
+              "givenName": "Ricky Taylor / Filipe Albuquerque",
+              "familyName": "",
+              "nationality": "USA,PRT"
+            },
+            "team": {
+              "id": "cadillac-wayne-taylor-racing",
+              "name": "Cadillac Wayne Taylor Racing",
+              "color": "#D4AF37"
+            },
+            "carNumber": "10",
+            "time": "1:40:43.868",
+            "laps": 82,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "Cadillac V-Series.R",
+              "category": "GTP"
+            }
+          },
+          {
+            "position": 4,
+            "positionText": "4",
+            "driver": {
+              "id": "renger-van-der-zande-nick-yelloly",
+              "code": "93",
+              "givenName": "Renger van der Zande / Nick Yelloly",
+              "familyName": "",
+              "nationality": "NLD,GBR"
+            },
+            "team": {
+              "id": "acura-meyer-shank-racing-w-curb-agajanian",
+              "name": "Acura Meyer Shank Racing w/Curb Agajanian",
+              "color": "#E40521"
+            },
+            "carNumber": "93",
+            "time": "1:40:44.451",
+            "laps": 82,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "Acura ARX-06",
+              "category": "GTP"
+            }
+          },
+          {
+            "position": 5,
+            "positionText": "5",
+            "driver": {
+              "id": "felipe-nasr-julien-andlauer",
+              "code": "7",
+              "givenName": "Felipe Nasr / Julien Andlauer",
+              "familyName": "",
+              "nationality": "BRA,FRA"
+            },
+            "team": {
+              "id": "porsche-penske-motorsport",
+              "name": "Porsche Penske Motorsport",
+              "color": "#D5001C"
+            },
+            "carNumber": "7",
+            "time": "1:40:45.379",
+            "laps": 82,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "Porsche 963",
+              "category": "GTP"
+            }
+          },
+          {
+            "position": 6,
+            "positionText": "6",
+            "driver": {
+              "id": "jordan-taylor-louis-deletraz",
+              "code": "40",
+              "givenName": "Jordan Taylor / Louis Deletraz",
+              "familyName": "",
+              "nationality": "USA,CHE"
+            },
+            "team": {
+              "id": "cadillac-wayne-taylor-racing",
+              "name": "Cadillac Wayne Taylor Racing",
+              "color": "#D4AF37"
+            },
+            "carNumber": "40",
+            "time": "1:40:46.981",
+            "laps": 82,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "Cadillac V-Series.R",
+              "category": "GTP"
+            }
+          },
+          {
+            "position": 7,
+            "positionText": "7",
+            "driver": {
+              "id": "tom-blomqvist-colin-braun",
+              "code": "60",
+              "givenName": "Tom Blomqvist / Colin Braun",
+              "familyName": "",
+              "nationality": "GBR,USA"
+            },
+            "team": {
+              "id": "acura-meyer-shank-racing-w-curb-agajanian",
+              "name": "Acura Meyer Shank Racing w/Curb Agajanian",
+              "color": "#E40521"
+            },
+            "carNumber": "60",
+            "time": "1:40:47.325",
+            "laps": 82,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "Acura ARX-06",
+              "category": "GTP"
+            }
+          },
+          {
+            "position": 8,
+            "positionText": "8",
+            "driver": {
+              "id": "laurens-vanthoor-kevin-estre",
+              "code": "6",
+              "givenName": "Laurens Vanthoor / Kevin Estre",
+              "familyName": "",
+              "nationality": "BEL,FRA"
+            },
+            "team": {
+              "id": "porsche-penske-motorsport",
+              "name": "Porsche Penske Motorsport",
+              "color": "#D5001C"
+            },
+            "carNumber": "6",
+            "time": "1:40:47.845",
+            "laps": 82,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "Porsche 963",
+              "category": "GTP"
+            }
+          },
+          {
+            "position": 9,
+            "positionText": "9",
+            "driver": {
+              "id": "sheldon-van-der-linde-dries-vanthoor",
+              "code": "24",
+              "givenName": "Sheldon van der Linde / Dries Vanthoor",
+              "familyName": "",
+              "nationality": "ZAF,BEL"
+            },
+            "team": {
+              "id": "bmw-m-team-wrt",
+              "name": "BMW M Team WRT",
+              "color": "#0066B1"
+            },
+            "carNumber": "24",
+            "time": "1:40:48.528",
+            "laps": 82,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "BMW M Hybrid V8",
+              "category": "GTP"
+            }
+          },
+          {
+            "position": 10,
+            "positionText": "10",
+            "driver": {
+              "id": "ross-gunn-roman-de-angelis",
+              "code": "23",
+              "givenName": "Ross Gunn / Roman De Angelis",
+              "familyName": "",
+              "nationality": "GBR,CAN"
+            },
+            "team": {
+              "id": "aston-martin-thor-team",
+              "name": "ASTON MARTIN THOR Team",
+              "color": "#006F62"
+            },
+            "carNumber": "23",
+            "time": "1:40:49.668",
+            "laps": 82,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "Aston Martin Valkyrie",
+              "category": "GTP"
+            }
+          },
+          {
+            "position": 11,
+            "positionText": "11",
+            "driver": {
+              "id": "tijmen-van-der-helm-laurin-heinrich",
+              "code": "5",
+              "givenName": "Tijmen van der Helm / Laurin Heinrich",
+              "familyName": "",
+              "nationality": "NLD,DEU"
+            },
+            "team": {
+              "id": "jdc-miller-motorsports",
+              "name": "JDC-Miller MotorSports",
+              "color": "#D5001C"
+            },
+            "carNumber": "5",
+            "time": "1:41:03.266",
+            "laps": 80,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "Porsche 963",
+              "category": "GTP"
+            }
+          },
+          {
+            "position": 12,
+            "positionText": "12",
+            "driver": {
+              "id": "antonio-garcia-alexander-sims",
+              "code": "3",
+              "givenName": "Antonio Garcia / Alexander Sims",
+              "familyName": "",
+              "nationality": "ESP,GBR"
+            },
+            "team": {
+              "id": "corvette-racing-by-pratt-miller-motorsports",
+              "name": "Corvette Racing by Pratt Miller Motorsports",
+              "color": "#F2C500"
+            },
+            "carNumber": "3",
+            "time": "1:41:16.849",
+            "laps": 79,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "Chevrolet Corvette Z06 GT3.R",
+              "category": "GTD PRO"
+            }
+          },
+          {
+            "position": 13,
+            "positionText": "13",
+            "driver": {
+              "id": "andrea-caldarelli-sandy-mitchell",
+              "code": "9",
+              "givenName": "Andrea Caldarelli / Sandy Mitchell",
+              "familyName": "",
+              "nationality": "ITA,GBR"
+            },
+            "team": {
+              "id": "pfaff-motorsports",
+              "name": "Pfaff Motorsports",
+              "color": "#DDB321"
+            },
+            "carNumber": "9",
+            "time": "1:41:18.784",
+            "laps": 79,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "Lamborghini Temerario GT3",
+              "category": "GTD PRO"
+            }
+          },
+          {
+            "position": 14,
+            "positionText": "14",
+            "driver": {
+              "id": "christopher-mies-frederic-vervisch",
+              "code": "65",
+              "givenName": "Christopher Mies / Frederic Vervisch",
+              "familyName": "",
+              "nationality": "DEU,BEL"
+            },
+            "team": {
+              "id": "ford-racing",
+              "name": "Ford Racing",
+              "color": "#003478"
+            },
+            "carNumber": "65",
+            "time": "1:41:20.681",
+            "laps": 79,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "Ford Mustang GT3",
+              "category": "GTD PRO"
+            }
+          },
+          {
+            "position": 15,
+            "positionText": "15",
+            "driver": {
+              "id": "neil-verhagen-connor-de-phillippi",
+              "code": "1",
+              "givenName": "Neil Verhagen / Connor De Phillippi",
+              "familyName": "",
+              "nationality": "USA,USA"
+            },
+            "team": {
+              "id": "paul-miller-racing",
+              "name": "Paul Miller Racing",
+              "color": "#0066B1"
+            },
+            "carNumber": "1",
+            "time": "1:41:22.010",
+            "laps": 79,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "BMW M4 GT3 EVO",
+              "category": "GTD PRO"
+            }
+          },
+          {
+            "position": 16,
+            "positionText": "16",
+            "driver": {
+              "id": "ben-barker-dennis-olsen",
+              "code": "64",
+              "givenName": "Ben Barker / Dennis Olsen",
+              "familyName": "",
+              "nationality": "GBR,NOR"
+            },
+            "team": {
+              "id": "ford-racing",
+              "name": "Ford Racing",
+              "color": "#003478"
+            },
+            "carNumber": "64",
+            "time": "1:41:22.779",
+            "laps": 79,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "Ford Mustang GT3",
+              "category": "GTD PRO"
+            }
+          },
+          {
+            "position": 17,
+            "positionText": "17",
+            "driver": {
+              "id": "jack-hawksworth-ben-barnicoat",
+              "code": "14",
+              "givenName": "Jack Hawksworth / Ben Barnicoat",
+              "familyName": "",
+              "nationality": "GBR,GBR"
+            },
+            "team": {
+              "id": "vasser-sullivan-racing",
+              "name": "Vasser Sullivan Racing",
+              "color": "#222222"
+            },
+            "carNumber": "14",
+            "time": "1:41:32.696",
+            "laps": 79,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "Lexus RC F GT3",
+              "category": "GTD PRO"
+            }
+          },
+          {
+            "position": 18,
+            "positionText": "18",
+            "driver": {
+              "id": "tommy-milner-nicky-catsburg",
+              "code": "4",
+              "givenName": "Tommy Milner / Nicky Catsburg",
+              "familyName": "",
+              "nationality": "USA,NLD"
+            },
+            "team": {
+              "id": "corvette-racing-by-pratt-miller-motorsports",
+              "name": "Corvette Racing by Pratt Miller Motorsports",
+              "color": "#F2C500"
+            },
+            "carNumber": "4",
+            "time": "1:41:32.789",
+            "laps": 79,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "Chevrolet Corvette Z06 GT3.R",
+              "category": "GTD PRO"
+            }
+          },
+          {
+            "position": 19,
+            "positionText": "19",
+            "driver": {
+              "id": "max-esterson-nikita-johnson",
+              "code": "59",
+              "givenName": "Max Esterson / Nikita Johnson",
+              "familyName": "",
+              "nationality": "USA,USA"
+            },
+            "team": {
+              "id": "rll-team-mclaren",
+              "name": "RLL Team McLaren",
+              "color": "#EF6C00"
+            },
+            "carNumber": "59",
+            "time": "1:41:36.249",
+            "laps": 79,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "McLaren 720S GT3 EVO",
+              "category": "GTD PRO"
+            }
+          },
+          {
+            "position": 20,
+            "positionText": "20",
+            "driver": {
+              "id": "nick-tandy-harry-king",
+              "code": "77",
+              "givenName": "Nick Tandy / Harry King",
+              "familyName": "",
+              "nationality": "GBR,GBR"
+            },
+            "team": {
+              "id": "ao-racing",
+              "name": "AO Racing",
+              "color": "#D5001C"
+            },
+            "carNumber": "77",
+            "time": "1:41:40.053",
+            "laps": 78,
+            "points": null,
+            "status": "Classified",
+            "classified": true,
+            "components": {
+              "car": "Porsche 911 GT3 R (992)",
+              "category": "GTD PRO"
+            }
+          },
+          {
+            "position": 21,
+            "positionText": "21",
+            "driver": {
+              "id": "aaron-telitz-chaz-mostert",
+              "code": "15",
+              "givenName": "Aaron Telitz / Chaz Mostert",
+              "familyName": "",
+              "nationality": "USA,AUS"
+            },
+            "team": {
+              "id": "vasser-sullivan-racing",
+              "name": "Vasser Sullivan Racing",
+              "color": "#222222"
+            },
+            "carNumber": "15",
+            "time": "1:42:08.478",
+            "laps": 78,
+            "points": null,
+            "status": "Classified",
+            "classified": false,
+            "components": {
+              "car": "Lexus RC F GT3",
+              "category": "GTD PRO"
+            }
+          }
+        ]
+      }
+    ]
   }
 }

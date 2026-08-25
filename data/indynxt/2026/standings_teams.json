@@ -1,9 +1,82 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-08-24T12:00:00Z",
+  "lastSuccessfulUpdate": "2026-08-25T09:12:52.928894Z",
   "source": {
-    "name": "official-indycar",
-    "url": "https://www.indycar.com/"
+    "name": "derived-from-official-indynxt-results",
+    "url": "https://www.indynxt.com/Results"
   },
-  "data": []
+  "data": [
+    {
+      "position": 1,
+      "points": 1504.0,
+      "wins": 0,
+      "id": "hmd-motorsports",
+      "name": "HMD Motorsports",
+      "color": "#202A44",
+      "nationality": null
+    },
+    {
+      "position": 2,
+      "points": 1333.0,
+      "wins": 0,
+      "id": "andretti-global",
+      "name": "Andretti Global",
+      "color": "#E31B23",
+      "nationality": null
+    },
+    {
+      "position": 3,
+      "points": 1054.0,
+      "wins": 0,
+      "id": "abel-motorsports",
+      "name": "Abel Motorsports",
+      "color": "#111111",
+      "nationality": null
+    },
+    {
+      "position": 4,
+      "points": 782.0,
+      "wins": 0,
+      "id": "cape-motorsports-powered-by-ecr",
+      "name": "Cape Motorsports powered by ECR",
+      "color": "#00A3E0",
+      "nationality": null
+    },
+    {
+      "position": 5,
+      "points": 771.0,
+      "wins": 0,
+      "id": "chip-ganassi-racing",
+      "name": "Chip Ganassi Racing",
+      "color": "#0B5BA7",
+      "nationality": null
+    },
+    {
+      "position": 6,
+      "points": 528.0,
+      "wins": 0,
+      "id": "a-j-foyt-enterprises",
+      "name": "A.J. Foyt Enterprises",
+      "color": "#D71920",
+      "nationality": null
+    },
+    {
+      "position": 7,
+      "points": 490.0,
+      "wins": 0,
+      "id": "cusick-morgan-motorsports",
+      "name": "Cusick Morgan Motorsports",
+      "color": "#8BC34A",
+      "nationality": null
+    },
+    {
+      "position": 8,
+      "points": 340.0,
+      "wins": 0,
+      "id": "juncos-hollinger-racing",
+      "name": "Juncos Hollinger Racing",
+      "color": "#4A148C",
+      "nationality": null
+    }
+  ]
 }

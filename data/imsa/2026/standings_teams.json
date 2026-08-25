@@ -1,31 +1,670 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-08-24T10:00:00Z",
+  "lastSuccessfulUpdate": "2026-08-25T09:11:44.564736Z",
   "source": {
-    "name": "official-championship",
-    "url": "https://www.imsa.com/weathertech/weathertech-2026-schedule/"
+    "name": "imsa-alkamel-official-points",
+    "url": "https://imsa.results.alkamelcloud.com/"
   },
   "data": [
     {
-      "position": 1,
-      "points": 2142,
-      "wins": 0,
-      "id": "bmw",
-      "name": "BMW M Team RLL"
+      "points": 2373.0,
+      "wins": 4,
+      "category": "GTD",
+      "id": "winward-racing",
+      "name": "Winward Racing · #57",
+      "color": "#00A19C",
+      "nationality": null,
+      "position": 1
     },
     {
-      "position": 2,
-      "points": 2127,
+      "points": 2337.0,
       "wins": 0,
-      "id": "corvette",
-      "name": "Corvette Racing"
+      "category": "GTD",
+      "id": "turner-motorsport",
+      "name": "Turner Motorsport · #96",
+      "color": "#0066B1",
+      "nationality": null,
+      "position": 2
     },
     {
-      "position": 3,
-      "points": 2121,
+      "points": 2317.0,
       "wins": 0,
-      "id": "porsche",
-      "name": "Porsche Penske Motorsport"
+      "category": "GTD",
+      "id": "heart-of-racing-team",
+      "name": "Heart of Racing Team · #27",
+      "color": "#006F62",
+      "nationality": null,
+      "position": 3
+    },
+    {
+      "points": 2217.0,
+      "wins": 1,
+      "category": "GTD",
+      "id": "vasser-sullivan-racing",
+      "name": "Vasser Sullivan Racing · #12",
+      "color": "#222222",
+      "nationality": null,
+      "position": 4
+    },
+    {
+      "points": 1959.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "conquest-racing",
+      "name": "Conquest Racing · #34",
+      "color": "#E10600",
+      "nationality": null,
+      "position": 5
+    },
+    {
+      "points": 1943.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "inception-racing",
+      "name": "Inception Racing · #70",
+      "color": "#E10600",
+      "nationality": null,
+      "position": 6
+    },
+    {
+      "points": 1888.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "13-autosport",
+      "name": "13 Autosport · #13",
+      "color": "#F2C500",
+      "nationality": null,
+      "position": 7
+    },
+    {
+      "points": 1877.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "wright-motorsports",
+      "name": "Wright Motorsports · #120",
+      "color": "#D5001C",
+      "nationality": null,
+      "position": 8
+    },
+    {
+      "points": 1862.0,
+      "wins": 1,
+      "category": "GTD",
+      "id": "wayne-taylor-racing",
+      "name": "Wayne Taylor Racing · #45",
+      "color": "#DDB321",
+      "nationality": null,
+      "position": 9
+    },
+    {
+      "points": 1698.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "dragonspeed",
+      "name": "DragonSpeed · #81",
+      "color": "#F2C500",
+      "nationality": null,
+      "position": 10
+    },
+    {
+      "points": 1615.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "gradient-racing",
+      "name": "Gradient Racing · #66",
+      "color": "#003478",
+      "nationality": null,
+      "position": 11
+    },
+    {
+      "points": 1604.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "myers-riley-motorsports",
+      "name": "Myers Riley Motorsports · #16",
+      "color": "#003478",
+      "nationality": null,
+      "position": 12
+    },
+    {
+      "points": 1552.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "dxdt-racing",
+      "name": "DXDT Racing · #36",
+      "color": "#F2C500",
+      "nationality": null,
+      "position": 13
+    },
+    {
+      "points": 1543.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "car-blanche",
+      "name": "Car Blanche · #068",
+      "color": "#006F62",
+      "nationality": null,
+      "position": 14
+    },
+    {
+      "points": 1064.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "lone-star-racing",
+      "name": "Lone Star Racing · #80",
+      "color": "#00A19C",
+      "nationality": null,
+      "position": 15
+    },
+    {
+      "points": 1036.0,
+      "wins": 1,
+      "category": "GTD",
+      "id": "af-corse-usa",
+      "name": "Af Corse Usa · #21",
+      "color": "#E10600",
+      "nationality": null,
+      "position": 16
+    },
+    {
+      "points": 1023.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "triarsi-competizione",
+      "name": "Triarsi Competizione · #023",
+      "color": "#E10600",
+      "nationality": null,
+      "position": 17
+    },
+    {
+      "points": 855.0,
+      "wins": 1,
+      "category": "GTD",
+      "id": "manthey-1st-phorm",
+      "name": "Manthey 1St Phorm · #912",
+      "color": "#D5001C",
+      "nationality": null,
+      "position": 18
+    },
+    {
+      "points": 793.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "rs1",
+      "name": "Rs1 · #28",
+      "color": "#D5001C",
+      "nationality": null,
+      "position": 19
+    },
+    {
+      "points": 456.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "magnus-racing",
+      "name": "Magnus Racing · #44",
+      "color": "#006F62",
+      "nationality": null,
+      "position": 20
+    },
+    {
+      "points": 260.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "vasser-sullivan-racing",
+      "name": "Vasser Sullivan Racing · #89",
+      "color": "#222222",
+      "nationality": null,
+      "position": 21
+    },
+    {
+      "points": 202.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "ao-racing",
+      "name": "AO Racing · #177",
+      "color": "#E91E63",
+      "nationality": null,
+      "position": 22
+    },
+    {
+      "points": 193.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "pfaff-motorsports",
+      "name": "Pfaff Motorsports · #46",
+      "color": "#DDB321",
+      "nationality": null,
+      "position": 23
+    },
+    {
+      "points": 172.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "muehlner-motorsports-america-llc",
+      "name": "Muehlner Motorsports America, LLC · #123",
+      "color": "#D5001C",
+      "nationality": null,
+      "position": 24
+    },
+    {
+      "points": 2432.0,
+      "wins": 1,
+      "category": "GTD PRO",
+      "id": "paul-miller-racing",
+      "name": "Paul Miller Racing · #1",
+      "color": "#0066B1",
+      "nationality": null,
+      "position": 1
+    },
+    {
+      "points": 2409.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "corvette-racing-by-pratt-miller-motorsports",
+      "name": "Corvette Racing by Pratt Miller Motorsports · #4",
+      "color": "#F2C500",
+      "nationality": null,
+      "position": 2
+    },
+    {
+      "points": 2376.0,
+      "wins": 2,
+      "category": "GTD PRO",
+      "id": "pfaff-motorsports",
+      "name": "Pfaff Motorsports · #9",
+      "color": "#DDB321",
+      "nationality": null,
+      "position": 3
+    },
+    {
+      "points": 2365.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "ao-racing",
+      "name": "AO Racing · #77",
+      "color": "#E91E63",
+      "nationality": null,
+      "position": 4
+    },
+    {
+      "points": 2365.0,
+      "wins": 1,
+      "category": "GTD PRO",
+      "id": "ford-racing",
+      "name": "Ford Racing · #65",
+      "color": "#003478",
+      "nationality": null,
+      "position": 5
+    },
+    {
+      "points": 2290.0,
+      "wins": 2,
+      "category": "GTD PRO",
+      "id": "vasser-sullivan-racing",
+      "name": "Vasser Sullivan Racing · #14",
+      "color": "#222222",
+      "nationality": null,
+      "position": 6
+    },
+    {
+      "points": 2238.0,
+      "wins": 1,
+      "category": "GTD PRO",
+      "id": "corvette-racing-by-pratt-miller-motorsports",
+      "name": "Corvette Racing by Pratt Miller Motorsports · #3",
+      "color": "#F2C500",
+      "nationality": null,
+      "position": 7
+    },
+    {
+      "points": 2230.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "ford-racing",
+      "name": "Ford Racing · #64",
+      "color": "#003478",
+      "nationality": null,
+      "position": 8
+    },
+    {
+      "points": 1970.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "rll-team-mclaren",
+      "name": "RLL Team McLaren · #59",
+      "color": "#EF6C00",
+      "nationality": null,
+      "position": 9
+    },
+    {
+      "points": 1114.0,
+      "wins": 1,
+      "category": "GTD PRO",
+      "id": "manthey",
+      "name": "Manthey · #911",
+      "color": "#D5001C",
+      "nationality": null,
+      "position": 10
+    },
+    {
+      "points": 1060.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "triarsi-competizione",
+      "name": "Triarsi Competizione · #033",
+      "color": "#E10600",
+      "nationality": null,
+      "position": 11
+    },
+    {
+      "points": 922.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "risi-competizione",
+      "name": "Risi Competizione · #62",
+      "color": "#E10600",
+      "nationality": null,
+      "position": 12
+    },
+    {
+      "points": 542.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "car-blanche",
+      "name": "Car Blanche · #68",
+      "color": "#006F62",
+      "nationality": null,
+      "position": 13
+    },
+    {
+      "points": 512.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "winward-racing",
+      "name": "WINWARD RACING · #48",
+      "color": "#00A19C",
+      "nationality": null,
+      "position": 14
+    },
+    {
+      "points": 350.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "75-express",
+      "name": "75 Express · #75",
+      "color": "#00A19C",
+      "nationality": null,
+      "position": 15
+    },
+    {
+      "points": 234.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "vasser-sullivan-racing",
+      "name": "Vasser Sullivan Racing · #15",
+      "color": "#222222",
+      "nationality": null,
+      "position": 16
+    },
+    {
+      "points": 225.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "getspeed",
+      "name": "GetSpeed · #69",
+      "color": "#00A19C",
+      "nationality": null,
+      "position": 17
+    },
+    {
+      "points": 2400.0,
+      "wins": 2,
+      "category": "GTP",
+      "id": "cadillac-whelen",
+      "name": "Cadillac Whelen · #31",
+      "color": "#D4AF37",
+      "nationality": null,
+      "position": 1
+    },
+    {
+      "points": 2215.0,
+      "wins": 1,
+      "category": "GTP",
+      "id": "acura-meyer-shank-racing-w-curb-agajanian",
+      "name": "Acura Meyer Shank Racing w/Curb Agajanian · #93",
+      "color": "#E40521",
+      "nationality": null,
+      "position": 2
+    },
+    {
+      "points": 2159.0,
+      "wins": 2,
+      "category": "GTP",
+      "id": "porsche-penske-motorsport",
+      "name": "Porsche Penske Motorsport · #7",
+      "color": "#D5001C",
+      "nationality": null,
+      "position": 3
+    },
+    {
+      "points": 2045.0,
+      "wins": 1,
+      "category": "GTP",
+      "id": "jdc-miller-motorsports",
+      "name": "JDC-Miller MotorSports · #5",
+      "color": "#F2C500",
+      "nationality": null,
+      "position": 4
+    },
+    {
+      "points": 2010.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "porsche-penske-motorsport",
+      "name": "Porsche Penske Motorsport · #6",
+      "color": "#D5001C",
+      "nationality": null,
+      "position": 5
+    },
+    {
+      "points": 1923.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "cadillac-wayne-taylor-racing",
+      "name": "Cadillac Wayne Taylor Racing · #40",
+      "color": "#D4AF37",
+      "nationality": null,
+      "position": 6
+    },
+    {
+      "points": 1920.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "bmw-m-team-wrt",
+      "name": "BMW M Team WRT · #24",
+      "color": "#0066B1",
+      "nationality": null,
+      "position": 7
+    },
+    {
+      "points": 1885.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "acura-meyer-shank-racing-w-curb-agajanian",
+      "name": "Acura Meyer Shank Racing w/Curb Agajanian · #60",
+      "color": "#E40521",
+      "nationality": null,
+      "position": 8
+    },
+    {
+      "points": 1884.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "bmw-m-team-wrt",
+      "name": "BMW M Team WRT · #25",
+      "color": "#0066B1",
+      "nationality": null,
+      "position": 9
+    },
+    {
+      "points": 1873.0,
+      "wins": 1,
+      "category": "GTP",
+      "id": "cadillac-wayne-taylor-racing",
+      "name": "Cadillac Wayne Taylor Racing · #10",
+      "color": "#D4AF37",
+      "nationality": null,
+      "position": 10
+    },
+    {
+      "points": 1708.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "aston-martin-thor-team",
+      "name": "ASTON MARTIN THOR Team · #23",
+      "color": "#006F62",
+      "nationality": null,
+      "position": 11
+    },
+    {
+      "points": 1701.0,
+      "wins": 1,
+      "category": "LMP2",
+      "id": "crowdstrike-racing-by-apr",
+      "name": "Crowdstrike Racing by APR · #04",
+      "color": "#E31B23",
+      "nationality": null,
+      "position": 1
+    },
+    {
+      "points": 1665.0,
+      "wins": 2,
+      "category": "LMP2",
+      "id": "inter-europol-competition",
+      "name": "Inter Europol Competition · #43",
+      "color": "#C7D300",
+      "nationality": null,
+      "position": 2
+    },
+    {
+      "points": 1582.0,
+      "wins": 1,
+      "category": "LMP2",
+      "id": "ao-racing",
+      "name": "AO Racing · #99",
+      "color": "#E91E63",
+      "nationality": null,
+      "position": 3
+    },
+    {
+      "points": 1517.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "united-autosports-usa",
+      "name": "United Autosports USA · #22",
+      "color": "#0057B8",
+      "nationality": null,
+      "position": 4
+    },
+    {
+      "points": 1413.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "bryan-herta-autosport-with-pr1-mathiasen",
+      "name": "Bryan Herta Autosport with PR1/Mathiasen · #52",
+      "color": "#00A3E0",
+      "nationality": null,
+      "position": 5
+    },
+    {
+      "points": 1366.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "tower-motorsports",
+      "name": "Tower Motorsports · #8",
+      "color": "#1E3A5F",
+      "nationality": null,
+      "position": 6
+    },
+    {
+      "points": 1358.0,
+      "wins": 1,
+      "category": "LMP2",
+      "id": "united-autosports-usa",
+      "name": "United Autosports USA · #2",
+      "color": "#0057B8",
+      "nationality": null,
+      "position": 7
+    },
+    {
+      "points": 1284.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "tds-racing",
+      "name": "TDS Racing · #11",
+      "color": "#D71920",
+      "nationality": null,
+      "position": 8
+    },
+    {
+      "points": 1218.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "pratt-miller-motorsports",
+      "name": "Pratt Miller Motorsports · #73",
+      "color": "#F2C500",
+      "nationality": null,
+      "position": 9
+    },
+    {
+      "points": 1097.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "era-motorsport",
+      "name": "Era Motorsport · #18",
+      "color": "#1769AA",
+      "nationality": null,
+      "position": 10
+    },
+    {
+      "points": 921.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "intersport-racing",
+      "name": "Intersport Racing · #37",
+      "color": "#F57C00",
+      "nationality": null,
+      "position": 11
+    },
+    {
+      "points": 325.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "inter-europol-competition",
+      "name": "Inter Europol Competition · #343",
+      "color": "#C7D300",
+      "nationality": null,
+      "position": 12
+    },
+    {
+      "points": 268.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "jdc-miller-motorsports",
+      "name": "JDC-Miller MotorSports · #79",
+      "color": "#F2C500",
+      "nationality": null,
+      "position": 13
+    },
+    {
+      "points": 199.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "af-corse-usa",
+      "name": "Af Corse Usa · #83",
+      "color": "#E10600",
+      "nationality": null,
+      "position": 14
     }
   ]
 }

@@ -3,14 +3,16 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.request import Request, urlopen
+
+from http_retry import read
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "assets" / "data"
+OUT = Path(os.environ.get("MOTORSPORT_DATA_ROOT", ROOT / "assets" / "data"))
 NOW = datetime.now(timezone.utc)
 UPDATED = NOW.isoformat().replace("+00:00", "Z")
 HEADERS = {"User-Agent": "MotorSport-Calendar/0.1 (+https://github.com/SoY256/MotorSport-Calendar)"}
@@ -89,8 +91,18 @@ def write(path: Path, data: object, url: str) -> None:
 
 
 def page(url: str) -> str:
-    with urlopen(Request(url, headers=HEADERS), timeout=45) as response:
-        return response.read().decode("utf-8").replace('\\"', '"')
+    return read(url, HEADERS, timeout=45).decode("utf-8").replace('\\"', '"')
+
+
+def embedded_array(html: str, key: str) -> list[dict]:
+    marker = f'"{key}":['
+    start = html.find(marker)
+    if start < 0:
+        raise RuntimeError(f"Official page does not contain {key}")
+    value, _ = json.JSONDecoder().raw_decode(html[start + len(marker) - 1:])
+    if not isinstance(value, list):
+        raise RuntimeError(f"Official {key} payload is not a list")
+    return value
 
 
 def session_objects(html: str) -> list[dict]:
@@ -131,6 +143,7 @@ def result_row(raw: dict, position: int) -> dict:
 def build(series: str) -> None:
     base = f"https://www.fiaformula{2 if series == 'f2' else 3}.com/en/racing/2026"
     events = []
+    driver_metadata: dict[str, dict] = {}
     for number, row in enumerate(ROUNDS[series], 1):
         race_slug, name, circuit, locality, country, code, start, end = row
         url = f"{base}/{race_slug}"
@@ -154,6 +167,12 @@ def build(series: str) -> None:
             stamp = utc(item, start)
             calendar_sessions.append({"type": session_type, "name": short or item.get("session", "Session"), "startTimeUtc": stamp, "startTimeTrack": item.get("startTime"), "trackTimeZone": item.get("timezone"), "cancelled": False})
             rows = [result_row(raw, index) for index, raw in enumerate(item.get("results", []), 1)]
+            for result in rows:
+                driver_metadata[result["driver"]["id"]] = {
+                    "nationality": result["driver"].get("nationality"),
+                    "teamId": result["team"]["id"],
+                    "code": result["driver"].get("code") or "",
+                }
             if rows:
                 result_sessions.append({"type": session_type, "name": short, "startTimeUtc": stamp, "results": rows})
         if not calendar_sessions:
@@ -166,18 +185,37 @@ def build(series: str) -> None:
         write(OUT / series / "2026" / "events" / filename, {"eventId": event_id, "sessions": result_sessions}, url)
     write(OUT / series / "2026" / "calendar.json", events, base)
 
-    drivers = []
-    for pos, (given, family, nationality, team, points) in enumerate(DRIVERS[series], 1):
-        drivers.append({"position": pos, "points": points, "wins": 0, "id": slug(f"{given}-{family}"), "code": "", "givenName": given, "familyName": family, "nationality": nationality, "teamIds": [team]})
     standings_url = f"https://www.fiaformula{2 if series == 'f2' else 3}.com/en/standings/2026/drivers"
+    raw_drivers = embedded_array(page(standings_url), "standings")
+    drivers = []
+    for raw in raw_drivers:
+        given, family = raw.get("driverFirstName", ""), raw.get("driverLastName", "")
+        driver_id = slug(f"{given}-{family}")
+        metadata = driver_metadata.get(driver_id, {})
+        drivers.append({
+            "position": int(raw["displayPosition"]),
+            "points": raw.get("championshipPoints", 0),
+            "wins": 0,
+            "id": driver_id,
+            "code": raw.get("driverTLA") or metadata.get("code", ""),
+            "givenName": given,
+            "familyName": family,
+            "nationality": metadata.get("nationality"),
+            "teamIds": [metadata["teamId"]] if metadata.get("teamId") else [],
+        })
     write(OUT / series / "2026" / "standings_drivers.json", drivers, standings_url)
-    totals: dict[str, float] = {}
-    for driver in drivers:
-        team = driver["teamIds"][0]
-        totals[team] = totals.get(team, 0) + driver["points"]
-    teams = [{"position": pos, "points": points, "wins": 0, "id": team, "name": TEAM_NAMES[team], "nationality": None}
-             for pos, (team, points) in enumerate(sorted(totals.items(), key=lambda item: item[1], reverse=True), 1)]
-    write(OUT / series / "2026" / "standings_teams.json", teams, standings_url.replace("drivers", "teams"))
+    teams_url = standings_url.replace("drivers", "teams")
+    raw_teams = embedded_array(page(teams_url), "standings")
+    teams = [{
+        "position": int(raw["displayPosition"]),
+        "points": raw.get("championshipPoints", 0),
+        "wins": 0,
+        "id": slug(raw["teamName"]),
+        "name": raw["teamName"],
+        "nationality": None,
+        "color": f"#{(raw.get('teamColourCode') or '777777').lstrip('#')}",
+    } for raw in raw_teams]
+    write(OUT / series / "2026" / "standings_teams.json", teams, teams_url)
 
 
 if __name__ == "__main__":

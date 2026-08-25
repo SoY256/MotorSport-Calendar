@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-08-24T08:43:55.705249Z",
+  "lastSuccessfulUpdate": "2026-08-25T09:13:27.971469Z",
   "source": {
-    "name": "jolpica-f1",
-    "url": "https://api.jolpi.ca/f1/alpha/schedules/2026/"
+    "name": "multi-source-official-refresh",
+    "url": "https://github.com/SoY256/MotorSport-Calendar"
   },
   "data": [
     {
@@ -11,6 +11,18 @@
       "name": "Formula 1",
       "shortName": "F1",
       "color": "#E10600"
+    },
+    {
+      "id": "f2",
+      "name": "Formula 2",
+      "shortName": "F2",
+      "color": "#1565C0"
+    },
+    {
+      "id": "f3",
+      "name": "Formula 3",
+      "shortName": "F3",
+      "color": "#7B1FA2"
     },
     {
       "id": "imsa",

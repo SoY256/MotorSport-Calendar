@@ -1,0 +1,526 @@
+{
+  "schemaVersion": 1,
+  "lastSuccessfulUpdate": "2026-08-25T09:11:22.544650Z",
+  "source": {
+    "name": "official-formula-series",
+    "url": "https://www.fiaformula2.com/en/racing/2026/miami-gardens"
+  },
+  "data": {
+    "eventId": "f2-2026-2",
+    "sessions": [
+      {
+        "type": "R",
+        "name": "Feature Race",
+        "startTimeUtc": "2026-05-03T13:25:00Z",
+        "results": [
+          {
+            "position": 1,
+            "positionText": "1",
+            "driver": {
+              "id": "gabriele-mini",
+              "code": "MIN",
+              "givenName": "Gabriele",
+              "familyName": "Mini",
+              "nationality": "Italian"
+            },
+            "team": {
+              "id": "mp-motorsport",
+              "name": "MP Motorsport",
+              "color": "#ff9141"
+            },
+            "carNumber": "9",
+            "time": "56:22.029",
+            "laps": 25,
+            "points": 25,
+            "status": "OK",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 2,
+            "positionText": "2",
+            "driver": {
+              "id": "dino-beganovic",
+              "code": "BEG",
+              "givenName": "Dino",
+              "familyName": "Beganovic",
+              "nationality": "Swedish"
+            },
+            "team": {
+              "id": "dams-lucas-oil",
+              "name": "DAMS Lucas Oil",
+              "color": "#00b4ff"
+            },
+            "carNumber": "7",
+            "time": "+0.980s",
+            "laps": 25,
+            "points": 18,
+            "status": "OK",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 3,
+            "positionText": "3",
+            "driver": {
+              "id": "rafael-camara",
+              "code": "CAM",
+              "givenName": "Rafael",
+              "familyName": "Câmara",
+              "nationality": "Brazilian"
+            },
+            "team": {
+              "id": "invicta-racing",
+              "name": "Invicta Racing",
+              "color": "#ffff00"
+            },
+            "carNumber": "1",
+            "time": "+2.040s",
+            "laps": 25,
+            "points": 16,
+            "status": "OK",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 4,
+            "positionText": "4",
+            "driver": {
+              "id": "noel-leon",
+              "code": "LEO",
+              "givenName": "Noel",
+              "familyName": "Leon",
+              "nationality": "Mexican"
+            },
+            "team": {
+              "id": "campos-racing",
+              "name": "Campos Racing",
+              "color": "#7c7c7c"
+            },
+            "carNumber": "5",
+            "time": "+2.400s",
+            "laps": 25,
+            "points": 12,
+            "status": "OK",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 5,
+            "positionText": "5",
+            "driver": {
+              "id": "kush-maini",
+              "code": "MAI",
+              "givenName": "Kush",
+              "familyName": "Maini",
+              "nationality": "Indian"
+            },
+            "team": {
+              "id": "art-grand-prix",
+              "name": "ART Grand Prix",
+              "color": "#af2f22"
+            },
+            "carNumber": "16",
+            "time": "+3.855s",
+            "laps": 25,
+            "points": 10,
+            "status": "OK",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 6,
+            "positionText": "6",
+            "driver": {
+              "id": "ritomo-miyata",
+              "code": "MIY",
+              "givenName": "Ritomo",
+              "familyName": "Miyata",
+              "nationality": "Japanese"
+            },
+            "team": {
+              "id": "hitech",
+              "name": "Hitech",
+              "color": "#a0b4c8"
+            },
+            "carNumber": "3",
+            "time": "+4.447s",
+            "laps": 25,
+            "points": 8,
+            "status": "OK",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 7,
+            "positionText": "7",
+            "driver": {
+              "id": "mari-boya",
+              "code": "BOY",
+              "givenName": "Mari",
+              "familyName": "Boya",
+              "nationality": null
+            },
+            "team": {
+              "id": "prema-racing",
+              "name": "PREMA Racing",
+              "color": "#f00000"
+            },
+            "carNumber": "12",
+            "time": "+7.923s",
+            "laps": 25,
+            "points": 6,
+            "status": "OK",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 8,
+            "positionText": "8",
+            "driver": {
+              "id": "colton-herta",
+              "code": "HER",
+              "givenName": "Colton",
+              "familyName": "Herta",
+              "nationality": "American"
+            },
+            "team": {
+              "id": "hitech",
+              "name": "Hitech",
+              "color": "#a0b4c8"
+            },
+            "carNumber": "4",
+            "time": "+10.969s",
+            "laps": 25,
+            "points": 4,
+            "status": "OK",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 9,
+            "positionText": "9",
+            "driver": {
+              "id": "sebastian-montoya",
+              "code": "MON",
+              "givenName": "Sebastian",
+              "familyName": "Montoya",
+              "nationality": "Colombian"
+            },
+            "team": {
+              "id": "prema-racing",
+              "name": "PREMA Racing",
+              "color": "#f00000"
+            },
+            "carNumber": "11",
+            "time": "+11.381s",
+            "laps": 25,
+            "points": 2,
+            "status": "OK",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 10,
+            "positionText": "10",
+            "driver": {
+              "id": "joshua-durksen",
+              "code": "DUR",
+              "givenName": "Joshua",
+              "familyName": "Dürksen",
+              "nationality": "Paraguayan"
+            },
+            "team": {
+              "id": "invicta-racing",
+              "name": "Invicta Racing",
+              "color": "#ffff00"
+            },
+            "carNumber": "2",
+            "time": "+12.335s",
+            "laps": 25,
+            "points": 1,
+            "status": "OK",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 11,
+            "positionText": "11",
+            "driver": {
+              "id": "laurens-van-hoepen",
+              "code": "HOE",
+              "givenName": "Laurens",
+              "familyName": "van Hoepen",
+              "nationality": "Dutch"
+            },
+            "team": {
+              "id": "trident",
+              "name": "TRIDENT",
+              "color": "#6464ff"
+            },
+            "carNumber": "24",
+            "time": "+12.606s",
+            "laps": 25,
+            "points": 0,
+            "status": "OK",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 12,
+            "positionText": "12",
+            "driver": {
+              "id": "emerson-fittipaldi",
+              "code": "FIT",
+              "givenName": "Emerson",
+              "familyName": "Fittipaldi",
+              "nationality": null
+            },
+            "team": {
+              "id": "aix-racing",
+              "name": "AIX Racing",
+              "color": "#64f00f"
+            },
+            "carNumber": "20",
+            "time": "+14.300s",
+            "laps": 25,
+            "points": 0,
+            "status": "OK",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 13,
+            "positionText": "13",
+            "driver": {
+              "id": "nico-varrone",
+              "code": "VAR",
+              "givenName": "Nico",
+              "familyName": "Varrone",
+              "nationality": null
+            },
+            "team": {
+              "id": "van-amersfoort-racing",
+              "name": "Van Amersfoort Racing",
+              "color": "#dc4600"
+            },
+            "carNumber": "22",
+            "time": "+24.800s",
+            "laps": 25,
+            "points": 0,
+            "status": "OK",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 14,
+            "positionText": "14",
+            "driver": {
+              "id": "john-bennett",
+              "code": "BEN",
+              "givenName": "John",
+              "familyName": "Bennett",
+              "nationality": null
+            },
+            "team": {
+              "id": "trident",
+              "name": "TRIDENT",
+              "color": "#6464ff"
+            },
+            "carNumber": "25",
+            "time": "+27.888s",
+            "laps": 25,
+            "points": 0,
+            "status": "OK",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 15,
+            "positionText": "15",
+            "driver": {
+              "id": "tasanapol-inthraphuvasak",
+              "code": "INT",
+              "givenName": "Tasanapol",
+              "familyName": "Inthraphuvasak",
+              "nationality": "Thai"
+            },
+            "team": {
+              "id": "art-grand-prix",
+              "name": "ART Grand Prix",
+              "color": "#af2f22"
+            },
+            "carNumber": "17",
+            "time": "+42.736s",
+            "laps": 25,
+            "points": 0,
+            "status": "OK",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 666,
+            "positionText": "NC",
+            "driver": {
+              "id": "cian-shields",
+              "code": "SHI",
+              "givenName": "Cian",
+              "familyName": "Shields",
+              "nationality": null
+            },
+            "team": {
+              "id": "aix-racing",
+              "name": "AIX Racing",
+              "color": "#64f00f"
+            },
+            "carNumber": "21",
+            "time": "DNF",
+            "laps": 17,
+            "points": 0,
+            "status": "DNF",
+            "classified": false,
+            "components": {}
+          },
+          {
+            "position": 666,
+            "positionText": "NC",
+            "driver": {
+              "id": "martinius-stenshorne",
+              "code": "STE",
+              "givenName": "Martinius",
+              "familyName": "Stenshorne",
+              "nationality": "Norwegian"
+            },
+            "team": {
+              "id": "rodin-motorsport",
+              "name": "Rodin Motorsport",
+              "color": "#c3a752"
+            },
+            "carNumber": "14",
+            "time": "DNF",
+            "laps": 13,
+            "points": 0,
+            "status": "DNF",
+            "classified": false,
+            "components": {}
+          },
+          {
+            "position": 666,
+            "positionText": "NC",
+            "driver": {
+              "id": "rafael-villagomez",
+              "code": "VIL",
+              "givenName": "Rafael",
+              "familyName": "Villagomez",
+              "nationality": "Mexican"
+            },
+            "team": {
+              "id": "van-amersfoort-racing",
+              "name": "Van Amersfoort Racing",
+              "color": "#dc4600"
+            },
+            "carNumber": "23",
+            "time": "DNF",
+            "laps": 9,
+            "points": 0,
+            "status": "DNF",
+            "classified": false,
+            "components": {}
+          },
+          {
+            "position": 666,
+            "positionText": "NC",
+            "driver": {
+              "id": "alexander-dunne",
+              "code": "DUN",
+              "givenName": "Alexander",
+              "familyName": "Dunne",
+              "nationality": "Irish"
+            },
+            "team": {
+              "id": "rodin-motorsport",
+              "name": "Rodin Motorsport",
+              "color": "#c3a752"
+            },
+            "carNumber": "15",
+            "time": "DNF",
+            "laps": 8,
+            "points": 0,
+            "status": "DNF",
+            "classified": false,
+            "components": {}
+          },
+          {
+            "position": 666,
+            "positionText": "NC",
+            "driver": {
+              "id": "oliver-goethe",
+              "code": "GOE",
+              "givenName": "Oliver",
+              "familyName": "Goethe",
+              "nationality": "German"
+            },
+            "team": {
+              "id": "mp-motorsport",
+              "name": "MP Motorsport",
+              "color": "#ff9141"
+            },
+            "carNumber": "10",
+            "time": "DNF",
+            "laps": 3,
+            "points": 0,
+            "status": "DNF",
+            "classified": false,
+            "components": {}
+          },
+          {
+            "position": 666,
+            "positionText": "NC",
+            "driver": {
+              "id": "nikola-tsolov",
+              "code": "TSO",
+              "givenName": "Nikola",
+              "familyName": "Tsolov",
+              "nationality": "Bulgarian"
+            },
+            "team": {
+              "id": "campos-racing",
+              "name": "Campos Racing",
+              "color": "#7c7c7c"
+            },
+            "carNumber": "6",
+            "time": "DNF",
+            "laps": 0,
+            "points": 0,
+            "status": "DNF",
+            "classified": false,
+            "components": {}
+          },
+          {
+            "position": 666,
+            "positionText": "NC",
+            "driver": {
+              "id": "roman-bilinski",
+              "code": "BIL",
+              "givenName": "Roman",
+              "familyName": "Bilinski",
+              "nationality": "Polish"
+            },
+            "team": {
+              "id": "dams-lucas-oil",
+              "name": "DAMS Lucas Oil",
+              "color": "#00b4ff"
+            },
+            "carNumber": "8",
+            "time": "DNS",
+            "laps": 0,
+            "points": 0,
+            "status": "DNS",
+            "classified": false,
+            "components": {}
+          }
+        ]
+      }
+    ]
+  }
+}

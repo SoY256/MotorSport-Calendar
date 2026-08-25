@@ -1,12 +1,595 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-08-24T12:00:00Z",
+  "lastSuccessfulUpdate": "2026-08-25T09:12:06.165856Z",
   "source": {
     "name": "official-indycar",
-    "url": "https://www.indycar.com/"
+    "url": "https://www.indycar.com/api/results/EventsSessionDetails?id=6748"
   },
   "data": {
     "eventId": "indycar-2026-12",
-    "sessions": []
+    "sessions": [
+      {
+        "type": "R",
+        "name": "Race",
+        "startTimeUtc": "2026-07-19T19:00:00Z",
+        "results": [
+          {
+            "position": 1,
+            "positionText": "1",
+            "driver": {
+              "id": "alex-palou",
+              "code": "",
+              "givenName": "Alex",
+              "familyName": "Palou",
+              "nationality": "ESP"
+            },
+            "team": {
+              "id": "chip-ganassi-racing",
+              "name": "Chip Ganassi Racing",
+              "color": "#0B5BA7"
+            },
+            "carNumber": "10",
+            "time": "01:51:38.7603",
+            "laps": 225,
+            "points": 53,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 2,
+            "positionText": "2",
+            "driver": {
+              "id": "josef-newgarden",
+              "code": "",
+              "givenName": "Josef",
+              "familyName": "Newgarden",
+              "nationality": "USA"
+            },
+            "team": {
+              "id": "team-penske",
+              "name": "Team Penske",
+              "color": "#143B78"
+            },
+            "carNumber": "2",
+            "time": "01:51:39.6334",
+            "laps": 225,
+            "points": 40,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 3,
+            "positionText": "3",
+            "driver": {
+              "id": "david-malukas",
+              "code": "",
+              "givenName": "David",
+              "familyName": "Malukas",
+              "nationality": "USA"
+            },
+            "team": {
+              "id": "team-penske",
+              "name": "Team Penske",
+              "color": "#143B78"
+            },
+            "carNumber": "12",
+            "time": "01:51:39.9801",
+            "laps": 225,
+            "points": 36,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 4,
+            "positionText": "4",
+            "driver": {
+              "id": "scott-mclaughlin",
+              "code": "",
+              "givenName": "Scott",
+              "familyName": "McLaughlin",
+              "nationality": "NZL"
+            },
+            "team": {
+              "id": "team-penske",
+              "name": "Team Penske",
+              "color": "#143B78"
+            },
+            "carNumber": "3",
+            "time": "01:51:44.2038",
+            "laps": 225,
+            "points": 33,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 5,
+            "positionText": "5",
+            "driver": {
+              "id": "felix-rosenqvist",
+              "code": "",
+              "givenName": "Felix",
+              "familyName": "Rosenqvist",
+              "nationality": "SWE"
+            },
+            "team": {
+              "id": "meyer-shank-w-curb-agajanian",
+              "name": "Meyer Shank w/ Curb-Agajanian",
+              "color": "#E91E63"
+            },
+            "carNumber": "60",
+            "time": "01:51:44.8349",
+            "laps": 225,
+            "points": 31,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 6,
+            "positionText": "6",
+            "driver": {
+              "id": "marcus-ericsson",
+              "code": "",
+              "givenName": "Marcus",
+              "familyName": "Ericsson",
+              "nationality": "SWE"
+            },
+            "team": {
+              "id": "andretti-global",
+              "name": "Andretti Global",
+              "color": "#E31B23"
+            },
+            "carNumber": "28",
+            "time": "01:51:45.7519",
+            "laps": 225,
+            "points": 28,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 7,
+            "positionText": "7",
+            "driver": {
+              "id": "pato-o-ward",
+              "code": "",
+              "givenName": "Pato",
+              "familyName": "O'Ward",
+              "nationality": "MEX"
+            },
+            "team": {
+              "id": "arrow-mclaren",
+              "name": "Arrow McLaren",
+              "color": "#FF6C0C"
+            },
+            "carNumber": "5",
+            "time": "01:51:46.7398",
+            "laps": 225,
+            "points": 26,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 8,
+            "positionText": "8",
+            "driver": {
+              "id": "mick-schumacher",
+              "code": "",
+              "givenName": "Mick",
+              "familyName": "Schumacher",
+              "nationality": "DEU"
+            },
+            "team": {
+              "id": "rahal-letterman-lanigan-racing",
+              "name": "Rahal Letterman Lanigan Racing",
+              "color": "#1F4E79"
+            },
+            "carNumber": "47",
+            "time": "01:51:47.5050",
+            "laps": 225,
+            "points": 24,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 9,
+            "positionText": "9",
+            "driver": {
+              "id": "kyffin-simpson",
+              "code": "",
+              "givenName": "Kyffin",
+              "familyName": "Simpson",
+              "nationality": "CYM"
+            },
+            "team": {
+              "id": "chip-ganassi-racing",
+              "name": "Chip Ganassi Racing",
+              "color": "#0B5BA7"
+            },
+            "carNumber": "8",
+            "time": "01:51:48.1251",
+            "laps": 225,
+            "points": 22,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 10,
+            "positionText": "10",
+            "driver": {
+              "id": "kyle-kirkwood",
+              "code": "",
+              "givenName": "Kyle",
+              "familyName": "Kirkwood",
+              "nationality": "USA"
+            },
+            "team": {
+              "id": "andretti-global-w-curb-agajanian",
+              "name": "Andretti Global w/ Curb-Agajanian",
+              "color": "#E31B23"
+            },
+            "carNumber": "27",
+            "time": "01:51:48.9100",
+            "laps": 225,
+            "points": 22,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 11,
+            "positionText": "11",
+            "driver": {
+              "id": "nolan-siegel",
+              "code": "",
+              "givenName": "Nolan",
+              "familyName": "Siegel",
+              "nationality": "USA"
+            },
+            "team": {
+              "id": "arrow-mclaren",
+              "name": "Arrow McLaren",
+              "color": "#FF6C0C"
+            },
+            "carNumber": "6",
+            "time": "01:51:49.8940",
+            "laps": 225,
+            "points": 19,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 12,
+            "positionText": "12",
+            "driver": {
+              "id": "rinus-veekay",
+              "code": "",
+              "givenName": "Rinus",
+              "familyName": "VeeKay",
+              "nationality": "NLD"
+            },
+            "team": {
+              "id": "juncos-hollinger-racing",
+              "name": "Juncos Hollinger Racing",
+              "color": "#4A148C"
+            },
+            "carNumber": "76",
+            "time": "01:51:50.4839",
+            "laps": 225,
+            "points": 18,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 13,
+            "positionText": "13",
+            "driver": {
+              "id": "santino-ferrucci",
+              "code": "",
+              "givenName": "Santino",
+              "familyName": "Ferrucci",
+              "nationality": "USA"
+            },
+            "team": {
+              "id": "a-j-foyt-enterprises",
+              "name": "A.J. Foyt Enterprises",
+              "color": "#D71920"
+            },
+            "carNumber": "14",
+            "time": "01:51:51.7615",
+            "laps": 225,
+            "points": 17,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 14,
+            "positionText": "14",
+            "driver": {
+              "id": "romain-grosjean",
+              "code": "",
+              "givenName": "Romain",
+              "familyName": "Grosjean",
+              "nationality": "FRA"
+            },
+            "team": {
+              "id": "dale-coyne-racing",
+              "name": "Dale Coyne Racing",
+              "color": "#222222"
+            },
+            "carNumber": "18",
+            "time": "01:51:55.4285",
+            "laps": 225,
+            "points": 16,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 15,
+            "positionText": "15",
+            "driver": {
+              "id": "sting-ray-robb",
+              "code": "",
+              "givenName": "Sting Ray",
+              "familyName": "Robb",
+              "nationality": "USA"
+            },
+            "team": {
+              "id": "juncos-hollinger-racing",
+              "name": "Juncos Hollinger Racing",
+              "color": "#4A148C"
+            },
+            "carNumber": "77",
+            "time": "01:51:57.8145",
+            "laps": 225,
+            "points": 15,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 16,
+            "positionText": "16",
+            "driver": {
+              "id": "christian-lundgaard",
+              "code": "",
+              "givenName": "Christian",
+              "familyName": "Lundgaard",
+              "nationality": "DNK"
+            },
+            "team": {
+              "id": "arrow-mclaren",
+              "name": "Arrow McLaren",
+              "color": "#FF6C0C"
+            },
+            "carNumber": "7",
+            "time": "01:52:02.6239",
+            "laps": 225,
+            "points": 14,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 17,
+            "positionText": "17",
+            "driver": {
+              "id": "louis-foster",
+              "code": "",
+              "givenName": "Louis",
+              "familyName": "Foster",
+              "nationality": "GBR"
+            },
+            "team": {
+              "id": "rahal-letterman-lanigan-racing",
+              "name": "Rahal Letterman Lanigan Racing",
+              "color": "#1F4E79"
+            },
+            "carNumber": "45",
+            "time": "01:51:43.7407",
+            "laps": 223,
+            "points": 14,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 18,
+            "positionText": "18",
+            "driver": {
+              "id": "scott-dixon",
+              "code": "",
+              "givenName": "Scott",
+              "familyName": "Dixon",
+              "nationality": "NZL"
+            },
+            "team": {
+              "id": "chip-ganassi-racing",
+              "name": "Chip Ganassi Racing",
+              "color": "#0B5BA7"
+            },
+            "carNumber": "9",
+            "time": "01:51:59.1455",
+            "laps": 218,
+            "points": 12,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 19,
+            "positionText": "19",
+            "driver": {
+              "id": "graham-rahal",
+              "code": "",
+              "givenName": "Graham",
+              "familyName": "Rahal",
+              "nationality": "USA"
+            },
+            "team": {
+              "id": "rahal-letterman-lanigan-racing",
+              "name": "Rahal Letterman Lanigan Racing",
+              "color": "#1F4E79"
+            },
+            "carNumber": "15",
+            "time": "01:47:41.4163",
+            "laps": 209,
+            "points": 11,
+            "status": "Retired",
+            "classified": false,
+            "components": {}
+          },
+          {
+            "position": 20,
+            "positionText": "20",
+            "driver": {
+              "id": "will-power",
+              "code": "",
+              "givenName": "Will",
+              "familyName": "Power",
+              "nationality": "AUS"
+            },
+            "team": {
+              "id": "andretti-global",
+              "name": "Andretti Global",
+              "color": "#E31B23"
+            },
+            "carNumber": "26",
+            "time": "01:51:42.1306",
+            "laps": 209,
+            "points": 11,
+            "status": "Running",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 21,
+            "positionText": "21",
+            "driver": {
+              "id": "dennis-hauger",
+              "code": "",
+              "givenName": "Dennis",
+              "familyName": "Hauger",
+              "nationality": "NOR"
+            },
+            "team": {
+              "id": "dale-coyne-racing",
+              "name": "Dale Coyne Racing",
+              "color": "#222222"
+            },
+            "carNumber": "19",
+            "time": "01:28:05.5974",
+            "laps": 178,
+            "points": 9,
+            "status": "Contact",
+            "classified": false,
+            "components": {}
+          },
+          {
+            "position": 22,
+            "positionText": "22",
+            "driver": {
+              "id": "christian-rasmussen",
+              "code": "",
+              "givenName": "Christian",
+              "familyName": "Rasmussen",
+              "nationality": "DNK"
+            },
+            "team": {
+              "id": "ecr",
+              "name": "ECR",
+              "color": "#00529B"
+            },
+            "carNumber": "21",
+            "time": "01:34:33.1237",
+            "laps": 127,
+            "points": 8,
+            "status": "Retired",
+            "classified": false,
+            "components": {}
+          },
+          {
+            "position": 23,
+            "positionText": "23",
+            "driver": {
+              "id": "alexander-rossi",
+              "code": "",
+              "givenName": "Alexander",
+              "familyName": "Rossi",
+              "nationality": "USA"
+            },
+            "team": {
+              "id": "ecr",
+              "name": "ECR",
+              "color": "#00529B"
+            },
+            "carNumber": "20",
+            "time": "00:57:03.4040",
+            "laps": 121,
+            "points": 7,
+            "status": "Contact",
+            "classified": false,
+            "components": {}
+          },
+          {
+            "position": 24,
+            "positionText": "24",
+            "driver": {
+              "id": "marcus-armstrong",
+              "code": "",
+              "givenName": "Marcus",
+              "familyName": "Armstrong",
+              "nationality": "NZL"
+            },
+            "team": {
+              "id": "meyer-shank-w-curb-agajanian",
+              "name": "Meyer Shank w/ Curb-Agajanian",
+              "color": "#E91E63"
+            },
+            "carNumber": "66",
+            "time": "00:49:51.6859",
+            "laps": 104,
+            "points": 6,
+            "status": "Mechanical",
+            "classified": false,
+            "components": {}
+          },
+          {
+            "position": 25,
+            "positionText": "25",
+            "driver": {
+              "id": "caio-collet",
+              "code": "",
+              "givenName": "Caio",
+              "familyName": "Collet",
+              "nationality": "BRA"
+            },
+            "team": {
+              "id": "a-j-foyt-enterprises",
+              "name": "A.J. Foyt Enterprises",
+              "color": "#D71920"
+            },
+            "carNumber": "4",
+            "time": "00:07:30.9505",
+            "laps": 17,
+            "points": 5,
+            "status": "Contact",
+            "classified": false,
+            "components": {}
+          }
+        ]
+      }
+    ]
   }
 }

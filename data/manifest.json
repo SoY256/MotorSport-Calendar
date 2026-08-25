@@ -1,13 +1,25 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-08-24T08:43:55.705249Z",
+  "lastSuccessfulUpdate": "2026-08-25T09:13:27.971469Z",
   "source": {
-    "name": "jolpica-f1",
-    "url": "https://api.jolpi.ca"
+    "name": "multi-source-official-refresh",
+    "url": "https://github.com/SoY256/MotorSport-Calendar"
   },
   "availableSeries": [
     {
       "id": "f1",
+      "availableSeasons": [
+        2026
+      ]
+    },
+    {
+      "id": "f2",
+      "availableSeasons": [
+        2026
+      ]
+    },
+    {
+      "id": "f3",
       "availableSeasons": [
         2026
       ]

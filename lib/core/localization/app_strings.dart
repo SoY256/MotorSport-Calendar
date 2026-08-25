@@ -17,6 +17,16 @@ class AppStrings {
       _en ? 'times in the selected time zone' : 'godziny w wybranej strefie';
   String get nextRound => _en ? 'NEXT ROUND' : 'NAJBLIŻSZA RUNDA';
   String sessions(int count) => _en ? '$count sessions' : '$count sesji';
+  String duration(int minutes) {
+    if (minutes >= 60 && minutes % 60 == 0) {
+      final hours = minutes ~/ 60;
+      return _en ? '$hours h' : '$hours godz.';
+    }
+    return _en ? '$minutes min' : '$minutes min';
+  }
+
+  String get expectedDuration =>
+      _en ? 'Expected duration' : 'Przewidywany czas';
   String get updated => _en ? 'Updated' : 'Dane zaktualizowano';
   String get refresh => _en ? 'Refresh data' : 'Odśwież dane';
   String get showPast =>

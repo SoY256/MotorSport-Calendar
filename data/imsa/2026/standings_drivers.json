@@ -1,88 +1,5130 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-08-24T10:00:00Z",
+  "lastSuccessfulUpdate": "2026-08-25T09:11:44.564736Z",
   "source": {
-    "name": "official-championship",
-    "url": "https://www.imsa.com/weathertech/weathertech-2026-schedule/"
+    "name": "imsa-alkamel-official-points",
+    "url": "https://imsa.results.alkamelcloud.com/"
   },
   "data": [
     {
-      "position": 1,
-      "points": 2142,
-      "wins": 0,
-      "id": "connor-de-phillippi",
+      "points": 2373.0,
+      "wins": 4,
+      "category": "GTD",
+      "id": "philip-ellis",
       "code": "",
-      "givenName": "Connor",
-      "familyName": "De Phillippi",
-      "nationality": "American",
+      "givenName": "Philip",
+      "familyName": "Ellis",
+      "nationality": "GBR",
       "teamIds": [
-        "bmw"
-      ]
+        "winward-racing"
+      ],
+      "teamNames": [
+        "Winward Racing"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "position": 1
     },
     {
-      "position": 1,
-      "points": 2142,
-      "wins": 0,
-      "id": "neil-verhagen",
+      "points": 2373.0,
+      "wins": 4,
+      "category": "GTD",
+      "id": "russell-ward",
       "code": "",
-      "givenName": "Neil",
-      "familyName": "Verhagen",
-      "nationality": "American",
+      "givenName": "Russell",
+      "familyName": "Ward",
+      "nationality": "USA",
       "teamIds": [
-        "bmw"
-      ]
+        "winward-racing"
+      ],
+      "teamNames": [
+        "Winward Racing"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "position": 2
     },
     {
-      "position": 2,
-      "points": 2127,
+      "points": 2337.0,
       "wins": 0,
-      "id": "nicky-catsburg",
+      "category": "GTD",
+      "id": "patrick-gallagher",
       "code": "",
-      "givenName": "Nicky",
-      "familyName": "Catsburg",
-      "nationality": "Dutch",
+      "givenName": "Patrick",
+      "familyName": "Gallagher",
+      "nationality": "USA",
       "teamIds": [
-        "corvette"
-      ]
+        "turner-motorsport"
+      ],
+      "teamNames": [
+        "Turner Motorsport"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "position": 3
     },
     {
-      "position": 2,
-      "points": 2127,
+      "points": 2337.0,
       "wins": 0,
-      "id": "tommy-milner",
+      "category": "GTD",
+      "id": "robby-foley",
       "code": "",
-      "givenName": "Tommy",
-      "familyName": "Milner",
-      "nationality": "American",
+      "givenName": "Robby",
+      "familyName": "Foley",
+      "nationality": "USA",
       "teamIds": [
-        "corvette"
-      ]
+        "turner-motorsport"
+      ],
+      "teamNames": [
+        "Turner Motorsport"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "position": 4
     },
     {
-      "position": 3,
-      "points": 2121,
+      "points": 2317.0,
       "wins": 0,
+      "category": "GTD",
+      "id": "dudu-barrichello",
+      "code": "",
+      "givenName": "Dudu",
+      "familyName": "Barrichello",
+      "nationality": "BRA",
+      "teamIds": [
+        "heart-of-racing-team"
+      ],
+      "teamNames": [
+        "Heart of Racing Team"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "position": 5
+    },
+    {
+      "points": 2217.0,
+      "wins": 1,
+      "category": "GTD",
+      "id": "aaron-telitz",
+      "code": "",
+      "givenName": "Aaron",
+      "familyName": "Telitz",
+      "nationality": "USA",
+      "teamIds": [
+        "vasser-sullivan-racing"
+      ],
+      "teamNames": [
+        "Vasser Sullivan Racing"
+      ],
+      "teamColors": [
+        "#222222"
+      ],
+      "position": 6
+    },
+    {
+      "points": 2217.0,
+      "wins": 1,
+      "category": "GTD",
+      "id": "benjamin-pedersen",
+      "code": "",
+      "givenName": "Benjamin",
+      "familyName": "Pedersen",
+      "nationality": "USA",
+      "teamIds": [
+        "vasser-sullivan-racing"
+      ],
+      "teamNames": [
+        "Vasser Sullivan Racing"
+      ],
+      "teamColors": [
+        "#222222"
+      ],
+      "position": 7
+    },
+    {
+      "points": 1959.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "albert-costa",
+      "code": "",
+      "givenName": "Albert",
+      "familyName": "Costa",
+      "nationality": "ESP",
+      "teamIds": [
+        "conquest-racing"
+      ],
+      "teamNames": [
+        "Conquest Racing"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 8
+    },
+    {
+      "points": 1943.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "brendan-iribe",
+      "code": "",
+      "givenName": "Brendan",
+      "familyName": "Iribe",
+      "nationality": "USA",
+      "teamIds": [
+        "inception-racing"
+      ],
+      "teamNames": [
+        "Inception Racing"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 9
+    },
+    {
+      "points": 1888.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "matthew-bell",
+      "code": "",
+      "givenName": "Matthew",
+      "familyName": "Bell",
+      "nationality": "GBR",
+      "teamIds": [
+        "13-autosport"
+      ],
+      "teamNames": [
+        "13 Autosport"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 10
+    },
+    {
+      "points": 1888.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "orey-fidani",
+      "code": "",
+      "givenName": "Orey",
+      "familyName": "Fidani",
+      "nationality": "CAN",
+      "teamIds": [
+        "13-autosport"
+      ],
+      "teamNames": [
+        "13 Autosport"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 11
+    },
+    {
+      "points": 1877.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "adam-adelson",
+      "code": "",
+      "givenName": "Adam",
+      "familyName": "Adelson",
+      "nationality": "USA",
+      "teamIds": [
+        "wright-motorsports"
+      ],
+      "teamNames": [
+        "Wright Motorsports"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 12
+    },
+    {
+      "points": 1877.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "callum-ilott",
+      "code": "",
+      "givenName": "Callum",
+      "familyName": "Ilott",
+      "nationality": "GBR",
+      "teamIds": [
+        "wright-motorsports"
+      ],
+      "teamNames": [
+        "Wright Motorsports"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 13
+    },
+    {
+      "points": 1862.0,
+      "wins": 1,
+      "category": "GTD",
+      "id": "danny-formal",
+      "code": "",
+      "givenName": "Danny",
+      "familyName": "Formal",
+      "nationality": "CRI",
+      "teamIds": [
+        "wayne-taylor-racing"
+      ],
+      "teamNames": [
+        "Wayne Taylor Racing"
+      ],
+      "teamColors": [
+        "#DDB321"
+      ],
+      "position": 14
+    },
+    {
+      "points": 1862.0,
+      "wins": 1,
+      "category": "GTD",
+      "id": "trent-hindman",
+      "code": "",
+      "givenName": "Trent",
+      "familyName": "Hindman",
+      "nationality": "USA",
+      "teamIds": [
+        "wayne-taylor-racing"
+      ],
+      "teamNames": [
+        "Wayne Taylor Racing"
+      ],
+      "teamColors": [
+        "#DDB321"
+      ],
+      "position": 15
+    },
+    {
+      "points": 1813.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "frederik-schandorff",
+      "code": "",
+      "givenName": "Frederik",
+      "familyName": "Schandorff",
+      "nationality": "DNK",
+      "teamIds": [
+        "inception-racing"
+      ],
+      "teamNames": [
+        "Inception Racing"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 16
+    },
+    {
+      "points": 1792.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "tom-gamble",
+      "code": "",
+      "givenName": "Tom",
+      "familyName": "Gamble",
+      "nationality": "GBR",
+      "teamIds": [
+        "heart-of-racing-team"
+      ],
+      "teamNames": [
+        "Heart of Racing Team"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "position": 17
+    },
+    {
+      "points": 1698.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "giacomo-altoe",
+      "code": "",
+      "givenName": "Giacomo",
+      "familyName": "Altoè",
+      "nationality": "ITA",
+      "teamIds": [
+        "dragonspeed"
+      ],
+      "teamNames": [
+        "DragonSpeed"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 18
+    },
+    {
+      "points": 1635.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "lorenzo-patrese",
+      "code": "",
+      "givenName": "Lorenzo",
+      "familyName": "Patrese",
+      "nationality": "ITA",
+      "teamIds": [
+        "conquest-racing"
+      ],
+      "teamNames": [
+        "Conquest Racing"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 19
+    },
+    {
+      "points": 1615.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "jake-walker",
+      "code": "",
+      "givenName": "Jake",
+      "familyName": "Walker",
+      "nationality": "USA",
+      "teamIds": [
+        "gradient-racing"
+      ],
+      "teamNames": [
+        "Gradient Racing"
+      ],
+      "teamColors": [
+        "#003478"
+      ],
+      "position": 20
+    },
+    {
+      "points": 1604.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "felipe-fraga",
+      "code": "",
+      "givenName": "Felipe",
+      "familyName": "Fraga",
+      "nationality": "BRA",
+      "teamIds": [
+        "myers-riley-motorsports"
+      ],
+      "teamNames": [
+        "Myers Riley Motorsports"
+      ],
+      "teamColors": [
+        "#003478"
+      ],
+      "position": 21
+    },
+    {
+      "points": 1604.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "sheena-monk",
+      "code": "",
+      "givenName": "Sheena",
+      "familyName": "Monk",
+      "nationality": "USA",
+      "teamIds": [
+        "myers-riley-motorsports"
+      ],
+      "teamNames": [
+        "Myers Riley Motorsports"
+      ],
+      "teamColors": [
+        "#003478"
+      ],
+      "position": 22
+    },
+    {
+      "points": 1552.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "mason-filippi",
+      "code": "",
+      "givenName": "Mason",
+      "familyName": "Filippi",
+      "nationality": "USA",
+      "teamIds": [
+        "dxdt-racing"
+      ],
+      "teamNames": [
+        "DXDT Racing"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 23
+    },
+    {
+      "points": 1308.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "valentin-hasse-clot",
+      "code": "",
+      "givenName": "Valentin Hasse",
+      "familyName": "Clot",
+      "nationality": "FRA",
+      "teamIds": [
+        "car-blanche"
+      ],
+      "teamNames": [
+        "Car Blanche"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "position": 24
+    },
+    {
+      "points": 1299.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "scott-andrews",
+      "code": "",
+      "givenName": "Scott",
+      "familyName": "Andrews",
+      "nationality": "AUS",
+      "teamIds": [
+        "lone-star-racing"
+      ],
+      "teamNames": [
+        "Lone Star Racing"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "position": 25
+    },
+    {
+      "points": 1264.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "casper-stevenson",
+      "code": "",
+      "givenName": "Casper",
+      "familyName": "Stevenson",
+      "nationality": "GBR",
+      "teamIds": [
+        "dragonspeed"
+      ],
+      "teamNames": [
+        "DragonSpeed"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 26
+    },
+    {
+      "points": 1231.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "frankie-montecalvo",
+      "code": "",
+      "givenName": "Frankie",
+      "familyName": "Montecalvo",
+      "nationality": "USA",
+      "teamIds": [
+        "vasser-sullivan-racing"
+      ],
+      "teamNames": [
+        "Vasser Sullivan Racing"
+      ],
+      "teamColors": [
+        "#222222"
+      ],
+      "position": 27
+    },
+    {
+      "points": 1191.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "corey-lewis",
+      "code": "",
+      "givenName": "Corey",
+      "familyName": "Lewis",
+      "nationality": "USA",
+      "teamIds": [
+        "gradient-racing"
+      ],
+      "teamNames": [
+        "Gradient Racing"
+      ],
+      "teamColors": [
+        "#003478"
+      ],
+      "position": 28
+    },
+    {
+      "points": 1142.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "zacharie-robichon",
+      "code": "",
+      "givenName": "Zacharie",
+      "familyName": "Robichon",
+      "nationality": "CAN",
+      "teamIds": [
+        "heart-of-racing-team"
+      ],
+      "teamNames": [
+        "Heart of Racing Team"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "position": 29
+    },
+    {
+      "points": 1079.0,
+      "wins": 2,
+      "category": "GTD",
+      "id": "indy-dontje",
+      "code": "",
+      "givenName": "Indy",
+      "familyName": "Dontje",
+      "nationality": "NLD",
+      "teamIds": [
+        "winward-racing"
+      ],
+      "teamNames": [
+        "WINWARD RACING"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "position": 30
+    },
+    {
+      "points": 1064.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "james-roe",
+      "code": "",
+      "givenName": "James",
+      "familyName": "Roe",
+      "nationality": "IRL",
+      "teamIds": [
+        "lone-star-racing"
+      ],
+      "teamNames": [
+        "Lone Star Racing"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "position": 31
+    },
+    {
+      "points": 1064.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "lin-hodenius",
+      "code": "",
+      "givenName": "Lin",
+      "familyName": "Hodenius",
+      "nationality": "NLD",
+      "teamIds": [
+        "lone-star-racing"
+      ],
+      "teamNames": [
+        "Lone Star Racing"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "position": 32
+    },
+    {
+      "points": 1056.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "francis-selldorff",
+      "code": "",
+      "givenName": "Francis",
+      "familyName": "Selldorff",
+      "nationality": "USA",
+      "teamIds": [
+        "turner-motorsport"
+      ],
+      "teamNames": [
+        "Turner Motorsport"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "position": 33
+    },
+    {
+      "points": 1036.0,
+      "wins": 1,
+      "category": "GTD",
+      "id": "antonio-fuoco",
+      "code": "",
+      "givenName": "Antonio",
+      "familyName": "Fuoco",
+      "nationality": "ITA",
+      "teamIds": [
+        "af-corse-usa"
+      ],
+      "teamNames": [
+        "Af Corse Usa"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 34
+    },
+    {
+      "points": 1036.0,
+      "wins": 1,
+      "category": "GTD",
+      "id": "simon-mann",
+      "code": "",
+      "givenName": "Simon",
+      "familyName": "Mann",
+      "nationality": "USA",
+      "teamIds": [
+        "af-corse-usa"
+      ],
+      "teamNames": [
+        "Af Corse Usa"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 35
+    },
+    {
+      "points": 1023.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "kenton-koch",
+      "code": "",
+      "givenName": "Kenton",
+      "familyName": "Koch",
+      "nationality": "USA",
+      "teamIds": [
+        "triarsi-competizione"
+      ],
+      "teamNames": [
+        "Triarsi Competizione"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 36
+    },
+    {
+      "points": 1023.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "onofrio-triarsi",
+      "code": "",
+      "givenName": "Onofrio",
+      "familyName": "Triarsi",
+      "nationality": "USA",
+      "teamIds": [
+        "triarsi-competizione"
+      ],
+      "teamNames": [
+        "Triarsi Competizione"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 37
+    },
+    {
+      "points": 1023.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "robert-megennis",
+      "code": "",
+      "givenName": "Robert",
+      "familyName": "Megennis",
+      "nationality": "USA",
+      "teamIds": [
+        "triarsi-competizione"
+      ],
+      "teamNames": [
+        "Triarsi Competizione"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 38
+    },
+    {
+      "points": 995.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "lars-kern",
+      "code": "",
+      "givenName": "Lars",
+      "familyName": "Kern",
+      "nationality": "DEU",
+      "teamIds": [
+        "13-autosport"
+      ],
+      "teamNames": [
+        "13 Autosport"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 39
+    },
+    {
+      "points": 943.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "robert-wickens",
+      "code": "",
+      "givenName": "Robert",
+      "familyName": "Wickens",
+      "nationality": "CAN",
+      "teamIds": [
+        "dxdt-racing"
+      ],
+      "teamNames": [
+        "DXDT Racing"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 40
+    },
+    {
+      "points": 931.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "henrik-hedman",
+      "code": "",
+      "givenName": "Henrik",
+      "familyName": "Hedman",
+      "nationality": "SWE",
+      "teamIds": [
+        "dragonspeed"
+      ],
+      "teamNames": [
+        "DragonSpeed"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 41
+    },
+    {
+      "points": 927.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "tom-sargent",
+      "code": "",
+      "givenName": "Tom",
+      "familyName": "Sargent",
+      "nationality": "AUS",
+      "teamIds": [
+        "wright-motorsports"
+      ],
+      "teamNames": [
+        "Wright Motorsports"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 42
+    },
+    {
+      "points": 924.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "spencer-pumpelly",
+      "code": "",
+      "givenName": "Spencer",
+      "familyName": "Pumpelly",
+      "nationality": "USA",
+      "teamIds": [
+        "magnus-racing"
+      ],
+      "teamNames": [
+        "Magnus Racing"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "position": 43
+    },
+    {
+      "points": 913.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "rory-van-der-steur",
+      "code": "",
+      "givenName": "Rory van der",
+      "familyName": "Steur",
+      "nationality": "USA",
+      "teamIds": [
+        "van-der-steur-racing"
+      ],
+      "teamNames": [
+        "van der Steur Racing"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "position": 44
+    },
+    {
+      "points": 896.0,
+      "wins": 1,
+      "category": "GTD",
+      "id": "lilou-wadoux-ducellier",
+      "code": "",
+      "givenName": "Lilou Wadoux",
+      "familyName": "Ducellier",
+      "nationality": "FRA",
+      "teamIds": [
+        "af-corse-usa"
+      ],
+      "teamNames": [
+        "Af Corse Usa"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 45
+    },
+    {
+      "points": 855.0,
+      "wins": 1,
+      "category": "GTD",
+      "id": "riccardo-pera",
+      "code": "",
+      "givenName": "Riccardo",
+      "familyName": "Pera",
+      "nationality": "ITA",
+      "teamIds": [
+        "manthey-1st-phorm"
+      ],
+      "teamNames": [
+        "Manthey 1St Phorm"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 46
+    },
+    {
+      "points": 855.0,
+      "wins": 1,
+      "category": "GTD",
+      "id": "ryan-hardwick",
+      "code": "",
+      "givenName": "Ryan",
+      "familyName": "Hardwick",
+      "nationality": "USA",
+      "teamIds": [
+        "manthey-1st-phorm"
+      ],
+      "teamNames": [
+        "Manthey 1St Phorm"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 47
+    },
+    {
+      "points": 801.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "charlie-eastwood",
+      "code": "",
+      "givenName": "Charlie",
+      "familyName": "Eastwood",
+      "nationality": "IRL",
+      "teamIds": [
+        "dxdt-racing"
+      ],
+      "teamNames": [
+        "DXDT Racing"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 48
+    },
+    {
+      "points": 793.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "jan-heylen",
+      "code": "",
+      "givenName": "Jan",
+      "familyName": "Heylen",
+      "nationality": "BEL",
+      "teamIds": [
+        "rs1"
+      ],
+      "teamNames": [
+        "Rs1"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 49
+    },
+    {
+      "points": 769.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "manny-franco",
+      "code": "",
+      "givenName": "Manny",
+      "familyName": "Franco",
+      "nationality": "USA",
+      "teamIds": [
+        "conquest-racing"
+      ],
+      "teamNames": [
+        "Conquest Racing"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 50
+    },
+    {
+      "points": 758.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "till-bechtolsheimer",
+      "code": "",
+      "givenName": "Till",
+      "familyName": "Bechtolsheimer",
+      "nationality": "GBR",
+      "teamIds": [
+        "gradient-racing"
+      ],
+      "teamNames": [
+        "Gradient Racing"
+      ],
+      "teamColors": [
+        "#003478"
+      ],
+      "position": 51
+    },
+    {
+      "points": 739.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "ollie-millroy",
+      "code": "",
+      "givenName": "Ollie",
+      "familyName": "Millroy",
+      "nationality": "GBR",
+      "teamIds": [
+        "inception-racing"
+      ],
+      "teamNames": [
+        "Inception Racing"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 52
+    },
+    {
+      "points": 734.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "graham-doyle",
+      "code": "",
+      "givenName": "Graham",
+      "familyName": "Doyle",
+      "nationality": "USA",
+      "teamIds": [
+        "wayne-taylor-racing"
+      ],
+      "teamNames": [
+        "Wayne Taylor Racing"
+      ],
+      "teamColors": [
+        "#DDB321"
+      ],
+      "position": 53
+    },
+    {
+      "points": 649.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "jenson-altzman",
+      "code": "",
+      "givenName": "Jenson",
+      "familyName": "Altzman",
+      "nationality": "USA",
+      "teamIds": [
+        "myers-riley-motorsports"
+      ],
+      "teamNames": [
+        "Myers Riley Motorsports"
+      ],
+      "teamColors": [
+        "#003478"
+      ],
+      "position": 54
+    },
+    {
+      "points": 630.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "marius-fossard",
+      "code": "",
+      "givenName": "Marius",
+      "familyName": "Fossard",
+      "nationality": "FRA",
+      "teamIds": [
+        "car-blanche"
+      ],
+      "teamNames": [
+        "Car Blanche"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "position": 55
+    },
+    {
+      "points": 630.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "trenton-estep",
+      "code": "",
+      "givenName": "Trenton",
+      "familyName": "Estep",
+      "nationality": "USA",
+      "teamIds": [
+        "car-blanche"
+      ],
+      "teamNames": [
+        "Car Blanche"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "position": 56
+    },
+    {
+      "points": 609.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "salih-yoluc",
+      "code": "",
+      "givenName": "Salih",
+      "familyName": "Yoluc",
+      "nationality": "TUR",
+      "teamIds": [
+        "dxdt-racing"
+      ],
+      "teamNames": [
+        "DXDT Racing"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 57
+    },
+    {
+      "points": 568.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "joey-hand",
+      "code": "",
+      "givenName": "Joey",
+      "familyName": "Hand",
+      "nationality": "USA",
+      "teamIds": [
+        "gradient-racing"
+      ],
+      "teamNames": [
+        "Gradient Racing"
+      ],
+      "teamColors": [
+        "#003478"
+      ],
+      "position": 58
+    },
+    {
+      "points": 559.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "dillon-machavern",
+      "code": "",
+      "givenName": "Dillon",
+      "familyName": "Machavern",
+      "nationality": "USA",
+      "teamIds": [
+        "rs1"
+      ],
+      "teamNames": [
+        "Rs1"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 59
+    },
+    {
+      "points": 553.0,
+      "wins": 1,
+      "category": "GTD",
+      "id": "richard-lietz",
+      "code": "",
+      "givenName": "Richard",
+      "familyName": "Lietz",
+      "nationality": "AUT",
+      "teamIds": [
+        "manthey-1st-phorm"
+      ],
+      "teamNames": [
+        "Manthey 1St Phorm"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 60
+    },
+    {
+      "points": 505.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "morris-schuring",
+      "code": "",
+      "givenName": "Morris",
+      "familyName": "Schuring",
+      "nationality": "NLD",
+      "teamIds": [
+        "manthey-1st-phorm"
+      ],
+      "teamNames": [
+        "Manthey 1St Phorm"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 61
+    },
+    {
+      "points": 456.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "john-potter",
+      "code": "",
+      "givenName": "John",
+      "familyName": "Potter",
+      "nationality": "USA",
+      "teamIds": [
+        "magnus-racing"
+      ],
+      "teamNames": [
+        "Magnus Racing"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "position": 62
+    },
+    {
+      "points": 448.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "alec-udell",
+      "code": "",
+      "givenName": "Alec",
+      "familyName": "Udell",
+      "nationality": "USA",
+      "teamIds": [
+        "dragonspeed"
+      ],
+      "teamNames": [
+        "DragonSpeed"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 63
+    },
+    {
+      "points": 429.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "sebastien-baud",
+      "code": "",
+      "givenName": "Sébastien",
+      "familyName": "Baud",
+      "nationality": "FRA",
+      "teamIds": [
+        "van-der-steur-racing"
+      ],
+      "teamNames": [
+        "van der Steur Racing"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "position": 64
+    },
+    {
+      "points": 406.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "ryan-yardley",
+      "code": "",
+      "givenName": "Ryan",
+      "familyName": "Yardley",
+      "nationality": "NZL",
+      "teamIds": [
+        "rs1"
+      ],
+      "teamNames": [
+        "Rs1"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 65
+    },
+    {
+      "points": 400.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "fran-rueda",
+      "code": "",
+      "givenName": "Fran",
+      "familyName": "Rueda",
+      "nationality": "ESP",
+      "teamIds": [
+        "conquest-racing"
+      ],
+      "teamNames": [
+        "Conquest Racing"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 66
+    },
+    {
+      "points": 382.0,
+      "wins": 1,
+      "category": "GTD",
+      "id": "lucas-auer",
+      "code": "",
+      "givenName": "Lucas",
+      "familyName": "Auer",
+      "nationality": "AUT",
+      "teamIds": [
+        "winward-racing"
+      ],
+      "teamNames": [
+        "WINWARD RACING"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "position": 67
+    },
+    {
+      "points": 336.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "madison-snow",
+      "code": "",
+      "givenName": "Madison",
+      "familyName": "Snow",
+      "nationality": "USA",
+      "teamIds": [
+        "magnus-racing"
+      ],
+      "teamNames": [
+        "Magnus Racing"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "position": 68
+    },
+    {
+      "points": 336.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "nicki-thiim",
+      "code": "",
+      "givenName": "Nicki",
+      "familyName": "Thiim",
+      "nationality": "DNK",
+      "teamIds": [
+        "magnus-racing"
+      ],
+      "teamNames": [
+        "Magnus Racing"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "position": 69
+    },
+    {
+      "points": 335.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "mattia-drudi",
+      "code": "",
+      "givenName": "Mattia",
+      "familyName": "Drudi",
+      "nationality": "ITA",
+      "teamIds": [
+        "heart-of-racing-team"
+      ],
+      "teamNames": [
+        "Heart of Racing Team"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "position": 70
+    },
+    {
+      "points": 295.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "ben-green",
+      "code": "",
+      "givenName": "Ben",
+      "familyName": "Green",
+      "nationality": "GBR",
+      "teamIds": [
+        "13-autosport"
+      ],
+      "teamNames": [
+        "13 Autosport"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 71
+    },
+    {
+      "points": 285.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "roman-de-angelis",
+      "code": "",
+      "givenName": "Roman De",
+      "familyName": "Angelis",
+      "nationality": "CAN",
+      "teamIds": [
+        "aston-martin-thor-team"
+      ],
+      "teamNames": [
+        "ASTON MARTIN THOR Team"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "position": 72
+    },
+    {
+      "points": 285.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "tommaso-mosca",
+      "code": "",
+      "givenName": "Tommaso",
+      "familyName": "Mosca",
+      "nationality": "ITA",
+      "teamIds": [
+        "af-corse-usa"
+      ],
+      "teamNames": [
+        "Af Corse Usa"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 73
+    },
+    {
+      "points": 273.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "ralf-aron",
+      "code": "",
+      "givenName": "Ralf",
+      "familyName": "Aron",
+      "nationality": "EST",
+      "teamIds": [
+        "lone-star-racing"
+      ],
+      "teamNames": [
+        "Lone Star Racing"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "position": 74
+    },
+    {
+      "points": 260.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "jack-hawksworth",
+      "code": "",
+      "givenName": "Jack",
+      "familyName": "Hawksworth",
+      "nationality": "GBR",
+      "teamIds": [
+        "vasser-sullivan-racing"
+      ],
+      "teamNames": [
+        "Vasser Sullivan Racing"
+      ],
+      "teamColors": [
+        "#222222"
+      ],
+      "position": 75
+    },
+    {
+      "points": 260.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "yifei-ye",
+      "code": "",
+      "givenName": "Yifei",
+      "familyName": "Ye",
+      "nationality": "CHN",
+      "teamIds": [
+        "triarsi-competizione"
+      ],
+      "teamNames": [
+        "Triarsi Competizione"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 76
+    },
+    {
+      "points": 249.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "marcus-ericsson",
+      "code": "",
+      "givenName": "Marcus",
+      "familyName": "Ericsson",
+      "nationality": "SWE",
+      "teamIds": [
+        "wayne-taylor-racing"
+      ],
+      "teamNames": [
+        "Wayne Taylor Racing"
+      ],
+      "teamColors": [
+        "#DDB321"
+      ],
+      "position": 77
+    },
+    {
+      "points": 240.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "jens-klingmann",
+      "code": "",
+      "givenName": "Jens",
+      "familyName": "Klingmann",
+      "nationality": "DEU",
+      "teamIds": [
+        "turner-motorsport"
+      ],
+      "teamNames": [
+        "Turner Motorsport"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "position": 78
+    },
+    {
+      "points": 237.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "esteban-masson",
+      "code": "",
+      "givenName": "Esteban",
+      "familyName": "Masson",
+      "nationality": "FRA",
+      "teamIds": [
+        "vasser-sullivan-racing"
+      ],
+      "teamNames": [
+        "Vasser Sullivan Racing"
+      ],
+      "teamColors": [
+        "#222222"
+      ],
+      "position": 79
+    },
+    {
+      "points": 234.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "devlin-defrancesco",
+      "code": "",
+      "givenName": "Devlin",
+      "familyName": "Defrancesco",
+      "nationality": "ITA",
+      "teamIds": [
+        "rs1"
+      ],
+      "teamNames": [
+        "Rs1"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 80
+    },
+    {
+      "points": 226.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "carl-bennett",
+      "code": "",
+      "givenName": "Carl",
+      "familyName": "Bennett",
+      "nationality": "THA",
+      "teamIds": [
+        "van-der-steur-racing"
+      ],
+      "teamNames": [
+        "van der Steur Racing"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "position": 81
+    },
+    {
+      "points": 220.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "eric-lux",
+      "code": "",
+      "givenName": "Eric",
+      "familyName": "Lux",
+      "nationality": "USA",
+      "teamIds": [
+        "rs1"
+      ],
+      "teamNames": [
+        "Rs1"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 82
+    },
+    {
+      "points": 202.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "david-fumanelli",
+      "code": "",
+      "givenName": "David",
+      "familyName": "Fumanelli",
+      "nationality": "ITA",
+      "teamIds": [
+        "inception-racing"
+      ],
+      "teamNames": [
+        "Inception Racing"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 83
+    },
+    {
+      "points": 202.0,
+      "wins": 0,
+      "category": "GTD",
       "id": "harry-king",
       "code": "",
       "givenName": "Harry",
       "familyName": "King",
-      "nationality": "British",
+      "nationality": "GBR",
       "teamIds": [
-        "porsche"
-      ]
+        "ao-racing"
+      ],
+      "teamNames": [
+        "AO Racing"
+      ],
+      "teamColors": [
+        "#E91E63"
+      ],
+      "position": 84
     },
     {
-      "position": 3,
-      "points": 2121,
+      "points": 202.0,
       "wins": 0,
+      "category": "GTD",
+      "id": "mikkel-pedersen",
+      "code": "",
+      "givenName": "Mikkel",
+      "familyName": "Pedersen",
+      "nationality": "DNK",
+      "teamIds": [
+        "ao-racing"
+      ],
+      "teamNames": [
+        "AO Racing"
+      ],
+      "teamColors": [
+        "#E91E63"
+      ],
+      "position": 85
+    },
+    {
+      "points": 193.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "andrea-caldarelli",
+      "code": "",
+      "givenName": "Andrea",
+      "familyName": "Caldarelli",
+      "nationality": "ITA",
+      "teamIds": [
+        "pfaff-motorsports"
+      ],
+      "teamNames": [
+        "Pfaff Motorsports"
+      ],
+      "teamColors": [
+        "#DDB321"
+      ],
+      "position": 86
+    },
+    {
+      "points": 193.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "zachary-vanier",
+      "code": "",
+      "givenName": "Zachary",
+      "familyName": "Vanier",
+      "nationality": "CAN",
+      "teamIds": [
+        "pfaff-motorsports"
+      ],
+      "teamNames": [
+        "Pfaff Motorsports"
+      ],
+      "teamColors": [
+        "#DDB321"
+      ],
+      "position": 87
+    },
+    {
+      "points": 188.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "thierry-vermeulen",
+      "code": "",
+      "givenName": "Thierry",
+      "familyName": "Vermeulen",
+      "nationality": "NLD",
+      "teamIds": [
+        "conquest-racing"
+      ],
+      "teamNames": [
+        "Conquest Racing"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 88
+    },
+    {
+      "points": 174.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "matteo-cairoli",
+      "code": "",
+      "givenName": "Matteo",
+      "familyName": "Cairoli",
+      "nationality": "ITA",
+      "teamIds": [
+        "dragonspeed"
+      ],
+      "teamNames": [
+        "DragonSpeed"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 89
+    },
+    {
+      "points": 172.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "dave-musial",
+      "code": "",
+      "givenName": "Dave",
+      "familyName": "Musial",
+      "nationality": "USA",
+      "teamIds": [
+        "muehlner-motorsports-america-llc"
+      ],
+      "teamNames": [
+        "Muehlner Motorsports America, LLC"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 90
+    },
+    {
+      "points": 172.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "dave-musial-jr",
+      "code": "",
+      "givenName": "Dave Musial",
+      "familyName": "Jr.",
+      "nationality": "USA",
+      "teamIds": [
+        "muehlner-motorsports-america-llc"
+      ],
+      "teamNames": [
+        "Muehlner Motorsports America, LLC"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 91
+    },
+    {
+      "points": 172.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "peter-ludwig",
+      "code": "",
+      "givenName": "Peter",
+      "familyName": "Ludwig",
+      "nationality": "USA",
+      "teamIds": [
+        "muehlner-motorsports-america-llc"
+      ],
+      "teamNames": [
+        "Muehlner Motorsports America, LLC"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 92
+    },
+    {
+      "points": 168.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "scott-mclaughlin",
+      "code": "",
+      "givenName": "Scott",
+      "familyName": "McLaughlin",
+      "nationality": "NZL",
+      "teamIds": [
+        "dxdt-racing"
+      ],
+      "teamNames": [
+        "DXDT Racing"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 93
+    },
+    {
+      "points": 131.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "elliott-skeer",
+      "code": "",
+      "givenName": "Elliott",
+      "familyName": "Skeer",
+      "nationality": "USA",
+      "teamIds": [
+        "wright-motorsports"
+      ],
+      "teamNames": [
+        "Wright Motorsports"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 94
+    },
+    {
+      "points": 130.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "jaxon-evans",
+      "code": "",
+      "givenName": "Jaxon",
+      "familyName": "Evans",
+      "nationality": "NZL",
+      "teamIds": [
+        "inception-racing"
+      ],
+      "teamNames": [
+        "Inception Racing"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 95
+    },
+    {
+      "points": 130.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "romain-grosjean",
+      "code": "",
+      "givenName": "Romain",
+      "familyName": "Grosjean",
+      "nationality": "FRA",
+      "teamIds": [
+        "myers-riley-motorsports"
+      ],
+      "teamNames": [
+        "Myers Riley Motorsports"
+      ],
+      "teamColors": [
+        "#003478"
+      ],
+      "position": 96
+    },
+    {
+      "points": 120.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "mario-farnbacher",
+      "code": "",
+      "givenName": "Mario",
+      "familyName": "Farnbacher",
+      "nationality": "DEU",
+      "teamIds": [
+        "magnus-racing"
+      ],
+      "teamNames": [
+        "Magnus Racing"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "position": 97
+    },
+    {
+      "points": 111.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "eric-zitza",
+      "code": "",
+      "givenName": "Eric",
+      "familyName": "Zitza",
+      "nationality": "USA",
+      "teamIds": [
+        "rs1"
+      ],
+      "teamNames": [
+        "Rs1"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 98
+    },
+    {
+      "points": 111.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "sven-muller",
+      "code": "",
+      "givenName": "Sven",
+      "familyName": "Müller",
+      "nationality": "DEU",
+      "teamIds": [
+        "rs1"
+      ],
+      "teamNames": [
+        "Rs1"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 99
+    },
+    {
+      "points": 2432.0,
+      "wins": 1,
+      "category": "GTD PRO",
+      "id": "connor-de-phillippi",
+      "code": "",
+      "givenName": "Connor De",
+      "familyName": "Phillippi",
+      "nationality": "USA",
+      "teamIds": [
+        "paul-miller-racing"
+      ],
+      "teamNames": [
+        "Paul Miller Racing"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "position": 1
+    },
+    {
+      "points": 2432.0,
+      "wins": 1,
+      "category": "GTD PRO",
+      "id": "neil-verhagen",
+      "code": "",
+      "givenName": "Neil",
+      "familyName": "Verhagen",
+      "nationality": "USA",
+      "teamIds": [
+        "paul-miller-racing"
+      ],
+      "teamNames": [
+        "Paul Miller Racing"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "position": 2
+    },
+    {
+      "points": 2409.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "nicky-catsburg",
+      "code": "",
+      "givenName": "Nicky",
+      "familyName": "Catsburg",
+      "nationality": "NLD",
+      "teamIds": [
+        "corvette-racing-by-pratt-miller-motorsports"
+      ],
+      "teamNames": [
+        "Corvette Racing by Pratt Miller Motorsports"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 3
+    },
+    {
+      "points": 2409.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "tommy-milner",
+      "code": "",
+      "givenName": "Tommy",
+      "familyName": "Milner",
+      "nationality": "USA",
+      "teamIds": [
+        "corvette-racing-by-pratt-miller-motorsports"
+      ],
+      "teamNames": [
+        "Corvette Racing by Pratt Miller Motorsports"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 4
+    },
+    {
+      "points": 2376.0,
+      "wins": 2,
+      "category": "GTD PRO",
+      "id": "andrea-caldarelli",
+      "code": "",
+      "givenName": "Andrea",
+      "familyName": "Caldarelli",
+      "nationality": "ITA",
+      "teamIds": [
+        "pfaff-motorsports"
+      ],
+      "teamNames": [
+        "Pfaff Motorsports"
+      ],
+      "teamColors": [
+        "#DDB321"
+      ],
+      "position": 5
+    },
+    {
+      "points": 2376.0,
+      "wins": 2,
+      "category": "GTD PRO",
+      "id": "sandy-mitchell",
+      "code": "",
+      "givenName": "Sandy",
+      "familyName": "Mitchell",
+      "nationality": "GBR",
+      "teamIds": [
+        "pfaff-motorsports"
+      ],
+      "teamNames": [
+        "Pfaff Motorsports"
+      ],
+      "teamColors": [
+        "#DDB321"
+      ],
+      "position": 6
+    },
+    {
+      "points": 2365.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "harry-king",
+      "code": "",
+      "givenName": "Harry",
+      "familyName": "King",
+      "nationality": "GBR",
+      "teamIds": [
+        "ao-racing"
+      ],
+      "teamNames": [
+        "AO Racing"
+      ],
+      "teamColors": [
+        "#E91E63"
+      ],
+      "position": 7
+    },
+    {
+      "points": 2365.0,
+      "wins": 0,
+      "category": "GTD PRO",
       "id": "nick-tandy",
       "code": "",
       "givenName": "Nick",
       "familyName": "Tandy",
-      "nationality": "British",
+      "nationality": "GBR",
       "teamIds": [
-        "porsche"
-      ]
+        "ao-racing"
+      ],
+      "teamNames": [
+        "AO Racing"
+      ],
+      "teamColors": [
+        "#E91E63"
+      ],
+      "position": 8
+    },
+    {
+      "points": 2365.0,
+      "wins": 1,
+      "category": "GTD PRO",
+      "id": "christopher-mies",
+      "code": "",
+      "givenName": "Christopher",
+      "familyName": "Mies",
+      "nationality": "DEU",
+      "teamIds": [
+        "ford-racing"
+      ],
+      "teamNames": [
+        "Ford Racing"
+      ],
+      "teamColors": [
+        "#003478"
+      ],
+      "position": 9
+    },
+    {
+      "points": 2365.0,
+      "wins": 1,
+      "category": "GTD PRO",
+      "id": "frederic-vervisch",
+      "code": "",
+      "givenName": "Frederic",
+      "familyName": "Vervisch",
+      "nationality": "BEL",
+      "teamIds": [
+        "ford-racing"
+      ],
+      "teamNames": [
+        "Ford Racing"
+      ],
+      "teamColors": [
+        "#003478"
+      ],
+      "position": 10
+    },
+    {
+      "points": 2290.0,
+      "wins": 2,
+      "category": "GTD PRO",
+      "id": "ben-barnicoat",
+      "code": "",
+      "givenName": "Ben",
+      "familyName": "Barnicoat",
+      "nationality": "GBR",
+      "teamIds": [
+        "vasser-sullivan-racing"
+      ],
+      "teamNames": [
+        "Vasser Sullivan Racing"
+      ],
+      "teamColors": [
+        "#222222"
+      ],
+      "position": 11
+    },
+    {
+      "points": 2290.0,
+      "wins": 2,
+      "category": "GTD PRO",
+      "id": "jack-hawksworth",
+      "code": "",
+      "givenName": "Jack",
+      "familyName": "Hawksworth",
+      "nationality": "GBR",
+      "teamIds": [
+        "vasser-sullivan-racing"
+      ],
+      "teamNames": [
+        "Vasser Sullivan Racing"
+      ],
+      "teamColors": [
+        "#222222"
+      ],
+      "position": 12
+    },
+    {
+      "points": 2238.0,
+      "wins": 1,
+      "category": "GTD PRO",
+      "id": "alexander-sims",
+      "code": "",
+      "givenName": "Alexander",
+      "familyName": "Sims",
+      "nationality": "GBR",
+      "teamIds": [
+        "corvette-racing-by-pratt-miller-motorsports"
+      ],
+      "teamNames": [
+        "Corvette Racing by Pratt Miller Motorsports"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 13
+    },
+    {
+      "points": 2238.0,
+      "wins": 1,
+      "category": "GTD PRO",
+      "id": "antonio-garcia",
+      "code": "",
+      "givenName": "Antonio",
+      "familyName": "Garcia",
+      "nationality": "ESP",
+      "teamIds": [
+        "corvette-racing-by-pratt-miller-motorsports"
+      ],
+      "teamNames": [
+        "Corvette Racing by Pratt Miller Motorsports"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 14
+    },
+    {
+      "points": 2230.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "ben-barker",
+      "code": "",
+      "givenName": "Ben",
+      "familyName": "Barker",
+      "nationality": "GBR",
+      "teamIds": [
+        "ford-racing"
+      ],
+      "teamNames": [
+        "Ford Racing"
+      ],
+      "teamColors": [
+        "#003478"
+      ],
+      "position": 15
+    },
+    {
+      "points": 2230.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "dennis-olsen",
+      "code": "",
+      "givenName": "Dennis",
+      "familyName": "Olsen",
+      "nationality": "NOR",
+      "teamIds": [
+        "ford-racing"
+      ],
+      "teamNames": [
+        "Ford Racing"
+      ],
+      "teamColors": [
+        "#003478"
+      ],
+      "position": 16
+    },
+    {
+      "points": 1970.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "max-esterson",
+      "code": "",
+      "givenName": "Max",
+      "familyName": "Esterson",
+      "nationality": "USA",
+      "teamIds": [
+        "rll-team-mclaren"
+      ],
+      "teamNames": [
+        "RLL Team McLaren"
+      ],
+      "teamColors": [
+        "#EF6C00"
+      ],
+      "position": 17
+    },
+    {
+      "points": 1970.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "nikita-johnson",
+      "code": "",
+      "givenName": "Nikita",
+      "familyName": "Johnson",
+      "nationality": "USA",
+      "teamIds": [
+        "rll-team-mclaren"
+      ],
+      "teamNames": [
+        "RLL Team McLaren"
+      ],
+      "teamColors": [
+        "#EF6C00"
+      ],
+      "position": 18
+    },
+    {
+      "points": 1114.0,
+      "wins": 1,
+      "category": "GTD PRO",
+      "id": "klaus-bachler",
+      "code": "",
+      "givenName": "Klaus",
+      "familyName": "Bachler",
+      "nationality": "AUT",
+      "teamIds": [
+        "manthey"
+      ],
+      "teamNames": [
+        "Manthey"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 19
+    },
+    {
+      "points": 1060.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "james-calado",
+      "code": "",
+      "givenName": "James",
+      "familyName": "Calado",
+      "nationality": "GBR",
+      "teamIds": [
+        "triarsi-competizione"
+      ],
+      "teamNames": [
+        "Triarsi Competizione"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 20
+    },
+    {
+      "points": 1060.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "riccardo-agostini",
+      "code": "",
+      "givenName": "Riccardo",
+      "familyName": "Agostini",
+      "nationality": "ITA",
+      "teamIds": [
+        "triarsi-competizione"
+      ],
+      "teamNames": [
+        "Triarsi Competizione"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 21
+    },
+    {
+      "points": 922.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "daniel-serra",
+      "code": "",
+      "givenName": "Daniel",
+      "familyName": "Serra",
+      "nationality": "BRA",
+      "teamIds": [
+        "risi-competizione"
+      ],
+      "teamNames": [
+        "Risi Competizione"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 22
+    },
+    {
+      "points": 922.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "davide-rigon",
+      "code": "",
+      "givenName": "Davide",
+      "familyName": "Rigon",
+      "nationality": "ITA",
+      "teamIds": [
+        "risi-competizione"
+      ],
+      "teamNames": [
+        "Risi Competizione"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 23
+    },
+    {
+      "points": 904.0,
+      "wins": 1,
+      "category": "GTD PRO",
+      "id": "thomas-preining",
+      "code": "",
+      "givenName": "Thomas",
+      "familyName": "Preining",
+      "nationality": "AUT",
+      "teamIds": [
+        "manthey"
+      ],
+      "teamNames": [
+        "Manthey"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 24
+    },
+    {
+      "points": 658.0,
+      "wins": 1,
+      "category": "GTD PRO",
+      "id": "max-hesse",
+      "code": "",
+      "givenName": "Max",
+      "familyName": "Hesse",
+      "nationality": "DEU",
+      "teamIds": [
+        "paul-miller-racing"
+      ],
+      "teamNames": [
+        "Paul Miller Racing"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "position": 25
+    },
+    {
+      "points": 658.0,
+      "wins": 1,
+      "category": "GTD PRO",
+      "id": "ricardo-feller",
+      "code": "",
+      "givenName": "Ricardo",
+      "familyName": "Feller",
+      "nationality": "CHE",
+      "teamIds": [
+        "manthey"
+      ],
+      "teamNames": [
+        "Manthey"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 26
+    },
+    {
+      "points": 628.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "nico-varrone",
+      "code": "",
+      "givenName": "Nico",
+      "familyName": "Varrone",
+      "nationality": "ARG",
+      "teamIds": [
+        "corvette-racing-by-pratt-miller-motorsports"
+      ],
+      "teamNames": [
+        "Corvette Racing by Pratt Miller Motorsports"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 27
+    },
+    {
+      "points": 584.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "chaz-mostert",
+      "code": "",
+      "givenName": "Chaz",
+      "familyName": "Mostert",
+      "nationality": "AUS",
+      "teamIds": [
+        "vasser-sullivan-racing"
+      ],
+      "teamNames": [
+        "Vasser Sullivan Racing"
+      ],
+      "teamColors": [
+        "#222222"
+      ],
+      "position": 28
+    },
+    {
+      "points": 580.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "alessio-picariello",
+      "code": "",
+      "givenName": "Alessio",
+      "familyName": "Picariello",
+      "nationality": "BEL",
+      "teamIds": [
+        "ao-racing"
+      ],
+      "teamNames": [
+        "AO Racing"
+      ],
+      "teamColors": [
+        "#E91E63"
+      ],
+      "position": 29
+    },
+    {
+      "points": 542.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "valentin-hasse-clot",
+      "code": "",
+      "givenName": "Valentin Hasse",
+      "familyName": "Clot",
+      "nationality": "FRA",
+      "teamIds": [
+        "car-blanche"
+      ],
+      "teamNames": [
+        "Car Blanche"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "position": 30
+    },
+    {
+      "points": 521.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "marvin-kirchhofer",
+      "code": "",
+      "givenName": "Marvin",
+      "familyName": "Kirchhöfer",
+      "nationality": "DEU",
+      "teamIds": [
+        "corvette-racing-by-pratt-miller-motorsports"
+      ],
+      "teamNames": [
+        "Corvette Racing by Pratt Miller Motorsports"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 31
+    },
+    {
+      "points": 520.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "miguel-molina",
+      "code": "",
+      "givenName": "Miguel",
+      "familyName": "Molina",
+      "nationality": "ESP",
+      "teamIds": [
+        "triarsi-competizione"
+      ],
+      "teamNames": [
+        "Triarsi Competizione"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 32
+    },
+    {
+      "points": 517.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "sebastian-priaulx",
+      "code": "",
+      "givenName": "Sebastian",
+      "familyName": "Priaulx",
+      "nationality": "GBR",
+      "teamIds": [
+        "ford-racing"
+      ],
+      "teamNames": [
+        "Ford Racing"
+      ],
+      "teamColors": [
+        "#003478"
+      ],
+      "position": 33
+    },
+    {
+      "points": 512.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "jason-hart",
+      "code": "",
+      "givenName": "Jason",
+      "familyName": "Hart",
+      "nationality": "USA",
+      "teamIds": [
+        "winward-racing"
+      ],
+      "teamNames": [
+        "WINWARD RACING"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "position": 34
+    },
+    {
+      "points": 512.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "luca-stolz",
+      "code": "",
+      "givenName": "Luca",
+      "familyName": "Stolz",
+      "nationality": "DEU",
+      "teamIds": [
+        "winward-racing"
+      ],
+      "teamNames": [
+        "WINWARD RACING"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "position": 35
+    },
+    {
+      "points": 512.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "scott-noble",
+      "code": "",
+      "givenName": "Scott",
+      "familyName": "Noble",
+      "nationality": "USA",
+      "teamIds": [
+        "winward-racing"
+      ],
+      "teamNames": [
+        "WINWARD RACING"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "position": 36
+    },
+    {
+      "points": 470.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "dean-macdonald",
+      "code": "",
+      "givenName": "Dean",
+      "familyName": "MacDonald",
+      "nationality": "GBR",
+      "teamIds": [
+        "rll-team-mclaren"
+      ],
+      "teamNames": [
+        "RLL Team McLaren"
+      ],
+      "teamColors": [
+        "#EF6C00"
+      ],
+      "position": 37
+    },
+    {
+      "points": 465.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "kyle-kirkwood",
+      "code": "",
+      "givenName": "Kyle",
+      "familyName": "Kirkwood",
+      "nationality": "USA",
+      "teamIds": [
+        "vasser-sullivan-racing"
+      ],
+      "teamNames": [
+        "Vasser Sullivan Racing"
+      ],
+      "teamColors": [
+        "#222222"
+      ],
+      "position": 38
+    },
+    {
+      "points": 459.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "mike-rockenfeller",
+      "code": "",
+      "givenName": "Mike",
+      "familyName": "Rockenfeller",
+      "nationality": "CHE",
+      "teamIds": [
+        "ford-racing"
+      ],
+      "teamNames": [
+        "Ford Racing"
+      ],
+      "teamColors": [
+        "#003478"
+      ],
+      "position": 39
+    },
+    {
+      "points": 388.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "alessandro-pier-guidi",
+      "code": "",
+      "givenName": "Alessandro Pier",
+      "familyName": "Guidi",
+      "nationality": "ITA",
+      "teamIds": [
+        "risi-competizione"
+      ],
+      "teamNames": [
+        "Risi Competizione"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 40
+    },
+    {
+      "points": 366.0,
+      "wins": 1,
+      "category": "GTD PRO",
+      "id": "dan-harper",
+      "code": "",
+      "givenName": "Dan",
+      "familyName": "Harper",
+      "nationality": "GBR",
+      "teamIds": [
+        "paul-miller-racing"
+      ],
+      "teamNames": [
+        "Paul Miller Racing"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "position": 41
+    },
+    {
+      "points": 350.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "kenny-habul",
+      "code": "",
+      "givenName": "Kenny",
+      "familyName": "Habul",
+      "nationality": "AUS",
+      "teamIds": [
+        "75-express"
+      ],
+      "teamNames": [
+        "75 Express"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "position": 42
+    },
+    {
+      "points": 350.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "maro-engel",
+      "code": "",
+      "givenName": "Maro",
+      "familyName": "Engel",
+      "nationality": "DEU",
+      "teamIds": [
+        "75-express"
+      ],
+      "teamNames": [
+        "75 Express"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "position": 43
+    },
+    {
+      "points": 350.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "will-power",
+      "code": "",
+      "givenName": "Will",
+      "familyName": "Power",
+      "nationality": "USA",
+      "teamIds": [
+        "75-express"
+      ],
+      "teamNames": [
+        "75 Express"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "position": 44
+    },
+    {
+      "points": 322.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "maxime-martin",
+      "code": "",
+      "givenName": "Maxime",
+      "familyName": "Martin",
+      "nationality": "BEL",
+      "teamIds": [
+        "winward-racing"
+      ],
+      "teamNames": [
+        "WINWARD RACING"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "position": 45
+    },
+    {
+      "points": 306.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "marco-sorensen",
+      "code": "",
+      "givenName": "Marco",
+      "familyName": "Sorensen",
+      "nationality": "DNK",
+      "teamIds": [
+        "car-blanche"
+      ],
+      "teamNames": [
+        "Car Blanche"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "position": 46
+    },
+    {
+      "points": 278.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "ayhancan-guven",
+      "code": "",
+      "givenName": "Ayhancan",
+      "familyName": "Guven",
+      "nationality": "TUR",
+      "teamIds": [
+        "manthey"
+      ],
+      "teamNames": [
+        "Manthey"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 47
+    },
+    {
+      "points": 271.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "james-hinchcliffe",
+      "code": "",
+      "givenName": "James",
+      "familyName": "Hinchcliffe",
+      "nationality": "CAN",
+      "teamIds": [
+        "pfaff-motorsports"
+      ],
+      "teamNames": [
+        "Pfaff Motorsports"
+      ],
+      "teamColors": [
+        "#DDB321"
+      ],
+      "position": 48
+    },
+    {
+      "points": 271.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "mirko-bortolotti",
+      "code": "",
+      "givenName": "Mirko",
+      "familyName": "Bortolotti",
+      "nationality": "ITA",
+      "teamIds": [
+        "pfaff-motorsports"
+      ],
+      "teamNames": [
+        "Pfaff Motorsports"
+      ],
+      "teamColors": [
+        "#DDB321"
+      ],
+      "position": 49
+    },
+    {
+      "points": 258.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "alessio-rovera",
+      "code": "",
+      "givenName": "Alessio",
+      "familyName": "Rovera",
+      "nationality": "ITA",
+      "teamIds": [
+        "triarsi-competizione"
+      ],
+      "teamNames": [
+        "Triarsi Competizione"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 50
+    },
+    {
+      "points": 236.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "scott-andrews",
+      "code": "",
+      "givenName": "Scott",
+      "familyName": "Andrews",
+      "nationality": "AUS",
+      "teamIds": [
+        "lone-star-racing"
+      ],
+      "teamNames": [
+        "Lone Star Racing"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "position": 51
+    },
+    {
+      "points": 234.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "aaron-telitz",
+      "code": "",
+      "givenName": "Aaron",
+      "familyName": "Telitz",
+      "nationality": "USA",
+      "teamIds": [
+        "vasser-sullivan-racing"
+      ],
+      "teamNames": [
+        "Vasser Sullivan Racing"
+      ],
+      "teamColors": [
+        "#222222"
+      ],
+      "position": 52
+    },
+    {
+      "points": 229.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "franck-perera",
+      "code": "",
+      "givenName": "Franck",
+      "familyName": "Perera",
+      "nationality": "FRA",
+      "teamIds": [
+        "pfaff-motorsports"
+      ],
+      "teamNames": [
+        "Pfaff Motorsports"
+      ],
+      "teamColors": [
+        "#DDB321"
+      ],
+      "position": 53
+    },
+    {
+      "points": 225.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "anthony-bartone",
+      "code": "",
+      "givenName": "Anthony",
+      "familyName": "Bartone",
+      "nationality": "USA",
+      "teamIds": [
+        "getspeed"
+      ],
+      "teamNames": [
+        "GetSpeed"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "position": 54
+    },
+    {
+      "points": 225.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "fabian-schiller",
+      "code": "",
+      "givenName": "Fabian",
+      "familyName": "Schiller",
+      "nationality": "DEU",
+      "teamIds": [
+        "getspeed"
+      ],
+      "teamNames": [
+        "GetSpeed"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "position": 55
+    },
+    {
+      "points": 225.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "jules-gounon",
+      "code": "",
+      "givenName": "Jules",
+      "familyName": "Gounon",
+      "nationality": "FRA",
+      "teamIds": [
+        "getspeed"
+      ],
+      "teamNames": [
+        "GetSpeed"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "position": 56
+    },
+    {
+      "points": 225.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "maximilian-goetz",
+      "code": "",
+      "givenName": "Maximilian",
+      "familyName": "Goetz",
+      "nationality": "DEU",
+      "teamIds": [
+        "getspeed"
+      ],
+      "teamNames": [
+        "GetSpeed"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "position": 57
+    },
+    {
+      "points": 222.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "juri-vips",
+      "code": "",
+      "givenName": "Juri",
+      "familyName": "Vips",
+      "nationality": "EST",
+      "teamIds": [
+        "rll-team-mclaren"
+      ],
+      "teamNames": [
+        "RLL Team McLaren"
+      ],
+      "teamColors": [
+        "#EF6C00"
+      ],
+      "position": 58
+    },
+    {
+      "points": 210.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "loek-hartog",
+      "code": "",
+      "givenName": "Loek",
+      "familyName": "Hartog",
+      "nationality": "NLD",
+      "teamIds": [
+        "manthey"
+      ],
+      "teamNames": [
+        "Manthey"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 59
+    },
+    {
+      "points": 210.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "michael-christensen",
+      "code": "",
+      "givenName": "Michael",
+      "familyName": "Christensen",
+      "nationality": "DNK",
+      "teamIds": [
+        "manthey"
+      ],
+      "teamNames": [
+        "Manthey"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 60
+    },
+    {
+      "points": 2400.0,
+      "wins": 2,
+      "category": "GTP",
+      "id": "jack-aitken",
+      "code": "",
+      "givenName": "Jack",
+      "familyName": "Aitken",
+      "nationality": "GBR",
+      "teamIds": [
+        "cadillac-whelen"
+      ],
+      "teamNames": [
+        "Cadillac Whelen"
+      ],
+      "teamColors": [
+        "#D4AF37"
+      ],
+      "position": 1
+    },
+    {
+      "points": 2282.0,
+      "wins": 3,
+      "category": "GTP",
+      "id": "laurin-heinrich",
+      "code": "",
+      "givenName": "Laurin",
+      "familyName": "Heinrich",
+      "nationality": "DEU",
+      "teamIds": [
+        "jdc-miller-motorsports"
+      ],
+      "teamNames": [
+        "JDC-Miller MotorSports"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 2
+    },
+    {
+      "points": 2215.0,
+      "wins": 1,
+      "category": "GTP",
+      "id": "nick-yelloly",
+      "code": "",
+      "givenName": "Nick",
+      "familyName": "Yelloly",
+      "nationality": "GBR",
+      "teamIds": [
+        "acura-meyer-shank-racing-w-curb-agajanian"
+      ],
+      "teamNames": [
+        "Acura Meyer Shank Racing w/Curb Agajanian"
+      ],
+      "teamColors": [
+        "#E40521"
+      ],
+      "position": 3
+    },
+    {
+      "points": 2215.0,
+      "wins": 1,
+      "category": "GTP",
+      "id": "renger-van-der-zande",
+      "code": "",
+      "givenName": "Renger van der",
+      "familyName": "Zande",
+      "nationality": "NLD",
+      "teamIds": [
+        "acura-meyer-shank-racing-w-curb-agajanian"
+      ],
+      "teamNames": [
+        "Acura Meyer Shank Racing w/Curb Agajanian"
+      ],
+      "teamColors": [
+        "#E40521"
+      ],
+      "position": 4
+    },
+    {
+      "points": 2159.0,
+      "wins": 2,
+      "category": "GTP",
+      "id": "felipe-nasr",
+      "code": "",
+      "givenName": "Felipe",
+      "familyName": "Nasr",
+      "nationality": "BRA",
+      "teamIds": [
+        "porsche-penske-motorsport"
+      ],
+      "teamNames": [
+        "Porsche Penske Motorsport"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 5
+    },
+    {
+      "points": 2159.0,
+      "wins": 2,
+      "category": "GTP",
+      "id": "julien-andlauer",
+      "code": "",
+      "givenName": "Julien",
+      "familyName": "Andlauer",
+      "nationality": "FRA",
+      "teamIds": [
+        "porsche-penske-motorsport"
+      ],
+      "teamNames": [
+        "Porsche Penske Motorsport"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 6
+    },
+    {
+      "points": 2052.0,
+      "wins": 2,
+      "category": "GTP",
+      "id": "earl-bamber",
+      "code": "",
+      "givenName": "Earl",
+      "familyName": "Bamber",
+      "nationality": "NZL",
+      "teamIds": [
+        "cadillac-whelen"
+      ],
+      "teamNames": [
+        "Cadillac Whelen"
+      ],
+      "teamColors": [
+        "#D4AF37"
+      ],
+      "position": 7
+    },
+    {
+      "points": 2045.0,
+      "wins": 1,
+      "category": "GTP",
+      "id": "tijmen-van-der-helm",
+      "code": "",
+      "givenName": "Tijmen van der",
+      "familyName": "Helm",
+      "nationality": "NLD",
+      "teamIds": [
+        "jdc-miller-motorsports"
+      ],
+      "teamNames": [
+        "JDC-Miller MotorSports"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 8
+    },
+    {
+      "points": 2010.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "kevin-estre",
+      "code": "",
+      "givenName": "Kevin",
+      "familyName": "Estre",
+      "nationality": "FRA",
+      "teamIds": [
+        "porsche-penske-motorsport"
+      ],
+      "teamNames": [
+        "Porsche Penske Motorsport"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 9
+    },
+    {
+      "points": 2010.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "laurens-vanthoor",
+      "code": "",
+      "givenName": "Laurens",
+      "familyName": "Vanthoor",
+      "nationality": "BEL",
+      "teamIds": [
+        "porsche-penske-motorsport"
+      ],
+      "teamNames": [
+        "Porsche Penske Motorsport"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 10
+    },
+    {
+      "points": 1923.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "jordan-taylor",
+      "code": "",
+      "givenName": "Jordan",
+      "familyName": "Taylor",
+      "nationality": "USA",
+      "teamIds": [
+        "cadillac-wayne-taylor-racing"
+      ],
+      "teamNames": [
+        "Cadillac Wayne Taylor Racing"
+      ],
+      "teamColors": [
+        "#D4AF37"
+      ],
+      "position": 11
+    },
+    {
+      "points": 1923.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "louis-deletraz",
+      "code": "",
+      "givenName": "Louis",
+      "familyName": "Deletraz",
+      "nationality": "CHE",
+      "teamIds": [
+        "cadillac-wayne-taylor-racing"
+      ],
+      "teamNames": [
+        "Cadillac Wayne Taylor Racing"
+      ],
+      "teamColors": [
+        "#D4AF37"
+      ],
+      "position": 12
+    },
+    {
+      "points": 1920.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "dries-vanthoor",
+      "code": "",
+      "givenName": "Dries",
+      "familyName": "Vanthoor",
+      "nationality": "BEL",
+      "teamIds": [
+        "bmw-m-team-wrt"
+      ],
+      "teamNames": [
+        "BMW M Team WRT"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "position": 13
+    },
+    {
+      "points": 1920.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "sheldon-van-der-linde",
+      "code": "",
+      "givenName": "Sheldon van der",
+      "familyName": "Linde",
+      "nationality": "ZAF",
+      "teamIds": [
+        "bmw-m-team-wrt"
+      ],
+      "teamNames": [
+        "BMW M Team WRT"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "position": 14
+    },
+    {
+      "points": 1885.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "colin-braun",
+      "code": "",
+      "givenName": "Colin",
+      "familyName": "Braun",
+      "nationality": "USA",
+      "teamIds": [
+        "acura-meyer-shank-racing-w-curb-agajanian"
+      ],
+      "teamNames": [
+        "Acura Meyer Shank Racing w/Curb Agajanian"
+      ],
+      "teamColors": [
+        "#E40521"
+      ],
+      "position": 15
+    },
+    {
+      "points": 1885.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "tom-blomqvist",
+      "code": "",
+      "givenName": "Tom",
+      "familyName": "Blomqvist",
+      "nationality": "GBR",
+      "teamIds": [
+        "acura-meyer-shank-racing-w-curb-agajanian"
+      ],
+      "teamNames": [
+        "Acura Meyer Shank Racing w/Curb Agajanian"
+      ],
+      "teamColors": [
+        "#E40521"
+      ],
+      "position": 16
+    },
+    {
+      "points": 1884.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "marco-wittmann",
+      "code": "",
+      "givenName": "Marco",
+      "familyName": "Wittmann",
+      "nationality": "DEU",
+      "teamIds": [
+        "bmw-m-team-wrt"
+      ],
+      "teamNames": [
+        "BMW M Team WRT"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "position": 17
+    },
+    {
+      "points": 1884.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "philipp-eng",
+      "code": "",
+      "givenName": "Philipp",
+      "familyName": "Eng",
+      "nationality": "AUT",
+      "teamIds": [
+        "bmw-m-team-wrt"
+      ],
+      "teamNames": [
+        "BMW M Team WRT"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "position": 18
+    },
+    {
+      "points": 1873.0,
+      "wins": 1,
+      "category": "GTP",
+      "id": "filipe-albuquerque",
+      "code": "",
+      "givenName": "Filipe",
+      "familyName": "Albuquerque",
+      "nationality": "PRT",
+      "teamIds": [
+        "cadillac-wayne-taylor-racing"
+      ],
+      "teamNames": [
+        "Cadillac Wayne Taylor Racing"
+      ],
+      "teamColors": [
+        "#D4AF37"
+      ],
+      "position": 19
+    },
+    {
+      "points": 1873.0,
+      "wins": 1,
+      "category": "GTP",
+      "id": "ricky-taylor",
+      "code": "",
+      "givenName": "Ricky",
+      "familyName": "Taylor",
+      "nationality": "USA",
+      "teamIds": [
+        "cadillac-wayne-taylor-racing"
+      ],
+      "teamNames": [
+        "Cadillac Wayne Taylor Racing"
+      ],
+      "teamColors": [
+        "#D4AF37"
+      ],
+      "position": 20
+    },
+    {
+      "points": 1708.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "roman-de-angelis",
+      "code": "",
+      "givenName": "Roman De",
+      "familyName": "Angelis",
+      "nationality": "CAN",
+      "teamIds": [
+        "aston-martin-thor-team"
+      ],
+      "teamNames": [
+        "ASTON MARTIN THOR Team"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "position": 21
+    },
+    {
+      "points": 1708.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "ross-gunn",
+      "code": "",
+      "givenName": "Ross",
+      "familyName": "Gunn",
+      "nationality": "GBR",
+      "teamIds": [
+        "aston-martin-thor-team"
+      ],
+      "teamNames": [
+        "ASTON MARTIN THOR Team"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "position": 22
+    },
+    {
+      "points": 1663.0,
+      "wins": 1,
+      "category": "GTP",
+      "id": "frederik-vesti",
+      "code": "",
+      "givenName": "Frederik",
+      "familyName": "Vesti",
+      "nationality": "DNK",
+      "teamIds": [
+        "cadillac-whelen"
+      ],
+      "teamNames": [
+        "Cadillac Whelen"
+      ],
+      "teamColors": [
+        "#D4AF37"
+      ],
+      "position": 23
+    },
+    {
+      "points": 1184.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "kaylen-frederick",
+      "code": "",
+      "givenName": "Kaylen",
+      "familyName": "Frederick",
+      "nationality": "USA",
+      "teamIds": [
+        "jdc-miller-motorsports"
+      ],
+      "teamNames": [
+        "JDC-Miller MotorSports"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 24
+    },
+    {
+      "points": 654.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "matt-campbell",
+      "code": "",
+      "givenName": "Matt",
+      "familyName": "Campbell",
+      "nationality": "AUS",
+      "teamIds": [
+        "porsche-penske-motorsport"
+      ],
+      "teamNames": [
+        "Porsche Penske Motorsport"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 25
+    },
+    {
+      "points": 643.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "kaku-ohta",
+      "code": "",
+      "givenName": "Kaku",
+      "familyName": "Ohta",
+      "nationality": "JPN",
+      "teamIds": [
+        "acura-meyer-shank-racing-w-curb-agajanian"
+      ],
+      "teamNames": [
+        "Acura Meyer Shank Racing w/Curb Agajanian"
+      ],
+      "teamColors": [
+        "#E40521"
+      ],
+      "position": 26
+    },
+    {
+      "points": 606.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "robin-frijns",
+      "code": "",
+      "givenName": "Robin",
+      "familyName": "Frijns",
+      "nationality": "NLD",
+      "teamIds": [
+        "bmw-m-team-wrt"
+      ],
+      "teamNames": [
+        "BMW M Team WRT"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "position": 27
+    },
+    {
+      "points": 567.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "alex-palou",
+      "code": "",
+      "givenName": "Alex",
+      "familyName": "Palou",
+      "nationality": "ESP",
+      "teamIds": [
+        "acura-meyer-shank-racing-w-curb-agajanian"
+      ],
+      "teamNames": [
+        "Acura Meyer Shank Racing w/Curb Agajanian"
+      ],
+      "teamColors": [
+        "#E40521"
+      ],
+      "position": 28
+    },
+    {
+      "points": 560.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "scott-dixon",
+      "code": "",
+      "givenName": "Scott",
+      "familyName": "Dixon",
+      "nationality": "NZL",
+      "teamIds": [
+        "acura-meyer-shank-racing-w-curb-agajanian"
+      ],
+      "teamNames": [
+        "Acura Meyer Shank Racing w/Curb Agajanian"
+      ],
+      "teamColors": [
+        "#E40521"
+      ],
+      "position": 29
+    },
+    {
+      "points": 548.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "colton-herta",
+      "code": "",
+      "givenName": "Colton",
+      "familyName": "Herta",
+      "nationality": "USA",
+      "teamIds": [
+        "cadillac-wayne-taylor-racing"
+      ],
+      "teamNames": [
+        "Cadillac Wayne Taylor Racing"
+      ],
+      "teamColors": [
+        "#D4AF37"
+      ],
+      "position": 30
+    },
+    {
+      "points": 518.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "nico-pino",
+      "code": "",
+      "givenName": "Nico",
+      "familyName": "Pino",
+      "nationality": "CHL",
+      "teamIds": [
+        "jdc-miller-motorsports"
+      ],
+      "teamNames": [
+        "JDC-Miller MotorSports"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 31
+    },
+    {
+      "points": 482.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "kevin-magnussen",
+      "code": "",
+      "givenName": "Kevin",
+      "familyName": "Magnussen",
+      "nationality": "DNK",
+      "teamIds": [
+        "bmw-m-team-wrt"
+      ],
+      "teamNames": [
+        "BMW M Team WRT"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "position": 32
+    },
+    {
+      "points": 472.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "alex-riberas",
+      "code": "",
+      "givenName": "Alex",
+      "familyName": "Riberas",
+      "nationality": "ESP",
+      "teamIds": [
+        "aston-martin-thor-team"
+      ],
+      "teamNames": [
+        "ASTON MARTIN THOR Team"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "position": 33
+    },
+    {
+      "points": 455.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "will-stevens",
+      "code": "",
+      "givenName": "Will",
+      "familyName": "Stevens",
+      "nationality": "GBR",
+      "teamIds": [
+        "cadillac-wayne-taylor-racing"
+      ],
+      "teamNames": [
+        "Cadillac Wayne Taylor Racing"
+      ],
+      "teamColors": [
+        "#D4AF37"
+      ],
+      "position": 34
+    },
+    {
+      "points": 340.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "connor-zilisch",
+      "code": "",
+      "givenName": "Connor",
+      "familyName": "Zilisch",
+      "nationality": "USA",
+      "teamIds": [
+        "cadillac-whelen"
+      ],
+      "teamNames": [
+        "Cadillac Whelen"
+      ],
+      "teamColors": [
+        "#D4AF37"
+      ],
+      "position": 35
+    },
+    {
+      "points": 323.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "rene-rast",
+      "code": "",
+      "givenName": "Rene",
+      "familyName": "Rast",
+      "nationality": "AUT",
+      "teamIds": [
+        "bmw-m-team-wrt"
+      ],
+      "teamNames": [
+        "BMW M Team WRT"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "position": 36
+    },
+    {
+      "points": 252.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "raffaele-marciello",
+      "code": "",
+      "givenName": "Raffaele",
+      "familyName": "Marciello",
+      "nationality": "ITA",
+      "teamIds": [
+        "bmw-m-team-wrt"
+      ],
+      "teamNames": [
+        "BMW M Team WRT"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "position": 37
+    },
+    {
+      "points": 248.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "aj-allmendinger",
+      "code": "",
+      "givenName": "AJ",
+      "familyName": "Allmendinger",
+      "nationality": "USA",
+      "teamIds": [
+        "acura-meyer-shank-racing-w-curb-agajanian"
+      ],
+      "teamNames": [
+        "Acura Meyer Shank Racing w/Curb Agajanian"
+      ],
+      "teamColors": [
+        "#E40521"
+      ],
+      "position": 38
+    },
+    {
+      "points": 231.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "marco-sorensen",
+      "code": "",
+      "givenName": "Marco",
+      "familyName": "Sorensen",
+      "nationality": "DNK",
+      "teamIds": [
+        "car-blanche"
+      ],
+      "teamNames": [
+        "Car Blanche"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "position": 39
+    },
+    {
+      "points": 1701.0,
+      "wins": 1,
+      "category": "LMP2",
+      "id": "alex-quinn",
+      "code": "",
+      "givenName": "Alex",
+      "familyName": "Quinn",
+      "nationality": "GBR",
+      "teamIds": [
+        "crowdstrike-racing-by-apr"
+      ],
+      "teamNames": [
+        "Crowdstrike Racing by APR"
+      ],
+      "teamColors": [
+        "#E31B23"
+      ],
+      "position": 1
+    },
+    {
+      "points": 1701.0,
+      "wins": 1,
+      "category": "LMP2",
+      "id": "george-kurtz",
+      "code": "",
+      "givenName": "George",
+      "familyName": "Kurtz",
+      "nationality": "USA",
+      "teamIds": [
+        "crowdstrike-racing-by-apr"
+      ],
+      "teamNames": [
+        "Crowdstrike Racing by APR"
+      ],
+      "teamColors": [
+        "#E31B23"
+      ],
+      "position": 2
+    },
+    {
+      "points": 1665.0,
+      "wins": 2,
+      "category": "LMP2",
+      "id": "jeremy-clarke",
+      "code": "",
+      "givenName": "Jeremy",
+      "familyName": "Clarke",
+      "nationality": "USA",
+      "teamIds": [
+        "inter-europol-competition"
+      ],
+      "teamNames": [
+        "Inter Europol Competition"
+      ],
+      "teamColors": [
+        "#C7D300"
+      ],
+      "position": 3
+    },
+    {
+      "points": 1665.0,
+      "wins": 2,
+      "category": "LMP2",
+      "id": "tom-dillmann",
+      "code": "",
+      "givenName": "Tom",
+      "familyName": "Dillmann",
+      "nationality": "FRA",
+      "teamIds": [
+        "inter-europol-competition"
+      ],
+      "teamNames": [
+        "Inter Europol Competition"
+      ],
+      "teamColors": [
+        "#C7D300"
+      ],
+      "position": 4
+    },
+    {
+      "points": 1582.0,
+      "wins": 1,
+      "category": "LMP2",
+      "id": "dane-cameron",
+      "code": "",
+      "givenName": "Dane",
+      "familyName": "Cameron",
+      "nationality": "USA",
+      "teamIds": [
+        "ao-racing"
+      ],
+      "teamNames": [
+        "AO Racing"
+      ],
+      "teamColors": [
+        "#E91E63"
+      ],
+      "position": 5
+    },
+    {
+      "points": 1582.0,
+      "wins": 1,
+      "category": "LMP2",
+      "id": "pj-hyett",
+      "code": "",
+      "givenName": "PJ",
+      "familyName": "Hyett",
+      "nationality": "USA",
+      "teamIds": [
+        "ao-racing"
+      ],
+      "teamNames": [
+        "AO Racing"
+      ],
+      "teamColors": [
+        "#E91E63"
+      ],
+      "position": 6
+    },
+    {
+      "points": 1517.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "daniel-goldburg",
+      "code": "",
+      "givenName": "Daniel",
+      "familyName": "Goldburg",
+      "nationality": "USA",
+      "teamIds": [
+        "united-autosports-usa"
+      ],
+      "teamNames": [
+        "United Autosports USA"
+      ],
+      "teamColors": [
+        "#0057B8"
+      ],
+      "position": 7
+    },
+    {
+      "points": 1413.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "misha-goikhberg",
+      "code": "",
+      "givenName": "Misha",
+      "familyName": "Goikhberg",
+      "nationality": "CAN",
+      "teamIds": [
+        "bryan-herta-autosport-with-pr1-mathiasen"
+      ],
+      "teamNames": [
+        "Bryan Herta Autosport with PR1/Mathiasen"
+      ],
+      "teamColors": [
+        "#00A3E0"
+      ],
+      "position": 8
+    },
+    {
+      "points": 1366.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "john-farano",
+      "code": "",
+      "givenName": "John",
+      "familyName": "Farano",
+      "nationality": "CAN",
+      "teamIds": [
+        "tower-motorsports"
+      ],
+      "teamNames": [
+        "Tower Motorsports"
+      ],
+      "teamColors": [
+        "#1E3A5F"
+      ],
+      "position": 9
+    },
+    {
+      "points": 1366.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "sebastian-alvarez",
+      "code": "",
+      "givenName": "Sebastian",
+      "familyName": "Alvarez",
+      "nationality": "MEX",
+      "teamIds": [
+        "tower-motorsports"
+      ],
+      "teamNames": [
+        "Tower Motorsports"
+      ],
+      "teamColors": [
+        "#1E3A5F"
+      ],
+      "position": 10
+    },
+    {
+      "points": 1358.0,
+      "wins": 1,
+      "category": "LMP2",
+      "id": "mikkel-jensen",
+      "code": "",
+      "givenName": "Mikkel",
+      "familyName": "Jensen",
+      "nationality": "DNK",
+      "teamIds": [
+        "united-autosports-usa"
+      ],
+      "teamNames": [
+        "United Autosports USA"
+      ],
+      "teamColors": [
+        "#0057B8"
+      ],
+      "position": 11
+    },
+    {
+      "points": 1358.0,
+      "wins": 1,
+      "category": "LMP2",
+      "id": "phil-fayer",
+      "code": "",
+      "givenName": "Phil",
+      "familyName": "Fayer",
+      "nationality": "CAN",
+      "teamIds": [
+        "united-autosports-usa"
+      ],
+      "teamNames": [
+        "United Autosports USA"
+      ],
+      "teamColors": [
+        "#0057B8"
+      ],
+      "position": 12
+    },
+    {
+      "points": 1353.0,
+      "wins": 1,
+      "category": "LMP2",
+      "id": "toby-sowery",
+      "code": "",
+      "givenName": "Toby",
+      "familyName": "Sowery",
+      "nationality": "USA",
+      "teamIds": [
+        "crowdstrike-racing-by-apr"
+      ],
+      "teamNames": [
+        "Crowdstrike Racing by APR"
+      ],
+      "teamColors": [
+        "#E31B23"
+      ],
+      "position": 13
+    },
+    {
+      "points": 1284.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "tobi-lutke",
+      "code": "",
+      "givenName": "Tobi",
+      "familyName": "Lutke",
+      "nationality": "CAN",
+      "teamIds": [
+        "tds-racing"
+      ],
+      "teamNames": [
+        "TDS Racing"
+      ],
+      "teamColors": [
+        "#D71920"
+      ],
+      "position": 14
+    },
+    {
+      "points": 1280.0,
+      "wins": 1,
+      "category": "LMP2",
+      "id": "bijoy-garg",
+      "code": "",
+      "givenName": "Bijoy",
+      "familyName": "Garg",
+      "nationality": "USA",
+      "teamIds": [
+        "inter-europol-competition"
+      ],
+      "teamNames": [
+        "Inter Europol Competition"
+      ],
+      "teamColors": [
+        "#C7D300"
+      ],
+      "position": 15
+    },
+    {
+      "points": 1260.0,
+      "wins": 1,
+      "category": "LMP2",
+      "id": "jonny-edgar",
+      "code": "",
+      "givenName": "Jonny",
+      "familyName": "Edgar",
+      "nationality": "GBR",
+      "teamIds": [
+        "ao-racing"
+      ],
+      "teamNames": [
+        "AO Racing"
+      ],
+      "teamColors": [
+        "#E91E63"
+      ],
+      "position": 16
+    },
+    {
+      "points": 1227.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "paul-di-resta",
+      "code": "",
+      "givenName": "Paul Di",
+      "familyName": "Resta",
+      "nationality": "GBR",
+      "teamIds": [
+        "united-autosports-usa"
+      ],
+      "teamNames": [
+        "United Autosports USA"
+      ],
+      "teamColors": [
+        "#0057B8"
+      ],
+      "position": 17
+    },
+    {
+      "points": 1227.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "rasmus-lindh",
+      "code": "",
+      "givenName": "Rasmus",
+      "familyName": "Lindh",
+      "nationality": "SWE",
+      "teamIds": [
+        "united-autosports-usa"
+      ],
+      "teamNames": [
+        "United Autosports USA"
+      ],
+      "teamColors": [
+        "#0057B8"
+      ],
+      "position": 18
+    },
+    {
+      "points": 1218.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "chris-cumming",
+      "code": "",
+      "givenName": "Chris",
+      "familyName": "Cumming",
+      "nationality": "CAN",
+      "teamIds": [
+        "pratt-miller-motorsports"
+      ],
+      "teamNames": [
+        "Pratt Miller Motorsports"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 19
+    },
+    {
+      "points": 1218.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "pietro-fittipaldi",
+      "code": "",
+      "givenName": "Pietro",
+      "familyName": "Fittipaldi",
+      "nationality": "BRA",
+      "teamIds": [
+        "pratt-miller-motorsports"
+      ],
+      "teamNames": [
+        "Pratt Miller Motorsports"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 20
+    },
+    {
+      "points": 1101.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "harry-tincknell",
+      "code": "",
+      "givenName": "Harry",
+      "familyName": "Tincknell",
+      "nationality": "GBR",
+      "teamIds": [
+        "bryan-herta-autosport-with-pr1-mathiasen"
+      ],
+      "teamNames": [
+        "Bryan Herta Autosport with PR1/Mathiasen"
+      ],
+      "teamColors": [
+        "#00A3E0"
+      ],
+      "position": 21
+    },
+    {
+      "points": 1101.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "parker-thompson",
+      "code": "",
+      "givenName": "Parker",
+      "familyName": "Thompson",
+      "nationality": "CAN",
+      "teamIds": [
+        "bryan-herta-autosport-with-pr1-mathiasen"
+      ],
+      "teamNames": [
+        "Bryan Herta Autosport with PR1/Mathiasen"
+      ],
+      "teamColors": [
+        "#00A3E0"
+      ],
+      "position": 22
+    },
+    {
+      "points": 1097.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "ferdinand-habsburg",
+      "code": "",
+      "givenName": "Ferdinand",
+      "familyName": "Habsburg",
+      "nationality": "AUT",
+      "teamIds": [
+        "era-motorsport"
+      ],
+      "teamNames": [
+        "Era Motorsport"
+      ],
+      "teamColors": [
+        "#1769AA"
+      ],
+      "position": 23
+    },
+    {
+      "points": 1097.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "jacob-abel",
+      "code": "",
+      "givenName": "Jacob",
+      "familyName": "Abel",
+      "nationality": "USA",
+      "teamIds": [
+        "era-motorsport"
+      ],
+      "teamNames": [
+        "Era Motorsport"
+      ],
+      "teamColors": [
+        "#1769AA"
+      ],
+      "position": 24
+    },
+    {
+      "points": 1097.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "naveen-rao",
+      "code": "",
+      "givenName": "Naveen",
+      "familyName": "Rao",
+      "nationality": "USA",
+      "teamIds": [
+        "era-motorsport"
+      ],
+      "teamNames": [
+        "Era Motorsport"
+      ],
+      "teamColors": [
+        "#1769AA"
+      ],
+      "position": 25
+    },
+    {
+      "points": 1092.0,
+      "wins": 1,
+      "category": "LMP2",
+      "id": "hunter-mcelrea",
+      "code": "",
+      "givenName": "Hunter",
+      "familyName": "McElrea",
+      "nationality": "NZL",
+      "teamIds": [
+        "united-autosports-usa"
+      ],
+      "teamNames": [
+        "United Autosports USA"
+      ],
+      "teamColors": [
+        "#0057B8"
+      ],
+      "position": 26
+    },
+    {
+      "points": 1040.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "david-heinemeier-hansson",
+      "code": "",
+      "givenName": "David Heinemeier",
+      "familyName": "Hansson",
+      "nationality": "DNK",
+      "teamIds": [
+        "tds-racing"
+      ],
+      "teamNames": [
+        "TDS Racing"
+      ],
+      "teamColors": [
+        "#D71920"
+      ],
+      "position": 27
+    },
+    {
+      "points": 1020.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "mathias-beche",
+      "code": "",
+      "givenName": "Mathias",
+      "familyName": "Beche",
+      "nationality": "CHE",
+      "teamIds": [
+        "tds-racing"
+      ],
+      "teamNames": [
+        "TDS Racing"
+      ],
+      "teamColors": [
+        "#D71920"
+      ],
+      "position": 28
+    },
+    {
+      "points": 943.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "manuel-espirito-santo",
+      "code": "",
+      "givenName": "Manuel Espirito",
+      "familyName": "Santo",
+      "nationality": "PRT",
+      "teamIds": [
+        "pratt-miller-motorsports"
+      ],
+      "teamNames": [
+        "Pratt Miller Motorsports"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 29
+    },
+    {
+      "points": 921.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "jon-field",
+      "code": "",
+      "givenName": "Jon",
+      "familyName": "Field",
+      "nationality": "USA",
+      "teamIds": [
+        "intersport-racing"
+      ],
+      "teamNames": [
+        "Intersport Racing"
+      ],
+      "teamColors": [
+        "#F57C00"
+      ],
+      "position": 30
+    },
+    {
+      "points": 921.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "oliver-jarvis",
+      "code": "",
+      "givenName": "Oliver",
+      "familyName": "Jarvis",
+      "nationality": "GBR",
+      "teamIds": [
+        "intersport-racing"
+      ],
+      "teamNames": [
+        "Intersport Racing"
+      ],
+      "teamColors": [
+        "#F57C00"
+      ],
+      "position": 31
+    },
+    {
+      "points": 863.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "tristan-vautier",
+      "code": "",
+      "givenName": "Tristan",
+      "familyName": "Vautier",
+      "nationality": "FRA",
+      "teamIds": [
+        "tower-motorsports"
+      ],
+      "teamNames": [
+        "Tower Motorsports"
+      ],
+      "teamColors": [
+        "#1E3A5F"
+      ],
+      "position": 32
+    },
+    {
+      "points": 710.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "seth-lucas",
+      "code": "",
+      "givenName": "Seth",
+      "familyName": "Lucas",
+      "nationality": "USA",
+      "teamIds": [
+        "intersport-racing"
+      ],
+      "teamNames": [
+        "Intersport Racing"
+      ],
+      "teamColors": [
+        "#F57C00"
+      ],
+      "position": 33
+    },
+    {
+      "points": 521.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "ben-hanley",
+      "code": "",
+      "givenName": "Ben",
+      "familyName": "Hanley",
+      "nationality": "GBR",
+      "teamIds": [
+        "united-autosports-usa"
+      ],
+      "teamNames": [
+        "United Autosports USA"
+      ],
+      "teamColors": [
+        "#0057B8"
+      ],
+      "position": 34
+    },
+    {
+      "points": 480.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "charles-milesi",
+      "code": "",
+      "givenName": "Charles",
+      "familyName": "Milesi",
+      "nationality": "FRA",
+      "teamIds": [
+        "tds-racing"
+      ],
+      "teamNames": [
+        "TDS Racing"
+      ],
+      "teamColors": [
+        "#D71920"
+      ],
+      "position": 35
+    },
+    {
+      "points": 373.0,
+      "wins": 1,
+      "category": "LMP2",
+      "id": "malthe-jakobsen",
+      "code": "",
+      "givenName": "Malthe",
+      "familyName": "Jakobsen",
+      "nationality": "DNK",
+      "teamIds": [
+        "crowdstrike-racing-by-apr"
+      ],
+      "teamNames": [
+        "Crowdstrike Racing by APR"
+      ],
+      "teamColors": [
+        "#E31B23"
+      ],
+      "position": 36
+    },
+    {
+      "points": 355.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "antonio-felix-da-costa",
+      "code": "",
+      "givenName": "Antonio Felix da",
+      "familyName": "Costa",
+      "nationality": "PRT",
+      "teamIds": [
+        "inter-europol-competition"
+      ],
+      "teamNames": [
+        "Inter Europol Competition"
+      ],
+      "teamColors": [
+        "#C7D300"
+      ],
+      "position": 37
+    },
+    {
+      "points": 325.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "george-kolovos",
+      "code": "",
+      "givenName": "George",
+      "familyName": "Kolovos",
+      "nationality": "GRC",
+      "teamIds": [
+        "inter-europol-competition"
+      ],
+      "teamNames": [
+        "Inter Europol Competition"
+      ],
+      "teamColors": [
+        "#C7D300"
+      ],
+      "position": 38
+    },
+    {
+      "points": 325.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "jakub-smiechowski",
+      "code": "",
+      "givenName": "Jakub",
+      "familyName": "Smiechowski",
+      "nationality": "POL",
+      "teamIds": [
+        "inter-europol-competition"
+      ],
+      "teamNames": [
+        "Inter Europol Competition"
+      ],
+      "teamColors": [
+        "#C7D300"
+      ],
+      "position": 39
+    },
+    {
+      "points": 325.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "nick-cassidy",
+      "code": "",
+      "givenName": "Nick",
+      "familyName": "Cassidy",
+      "nationality": "NZL",
+      "teamIds": [
+        "inter-europol-competition"
+      ],
+      "teamNames": [
+        "Inter Europol Competition"
+      ],
+      "teamColors": [
+        "#C7D300"
+      ],
+      "position": 40
+    },
+    {
+      "points": 325.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "nolan-siegel",
+      "code": "",
+      "givenName": "Nolan",
+      "familyName": "Siegel",
+      "nationality": "USA",
+      "teamIds": [
+        "inter-europol-competition"
+      ],
+      "teamNames": [
+        "Inter Europol Competition"
+      ],
+      "teamColors": [
+        "#C7D300"
+      ],
+      "position": 41
+    },
+    {
+      "points": 312.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "ricky-taylor",
+      "code": "",
+      "givenName": "Ricky",
+      "familyName": "Taylor",
+      "nationality": "USA",
+      "teamIds": [
+        "cadillac-wayne-taylor-racing"
+      ],
+      "teamNames": [
+        "Cadillac Wayne Taylor Racing"
+      ],
+      "teamColors": [
+        "#D4AF37"
+      ],
+      "position": 42
+    },
+    {
+      "points": 310.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "gregoire-saucy",
+      "code": "",
+      "givenName": "Grégoire",
+      "familyName": "Saucy",
+      "nationality": "CHE",
+      "teamIds": [
+        "united-autosports-usa"
+      ],
+      "teamNames": [
+        "United Autosports USA"
+      ],
+      "teamColors": [
+        "#0057B8"
+      ],
+      "position": 43
+    },
+    {
+      "points": 292.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "christian-rasmussen",
+      "code": "",
+      "givenName": "Christian",
+      "familyName": "Rasmussen",
+      "nationality": "DNK",
+      "teamIds": [
+        "ao-racing"
+      ],
+      "teamNames": [
+        "AO Racing"
+      ],
+      "teamColors": [
+        "#E91E63"
+      ],
+      "position": 44
+    },
+    {
+      "points": 278.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "ben-keating",
+      "code": "",
+      "givenName": "Ben",
+      "familyName": "Keating",
+      "nationality": "USA",
+      "teamIds": [
+        "bryan-herta-autosport-with-pr1-mathiasen"
+      ],
+      "teamNames": [
+        "Bryan Herta Autosport with PR1/Mathiasen"
+      ],
+      "teamColors": [
+        "#00A3E0"
+      ],
+      "position": 45
+    },
+    {
+      "points": 268.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "gerry-kraut",
+      "code": "",
+      "givenName": "Gerry",
+      "familyName": "Kraut",
+      "nationality": "USA",
+      "teamIds": [
+        "jdc-miller-motorsports"
+      ],
+      "teamNames": [
+        "JDC-Miller MotorSports"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 46
+    },
+    {
+      "points": 268.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "josh-burdon",
+      "code": "",
+      "givenName": "Josh",
+      "familyName": "Burdon",
+      "nationality": "AUS",
+      "teamIds": [
+        "jdc-miller-motorsports"
+      ],
+      "teamNames": [
+        "JDC-Miller MotorSports"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 47
+    },
+    {
+      "points": 268.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "sennan-fielding",
+      "code": "",
+      "givenName": "Sennan",
+      "familyName": "Fielding",
+      "nationality": "GBR",
+      "teamIds": [
+        "jdc-miller-motorsports"
+      ],
+      "teamNames": [
+        "JDC-Miller MotorSports"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 48
+    },
+    {
+      "points": 258.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "job-van-uitert",
+      "code": "",
+      "givenName": "Job Van",
+      "familyName": "Uitert",
+      "nationality": "NLD",
+      "teamIds": [
+        "intersport-racing"
+      ],
+      "teamNames": [
+        "Intersport Racing"
+      ],
+      "teamColors": [
+        "#F57C00"
+      ],
+      "position": 49
+    },
+    {
+      "points": 250.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "kyffin-simpson",
+      "code": "",
+      "givenName": "Kyffin",
+      "familyName": "Simpson",
+      "nationality": "CYM",
+      "teamIds": [
+        "tower-motorsports"
+      ],
+      "teamNames": [
+        "Tower Motorsports"
+      ],
+      "teamColors": [
+        "#1E3A5F"
+      ],
+      "position": 50
+    },
+    {
+      "points": 250.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "sebastien-bourdais",
+      "code": "",
+      "givenName": "Sebastien",
+      "familyName": "Bourdais",
+      "nationality": "FRA",
+      "teamIds": [
+        "tower-motorsports"
+      ],
+      "teamNames": [
+        "Tower Motorsports"
+      ],
+      "teamColors": [
+        "#1E3A5F"
+      ],
+      "position": 51
+    },
+    {
+      "points": 244.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "logan-sargeant",
+      "code": "",
+      "givenName": "Logan",
+      "familyName": "Sargeant",
+      "nationality": "USA",
+      "teamIds": [
+        "era-motorsport"
+      ],
+      "teamNames": [
+        "Era Motorsport"
+      ],
+      "teamColors": [
+        "#1769AA"
+      ],
+      "position": 52
+    },
+    {
+      "points": 222.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "enzo-fittipaldi",
+      "code": "",
+      "givenName": "Enzo",
+      "familyName": "Fittipaldi",
+      "nationality": "BRA",
+      "teamIds": [
+        "pratt-miller-motorsports"
+      ],
+      "teamNames": [
+        "Pratt Miller Motorsports"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 53
+    },
+    {
+      "points": 211.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "max-van-der-snel",
+      "code": "",
+      "givenName": "Max van der",
+      "familyName": "Snel",
+      "nationality": "NLD",
+      "teamIds": [
+        "intersport-racing"
+      ],
+      "teamNames": [
+        "Intersport Racing"
+      ],
+      "teamColors": [
+        "#F57C00"
+      ],
+      "position": 54
+    },
+    {
+      "points": 199.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "dylan-murry",
+      "code": "",
+      "givenName": "Dylan",
+      "familyName": "Murry",
+      "nationality": "USA",
+      "teamIds": [
+        "af-corse-usa"
+      ],
+      "teamNames": [
+        "Af Corse Usa"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 55
+    },
+    {
+      "points": 199.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "francois-perrodo",
+      "code": "",
+      "givenName": "Francois",
+      "familyName": "Perrodo",
+      "nationality": "FRA",
+      "teamIds": [
+        "af-corse-usa"
+      ],
+      "teamNames": [
+        "Af Corse Usa"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 56
+    },
+    {
+      "points": 199.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "matthieu-vaxiviere",
+      "code": "",
+      "givenName": "Matthieu",
+      "familyName": "Vaxiviere",
+      "nationality": "FRA",
+      "teamIds": [
+        "af-corse-usa"
+      ],
+      "teamNames": [
+        "Af Corse Usa"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 57
+    },
+    {
+      "points": 199.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "nicklas-nielsen",
+      "code": "",
+      "givenName": "Nicklas",
+      "familyName": "Nielsen",
+      "nationality": "DNK",
+      "teamIds": [
+        "af-corse-usa"
+      ],
+      "teamNames": [
+        "Af Corse Usa"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 58
     }
   ]
 }

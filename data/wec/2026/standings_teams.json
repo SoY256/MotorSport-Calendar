@@ -1,66 +1,244 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-08-24T10:00:00Z",
+  "lastSuccessfulUpdate": "2026-08-25T09:16:00.230492Z",
   "source": {
-    "name": "official-championship",
+    "name": "fia-wec-official-championship",
     "url": "https://www.fiawec.com/en/season/2026"
   },
   "data": [
     {
       "position": 1,
-      "points": 132,
-      "wins": 0,
-      "id": "toyota",
-      "name": "Toyota"
+      "points": 132.0,
+      "wins": 2,
+      "id": "hypercar-toyota",
+      "name": "Toyota",
+      "category": "HYPERCAR",
+      "color": "#EB0A1E"
     },
     {
       "position": 2,
-      "points": 127,
-      "wins": 0,
-      "id": "bmw",
-      "name": "BMW"
+      "points": 127.0,
+      "wins": 2,
+      "id": "hypercar-bmw",
+      "name": "BMW",
+      "category": "HYPERCAR",
+      "color": "#0066B1"
     },
     {
       "position": 3,
-      "points": 88,
+      "points": 88.0,
       "wins": 0,
-      "id": "ferrari",
-      "name": "Ferrari"
+      "id": "hypercar-ferrari",
+      "name": "Ferrari",
+      "category": "HYPERCAR",
+      "color": "#E10600"
     },
     {
       "position": 4,
-      "points": 60,
+      "points": 60.0,
       "wins": 0,
-      "id": "cadillac",
-      "name": "Cadillac"
+      "id": "hypercar-cadillac",
+      "name": "Cadillac",
+      "category": "HYPERCAR",
+      "color": "#C6A15B"
     },
     {
       "position": 5,
-      "points": 41,
+      "points": 41.0,
       "wins": 0,
-      "id": "alpine",
-      "name": "Alpine"
+      "id": "hypercar-alpine",
+      "name": "Alpine",
+      "category": "HYPERCAR",
+      "color": "#005BAA"
     },
     {
       "position": 6,
-      "points": 40,
+      "points": 40.0,
       "wins": 0,
-      "id": "aston_martin",
-      "name": "Aston Martin"
+      "id": "hypercar-aston-martin",
+      "name": "Aston Martin",
+      "category": "HYPERCAR",
+      "color": "#006F62"
     },
     {
       "position": 7,
-      "points": 15,
+      "points": 15.0,
       "wins": 0,
-      "id": "peugeot",
-      "name": "Peugeot"
+      "id": "hypercar-peugeot",
+      "name": "Peugeot",
+      "category": "HYPERCAR",
+      "color": "#003B70"
     },
     {
       "position": 8,
-      "points": 6,
+      "points": 6.0,
       "wins": 0,
-      "id": "genesis",
-      "name": "Genesis"
+      "id": "hypercar-genesis",
+      "name": "Genesis",
+      "category": "HYPERCAR",
+      "color": "#C36B28"
+    },
+    {
+      "position": 1,
+      "points": 76.0,
+      "wins": 1,
+      "id": "lmgt3-33-tf-sport",
+      "name": "#33 TF SPORT",
+      "category": "LMGT3",
+      "color": "#F2C500"
+    },
+    {
+      "position": 2,
+      "points": 49.0,
+      "wins": 0,
+      "id": "lmgt3-92-the-bend-manthey",
+      "name": "#92 THE BEND MANTHEY",
+      "category": "LMGT3",
+      "color": "#D5001C"
+    },
+    {
+      "position": 3,
+      "points": 43.0,
+      "wins": 1,
+      "id": "lmgt3-69-team-wrt",
+      "name": "#69 TEAM WRT",
+      "category": "LMGT3",
+      "color": "#0066B1"
+    },
+    {
+      "position": 4,
+      "points": 43.0,
+      "wins": 1,
+      "id": "lmgt3-34-racing-team-turkey-by-tf",
+      "name": "#34 RACING TEAM TURKEY BY TF",
+      "category": "LMGT3",
+      "color": "#F2C500"
+    },
+    {
+      "position": 5,
+      "points": 42.0,
+      "wins": 0,
+      "id": "lmgt3-21-vista-af-corse",
+      "name": "#21 VISTA AF CORSE",
+      "category": "LMGT3",
+      "color": "#E10600"
+    },
+    {
+      "position": 6,
+      "points": 38.0,
+      "wins": 0,
+      "id": "lmgt3-87-akkodis-asp-team",
+      "name": "#87 AKKODIS ASP TEAM",
+      "category": "LMGT3",
+      "color": "#222222"
+    },
+    {
+      "position": 7,
+      "points": 37.0,
+      "wins": 0,
+      "id": "lmgt3-78-akkodis-asp-team",
+      "name": "#78 AKKODIS ASP TEAM",
+      "category": "LMGT3",
+      "color": "#222222"
+    },
+    {
+      "position": 8,
+      "points": 34.0,
+      "wins": 1,
+      "id": "lmgt3-10-garage-59",
+      "name": "#10 GARAGE 59",
+      "category": "LMGT3",
+      "color": "#FF8000"
+    },
+    {
+      "position": 9,
+      "points": 33.0,
+      "wins": 0,
+      "id": "lmgt3-23-heart-of-racing-team",
+      "name": "#23 HEART OF RACING TEAM",
+      "category": "LMGT3",
+      "color": "#006F62"
+    },
+    {
+      "position": 10,
+      "points": 30.0,
+      "wins": 0,
+      "id": "lmgt3-91-manthey-dk-engineering",
+      "name": "#91 MANTHEY DK ENGINEERING",
+      "category": "LMGT3",
+      "color": "#D5001C"
+    },
+    {
+      "position": 11,
+      "points": 22.0,
+      "wins": 0,
+      "id": "lmgt3-32-team-wrt",
+      "name": "#32 TEAM WRT",
+      "category": "LMGT3",
+      "color": "#0066B1"
+    },
+    {
+      "position": 12,
+      "points": 19.0,
+      "wins": 0,
+      "id": "lmgt3-27-heart-of-racing-team",
+      "name": "#27 HEART OF RACING TEAM",
+      "category": "LMGT3",
+      "color": "#006F62"
+    },
+    {
+      "position": 13,
+      "points": 18.0,
+      "wins": 0,
+      "id": "lmgt3-58-garage-59",
+      "name": "#58 GARAGE 59",
+      "category": "LMGT3",
+      "color": "#FF8000"
+    },
+    {
+      "position": 14,
+      "points": 14.0,
+      "wins": 0,
+      "id": "lmgt3-88-proton-competition",
+      "name": "#88 PROTON COMPETITION",
+      "category": "LMGT3",
+      "color": "#003478"
+    },
+    {
+      "position": 15,
+      "points": 9.0,
+      "wins": 0,
+      "id": "lmgt3-61-iron-lynx",
+      "name": "#61 IRON LYNX",
+      "category": "LMGT3",
+      "color": "#00A19C"
+    },
+    {
+      "position": 16,
+      "points": 2.0,
+      "wins": 0,
+      "id": "lmgt3-77-proton-competition",
+      "name": "#77 PROTON COMPETITION",
+      "category": "LMGT3",
+      "color": "#003478"
+    },
+    {
+      "position": 17,
+      "points": 0.0,
+      "wins": 0,
+      "id": "lmgt3-54-vista-af-corse",
+      "name": "#54 VISTA AF CORSE",
+      "category": "LMGT3",
+      "color": "#E10600"
+    },
+    {
+      "position": 18,
+      "points": 0.0,
+      "wins": 0,
+      "id": "lmgt3-79-iron-lynx",
+      "name": "#79 IRON LYNX",
+      "category": "LMGT3",
+      "color": "#00A19C"
     }
   ]
 }

@@ -4,6 +4,7 @@ class RaceSession {
     required this.name,
     required this.startTimeUtc,
     required this.cancelled,
+    required this.durationMinutes,
     this.startTimeTrack,
     this.trackTimeZone,
   });
@@ -13,6 +14,7 @@ class RaceSession {
     name: json['name'] as String,
     startTimeUtc: DateTime.parse(json['startTimeUtc'] as String).toUtc(),
     cancelled: json['cancelled'] as bool? ?? false,
+    durationMinutes: json['durationMinutes'] as int? ?? 120,
     startTimeTrack: json['startTimeTrack'] as String?,
     trackTimeZone: json['trackTimeZone'] as String?,
   );
@@ -21,8 +23,12 @@ class RaceSession {
   final String name;
   final DateTime startTimeUtc;
   final bool cancelled;
+  final int durationMinutes;
   final String? startTimeTrack;
   final String? trackTimeZone;
+
+  DateTime get expectedEnd =>
+      startTimeUtc.add(Duration(minutes: durationMinutes));
 }
 
 class Circuit {
@@ -87,7 +93,7 @@ class RaceEvent {
       .map((item) => item.startTimeUtc)
       .reduce((first, second) => first.isBefore(second) ? first : second);
   DateTime get endsAt => sessions
-      .map((item) => item.startTimeUtc)
+      .map((item) => item.expectedEnd)
       .reduce((first, second) => first.isAfter(second) ? first : second);
 }
 

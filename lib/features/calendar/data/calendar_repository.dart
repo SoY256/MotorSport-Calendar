@@ -77,8 +77,15 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
 
   Future<Map<String, dynamic>?> _remote(String path) async {
     try {
+      final uri = _dataRoot
+          .resolve(path)
+          .replace(
+            queryParameters: {
+              'refresh': DateTime.now().millisecondsSinceEpoch.toString(),
+            },
+          );
       final response = await _client
-          .get(_dataRoot.resolve(path))
+          .get(uri, headers: const {'Cache-Control': 'no-cache'})
           .timeout(const Duration(seconds: 8));
       if (response.statusCode == 200) {
         return jsonDecode(response.body) as Map<String, dynamic>;

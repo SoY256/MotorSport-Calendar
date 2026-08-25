@@ -25,7 +25,8 @@
           "type": "R",
           "name": "Race",
           "startTimeUtc": "2026-01-24T18:40:00Z",
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 1440
         }
       ],
       "resultsPath": "events/01-rolex-24-at-daytona.json"
@@ -49,7 +50,8 @@
           "type": "R",
           "name": "Race",
           "startTimeUtc": "2026-03-21T14:10:00Z",
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 720
         }
       ],
       "resultsPath": "events/02-twelve-hours-of-sebring.json"
@@ -73,7 +75,8 @@
           "type": "R",
           "name": "Race",
           "startTimeUtc": "2026-04-18T20:00:00Z",
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 100
         }
       ],
       "resultsPath": "events/03-acura-grand-prix-of-long-beach.json"
@@ -97,7 +100,8 @@
           "type": "R",
           "name": "Race",
           "startTimeUtc": "2026-05-03T19:00:00Z",
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 160
         }
       ],
       "resultsPath": "events/04-weathertech-raceway-laguna-seca.json"
@@ -121,7 +125,8 @@
           "type": "R",
           "name": "Race",
           "startTimeUtc": "2026-05-30T19:00:00Z",
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 100
         }
       ],
       "resultsPath": "events/05-detroit-sports-car-classic.json"
@@ -145,7 +150,8 @@
           "type": "R",
           "name": "Race",
           "startTimeUtc": "2026-06-28T14:00:00Z",
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 360
         }
       ],
       "resultsPath": "events/06-six-hours-of-the-glen.json"
@@ -169,7 +175,8 @@
           "type": "R",
           "name": "Race",
           "startTimeUtc": "2026-07-12T16:00:00Z",
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 160
         }
       ],
       "resultsPath": "events/07-chevrolet-grand-prix.json"
@@ -193,7 +200,8 @@
           "type": "R",
           "name": "Race",
           "startTimeUtc": "2026-08-02T16:00:00Z",
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 160
         }
       ],
       "resultsPath": "events/08-motul-sportscar-endurance-grand-prix.json"
@@ -217,7 +225,8 @@
           "type": "R",
           "name": "Race",
           "startTimeUtc": "2026-08-23T16:10:00Z",
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 160
         }
       ],
       "resultsPath": "events/09-michelin-gt-challenge-at-vir.json"
@@ -241,7 +250,8 @@
           "type": "R",
           "name": "Race",
           "startTimeUtc": "2026-09-20T19:00:00Z",
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 360
         }
       ],
       "resultsPath": "events/10-battle-on-the-bricks.json"
@@ -265,7 +275,8 @@
           "type": "R",
           "name": "Race",
           "startTimeUtc": "2026-10-03T16:00:00Z",
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 600
         }
       ],
       "resultsPath": "events/11-motul-petit-le-mans.json"

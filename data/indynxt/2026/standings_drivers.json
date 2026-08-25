@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-08-24T12:00:00Z",
+  "lastSuccessfulUpdate": "2026-08-25T09:12:52.928894Z",
   "source": {
-    "name": "official-indycar",
-    "url": "https://www.indynxt.com/standings"
+    "name": "official-indynxt",
+    "url": "https://www.indynxt.com/api/results/YearPointSummary?year=2026&id=09341e09-3216-4f89-a45f-db697d72ee13"
   },
   "data": [
     {
@@ -14,9 +14,15 @@
       "code": "",
       "givenName": "Enzo",
       "familyName": "Fittipaldi",
-      "nationality": "Brazilian",
+      "nationality": "BRA",
       "teamIds": [
-        "hmd"
+        "hmd-motorsports"
+      ],
+      "teamNames": [
+        "HMD Motorsports"
+      ],
+      "teamColors": [
+        "#202A44"
       ]
     },
     {
@@ -27,9 +33,15 @@
       "code": "",
       "givenName": "Nikita",
       "familyName": "Johnson",
-      "nationality": "American",
+      "nationality": "USA",
       "teamIds": [
-        "cape"
+        "cape-motorsports-powered-by-ecr"
+      ],
+      "teamNames": [
+        "Cape Motorsports powered by ECR"
+      ],
+      "teamColors": [
+        "#00A3E0"
       ]
     },
     {
@@ -40,9 +52,15 @@
       "code": "",
       "givenName": "Tymek",
       "familyName": "Kucharczyk",
-      "nationality": "Polish",
+      "nationality": "POL",
       "teamIds": [
-        "hmd"
+        "hmd-motorsports"
+      ],
+      "teamNames": [
+        "HMD Motorsports"
+      ],
+      "teamColors": [
+        "#202A44"
       ]
     },
     {
@@ -53,9 +71,15 @@
       "code": "",
       "givenName": "Max",
       "familyName": "Taylor",
-      "nationality": "American",
+      "nationality": "USA",
       "teamIds": [
-        "andretti"
+        "andretti-global"
+      ],
+      "teamNames": [
+        "Andretti Global"
+      ],
+      "teamColors": [
+        "#E31B23"
       ]
     },
     {
@@ -66,9 +90,15 @@
       "code": "",
       "givenName": "Lochie",
       "familyName": "Hughes",
-      "nationality": "Australian",
+      "nationality": "AUS",
       "teamIds": [
-        "andretti"
+        "andretti-global"
+      ],
+      "teamNames": [
+        "Andretti Global"
+      ],
+      "teamColors": [
+        "#E31B23"
       ]
     },
     {
@@ -77,11 +107,17 @@
       "wins": 2,
       "id": "alessandro-de-tullio",
       "code": "",
-      "givenName": "Alessandro",
-      "familyName": "de Tullio",
-      "nationality": "American",
+      "givenName": "Alessandro de",
+      "familyName": "Tullio",
+      "nationality": "USA",
       "teamIds": [
-        "foyt"
+        "a-j-foyt-enterprises"
+      ],
+      "teamNames": [
+        "A.J. Foyt Enterprises"
+      ],
+      "teamColors": [
+        "#D71920"
       ]
     },
     {
@@ -92,9 +128,15 @@
       "code": "",
       "givenName": "Myles",
       "familyName": "Rowe",
-      "nationality": "American",
+      "nationality": "USA",
       "teamIds": [
-        "abel"
+        "abel-motorsports"
+      ],
+      "teamNames": [
+        "Abel Motorsports"
+      ],
+      "teamColors": [
+        "#111111"
       ]
     },
     {
@@ -105,9 +147,15 @@
       "code": "",
       "givenName": "Jack",
       "familyName": "Beeton",
-      "nationality": "Australian",
+      "nationality": "AUS",
       "teamIds": [
-        "hmd"
+        "hmd-motorsports"
+      ],
+      "teamNames": [
+        "HMD Motorsports"
+      ],
+      "teamColors": [
+        "#202A44"
       ]
     },
     {
@@ -118,9 +166,15 @@
       "code": "",
       "givenName": "Matteo",
       "familyName": "Nannini",
-      "nationality": "Italian",
+      "nationality": "ITA",
       "teamIds": [
-        "cape"
+        "cape-motorsports-powered-by-ecr"
+      ],
+      "teamNames": [
+        "Cape Motorsports powered by ECR"
+      ],
+      "teamColors": [
+        "#00A3E0"
       ]
     },
     {
@@ -131,9 +185,357 @@
       "code": "",
       "givenName": "JM",
       "familyName": "Correa",
-      "nationality": "American",
+      "nationality": "USA",
       "teamIds": [
-        "cusick"
+        "cusick-morgan-motorsports"
+      ],
+      "teamNames": [
+        "Cusick Morgan Motorsports"
+      ],
+      "teamColors": [
+        "#8BC34A"
+      ]
+    },
+    {
+      "position": 11,
+      "points": 291,
+      "wins": 0,
+      "id": "josh-pierson",
+      "code": "",
+      "givenName": "Josh",
+      "familyName": "Pierson",
+      "nationality": "USA",
+      "teamIds": [
+        "andretti-global"
+      ],
+      "teamNames": [
+        "Andretti Global"
+      ],
+      "teamColors": [
+        "#E31B23"
+      ]
+    },
+    {
+      "position": 12,
+      "points": 286,
+      "wins": 0,
+      "id": "max-garcia",
+      "code": "",
+      "givenName": "Max",
+      "familyName": "Garcia",
+      "nationality": "USA",
+      "teamIds": [
+        "abel-motorsports"
+      ],
+      "teamNames": [
+        "Abel Motorsports"
+      ],
+      "teamColors": [
+        "#111111"
+      ]
+    },
+    {
+      "position": 13,
+      "points": 260,
+      "wins": 0,
+      "id": "seb-murray",
+      "code": "",
+      "givenName": "Seb",
+      "familyName": "Murray",
+      "nationality": "GBR",
+      "teamIds": [
+        "andretti-global"
+      ],
+      "teamNames": [
+        "Andretti Global"
+      ],
+      "teamColors": [
+        "#E31B23"
+      ]
+    },
+    {
+      "position": 14,
+      "points": 234,
+      "wins": 0,
+      "id": "salvador-de-alba",
+      "code": "",
+      "givenName": "Salvador de",
+      "familyName": "Alba",
+      "nationality": "MEX",
+      "teamIds": [
+        "hmd-motorsports"
+      ],
+      "teamNames": [
+        "HMD Motorsports"
+      ],
+      "teamColors": [
+        "#202A44"
+      ]
+    },
+    {
+      "position": 15,
+      "points": 224,
+      "wins": 0,
+      "id": "niels-koolen",
+      "code": "",
+      "givenName": "Niels",
+      "familyName": "Koolen",
+      "nationality": "NLD",
+      "teamIds": [
+        "chip-ganassi-racing"
+      ],
+      "teamNames": [
+        "Chip Ganassi Racing"
+      ],
+      "teamColors": [
+        "#0B5BA7"
+      ]
+    },
+    {
+      "position": 16,
+      "points": 224,
+      "wins": 0,
+      "id": "bryce-aron",
+      "code": "",
+      "givenName": "Bryce",
+      "familyName": "Aron",
+      "nationality": "USA",
+      "teamIds": [
+        "chip-ganassi-racing"
+      ],
+      "teamNames": [
+        "Chip Ganassi Racing"
+      ],
+      "teamColors": [
+        "#0B5BA7"
+      ]
+    },
+    {
+      "position": 17,
+      "points": 216,
+      "wins": 0,
+      "id": "jordan-missig",
+      "code": "",
+      "givenName": "Jordan",
+      "familyName": "Missig",
+      "nationality": "USA",
+      "teamIds": [
+        "abel-motorsports"
+      ],
+      "teamNames": [
+        "Abel Motorsports"
+      ],
+      "teamColors": [
+        "#111111"
+      ]
+    },
+    {
+      "position": 18,
+      "points": 182,
+      "wins": 0,
+      "id": "nicolas-stati",
+      "code": "",
+      "givenName": "Nicolas",
+      "familyName": "Stati",
+      "nationality": "AUS",
+      "teamIds": [
+        "cusick-morgan-motorsports"
+      ],
+      "teamNames": [
+        "Cusick Morgan Motorsports"
+      ],
+      "teamColors": [
+        "#8BC34A"
+      ]
+    },
+    {
+      "position": 19,
+      "points": 178,
+      "wins": 0,
+      "id": "colin-kaminsky",
+      "code": "",
+      "givenName": "Colin",
+      "familyName": "Kaminsky",
+      "nationality": "USA",
+      "teamIds": [
+        "abel-motorsports"
+      ],
+      "teamNames": [
+        "Abel Motorsports"
+      ],
+      "teamColors": [
+        "#111111"
+      ]
+    },
+    {
+      "position": 20,
+      "points": 176,
+      "wins": 0,
+      "id": "james-roe",
+      "code": "",
+      "givenName": "James",
+      "familyName": "Roe",
+      "nationality": "IRL",
+      "teamIds": [
+        "chip-ganassi-racing"
+      ],
+      "teamNames": [
+        "Chip Ganassi Racing"
+      ],
+      "teamColors": [
+        "#0B5BA7"
+      ]
+    },
+    {
+      "position": 21,
+      "points": 161,
+      "wins": 0,
+      "id": "alexander-koreiba",
+      "code": "",
+      "givenName": "Alexander",
+      "familyName": "Koreiba",
+      "nationality": "USA",
+      "teamIds": [
+        "juncos-hollinger-racing"
+      ],
+      "teamNames": [
+        "Juncos Hollinger Racing"
+      ],
+      "teamColors": [
+        "#4A148C"
+      ]
+    },
+    {
+      "position": 22,
+      "points": 150,
+      "wins": 0,
+      "id": "nicholas-monteiro",
+      "code": "",
+      "givenName": "Nicholas",
+      "familyName": "Monteiro",
+      "nationality": "BRA",
+      "teamIds": [
+        "a-j-foyt-enterprises"
+      ],
+      "teamNames": [
+        "A.J. Foyt Enterprises"
+      ],
+      "teamColors": [
+        "#D71920"
+      ]
+    },
+    {
+      "position": 23,
+      "points": 147,
+      "wins": 0,
+      "id": "carson-etter",
+      "code": "",
+      "givenName": "Carson",
+      "familyName": "Etter",
+      "nationality": "USA",
+      "teamIds": [
+        "chip-ganassi-racing"
+      ],
+      "teamNames": [
+        "Chip Ganassi Racing"
+      ],
+      "teamColors": [
+        "#0B5BA7"
+      ]
+    },
+    {
+      "position": 24,
+      "points": 142,
+      "wins": 0,
+      "id": "ricardo-escotto",
+      "code": "",
+      "givenName": "Ricardo",
+      "familyName": "Escotto",
+      "nationality": "MEX",
+      "teamIds": [
+        "juncos-hollinger-racing"
+      ],
+      "teamNames": [
+        "Juncos Hollinger Racing"
+      ],
+      "teamColors": [
+        "#4A148C"
+      ]
+    },
+    {
+      "position": 25,
+      "points": 37,
+      "wins": 0,
+      "id": "nolan-allaer",
+      "code": "",
+      "givenName": "Nolan",
+      "familyName": "Allaer",
+      "nationality": "USA",
+      "teamIds": [
+        "juncos-hollinger-racing"
+      ],
+      "teamNames": [
+        "Juncos Hollinger Racing"
+      ],
+      "teamColors": [
+        "#4A148C"
+      ]
+    },
+    {
+      "position": 26,
+      "points": 30,
+      "wins": 0,
+      "id": "jacob-abel",
+      "code": "",
+      "givenName": "Jacob",
+      "familyName": "Abel",
+      "nationality": "USA",
+      "teamIds": [
+        "abel-motorsports"
+      ],
+      "teamNames": [
+        "Abel Motorsports"
+      ],
+      "teamColors": [
+        "#111111"
+      ]
+    },
+    {
+      "position": 27,
+      "points": 20,
+      "wins": 0,
+      "id": "bart-harrison",
+      "code": "",
+      "givenName": "Bart",
+      "familyName": "Harrison",
+      "nationality": "USA",
+      "teamIds": [
+        "hmd-motorsports"
+      ],
+      "teamNames": [
+        "HMD Motorsports"
+      ],
+      "teamColors": [
+        "#202A44"
+      ]
+    },
+    {
+      "position": 28,
+      "points": 9,
+      "wins": 0,
+      "id": "yuven-sundaramoorthy",
+      "code": "",
+      "givenName": "Yuven",
+      "familyName": "Sundaramoorthy",
+      "nationality": "USA",
+      "teamIds": [
+        "cusick-morgan-motorsports"
+      ],
+      "teamNames": [
+        "Cusick Morgan Motorsports"
+      ],
+      "teamColors": [
+        "#8BC34A"
       ]
     }
   ]

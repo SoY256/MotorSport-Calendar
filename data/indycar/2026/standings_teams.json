@@ -1,9 +1,136 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-08-24T12:00:00Z",
+  "lastSuccessfulUpdate": "2026-08-25T09:12:06.165856Z",
   "source": {
-    "name": "official-indycar",
-    "url": "https://www.indycar.com/"
+    "name": "derived-from-official-indycar-driver-standings",
+    "url": "https://www.indycar.com/standings/"
   },
-  "data": []
+  "data": [
+    {
+      "position": 1,
+      "points": 1141.0,
+      "wins": 0,
+      "id": "team-penske",
+      "name": "Team Penske",
+      "color": "#143B78",
+      "nationality": null
+    },
+    {
+      "position": 2,
+      "points": 1125.0,
+      "wins": 0,
+      "id": "chip-ganassi-racing",
+      "name": "Chip Ganassi Racing",
+      "color": "#0B5BA7",
+      "nationality": null
+    },
+    {
+      "position": 3,
+      "points": 1070.0,
+      "wins": 0,
+      "id": "arrow-mclaren",
+      "name": "Arrow McLaren",
+      "color": "#FF6C0C",
+      "nationality": null
+    },
+    {
+      "position": 4,
+      "points": 689.0,
+      "wins": 0,
+      "id": "andretti-global",
+      "name": "Andretti Global",
+      "color": "#E31B23",
+      "nationality": null
+    },
+    {
+      "position": 5,
+      "points": 678.0,
+      "wins": 0,
+      "id": "rahal-letterman-lanigan-racing",
+      "name": "Rahal Letterman Lanigan Racing",
+      "color": "#1F4E79",
+      "nationality": null
+    },
+    {
+      "position": 6,
+      "points": 617.0,
+      "wins": 0,
+      "id": "meyer-shank-w-curb-agajanian",
+      "name": "Meyer Shank w/ Curb-Agajanian",
+      "color": "#E91E63",
+      "nationality": null
+    },
+    {
+      "position": 7,
+      "points": 462.0,
+      "wins": 0,
+      "id": "andretti-global-w-curb-agajanian",
+      "name": "Andretti Global w/ Curb-Agajanian",
+      "color": "#E31B23",
+      "nationality": null
+    },
+    {
+      "position": 8,
+      "points": 457.0,
+      "wins": 0,
+      "id": "juncos-hollinger-racing",
+      "name": "Juncos Hollinger Racing",
+      "color": "#4A148C",
+      "nationality": null
+    },
+    {
+      "position": 9,
+      "points": 433.0,
+      "wins": 0,
+      "id": "dale-coyne-racing",
+      "name": "Dale Coyne Racing",
+      "color": "#222222",
+      "nationality": null
+    },
+    {
+      "position": 10,
+      "points": 421.0,
+      "wins": 0,
+      "id": "ecr",
+      "name": "ECR",
+      "color": "#00529B",
+      "nationality": null
+    },
+    {
+      "position": 11,
+      "points": 414.0,
+      "wins": 0,
+      "id": "a-j-foyt-enterprises",
+      "name": "A.J. Foyt Enterprises",
+      "color": "#D71920",
+      "nationality": null
+    },
+    {
+      "position": 12,
+      "points": 32.0,
+      "wins": 0,
+      "id": "dreyer-reinbold-racing",
+      "name": "Dreyer & Reinbold Racing",
+      "color": "#C0A062",
+      "nationality": null
+    },
+    {
+      "position": 13,
+      "points": 6.0,
+      "wins": 0,
+      "id": "abel-motorsports",
+      "name": "Abel Motorsports",
+      "color": "#111111",
+      "nationality": null
+    },
+    {
+      "position": 14,
+      "points": 5.0,
+      "wins": 0,
+      "id": "hmd-motorsports-w-aj-foyt-racing",
+      "name": "HMD Motorsports w/ AJ Foyt Racing",
+      "color": "#202A44",
+      "nationality": null
+    }
+  ]
 }
