@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-08-30T05:47:24.938460Z",
+  "lastSuccessfulUpdate": "2026-08-30T10:42:52.789215Z",
   "source": {
     "name": "jolpica-f1",
     "url": "https://api.jolpi.ca/f1/alpha/schedules/2026/"
@@ -21,7 +21,7 @@
               "code": "ANT",
               "givenName": "Andrea Kimi",
               "familyName": "Antonelli",
-              "nationality": null
+              "nationality": "ITA"
             },
             "team": {
               "id": "team_tdiMmtQx",
@@ -44,7 +44,7 @@
               "code": "RUS",
               "givenName": "George",
               "familyName": "Russell",
-              "nationality": null
+              "nationality": "GBR"
             },
             "team": {
               "id": "team_tdiMmtQx",
@@ -67,7 +67,7 @@
               "code": "HAM",
               "givenName": "Lewis",
               "familyName": "Hamilton",
-              "nationality": null
+              "nationality": "GBR"
             },
             "team": {
               "id": "team_LjEBz7Xq",
@@ -90,7 +90,7 @@
               "code": "LEC",
               "givenName": "Charles",
               "familyName": "Leclerc",
-              "nationality": null
+              "nationality": "MCO"
             },
             "team": {
               "id": "team_LjEBz7Xq",
@@ -113,7 +113,7 @@
               "code": "VER",
               "givenName": "Max",
               "familyName": "Verstappen",
-              "nationality": null
+              "nationality": "NLD"
             },
             "team": {
               "id": "team_SYB8m2Vp",
@@ -136,7 +136,7 @@
               "code": "NOR",
               "givenName": "Lando",
               "familyName": "Norris",
-              "nationality": null
+              "nationality": "GBR"
             },
             "team": {
               "id": "team_jJ6cuwXz",
@@ -159,7 +159,7 @@
               "code": "PIA",
               "givenName": "Oscar",
               "familyName": "Piastri",
-              "nationality": null
+              "nationality": "AUS"
             },
             "team": {
               "id": "team_jJ6cuwXz",
@@ -182,7 +182,7 @@
               "code": "LIN",
               "givenName": "Arvid",
               "familyName": "Lindblad",
-              "nationality": null
+              "nationality": "GBR"
             },
             "team": {
               "id": "team_M2xA0S6V",
@@ -205,7 +205,7 @@
               "code": "HUL",
               "givenName": "Nico",
               "familyName": "Hülkenberg",
-              "nationality": null
+              "nationality": "DEU"
             },
             "team": {
               "id": "team_D9V5gkPb",
@@ -228,7 +228,7 @@
               "code": "ALO",
               "givenName": "Fernando",
               "familyName": "Alonso",
-              "nationality": null
+              "nationality": "ESP"
             },
             "team": {
               "id": "team_fhnXl3cF",
@@ -251,7 +251,7 @@
               "code": "BOR",
               "givenName": "Gabriel",
               "familyName": "Bortoleto",
-              "nationality": null
+              "nationality": "BRA"
             },
             "team": {
               "id": "team_D9V5gkPb",
@@ -274,7 +274,7 @@
               "code": "HAD",
               "givenName": "Isack",
               "familyName": "Hadjar",
-              "nationality": null
+              "nationality": "FRA"
             },
             "team": {
               "id": "team_SYB8m2Vp",
@@ -297,7 +297,7 @@
               "code": "OCO",
               "givenName": "Esteban",
               "familyName": "Ocon",
-              "nationality": null
+              "nationality": "FRA"
             },
             "team": {
               "id": "team_aDYlrycX",
@@ -320,7 +320,7 @@
               "code": "ALB",
               "givenName": "Alexander",
               "familyName": "Albon",
-              "nationality": null
+              "nationality": "THA"
             },
             "team": {
               "id": "team_IJAI583X",
@@ -343,7 +343,7 @@
               "code": "SAI",
               "givenName": "Carlos",
               "familyName": "Sainz",
-              "nationality": null
+              "nationality": "ESP"
             },
             "team": {
               "id": "team_IJAI583X",
@@ -366,7 +366,7 @@
               "code": "GAS",
               "givenName": "Pierre",
               "familyName": "Gasly",
-              "nationality": null
+              "nationality": "FRA"
             },
             "team": {
               "id": "team_LJ6hqyXM",
@@ -389,7 +389,7 @@
               "code": "STR",
               "givenName": "Lance",
               "familyName": "Stroll",
-              "nationality": null
+              "nationality": "CAN"
             },
             "team": {
               "id": "team_fhnXl3cF",
@@ -412,7 +412,7 @@
               "code": "LAW",
               "givenName": "Liam",
               "familyName": "Lawson",
-              "nationality": null
+              "nationality": "NZL"
             },
             "team": {
               "id": "team_M2xA0S6V",
@@ -435,7 +435,7 @@
               "code": "BEA",
               "givenName": "Oliver",
               "familyName": "Bearman",
-              "nationality": null
+              "nationality": "GBR"
             },
             "team": {
               "id": "team_aDYlrycX",
@@ -458,7 +458,7 @@
               "code": "BOT",
               "givenName": "Valtteri",
               "familyName": "Bottas",
-              "nationality": null
+              "nationality": "FIN"
             },
             "team": {
               "id": "team_nVXl8xvk",
@@ -481,7 +481,7 @@
               "code": "PER",
               "givenName": "Sergio",
               "familyName": "Pérez",
-              "nationality": null
+              "nationality": "MEX"
             },
             "team": {
               "id": "team_nVXl8xvk",
@@ -504,7 +504,7 @@
               "code": "COL",
               "givenName": "Franco",
               "familyName": "Colapinto",
-              "nationality": null
+              "nationality": "ARG"
             },
             "team": {
               "id": "team_LJ6hqyXM",
@@ -534,7 +534,7 @@
               "code": "RUS",
               "givenName": "George",
               "familyName": "Russell",
-              "nationality": null
+              "nationality": "GBR"
             },
             "team": {
               "id": "team_tdiMmtQx",
@@ -576,7 +576,7 @@
               "code": "ANT",
               "givenName": "Andrea Kimi",
               "familyName": "Antonelli",
-              "nationality": null
+              "nationality": "ITA"
             },
             "team": {
               "id": "team_tdiMmtQx",
@@ -618,7 +618,7 @@
               "code": "NOR",
               "givenName": "Lando",
               "familyName": "Norris",
-              "nationality": null
+              "nationality": "GBR"
             },
             "team": {
               "id": "team_jJ6cuwXz",
@@ -660,7 +660,7 @@
               "code": "PIA",
               "givenName": "Oscar",
               "familyName": "Piastri",
-              "nationality": null
+              "nationality": "AUS"
             },
             "team": {
               "id": "team_jJ6cuwXz",
@@ -702,7 +702,7 @@
               "code": "HAM",
               "givenName": "Lewis",
               "familyName": "Hamilton",
-              "nationality": null
+              "nationality": "GBR"
             },
             "team": {
               "id": "team_LjEBz7Xq",
@@ -744,7 +744,7 @@
               "code": "LEC",
               "givenName": "Charles",
               "familyName": "Leclerc",
-              "nationality": null
+              "nationality": "MCO"
             },
             "team": {
               "id": "team_LjEBz7Xq",
@@ -786,7 +786,7 @@
               "code": "VER",
               "givenName": "Max",
               "familyName": "Verstappen",
-              "nationality": null
+              "nationality": "NLD"
             },
             "team": {
               "id": "team_SYB8m2Vp",
@@ -828,7 +828,7 @@
               "code": "HAD",
               "givenName": "Isack",
               "familyName": "Hadjar",
-              "nationality": null
+              "nationality": "FRA"
             },
             "team": {
               "id": "team_SYB8m2Vp",
@@ -870,7 +870,7 @@
               "code": "LIN",
               "givenName": "Arvid",
               "familyName": "Lindblad",
-              "nationality": null
+              "nationality": "GBR"
             },
             "team": {
               "id": "team_M2xA0S6V",
@@ -912,7 +912,7 @@
               "code": "SAI",
               "givenName": "Carlos",
               "familyName": "Sainz",
-              "nationality": null
+              "nationality": "ESP"
             },
             "team": {
               "id": "team_IJAI583X",
@@ -954,7 +954,7 @@
               "code": "HUL",
               "givenName": "Nico",
               "familyName": "Hülkenberg",
-              "nationality": null
+              "nationality": "DEU"
             },
             "team": {
               "id": "team_D9V5gkPb",
@@ -990,7 +990,7 @@
               "code": "BOR",
               "givenName": "Gabriel",
               "familyName": "Bortoleto",
-              "nationality": null
+              "nationality": "BRA"
             },
             "team": {
               "id": "team_D9V5gkPb",
@@ -1026,7 +1026,7 @@
               "code": "COL",
               "givenName": "Franco",
               "familyName": "Colapinto",
-              "nationality": null
+              "nationality": "ARG"
             },
             "team": {
               "id": "team_LJ6hqyXM",
@@ -1062,7 +1062,7 @@
               "code": "OCO",
               "givenName": "Esteban",
               "familyName": "Ocon",
-              "nationality": null
+              "nationality": "FRA"
             },
             "team": {
               "id": "team_aDYlrycX",
@@ -1098,7 +1098,7 @@
               "code": "BEA",
               "givenName": "Oliver",
               "familyName": "Bearman",
-              "nationality": null
+              "nationality": "GBR"
             },
             "team": {
               "id": "team_aDYlrycX",
@@ -1134,7 +1134,7 @@
               "code": "ALO",
               "givenName": "Fernando",
               "familyName": "Alonso",
-              "nationality": null
+              "nationality": "ESP"
             },
             "team": {
               "id": "team_fhnXl3cF",
@@ -1169,7 +1169,7 @@
               "code": "PER",
               "givenName": "Sergio",
               "familyName": "Pérez",
-              "nationality": null
+              "nationality": "MEX"
             },
             "team": {
               "id": "team_nVXl8xvk",
@@ -1199,7 +1199,7 @@
               "code": "STR",
               "givenName": "Lance",
               "familyName": "Stroll",
-              "nationality": null
+              "nationality": "CAN"
             },
             "team": {
               "id": "team_fhnXl3cF",
@@ -1229,7 +1229,7 @@
               "code": "GAS",
               "givenName": "Pierre",
               "familyName": "Gasly",
-              "nationality": null
+              "nationality": "FRA"
             },
             "team": {
               "id": "team_LJ6hqyXM",
@@ -1259,7 +1259,7 @@
               "code": "BOT",
               "givenName": "Valtteri",
               "familyName": "Bottas",
-              "nationality": null
+              "nationality": "FIN"
             },
             "team": {
               "id": "team_nVXl8xvk",
@@ -1296,7 +1296,7 @@
               "code": "RUS",
               "givenName": "George",
               "familyName": "Russell",
-              "nationality": null
+              "nationality": "GBR"
             },
             "team": {
               "id": "team_tdiMmtQx",
@@ -1331,7 +1331,7 @@
               "code": "NOR",
               "givenName": "Lando",
               "familyName": "Norris",
-              "nationality": null
+              "nationality": "GBR"
             },
             "team": {
               "id": "team_jJ6cuwXz",
@@ -1366,7 +1366,7 @@
               "code": "ANT",
               "givenName": "Andrea Kimi",
               "familyName": "Antonelli",
-              "nationality": null
+              "nationality": "ITA"
             },
             "team": {
               "id": "team_tdiMmtQx",
@@ -1401,7 +1401,7 @@
               "code": "PIA",
               "givenName": "Oscar",
               "familyName": "Piastri",
-              "nationality": null
+              "nationality": "AUS"
             },
             "team": {
               "id": "team_jJ6cuwXz",
@@ -1436,7 +1436,7 @@
               "code": "LEC",
               "givenName": "Charles",
               "familyName": "Leclerc",
-              "nationality": null
+              "nationality": "MCO"
             },
             "team": {
               "id": "team_LjEBz7Xq",
@@ -1471,7 +1471,7 @@
               "code": "HAM",
               "givenName": "Lewis",
               "familyName": "Hamilton",
-              "nationality": null
+              "nationality": "GBR"
             },
             "team": {
               "id": "team_LjEBz7Xq",
@@ -1506,7 +1506,7 @@
               "code": "VER",
               "givenName": "Max",
               "familyName": "Verstappen",
-              "nationality": null
+              "nationality": "NLD"
             },
             "team": {
               "id": "team_SYB8m2Vp",
@@ -1541,7 +1541,7 @@
               "code": "LIN",
               "givenName": "Arvid",
               "familyName": "Lindblad",
-              "nationality": null
+              "nationality": "GBR"
             },
             "team": {
               "id": "team_M2xA0S6V",
@@ -1576,7 +1576,7 @@
               "code": "COL",
               "givenName": "Franco",
               "familyName": "Colapinto",
-              "nationality": null
+              "nationality": "ARG"
             },
             "team": {
               "id": "team_LJ6hqyXM",
@@ -1611,7 +1611,7 @@
               "code": "SAI",
               "givenName": "Carlos",
               "familyName": "Sainz",
-              "nationality": null
+              "nationality": "ESP"
             },
             "team": {
               "id": "team_IJAI583X",
@@ -1646,7 +1646,7 @@
               "code": "LAW",
               "givenName": "Liam",
               "familyName": "Lawson",
-              "nationality": null
+              "nationality": "NZL"
             },
             "team": {
               "id": "team_M2xA0S6V",
@@ -1681,7 +1681,7 @@
               "code": "BOR",
               "givenName": "Gabriel",
               "familyName": "Bortoleto",
-              "nationality": null
+              "nationality": "BRA"
             },
             "team": {
               "id": "team_D9V5gkPb",
@@ -1716,7 +1716,7 @@
               "code": "OCO",
               "givenName": "Esteban",
               "familyName": "Ocon",
-              "nationality": null
+              "nationality": "FRA"
             },
             "team": {
               "id": "team_aDYlrycX",
@@ -1751,7 +1751,7 @@
               "code": "PER",
               "givenName": "Sergio",
               "familyName": "Pérez",
-              "nationality": null
+              "nationality": "MEX"
             },
             "team": {
               "id": "team_nVXl8xvk",
@@ -1786,7 +1786,7 @@
               "code": "HUL",
               "givenName": "Nico",
               "familyName": "Hülkenberg",
-              "nationality": null
+              "nationality": "DEU"
             },
             "team": {
               "id": "team_D9V5gkPb",
@@ -1821,7 +1821,7 @@
               "code": "STR",
               "givenName": "Lance",
               "familyName": "Stroll",
-              "nationality": null
+              "nationality": "CAN"
             },
             "team": {
               "id": "team_fhnXl3cF",
@@ -1856,7 +1856,7 @@
               "code": "BOT",
               "givenName": "Valtteri",
               "familyName": "Bottas",
-              "nationality": null
+              "nationality": "FIN"
             },
             "team": {
               "id": "team_nVXl8xvk",
@@ -1891,7 +1891,7 @@
               "code": "BEA",
               "givenName": "Oliver",
               "familyName": "Bearman",
-              "nationality": null
+              "nationality": "GBR"
             },
             "team": {
               "id": "team_aDYlrycX",
@@ -1926,7 +1926,7 @@
               "code": "ALB",
               "givenName": "Alexander",
               "familyName": "Albon",
-              "nationality": null
+              "nationality": "THA"
             },
             "team": {
               "id": "team_IJAI583X",
@@ -1961,7 +1961,7 @@
               "code": "GAS",
               "givenName": "Pierre",
               "familyName": "Gasly",
-              "nationality": null
+              "nationality": "FRA"
             },
             "team": {
               "id": "team_LJ6hqyXM",
@@ -1996,7 +1996,7 @@
               "code": "HAD",
               "givenName": "Isack",
               "familyName": "Hadjar",
-              "nationality": null
+              "nationality": "FRA"
             },
             "team": {
               "id": "team_SYB8m2Vp",
@@ -2031,7 +2031,7 @@
               "code": "ALO",
               "givenName": "Fernando",
               "familyName": "Alonso",
-              "nationality": null
+              "nationality": "ESP"
             },
             "team": {
               "id": "team_fhnXl3cF",
@@ -2073,7 +2073,7 @@
               "code": "RUS",
               "givenName": "George",
               "familyName": "Russell",
-              "nationality": null
+              "nationality": "GBR"
             },
             "team": {
               "id": "team_tdiMmtQx",
@@ -2115,7 +2115,7 @@
               "code": "ANT",
               "givenName": "Andrea Kimi",
               "familyName": "Antonelli",
-              "nationality": null
+              "nationality": "ITA"
             },
             "team": {
               "id": "team_tdiMmtQx",
@@ -2157,7 +2157,7 @@
               "code": "NOR",
               "givenName": "Lando",
               "familyName": "Norris",
-              "nationality": null
+              "nationality": "GBR"
             },
             "team": {
               "id": "team_jJ6cuwXz",
@@ -2199,7 +2199,7 @@
               "code": "PIA",
               "givenName": "Oscar",
               "familyName": "Piastri",
-              "nationality": null
+              "nationality": "AUS"
             },
             "team": {
               "id": "team_jJ6cuwXz",
@@ -2241,7 +2241,7 @@
               "code": "HAM",
               "givenName": "Lewis",
               "familyName": "Hamilton",
-              "nationality": null
+              "nationality": "GBR"
             },
             "team": {
               "id": "team_LjEBz7Xq",
@@ -2283,7 +2283,7 @@
               "code": "VER",
               "givenName": "Max",
               "familyName": "Verstappen",
-              "nationality": null
+              "nationality": "NLD"
             },
             "team": {
               "id": "team_SYB8m2Vp",
@@ -2325,7 +2325,7 @@
               "code": "HAD",
               "givenName": "Isack",
               "familyName": "Hadjar",
-              "nationality": null
+              "nationality": "FRA"
             },
             "team": {
               "id": "team_SYB8m2Vp",
@@ -2367,7 +2367,7 @@
               "code": "LEC",
               "givenName": "Charles",
               "familyName": "Leclerc",
-              "nationality": null
+              "nationality": "MCO"
             },
             "team": {
               "id": "team_LjEBz7Xq",
@@ -2409,7 +2409,7 @@
               "code": "LIN",
               "givenName": "Arvid",
               "familyName": "Lindblad",
-              "nationality": null
+              "nationality": "GBR"
             },
             "team": {
               "id": "team_M2xA0S6V",
@@ -2451,7 +2451,7 @@
               "code": "COL",
               "givenName": "Franco",
               "familyName": "Colapinto",
-              "nationality": null
+              "nationality": "ARG"
             },
             "team": {
               "id": "team_LJ6hqyXM",
@@ -2493,7 +2493,7 @@
               "code": "HUL",
               "givenName": "Nico",
               "familyName": "Hülkenberg",
-              "nationality": null
+              "nationality": "DEU"
             },
             "team": {
               "id": "team_D9V5gkPb",
@@ -2529,7 +2529,7 @@
               "code": "LAW",
               "givenName": "Liam",
               "familyName": "Lawson",
-              "nationality": null
+              "nationality": "NZL"
             },
             "team": {
               "id": "team_M2xA0S6V",
@@ -2565,7 +2565,7 @@
               "code": "BOR",
               "givenName": "Gabriel",
               "familyName": "Bortoleto",
-              "nationality": null
+              "nationality": "BRA"
             },
             "team": {
               "id": "team_D9V5gkPb",
@@ -2601,7 +2601,7 @@
               "code": "GAS",
               "givenName": "Pierre",
               "familyName": "Gasly",
-              "nationality": null
+              "nationality": "FRA"
             },
             "team": {
               "id": "team_LJ6hqyXM",
@@ -2637,7 +2637,7 @@
               "code": "SAI",
               "givenName": "Carlos",
               "familyName": "Sainz",
-              "nationality": null
+              "nationality": "ESP"
             },
             "team": {
               "id": "team_IJAI583X",
@@ -2673,7 +2673,7 @@
               "code": "BEA",
               "givenName": "Oliver",
               "familyName": "Bearman",
-              "nationality": null
+              "nationality": "GBR"
             },
             "team": {
               "id": "team_aDYlrycX",
@@ -2709,7 +2709,7 @@
               "code": "OCO",
               "givenName": "Esteban",
               "familyName": "Ocon",
-              "nationality": null
+              "nationality": "FRA"
             },
             "team": {
               "id": "team_aDYlrycX",
@@ -2739,7 +2739,7 @@
               "code": "ALB",
               "givenName": "Alexander",
               "familyName": "Albon",
-              "nationality": null
+              "nationality": "THA"
             },
             "team": {
               "id": "team_IJAI583X",
@@ -2769,7 +2769,7 @@
               "code": "ALO",
               "givenName": "Fernando",
               "familyName": "Alonso",
-              "nationality": null
+              "nationality": "ESP"
             },
             "team": {
               "id": "team_fhnXl3cF",
@@ -2799,7 +2799,7 @@
               "code": "PER",
               "givenName": "Sergio",
               "familyName": "Pérez",
-              "nationality": null
+              "nationality": "MEX"
             },
             "team": {
               "id": "team_nVXl8xvk",
@@ -2829,7 +2829,7 @@
               "code": "STR",
               "givenName": "Lance",
               "familyName": "Stroll",
-              "nationality": null
+              "nationality": "CAN"
             },
             "team": {
               "id": "team_fhnXl3cF",
@@ -2859,7 +2859,7 @@
               "code": "BOT",
               "givenName": "Valtteri",
               "familyName": "Bottas",
-              "nationality": null
+              "nationality": "FIN"
             },
             "team": {
               "id": "team_nVXl8xvk",
@@ -2896,7 +2896,7 @@
               "code": "ANT",
               "givenName": "Andrea Kimi",
               "familyName": "Antonelli",
-              "nationality": null
+              "nationality": "ITA"
             },
             "team": {
               "id": "team_tdiMmtQx",
@@ -2931,7 +2931,7 @@
               "code": "HAM",
               "givenName": "Lewis",
               "familyName": "Hamilton",
-              "nationality": null
+              "nationality": "GBR"
             },
             "team": {
               "id": "team_LjEBz7Xq",
@@ -2966,7 +2966,7 @@
               "code": "VER",
               "givenName": "Max",
               "familyName": "Verstappen",
-              "nationality": null
+              "nationality": "NLD"
             },
             "team": {
               "id": "team_SYB8m2Vp",
@@ -3001,7 +3001,7 @@
               "code": "LEC",
               "givenName": "Charles",
               "familyName": "Leclerc",
-              "nationality": null
+              "nationality": "MCO"
             },
             "team": {
               "id": "team_LjEBz7Xq",
@@ -3036,7 +3036,7 @@
               "code": "HAD",
               "givenName": "Isack",
               "familyName": "Hadjar",
-              "nationality": null
+              "nationality": "FRA"
             },
             "team": {
               "id": "team_SYB8m2Vp",
@@ -3071,7 +3071,7 @@
               "code": "COL",
               "givenName": "Franco",
               "familyName": "Colapinto",
-              "nationality": null
+              "nationality": "ARG"
             },
             "team": {
               "id": "team_LJ6hqyXM",
@@ -3106,7 +3106,7 @@
               "code": "LAW",
               "givenName": "Liam",
               "familyName": "Lawson",
-              "nationality": null
+              "nationality": "NZL"
             },
             "team": {
               "id": "team_M2xA0S6V",
@@ -3141,7 +3141,7 @@
               "code": "GAS",
               "givenName": "Pierre",
               "familyName": "Gasly",
-              "nationality": null
+              "nationality": "FRA"
             },
             "team": {
               "id": "team_LJ6hqyXM",
@@ -3176,7 +3176,7 @@
               "code": "SAI",
               "givenName": "Carlos",
               "familyName": "Sainz",
-              "nationality": null
+              "nationality": "ESP"
             },
             "team": {
               "id": "team_IJAI583X",
@@ -3211,7 +3211,7 @@
               "code": "BEA",
               "givenName": "Oliver",
               "familyName": "Bearman",
-              "nationality": null
+              "nationality": "GBR"
             },
             "team": {
               "id": "team_aDYlrycX",
@@ -3246,7 +3246,7 @@
               "code": "PIA",
               "givenName": "Oscar",
               "familyName": "Piastri",
-              "nationality": null
+              "nationality": "AUS"
             },
             "team": {
               "id": "team_jJ6cuwXz",
@@ -3281,7 +3281,7 @@
               "code": "HUL",
               "givenName": "Nico",
               "familyName": "Hülkenberg",
-              "nationality": null
+              "nationality": "DEU"
             },
             "team": {
               "id": "team_D9V5gkPb",
@@ -3316,7 +3316,7 @@
               "code": "BOR",
               "givenName": "Gabriel",
               "familyName": "Bortoleto",
-              "nationality": null
+              "nationality": "BRA"
             },
             "team": {
               "id": "team_D9V5gkPb",
@@ -3351,7 +3351,7 @@
               "code": "OCO",
               "givenName": "Esteban",
               "familyName": "Ocon",
-              "nationality": null
+              "nationality": "FRA"
             },
             "team": {
               "id": "team_aDYlrycX",
@@ -3386,7 +3386,7 @@
               "code": "STR",
               "givenName": "Lance",
               "familyName": "Stroll",
-              "nationality": null
+              "nationality": "CAN"
             },
             "team": {
               "id": "team_fhnXl3cF",
@@ -3421,7 +3421,7 @@
               "code": "BOT",
               "givenName": "Valtteri",
               "familyName": "Bottas",
-              "nationality": null
+              "nationality": "FIN"
             },
             "team": {
               "id": "team_nVXl8xvk",
@@ -3456,7 +3456,7 @@
               "code": "PER",
               "givenName": "Sergio",
               "familyName": "Pérez",
-              "nationality": null
+              "nationality": "MEX"
             },
             "team": {
               "id": "team_nVXl8xvk",
@@ -3491,7 +3491,7 @@
               "code": "NOR",
               "givenName": "Lando",
               "familyName": "Norris",
-              "nationality": null
+              "nationality": "GBR"
             },
             "team": {
               "id": "team_jJ6cuwXz",
@@ -3526,7 +3526,7 @@
               "code": "RUS",
               "givenName": "George",
               "familyName": "Russell",
-              "nationality": null
+              "nationality": "GBR"
             },
             "team": {
               "id": "team_tdiMmtQx",
@@ -3561,7 +3561,7 @@
               "code": "ALO",
               "givenName": "Fernando",
               "familyName": "Alonso",
-              "nationality": null
+              "nationality": "ESP"
             },
             "team": {
               "id": "team_fhnXl3cF",
@@ -3596,7 +3596,7 @@
               "code": "ALB",
               "givenName": "Alexander",
               "familyName": "Albon",
-              "nationality": null
+              "nationality": "THA"
             },
             "team": {
               "id": "team_IJAI583X",
@@ -3631,7 +3631,7 @@
               "code": "LIN",
               "givenName": "Arvid",
               "familyName": "Lindblad",
-              "nationality": null
+              "nationality": "GBR"
             },
             "team": {
               "id": "team_M2xA0S6V",
