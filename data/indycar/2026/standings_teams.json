@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-08-28T18:51:49.373877Z",
+  "lastSuccessfulUpdate": "2026-08-31T01:39:26.365162Z",
   "source": {
     "name": "derived-from-official-indycar-driver-standings",
     "url": "https://www.indycar.com/standings/"
@@ -8,7 +8,7 @@
   "data": [
     {
       "position": 1,
-      "points": 1141.0,
+      "points": 1320.0,
       "wins": 0,
       "id": "team-penske",
       "name": "Team Penske",
@@ -17,16 +17,7 @@
     },
     {
       "position": 2,
-      "points": 1125.0,
-      "wins": 0,
-      "id": "chip-ganassi-racing",
-      "name": "Chip Ganassi Racing",
-      "color": "#0B5BA7",
-      "nationality": null
-    },
-    {
-      "position": 3,
-      "points": 1070.0,
+      "points": 1268.0,
       "wins": 0,
       "id": "arrow-mclaren",
       "name": "Arrow McLaren",
@@ -34,17 +25,17 @@
       "nationality": null
     },
     {
-      "position": 4,
-      "points": 689.0,
+      "position": 3,
+      "points": 1232.0,
       "wins": 0,
-      "id": "andretti-global",
-      "name": "Andretti Global",
-      "color": "#E31B23",
+      "id": "chip-ganassi-racing",
+      "name": "Chip Ganassi Racing",
+      "color": "#0B5BA7",
       "nationality": null
     },
     {
-      "position": 5,
-      "points": 678.0,
+      "position": 4,
+      "points": 767.0,
       "wins": 0,
       "id": "rahal-letterman-lanigan-racing",
       "name": "Rahal Letterman Lanigan Racing",
@@ -52,8 +43,17 @@
       "nationality": null
     },
     {
+      "position": 5,
+      "points": 758.0,
+      "wins": 0,
+      "id": "andretti-global",
+      "name": "Andretti Global",
+      "color": "#E31B23",
+      "nationality": null
+    },
+    {
       "position": 6,
-      "points": 617.0,
+      "points": 677.0,
       "wins": 0,
       "id": "meyer-shank-w-curb-agajanian",
       "name": "Meyer Shank w/ Curb-Agajanian",
@@ -62,16 +62,7 @@
     },
     {
       "position": 7,
-      "points": 462.0,
-      "wins": 0,
-      "id": "andretti-global-w-curb-agajanian",
-      "name": "Andretti Global w/ Curb-Agajanian",
-      "color": "#E31B23",
-      "nationality": null
-    },
-    {
-      "position": 8,
-      "points": 457.0,
+      "points": 539.0,
       "wins": 0,
       "id": "juncos-hollinger-racing",
       "name": "Juncos Hollinger Racing",
@@ -79,17 +70,8 @@
       "nationality": null
     },
     {
-      "position": 9,
-      "points": 433.0,
-      "wins": 0,
-      "id": "dale-coyne-racing",
-      "name": "Dale Coyne Racing",
-      "color": "#222222",
-      "nationality": null
-    },
-    {
-      "position": 10,
-      "points": 421.0,
+      "position": 8,
+      "points": 512.0,
       "wins": 0,
       "id": "ecr",
       "name": "ECR",
@@ -97,8 +79,26 @@
       "nationality": null
     },
     {
+      "position": 9,
+      "points": 505.0,
+      "wins": 0,
+      "id": "andretti-global-w-curb-agajanian",
+      "name": "Andretti Global w/ Curb-Agajanian",
+      "color": "#E31B23",
+      "nationality": null
+    },
+    {
+      "position": 10,
+      "points": 470.0,
+      "wins": 0,
+      "id": "dale-coyne-racing",
+      "name": "Dale Coyne Racing",
+      "color": "#222222",
+      "nationality": null
+    },
+    {
       "position": 11,
-      "points": 414.0,
+      "points": 455.0,
       "wins": 0,
       "id": "a-j-foyt-enterprises",
       "name": "A.J. Foyt Enterprises",

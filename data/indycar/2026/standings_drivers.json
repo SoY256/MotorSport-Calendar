@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-08-28T18:51:49.373877Z",
+  "lastSuccessfulUpdate": "2026-08-31T01:39:26.365162Z",
   "source": {
     "name": "official-indycar",
     "url": "https://www.indycar.com/api/results/YearPointSummary?year=2026&id=b856a4f1-e85c-4fac-8c36-fd58d962227a"
@@ -8,7 +8,7 @@
   "data": [
     {
       "position": 1,
-      "points": 553,
+      "points": 607,
       "wins": 6,
       "id": "alex-palou",
       "code": "",
@@ -28,27 +28,7 @@
     },
     {
       "position": 2,
-      "points": 462,
-      "wins": 2,
-      "id": "kyle-kirkwood",
-      "code": "",
-      "givenName": "Kyle",
-      "familyName": "Kirkwood",
-      "nationality": "USA",
-      "teamIds": [
-        "andretti-global-w-curb-agajanian"
-      ],
-      "teamNames": [
-        "Andretti Global w/ Curb-Agajanian"
-      ],
-      "teamColors": [
-        "#E31B23"
-      ],
-      "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/KyleKirkwood.png"
-    },
-    {
-      "position": 3,
-      "points": 443,
+      "points": 507,
       "wins": 2,
       "id": "christian-lundgaard",
       "code": "",
@@ -67,8 +47,47 @@
       "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/ChristianLundgaard.png"
     },
     {
+      "position": 3,
+      "points": 505,
+      "wins": 2,
+      "id": "kyle-kirkwood",
+      "code": "",
+      "givenName": "Kyle",
+      "familyName": "Kirkwood",
+      "nationality": "USA",
+      "teamIds": [
+        "andretti-global-w-curb-agajanian"
+      ],
+      "teamNames": [
+        "Andretti Global w/ Curb-Agajanian"
+      ],
+      "teamColors": [
+        "#E31B23"
+      ],
+      "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/KyleKirkwood.png"
+    },
+    {
       "position": 4,
-      "points": 411,
+      "points": 503,
+      "wins": 3,
+      "id": "pato-o-ward",
+      "code": "",
+      "givenName": "Pato",
+      "familyName": "O'Ward",
+      "nationality": "MEX",
+      "teamIds": [
+        "arrow-mclaren"
+      ],
+      "teamNames": [
+        "Arrow McLaren"
+      ],
+      "teamColors": [
+        "#FF6C0C"
+      ]
+    },
+    {
+      "position": 5,
+      "points": 484,
       "wins": 0,
       "id": "david-malukas",
       "code": "",
@@ -87,87 +106,8 @@
       "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/DavidMalukas.png"
     },
     {
-      "position": 5,
-      "points": 399,
-      "wins": 1,
-      "id": "pato-o-ward",
-      "code": "",
-      "givenName": "Pato",
-      "familyName": "O'Ward",
-      "nationality": "MEX",
-      "teamIds": [
-        "arrow-mclaren"
-      ],
-      "teamNames": [
-        "Arrow McLaren"
-      ],
-      "teamColors": [
-        "#FF6C0C"
-      ]
-    },
-    {
       "position": 6,
-      "points": 376,
-      "wins": 2,
-      "id": "josef-newgarden",
-      "code": "",
-      "givenName": "Josef",
-      "familyName": "Newgarden",
-      "nationality": "USA",
-      "teamIds": [
-        "team-penske"
-      ],
-      "teamNames": [
-        "Team Penske"
-      ],
-      "teamColors": [
-        "#143B78"
-      ],
-      "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/JosefNewgarden.png"
-    },
-    {
-      "position": 7,
-      "points": 361,
-      "wins": 1,
-      "id": "marcus-ericsson",
-      "code": "",
-      "givenName": "Marcus",
-      "familyName": "Ericsson",
-      "nationality": "SWE",
-      "teamIds": [
-        "andretti-global"
-      ],
-      "teamNames": [
-        "Andretti Global"
-      ],
-      "teamColors": [
-        "#E31B23"
-      ],
-      "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/MarcusEricsson.png"
-    },
-    {
-      "position": 8,
-      "points": 355,
-      "wins": 1,
-      "id": "felix-rosenqvist",
-      "code": "",
-      "givenName": "Felix",
-      "familyName": "Rosenqvist",
-      "nationality": "SWE",
-      "teamIds": [
-        "meyer-shank-w-curb-agajanian"
-      ],
-      "teamNames": [
-        "Meyer Shank w/ Curb-Agajanian"
-      ],
-      "teamColors": [
-        "#E91E63"
-      ],
-      "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/FelixRosenqvist.png"
-    },
-    {
-      "position": 9,
-      "points": 354,
+      "points": 428,
       "wins": 0,
       "id": "scott-mclaughlin",
       "code": "",
@@ -186,14 +126,34 @@
       "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/ScottMcLaughlin.png"
     },
     {
-      "position": 10,
-      "points": 328,
-      "wins": 0,
-      "id": "will-power",
+      "position": 7,
+      "points": 408,
+      "wins": 2,
+      "id": "josef-newgarden",
       "code": "",
-      "givenName": "Will",
-      "familyName": "Power",
-      "nationality": "AUS",
+      "givenName": "Josef",
+      "familyName": "Newgarden",
+      "nationality": "USA",
+      "teamIds": [
+        "team-penske"
+      ],
+      "teamNames": [
+        "Team Penske"
+      ],
+      "teamColors": [
+        "#143B78"
+      ],
+      "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/JosefNewgarden.png"
+    },
+    {
+      "position": 8,
+      "points": 407,
+      "wins": 1,
+      "id": "marcus-ericsson",
+      "code": "",
+      "givenName": "Marcus",
+      "familyName": "Ericsson",
+      "nationality": "SWE",
       "teamIds": [
         "andretti-global"
       ],
@@ -203,11 +163,31 @@
       "teamColors": [
         "#E31B23"
       ],
-      "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/WillPower.png"
+      "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/MarcusEricsson.png"
     },
     {
-      "position": 11,
-      "points": 302,
+      "position": 9,
+      "points": 379,
+      "wins": 1,
+      "id": "felix-rosenqvist",
+      "code": "",
+      "givenName": "Felix",
+      "familyName": "Rosenqvist",
+      "nationality": "SWE",
+      "teamIds": [
+        "meyer-shank-w-curb-agajanian"
+      ],
+      "teamNames": [
+        "Meyer Shank w/ Curb-Agajanian"
+      ],
+      "teamColors": [
+        "#E91E63"
+      ],
+      "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/FelixRosenqvist.png"
+    },
+    {
+      "position": 10,
+      "points": 364,
       "wins": 0,
       "id": "rinus-veekay",
       "code": "",
@@ -226,8 +206,28 @@
       "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/RinusVeeKay.png"
     },
     {
+      "position": 11,
+      "points": 351,
+      "wins": 0,
+      "id": "will-power",
+      "code": "",
+      "givenName": "Will",
+      "familyName": "Power",
+      "nationality": "AUS",
+      "teamIds": [
+        "andretti-global"
+      ],
+      "teamNames": [
+        "Andretti Global"
+      ],
+      "teamColors": [
+        "#E31B23"
+      ],
+      "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/WillPower.png"
+    },
+    {
       "position": 12,
-      "points": 290,
+      "points": 318,
       "wins": 0,
       "id": "scott-dixon",
       "code": "",
@@ -247,7 +247,7 @@
     },
     {
       "position": 13,
-      "points": 282,
+      "points": 307,
       "wins": 0,
       "id": "kyffin-simpson",
       "code": "",
@@ -267,27 +267,7 @@
     },
     {
       "position": 14,
-      "points": 276,
-      "wins": 0,
-      "id": "graham-rahal",
-      "code": "",
-      "givenName": "Graham",
-      "familyName": "Rahal",
-      "nationality": "USA",
-      "teamIds": [
-        "rahal-letterman-lanigan-racing"
-      ],
-      "teamNames": [
-        "Rahal Letterman Lanigan Racing"
-      ],
-      "teamColors": [
-        "#1F4E79"
-      ],
-      "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/GrahamRahal.png"
-    },
-    {
-      "position": 15,
-      "points": 257,
+      "points": 293,
       "wins": 0,
       "id": "marcus-armstrong",
       "code": "",
@@ -306,8 +286,28 @@
       "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/MarcusArmstrong.png"
     },
     {
+      "position": 15,
+      "points": 291,
+      "wins": 0,
+      "id": "graham-rahal",
+      "code": "",
+      "givenName": "Graham",
+      "familyName": "Rahal",
+      "nationality": "USA",
+      "teamIds": [
+        "rahal-letterman-lanigan-racing"
+      ],
+      "teamNames": [
+        "Rahal Letterman Lanigan Racing"
+      ],
+      "teamColors": [
+        "#1F4E79"
+      ],
+      "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/GrahamRahal.png"
+    },
+    {
       "position": 16,
-      "points": 236,
+      "points": 271,
       "wins": 0,
       "id": "alexander-rossi",
       "code": "",
@@ -327,7 +327,7 @@
     },
     {
       "position": 17,
-      "points": 234,
+      "points": 262,
       "wins": 0,
       "id": "santino-ferrucci",
       "code": "",
@@ -347,27 +347,7 @@
     },
     {
       "position": 18,
-      "points": 229,
-      "wins": 0,
-      "id": "romain-grosjean",
-      "code": "",
-      "givenName": "Romain",
-      "familyName": "Grosjean",
-      "nationality": "FRA",
-      "teamIds": [
-        "dale-coyne-racing"
-      ],
-      "teamNames": [
-        "Dale Coyne Racing"
-      ],
-      "teamColors": [
-        "#222222"
-      ],
-      "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/RomainGrosjean.png"
-    },
-    {
-      "position": 19,
-      "points": 223,
+      "points": 253,
       "wins": 0,
       "id": "nolan-siegel",
       "code": "",
@@ -386,8 +366,8 @@
       "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/NolanSiegel.png"
     },
     {
-      "position": 20,
-      "points": 212,
+      "position": 19,
+      "points": 251,
       "wins": 0,
       "id": "louis-foster",
       "code": "",
@@ -406,14 +386,14 @@
       "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/LouisFoster.png"
     },
     {
-      "position": 21,
-      "points": 204,
+      "position": 20,
+      "points": 247,
       "wins": 0,
-      "id": "dennis-hauger",
+      "id": "romain-grosjean",
       "code": "",
-      "givenName": "Dennis",
-      "familyName": "Hauger",
-      "nationality": "NOR",
+      "givenName": "Romain",
+      "familyName": "Grosjean",
+      "nationality": "FRA",
       "teamIds": [
         "dale-coyne-racing"
       ],
@@ -423,11 +403,11 @@
       "teamColors": [
         "#222222"
       ],
-      "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/DennisHauger.png"
+      "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/RomainGrosjean.png"
     },
     {
-      "position": 22,
-      "points": 180,
+      "position": 21,
+      "points": 236,
       "wins": 0,
       "id": "christian-rasmussen",
       "code": "",
@@ -446,28 +426,28 @@
       "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/ChristianRasmussen.png"
     },
     {
-      "position": 23,
-      "points": 180,
+      "position": 22,
+      "points": 223,
       "wins": 0,
-      "id": "caio-collet",
+      "id": "dennis-hauger",
       "code": "",
-      "givenName": "Caio",
-      "familyName": "Collet",
-      "nationality": "BRA",
+      "givenName": "Dennis",
+      "familyName": "Hauger",
+      "nationality": "NOR",
       "teamIds": [
-        "a-j-foyt-enterprises"
+        "dale-coyne-racing"
       ],
       "teamNames": [
-        "A.J. Foyt Enterprises"
+        "Dale Coyne Racing"
       ],
       "teamColors": [
-        "#D71920"
+        "#222222"
       ],
-      "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/CaioCollet.png"
+      "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/DennisHauger.png"
     },
     {
-      "position": 24,
-      "points": 170,
+      "position": 23,
+      "points": 205,
       "wins": 0,
       "id": "mick-schumacher",
       "code": "",
@@ -486,8 +466,28 @@
       "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/MickSchumacher.png"
     },
     {
+      "position": 24,
+      "points": 193,
+      "wins": 0,
+      "id": "caio-collet",
+      "code": "",
+      "givenName": "Caio",
+      "familyName": "Collet",
+      "nationality": "BRA",
+      "teamIds": [
+        "a-j-foyt-enterprises"
+      ],
+      "teamNames": [
+        "A.J. Foyt Enterprises"
+      ],
+      "teamColors": [
+        "#D71920"
+      ],
+      "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/CaioCollet.png"
+    },
+    {
       "position": 25,
-      "points": 155,
+      "points": 175,
       "wins": 0,
       "id": "sting-ray-robb",
       "code": "",
