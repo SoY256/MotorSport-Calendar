@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-05T17:35:25.222242Z",
+  "lastSuccessfulUpdate": "2026-09-05T19:26:42.962202Z",
   "source": {
     "name": "official-formula-series",
     "url": "https://www.fiaformula3.com/en/racing/2026/monza"
@@ -270,29 +270,6 @@
             "position": 12,
             "positionText": "12",
             "driver": {
-              "id": "james-wharton",
-              "code": "WHA",
-              "givenName": "James",
-              "familyName": "Wharton",
-              "nationality": "Australian"
-            },
-            "team": {
-              "id": "prema-racing",
-              "name": "PREMA Racing",
-              "color": "#f00000"
-            },
-            "carNumber": "21",
-            "time": "+8.924s",
-            "laps": 18,
-            "points": 0,
-            "status": "OK",
-            "classified": true,
-            "components": {}
-          },
-          {
-            "position": 13,
-            "positionText": "13",
-            "driver": {
               "id": "jin-nakamura",
               "code": "NAK",
               "givenName": "Jin",
@@ -313,8 +290,8 @@
             "components": {}
           },
           {
-            "position": 14,
-            "positionText": "14",
+            "position": 13,
+            "positionText": "13",
             "driver": {
               "id": "ugo-ugochukwu",
               "code": "UGO",
@@ -336,8 +313,8 @@
             "components": {}
           },
           {
-            "position": 15,
-            "positionText": "15",
+            "position": 14,
+            "positionText": "14",
             "driver": {
               "id": "fionn-mclaughlin",
               "code": "MCL",
@@ -359,8 +336,8 @@
             "components": {}
           },
           {
-            "position": 16,
-            "positionText": "16",
+            "position": 15,
+            "positionText": "15",
             "driver": {
               "id": "noah-stromsted",
               "code": "STR",
@@ -382,8 +359,8 @@
             "components": {}
           },
           {
-            "position": 17,
-            "positionText": "17",
+            "position": 16,
+            "positionText": "16",
             "driver": {
               "id": "nandhavud-bhirombhakdi",
               "code": "BHI",
@@ -405,8 +382,8 @@
             "components": {}
           },
           {
-            "position": 18,
-            "positionText": "18",
+            "position": 17,
+            "positionText": "17",
             "driver": {
               "id": "jose-garfias",
               "code": "GAR",
@@ -428,8 +405,8 @@
             "components": {}
           },
           {
-            "position": 19,
-            "positionText": "19",
+            "position": 18,
+            "positionText": "18",
             "driver": {
               "id": "christian-ho",
               "code": "CHO",
@@ -451,31 +428,8 @@
             "components": {}
           },
           {
-            "position": 20,
-            "positionText": "20",
-            "driver": {
-              "id": "ricardo-escotto",
-              "code": "ESC",
-              "givenName": "Ricardo",
-              "familyName": "Escotto",
-              "nationality": null
-            },
-            "team": {
-              "id": "aix-racing",
-              "name": "AIX Racing",
-              "color": "#64f00f"
-            },
-            "carNumber": "26",
-            "time": "+14.194s",
-            "laps": 18,
-            "points": 0,
-            "status": "OK",
-            "classified": true,
-            "components": {}
-          },
-          {
-            "position": 21,
-            "positionText": "21",
+            "position": 19,
+            "positionText": "19",
             "driver": {
               "id": "alex-powell",
               "code": "POW",
@@ -497,8 +451,8 @@
             "components": {}
           },
           {
-            "position": 22,
-            "positionText": "22",
+            "position": 20,
+            "positionText": "20",
             "driver": {
               "id": "matteo-de-palo",
               "code": "DEP",
@@ -513,6 +467,52 @@
             },
             "carNumber": "6",
             "time": "+15.974s",
+            "laps": 18,
+            "points": 0,
+            "status": "OK",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 21,
+            "positionText": "21",
+            "driver": {
+              "id": "james-wharton",
+              "code": "WHA",
+              "givenName": "James",
+              "familyName": "Wharton",
+              "nationality": "Australian"
+            },
+            "team": {
+              "id": "prema-racing",
+              "name": "PREMA Racing",
+              "color": "#f00000"
+            },
+            "carNumber": "21",
+            "time": "+18.924s",
+            "laps": 18,
+            "points": 0,
+            "status": "OK",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 22,
+            "positionText": "22",
+            "driver": {
+              "id": "ricardo-escotto",
+              "code": "ESC",
+              "givenName": "Ricardo",
+              "familyName": "Escotto",
+              "nationality": null
+            },
+            "team": {
+              "id": "aix-racing",
+              "name": "AIX Racing",
+              "color": "#64f00f"
+            },
+            "carNumber": "26",
+            "time": "+24.194s",
             "laps": 18,
             "points": 0,
             "status": "OK",
@@ -535,7 +535,7 @@
               "color": "#c3a752"
             },
             "carNumber": "18",
-            "time": "+19.590s",
+            "time": "+29.590s",
             "laps": 18,
             "points": 0,
             "status": "OK",

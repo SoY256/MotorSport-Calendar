@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-05T17:35:25.222242Z",
+  "lastSuccessfulUpdate": "2026-09-05T19:26:42.962202Z",
   "source": {
     "name": "official-formula-series",
     "url": "https://www.fiaformula2.com/en/standings/2026/drivers"
@@ -8,7 +8,7 @@
   "data": [
     {
       "position": 1,
-      "points": 167,
+      "points": 171,
       "wins": 0,
       "id": "nikola-tsolov",
       "code": "TSO",
@@ -50,7 +50,7 @@
     },
     {
       "position": 4,
-      "points": 108,
+      "points": 110,
       "wins": 0,
       "id": "alexander-dunne",
       "code": "DUN",
@@ -64,7 +64,7 @@
     },
     {
       "position": 5,
-      "points": 94,
+      "points": 99,
       "wins": 0,
       "id": "noel-leon",
       "code": "LEO",
@@ -106,7 +106,7 @@
     },
     {
       "position": 8,
-      "points": 65,
+      "points": 66,
       "wins": 0,
       "id": "laurens-van-hoepen",
       "code": "HOE",
@@ -120,7 +120,7 @@
     },
     {
       "position": 9,
-      "points": 59,
+      "points": 62,
       "wins": 0,
       "id": "martinius-stenshorne",
       "code": "STE",
@@ -148,7 +148,7 @@
     },
     {
       "position": 11,
-      "points": 42,
+      "points": 53,
       "wins": 0,
       "id": "joshua-durksen",
       "code": "DUR",
@@ -176,6 +176,20 @@
     },
     {
       "position": 13,
+      "points": 35,
+      "wins": 0,
+      "id": "oliver-goethe",
+      "code": "GOE",
+      "givenName": "Oliver",
+      "familyName": "Goethe",
+      "nationality": "German",
+      "teamIds": [
+        "mp-motorsport"
+      ],
+      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/mpmotorsport/oligoe01/2026mpmotorsportoligoe01right.webp"
+    },
+    {
+      "position": 14,
       "points": 34,
       "wins": 0,
       "id": "ritomo-miyata",
@@ -187,20 +201,6 @@
         "hitech"
       ],
       "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/hitech/ritmiy01/2026hitechritmiy01right.webp"
-    },
-    {
-      "position": 14,
-      "points": 29,
-      "wins": 0,
-      "id": "oliver-goethe",
-      "code": "GOE",
-      "givenName": "Oliver",
-      "familyName": "Goethe",
-      "nationality": "German",
-      "teamIds": [
-        "mp-motorsport"
-      ],
-      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/mpmotorsport/oligoe01/2026mpmotorsportoligoe01right.webp"
     },
     {
       "position": 15,
@@ -220,6 +220,20 @@
       "position": 16,
       "points": 26,
       "wins": 0,
+      "id": "john-bennett",
+      "code": "BEN",
+      "givenName": "John",
+      "familyName": "Bennett",
+      "nationality": null,
+      "teamIds": [
+        "trident"
+      ],
+      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/trident/johben01/2026tridentjohben01right.webp"
+    },
+    {
+      "position": 17,
+      "points": 26,
+      "wins": 0,
       "id": "colton-herta",
       "code": "HER",
       "givenName": "Colton",
@@ -231,7 +245,7 @@
       "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/hitech/colher01/2026hitechcolher01right.webp"
     },
     {
-      "position": 17,
+      "position": 18,
       "points": 24,
       "wins": 0,
       "id": "roman-bilinski",
@@ -243,20 +257,6 @@
         "dams-lucas-oil"
       ],
       "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/damslucasoil/rombil01/2026damslucasoilrombil01right.webp"
-    },
-    {
-      "position": 18,
-      "points": 18,
-      "wins": 0,
-      "id": "john-bennett",
-      "code": "BEN",
-      "givenName": "John",
-      "familyName": "Bennett",
-      "nationality": null,
-      "teamIds": [
-        "trident"
-      ],
-      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/trident/johben01/2026tridentjohben01right.webp"
     },
     {
       "position": 19,
