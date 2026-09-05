@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-05T12:47:00.087598Z",
+  "lastSuccessfulUpdate": "2026-09-05T15:37:07.377938Z",
   "source": {
     "name": "official-formula-series",
     "url": "https://www.fiaformula3.com/en/standings/2026/teams"
@@ -8,7 +8,7 @@
   "data": [
     {
       "position": 1,
-      "points": 269,
+      "points": 273,
       "wins": 0,
       "id": "campos-racing",
       "name": "Campos Racing",
@@ -17,7 +17,7 @@
     },
     {
       "position": 2,
-      "points": 196,
+      "points": 205,
       "wins": 0,
       "id": "trident",
       "name": "TRIDENT",
@@ -26,7 +26,7 @@
     },
     {
       "position": 3,
-      "points": 132,
+      "points": 144,
       "wins": 0,
       "id": "van-amersfoort-racing",
       "name": "Van Amersfoort Racing",
@@ -35,6 +35,15 @@
     },
     {
       "position": 4,
+      "points": 130,
+      "wins": 0,
+      "id": "art-grand-prix",
+      "name": "ART Grand Prix",
+      "nationality": null,
+      "color": "#af2f22"
+    },
+    {
+      "position": 5,
       "points": 121,
       "wins": 0,
       "id": "rodin-motorsport",
@@ -43,17 +52,8 @@
       "color": "#c3a752"
     },
     {
-      "position": 5,
-      "points": 119,
-      "wins": 0,
-      "id": "art-grand-prix",
-      "name": "ART Grand Prix",
-      "nationality": null,
-      "color": "#af2f22"
-    },
-    {
       "position": 6,
-      "points": 102,
+      "points": 113,
       "wins": 0,
       "id": "mp-motorsport",
       "name": "MP Motorsport",
@@ -80,21 +80,21 @@
     },
     {
       "position": 9,
-      "points": 26,
-      "wins": 0,
-      "id": "dams-lucas-oil",
-      "name": "DAMS Lucas Oil",
-      "nationality": null,
-      "color": "#00b4ff"
-    },
-    {
-      "position": 10,
-      "points": 23,
+      "points": 30,
       "wins": 0,
       "id": "aix-racing",
       "name": "AIX Racing",
       "nationality": null,
       "color": "#64f00f"
+    },
+    {
+      "position": 10,
+      "points": 28,
+      "wins": 0,
+      "id": "dams-lucas-oil",
+      "name": "DAMS Lucas Oil",
+      "nationality": null,
+      "color": "#00b4ff"
     }
   ]
 }
