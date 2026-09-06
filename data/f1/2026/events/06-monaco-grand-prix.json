@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-06T18:18:06.140134Z",
+  "lastSuccessfulUpdate": "2026-09-06T20:30:11.600240Z",
   "source": {
     "name": "jolpica-f1",
     "url": "https://api.jolpi.ca/f1/alpha/schedules/2026/"
@@ -2448,41 +2448,6 @@
             "position": 3,
             "positionText": "3",
             "driver": {
-              "id": "driver_q7WdJenu",
-              "code": "GAS",
-              "givenName": "Pierre",
-              "familyName": "Gasly",
-              "nationality": "FRA"
-            },
-            "team": {
-              "id": "team_LJ6hqyXM",
-              "name": "Alpine F1 Team",
-              "color": "#00A1E8"
-            },
-            "carNumber": 10,
-            "time": "2:23:51.612",
-            "laps": 78,
-            "points": 15.0,
-            "status": "FINISHED",
-            "classified": true,
-            "components": {
-              "GRID": {
-                "key": "GRID",
-                "name": "Grid Position",
-                "position": 9
-              },
-              "FLAP": {
-                "key": "FLAP",
-                "name": "Fastest Lap",
-                "position": 3,
-                "time": "1:15.497"
-              }
-            }
-          },
-          {
-            "position": 4,
-            "positionText": "4",
-            "driver": {
               "id": "driver_ZiErQgDm",
               "code": "HAD",
               "givenName": "Isack",
@@ -2497,7 +2462,7 @@
             "carNumber": 6,
             "time": "2:23:54.637",
             "laps": 78,
-            "points": 12.0,
+            "points": 15.0,
             "status": "FINISHED",
             "classified": true,
             "components": {
@@ -2515,8 +2480,8 @@
             }
           },
           {
-            "position": 5,
-            "positionText": "5",
+            "position": 4,
+            "positionText": "4",
             "driver": {
               "id": "driver_1V17qcph",
               "code": "PIA",
@@ -2532,7 +2497,7 @@
             "carNumber": 81,
             "time": "2:23:55.504",
             "laps": 78,
-            "points": 10.0,
+            "points": 12.0,
             "status": "FINISHED",
             "classified": true,
             "components": {
@@ -2550,8 +2515,8 @@
             }
           },
           {
-            "position": 6,
-            "positionText": "6",
+            "position": 5,
+            "positionText": "5",
             "driver": {
               "id": "driver_uLDLxCqO",
               "code": "LAW",
@@ -2567,7 +2532,7 @@
             "carNumber": 30,
             "time": "2:23:57.796",
             "laps": 78,
-            "points": 8.0,
+            "points": 10.0,
             "status": "FINISHED",
             "classified": true,
             "components": {
@@ -2585,8 +2550,8 @@
             }
           },
           {
-            "position": 7,
-            "positionText": "7",
+            "position": 6,
+            "positionText": "6",
             "driver": {
               "id": "driver_DdBdmX6N",
               "code": "LIN",
@@ -2602,7 +2567,7 @@
             "carNumber": 41,
             "time": "2:24:00.253",
             "laps": 78,
-            "points": 6.0,
+            "points": 8.0,
             "status": "FINISHED",
             "classified": true,
             "components": {
@@ -2616,6 +2581,41 @@
                 "name": "Fastest Lap",
                 "position": 8,
                 "time": "1:15.908"
+              }
+            }
+          },
+          {
+            "position": 7,
+            "positionText": "7",
+            "driver": {
+              "id": "driver_q7WdJenu",
+              "code": "GAS",
+              "givenName": "Pierre",
+              "familyName": "Gasly",
+              "nationality": "FRA"
+            },
+            "team": {
+              "id": "team_LJ6hqyXM",
+              "name": "Alpine F1 Team",
+              "color": "#00A1E8"
+            },
+            "carNumber": 10,
+            "time": "2:24:01.612",
+            "laps": 78,
+            "points": 6.0,
+            "status": "FINISHED",
+            "classified": true,
+            "components": {
+              "GRID": {
+                "key": "GRID",
+                "name": "Grid Position",
+                "position": 9
+              },
+              "FLAP": {
+                "key": "FLAP",
+                "name": "Fastest Lap",
+                "position": 3,
+                "time": "1:15.497"
               }
             }
           },
