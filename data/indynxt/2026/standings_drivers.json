@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-04T19:17:01.279832Z",
+  "lastSuccessfulUpdate": "2026-09-06T18:19:59.276350Z",
   "source": {
     "name": "official-indynxt",
     "url": "https://www.indynxt.com/api/results/YearPointSummary?year=2026&id=09341e09-3216-4f89-a45f-db697d72ee13"
@@ -8,7 +8,7 @@
   "data": [
     {
       "position": 1,
-      "points": 505,
+      "points": 585,
       "wins": 2,
       "id": "nikita-johnson",
       "code": "",
@@ -28,7 +28,7 @@
     },
     {
       "position": 2,
-      "points": 502,
+      "points": 556,
       "wins": 4,
       "id": "enzo-fittipaldi",
       "code": "",
@@ -48,8 +48,8 @@
     },
     {
       "position": 3,
-      "points": 476,
-      "wins": 1,
+      "points": 551,
+      "wins": 2,
       "id": "tymek-kucharczyk",
       "code": "",
       "givenName": "Tymek",
@@ -68,7 +68,7 @@
     },
     {
       "position": 4,
-      "points": 428,
+      "points": 470,
       "wins": 1,
       "id": "max-taylor",
       "code": "",
@@ -88,27 +88,7 @@
     },
     {
       "position": 5,
-      "points": 406,
-      "wins": 2,
-      "id": "alessandro-de-tullio",
-      "code": "",
-      "givenName": "Alessandro de",
-      "familyName": "Tullio",
-      "nationality": "USA",
-      "teamIds": [
-        "a-j-foyt-enterprises"
-      ],
-      "teamNames": [
-        "A.J. Foyt Enterprises"
-      ],
-      "teamColors": [
-        "#D71920"
-      ],
-      "imageUrl": "https://indynxt-cdn.azureedge.net/-/media/IndyCar/Drivers/INDY-NXT/FullBody/AlessandroDeTullio.png?vs=1&d=20260216T215811Z"
-    },
-    {
-      "position": 6,
-      "points": 402,
+      "points": 453,
       "wins": 1,
       "id": "lochie-hughes",
       "code": "",
@@ -127,48 +107,28 @@
       "imageUrl": "https://indynxt-cdn.azureedge.net/-/media/IndyCar/Drivers/INDY-NXT/FullBody/LochieHughes.png?vs=1&d=20260310T003329Z"
     },
     {
-      "position": 7,
-      "points": 353,
-      "wins": 1,
-      "id": "myles-rowe",
+      "position": 6,
+      "points": 442,
+      "wins": 2,
+      "id": "alessandro-de-tullio",
       "code": "",
-      "givenName": "Myles",
-      "familyName": "Rowe",
+      "givenName": "Alessandro de",
+      "familyName": "Tullio",
       "nationality": "USA",
       "teamIds": [
-        "abel-motorsports"
+        "a-j-foyt-enterprises"
       ],
       "teamNames": [
-        "Abel Motorsports"
+        "A.J. Foyt Enterprises"
       ],
       "teamColors": [
-        "#111111"
+        "#D71920"
       ],
-      "imageUrl": "https://indynxt-cdn.azureedge.net/-/media/IndyCar/Drivers/INDY-NXT/FullBody/MylesRowe.png?vs=1&d=20260216T220146Z"
+      "imageUrl": "https://indynxt-cdn.azureedge.net/-/media/IndyCar/Drivers/INDY-NXT/FullBody/AlessandroDeTullio.png?vs=1&d=20260216T215811Z"
     },
     {
-      "position": 8,
-      "points": 351,
-      "wins": 0,
-      "id": "jack-beeton",
-      "code": "",
-      "givenName": "Jack",
-      "familyName": "Beeton",
-      "nationality": "AUS",
-      "teamIds": [
-        "hmd-motorsports"
-      ],
-      "teamNames": [
-        "HMD Motorsports"
-      ],
-      "teamColors": [
-        "#202A44"
-      ],
-      "imageUrl": "https://indynxt-cdn.azureedge.net/-/media/IndyCar/Drivers/INDY-NXT/FullBody/JackBeeton.png?vs=1&d=20260216T215834Z"
-    },
-    {
-      "position": 9,
-      "points": 339,
+      "position": 7,
+      "points": 389,
       "wins": 0,
       "id": "jm-correa",
       "code": "",
@@ -187,8 +147,48 @@
       "imageUrl": "https://indynxt-cdn.azureedge.net/-/media/IndyCar/Drivers/INDY-NXT/FullBody/JuanManuelCorrea.png?vs=1&d=20260216T220119Z"
     },
     {
+      "position": 8,
+      "points": 388,
+      "wins": 1,
+      "id": "myles-rowe",
+      "code": "",
+      "givenName": "Myles",
+      "familyName": "Rowe",
+      "nationality": "USA",
+      "teamIds": [
+        "abel-motorsports"
+      ],
+      "teamNames": [
+        "Abel Motorsports"
+      ],
+      "teamColors": [
+        "#111111"
+      ],
+      "imageUrl": "https://indynxt-cdn.azureedge.net/-/media/IndyCar/Drivers/INDY-NXT/FullBody/MylesRowe.png?vs=1&d=20260216T220146Z"
+    },
+    {
+      "position": 9,
+      "points": 382,
+      "wins": 0,
+      "id": "jack-beeton",
+      "code": "",
+      "givenName": "Jack",
+      "familyName": "Beeton",
+      "nationality": "AUS",
+      "teamIds": [
+        "hmd-motorsports"
+      ],
+      "teamNames": [
+        "HMD Motorsports"
+      ],
+      "teamColors": [
+        "#202A44"
+      ],
+      "imageUrl": "https://indynxt-cdn.azureedge.net/-/media/IndyCar/Drivers/INDY-NXT/FullBody/JackBeeton.png?vs=1&d=20260216T215834Z"
+    },
+    {
       "position": 10,
-      "points": 337,
+      "points": 381,
       "wins": 1,
       "id": "max-garcia",
       "code": "",
@@ -208,7 +208,27 @@
     },
     {
       "position": 11,
-      "points": 317,
+      "points": 364,
+      "wins": 1,
+      "id": "josh-pierson",
+      "code": "",
+      "givenName": "Josh",
+      "familyName": "Pierson",
+      "nationality": "USA",
+      "teamIds": [
+        "andretti-global"
+      ],
+      "teamNames": [
+        "Andretti Global"
+      ],
+      "teamColors": [
+        "#E31B23"
+      ],
+      "imageUrl": "https://indynxt-cdn.azureedge.net/-/media/IndyCar/Drivers/INDY-NXT/FullBody/JoshPierson.png?vs=1&d=20260216T220050Z"
+    },
+    {
+      "position": 12,
+      "points": 362,
       "wins": 2,
       "id": "matteo-nannini",
       "code": "",
@@ -227,28 +247,8 @@
       "imageUrl": "https://indynxt-cdn.azureedge.net/-/media/IndyCar/Drivers/INDY-NXT/FullBody/MatteoNannini.png?vs=1&d=20260528T151622Z"
     },
     {
-      "position": 12,
-      "points": 303,
-      "wins": 0,
-      "id": "josh-pierson",
-      "code": "",
-      "givenName": "Josh",
-      "familyName": "Pierson",
-      "nationality": "USA",
-      "teamIds": [
-        "andretti-global"
-      ],
-      "teamNames": [
-        "Andretti Global"
-      ],
-      "teamColors": [
-        "#E31B23"
-      ],
-      "imageUrl": "https://indynxt-cdn.azureedge.net/-/media/IndyCar/Drivers/INDY-NXT/FullBody/JoshPierson.png?vs=1&d=20260216T220050Z"
-    },
-    {
       "position": 13,
-      "points": 279,
+      "points": 306,
       "wins": 0,
       "id": "seb-murray",
       "code": "",
@@ -268,7 +268,7 @@
     },
     {
       "position": 14,
-      "points": 248,
+      "points": 298,
       "wins": 0,
       "id": "bryce-aron",
       "code": "",
@@ -288,6 +288,26 @@
     },
     {
       "position": 15,
+      "points": 268,
+      "wins": 0,
+      "id": "niels-koolen",
+      "code": "",
+      "givenName": "Niels",
+      "familyName": "Koolen",
+      "nationality": "NLD",
+      "teamIds": [
+        "chip-ganassi-racing"
+      ],
+      "teamNames": [
+        "Chip Ganassi Racing"
+      ],
+      "teamColors": [
+        "#0B5BA7"
+      ],
+      "imageUrl": "https://indynxt-cdn.azureedge.net/-/media/IndyCar/Drivers/INDY-NXT/FullBody/NielsKoolen.png?vs=1&d=20260309T201008Z"
+    },
+    {
+      "position": 16,
       "points": 245,
       "wins": 0,
       "id": "salvador-de-alba",
@@ -307,27 +327,47 @@
       "imageUrl": "https://indynxt-cdn.azureedge.net/-/media/IndyCar/Drivers/INDY-NXT/FullBody/SalvadorDeAlba.png?vs=1&d=20260310T002557Z"
     },
     {
-      "position": 16,
-      "points": 231,
+      "position": 17,
+      "points": 227,
       "wins": 0,
-      "id": "niels-koolen",
+      "id": "nicolas-stati",
       "code": "",
-      "givenName": "Niels",
-      "familyName": "Koolen",
-      "nationality": "NLD",
+      "givenName": "Nicolas",
+      "familyName": "Stati",
+      "nationality": "AUS",
       "teamIds": [
-        "chip-ganassi-racing"
+        "cusick-morgan-motorsports"
       ],
       "teamNames": [
-        "Chip Ganassi Racing"
+        "Cusick Morgan Motorsports"
       ],
       "teamColors": [
-        "#0B5BA7"
+        "#8BC34A"
       ],
-      "imageUrl": "https://indynxt-cdn.azureedge.net/-/media/IndyCar/Drivers/INDY-NXT/FullBody/NielsKoolen.png?vs=1&d=20260309T201008Z"
+      "imageUrl": "https://indynxt-cdn.azureedge.net/-/media/IndyCar/Drivers/INDY-NXT/FullBody/NicolasStati.png?vs=1&d=20260309T205753Z"
     },
     {
-      "position": 17,
+      "position": 18,
+      "points": 222,
+      "wins": 0,
+      "id": "colin-kaminsky",
+      "code": "",
+      "givenName": "Colin",
+      "familyName": "Kaminsky",
+      "nationality": "USA",
+      "teamIds": [
+        "abel-motorsports"
+      ],
+      "teamNames": [
+        "Abel Motorsports"
+      ],
+      "teamColors": [
+        "#111111"
+      ],
+      "imageUrl": "https://indynxt-cdn.azureedge.net/-/media/IndyCar/Drivers/INDY-NXT/FullBody/ColinKaminsky.png?vs=1&d=20260216T215820Z"
+    },
+    {
+      "position": 19,
       "points": 216,
       "wins": 0,
       "id": "jordan-missig",
@@ -347,28 +387,8 @@
       "imageUrl": "https://indynxt-cdn.azureedge.net/-/media/IndyCar/Drivers/INDY-NXT/FullBody/JordanMissig.png?vs=1&d=20260310T004401Z"
     },
     {
-      "position": 18,
-      "points": 199,
-      "wins": 0,
-      "id": "nicolas-stati",
-      "code": "",
-      "givenName": "Nicolas",
-      "familyName": "Stati",
-      "nationality": "AUS",
-      "teamIds": [
-        "cusick-morgan-motorsports"
-      ],
-      "teamNames": [
-        "Cusick Morgan Motorsports"
-      ],
-      "teamColors": [
-        "#8BC34A"
-      ],
-      "imageUrl": "https://indynxt-cdn.azureedge.net/-/media/IndyCar/Drivers/INDY-NXT/FullBody/NicolasStati.png?vs=1&d=20260309T205753Z"
-    },
-    {
-      "position": 19,
-      "points": 191,
+      "position": 20,
+      "points": 214,
       "wins": 0,
       "id": "james-roe",
       "code": "",
@@ -387,28 +407,8 @@
       "imageUrl": "https://indynxt-cdn.azureedge.net/-/media/IndyCar/Drivers/INDY-NXT/FullBody/JamesRoe.png?vs=1&d=20260309T210946Z"
     },
     {
-      "position": 20,
-      "points": 190,
-      "wins": 0,
-      "id": "colin-kaminsky",
-      "code": "",
-      "givenName": "Colin",
-      "familyName": "Kaminsky",
-      "nationality": "USA",
-      "teamIds": [
-        "abel-motorsports"
-      ],
-      "teamNames": [
-        "Abel Motorsports"
-      ],
-      "teamColors": [
-        "#111111"
-      ],
-      "imageUrl": "https://indynxt-cdn.azureedge.net/-/media/IndyCar/Drivers/INDY-NXT/FullBody/ColinKaminsky.png?vs=1&d=20260216T215820Z"
-    },
-    {
       "position": 21,
-      "points": 181,
+      "points": 207,
       "wins": 0,
       "id": "alexander-koreiba",
       "code": "",
@@ -428,27 +428,7 @@
     },
     {
       "position": 22,
-      "points": 163,
-      "wins": 0,
-      "id": "nicholas-monteiro",
-      "code": "",
-      "givenName": "Nicholas",
-      "familyName": "Monteiro",
-      "nationality": "BRA",
-      "teamIds": [
-        "a-j-foyt-enterprises"
-      ],
-      "teamNames": [
-        "A.J. Foyt Enterprises"
-      ],
-      "teamColors": [
-        "#D71920"
-      ],
-      "imageUrl": "https://indynxt-cdn.azureedge.net/-/media/IndyCar/Drivers/INDY-NXT/FullBody/NicolasMonteiro.png?vs=1&d=20260216T215604Z"
-    },
-    {
-      "position": 23,
-      "points": 161,
+      "points": 182,
       "wins": 0,
       "id": "carson-etter",
       "code": "",
@@ -465,6 +445,26 @@
         "#0B5BA7"
       ],
       "imageUrl": "https://indynxt-cdn.azureedge.net/-/media/IndyCar/Drivers/INDY-NXT/FullBody/CarsonEtter.png?vs=1&d=20260309T204747Z"
+    },
+    {
+      "position": 23,
+      "points": 179,
+      "wins": 0,
+      "id": "nicholas-monteiro",
+      "code": "",
+      "givenName": "Nicholas",
+      "familyName": "Monteiro",
+      "nationality": "BRA",
+      "teamIds": [
+        "a-j-foyt-enterprises"
+      ],
+      "teamNames": [
+        "A.J. Foyt Enterprises"
+      ],
+      "teamColors": [
+        "#D71920"
+      ],
+      "imageUrl": "https://indynxt-cdn.azureedge.net/-/media/IndyCar/Drivers/INDY-NXT/FullBody/NicolasMonteiro.png?vs=1&d=20260216T215604Z"
     },
     {
       "position": 24,
@@ -488,7 +488,7 @@
     },
     {
       "position": 25,
-      "points": 52,
+      "points": 101,
       "wins": 0,
       "id": "jacob-abel",
       "code": "",
@@ -508,7 +508,7 @@
     },
     {
       "position": 26,
-      "points": 37,
+      "points": 67,
       "wins": 0,
       "id": "nolan-allaer",
       "code": "",
@@ -528,7 +528,7 @@
     },
     {
       "position": 27,
-      "points": 20,
+      "points": 51,
       "wins": 0,
       "id": "bart-harrison",
       "code": "",
