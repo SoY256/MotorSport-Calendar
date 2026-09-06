@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-06T20:30:11.600240Z",
+  "lastSuccessfulUpdate": "2026-09-06T22:15:42.825634Z",
   "source": {
     "name": "jolpica-f1",
     "url": "https://api.jolpi.ca/ergast/f1/2026/constructorstandings.json"
@@ -8,15 +8,15 @@
   "data": [
     {
       "position": 1,
-      "points": 425.0,
-      "wins": 8,
+      "points": 468.0,
+      "wins": 9,
       "id": "mercedes",
       "name": "Mercedes",
       "nationality": "German"
     },
     {
       "position": 2,
-      "points": 338.0,
+      "points": 346.0,
       "wins": 2,
       "id": "ferrari",
       "name": "Ferrari",
@@ -24,7 +24,7 @@
     },
     {
       "position": 3,
-      "points": 263.0,
+      "points": 287.0,
       "wins": 2,
       "id": "mclaren",
       "name": "McLaren",
@@ -32,7 +32,7 @@
     },
     {
       "position": 4,
-      "points": 186.0,
+      "points": 204.0,
       "wins": 0,
       "id": "red_bull",
       "name": "Red Bull",
@@ -40,7 +40,7 @@
     },
     {
       "position": 5,
-      "points": 66.0,
+      "points": 75.0,
       "wins": 0,
       "id": "rb",
       "name": "RB F1 Team",
@@ -48,7 +48,7 @@
     },
     {
       "position": 6,
-      "points": 63.0,
+      "points": 62.0,
       "wins": 0,
       "id": "alpine",
       "name": "Alpine F1 Team",

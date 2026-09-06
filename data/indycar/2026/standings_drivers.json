@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-04T21:33:28.300421Z",
+  "lastSuccessfulUpdate": "2026-09-06T22:16:45.126954Z",
   "source": {
     "name": "official-indycar",
     "url": "https://www.indycar.com/api/results/YearPointSummary?year=2026&id=b856a4f1-e85c-4fac-8c36-fd58d962227a"
@@ -8,7 +8,7 @@
   "data": [
     {
       "position": 1,
-      "points": 607,
+      "points": 631,
       "wins": 6,
       "id": "alex-palou",
       "code": "",
@@ -28,27 +28,7 @@
     },
     {
       "position": 2,
-      "points": 507,
-      "wins": 2,
-      "id": "christian-lundgaard",
-      "code": "",
-      "givenName": "Christian",
-      "familyName": "Lundgaard",
-      "nationality": "DNK",
-      "teamIds": [
-        "arrow-mclaren"
-      ],
-      "teamNames": [
-        "Arrow McLaren"
-      ],
-      "teamColors": [
-        "#FF6C0C"
-      ],
-      "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/ChristianLundgaard.png"
-    },
-    {
-      "position": 3,
-      "points": 505,
+      "points": 545,
       "wins": 2,
       "id": "kyle-kirkwood",
       "code": "",
@@ -67,8 +47,28 @@
       "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/KyleKirkwood.png"
     },
     {
+      "position": 3,
+      "points": 535,
+      "wins": 2,
+      "id": "christian-lundgaard",
+      "code": "",
+      "givenName": "Christian",
+      "familyName": "Lundgaard",
+      "nationality": "DNK",
+      "teamIds": [
+        "arrow-mclaren"
+      ],
+      "teamNames": [
+        "Arrow McLaren"
+      ],
+      "teamColors": [
+        "#FF6C0C"
+      ],
+      "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/ChristianLundgaard.png"
+    },
+    {
       "position": 4,
-      "points": 503,
+      "points": 522,
       "wins": 3,
       "id": "pato-o-ward",
       "code": "",
@@ -87,7 +87,7 @@
     },
     {
       "position": 5,
-      "points": 484,
+      "points": 514,
       "wins": 0,
       "id": "david-malukas",
       "code": "",
@@ -107,8 +107,8 @@
     },
     {
       "position": 6,
-      "points": 428,
-      "wins": 0,
+      "points": 482,
+      "wins": 1,
       "id": "scott-mclaughlin",
       "code": "",
       "givenName": "Scott",
@@ -127,27 +127,7 @@
     },
     {
       "position": 7,
-      "points": 408,
-      "wins": 2,
-      "id": "josef-newgarden",
-      "code": "",
-      "givenName": "Josef",
-      "familyName": "Newgarden",
-      "nationality": "USA",
-      "teamIds": [
-        "team-penske"
-      ],
-      "teamNames": [
-        "Team Penske"
-      ],
-      "teamColors": [
-        "#143B78"
-      ],
-      "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/JosefNewgarden.png"
-    },
-    {
-      "position": 8,
-      "points": 407,
+      "points": 429,
       "wins": 1,
       "id": "marcus-ericsson",
       "code": "",
@@ -166,8 +146,28 @@
       "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/MarcusEricsson.png"
     },
     {
+      "position": 8,
+      "points": 423,
+      "wins": 2,
+      "id": "josef-newgarden",
+      "code": "",
+      "givenName": "Josef",
+      "familyName": "Newgarden",
+      "nationality": "USA",
+      "teamIds": [
+        "team-penske"
+      ],
+      "teamNames": [
+        "Team Penske"
+      ],
+      "teamColors": [
+        "#143B78"
+      ],
+      "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/JosefNewgarden.png"
+    },
+    {
       "position": 9,
-      "points": 379,
+      "points": 412,
       "wins": 1,
       "id": "felix-rosenqvist",
       "code": "",
@@ -187,7 +187,7 @@
     },
     {
       "position": 10,
-      "points": 364,
+      "points": 378,
       "wins": 0,
       "id": "rinus-veekay",
       "code": "",
@@ -207,7 +207,7 @@
     },
     {
       "position": 11,
-      "points": 351,
+      "points": 368,
       "wins": 0,
       "id": "will-power",
       "code": "",
@@ -227,7 +227,7 @@
     },
     {
       "position": 12,
-      "points": 318,
+      "points": 331,
       "wins": 0,
       "id": "scott-dixon",
       "code": "",
@@ -247,7 +247,7 @@
     },
     {
       "position": 13,
-      "points": 307,
+      "points": 327,
       "wins": 0,
       "id": "kyffin-simpson",
       "code": "",
@@ -267,7 +267,7 @@
     },
     {
       "position": 14,
-      "points": 293,
+      "points": 320,
       "wins": 0,
       "id": "marcus-armstrong",
       "code": "",
@@ -287,27 +287,7 @@
     },
     {
       "position": 15,
-      "points": 291,
-      "wins": 0,
-      "id": "graham-rahal",
-      "code": "",
-      "givenName": "Graham",
-      "familyName": "Rahal",
-      "nationality": "USA",
-      "teamIds": [
-        "rahal-letterman-lanigan-racing"
-      ],
-      "teamNames": [
-        "Rahal Letterman Lanigan Racing"
-      ],
-      "teamColors": [
-        "#1F4E79"
-      ],
-      "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/GrahamRahal.png"
-    },
-    {
-      "position": 16,
-      "points": 271,
+      "points": 307,
       "wins": 0,
       "id": "alexander-rossi",
       "code": "",
@@ -326,8 +306,28 @@
       "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/AlexanderRossi.png"
     },
     {
+      "position": 16,
+      "points": 302,
+      "wins": 0,
+      "id": "graham-rahal",
+      "code": "",
+      "givenName": "Graham",
+      "familyName": "Rahal",
+      "nationality": "USA",
+      "teamIds": [
+        "rahal-letterman-lanigan-racing"
+      ],
+      "teamNames": [
+        "Rahal Letterman Lanigan Racing"
+      ],
+      "teamColors": [
+        "#1F4E79"
+      ],
+      "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/GrahamRahal.png"
+    },
+    {
       "position": 17,
-      "points": 262,
+      "points": 280,
       "wins": 0,
       "id": "santino-ferrucci",
       "code": "",
@@ -347,27 +347,7 @@
     },
     {
       "position": 18,
-      "points": 253,
-      "wins": 0,
-      "id": "nolan-siegel",
-      "code": "",
-      "givenName": "Nolan",
-      "familyName": "Siegel",
-      "nationality": "USA",
-      "teamIds": [
-        "arrow-mclaren"
-      ],
-      "teamNames": [
-        "Arrow McLaren"
-      ],
-      "teamColors": [
-        "#FF6C0C"
-      ],
-      "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/NolanSiegel.png"
-    },
-    {
-      "position": 19,
-      "points": 251,
+      "points": 267,
       "wins": 0,
       "id": "louis-foster",
       "code": "",
@@ -386,8 +366,8 @@
       "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/LouisFoster.png"
     },
     {
-      "position": 20,
-      "points": 247,
+      "position": 19,
+      "points": 259,
       "wins": 0,
       "id": "romain-grosjean",
       "code": "",
@@ -406,8 +386,28 @@
       "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/RomainGrosjean.png"
     },
     {
+      "position": 20,
+      "points": 259,
+      "wins": 0,
+      "id": "nolan-siegel",
+      "code": "",
+      "givenName": "Nolan",
+      "familyName": "Siegel",
+      "nationality": "USA",
+      "teamIds": [
+        "arrow-mclaren"
+      ],
+      "teamNames": [
+        "Arrow McLaren"
+      ],
+      "teamColors": [
+        "#FF6C0C"
+      ],
+      "imageUrl": "https://www.indycar.com/-/media/IndyCar/Drivers/IndyCar-Series/FullBody/NolanSiegel.png"
+    },
+    {
       "position": 21,
-      "points": 236,
+      "points": 245,
       "wins": 0,
       "id": "christian-rasmussen",
       "code": "",
@@ -427,7 +427,7 @@
     },
     {
       "position": 22,
-      "points": 223,
+      "points": 228,
       "wins": 0,
       "id": "dennis-hauger",
       "code": "",
@@ -447,7 +447,7 @@
     },
     {
       "position": 23,
-      "points": 205,
+      "points": 213,
       "wins": 0,
       "id": "mick-schumacher",
       "code": "",
@@ -467,7 +467,7 @@
     },
     {
       "position": 24,
-      "points": 193,
+      "points": 203,
       "wins": 0,
       "id": "caio-collet",
       "code": "",
@@ -487,7 +487,7 @@
     },
     {
       "position": 25,
-      "points": 175,
+      "points": 182,
       "wins": 0,
       "id": "sting-ray-robb",
       "code": "",

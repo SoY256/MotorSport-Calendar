@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-06T20:30:11.600240Z",
+  "lastSuccessfulUpdate": "2026-09-06T22:15:42.825634Z",
   "source": {
     "name": "jolpica-f1",
     "url": "https://api.jolpi.ca/ergast/f1/2026/driverstandings.json"
@@ -8,8 +8,8 @@
   "data": [
     {
       "position": 1,
-      "points": 242.0,
-      "wins": 6,
+      "points": 267.0,
+      "wins": 7,
       "id": "antonelli",
       "code": "ANT",
       "givenName": "Andrea Kimi",
@@ -22,7 +22,7 @@
     },
     {
       "position": 2,
-      "points": 183.0,
+      "points": 201.0,
       "wins": 2,
       "id": "russell",
       "code": "RUS",
@@ -36,7 +36,7 @@
     },
     {
       "position": 3,
-      "points": 183.0,
+      "points": 191.0,
       "wins": 1,
       "id": "hamilton",
       "code": "HAM",
@@ -50,7 +50,7 @@
     },
     {
       "position": 4,
-      "points": 159.0,
+      "points": 171.0,
       "wins": 2,
       "id": "norris",
       "code": "NOR",
@@ -78,7 +78,7 @@
     },
     {
       "position": 6,
-      "points": 112.0,
+      "points": 127.0,
       "wins": 0,
       "id": "max_verstappen",
       "code": "VER",
@@ -92,7 +92,7 @@
     },
     {
       "position": 7,
-      "points": 104.0,
+      "points": 116.0,
       "wins": 0,
       "id": "piastri",
       "code": "PIA",
@@ -106,7 +106,7 @@
     },
     {
       "position": 8,
-      "points": 68.0,
+      "points": 71.0,
       "wins": 0,
       "id": "hadjar",
       "code": "HAD",
@@ -120,7 +120,7 @@
     },
     {
       "position": 9,
-      "points": 49.0,
+      "points": 51.0,
       "wins": 0,
       "id": "lawson",
       "code": "LAW",
@@ -135,7 +135,7 @@
     },
     {
       "position": 10,
-      "points": 44.0,
+      "points": 41.0,
       "wins": 0,
       "id": "gasly",
       "code": "GAS",
@@ -149,7 +149,7 @@
     },
     {
       "position": 11,
-      "points": 23.0,
+      "points": 29.0,
       "wins": 0,
       "id": "arvid_lindblad",
       "code": "LIN",
@@ -163,7 +163,7 @@
     },
     {
       "position": 12,
-      "points": 19.0,
+      "points": 21.0,
       "wins": 0,
       "id": "colapinto",
       "code": "COL",
@@ -275,7 +275,7 @@
     },
     {
       "position": 20,
-      "points": 0.0,
+      "points": 1.0,
       "wins": 0,
       "id": "tsunoda",
       "code": "TSU",
