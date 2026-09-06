@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-06T13:06:43.779035Z",
+  "lastSuccessfulUpdate": "2026-09-06T16:12:35.216173Z",
   "source": {
     "name": "official-formula-series",
     "url": "https://www.fiaformula2.com/en/standings/2026/teams"
@@ -8,7 +8,7 @@
   "data": [
     {
       "position": 1,
-      "points": 270,
+      "points": 291,
       "wins": 0,
       "id": "campos-racing",
       "name": "Campos Racing",
@@ -17,7 +17,7 @@
     },
     {
       "position": 2,
-      "points": 198,
+      "points": 244,
       "wins": 0,
       "id": "invicta-racing",
       "name": "Invicta Racing",
@@ -26,7 +26,7 @@
     },
     {
       "position": 3,
-      "points": 182,
+      "points": 184,
       "wins": 0,
       "id": "mp-motorsport",
       "name": "MP Motorsport",
@@ -35,7 +35,7 @@
     },
     {
       "position": 4,
-      "points": 172,
+      "points": 180,
       "wins": 0,
       "id": "rodin-motorsport",
       "name": "Rodin Motorsport",
@@ -44,7 +44,7 @@
     },
     {
       "position": 5,
-      "points": 147,
+      "points": 151,
       "wins": 0,
       "id": "art-grand-prix",
       "name": "ART Grand Prix",
@@ -53,6 +53,15 @@
     },
     {
       "position": 6,
+      "points": 104,
+      "wins": 0,
+      "id": "trident",
+      "name": "TRIDENT",
+      "nationality": null,
+      "color": "#6464ff"
+    },
+    {
+      "position": 7,
       "points": 103,
       "wins": 0,
       "id": "dams-lucas-oil",
@@ -61,17 +70,8 @@
       "color": "#00b4ff"
     },
     {
-      "position": 7,
-      "points": 92,
-      "wins": 0,
-      "id": "trident",
-      "name": "TRIDENT",
-      "nationality": null,
-      "color": "#6464ff"
-    },
-    {
       "position": 8,
-      "points": 60,
+      "points": 70,
       "wins": 0,
       "id": "hitech",
       "name": "Hitech",
@@ -80,7 +80,7 @@
     },
     {
       "position": 9,
-      "points": 52,
+      "points": 53,
       "wins": 0,
       "id": "van-amersfoort-racing",
       "name": "Van Amersfoort Racing",
