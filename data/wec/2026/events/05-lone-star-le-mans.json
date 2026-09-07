@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-06T22:18:08.468115Z",
+  "lastSuccessfulUpdate": "2026-09-07T00:01:20.207139Z",
   "source": {
     "name": "fia-wec-alkamel-official-timing",
-    "url": "https://fiawec.alkamelsystems.com/Results/15_2026/05_CIRCUIT%20OF%20THE%20AMERICAS/673_FIA%20WEC/202609061300_Race/04_Hour%204/03_Classification_Race_Hour%204.PDF"
+    "url": "https://fiawec.alkamelsystems.com/Results/15_2026/05_CIRCUIT%20OF%20THE%20AMERICAS/673_FIA%20WEC/202609061300_Race/05_Hour%205/03_Classification_Race_Hour%205.PDF"
   },
   "data": {
     "eventId": "wec-2026-5",
@@ -29,8 +29,8 @@
               "color": "#EB0A1E"
             },
             "carNumber": "7",
-            "time": "4:00:24.035",
-            "laps": 113,
+            "time": "5:03:00.263",
+            "laps": 140,
             "points": null,
             "status": "HYPERCAR",
             "classified": true,
@@ -42,32 +42,6 @@
           {
             "position": 2,
             "positionText": "2",
-            "driver": {
-              "id": "e-bamber-s-bourdais",
-              "code": "38",
-              "givenName": "E. BAMBER / S. BOURDAIS",
-              "familyName": "",
-              "nationality": "NZL,FRA"
-            },
-            "team": {
-              "id": "cadillac-hertz-team-jota",
-              "name": "Cadillac Hertz Team Jota",
-              "color": "#C6A15B"
-            },
-            "carNumber": "38",
-            "time": "4:00:34.149",
-            "laps": 113,
-            "points": null,
-            "status": "HYPERCAR",
-            "classified": true,
-            "components": {
-              "car": "/ J. AITKEN Cadillac V-Series.R",
-              "category": "HYPERCAR"
-            }
-          },
-          {
-            "position": 3,
-            "positionText": "3",
             "driver": {
               "id": "a-felix-da-costa-c-milesi",
               "code": "35",
@@ -81,8 +55,8 @@
               "color": "#005BAA"
             },
             "carNumber": "35",
-            "time": "4:00:35.239",
-            "laps": 113,
+            "time": "5:03:01.001",
+            "laps": 140,
             "points": null,
             "status": "HYPERCAR",
             "classified": true,
@@ -92,34 +66,8 @@
             }
           },
           {
-            "position": 4,
-            "positionText": "4",
-            "driver": {
-              "id": "f-makowiecki-j-gounon",
-              "code": "36",
-              "givenName": "F. MAKOWIECKI / J. GOUNON",
-              "familyName": "",
-              "nationality": "FRA,FRA"
-            },
-            "team": {
-              "id": "alpine-endurance-team",
-              "name": "Alpine Endurance Team",
-              "color": "#005BAA"
-            },
-            "carNumber": "36",
-            "time": "4:00:35.739",
-            "laps": 113,
-            "points": null,
-            "status": "HYPERCAR",
-            "classified": true,
-            "components": {
-              "car": "/ V. MARTINS Alpine A424",
-              "category": "HYPERCAR"
-            }
-          },
-          {
-            "position": 5,
-            "positionText": "5",
+            "position": 3,
+            "positionText": "3",
             "driver": {
               "id": "a-fuoco-m-molina",
               "code": "50",
@@ -133,8 +81,8 @@
               "color": "#E10600"
             },
             "carNumber": "50",
-            "time": "4:00:36.109",
-            "laps": 113,
+            "time": "5:03:03.066",
+            "laps": 140,
             "points": null,
             "status": "HYPERCAR",
             "classified": true,
@@ -144,28 +92,80 @@
             }
           },
           {
-            "position": 6,
-            "positionText": "6",
+            "position": 4,
+            "positionText": "4",
             "driver": {
-              "id": "l-duval-m-jakobsen",
-              "code": "94",
-              "givenName": "L. DUVAL / M. JAKOBSEN",
+              "id": "m-jaminet-p-chatin",
+              "code": "19",
+              "givenName": "M. JAMINET / P. CHATIN",
               "familyName": "",
-              "nationality": "FRA,DNK"
+              "nationality": "FRA,FRA"
             },
             "team": {
-              "id": "peugeot-totalenergies",
-              "name": "Peugeot Totalenergies",
-              "color": "#003B70"
+              "id": "genesis-magma-racing",
+              "name": "Genesis Magma Racing",
+              "color": "#C36B28"
             },
-            "carNumber": "94",
-            "time": "4:00:45.503",
-            "laps": 113,
+            "carNumber": "19",
+            "time": "5:03:03.959",
+            "laps": 140,
             "points": null,
             "status": "HYPERCAR",
             "classified": true,
             "components": {
-              "car": "/ T. POURCHAIRE Peugeot 9X8",
+              "car": "/ D. JUNCADELLA Genesis GMR-001-Hypercar",
+              "category": "HYPERCAR"
+            }
+          },
+          {
+            "position": 5,
+            "positionText": "5",
+            "driver": {
+              "id": "e-bamber-s-bourdais",
+              "code": "38",
+              "givenName": "E. BAMBER / S. BOURDAIS",
+              "familyName": "",
+              "nationality": "NZL,FRA"
+            },
+            "team": {
+              "id": "cadillac-hertz-team-jota",
+              "name": "Cadillac Hertz Team Jota",
+              "color": "#C6A15B"
+            },
+            "carNumber": "38",
+            "time": "5:03:05.326",
+            "laps": 140,
+            "points": null,
+            "status": "HYPERCAR",
+            "classified": true,
+            "components": {
+              "car": "/ J. AITKEN Cadillac V-Series.R",
+              "category": "HYPERCAR"
+            }
+          },
+          {
+            "position": 6,
+            "positionText": "6",
+            "driver": {
+              "id": "h-tincknell-t-gamble",
+              "code": "007",
+              "givenName": "H. TINCKNELL / T. GAMBLE",
+              "familyName": "",
+              "nationality": "GBR,GBR"
+            },
+            "team": {
+              "id": "aston-martin-thor-team",
+              "name": "Aston Martin Thor Team",
+              "color": "#006F62"
+            },
+            "carNumber": "007",
+            "time": "5:03:06.484",
+            "laps": 140,
+            "points": null,
+            "status": "HYPERCAR",
+            "classified": true,
+            "components": {
+              "car": "Aston Martin Valkyrie",
               "category": "HYPERCAR"
             }
           },
@@ -185,8 +185,8 @@
               "color": "#0066B1"
             },
             "carNumber": "15",
-            "time": "4:00:47.264",
-            "laps": 113,
+            "time": "5:03:08.311",
+            "laps": 140,
             "points": null,
             "status": "HYPERCAR",
             "classified": true,
@@ -198,6 +198,32 @@
           {
             "position": 8,
             "positionText": "8",
+            "driver": {
+              "id": "l-duval-m-jakobsen",
+              "code": "94",
+              "givenName": "L. DUVAL / M. JAKOBSEN",
+              "familyName": "",
+              "nationality": "FRA,DNK"
+            },
+            "team": {
+              "id": "peugeot-totalenergies",
+              "name": "Peugeot Totalenergies",
+              "color": "#003B70"
+            },
+            "carNumber": "94",
+            "time": "5:03:10.113",
+            "laps": 140,
+            "points": null,
+            "status": "HYPERCAR",
+            "classified": true,
+            "components": {
+              "car": "/ T. POURCHAIRE Peugeot 9X8",
+              "category": "HYPERCAR"
+            }
+          },
+          {
+            "position": 9,
+            "positionText": "9",
             "driver": {
               "id": "w-stevens-n-nato",
               "code": "12",
@@ -211,8 +237,8 @@
               "color": "#C6A15B"
             },
             "carNumber": "12",
-            "time": "4:00:50.207",
-            "laps": 113,
+            "time": "5:03:12.531",
+            "laps": 140,
             "points": null,
             "status": "HYPERCAR",
             "classified": true,
@@ -222,86 +248,8 @@
             }
           },
           {
-            "position": 9,
-            "positionText": "9",
-            "driver": {
-              "id": "r-frijns-r-rast",
-              "code": "20",
-              "givenName": "R. FRIJNS / R. RAST",
-              "familyName": "",
-              "nationality": "NED,GER"
-            },
-            "team": {
-              "id": "bmw-m-team-wrt",
-              "name": "BMW M Team WRT",
-              "color": "#0066B1"
-            },
-            "carNumber": "20",
-            "time": "4:00:51.286",
-            "laps": 113,
-            "points": null,
-            "status": "HYPERCAR",
-            "classified": true,
-            "components": {
-              "car": "/ S. VAN DER LINDE BMW M Hybrid V8",
-              "category": "HYPERCAR"
-            }
-          },
-          {
             "position": 10,
             "positionText": "10",
-            "driver": {
-              "id": "y-ye-r-kubica",
-              "code": "83",
-              "givenName": "Y. YE / R. KUBICA",
-              "familyName": "",
-              "nationality": "CHN,POL"
-            },
-            "team": {
-              "id": "af-corse",
-              "name": "AF Corse",
-              "color": "#E10600"
-            },
-            "carNumber": "83",
-            "time": "4:00:53.191",
-            "laps": 113,
-            "points": null,
-            "status": "HYPERCAR",
-            "classified": true,
-            "components": {
-              "car": "/ P. HANSON Ferrari 499P",
-              "category": "HYPERCAR"
-            }
-          },
-          {
-            "position": 11,
-            "positionText": "11",
-            "driver": {
-              "id": "m-jaminet-p-chatin",
-              "code": "19",
-              "givenName": "M. JAMINET / P. CHATIN",
-              "familyName": "",
-              "nationality": "FRA,FRA"
-            },
-            "team": {
-              "id": "genesis-magma-racing",
-              "name": "Genesis Magma Racing",
-              "color": "#C36B28"
-            },
-            "carNumber": "19",
-            "time": "4:00:54.277",
-            "laps": 113,
-            "points": null,
-            "status": "HYPERCAR",
-            "classified": true,
-            "components": {
-              "car": "/ D. JUNCADELLA Genesis GMR-001-Hypercar",
-              "category": "HYPERCAR"
-            }
-          },
-          {
-            "position": 12,
-            "positionText": "12",
             "driver": {
               "id": "a-lotterer-l-derani",
               "code": "17",
@@ -315,8 +263,8 @@
               "color": "#C36B28"
             },
             "carNumber": "17",
-            "time": "4:00:54.613",
-            "laps": 113,
+            "time": "5:03:13.934",
+            "laps": 140,
             "points": null,
             "status": "HYPERCAR",
             "classified": true,
@@ -326,34 +274,60 @@
             }
           },
           {
-            "position": 13,
-            "positionText": "13",
+            "position": 11,
+            "positionText": "11",
             "driver": {
-              "id": "s-buemi-b-hartley",
-              "code": "8",
-              "givenName": "S. BUEMI / B. HARTLEY",
+              "id": "r-frijns-r-rast",
+              "code": "20",
+              "givenName": "R. FRIJNS / R. RAST",
               "familyName": "",
-              "nationality": "SUI,NZL"
+              "nationality": "NED,GER"
             },
             "team": {
-              "id": "toyota-racing",
-              "name": "Toyota Racing",
-              "color": "#EB0A1E"
+              "id": "bmw-m-team-wrt",
+              "name": "BMW M Team WRT",
+              "color": "#0066B1"
             },
-            "carNumber": "8",
-            "time": "4:01:34.1681:10.133",
-            "laps": 113,
+            "carNumber": "20",
+            "time": "5:03:16.210",
+            "laps": 140,
             "points": null,
             "status": "HYPERCAR",
             "classified": true,
             "components": {
-              "car": "/ R. HIRAKAWA Toyota TR010 Hybrid",
+              "car": "/ S. VAN DER LINDE BMW M Hybrid V8",
               "category": "HYPERCAR"
             }
           },
           {
-            "position": 14,
-            "positionText": "14",
+            "position": 12,
+            "positionText": "12",
+            "driver": {
+              "id": "f-makowiecki-j-gounon",
+              "code": "36",
+              "givenName": "F. MAKOWIECKI / J. GOUNON",
+              "familyName": "",
+              "nationality": "FRA,FRA"
+            },
+            "team": {
+              "id": "alpine-endurance-team",
+              "name": "Alpine Endurance Team",
+              "color": "#005BAA"
+            },
+            "carNumber": "36",
+            "time": "5:03:17.833",
+            "laps": 140,
+            "points": null,
+            "status": "HYPERCAR",
+            "classified": true,
+            "components": {
+              "car": "/ V. MARTINS Alpine A424",
+              "category": "HYPERCAR"
+            }
+          },
+          {
+            "position": 13,
+            "positionText": "13",
             "driver": {
               "id": "a-pier-guidi-j-calado",
               "code": "51",
@@ -367,8 +341,8 @@
               "color": "#E10600"
             },
             "carNumber": "51",
-            "time": "4:01:41.3001:17.265",
-            "laps": 113,
+            "time": "5:03:21.177",
+            "laps": 140,
             "points": null,
             "status": "HYPERCAR",
             "classified": true,
@@ -378,8 +352,60 @@
             }
           },
           {
+            "position": 14,
+            "positionText": "14",
+            "driver": {
+              "id": "s-buemi-b-hartley",
+              "code": "8",
+              "givenName": "S. BUEMI / B. HARTLEY",
+              "familyName": "",
+              "nationality": "SUI,NZL"
+            },
+            "team": {
+              "id": "toyota-racing",
+              "name": "Toyota Racing",
+              "color": "#EB0A1E"
+            },
+            "carNumber": "8",
+            "time": "5:03:28.505",
+            "laps": 140,
+            "points": null,
+            "status": "HYPERCAR",
+            "classified": true,
+            "components": {
+              "car": "/ R. HIRAKAWA Toyota TR010 Hybrid",
+              "category": "HYPERCAR"
+            }
+          },
+          {
             "position": 15,
             "positionText": "15",
+            "driver": {
+              "id": "y-ye-r-kubica",
+              "code": "83",
+              "givenName": "Y. YE / R. KUBICA",
+              "familyName": "",
+              "nationality": "CHN,POL"
+            },
+            "team": {
+              "id": "af-corse",
+              "name": "AF Corse",
+              "color": "#E10600"
+            },
+            "carNumber": "83",
+            "time": "5:03:32.002",
+            "laps": 140,
+            "points": null,
+            "status": "HYPERCAR",
+            "classified": true,
+            "components": {
+              "car": "/ P. HANSON Ferrari 499P",
+              "category": "HYPERCAR"
+            }
+          },
+          {
+            "position": 16,
+            "positionText": "16",
             "driver": {
               "id": "a-riberas-m-srensen",
               "code": "009",
@@ -393,34 +419,8 @@
               "color": "#006F62"
             },
             "carNumber": "009",
-            "time": "4:01:46.6711:22.636",
-            "laps": 113,
-            "points": null,
-            "status": "HYPERCAR",
-            "classified": true,
-            "components": {
-              "car": "Aston Martin Valkyrie",
-              "category": "HYPERCAR"
-            }
-          },
-          {
-            "position": 16,
-            "positionText": "16",
-            "driver": {
-              "id": "h-tincknell-t-gamble",
-              "code": "007",
-              "givenName": "H. TINCKNELL / T. GAMBLE",
-              "familyName": "",
-              "nationality": "GBR,GBR"
-            },
-            "team": {
-              "id": "aston-martin-thor-team",
-              "name": "Aston Martin Thor Team",
-              "color": "#006F62"
-            },
-            "carNumber": "007",
-            "time": "4:01:59.5171:35.482",
-            "laps": 113,
+            "time": "5:03:33.840",
+            "laps": 140,
             "points": null,
             "status": "HYPERCAR",
             "classified": true,
@@ -445,8 +445,8 @@
               "color": "#003B70"
             },
             "carNumber": "93",
-            "time": "4:00:55.494",
-            "laps": 112,
+            "time": "5:03:01.929",
+            "laps": 138,
             "points": null,
             "status": "HYPERCAR",
             "classified": true,
@@ -459,25 +459,25 @@
             "position": 18,
             "positionText": "18",
             "driver": {
-              "id": "m-berry-r-andrade",
-              "code": "61",
-              "givenName": "M. BERRY / R. ANDRADE",
+              "id": "i-james-z-robichon",
+              "code": "27",
+              "givenName": "I. JAMES / Z. ROBICHON",
               "familyName": "",
-              "nationality": "AUS,ANG"
+              "nationality": "USA,CAN"
             },
             "team": {
-              "id": "iron-lynx",
-              "name": "Iron Lynx",
-              "color": "#00A19C"
+              "id": "heart-of-racing-team",
+              "name": "Heart of Racing Team",
+              "color": "#006F62"
             },
-            "carNumber": "61",
-            "time": "4:01:18.550",
-            "laps": 104,
+            "carNumber": "27",
+            "time": "5:03:20.367",
+            "laps": 129,
             "points": null,
             "status": "LMGT3",
             "classified": true,
             "components": {
-              "car": "/ M. MARTIN Mercedes-AMG LMGT3",
+              "car": "/ M. DRUDI Aston Martin Vantage AMR LMGT3",
               "category": "LMGT3"
             }
           },
@@ -497,8 +497,8 @@
               "color": "#D5001C"
             },
             "carNumber": "91",
-            "time": "4:01:23.140",
-            "laps": 104,
+            "time": "5:03:22.052",
+            "laps": 129,
             "points": null,
             "status": "LMGT3",
             "classified": true,
@@ -523,8 +523,8 @@
               "color": "#006F62"
             },
             "carNumber": "23",
-            "time": "4:01:27.203",
-            "laps": 104,
+            "time": "5:03:23.045",
+            "laps": 129,
             "points": null,
             "status": "LMGT3",
             "classified": true,
@@ -537,25 +537,25 @@
             "position": 21,
             "positionText": "21",
             "driver": {
-              "id": "i-james-z-robichon",
-              "code": "27",
-              "givenName": "I. JAMES / Z. ROBICHON",
+              "id": "f-heriau-s-mann",
+              "code": "21",
+              "givenName": "F. HÉRIAU / S. MANN",
               "familyName": "",
-              "nationality": "USA,CAN"
+              "nationality": "FRA,USA"
             },
             "team": {
-              "id": "heart-of-racing-team",
-              "name": "Heart of Racing Team",
-              "color": "#006F62"
+              "id": "vista-af-corse",
+              "name": "Vista AF Corse",
+              "color": "#E10600"
             },
-            "carNumber": "27",
-            "time": "3:59:19.401",
-            "laps": 103,
+            "carNumber": "21",
+            "time": "5:03:27.543",
+            "laps": 129,
             "points": null,
             "status": "LMGT3",
             "classified": true,
             "components": {
-              "car": "/ M. DRUDI Aston Martin Vantage AMR LMGT3",
+              "car": "/ A. ROVERA Ferrari 296 LMGT3 Evo",
               "category": "LMGT3"
             }
           },
@@ -563,25 +563,25 @@
             "position": 22,
             "positionText": "22",
             "driver": {
-              "id": "j-zelger-m-cressoni",
-              "code": "79",
-              "givenName": "J. ZELGER / M. CRESSONI",
+              "id": "m-berry-r-andrade",
+              "code": "61",
+              "givenName": "M. BERRY / R. ANDRADE",
               "familyName": "",
-              "nationality": "ITA,ITA"
+              "nationality": "AUS,ANG"
             },
             "team": {
               "id": "iron-lynx",
               "name": "Iron Lynx",
               "color": "#00A19C"
             },
-            "carNumber": "79",
-            "time": "3:59:39.103",
-            "laps": 103,
+            "carNumber": "61",
+            "time": "5:03:30.056",
+            "laps": 129,
             "points": null,
             "status": "LMGT3",
             "classified": true,
             "components": {
-              "car": "/ L. HODENIUS Mercedes-AMG LMGT3",
+              "car": "/ M. MARTIN Mercedes-AMG LMGT3",
               "category": "LMGT3"
             }
           },
@@ -601,8 +601,8 @@
               "color": "#FF8000"
             },
             "carNumber": "58",
-            "time": "4:00:49.868",
-            "laps": 103,
+            "time": "5:03:30.923",
+            "laps": 129,
             "points": null,
             "status": "LMGT3",
             "classified": true,
@@ -615,25 +615,25 @@
             "position": 24,
             "positionText": "24",
             "driver": {
-              "id": "f-heriau-s-mann",
-              "code": "21",
-              "givenName": "F. HÉRIAU / S. MANN",
+              "id": "j-zelger-m-cressoni",
+              "code": "79",
+              "givenName": "J. ZELGER / M. CRESSONI",
               "familyName": "",
-              "nationality": "FRA,USA"
+              "nationality": "ITA,ITA"
             },
             "team": {
-              "id": "vista-af-corse",
-              "name": "Vista AF Corse",
-              "color": "#E10600"
+              "id": "iron-lynx",
+              "name": "Iron Lynx",
+              "color": "#00A19C"
             },
-            "carNumber": "21",
-            "time": "4:00:54.900",
-            "laps": 103,
+            "carNumber": "79",
+            "time": "5:03:32.889",
+            "laps": 129,
             "points": null,
             "status": "LMGT3",
             "classified": true,
             "components": {
-              "car": "/ A. ROVERA Ferrari 296 LMGT3 Evo",
+              "car": "/ L. HODENIUS Mercedes-AMG LMGT3",
               "category": "LMGT3"
             }
           },
@@ -653,8 +653,8 @@
               "color": "#003478"
             },
             "carNumber": "77",
-            "time": "4:01:00.349",
-            "laps": 103,
+            "time": "5:03:34.740",
+            "laps": 129,
             "points": null,
             "status": "LMGT3",
             "classified": true,
@@ -679,8 +679,8 @@
               "color": "#222222"
             },
             "carNumber": "87",
-            "time": "4:01:32.122",
-            "laps": 103,
+            "time": "5:03:26.612",
+            "laps": 128,
             "points": null,
             "status": "LMGT3",
             "classified": true,
@@ -692,32 +692,6 @@
           {
             "position": 27,
             "positionText": "27",
-            "driver": {
-              "id": "s-gattuso-g-levorato",
-              "code": "88",
-              "givenName": "S. GATTUSO / G. LEVORATO",
-              "familyName": "",
-              "nationality": "ITA,ITA"
-            },
-            "team": {
-              "id": "proton-competition",
-              "name": "Proton Competition",
-              "color": "#003478"
-            },
-            "carNumber": "88",
-            "time": "4:01:49.951",
-            "laps": 103,
-            "points": null,
-            "status": "LMGT3",
-            "classified": true,
-            "components": {
-              "car": "/ L. SARGEANT Ford Mustang LMGT3",
-              "category": "LMGT3"
-            }
-          },
-          {
-            "position": 28,
-            "positionText": "28",
             "driver": {
               "id": "a-mcintosh-p-thompson",
               "code": "69",
@@ -731,8 +705,8 @@
               "color": "#0066B1"
             },
             "carNumber": "69",
-            "time": "4:01:54.641",
-            "laps": 103,
+            "time": "5:03:36.502",
+            "laps": 128,
             "points": null,
             "status": "LMGT3",
             "classified": true,
@@ -742,8 +716,8 @@
             }
           },
           {
-            "position": 29,
-            "positionText": "29",
+            "position": 28,
+            "positionText": "28",
             "driver": {
               "id": "t-flohr-f-castellacci",
               "code": "54",
@@ -757,13 +731,39 @@
               "color": "#E10600"
             },
             "carNumber": "54",
-            "time": "4:01:55.425",
-            "laps": 103,
+            "time": "5:03:37.598",
+            "laps": 128,
             "points": null,
             "status": "LMGT3",
             "classified": true,
             "components": {
               "car": "/ D. RIGON Ferrari 296 LMGT3 Evo",
+              "category": "LMGT3"
+            }
+          },
+          {
+            "position": 29,
+            "positionText": "29",
+            "driver": {
+              "id": "s-gattuso-g-levorato",
+              "code": "88",
+              "givenName": "S. GATTUSO / G. LEVORATO",
+              "familyName": "",
+              "nationality": "ITA,ITA"
+            },
+            "team": {
+              "id": "proton-competition",
+              "name": "Proton Competition",
+              "color": "#003478"
+            },
+            "carNumber": "88",
+            "time": "5:03:38.775",
+            "laps": 128,
+            "points": null,
+            "status": "LMGT3",
+            "classified": true,
+            "components": {
+              "car": "/ L. SARGEANT Ford Mustang LMGT3",
               "category": "LMGT3"
             }
           },
@@ -783,8 +783,8 @@
               "color": "#F2C500"
             },
             "carNumber": "33",
-            "time": "4:00:05.369",
-            "laps": 102,
+            "time": "5:06:48.721",
+            "laps": 128,
             "points": null,
             "status": "LMGT3",
             "classified": true,
@@ -796,58 +796,6 @@
           {
             "position": 31,
             "positionText": "31",
-            "driver": {
-              "id": "t-van-rompuy-h-david",
-              "code": "78",
-              "givenName": "T. VAN ROMPUY / H. DAVID",
-              "familyName": "",
-              "nationality": "BEL,FRA"
-            },
-            "team": {
-              "id": "akkodis-asp-team",
-              "name": "Akkodis ASP Team",
-              "color": "#222222"
-            },
-            "carNumber": "78",
-            "time": "4:01:17.355",
-            "laps": 102,
-            "points": null,
-            "status": "LMGT3",
-            "classified": true,
-            "components": {
-              "car": "/ E. MASSON Lexus RC F LMGT3",
-              "category": "LMGT3"
-            }
-          },
-          {
-            "position": 32,
-            "positionText": "32",
-            "driver": {
-              "id": "a-au-t-fleming",
-              "code": "10",
-              "givenName": "A. AU / T. FLEMING",
-              "familyName": "",
-              "nationality": "HKG,GBR"
-            },
-            "team": {
-              "id": "garage-59",
-              "name": "Garage 59",
-              "color": "#FF8000"
-            },
-            "carNumber": "10",
-            "time": "4:02:19.751",
-            "laps": 102,
-            "points": null,
-            "status": "LMGT3",
-            "classified": true,
-            "components": {
-              "car": "/ M. KIRCHHÖFER McLaren 720S LMGT3 Evo",
-              "category": "LMGT3"
-            }
-          },
-          {
-            "position": 33,
-            "positionText": "33",
             "driver": {
               "id": "p-dempsey-s-yoluc",
               "code": "34",
@@ -861,8 +809,8 @@
               "color": "#F2C500"
             },
             "carNumber": "34",
-            "time": "4:01:47.353",
-            "laps": 100,
+            "time": "5:06:50.536",
+            "laps": 126,
             "points": null,
             "status": "LMGT3",
             "classified": true,
@@ -872,8 +820,8 @@
             }
           },
           {
-            "position": 34,
-            "positionText": "34",
+            "position": 32,
+            "positionText": "32",
             "driver": {
               "id": "y-shahin-r-pera",
               "code": "92",
@@ -887,8 +835,8 @@
               "color": "#D5001C"
             },
             "carNumber": "92",
-            "time": "4:00:16.039",
-            "laps": 97,
+            "time": "5:06:47.306",
+            "laps": 123,
             "points": null,
             "status": "LMGT3",
             "classified": true,
@@ -898,8 +846,34 @@
             }
           },
           {
-            "position": 35,
-            "positionText": "35",
+            "position": 33,
+            "positionText": "33",
+            "driver": {
+              "id": "t-van-rompuy-h-david",
+              "code": "78",
+              "givenName": "T. VAN ROMPUY / H. DAVID",
+              "familyName": "",
+              "nationality": "BEL,FRA"
+            },
+            "team": {
+              "id": "akkodis-asp-team",
+              "name": "Akkodis ASP Team",
+              "color": "#222222"
+            },
+            "carNumber": "78",
+            "time": "4:47:06.804",
+            "laps": 122,
+            "points": null,
+            "status": "LMGT3",
+            "classified": true,
+            "components": {
+              "car": "/ E. MASSON Lexus RC F LMGT3",
+              "category": "LMGT3"
+            }
+          },
+          {
+            "position": 34,
+            "positionText": "34",
             "driver": {
               "id": "d-leung-s-gelael",
               "code": "32",
@@ -913,13 +887,39 @@
               "color": "#0066B1"
             },
             "carNumber": "32",
-            "time": "4:02:14.834",
-            "laps": 93,
+            "time": "5:03:25.159",
+            "laps": 117,
             "points": null,
             "status": "LMGT3",
             "classified": true,
             "components": {
               "car": "/ A. FARFUS BMW M4 LMGT3 Evo",
+              "category": "LMGT3"
+            }
+          },
+          {
+            "position": 35,
+            "positionText": "35",
+            "driver": {
+              "id": "a-au-t-fleming",
+              "code": "10",
+              "givenName": "A. AU / T. FLEMING",
+              "familyName": "",
+              "nationality": "HKG,GBR"
+            },
+            "team": {
+              "id": "garage-59",
+              "name": "Garage 59",
+              "color": "#FF8000"
+            },
+            "carNumber": "10",
+            "time": "5:06:53.938",
+            "laps": 115,
+            "points": null,
+            "status": "LMGT3",
+            "classified": true,
+            "components": {
+              "car": "/ M. KIRCHHÖFER McLaren 720S LMGT3 Evo",
               "category": "LMGT3"
             }
           }
