@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-08T03:03:15.028768Z",
+  "lastSuccessfulUpdate": "2026-09-08T08:00:36.645129Z",
   "source": {
     "name": "official-formula-series",
     "url": "https://www.fiaformula2.com/en/standings/2026/drivers"
@@ -8,7 +8,7 @@
   "data": [
     {
       "position": 1,
-      "points": 177,
+      "points": 171,
       "wins": 0,
       "id": "nikola-tsolov",
       "code": "TSO",
@@ -22,20 +22,6 @@
     },
     {
       "position": 2,
-      "points": 166,
-      "wins": 0,
-      "id": "rafael-camara",
-      "code": "CAM",
-      "givenName": "Rafael",
-      "familyName": "Câmara",
-      "nationality": "Brazilian",
-      "teamIds": [
-        "invicta-racing"
-      ],
-      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/invictaracing/rafcam01/2026invictaracingrafcam01right.webp"
-    },
-    {
-      "position": 3,
       "points": 147,
       "wins": 0,
       "id": "gabriele-mini",
@@ -49,8 +35,22 @@
       "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/mpmotorsport/gabmin01/2026mpmotorsportgabmin01right.webp"
     },
     {
+      "position": 3,
+      "points": 145,
+      "wins": 0,
+      "id": "rafael-camara",
+      "code": "CAM",
+      "givenName": "Rafael",
+      "familyName": "Câmara",
+      "nationality": "Brazilian",
+      "teamIds": [
+        "invicta-racing"
+      ],
+      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/invictaracing/rafcam01/2026invictaracingrafcam01right.webp"
+    },
+    {
       "position": 4,
-      "points": 118,
+      "points": 110,
       "wins": 0,
       "id": "alexander-dunne",
       "code": "DUN",
@@ -64,7 +64,7 @@
     },
     {
       "position": 5,
-      "points": 114,
+      "points": 99,
       "wins": 0,
       "id": "noel-leon",
       "code": "LEO",
@@ -106,20 +106,6 @@
     },
     {
       "position": 8,
-      "points": 78,
-      "wins": 0,
-      "id": "joshua-durksen",
-      "code": "DUR",
-      "givenName": "Joshua",
-      "familyName": "Dürksen",
-      "nationality": "Paraguayan",
-      "teamIds": [
-        "invicta-racing"
-      ],
-      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/invictaracing/josdur01/2026invictaracingjosdur01right.webp"
-    },
-    {
-      "position": 9,
       "points": 66,
       "wins": 0,
       "id": "laurens-van-hoepen",
@@ -133,21 +119,7 @@
       "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/trident/lauvan01/2026tridentlauvan01right.webp"
     },
     {
-      "position": 10,
-      "points": 63,
-      "wins": 0,
-      "id": "tasanapol-inthraphuvasak",
-      "code": "INT",
-      "givenName": "Tasanapol",
-      "familyName": "Inthraphuvasak",
-      "nationality": "Thai",
-      "teamIds": [
-        "art-grand-prix"
-      ],
-      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/artgrandprix/tasint01/2026artgrandprixtasint01right.webp"
-    },
-    {
-      "position": 11,
+      "position": 9,
       "points": 62,
       "wins": 0,
       "id": "martinius-stenshorne",
@@ -161,35 +133,35 @@
       "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/rodinmotorsport/marste01/2026rodinmotorsportmarste01right.webp"
     },
     {
+      "position": 10,
+      "points": 59,
+      "wins": 0,
+      "id": "tasanapol-inthraphuvasak",
+      "code": "INT",
+      "givenName": "Tasanapol",
+      "familyName": "Inthraphuvasak",
+      "nationality": "Thai",
+      "teamIds": [
+        "art-grand-prix"
+      ],
+      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/artgrandprix/tasint01/2026artgrandprixtasint01right.webp"
+    },
+    {
+      "position": 11,
+      "points": 53,
+      "wins": 0,
+      "id": "joshua-durksen",
+      "code": "DUR",
+      "givenName": "Joshua",
+      "familyName": "Dürksen",
+      "nationality": "Paraguayan",
+      "teamIds": [
+        "invicta-racing"
+      ],
+      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/invictaracing/josdur01/2026invictaracingjosdur01right.webp"
+    },
+    {
       "position": 12,
-      "points": 44,
-      "wins": 0,
-      "id": "ritomo-miyata",
-      "code": "MIY",
-      "givenName": "Ritomo",
-      "familyName": "Miyata",
-      "nationality": "Japanese",
-      "teamIds": [
-        "hitech"
-      ],
-      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/hitech/ritmiy01/2026hitechritmiy01right.webp"
-    },
-    {
-      "position": 13,
-      "points": 38,
-      "wins": 0,
-      "id": "john-bennett",
-      "code": "BEN",
-      "givenName": "John",
-      "familyName": "Bennett",
-      "nationality": null,
-      "teamIds": [
-        "trident"
-      ],
-      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/trident/johben01/2026tridentjohben01right.webp"
-    },
-    {
-      "position": 14,
       "points": 38,
       "wins": 0,
       "id": "rafael-villagomez",
@@ -203,8 +175,8 @@
       "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/vanamersfoortracing/rafvil01/2026vanamersfoortracingrafvil01right.webp"
     },
     {
-      "position": 15,
-      "points": 37,
+      "position": 13,
+      "points": 35,
       "wins": 0,
       "id": "oliver-goethe",
       "code": "GOE",
@@ -217,7 +189,21 @@
       "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/mpmotorsport/oligoe01/2026mpmotorsportoligoe01right.webp"
     },
     {
-      "position": 16,
+      "position": 14,
+      "points": 34,
+      "wins": 0,
+      "id": "ritomo-miyata",
+      "code": "MIY",
+      "givenName": "Ritomo",
+      "familyName": "Miyata",
+      "nationality": "Japanese",
+      "teamIds": [
+        "hitech"
+      ],
+      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/hitech/ritmiy01/2026hitechritmiy01right.webp"
+    },
+    {
+      "position": 15,
       "points": 28,
       "wins": 0,
       "id": "sebastian-montoya",
@@ -229,6 +215,20 @@
         "prema-racing"
       ],
       "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/premaracing/sebmon01/2026premaracingsebmon01right.webp"
+    },
+    {
+      "position": 16,
+      "points": 26,
+      "wins": 0,
+      "id": "john-bennett",
+      "code": "BEN",
+      "givenName": "John",
+      "familyName": "Bennett",
+      "nationality": null,
+      "teamIds": [
+        "trident"
+      ],
+      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/trident/johben01/2026tridentjohben01right.webp"
     },
     {
       "position": 17,
@@ -260,7 +260,7 @@
     },
     {
       "position": 19,
-      "points": 15,
+      "points": 14,
       "wins": 0,
       "id": "nico-varrone",
       "code": "VAR",
