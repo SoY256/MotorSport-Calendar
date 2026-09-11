@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-11T18:31:45.135684Z",
+  "lastSuccessfulUpdate": "2026-09-11T23:17:00.262771Z",
   "source": {
     "name": "official-formula-series",
     "url": "https://www.fiaformula2.com/en/racing/2026/madrid"
@@ -362,29 +362,6 @@
             "position": 16,
             "positionText": "16",
             "driver": {
-              "id": "john-bennett",
-              "code": "BEN",
-              "givenName": "John",
-              "familyName": "Bennett",
-              "nationality": null
-            },
-            "team": {
-              "id": "trident",
-              "name": "TRIDENT",
-              "color": "#6464ff"
-            },
-            "carNumber": "25",
-            "time": "1:46.305",
-            "laps": 9,
-            "points": null,
-            "status": "OK",
-            "classified": true,
-            "components": {}
-          },
-          {
-            "position": 17,
-            "positionText": "17",
-            "driver": {
               "id": "joshua-durksen",
               "code": "DUR",
               "givenName": "Joshua",
@@ -399,6 +376,29 @@
             "carNumber": "2",
             "time": "1:46.483",
             "laps": 12,
+            "points": null,
+            "status": "OK",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 17,
+            "positionText": "17",
+            "driver": {
+              "id": "john-bennett",
+              "code": "BEN",
+              "givenName": "John",
+              "familyName": "Bennett",
+              "nationality": null
+            },
+            "team": {
+              "id": "trident",
+              "name": "TRIDENT",
+              "color": "#6464ff"
+            },
+            "carNumber": "25",
+            "time": "1:47.008",
+            "laps": 9,
             "points": null,
             "status": "OK",
             "classified": true,
@@ -443,7 +443,7 @@
               "color": "#af2f22"
             },
             "carNumber": "16",
-            "time": "2:11.436",
+            "time": null,
             "laps": 2,
             "points": null,
             "status": "OK",
@@ -512,7 +512,7 @@
               "color": "#dc4600"
             },
             "carNumber": "22",
-            "time": "1:58.309",
+            "time": null,
             "laps": 3,
             "points": null,
             "status": "OK",
