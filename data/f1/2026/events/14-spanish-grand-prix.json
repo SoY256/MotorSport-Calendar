@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-12T09:37:53.287656Z",
+  "lastSuccessfulUpdate": "2026-09-12T13:07:47.802973Z",
   "source": {
     "name": "jolpica-f1",
     "url": "https://api.jolpi.ca/f1/alpha/schedules/2026/"
@@ -1033,6 +1033,12 @@
             "components": {}
           }
         ]
+      },
+      {
+        "type": "FP3",
+        "name": "Practice 3",
+        "startTimeUtc": "2026-09-12T10:30:00Z",
+        "results": []
       }
     ]
   }
