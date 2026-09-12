@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-12T16:16:41.447189Z",
+  "lastSuccessfulUpdate": "2026-09-12T18:28:00.766422Z",
   "source": {
     "name": "official-formula-series",
     "url": "https://www.fiaformula3.com/en/standings/2026/drivers"
@@ -8,6 +8,20 @@
   "data": [
     {
       "position": 1,
+      "points": 141,
+      "wins": 0,
+      "id": "ugo-ugochukwu",
+      "code": "UGO",
+      "givenName": "Ugo",
+      "familyName": "Ugochukwu",
+      "nationality": "American",
+      "teamIds": [
+        "campos-racing"
+      ],
+      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/camposracing/ugougo01/2026camposracingugougo01right.webp"
+    },
+    {
+      "position": 2,
       "points": 141,
       "wins": 0,
       "id": "freddie-slater",
@@ -21,50 +35,8 @@
       "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/trident/fresla01/2026tridentfresla01right.webp"
     },
     {
-      "position": 2,
-      "points": 129,
-      "wins": 0,
-      "id": "ugo-ugochukwu",
-      "code": "UGO",
-      "givenName": "Ugo",
-      "familyName": "Ugochukwu",
-      "nationality": "American",
-      "teamIds": [
-        "campos-racing"
-      ],
-      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/camposracing/ugougo01/2026camposracingugougo01right.webp"
-    },
-    {
       "position": 3,
-      "points": 86,
-      "wins": 0,
-      "id": "theophile-nael",
-      "code": "NAE",
-      "givenName": "Théophile",
-      "familyName": "Naël",
-      "nationality": "French",
-      "teamIds": [
-        "campos-racing"
-      ],
-      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/camposracing/thenae01/2026camposracingthenae01right.webp"
-    },
-    {
-      "position": 4,
-      "points": 81,
-      "wins": 0,
-      "id": "ernesto-rivera",
-      "code": "RIV",
-      "givenName": "Ernesto",
-      "familyName": "Rivera",
-      "nationality": "Mexican",
-      "teamIds": [
-        "campos-racing"
-      ],
-      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/camposracing/ernriv01/2026camposracingernriv01right.webp"
-    },
-    {
-      "position": 5,
-      "points": 73,
+      "points": 93,
       "wins": 0,
       "id": "taito-kato",
       "code": "KAI",
@@ -77,7 +49,63 @@
       "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/artgrandprix/taikat01/2026artgrandprixtaikat01right.webp"
     },
     {
+      "position": 4,
+      "points": 88,
+      "wins": 0,
+      "id": "theophile-nael",
+      "code": "NAE",
+      "givenName": "Théophile",
+      "familyName": "Naël",
+      "nationality": "French",
+      "teamIds": [
+        "campos-racing"
+      ],
+      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/camposracing/thenae01/2026camposracingthenae01right.webp"
+    },
+    {
+      "position": 5,
+      "points": 85,
+      "wins": 0,
+      "id": "ernesto-rivera",
+      "code": "RIV",
+      "givenName": "Ernesto",
+      "familyName": "Rivera",
+      "nationality": "Mexican",
+      "teamIds": [
+        "campos-racing"
+      ],
+      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/camposracing/ernriv01/2026camposracingernriv01right.webp"
+    },
+    {
       "position": 6,
+      "points": 81,
+      "wins": 0,
+      "id": "tuukka-taponen",
+      "code": "TAP",
+      "givenName": "Tuukka",
+      "familyName": "Taponen",
+      "nationality": "Finnish",
+      "teamIds": [
+        "mp-motorsport"
+      ],
+      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/mpmotorsport/tuutap01/2026mpmotorsporttuutap01right.webp"
+    },
+    {
+      "position": 7,
+      "points": 73,
+      "wins": 0,
+      "id": "pedro-clerot",
+      "code": "CLE",
+      "givenName": "Pedro",
+      "familyName": "Clerot",
+      "nationality": "Brazilian",
+      "teamIds": [
+        "rodin-motorsport"
+      ],
+      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/rodinmotorsport/pedcle01/2026rodinmotorsportpedcle01right.webp"
+    },
+    {
+      "position": 8,
       "points": 71,
       "wins": 0,
       "id": "brando-badoer",
@@ -91,7 +119,7 @@
       "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/rodinmotorsport/brabad01/2026rodinmotorsportbrabad01right.webp"
     },
     {
-      "position": 7,
+      "position": 9,
       "points": 71,
       "wins": 0,
       "id": "hiyu-yamakoshi",
@@ -105,7 +133,7 @@
       "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/vanamersfoortracing/hiyyam01/2026vanamersfoortracinghiyyam01right.webp"
     },
     {
-      "position": 8,
+      "position": 10,
       "points": 65,
       "wins": 0,
       "id": "noah-stromsted",
@@ -119,21 +147,7 @@
       "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/trident/noastr01/2026tridentnoastr01right.webp"
     },
     {
-      "position": 9,
-      "points": 65,
-      "wins": 0,
-      "id": "tuukka-taponen",
-      "code": "TAP",
-      "givenName": "Tuukka",
-      "familyName": "Taponen",
-      "nationality": "Finnish",
-      "teamIds": [
-        "mp-motorsport"
-      ],
-      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/mpmotorsport/tuutap01/2026mpmotorsporttuutap01right.webp"
-    },
-    {
-      "position": 10,
+      "position": 11,
       "points": 57,
       "wins": 0,
       "id": "bruno-del-pino",
@@ -147,7 +161,7 @@
       "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/vanamersfoortracing/brudel01/2026vanamersfoortracingbrudel01right.webp"
     },
     {
-      "position": 11,
+      "position": 12,
       "points": 54,
       "wins": 0,
       "id": "maciej-gladysz",
@@ -161,21 +175,21 @@
       "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/artgrandprix/macgla01/2026artgrandprixmacgla01right.webp"
     },
     {
-      "position": 12,
-      "points": 48,
+      "position": 13,
+      "points": 53,
       "wins": 0,
-      "id": "pedro-clerot",
-      "code": "CLE",
-      "givenName": "Pedro",
-      "familyName": "Clerot",
-      "nationality": "Brazilian",
+      "id": "jin-nakamura",
+      "code": "NAK",
+      "givenName": "Jin",
+      "familyName": "Nakamura",
+      "nationality": "Japanese",
       "teamIds": [
-        "rodin-motorsport"
+        "hitech"
       ],
-      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/rodinmotorsport/pedcle01/2026rodinmotorsportpedcle01right.webp"
+      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/hitech/jinnak01/2026hitechjinnak01right.webp"
     },
     {
-      "position": 13,
+      "position": 14,
       "points": 44,
       "wins": 0,
       "id": "mattia-colnaghi",
@@ -189,22 +203,8 @@
       "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/mpmotorsport/matcol01/2026mpmotorsportmatcol01right.webp"
     },
     {
-      "position": 14,
-      "points": 43,
-      "wins": 0,
-      "id": "jin-nakamura",
-      "code": "NAK",
-      "givenName": "Jin",
-      "familyName": "Nakamura",
-      "nationality": "Japanese",
-      "teamIds": [
-        "hitech"
-      ],
-      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/hitech/jinnak01/2026hitechjinnak01right.webp"
-    },
-    {
       "position": 15,
-      "points": 38,
+      "points": 39,
       "wins": 0,
       "id": "james-wharton",
       "code": "WHA",
@@ -218,6 +218,20 @@
     },
     {
       "position": 16,
+      "points": 37,
+      "wins": 0,
+      "id": "alessandro-giusti",
+      "code": "GIU",
+      "givenName": "Alessandro",
+      "familyName": "Giusti",
+      "nationality": "French",
+      "teamIds": [
+        "mp-motorsport"
+      ],
+      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/mpmotorsport/alegus01/2026mpmotorsportalegus01right.webp"
+    },
+    {
+      "position": 17,
       "points": 34,
       "wins": 0,
       "id": "yevan-david",
@@ -231,7 +245,7 @@
       "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/aixracing/yevdav01/2026aixracingyevdav01right.webp"
     },
     {
-      "position": 17,
+      "position": 18,
       "points": 34,
       "wins": 0,
       "id": "enzo-deligny",
@@ -245,7 +259,7 @@
       "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/vanamersfoortracing/enzdil01/2026vanamersfoortracingenzdil01right.webp"
     },
     {
-      "position": 18,
+      "position": 19,
       "points": 33,
       "wins": 0,
       "id": "nicola-lacorte",
@@ -259,7 +273,7 @@
       "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/damslucasoil/niclar02/2026damslucasoilniclar02right.webp"
     },
     {
-      "position": 19,
+      "position": 20,
       "points": 30,
       "wins": 0,
       "id": "kanato-le",
@@ -271,20 +285,6 @@
         "art-grand-prix"
       ],
       "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/artgrandprix/kanle01/2026artgrandprixkanle01right.webp"
-    },
-    {
-      "position": 20,
-      "points": 29,
-      "wins": 0,
-      "id": "alessandro-giusti",
-      "code": "GIU",
-      "givenName": "Alessandro",
-      "familyName": "Giusti",
-      "nationality": "French",
-      "teamIds": [
-        "mp-motorsport"
-      ],
-      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/mpmotorsport/alegus01/2026mpmotorsportalegus01right.webp"
     },
     {
       "position": 21,
@@ -315,7 +315,7 @@
     },
     {
       "position": 23,
-      "points": 8,
+      "points": 14,
       "wins": 0,
       "id": "alex-powell",
       "code": "POW",
@@ -465,7 +465,7 @@
       "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/hitech/wooshi01/2026hitechwooshi01right.webp"
     },
     {
-      "position": 34,
+      "position": 35,
       "points": 0,
       "wins": 0,
       "id": "salim-hanna",
