@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-12T13:08:16.940338Z",
+  "lastSuccessfulUpdate": "2026-09-12T16:16:41.447189Z",
   "source": {
     "name": "official-formula-series",
     "url": "https://www.fiaformula3.com/en/racing/2026/madrid"
@@ -628,6 +628,29 @@
             },
             "carNumber": "30",
             "time": "+47.139s",
+            "laps": 16,
+            "points": 0,
+            "status": "OK",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 28,
+            "positionText": "28",
+            "driver": {
+              "id": "",
+              "code": null,
+              "givenName": null,
+              "familyName": null,
+              "nationality": null
+            },
+            "team": {
+              "id": "rodin-motorsport",
+              "name": "Rodin Motorsport",
+              "color": "#c3a752"
+            },
+            "carNumber": "19",
+            "time": "+48.115s",
             "laps": 16,
             "points": 0,
             "status": "OK",
