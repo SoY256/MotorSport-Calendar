@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-08-24T14:34:29.290028Z",
+  "lastSuccessfulUpdate": "2026-09-13T10:02:54.015175Z",
   "source": {
     "name": "official-indynxt",
     "url": "https://www.indynxt.com/api/results/YearPointSummary?year=2026&id=09341e09-3216-4f89-a45f-db697d72ee13"
@@ -8,27 +8,7 @@
   "data": [
     {
       "position": 1,
-      "points": 476,
-      "wins": 4,
-      "id": "enzo-fittipaldi",
-      "code": "",
-      "givenName": "Enzo",
-      "familyName": "Fittipaldi",
-      "nationality": "BRA",
-      "teamIds": [
-        "hmd-motorsports"
-      ],
-      "teamNames": [
-        "HMD Motorsports"
-      ],
-      "teamColors": [
-        "#202A44"
-      ],
-      "imageUrl": "assets/portraits/faces/indynxt/enzo-fittipaldi.jpg"
-    },
-    {
-      "position": 2,
-      "points": 475,
+      "points": 585,
       "wins": 2,
       "id": "nikita-johnson",
       "code": "",
@@ -44,12 +24,32 @@
       "teamColors": [
         "#00A3E0"
       ],
-      "imageUrl": "assets/portraits/faces/indynxt/nikita-johnson.jpg"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/FIA_F3_Austria_2025_Nr._29_Johnson.jpg/960px-FIA_F3_Austria_2025_Nr._29_Johnson.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+    },
+    {
+      "position": 2,
+      "points": 556,
+      "wins": 4,
+      "id": "enzo-fittipaldi",
+      "code": "",
+      "givenName": "Enzo",
+      "familyName": "Fittipaldi",
+      "nationality": "BRA",
+      "teamIds": [
+        "hmd-motorsports"
+      ],
+      "teamNames": [
+        "HMD Motorsports"
+      ],
+      "teamColors": [
+        "#202A44"
+      ],
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Enzo_Fittipaldi_Austria_2022.jpg/960px-Enzo_Fittipaldi_Austria_2022.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "position": 3,
-      "points": 458,
-      "wins": 1,
+      "points": 551,
+      "wins": 2,
       "id": "tymek-kucharczyk",
       "code": "",
       "givenName": "Tymek",
@@ -64,11 +64,11 @@
       "teamColors": [
         "#202A44"
       ],
-      "imageUrl": "assets/portraits/faces/indynxt/tymek-kucharczyk.jpg"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Tymek_Kucharczyk_with_trophy_GB3_Championship_2024_Zandvoort_Race_2.jpg/960px-Tymek_Kucharczyk_with_trophy_GB3_Championship_2024_Zandvoort_Race_2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "position": 4,
-      "points": 396,
+      "points": 470,
       "wins": 1,
       "id": "max-taylor",
       "code": "",
@@ -88,7 +88,7 @@
     },
     {
       "position": 5,
-      "points": 386,
+      "points": 453,
       "wins": 1,
       "id": "lochie-hughes",
       "code": "",
@@ -104,11 +104,11 @@
       "teamColors": [
         "#E31B23"
       ],
-      "imageUrl": null
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Lachlan_Hughes_Mid_Ohio_2024.jpg/960px-Lachlan_Hughes_Mid_Ohio_2024.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "position": 6,
-      "points": 378,
+      "points": 442,
       "wins": 2,
       "id": "alessandro-de-tullio",
       "code": "",
@@ -124,71 +124,11 @@
       "teamColors": [
         "#D71920"
       ],
-      "imageUrl": "assets/portraits/faces/indynxt/alessandro-de-tullio.jpg"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Alessandro_de_Tullio_Road_America_2026.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
       "position": 7,
-      "points": 344,
-      "wins": 1,
-      "id": "myles-rowe",
-      "code": "",
-      "givenName": "Myles",
-      "familyName": "Rowe",
-      "nationality": "USA",
-      "teamIds": [
-        "abel-motorsports"
-      ],
-      "teamNames": [
-        "Abel Motorsports"
-      ],
-      "teamColors": [
-        "#111111"
-      ],
-      "imageUrl": "assets/portraits/faces/indynxt/myles-rowe.jpg"
-    },
-    {
-      "position": 8,
-      "points": 316,
-      "wins": 0,
-      "id": "jack-beeton",
-      "code": "",
-      "givenName": "Jack",
-      "familyName": "Beeton",
-      "nationality": "AUS",
-      "teamIds": [
-        "hmd-motorsports"
-      ],
-      "teamNames": [
-        "HMD Motorsports"
-      ],
-      "teamColors": [
-        "#202A44"
-      ],
-      "imageUrl": "assets/portraits/faces/indynxt/jack-beeton.jpg"
-    },
-    {
-      "position": 9,
-      "points": 307,
-      "wins": 2,
-      "id": "matteo-nannini",
-      "code": "",
-      "givenName": "Matteo",
-      "familyName": "Nannini",
-      "nationality": "ITA",
-      "teamIds": [
-        "cape-motorsports-powered-by-ecr"
-      ],
-      "teamNames": [
-        "Cape Motorsports powered by ECR"
-      ],
-      "teamColors": [
-        "#00A3E0"
-      ],
-      "imageUrl": null
-    },
-    {
-      "position": 10,
-      "points": 299,
+      "points": 389,
       "wins": 0,
       "id": "jm-correa",
       "code": "",
@@ -207,29 +147,49 @@
       "imageUrl": "assets/portraits/faces/indynxt/jm-correa.jpg"
     },
     {
-      "position": 11,
-      "points": 291,
-      "wins": 0,
-      "id": "josh-pierson",
+      "position": 8,
+      "points": 388,
+      "wins": 1,
+      "id": "myles-rowe",
       "code": "",
-      "givenName": "Josh",
-      "familyName": "Pierson",
+      "givenName": "Myles",
+      "familyName": "Rowe",
       "nationality": "USA",
       "teamIds": [
-        "andretti-global"
+        "abel-motorsports"
       ],
       "teamNames": [
-        "Andretti Global"
+        "Abel Motorsports"
       ],
       "teamColors": [
-        "#E31B23"
+        "#111111"
       ],
-      "imageUrl": "assets/portraits/faces/indynxt/josh-pierson.jpg"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Myles_Rowe_2021.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
-      "position": 12,
-      "points": 286,
+      "position": 9,
+      "points": 382,
       "wins": 0,
+      "id": "jack-beeton",
+      "code": "",
+      "givenName": "Jack",
+      "familyName": "Beeton",
+      "nationality": "AUS",
+      "teamIds": [
+        "hmd-motorsports"
+      ],
+      "teamNames": [
+        "HMD Motorsports"
+      ],
+      "teamColors": [
+        "#202A44"
+      ],
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Jack_Beeton_Spa_2025.png/960px-Jack_Beeton_Spa_2025.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+    },
+    {
+      "position": 10,
+      "points": 381,
+      "wins": 1,
       "id": "max-garcia",
       "code": "",
       "givenName": "Max",
@@ -244,11 +204,51 @@
       "teamColors": [
         "#111111"
       ],
-      "imageUrl": null
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/2024_Grand_Prix_of_St_Petersburg_Grand_%2853584002883%29.jpg/960px-2024_Grand_Prix_of_St_Petersburg_Grand_%2853584002883%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+    },
+    {
+      "position": 11,
+      "points": 364,
+      "wins": 1,
+      "id": "josh-pierson",
+      "code": "",
+      "givenName": "Josh",
+      "familyName": "Pierson",
+      "nationality": "USA",
+      "teamIds": [
+        "andretti-global"
+      ],
+      "teamNames": [
+        "Andretti Global"
+      ],
+      "teamColors": [
+        "#E31B23"
+      ],
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Josh_Pierson_in_2023.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
+      "position": 12,
+      "points": 362,
+      "wins": 2,
+      "id": "matteo-nannini",
+      "code": "",
+      "givenName": "Matteo",
+      "familyName": "Nannini",
+      "nationality": "ITA",
+      "teamIds": [
+        "cape-motorsports-powered-by-ecr"
+      ],
+      "teamNames": [
+        "Cape Motorsports powered by ECR"
+      ],
+      "teamColors": [
+        "#00A3E0"
+      ],
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/FIA_F3_Austria_2021_Nr._14_Nannini.jpg/960px-FIA_F3_Austria_2021_Nr._14_Nannini.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "position": 13,
-      "points": 260,
+      "points": 306,
       "wins": 0,
       "id": "seb-murray",
       "code": "",
@@ -268,7 +268,47 @@
     },
     {
       "position": 14,
-      "points": 234,
+      "points": 298,
+      "wins": 0,
+      "id": "bryce-aron",
+      "code": "",
+      "givenName": "Bryce",
+      "familyName": "Aron",
+      "nationality": "USA",
+      "teamIds": [
+        "chip-ganassi-racing"
+      ],
+      "teamNames": [
+        "Chip Ganassi Racing"
+      ],
+      "teamColors": [
+        "#0B5BA7"
+      ],
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Bryce_Aron_Indy_NXT.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
+      "position": 15,
+      "points": 268,
+      "wins": 0,
+      "id": "niels-koolen",
+      "code": "",
+      "givenName": "Niels",
+      "familyName": "Koolen",
+      "nationality": "NLD",
+      "teamIds": [
+        "chip-ganassi-racing"
+      ],
+      "teamNames": [
+        "Chip Ganassi Racing"
+      ],
+      "teamColors": [
+        "#0B5BA7"
+      ],
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/2024_4_Hours_of_Le_Castellet_20.jpg/960px-2024_4_Hours_of_Le_Castellet_20.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+    },
+    {
+      "position": 16,
+      "points": 245,
       "wins": 0,
       "id": "salvador-de-alba",
       "code": "",
@@ -287,47 +327,47 @@
       "imageUrl": "assets/portraits/faces/indynxt/salvador-de-alba.jpg"
     },
     {
-      "position": 15,
-      "points": 224,
+      "position": 17,
+      "points": 227,
       "wins": 0,
-      "id": "niels-koolen",
+      "id": "nicolas-stati",
       "code": "",
-      "givenName": "Niels",
-      "familyName": "Koolen",
-      "nationality": "NLD",
+      "givenName": "Nicolas",
+      "familyName": "Stati",
+      "nationality": "AUS",
       "teamIds": [
-        "chip-ganassi-racing"
+        "cusick-morgan-motorsports"
       ],
       "teamNames": [
-        "Chip Ganassi Racing"
+        "Cusick Morgan Motorsports"
       ],
       "teamColors": [
-        "#0B5BA7"
+        "#8BC34A"
       ],
-      "imageUrl": null
+      "imageUrl": "assets/portraits/faces/indynxt/nicolas-stati.jpg"
     },
     {
-      "position": 16,
-      "points": 224,
+      "position": 18,
+      "points": 222,
       "wins": 0,
-      "id": "bryce-aron",
+      "id": "colin-kaminsky",
       "code": "",
-      "givenName": "Bryce",
-      "familyName": "Aron",
+      "givenName": "Colin",
+      "familyName": "Kaminsky",
       "nationality": "USA",
       "teamIds": [
-        "chip-ganassi-racing"
+        "abel-motorsports"
       ],
       "teamNames": [
-        "Chip Ganassi Racing"
+        "Abel Motorsports"
       ],
       "teamColors": [
-        "#0B5BA7"
+        "#111111"
       ],
-      "imageUrl": "assets/portraits/faces/indynxt/bryce-aron.jpg"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Colin_kaminsky_%2853167564993%29.jpg/960px-Colin_kaminsky_%2853167564993%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
-      "position": 17,
+      "position": 19,
       "points": 216,
       "wins": 0,
       "id": "jordan-missig",
@@ -347,48 +387,8 @@
       "imageUrl": "assets/portraits/faces/indynxt/jordan-missig.jpg"
     },
     {
-      "position": 18,
-      "points": 182,
-      "wins": 0,
-      "id": "nicolas-stati",
-      "code": "",
-      "givenName": "Nicolas",
-      "familyName": "Stati",
-      "nationality": "AUS",
-      "teamIds": [
-        "cusick-morgan-motorsports"
-      ],
-      "teamNames": [
-        "Cusick Morgan Motorsports"
-      ],
-      "teamColors": [
-        "#8BC34A"
-      ],
-      "imageUrl": "assets/portraits/faces/indynxt/nicolas-stati.jpg"
-    },
-    {
-      "position": 19,
-      "points": 178,
-      "wins": 0,
-      "id": "colin-kaminsky",
-      "code": "",
-      "givenName": "Colin",
-      "familyName": "Kaminsky",
-      "nationality": "USA",
-      "teamIds": [
-        "abel-motorsports"
-      ],
-      "teamNames": [
-        "Abel Motorsports"
-      ],
-      "teamColors": [
-        "#111111"
-      ],
-      "imageUrl": null
-    },
-    {
       "position": 20,
-      "points": 176,
+      "points": 214,
       "wins": 0,
       "id": "james-roe",
       "code": "",
@@ -404,11 +404,11 @@
       "teamColors": [
         "#0B5BA7"
       ],
-      "imageUrl": null
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/95JamesRoeJr_F3Americas_Road_America.jpg/960px-95JamesRoeJr_F3Americas_Road_America.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "position": 21,
-      "points": 161,
+      "points": 207,
       "wins": 0,
       "id": "alexander-koreiba",
       "code": "",
@@ -428,27 +428,7 @@
     },
     {
       "position": 22,
-      "points": 150,
-      "wins": 0,
-      "id": "nicholas-monteiro",
-      "code": "",
-      "givenName": "Nicholas",
-      "familyName": "Monteiro",
-      "nationality": "BRA",
-      "teamIds": [
-        "a-j-foyt-enterprises"
-      ],
-      "teamNames": [
-        "A.J. Foyt Enterprises"
-      ],
-      "teamColors": [
-        "#D71920"
-      ],
-      "imageUrl": "assets/portraits/faces/indynxt/nicholas-monteiro.jpg"
-    },
-    {
-      "position": 23,
-      "points": 147,
+      "points": 182,
       "wins": 0,
       "id": "carson-etter",
       "code": "",
@@ -465,6 +445,26 @@
         "#0B5BA7"
       ],
       "imageUrl": "assets/portraits/faces/indynxt/carson-etter.jpg"
+    },
+    {
+      "position": 23,
+      "points": 179,
+      "wins": 0,
+      "id": "nicholas-monteiro",
+      "code": "",
+      "givenName": "Nicholas",
+      "familyName": "Monteiro",
+      "nationality": "BRA",
+      "teamIds": [
+        "a-j-foyt-enterprises"
+      ],
+      "teamNames": [
+        "A.J. Foyt Enterprises"
+      ],
+      "teamColors": [
+        "#D71920"
+      ],
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ae/FORMULA_4_BRAZILIAN_CHAMPIONSHIP_1%C2%BA_ETAPA_VELOCITTA_-_CORRIDA_1_%28Nicholas_Monteiro%29.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
       "position": 24,
@@ -488,27 +488,7 @@
     },
     {
       "position": 25,
-      "points": 37,
-      "wins": 0,
-      "id": "nolan-allaer",
-      "code": "",
-      "givenName": "Nolan",
-      "familyName": "Allaer",
-      "nationality": "USA",
-      "teamIds": [
-        "juncos-hollinger-racing"
-      ],
-      "teamNames": [
-        "Juncos Hollinger Racing"
-      ],
-      "teamColors": [
-        "#4A148C"
-      ],
-      "imageUrl": "assets/portraits/faces/indynxt/nolan-allaer.jpg"
-    },
-    {
-      "position": 26,
-      "points": 30,
+      "points": 101,
       "wins": 0,
       "id": "jacob-abel",
       "code": "",
@@ -524,11 +504,31 @@
       "teamColors": [
         "#111111"
       ],
-      "imageUrl": "assets/portraits/faces/indynxt/jacob-abel.jpg"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/68/Jacob_Abel_Indy_NXT.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
+      "position": 26,
+      "points": 67,
+      "wins": 0,
+      "id": "nolan-allaer",
+      "code": "",
+      "givenName": "Nolan",
+      "familyName": "Allaer",
+      "nationality": "USA",
+      "teamIds": [
+        "juncos-hollinger-racing"
+      ],
+      "teamNames": [
+        "Juncos Hollinger Racing"
+      ],
+      "teamColors": [
+        "#4A148C"
+      ],
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Nolan_at_the_track.jpg/960px-Nolan_at_the_track.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "position": 27,
-      "points": 20,
+      "points": 51,
       "wins": 0,
       "id": "bart-harrison",
       "code": "",
@@ -544,7 +544,7 @@
       "teamColors": [
         "#202A44"
       ],
-      "imageUrl": null
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Italian_F4_2025_-_Misano_2_-_Bart_Harrison.jpg/960px-Italian_F4_2025_-_Misano_2_-_Bart_Harrison.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "position": 28,
