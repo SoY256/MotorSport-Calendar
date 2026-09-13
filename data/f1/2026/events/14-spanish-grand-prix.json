@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-13T10:01:15.830341Z",
+  "lastSuccessfulUpdate": "2026-09-13T14:15:27.075703Z",
   "source": {
     "name": "jolpica-f1",
     "url": "https://api.jolpi.ca/f1/alpha/schedules/2026/"
@@ -2337,6 +2337,12 @@
             }
           }
         ]
+      },
+      {
+        "type": "R",
+        "name": "Race",
+        "startTimeUtc": "2026-09-13T13:00:00Z",
+        "results": []
       }
     ]
   }

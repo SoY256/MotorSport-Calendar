@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-13T10:01:47.231791Z",
+  "lastSuccessfulUpdate": "2026-09-13T14:16:00.743609Z",
   "source": {
     "name": "official-formula-series",
     "url": "https://www.fiaformula2.com/en/standings/2026/teams"
@@ -8,7 +8,7 @@
   "data": [
     {
       "position": 1,
-      "points": 291,
+      "points": 296,
       "wins": 0,
       "id": "campos-racing",
       "name": "Campos Racing",
@@ -17,7 +17,7 @@
     },
     {
       "position": 2,
-      "points": 244,
+      "points": 260,
       "wins": 0,
       "id": "invicta-racing",
       "name": "Invicta Racing",
@@ -26,16 +26,7 @@
     },
     {
       "position": 3,
-      "points": 184,
-      "wins": 0,
-      "id": "mp-motorsport",
-      "name": "MP Motorsport",
-      "nationality": null,
-      "color": "#ff9141"
-    },
-    {
-      "position": 4,
-      "points": 180,
+      "points": 209,
       "wins": 0,
       "id": "rodin-motorsport",
       "name": "Rodin Motorsport",
@@ -43,8 +34,17 @@
       "color": "#c3a752"
     },
     {
+      "position": 4,
+      "points": 190,
+      "wins": 0,
+      "id": "mp-motorsport",
+      "name": "MP Motorsport",
+      "nationality": null,
+      "color": "#ff9141"
+    },
+    {
       "position": 5,
-      "points": 151,
+      "points": 159,
       "wins": 0,
       "id": "art-grand-prix",
       "name": "ART Grand Prix",
@@ -53,16 +53,7 @@
     },
     {
       "position": 6,
-      "points": 104,
-      "wins": 0,
-      "id": "trident",
-      "name": "TRIDENT",
-      "nationality": null,
-      "color": "#6464ff"
-    },
-    {
-      "position": 7,
-      "points": 103,
+      "points": 132,
       "wins": 0,
       "id": "dams-lucas-oil",
       "name": "DAMS Lucas Oil",
@@ -70,8 +61,17 @@
       "color": "#00b4ff"
     },
     {
+      "position": 7,
+      "points": 110,
+      "wins": 0,
+      "id": "trident",
+      "name": "TRIDENT",
+      "nationality": null,
+      "color": "#6464ff"
+    },
+    {
       "position": 8,
-      "points": 70,
+      "points": 96,
       "wins": 0,
       "id": "hitech",
       "name": "Hitech",
@@ -89,7 +89,7 @@
     },
     {
       "position": 10,
-      "points": 40,
+      "points": 41,
       "wins": 0,
       "id": "prema-racing",
       "name": "PREMA Racing",
@@ -98,7 +98,7 @@
     },
     {
       "position": 11,
-      "points": 20,
+      "points": 38,
       "wins": 0,
       "id": "aix-racing",
       "name": "AIX Racing",
