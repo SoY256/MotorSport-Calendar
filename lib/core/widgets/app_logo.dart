@@ -23,7 +23,7 @@ class AppLogo extends StatelessWidget {
         if (!compact) ...[
           const SizedBox(width: 10),
           const Text(
-            'MOTORSPORT',
+            'Secar',
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w900,

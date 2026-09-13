@@ -38,6 +38,8 @@ class AppStrings {
   String get selectEvent => _en ? 'Select an event' : 'Wybierz wydarzenie';
   String get noResults =>
       _en ? 'Results are not available yet' : 'Wyniki nie są jeszcze dostępne';
+  String get awaitingResults =>
+      _en ? 'Waiting for results' : 'Oczekiwanie na wyniki';
   String get results => _en ? 'Details' : 'Szczegóły';
   String get month => _en ? 'Month' : 'Miesiąc';
   String get week => _en ? 'Week' : 'Tydzień';
@@ -75,6 +77,17 @@ class AppStrings {
   String get eventTime => _en ? 'Event time' : 'Czas wydarzeń';
   String get localTime => _en ? 'My local time' : 'Mój czas lokalny';
   String get trackTime => _en ? 'Track local time' : 'Czas lokalny toru';
+  String get privacyPolicy => _en ? 'Privacy Policy' : 'Polityka prywatności';
+  String get privacyPolicyHint =>
+      _en ? 'How Secar handles data' : 'Jak Secar przetwarza dane';
+  String get aboutSecar => _en ? 'About Secar' : 'O Secar';
+  String get independentApp => _en
+      ? 'Independent, unofficial motorsport application'
+      : 'Niezależna, nieoficjalna aplikacja motorsportowa';
+  String get legalNotice => _en
+      ? 'Secar is an independent, unofficial motorsport reference application. It is not affiliated with, endorsed by or sponsored by Formula 1, FIA Formula 2, FIA Formula 3, FIA WEC, IMSA, INDYCAR, INDY NXT, their organizers, teams or manufacturers. All series names, team names, logos, driver images and other trademarks belong to their respective owners. Results and schedules can change; for official decisions, consult the relevant championship organizer.'
+      : 'Secar jest niezależną, nieoficjalną aplikacją informacyjną o sportach motorowych. Nie jest powiązana, zatwierdzona ani sponsorowana przez Formula 1, FIA Formula 2, FIA Formula 3, FIA WEC, IMSA, INDYCAR, INDY NXT, ich organizatorów, zespoły ani producentów. Nazwy serii i zespołów, logotypy, zdjęcia kierowców oraz inne znaki towarowe należą do ich właścicieli. Wyniki i terminarze mogą ulec zmianie; oficjalne decyzje należy sprawdzać u organizatora danych mistrzostw.';
+  String get close => _en ? 'Close' : 'Zamknij';
   String get loadingError =>
       _en ? 'Could not load data' : 'Nie udało się wczytać danych';
   String get retry => _en ? 'Try again' : 'Spróbuj ponownie';

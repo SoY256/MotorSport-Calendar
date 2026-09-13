@@ -38,6 +38,16 @@ class RefreshDecisionTests(unittest.TestCase):
         with patch.object(refresh_decision, "DATA", root):
             self.assertEqual(refresh_decision.decision(now), (False, "not-due"))
 
+    def test_missing_result_keeps_polling_after_seven_days(self):
+        now = datetime(2026, 8, 25, 12, 0, tzinfo=timezone.utc)
+        temp, root = self._data(
+            now - timedelta(hours=1),
+            now - timedelta(days=8, hours=2, minutes=5),
+        )
+        self.addCleanup(temp.cleanup)
+        with patch.object(refresh_decision, "DATA", root):
+            self.assertEqual(refresh_decision.decision(now)[1], "awaiting-f1-race-R")
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -15,7 +15,7 @@ class MotorsportCalendarApp extends ConsumerWidget {
     final themeMode = ref.watch(themeModeProvider);
     final settings = ref.watch(settingsProvider);
     return MaterialApp(
-      title: 'MotorSport Calendar',
+      title: 'Secar',
       debugShowCheckedModeBanner: false,
       theme: MotorsportTheme.light,
       darkTheme: MotorsportTheme.dark,

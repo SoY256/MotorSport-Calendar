@@ -8,3 +8,7 @@ build/
 *.iml
 .flutter-plugins
 .flutter-plugins-dependencies
+.tmp/
+.tool-state/
+test/failures/
+release/

@@ -24,7 +24,7 @@ if not exist ".tools\flutter\bin\flutter.bat" (
   exit /b 1
 )
 
-echo Uruchamianie MotorSport Calendar w Chrome...
+echo Uruchamianie Secar w Chrome...
 call ".tools\flutter\bin\flutter.bat" run -d chrome
 
 if errorlevel 1 (

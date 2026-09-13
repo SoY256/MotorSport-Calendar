@@ -17,6 +17,25 @@ ROOT = Path(__file__).resolve().parents[1]
 HEADERS = {"User-Agent": "MotorSport-Calendar/0.1 (+https://github.com/SoY256/MotorSport-Calendar)"}
 
 
+def stored_portraits(name: str) -> dict[str, str]:
+    path = ROOT / "data" / "sources" / name
+    if not path.exists():
+        return {}
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    return {slugify(driver): url for driver, url in raw.items()}
+
+
+def bundled_portraits() -> dict[str, str]:
+    portraits: dict[str, str] = {}
+    for path in (ROOT / "assets" / "data").glob("*/2026/standings_drivers.json"):
+        document = json.loads(path.read_text(encoding="utf-8"))
+        for driver in document["data"]:
+            image = driver.get("imageUrl")
+            if image:
+                portraits[slugify(f"{driver.get('givenName', '')} {driver.get('familyName', '')}")] = image
+    return portraits
+
+
 def indy_portraits(domain: str) -> dict[str, str]:
     base = f"https://www.{domain}.com"
     html = read(f"{base}/Drivers", HEADERS).decode("utf-8", "replace")
@@ -60,13 +79,28 @@ def enrich(root: Path, series: str, portraits: dict[str, str]) -> int:
 
 
 def main() -> None:
-    sources = {
-        "f1": official_f1_portraits(),
-        "f2": official_portraits("f2"),
-        "f3": official_portraits("f3"),
-        "indycar": indy_portraits("indycar"),
-        "indynxt": indy_portraits("indynxt"),
-    }
+    imsa = stored_portraits("imsa_driver_portraits.json")
+    wikipedia = stored_portraits("wikipedia_driver_portraits.json")
+    if os.environ.get("PORTRAIT_STORED_ONLY"):
+        sources = {
+            "imsa": imsa | wikipedia,
+            "indycar": bundled_portraits() | wikipedia,
+            "indynxt": bundled_portraits() | wikipedia,
+            "wec": bundled_portraits() | imsa | wikipedia,
+        }
+    else:
+        sources = {
+            "f1": official_f1_portraits(),
+            "f2": official_portraits("f2"),
+            "f3": official_portraits("f3"),
+            "imsa": imsa | wikipedia,
+            "indycar": indy_portraits("indycar"),
+            "indynxt": indy_portraits("indynxt"),
+            # A substantial part of the WEC grid also races in IMSA. Official
+            # IMSA portraits are an identity-safe fallback until WEC exposes a
+            # portrait for a given driver.
+            "wec": imsa | wikipedia,
+        }
     configured = os.environ.get("PORTRAIT_SINGLE_ROOT")
     roots = (Path(configured),) if configured else (ROOT / "assets" / "data", ROOT / "data")
     for root in roots:

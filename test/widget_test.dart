@@ -3,11 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
-import 'package:motor_sport_calendar/app/app.dart';
-import 'package:motor_sport_calendar/features/calendar/data/calendar_repository.dart';
-import 'package:motor_sport_calendar/features/calendar/presentation/calendar_providers.dart';
-import 'package:motor_sport_calendar/features/settings/domain/app_settings.dart';
-import 'package:motor_sport_calendar/features/settings/presentation/settings_controller.dart';
+import 'package:secar/app/app.dart';
+import 'package:secar/features/calendar/data/calendar_repository.dart';
+import 'package:secar/features/calendar/domain/race_event.dart';
+import 'package:secar/features/calendar/presentation/calendar_providers.dart';
+import 'package:secar/features/settings/domain/app_settings.dart';
+import 'package:secar/features/settings/presentation/settings_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
@@ -374,4 +375,108 @@ void main() {
     expect(find.text('Event time'), findsOneWidget);
     await tester.pumpWidget(const SizedBox.shrink());
   });
+
+  testWidgets(
+    'details show completed session results before the weekend ends',
+    (tester) async {
+      SharedPreferences.setMockInitialValues({});
+      final repository = _InProgressWeekendRepository();
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [calendarRepositoryProvider.overrideWithValue(repository)],
+          child: const MotorsportCalendarApp(),
+        ),
+      );
+      addTearDown(() => tester.pumpWidget(const SizedBox.shrink()));
+      await tester.pump(const Duration(milliseconds: 500));
+
+      await tester.tap(find.text('Details'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Qualifying'), findsOneWidget);
+      expect(find.text('Scheduled sessions'), findsOneWidget);
+      expect(find.text('Race'), findsWidgets);
+      expect(tester.takeException(), isNull);
+    },
+  );
+}
+
+class _InProgressWeekendRepository implements CalendarRepository {
+  _InProgressWeekendRepository() {
+    final now = DateTime.now().toUtc();
+    event = RaceEvent(
+      id: 'test-weekend',
+      seriesId: 'f1',
+      season: 2026,
+      round: 1,
+      name: 'Test Grand Prix',
+      cancelled: false,
+      circuit: const Circuit(
+        name: 'Test Circuit',
+        country: 'Poland',
+        countryCode: 'POL',
+      ),
+      sessions: [
+        RaceSession(
+          type: 'Q',
+          name: 'Qualifying',
+          startTimeUtc: now.subtract(const Duration(hours: 2)),
+          cancelled: false,
+          durationMinutes: 60,
+        ),
+        RaceSession(
+          type: 'R',
+          name: 'Race',
+          startTimeUtc: now.add(const Duration(hours: 2)),
+          cancelled: false,
+          durationMinutes: 120,
+        ),
+      ],
+      resultsPath: 'events/test.json',
+    );
+  }
+
+  late final RaceEvent event;
+
+  @override
+  Future<CalendarData> load() async => CalendarData(
+    schemaVersion: 1,
+    updatedAt: DateTime.now().toUtc(),
+    events: [event],
+  );
+
+  @override
+  Future<EventResults> loadResults(RaceEvent event) async => EventResults(
+    eventId: event.id,
+    sessions: [
+      SessionResults(
+        type: 'Q',
+        name: 'Qualifying',
+        startTimeUtc: event.sessions.first.startTimeUtc,
+        results: const [
+          SessionResult(
+            position: 1,
+            positionText: '1',
+            driver: DriverIdentity(
+              id: 'test-driver',
+              code: 'TST',
+              givenName: 'Test',
+              familyName: 'Driver',
+              nationality: 'POL',
+            ),
+            teamName: 'Test Racing',
+            teamColor: '#E10600',
+            time: '1:20.000',
+            points: null,
+            status: null,
+            category: null,
+          ),
+        ],
+      ),
+    ],
+  );
+
+  @override
+  Future<StandingsData> loadStandings(String seriesId) async =>
+      const StandingsData(drivers: [], teams: []);
 }

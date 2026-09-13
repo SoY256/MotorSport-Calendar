@@ -202,31 +202,37 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen>
     );
 
     return Scaffold(
-      body: SafeArea(
-        child: Row(
-          children: [
-            if (wide)
-              NavigationRail(
-                selectedIndex: _page,
-                onDestinationSelected: (value) => setState(() => _page = value),
-                labelType: NavigationRailLabelType.all,
-                leading: const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 16),
-                  child: AppLogo(compact: true),
-                ),
-                destinations: destinations
-                    .map(
-                      (item) => NavigationRailDestination(
-                        icon: item.icon,
-                        selectedIcon: item.selectedIcon,
-                        label: Text(item.label),
-                      ),
-                    )
-                    .toList(),
-              ),
-            Expanded(child: content),
-          ],
-        ),
+      body: Stack(
+        children: [
+          const Positioned.fill(child: _RacingBackdrop()),
+          SafeArea(
+            child: Row(
+              children: [
+                if (wide)
+                  NavigationRail(
+                    selectedIndex: _page,
+                    onDestinationSelected: (value) =>
+                        setState(() => _page = value),
+                    labelType: NavigationRailLabelType.all,
+                    leading: const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 16),
+                      child: AppLogo(compact: true),
+                    ),
+                    destinations: destinations
+                        .map(
+                          (item) => NavigationRailDestination(
+                            icon: item.icon,
+                            selectedIcon: item.selectedIcon,
+                            label: Text(item.label),
+                          ),
+                        )
+                        .toList(),
+                  ),
+                Expanded(child: content),
+              ],
+            ),
+          ),
+        ],
       ),
       bottomNavigationBar: wide
           ? null
@@ -237,6 +243,105 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen>
             ),
     );
   }
+}
+
+class _RacingBackdrop extends StatelessWidget {
+  const _RacingBackdrop();
+
+  @override
+  Widget build(BuildContext context) {
+    final dark = Theme.of(context).brightness == Brightness.dark;
+    return IgnorePointer(
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          ColorFiltered(
+            colorFilter: dark
+                ? const ColorFilter.matrix(<double>[
+                    1.65,
+                    0,
+                    0,
+                    0,
+                    10,
+                    0,
+                    1.65,
+                    0,
+                    0,
+                    10,
+                    0,
+                    0,
+                    1.65,
+                    0,
+                    10,
+                    0,
+                    0,
+                    0,
+                    1,
+                    0,
+                  ])
+                : const ColorFilter.mode(Colors.transparent, BlendMode.dst),
+            child: Image.asset(
+              dark
+                  ? 'assets/branding/carbon-wallpaper-dark.png'
+                  : 'assets/branding/carbon-wallpaper-light.png',
+              fit: BoxFit.cover,
+              alignment: Alignment.center,
+              filterQuality: FilterQuality.high,
+            ),
+          ),
+          ColoredBox(
+            color: (dark ? const Color(0xFF05070A) : Colors.white).withValues(
+              alpha: dark ? .04 : .18,
+            ),
+          ),
+          DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: dark
+                    ? [
+                        Colors.black.withValues(alpha: .01),
+                        Colors.black.withValues(alpha: .08),
+                      ]
+                    : [
+                        Colors.white.withValues(alpha: .08),
+                        const Color(0xFFF4F6F9).withValues(alpha: .30),
+                      ],
+              ),
+            ),
+          ),
+          CustomPaint(painter: _SpeedLinesPainter(dark: dark)),
+        ],
+      ),
+    );
+  }
+}
+
+class _SpeedLinesPainter extends CustomPainter {
+  const _SpeedLinesPainter({required this.dark});
+  final bool dark;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final line = Paint()
+      ..color = (dark ? Colors.white : const Color(0xFF111827)).withValues(
+        alpha: .025,
+      )
+      ..strokeWidth = 1;
+    for (double x = -size.height; x < size.width; x += 34) {
+      canvas.drawLine(Offset(x, 0), Offset(x + size.height, size.height), line);
+    }
+    final glow = Paint()
+      ..shader = const LinearGradient(
+        colors: [Colors.transparent, Color(0x55E10600), Colors.transparent],
+      ).createShader(Rect.fromLTWH(0, 0, size.width, 3));
+    canvas.drawRect(Rect.fromLTWH(0, 0, size.width, 3), glow);
+  }
+
+  @override
+  bool shouldRepaint(covariant _SpeedLinesPainter oldDelegate) =>
+      oldDelegate.dark != dark;
 }
 
 class _SeriesTabsBar extends StatelessWidget {
@@ -255,12 +360,14 @@ class _SeriesTabsBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final ids = available.toList()..sort();
     return Material(
-      color: Theme.of(context).colorScheme.surfaceContainerLow,
+      color: Theme.of(context).colorScheme.surface.withValues(alpha: .94),
+      elevation: 3,
+      shadowColor: Colors.black26,
       child: SizedBox(
-        height: 58,
+        height: 62,
         child: ListView(
           scrollDirection: Axis.horizontal,
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
           children: [
             _SeriesTab(
               label: language == AppLanguage.polish ? 'Wszystkie' : 'All',
@@ -299,7 +406,7 @@ class _SeriesTab extends StatelessWidget {
   Widget build(BuildContext context) => Material(
     color: selected
         ? (color ?? Theme.of(context).colorScheme.primary)
-        : Colors.transparent,
+        : Theme.of(context).colorScheme.surfaceContainer,
     shape: StadiumBorder(
       side: BorderSide(
         color: selected ? Colors.transparent : Theme.of(context).dividerColor,
@@ -352,10 +459,43 @@ class _PageFrame extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Row(
+                    children: [
+                      Container(
+                        width: 34,
+                        height: 4,
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.primary,
+                          borderRadius: BorderRadius.circular(4),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Theme.of(context).colorScheme.primary
+                                  .withValues(alpha: .42),
+                              blurRadius: 10,
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 9),
+                      Text(
+                        'SECAR  /  LIVE MOTORSPORT',
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: 1.35,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 9),
                   Text(
-                    title,
-                    style: Theme.of(context).textTheme.headlineMedium
-                        ?.copyWith(fontWeight: FontWeight.w900),
+                    title.toUpperCase(),
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                      fontWeight: FontWeight.w900,
+                      fontStyle: FontStyle.italic,
+                      letterSpacing: -1.1,
+                    ),
                   ),
                   const SizedBox(height: 6),
                   Text(
@@ -681,18 +821,43 @@ class _EventCard extends StatelessWidget {
     final race = event.sessions.last;
     return Card(
       child: InkWell(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(16),
         onTap: onTap,
         child: Padding(
           padding: const EdgeInsets.all(18),
           child: Row(
             children: [
+              Container(
+                width: 4,
+                height: 48,
+                decoration: BoxDecoration(
+                  color: _seriesColor(event.seriesId),
+                  borderRadius: BorderRadius.circular(4),
+                  boxShadow: [
+                    BoxShadow(
+                      color: _seriesColor(event.seriesId)
+                          .withValues(alpha: .35),
+                      blurRadius: 8,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 10),
               SizedBox(
                 width: 52,
-                child: Text(
-                  _countryFlag(event.circuit.countryCode),
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 34),
+                height: 46,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.surfaceContainer,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Center(
+                    child: Text(
+                      _countryFlag(event.circuit.countryCode),
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(fontSize: 28),
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(width: 15),
@@ -737,14 +902,30 @@ class _EventCard extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 5),
-                    Text(
-                      '${_seriesLabel(event.seriesId)} • R${event.round ?? '–'} • ${event.circuit.name}',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.onSurfaceVariant,
-                        fontSize: 13,
-                      ),
+                    Row(
+                      children: [
+                        Text(
+                          _seriesLabel(event.seriesId),
+                          style: TextStyle(
+                            color: _seriesColor(event.seriesId),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ),
+                        Expanded(
+                          child: Text(
+                            '  •  R${event.round ?? '–'}  •  ${event.circuit.name}',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onSurfaceVariant,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -1129,17 +1310,8 @@ class _ResultsPageState extends ConsumerState<_ResultsPage>
     final now = DateTime.now().toUtc();
     final missing = widget.selected.sessions.where((session) {
       if (session.cancelled) return false;
-      final due = session.expectedEnd.add(const Duration(minutes: 5));
-      final received = results.sessions.any(
-        (result) =>
-            result.type == session.type &&
-            result.results.isNotEmpty &&
-            result.startTimeUtc.difference(session.startTimeUtc).abs() <
-                const Duration(minutes: 5),
-      );
-      return !received &&
-          due.isBefore(now.add(const Duration(days: 1))) &&
-          due.isAfter(now.subtract(const Duration(days: 7)));
+      final received = _hasResultsForSession(session, results);
+      return !received;
     }).toList();
     if (missing.isEmpty) return;
     missing.sort((a, b) => a.expectedEnd.compareTo(b.expectedEnd));
@@ -1221,75 +1393,128 @@ class _ResultsPageState extends ConsumerState<_ResultsPage>
               onRetry: () => ref.invalidate(eventResultsProvider(selected)),
             ),
             data: (data) {
-              final completed = selected.endsAt.isBefore(
-                DateTime.now().toUtc(),
-              );
-              if (!completed) {
-                final sessions = [...selected.sessions]
-                  ..sort((a, b) => a.startTimeUtc.compareTo(b.startTimeUtc));
-                return Card(
-                  child: Column(
-                    children: [
-                      ListTile(
-                        leading: const Icon(Icons.schedule),
-                        title: Text(
-                          strings.plannedSessions,
-                          style: const TextStyle(fontWeight: FontWeight.w900),
-                        ),
-                      ),
-                      const Divider(height: 1),
-                      for (final session in sessions)
-                        ListTile(
-                          title: Text(
-                            _sessionLabel(session.type, session.name, strings),
-                            style: const TextStyle(fontWeight: FontWeight.w800),
-                          ),
-                          subtitle: Text(
-                            '${_zoneName(session, settings, strings)} • '
-                            '${strings.expectedDuration}: ${strings.duration(session.durationMinutes)}',
-                          ),
-                          trailing: Text(
-                            '${_sessionDate(session, settings)}\n${_sessionTime(session, settings.timeMode)}',
-                            textAlign: TextAlign.end,
-                            style: const TextStyle(fontWeight: FontWeight.w800),
-                          ),
-                        ),
-                    ],
-                  ),
-                );
-              }
-              final sessions = [...data.sessions]
-                ..sort(
-                  (a, b) =>
-                      _resultOrder(a.type).compareTo(_resultOrder(b.type)),
-                );
-              return sessions.isEmpty
-                  ? _EmptyCard(
+              final now = DateTime.now().toUtc();
+              final sessions =
+                  data.sessions
+                      .where((session) => session.results.isNotEmpty)
+                      .toList()
+                    ..sort(
+                      (a, b) =>
+                          _resultOrder(a.type).compareTo(_resultOrder(b.type)),
+                    );
+              final withoutResults =
+                  selected.sessions
+                      .where(
+                        (session) =>
+                            !session.cancelled &&
+                            !_hasResultsForSession(session, data),
+                      )
+                      .toList()
+                    ..sort((a, b) => a.startTimeUtc.compareTo(b.startTimeUtc));
+              final awaiting = withoutResults
+                  .where((session) => !session.expectedEnd.isAfter(now))
+                  .toList();
+              final planned = withoutResults
+                  .where((session) => session.expectedEnd.isAfter(now))
+                  .toList();
+
+              return Column(
+                children: [
+                  for (var index = 0; index < sessions.length; index++) ...[
+                    _SessionResultsCard(
+                      session: sessions[index],
+                      strings: strings,
+                      initiallyExpanded: index == 0,
+                    ),
+                    if (index < sessions.length - 1 ||
+                        awaiting.isNotEmpty ||
+                        planned.isNotEmpty)
+                      const SizedBox(height: 12),
+                  ],
+                  if (awaiting.isNotEmpty) ...[
+                    _SessionsScheduleCard(
+                      title: strings.awaitingResults,
+                      icon: Icons.hourglass_top_rounded,
+                      sessions: awaiting,
+                      settings: settings,
+                      strings: strings,
+                    ),
+                    if (planned.isNotEmpty) const SizedBox(height: 12),
+                  ],
+                  if (planned.isNotEmpty)
+                    _SessionsScheduleCard(
+                      title: strings.plannedSessions,
+                      icon: Icons.schedule,
+                      sessions: planned,
+                      settings: settings,
+                      strings: strings,
+                    ),
+                  if (sessions.isEmpty && awaiting.isEmpty && planned.isEmpty)
+                    _EmptyCard(
                       icon: Icons.hourglass_empty,
                       message: strings.noResults,
-                    )
-                  : Column(
-                      children: [
-                        for (
-                          var index = 0;
-                          index < sessions.length;
-                          index++
-                        ) ...[
-                          _SessionResultsCard(
-                            session: sessions[index],
-                            strings: strings,
-                          ),
-                          if (index < sessions.length - 1)
-                            const SizedBox(height: 12),
-                        ],
-                      ],
-                    );
+                    ),
+                ],
+              );
             },
           ),
         ],
       ),
     );
   }
+}
+
+bool _hasResultsForSession(RaceSession session, EventResults results) => results
+    .sessions
+    .any((result) => result.type == session.type && result.results.isNotEmpty);
+
+class _SessionsScheduleCard extends StatelessWidget {
+  const _SessionsScheduleCard({
+    required this.title,
+    required this.icon,
+    required this.sessions,
+    required this.settings,
+    required this.strings,
+  });
+
+  final String title;
+  final IconData icon;
+  final List<RaceSession> sessions;
+  final AppSettings settings;
+  final AppStrings strings;
+
+  @override
+  Widget build(BuildContext context) => Card(
+    child: Column(
+      children: [
+        ListTile(
+          leading: Icon(icon),
+          title: Text(
+            title,
+            style: const TextStyle(fontWeight: FontWeight.w900),
+          ),
+        ),
+        const Divider(height: 1),
+        for (final session in sessions)
+          ListTile(
+            title: Text(
+              _sessionLabel(session.type, session.name, strings),
+              style: const TextStyle(fontWeight: FontWeight.w800),
+            ),
+            subtitle: Text(
+              '${_zoneName(session, settings, strings)} • '
+              '${strings.expectedDuration}: ${strings.duration(session.durationMinutes)}',
+            ),
+            trailing: Text(
+              '${_sessionDate(session, settings)}\n'
+              '${_sessionTime(session, settings.timeMode)}',
+              textAlign: TextAlign.end,
+              style: const TextStyle(fontWeight: FontWeight.w800),
+            ),
+          ),
+      ],
+    ),
+  );
 }
 
 class _CircuitAsset extends StatelessWidget {
@@ -1445,14 +1670,20 @@ class _CircuitInfoCard extends StatelessWidget {
 }
 
 class _SessionResultsCard extends StatelessWidget {
-  const _SessionResultsCard({required this.session, required this.strings});
+  const _SessionResultsCard({
+    required this.session,
+    required this.strings,
+    this.initiallyExpanded = false,
+  });
   final SessionResults session;
   final AppStrings strings;
+  final bool initiallyExpanded;
 
   @override
   Widget build(BuildContext context) => Card(
     child: ExpansionTile(
-      initiallyExpanded: session.type == 'R' || session.type == 'SPRINT',
+      initiallyExpanded:
+          initiallyExpanded || session.type == 'R' || session.type == 'SPRINT',
       title: Text(
         _sessionLabel(session.type, session.name, strings),
         style: const TextStyle(fontWeight: FontWeight.w900),
@@ -1663,6 +1894,7 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
                                           ),
                                     flag: _nationalityFlag(item.nationality),
                                     imageUrl: item.imageUrl,
+                                    teamLogoAsset: null,
                                     initials:
                                         '${item.givenName.isEmpty ? '' : item.givenName[0]}${item.familyName.isEmpty ? '' : item.familyName[0]}',
                                     points: item.points,
@@ -1681,6 +1913,10 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
                                         : _hexColor(item.color),
                                     flag: null,
                                     imageUrl: null,
+                                    teamLogoAsset: _teamLogoAsset(
+                                      item.id,
+                                      item.name,
+                                    ),
                                     initials: '',
                                     points: item.points,
                                     strings: strings,
@@ -1709,6 +1945,7 @@ class _StandingRow extends StatelessWidget {
     required this.color,
     required this.flag,
     required this.imageUrl,
+    required this.teamLogoAsset,
     required this.initials,
   });
   final int position;
@@ -1719,17 +1956,18 @@ class _StandingRow extends StatelessWidget {
   final Color color;
   final String? flag;
   final String? imageUrl;
+  final String? teamLogoAsset;
   final String initials;
 
   @override
   Widget build(BuildContext context) => Column(
     children: [
       Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 13),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
         child: Row(
           children: [
             SizedBox(
-              width: 38,
+              width: 28,
               child: Text(
                 '$position',
                 style: const TextStyle(
@@ -1739,14 +1977,24 @@ class _StandingRow extends StatelessWidget {
               ),
             ),
             Container(
-              width: 5,
-              height: 38,
-              margin: const EdgeInsets.only(right: 12),
+              width: 4,
+              height: 52,
+              margin: const EdgeInsets.only(right: 8),
               decoration: BoxDecoration(
                 color: color,
                 borderRadius: BorderRadius.circular(4),
               ),
             ),
+            if (imageUrl != null) ...[
+              _DriverPortrait(imageUrl: imageUrl!, initials: initials),
+              const SizedBox(width: 9),
+            ] else if (initials.isNotEmpty) ...[
+              _DriverInitials(initials: initials),
+              const SizedBox(width: 9),
+            ] else if (teamLogoAsset != null) ...[
+              _TeamLogo(asset: teamLogoAsset!),
+              const SizedBox(width: 9),
+            ],
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -1773,24 +2021,7 @@ class _StandingRow extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(width: 8),
-            if (imageUrl != null) ...[
-              SizedBox(
-                width: 52,
-                height: 58,
-                child: Image.network(
-                  imageUrl!,
-                  fit: BoxFit.contain,
-                  alignment: Alignment.bottomCenter,
-                  errorBuilder: (_, _, _) =>
-                      _DriverInitials(initials: initials),
-                ),
-              ),
-              const SizedBox(width: 8),
-            ] else if (initials.isNotEmpty) ...[
-              _DriverInitials(initials: initials),
-              const SizedBox(width: 8),
-            ],
+            const SizedBox(width: 6),
             Text(
               '${_number(points)} ${strings.points}',
               style: const TextStyle(fontWeight: FontWeight.w900),
@@ -1800,6 +2031,207 @@ class _StandingRow extends StatelessWidget {
       ),
       const Divider(height: 1),
     ],
+  );
+}
+
+class _TeamLogo extends StatelessWidget {
+  const _TeamLogo({required this.asset});
+  final String asset;
+
+  @override
+  Widget build(BuildContext context) => Container(
+    width: 68,
+    height: 52,
+    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 7),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(12),
+      border: Border.all(color: Colors.black.withValues(alpha: 0.10)),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withValues(alpha: 0.07),
+          blurRadius: 6,
+          offset: const Offset(0, 2),
+        ),
+      ],
+    ),
+    child: asset.endsWith('.svg')
+        ? SvgPicture.asset(asset, fit: BoxFit.contain)
+        : Image.asset(
+            asset,
+            fit: BoxFit.contain,
+            filterQuality: FilterQuality.high,
+          ),
+  );
+}
+
+String? _teamLogoAsset(String id, String name) {
+  final value = '$id $name'.toLowerCase();
+  const aliases = <String, String>{
+    'tf sport': 'team-tf-sport',
+    'tf-sport': 'team-tf-sport',
+    'by tf': 'team-tf-sport',
+    'the bend manthey': 'team-manthey',
+    'manthey dk': 'team-manthey',
+    'manthey 1st': 'team-manthey',
+    'team wrt': 'team-team-wrt',
+    'team-wrt': 'team-team-wrt',
+    'akkodis': 'team-akkodis-asp',
+    'vista af corse': 'team-af-corse',
+    'vista-af-corse': 'team-af-corse',
+    'af corse': 'team-af-corse',
+    'af-corse': 'team-af-corse',
+    'garage 59': 'team-garage-59',
+    'garage-59': 'team-garage-59',
+    'heart of racing': 'team-heart-of-racing',
+    'heart-of-racing': 'team-heart-of-racing',
+    'proton competition': 'team-proton-competition',
+    'proton-competition': 'team-proton-competition',
+    'iron lynx': 'team-iron-lynx',
+    'iron-lynx': 'team-iron-lynx',
+    'turner motorsport': 'team-turner-motorsport',
+    'winward': 'team-winward-racing',
+    'vasser sullivan': 'team-vasser-sullivan',
+    'vasser-sullivan': 'team-vasser-sullivan',
+    'conquest racing': 'team-conquest-racing',
+    'conquest-racing': 'team-conquest-racing',
+    'wright motorsport': 'team-wright-motorsports',
+    'wright-motorsport': 'team-wright-motorsports',
+    'dragonspeed': 'team-dragonspeed',
+    'gradient racing': 'team-gradient-racing',
+    'gradient-racing': 'team-gradient-racing',
+    'dxdt': 'team-dxdt-racing',
+    'triarsi': 'team-triarsi',
+    'pfaff': 'team-pfaff-motorsports',
+    'ao racing': 'team-ao-racing',
+    'ao-racing': 'team-ao-racing',
+    'paul miller': 'team-paul-miller-racing',
+    'paul-miller': 'team-paul-miller-racing',
+    'pratt miller': 'team-pratt-miller',
+    'pratt-miller': 'team-pratt-miller',
+    'risi': 'team-risi-competizione',
+    'jdc-miller': 'team-jdc-miller',
+    'inter europol': 'team-inter-europol',
+    'inter-europol': 'team-inter-europol',
+    'united autosports': 'team-united-autosports',
+    'united-autosports': 'team-united-autosports',
+    'era motorsport': 'team-era-motorsport',
+    'era-motorsport': 'team-era-motorsport',
+    'mercedes': 'mercedes',
+    'williams': 'williams',
+    'haas': 'haas',
+    'alpine': 'alpine',
+    'team-penske': 'penske',
+    'team penske': 'penske',
+    'aston martin': 'astonmartin',
+    'aston-martin': 'astonmartin',
+    'red bull': 'redbull',
+    'red_bull': 'redbull',
+    'mclaren': 'mclaren',
+    'ferrari': 'ferrari',
+    'audi': 'audi',
+    'cadillac': 'cadillac',
+    'bmw': 'team-bmw',
+    'toyota': 'toyota',
+    'peugeot': 'peugeot',
+    'porsche': 'porsche',
+    'manthey': 'team-manthey',
+    'proton': 'team-proton-competition',
+    'ford': 'ford',
+    'acura': 'acura',
+    'honda': 'honda',
+    'chevrolet': 'chevrolet',
+    'corvette': 'chevrolet',
+    'mazda': 'mazda',
+    'lamborghini': 'lamborghini',
+  };
+  for (final entry in aliases.entries) {
+    if (value.contains(entry.key)) {
+      final extension = entry.value.startsWith('team-') ? 'png' : 'svg';
+      return 'assets/team_logos/${entry.value}.$extension';
+    }
+  }
+  return null;
+}
+
+class _DriverPortrait extends StatelessWidget {
+  const _DriverPortrait({required this.imageUrl, required this.initials});
+
+  final String imageUrl;
+  final String initials;
+
+  String get _faceUrl {
+    if (imageUrl.contains('res.cloudinary.com/') &&
+        !imageUrl.contains('/image/upload/')) {
+      final cloudNameEnd = imageUrl.indexOf(
+        '/',
+        'https://res.cloudinary.com/'.length,
+      );
+      final version = imageUrl.indexOf('/v', cloudNameEnd);
+      if (cloudNameEnd > 0 && version > cloudNameEnd) {
+        return '${imageUrl.substring(0, cloudNameEnd)}/image/upload/c_thumb,g_face,w_320,h_320,q_auto,f_auto${imageUrl.substring(version)}';
+      }
+    }
+    if (!imageUrl.contains('/image/upload/')) return imageUrl;
+    final upload = imageUrl.indexOf('/image/upload/') + '/image/upload/'.length;
+    final version = imageUrl.indexOf('/v', upload);
+    if (version < 0) return imageUrl;
+    return '${imageUrl.substring(0, upload)}c_thumb,g_face,w_320,h_320,q_auto,f_auto${imageUrl.substring(version)}';
+  }
+
+  double get _scale {
+    if (imageUrl.contains('assets/portraits/indycar/') ||
+        imageUrl.contains('assets/portraits/indynxt/')) {
+      return 3;
+    }
+    if (imageUrl.contains('imsa.com/')) return 1.28;
+    if (imageUrl.contains('wikimedia.org/')) return 2.2;
+    return 1;
+  }
+
+  Alignment get _alignment {
+    if (imageUrl.contains('assets/portraits/indycar/') ||
+        imageUrl.contains('assets/portraits/indynxt/')) {
+      return const Alignment(0, -0.35);
+    }
+    return imageUrl.contains('imsa.com/') ||
+            imageUrl.contains('indycar.com/') ||
+            imageUrl.contains('indynxt.com/')
+        ? Alignment.topCenter
+        : Alignment.center;
+  }
+
+  Widget _image() {
+    if (imageUrl.startsWith('assets/portraits/')) {
+      return Image.asset(
+        imageUrl,
+        fit: BoxFit.cover,
+        alignment: _alignment,
+        errorBuilder: (_, _, _) => _DriverInitials(initials: initials),
+      );
+    }
+    return Image.network(
+      _faceUrl,
+      fit: BoxFit.cover,
+      alignment: _alignment,
+      errorBuilder: (_, _, _) => _DriverInitials(initials: initials),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) => Container(
+    width: 58,
+    height: 58,
+    clipBehavior: Clip.antiAlias,
+    decoration: BoxDecoration(
+      color: Theme.of(context).colorScheme.surfaceContainerHighest,
+      borderRadius: BorderRadius.circular(14),
+    ),
+    child: Transform.scale(
+      scale: _scale,
+      alignment: _alignment,
+      child: _image(),
+    ),
   );
 }
 
@@ -1865,7 +2297,9 @@ class _SettingsPage extends ConsumerWidget {
           const SizedBox(height: 12),
           _CategorySelectionCard(
             title: strings.esportCategories,
-            subtitle: strings.chooseAny,
+            subtitle: settings.language == AppLanguage.polish
+                ? 'Wkrótce — przygotowujemy integracje wyścigów wirtualnych.'
+                : 'Coming soon — virtual racing integrations are in development.',
             items: const [
               (
                 'iracing',
@@ -1882,6 +2316,7 @@ class _SettingsPage extends ConsumerWidget {
             ],
             selected: settings.esportCategories,
             onToggle: controller.toggleEsportCategory,
+            comingSoon: true,
           ),
           const SizedBox(height: 12),
           Card(
@@ -1974,11 +2409,129 @@ class _SettingsPage extends ConsumerWidget {
               ),
             ),
           ),
+          const SizedBox(height: 12),
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.privacy_tip_outlined),
+              title: Text(
+                strings.privacyPolicy,
+                style: const TextStyle(fontWeight: FontWeight.w800),
+              ),
+              subtitle: Text(strings.privacyPolicyHint),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () => _showPrivacyPolicy(context, strings),
+            ),
+          ),
+          const SizedBox(height: 12),
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.info_outline),
+              title: Text(
+                strings.aboutSecar,
+                style: const TextStyle(fontWeight: FontWeight.w800),
+              ),
+              subtitle: Text(strings.independentApp),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () => showDialog<void>(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: Text(strings.aboutSecar),
+                  content: SelectableText(strings.legalNotice),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: Text(strings.close),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
 }
+
+Future<void> _showPrivacyPolicy(BuildContext context, AppStrings strings) =>
+    showDialog<void>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(strings.privacyPolicy),
+        content: SizedBox(
+          width: 620,
+          child: SingleChildScrollView(
+            child: SelectableText(
+              strings.language == AppLanguage.english
+                  ? _privacyPolicyEnglish
+                  : _privacyPolicyPolish,
+            ),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: Text(strings.close),
+          ),
+        ],
+      ),
+    );
+
+const _privacyPolicyEnglish = '''Effective date: 27 August 2026
+
+Developer: So_Y
+Contact: marcin.soy@gmail.com
+Public version: https://github.com/SoY256/MotorSport-Calendar/blob/main/PRIVACY.md
+
+Secar is a motorsport calendar and results application. Secar does not require an account and the developer does not collect, sell or share personal data for advertising or profiling.
+
+Data stored on your device
+Secar stores your selected language, theme, time display, event visibility and selected motorsport categories locally on your device. This information is used only to remember your preferences. It remains on the device until you clear the application's data or uninstall it.
+
+Network access and third-party content
+Secar uses encrypted HTTPS connections to retrieve public motorsport schedules, results, standings and related images. Requests may be sent to GitHub-hosted Secar data and to the image hosts referenced by that content, including Cloudinary and Wikimedia. Like other internet services, those providers may receive technical information necessary to deliver a request, such as the IP address, date and time, requested resource and browser or application user agent. This processing is controlled by the respective provider under its own privacy terms; Secar's developer does not use it to identify users.
+
+Secar contains no advertising SDK, analytics SDK, crash-reporting SDK or user-tracking system. It does not request access to location, contacts, photos, microphone, camera or advertising identifiers.
+
+Data sharing, retention and deletion
+The developer does not receive or retain personal data through Secar and therefore does not sell or share it. Locally saved preferences can be deleted at any time by clearing Secar's application data in Android settings or uninstalling the application. Technical server logs, if created by third-party hosting providers, are retained and deleted according to those providers' policies.
+
+Security
+Network data is transmitted using HTTPS. No method of electronic transmission is guaranteed to be completely secure, but Secar limits data access to what is necessary to provide its content.
+
+Children
+Secar is a general-audience motorsport information application and does not knowingly collect personal information from children.
+
+Changes and contact
+This policy may be updated when Secar's features or data practices change. The effective date will be updated on the public policy page. Questions and privacy requests may be sent to marcin.soy@gmail.com.''';
+
+const _privacyPolicyPolish = '''Data wejścia w życie: 27 sierpnia 2026 r.
+
+Deweloper: So_Y
+Kontakt: marcin.soy@gmail.com
+Wersja publiczna: https://github.com/SoY256/MotorSport-Calendar/blob/main/PRIVACY.md
+
+Secar jest aplikacją prezentującą kalendarz, wyniki i klasyfikacje sportów motorowych. Nie wymaga konta, a deweloper nie zbiera, nie sprzedaje ani nie udostępnia danych osobowych na potrzeby reklam lub profilowania.
+
+Dane zapisane na urządzeniu
+Secar zapisuje lokalnie wybrany język, motyw, sposób wyświetlania czasu, widoczność wydarzeń i wybrane kategorie sportów motorowych. Dane te służą wyłącznie do zapamiętania preferencji. Pozostają na urządzeniu do czasu wyczyszczenia danych aplikacji lub jej odinstalowania.
+
+Dostęp do sieci i treści podmiotów trzecich
+Secar używa szyfrowanych połączeń HTTPS do pobierania publicznych terminarzy, wyników, klasyfikacji i powiązanych obrazów. Żądania mogą trafiać do danych Secar hostowanych przez GitHub oraz serwerów obrazów wskazanych w tych danych, w tym Cloudinary i Wikimedia. Podobnie jak inne usługi internetowe, dostawcy ci mogą otrzymywać informacje techniczne niezbędne do obsługi żądania, takie jak adres IP, data i godzina, żądany zasób oraz identyfikator przeglądarki lub aplikacji. Przetwarzanie to odbywa się na zasadach danego dostawcy; deweloper Secar nie wykorzystuje go do identyfikacji użytkowników.
+
+Secar nie zawiera reklam, narzędzi analitycznych, narzędzi raportowania awarii ani systemu śledzenia użytkowników. Nie prosi o dostęp do lokalizacji, kontaktów, zdjęć, mikrofonu, aparatu ani identyfikatorów reklamowych.
+
+Udostępnianie, przechowywanie i usuwanie danych
+Deweloper nie otrzymuje ani nie przechowuje danych osobowych za pośrednictwem Secar, dlatego ich nie sprzedaje ani nie udostępnia. Lokalne preferencje można usunąć w dowolnym momencie przez wyczyszczenie danych Secar w ustawieniach Androida lub odinstalowanie aplikacji. Ewentualne techniczne logi serwerów zewnętrznych dostawców są przechowywane i usuwane zgodnie z ich zasadami.
+
+Bezpieczeństwo
+Dane sieciowe są przesyłane przez HTTPS. Żadna metoda transmisji elektronicznej nie gwarantuje pełnego bezpieczeństwa, jednak Secar ogranicza dostęp do danych do zakresu niezbędnego do dostarczenia treści.
+
+Dzieci
+Secar jest ogólnodostępną aplikacją informacyjną o sportach motorowych i świadomie nie zbiera danych osobowych dzieci.
+
+Zmiany i kontakt
+Polityka może być aktualizowana, gdy zmienią się funkcje Secar lub sposób przetwarzania danych. Data wejścia w życie zostanie zaktualizowana na publicznej stronie. Pytania i żądania dotyczące prywatności można kierować na marcin.soy@gmail.com.''';
 
 class _CategorySelectionCard extends StatelessWidget {
   const _CategorySelectionCard({
@@ -1987,12 +2540,14 @@ class _CategorySelectionCard extends StatelessWidget {
     required this.items,
     required this.selected,
     required this.onToggle,
+    this.comingSoon = false,
   });
   final String title;
   final String subtitle;
   final List<(String, String, String, String?)> items;
   final Set<String> selected;
   final ValueChanged<String> onToggle;
+  final bool comingSoon;
 
   @override
   Widget build(BuildContext context) => Card(
@@ -2001,9 +2556,41 @@ class _CategorySelectionCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title,
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  title.toUpperCase(),
+                  style: const TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: .8,
+                  ),
+                ),
+              ),
+              if (comingSoon)
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 5,
+                  ),
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      colors: [Color(0xFFE10600), Color(0xFFFF3D3D)],
+                    ),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: const Text(
+                    'COMING SOON',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 10,
+                      fontWeight: FontWeight.w900,
+                      letterSpacing: .8,
+                    ),
+                  ),
+                ),
+            ],
           ),
           const SizedBox(height: 4),
           Text(subtitle, style: Theme.of(context).textTheme.bodySmall),
@@ -2022,49 +2609,53 @@ class _CategorySelectionCard extends StatelessWidget {
                     width: width,
                     child: InkWell(
                       borderRadius: BorderRadius.circular(16),
-                      onTap: () => onToggle(item.$1),
+                      onTap: comingSoon ? null : () => onToggle(item.$1),
                       child: AnimatedContainer(
                         duration: const Duration(milliseconds: 180),
                         height: 116,
                         padding: const EdgeInsets.all(6),
                         decoration: BoxDecoration(
-                          color: active
+                          color: active && !comingSoon
                               ? Theme.of(context).colorScheme.primaryContainer
                               : Theme.of(context).colorScheme.surfaceContainer,
                           border: Border.all(
-                            color: active
+                            color: active && !comingSoon
                                 ? Theme.of(context).colorScheme.primary
                                 : Theme.of(context).dividerColor,
-                            width: active ? 2 : 1,
+                            width: active && !comingSoon ? 2 : 1,
                           ),
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Stack(
                           children: [
                             Positioned.fill(
-                              child: _BrandLogo(
-                                path: item.$3,
-                                darkPath: item.$4,
-                                fallbackLabel: item.$2,
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.topRight,
-                              child: DecoratedBox(
-                                decoration: const BoxDecoration(
-                                  color: Colors.white,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Icon(
-                                  active
-                                      ? Icons.check_circle
-                                      : Icons.circle_outlined,
-                                  color: active
-                                      ? Theme.of(context).colorScheme.primary
-                                      : const Color(0xFF455A64),
+                              child: Opacity(
+                                opacity: comingSoon ? .55 : 1,
+                                child: _BrandLogo(
+                                  path: item.$3,
+                                  darkPath: item.$4,
+                                  fallbackLabel: item.$2,
                                 ),
                               ),
                             ),
+                            if (!comingSoon)
+                              Align(
+                                alignment: Alignment.topRight,
+                                child: DecoratedBox(
+                                  decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Icon(
+                                    active
+                                        ? Icons.check_circle
+                                        : Icons.circle_outlined,
+                                    color: active
+                                        ? Theme.of(context).colorScheme.primary
+                                        : const Color(0xFF455A64),
+                                  ),
+                                ),
+                              ),
                           ],
                         ),
                       ),

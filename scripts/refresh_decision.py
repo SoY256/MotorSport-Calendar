@@ -45,9 +45,9 @@ def decision(now: datetime) -> tuple[bool, str]:
                     minutes=int(session.get("durationMinutes", 120))
                 )
                 due = end + timedelta(minutes=5)
-                # Arm polling around a newly completed session, not for a
-                # permanently absent classification from an old archive.
-                if due <= now <= due + timedelta(days=7):
+                # Once a session is due, keep polling until its classification
+                # is present. Only then does the six-hour cadence resume.
+                if due <= now:
                     return True, f"awaiting-{series_dir.name}-{event['id']}-{session['type']}"
     return False, "not-due"
 

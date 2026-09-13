@@ -1,4 +1,4 @@
-# MotorSport Calendar
+# Secar
 
 Flutter application backed by small, versioned JSON files generated from upstream motorsport APIs.
 
