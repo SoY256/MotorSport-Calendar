@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-12T22:38:42.539968Z",
+  "lastSuccessfulUpdate": "2026-09-13T00:18:15.065747Z",
   "source": {
     "name": "official-formula-series",
     "url": "https://www.fiaformula3.com/en/racing/2026/madrid"
@@ -29,7 +29,7 @@
               "color": "#c3a752"
             },
             "carNumber": "17",
-            "time": "1:07:36.729",
+            "time": "1:7:36.729",
             "laps": 19,
             "points": 25,
             "status": "OK",
@@ -412,6 +412,29 @@
               "code": "MAC",
               "givenName": "Niccolò",
               "familyName": "Maccagnani",
+              "nationality": null
+            },
+            "team": {
+              "id": "rodin-motorsport",
+              "name": "Rodin Motorsport",
+              "color": "#c3a752"
+            },
+            "carNumber": "19",
+            "time": "+21.816s",
+            "laps": 19,
+            "points": 0,
+            "status": "OK",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 18,
+            "positionText": "18",
+            "driver": {
+              "id": "",
+              "code": null,
+              "givenName": null,
+              "familyName": null,
               "nationality": null
             },
             "team": {
