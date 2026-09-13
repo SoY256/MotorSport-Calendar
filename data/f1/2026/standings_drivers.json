@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-13T19:37:41.061876Z",
+  "lastSuccessfulUpdate": "2026-09-13T21:40:20.657246Z",
   "source": {
     "name": "jolpica-f1",
     "url": "https://api.jolpi.ca/ergast/f1/2026/driverstandings.json"
@@ -8,8 +8,8 @@
   "data": [
     {
       "position": 1,
-      "points": 267.0,
-      "wins": 7,
+      "points": 292.0,
+      "wins": 8,
       "id": "antonelli",
       "code": "ANT",
       "givenName": "Andrea Kimi",
@@ -22,7 +22,7 @@
     },
     {
       "position": 2,
-      "points": 201.0,
+      "points": 211.0,
       "wins": 2,
       "id": "russell",
       "code": "RUS",
@@ -50,7 +50,7 @@
     },
     {
       "position": 4,
-      "points": 171.0,
+      "points": 186.0,
       "wins": 2,
       "id": "norris",
       "code": "NOR",
@@ -64,7 +64,7 @@
     },
     {
       "position": 5,
-      "points": 155.0,
+      "points": 167.0,
       "wins": 1,
       "id": "leclerc",
       "code": "LEC",
@@ -78,7 +78,7 @@
     },
     {
       "position": 6,
-      "points": 127.0,
+      "points": 145.0,
       "wins": 0,
       "id": "max_verstappen",
       "code": "VER",
@@ -92,7 +92,7 @@
     },
     {
       "position": 7,
-      "points": 116.0,
+      "points": 120.0,
       "wins": 0,
       "id": "piastri",
       "code": "PIA",
@@ -120,7 +120,7 @@
     },
     {
       "position": 9,
-      "points": 51.0,
+      "points": 59.0,
       "wins": 0,
       "id": "lawson",
       "code": "LAW",
@@ -149,7 +149,7 @@
     },
     {
       "position": 11,
-      "points": 29.0,
+      "points": 31.0,
       "wins": 0,
       "id": "arvid_lindblad",
       "code": "LIN",
@@ -163,7 +163,7 @@
     },
     {
       "position": 12,
-      "points": 21.0,
+      "points": 27.0,
       "wins": 0,
       "id": "colapinto",
       "code": "COL",
@@ -205,7 +205,7 @@
     },
     {
       "position": 15,
-      "points": 6.0,
+      "points": 7.0,
       "wins": 0,
       "id": "hulkenberg",
       "code": "HUL",
