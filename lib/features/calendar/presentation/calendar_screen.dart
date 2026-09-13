@@ -477,13 +477,17 @@ class _PageFrame extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: 9),
-                      Text(
-                        'SECAR  /  LIVE MOTORSPORT',
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
-                          fontSize: 10,
-                          fontWeight: FontWeight.w900,
-                          letterSpacing: 1.35,
+                      Expanded(
+                        child: Text(
+                          'SECAR  /  LIVE MOTORSPORT',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.primary,
+                            fontSize: 10,
+                            fontWeight: FontWeight.w900,
+                            letterSpacing: 1.35,
+                          ),
                         ),
                       ),
                     ],
@@ -904,12 +908,16 @@ class _EventCard extends StatelessWidget {
                     const SizedBox(height: 5),
                     Row(
                       children: [
-                        Text(
-                          _seriesLabel(event.seriesId),
-                          style: TextStyle(
-                            color: _seriesColor(event.seriesId),
-                            fontSize: 12,
-                            fontWeight: FontWeight.w900,
+                        Flexible(
+                          child: Text(
+                            _seriesLabel(event.seriesId),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              color: _seriesColor(event.seriesId),
+                              fontSize: 12,
+                              fontWeight: FontWeight.w900,
+                            ),
                           ),
                         ),
                         Expanded(
