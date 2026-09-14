@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-14T13:38:41.643781Z",
+  "lastSuccessfulUpdate": "2026-09-14T18:51:43.600608Z",
   "source": {
     "name": "jolpica-f1",
     "url": "https://api.jolpi.ca/f1/alpha/schedules/2026/"
@@ -1165,41 +1165,6 @@
             "position": 17,
             "positionText": "17",
             "driver": {
-              "id": "driver_0Z9Cjb1U",
-              "code": "ALB",
-              "givenName": "Alexander",
-              "familyName": "Albon",
-              "nationality": "THA"
-            },
-            "team": {
-              "id": "team_IJAI583X",
-              "name": "Williams",
-              "color": "#1868DB"
-            },
-            "carNumber": 23,
-            "time": null,
-            "laps": null,
-            "points": null,
-            "status": "FINISHED",
-            "classified": true,
-            "components": {
-              "SQ1": {
-                "key": "SQ1",
-                "name": "Sprint Qualifying 1",
-                "position": 19,
-                "time": "1:31.322"
-              },
-              "SQ2": {
-                "key": "SQ2",
-                "name": "Sprint Qualifying 2",
-                "position": 17
-              }
-            }
-          },
-          {
-            "position": 17,
-            "positionText": "17",
-            "driver": {
               "id": "driver_0GFvbLMc",
               "code": "OCO",
               "givenName": "Esteban",
@@ -1253,6 +1218,41 @@
                 "name": "Sprint Qualifying 1",
                 "position": 18,
                 "time": "1:31.255"
+              }
+            }
+          },
+          {
+            "position": 19,
+            "positionText": "19",
+            "driver": {
+              "id": "driver_0Z9Cjb1U",
+              "code": "ALB",
+              "givenName": "Alexander",
+              "familyName": "Albon",
+              "nationality": "THA"
+            },
+            "team": {
+              "id": "team_IJAI583X",
+              "name": "Williams",
+              "color": "#1868DB"
+            },
+            "carNumber": 23,
+            "time": null,
+            "laps": null,
+            "points": null,
+            "status": "FINISHED",
+            "classified": true,
+            "components": {
+              "SQ1": {
+                "key": "SQ1",
+                "name": "Sprint Qualifying 1",
+                "position": 19,
+                "time": "1:31.322"
+              },
+              "SQ2": {
+                "key": "SQ2",
+                "name": "Sprint Qualifying 2",
+                "position": 19
               }
             }
           },
