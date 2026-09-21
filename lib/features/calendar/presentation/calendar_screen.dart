@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../core/localization/app_strings.dart';
@@ -29,6 +30,8 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen>
   int _page = 0;
   String? _selectedEventId;
   String? _activeSeriesId;
+  final List<_NavigationSnapshot> _navigationHistory = [];
+  bool _handlingBack = false;
   Timer? _sixHourRefresh;
   DateTime _lastFullRefresh = DateTime.now();
 
@@ -51,6 +54,71 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen>
         _scheduleSixHourRefresh();
       }
     });
+  }
+
+  _NavigationSnapshot get _navigationSnapshot => _NavigationSnapshot(
+    page: _page,
+    selectedEventId: _selectedEventId,
+    activeSeriesId: _activeSeriesId,
+  );
+
+  void _navigate({
+    required int page,
+    String? selectedEventId,
+    bool updateSelectedEvent = false,
+  }) {
+    final next = _NavigationSnapshot(
+      page: page,
+      selectedEventId: updateSelectedEvent ? selectedEventId : _selectedEventId,
+      activeSeriesId: _activeSeriesId,
+    );
+    if (next == _navigationSnapshot) return;
+    setState(() {
+      _navigationHistory.add(_navigationSnapshot);
+      _page = next.page;
+      _selectedEventId = next.selectedEventId;
+    });
+  }
+
+  void _navigateToEvent(RaceEvent event) =>
+      _navigate(page: 2, selectedEventId: event.id, updateSelectedEvent: true);
+
+  Future<void> _handleSystemBack() async {
+    if (_handlingBack) return;
+    if (_navigationHistory.isNotEmpty) {
+      final previous = _navigationHistory.removeLast();
+      setState(() {
+        _page = previous.page;
+        _selectedEventId = previous.selectedEventId;
+        _activeSeriesId = previous.activeSeriesId;
+      });
+      return;
+    }
+
+    _handlingBack = true;
+    final settings = ref.read(settingsProvider);
+    final strings = AppStrings(settings.language);
+    final shouldExit = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: Text(strings.exitApp),
+        content: Text(strings.exitAppMessage),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(dialogContext).pop(false),
+            child: Text(strings.stayInApp),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.of(dialogContext).pop(true),
+            child: Text(strings.exit),
+          ),
+        ],
+      ),
+    );
+    _handlingBack = false;
+    if (shouldExit == true) {
+      await SystemNavigator.pop();
+    }
   }
 
   @override
@@ -143,10 +211,7 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen>
                 .setMotorsportCategories,
             settings: settings,
             strings: strings,
-            onEventTap: (event) => setState(() {
-              _selectedEventId = event.id;
-              _page = 2;
-            }),
+            onEventTap: _navigateToEvent,
           ),
           1 => _CalendarGridPage(
             data: data,
@@ -157,10 +222,7 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen>
                 .setMotorsportCategories,
             settings: settings,
             strings: strings,
-            onEventTap: (event) => setState(() {
-              _selectedEventId = event.id;
-              _page = 2;
-            }),
+            onEventTap: _navigateToEvent,
           ),
           2 when selected != null => _ResultsPage(
             data: data,
@@ -168,7 +230,7 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen>
             selectedSeries: selectedSeries,
             settings: settings,
             strings: strings,
-            onSelected: (event) => setState(() => _selectedEventId = event.id),
+            onSelected: _navigateToEvent,
           ),
           2 => _PageFrame(
             title: strings.results,
@@ -201,48 +263,75 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen>
       },
     );
 
-    return Scaffold(
-      body: Stack(
-        children: [
-          const Positioned.fill(child: _RacingBackdrop()),
-          SafeArea(
-            child: Row(
-              children: [
-                if (wide)
-                  NavigationRail(
-                    selectedIndex: _page,
-                    onDestinationSelected: (value) =>
-                        setState(() => _page = value),
-                    labelType: NavigationRailLabelType.all,
-                    leading: const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 16),
-                      child: AppLogo(compact: true),
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {
+        if (!didPop) unawaited(_handleSystemBack());
+      },
+      child: Scaffold(
+        body: Stack(
+          children: [
+            const Positioned.fill(child: _RacingBackdrop()),
+            SafeArea(
+              child: Row(
+                children: [
+                  if (wide)
+                    NavigationRail(
+                      selectedIndex: _page,
+                      onDestinationSelected: (value) => _navigate(page: value),
+                      labelType: NavigationRailLabelType.all,
+                      leading: const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 16),
+                        child: AppLogo(compact: true),
+                      ),
+                      destinations: destinations
+                          .map(
+                            (item) => NavigationRailDestination(
+                              icon: item.icon,
+                              selectedIcon: item.selectedIcon,
+                              label: Text(item.label),
+                            ),
+                          )
+                          .toList(),
                     ),
-                    destinations: destinations
-                        .map(
-                          (item) => NavigationRailDestination(
-                            icon: item.icon,
-                            selectedIcon: item.selectedIcon,
-                            label: Text(item.label),
-                          ),
-                        )
-                        .toList(),
-                  ),
-                Expanded(child: content),
-              ],
+                  Expanded(child: content),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
+        bottomNavigationBar: wide
+            ? null
+            : NavigationBar(
+                selectedIndex: _page,
+                onDestinationSelected: (value) => _navigate(page: value),
+                destinations: destinations,
+              ),
       ),
-      bottomNavigationBar: wide
-          ? null
-          : NavigationBar(
-              selectedIndex: _page,
-              onDestinationSelected: (value) => setState(() => _page = value),
-              destinations: destinations,
-            ),
     );
   }
+}
+
+class _NavigationSnapshot {
+  const _NavigationSnapshot({
+    required this.page,
+    required this.selectedEventId,
+    required this.activeSeriesId,
+  });
+
+  final int page;
+  final String? selectedEventId;
+  final String? activeSeriesId;
+
+  @override
+  bool operator ==(Object other) =>
+      other is _NavigationSnapshot &&
+      page == other.page &&
+      selectedEventId == other.selectedEventId &&
+      activeSeriesId == other.activeSeriesId;
+
+  @override
+  int get hashCode => Object.hash(page, selectedEventId, activeSeriesId);
 }
 
 class _RacingBackdrop extends StatelessWidget {

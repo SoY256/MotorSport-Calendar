@@ -183,6 +183,57 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
+  testWidgets('Android back restores visited views before asking to exit', (
+    tester,
+  ) async {
+    SharedPreferences.setMockInitialValues({});
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          calendarRepositoryProvider.overrideWithValue(
+            AssetCalendarRepository(),
+          ),
+        ],
+        child: const MotorsportCalendarApp(),
+      ),
+    );
+    addTearDown(() => tester.pumpWidget(const SizedBox.shrink()));
+    await tester.pump(const Duration(seconds: 1));
+
+    await tester.tap(find.text('Settings'));
+    await tester.pump(const Duration(milliseconds: 300));
+    expect(find.text('Customize the application'), findsOneWidget);
+
+    await tester.tap(find.text('Standings'));
+    await tester.pump(const Duration(milliseconds: 500));
+
+    await tester.binding.handlePopRoute();
+    await tester.pump(const Duration(milliseconds: 300));
+    expect(find.text('Customize the application'), findsOneWidget);
+    expect(
+      tester.widget<NavigationBar>(find.byType(NavigationBar)).selectedIndex,
+      4,
+    );
+
+    await tester.binding.handlePopRoute();
+    await tester.pump(const Duration(milliseconds: 300));
+    expect(
+      tester.widget<NavigationBar>(find.byType(NavigationBar)).selectedIndex,
+      0,
+    );
+
+    await tester.binding.handlePopRoute();
+    await tester.pumpAndSettle();
+    expect(find.text('Exit Secar?'), findsOneWidget);
+    expect(find.text('Stay'), findsOneWidget);
+    expect(find.text('Exit'), findsOneWidget);
+
+    await tester.tap(find.text('Stay'));
+    await tester.pumpAndSettle();
+    expect(find.text('Exit Secar?'), findsNothing);
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets('portrait standings fit a narrow phone', (tester) async {
     SharedPreferences.setMockInitialValues({});
     tester.view.physicalSize = const Size(360, 800);

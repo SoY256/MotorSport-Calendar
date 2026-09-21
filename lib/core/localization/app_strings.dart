@@ -88,6 +88,12 @@ class AppStrings {
       ? 'Secar is an independent, unofficial motorsport reference application. It is not affiliated with, endorsed by or sponsored by Formula 1, FIA Formula 2, FIA Formula 3, FIA WEC, IMSA, INDYCAR, INDY NXT, their organizers, teams or manufacturers. All series names, team names, logos, driver images and other trademarks belong to their respective owners. Results and schedules can change; for official decisions, consult the relevant championship organizer.'
       : 'Secar jest niezależną, nieoficjalną aplikacją informacyjną o sportach motorowych. Nie jest powiązana, zatwierdzona ani sponsorowana przez Formula 1, FIA Formula 2, FIA Formula 3, FIA WEC, IMSA, INDYCAR, INDY NXT, ich organizatorów, zespoły ani producentów. Nazwy serii i zespołów, logotypy, zdjęcia kierowców oraz inne znaki towarowe należą do ich właścicieli. Wyniki i terminarze mogą ulec zmianie; oficjalne decyzje należy sprawdzać u organizatora danych mistrzostw.';
   String get close => _en ? 'Close' : 'Zamknij';
+  String get exitApp => _en ? 'Exit Secar?' : 'Wyjść z Secar?';
+  String get exitAppMessage => _en
+      ? 'Are you sure you want to close the application?'
+      : 'Czy na pewno chcesz zamknąć aplikację?';
+  String get stayInApp => _en ? 'Stay' : 'Zostań';
+  String get exit => _en ? 'Exit' : 'Wyjdź';
   String get loadingError =>
       _en ? 'Could not load data' : 'Nie udało się wczytać danych';
   String get retry => _en ? 'Try again' : 'Spróbuj ponownie';
