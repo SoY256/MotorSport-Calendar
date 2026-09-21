@@ -171,27 +171,29 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
         for (final driver in local.drivers) driver.id: driver,
       };
       final enrichedRemote = StandingsData(
-        drivers: remote.drivers.map((driver) {
-          final bundled = localDrivers[driver.id];
-          return DriverStanding(
-            position: driver.position,
-            points: driver.points,
-            wins: driver.wins,
-            id: driver.id,
-            code: driver.code,
-            givenName: driver.givenName,
-            familyName: driver.familyName,
-            nationality: driver.nationality,
-            teamIds: driver.teamIds,
-            teamNames: driver.teamNames,
-            teamColors: driver.teamColors,
-            category: driver.category,
-            // Bundled portraits are verified face crops. Remote feeds may
-            // contain full-body promotional images, so never let them replace
-            // the curated headshot shipped with the app.
-            imageUrl: bundled?.imageUrl ?? driver.imageUrl,
-          );
-        }).toList(growable: false),
+        drivers: remote.drivers
+            .map((driver) {
+              final bundled = localDrivers[driver.id];
+              return DriverStanding(
+                position: driver.position,
+                points: driver.points,
+                wins: driver.wins,
+                id: driver.id,
+                code: driver.code,
+                givenName: driver.givenName,
+                familyName: driver.familyName,
+                nationality: driver.nationality,
+                teamIds: driver.teamIds,
+                teamNames: driver.teamNames,
+                teamColors: driver.teamColors,
+                category: driver.category,
+                // Bundled portraits are verified face crops. Remote feeds may
+                // contain full-body promotional images, so never let them replace
+                // the curated headshot shipped with the app.
+                imageUrl: bundled?.imageUrl ?? driver.imageUrl,
+              );
+            })
+            .toList(growable: false),
         teams: remote.teams,
       );
       final localMaxPoints = local.drivers.fold<double>(
