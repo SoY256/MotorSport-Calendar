@@ -10,6 +10,11 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 
 
+def expects_results(series: str, session_type: str) -> bool:
+    """Return whether the configured importer publishes this classification."""
+    return series == "f1" or session_type == "R"
+
+
 def timestamp(value: str) -> datetime:
     return datetime.fromisoformat(value.replace("Z", "+00:00")).astimezone(timezone.utc)
 
@@ -39,7 +44,12 @@ def decision(now: datetime) -> tuple[bool, str]:
         for event in events:
             available = result_types(calendar_path.parent / event["resultsPath"])
             for session in event.get("sessions", []):
-                if session.get("cancelled") or session.get("type") in available:
+                session_type = session.get("type")
+                if (
+                    session.get("cancelled")
+                    or not expects_results(series_dir.name, session_type)
+                    or session_type in available
+                ):
                     continue
                 end = timestamp(session["startTimeUtc"]) + timedelta(
                     minutes=int(session.get("durationMinutes", 120))
@@ -48,7 +58,7 @@ def decision(now: datetime) -> tuple[bool, str]:
                 # Once a session is due, keep polling until its classification
                 # is present. Only then does the six-hour cadence resume.
                 if due <= now:
-                    return True, f"awaiting-{series_dir.name}-{event['id']}-{session['type']}"
+                    return True, f"awaiting-{series_dir.name}-{event['id']}-{session_type}"
     return False, "not-due"
 
 

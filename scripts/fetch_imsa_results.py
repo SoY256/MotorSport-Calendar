@@ -157,6 +157,13 @@ def main() -> None:
             item["category"] = category
             category_positions[category] = category_positions.get(category, 0) + 1
             item["position"] = category_positions[category]
+        if not entries:
+            # Alkamel occasionally publishes the race classification before
+            # the championship-points JSON links. Keep the last verified
+            # standings in the staged data instead of replacing them with an
+            # empty document; race results can still be published immediately.
+            print(f"No IMSA {kind} standings links yet; retaining previous standings")
+            continue
         standings_doc = {"schemaVersion": 1, "lastSuccessfulUpdate": updated,
                          "source": {"name": "imsa-alkamel-official-points", "url": BASE}, "data": entries}
         (root / filename).write_text(json.dumps(standings_doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

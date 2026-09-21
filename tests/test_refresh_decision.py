@@ -48,6 +48,18 @@ class RefreshDecisionTests(unittest.TestCase):
         with patch.object(refresh_decision, "DATA", root):
             self.assertEqual(refresh_decision.decision(now)[1], "awaiting-f1-race-R")
 
+    def test_non_f1_session_without_supported_classification_is_not_polled(self):
+        now = datetime(2026, 8, 25, 12, 0, tzinfo=timezone.utc)
+        temp, root = self._data(now - timedelta(hours=1), now - timedelta(hours=3))
+        self.addCleanup(temp.cleanup)
+        (root / "f1").rename(root / "f2")
+        calendar_path = root / "f2" / "2026" / "calendar.json"
+        calendar = json.loads(calendar_path.read_text())
+        calendar["data"][0]["sessions"][0]["type"] = "FP1"
+        calendar_path.write_text(json.dumps(calendar))
+        with patch.object(refresh_decision, "DATA", root):
+            self.assertEqual(refresh_decision.decision(now), (False, "not-due"))
+
 
 if __name__ == "__main__":
     unittest.main()

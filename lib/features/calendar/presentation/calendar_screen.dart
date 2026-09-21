@@ -34,6 +34,8 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen>
   bool _handlingBack = false;
   Timer? _sixHourRefresh;
   DateTime _lastFullRefresh = DateTime.now();
+  DateTime _calendarAnchor = DateTime.now();
+  bool _calendarMonthView = true;
 
   @override
   void initState() {
@@ -223,6 +225,12 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen>
             settings: settings,
             strings: strings,
             onEventTap: _navigateToEvent,
+            anchor: _calendarAnchor,
+            monthView: _calendarMonthView,
+            onViewChanged: (anchor, monthView) {
+              _calendarAnchor = anchor;
+              _calendarMonthView = monthView;
+            },
           ),
           2 when selected != null => _ResultsPage(
             data: data,
@@ -673,6 +681,7 @@ class _ListPage extends ConsumerWidget {
               event: _nearestEvent(matching),
               settings: settings,
               strings: strings,
+              onTap: () => onEventTap(_nearestEvent(matching)),
             ),
           const SizedBox(height: 14),
           Card(
@@ -718,10 +727,12 @@ class _NextRaceHero extends StatelessWidget {
     required this.event,
     required this.settings,
     required this.strings,
+    required this.onTap,
   });
   final RaceEvent event;
   final AppSettings settings;
   final AppStrings strings;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -729,139 +740,150 @@ class _NextRaceHero extends StatelessWidget {
     final last = event.sessions.last;
     final seriesColor = _seriesColor(event.seriesId);
     final circuitAsset = circuitAssetFor(event.circuit.name);
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        key: const ValueKey('next-round-hero'),
         borderRadius: BorderRadius.circular(24),
-        gradient: LinearGradient(
-          colors: const [Color(0xFF111722), Color(0xFF202B3A)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: seriesColor.withValues(alpha: .24),
-            blurRadius: 28,
-            offset: const Offset(0, 12),
+        onTap: onTap,
+        child: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(24),
+            gradient: LinearGradient(
+              colors: const [Color(0xFF111722), Color(0xFF202B3A)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: seriesColor.withValues(alpha: .24),
+                blurRadius: 28,
+                offset: const Offset(0, 12),
+              ),
+            ],
           ),
-        ],
-      ),
-      clipBehavior: Clip.antiAlias,
-      child: Stack(
-        children: [
-          Positioned.fill(
-            child: IgnorePointer(
-              child: Align(
-                alignment: Alignment.centerRight,
-                child: FractionallySizedBox(
-                  widthFactor: .48,
-                  child: Row(
-                    textDirection: TextDirection.ltr,
-                    children: [
-                      SizedBox(
-                        width: 94,
-                        height: 82,
-                        child: Opacity(
-                          opacity: .86,
-                          child: FittedBox(
-                            fit: BoxFit.contain,
-                            child: Text(
-                              _countryFlag(event.circuit.countryCode),
-                              style: const TextStyle(fontSize: 82, height: 1),
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 18),
-                      if (circuitAsset != null)
-                        Expanded(
-                          child: ClipRect(
+          clipBehavior: Clip.antiAlias,
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: IgnorePointer(
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: FractionallySizedBox(
+                      widthFactor: .48,
+                      child: Row(
+                        textDirection: TextDirection.ltr,
+                        children: [
+                          SizedBox(
+                            width: 94,
+                            height: 82,
                             child: Opacity(
-                              opacity: .42,
-                              child: _CircuitAsset(
-                                path: circuitAsset,
+                              opacity: .86,
+                              child: FittedBox(
                                 fit: BoxFit.contain,
-                                tint: Colors.white,
-                                semanticsLabel: event.circuit.name,
-                                quarterTurns: circuitQuarterTurns(
-                                  event.circuit.name,
+                                child: Text(
+                                  _countryFlag(event.circuit.countryCode),
+                                  style: const TextStyle(
+                                    fontSize: 82,
+                                    height: 1,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                    ],
+                          const SizedBox(width: 18),
+                          if (circuitAsset != null)
+                            Expanded(
+                              child: ClipRect(
+                                child: Opacity(
+                                  opacity: .42,
+                                  child: _CircuitAsset(
+                                    path: circuitAsset,
+                                    fit: BoxFit.contain,
+                                    tint: Colors.white,
+                                    semanticsLabel: event.circuit.name,
+                                    quarterTurns: circuitQuarterTurns(
+                                      event.circuit.name,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ),
-          Positioned.fill(
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    const Color(0xFF111722),
-                    const Color(0xFF111722).withValues(alpha: .88),
-                    seriesColor.withValues(alpha: .22),
-                  ],
-                  stops: const [0, .56, 1],
+              Positioned.fill(
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        const Color(0xFF111722),
+                        const Color(0xFF111722).withValues(alpha: .88),
+                        seriesColor.withValues(alpha: .22),
+                      ],
+                      stops: const [0, .56, 1],
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(24),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '${strings.nextRound} • ${_seriesLabel(event.seriesId)}',
-                  style: TextStyle(
-                    color: Color.lerp(Colors.white, seriesColor, .28),
-                    fontWeight: FontWeight.w800,
-                    letterSpacing: 1.2,
-                  ),
-                ),
-                const SizedBox(height: 18),
-                Text(
-                  event.name,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 26,
-                    fontWeight: FontWeight.w900,
-                    shadows: [Shadow(color: Colors.black, blurRadius: 10)],
-                  ),
-                ),
-                const SizedBox(height: 6),
-                Text(
-                  '${event.circuit.name} • ${event.circuit.country ?? ''}',
-                  style: const TextStyle(color: Colors.white70),
-                ),
-                const SizedBox(height: 20),
-                Wrap(
-                  spacing: 10,
-                  runSpacing: 10,
+              Padding(
+                padding: const EdgeInsets.all(24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _HeroPill(
-                      icon: Icons.calendar_today,
-                      label:
-                          '${_sessionDate(first, settings)} – ${_sessionDate(last, settings)}',
+                    Text(
+                      '${strings.nextRound} • ${_seriesLabel(event.seriesId)}',
+                      style: TextStyle(
+                        color: Color.lerp(Colors.white, seriesColor, .28),
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: 1.2,
+                      ),
                     ),
-                    _HeroPill(
-                      icon: Icons.schedule,
-                      label: strings.sessions(event.sessions.length),
+                    const SizedBox(height: 18),
+                    Text(
+                      event.name,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 26,
+                        fontWeight: FontWeight.w900,
+                        shadows: [Shadow(color: Colors.black, blurRadius: 10)],
+                      ),
                     ),
-                    _HeroPill(
-                      icon: Icons.public,
-                      label: _zoneName(first, settings, strings),
+                    const SizedBox(height: 6),
+                    Text(
+                      '${event.circuit.name} • ${event.circuit.country ?? ''}',
+                      style: const TextStyle(color: Colors.white70),
+                    ),
+                    const SizedBox(height: 20),
+                    Wrap(
+                      spacing: 10,
+                      runSpacing: 10,
+                      children: [
+                        _HeroPill(
+                          icon: Icons.calendar_today,
+                          label:
+                              '${_sessionDate(first, settings)} – ${_sessionDate(last, settings)}',
+                        ),
+                        _HeroPill(
+                          icon: Icons.schedule,
+                          label: strings.sessions(event.sessions.length),
+                        ),
+                        _HeroPill(
+                          icon: Icons.public,
+                          label: _zoneName(first, settings, strings),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
@@ -1064,6 +1086,9 @@ class _CalendarGridPage extends StatefulWidget {
     required this.availableSeries,
     required this.selectedSeries,
     required this.onSeriesChanged,
+    required this.anchor,
+    required this.monthView,
+    required this.onViewChanged,
   });
   final CalendarData data;
   final AppSettings settings;
@@ -1072,14 +1097,35 @@ class _CalendarGridPage extends StatefulWidget {
   final Set<String> availableSeries;
   final Set<String> selectedSeries;
   final ValueChanged<Set<String>> onSeriesChanged;
+  final DateTime anchor;
+  final bool monthView;
+  final void Function(DateTime anchor, bool monthView) onViewChanged;
 
   @override
   State<_CalendarGridPage> createState() => _CalendarGridPageState();
 }
 
 class _CalendarGridPageState extends State<_CalendarGridPage> {
-  bool _month = true;
-  late DateTime _anchor = DateTime.now();
+  late bool _month = widget.monthView;
+  late DateTime _anchor = widget.anchor;
+
+  void _setView({DateTime? anchor, bool? month}) {
+    setState(() {
+      _anchor = anchor ?? _anchor;
+      _month = month ?? _month;
+    });
+    widget.onViewChanged(_anchor, _month);
+  }
+
+  @override
+  void didUpdateWidget(covariant _CalendarGridPage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.anchor != widget.anchor ||
+        oldWidget.monthView != widget.monthView) {
+      _anchor = widget.anchor;
+      _month = widget.monthView;
+    }
+  }
 
   DateTime _dateFor(RaceSession session) {
     final parts = widget.settings.timeMode == EventTimeMode.track
@@ -1138,8 +1184,7 @@ class _CalendarGridPageState extends State<_CalendarGridPage> {
                   ButtonSegment(value: false, label: Text(widget.strings.week)),
                 ],
                 selected: {_month},
-                onSelectionChanged: (value) =>
-                    setState(() => _month = value.first),
+                onSelectionChanged: (value) => _setView(month: value.first),
               ),
             ],
           ),
@@ -1152,8 +1197,8 @@ class _CalendarGridPageState extends State<_CalendarGridPage> {
                   children: [
                     IconButton(
                       tooltip: widget.strings.previous,
-                      onPressed: () => setState(
-                        () => _anchor = _month
+                      onPressed: () => _setView(
+                        anchor: _month
                             ? DateTime(_anchor.year, _anchor.month - 1)
                             : _anchor.subtract(const Duration(days: 7)),
                       ),
@@ -1168,8 +1213,8 @@ class _CalendarGridPageState extends State<_CalendarGridPage> {
                     ),
                     IconButton(
                       tooltip: widget.strings.next,
-                      onPressed: () => setState(
-                        () => _anchor = _month
+                      onPressed: () => _setView(
+                        anchor: _month
                             ? DateTime(_anchor.year, _anchor.month + 1)
                             : _anchor.add(const Duration(days: 7)),
                       ),
@@ -1221,47 +1266,52 @@ class _CalendarGridPageState extends State<_CalendarGridPage> {
                           day.year == today.year &&
                           day.month == today.month &&
                           day.day == today.day;
-                      return DecoratedBox(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Theme.of(context).dividerColor
-                                .withValues(alpha: .35),
-                          ),
-                          color: isToday
-                              ? Theme.of(context).colorScheme.primaryContainer
-                                    .withValues(alpha: .5)
-                              : null,
+                      return InkWell(
+                        key: ValueKey(
+                          'calendar-day-${day.year}-${_two(day.month)}-${_two(day.day)}',
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(6),
-                          child: Column(
-                            children: [
-                              Text(
-                                '${day.day}',
-                                style: TextStyle(
-                                  fontWeight: isToday
-                                      ? FontWeight.w900
-                                      : FontWeight.w600,
-                                ),
-                              ),
-                              if (events.isNotEmpty)
-                                Expanded(
-                                  child: ListView.separated(
-                                    padding: const EdgeInsets.only(top: 3),
-                                    itemCount: events.length,
-                                    separatorBuilder: (_, _) =>
-                                        const SizedBox(height: 3),
-                                    itemBuilder: (context, eventIndex) =>
-                                        _CalendarEventMarker(
-                                          event: events[eventIndex],
-                                          showName: !_month,
-                                          onTap: () => widget.onEventTap(
-                                            events[eventIndex],
-                                          ),
-                                        ),
+                        onTap: events.isEmpty
+                            ? null
+                            : () => _showDayEvents(context, day, events),
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Theme.of(context).dividerColor
+                                  .withValues(alpha: .35),
+                            ),
+                            color: isToday
+                                ? Theme.of(context).colorScheme.primaryContainer
+                                      .withValues(alpha: .5)
+                                : null,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(6),
+                            child: Column(
+                              children: [
+                                Text(
+                                  '${day.day}',
+                                  style: TextStyle(
+                                    fontWeight: isToday
+                                        ? FontWeight.w900
+                                        : FontWeight.w600,
                                   ),
                                 ),
-                            ],
+                                if (events.isNotEmpty)
+                                  Expanded(
+                                    child: ListView.separated(
+                                      padding: const EdgeInsets.only(top: 3),
+                                      itemCount: events.length,
+                                      separatorBuilder: (_, _) =>
+                                          const SizedBox(height: 3),
+                                      itemBuilder: (context, eventIndex) =>
+                                          _CalendarEventMarker(
+                                            event: events[eventIndex],
+                                            showName: !_month,
+                                          ),
+                                    ),
+                                  ),
+                              ],
+                            ),
                           ),
                         ),
                       );
@@ -1274,6 +1324,58 @@ class _CalendarGridPageState extends State<_CalendarGridPage> {
         ],
       ),
     );
+  }
+
+  Future<void> _showDayEvents(
+    BuildContext context,
+    DateTime day,
+    List<RaceEvent> events,
+  ) async {
+    final selected = await showModalBottomSheet<RaceEvent>(
+      context: context,
+      showDragHandle: true,
+      builder: (sheetContext) => SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                _date(day, widget.strings.language),
+                style: Theme.of(sheetContext).textTheme.titleLarge
+                    ?.copyWith(fontWeight: FontWeight.w900),
+              ),
+              const SizedBox(height: 12),
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxHeight: MediaQuery.sizeOf(sheetContext).height * .62,
+                ),
+                child: ListView(
+                  shrinkWrap: true,
+                  children: [
+                    for (final event in events)
+                      Card(
+                        child: ListTile(
+                          leading: _SeriesBadge(seriesId: event.seriesId),
+                          title: Text(
+                            event.name,
+                            style: const TextStyle(fontWeight: FontWeight.w800),
+                          ),
+                          subtitle: Text(event.circuit.name),
+                          trailing: const Icon(Icons.chevron_right),
+                          onTap: () => Navigator.of(sheetContext).pop(event),
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+    if (selected != null) widget.onEventTap(selected);
   }
 }
 
@@ -1310,38 +1412,29 @@ class _SeriesBadge extends StatelessWidget {
 }
 
 class _CalendarEventMarker extends StatelessWidget {
-  const _CalendarEventMarker({
-    required this.event,
-    required this.showName,
-    required this.onTap,
-  });
+  const _CalendarEventMarker({required this.event, required this.showName});
   final RaceEvent event;
   final bool showName;
-  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) => Tooltip(
     message: event.name,
-    child: InkWell(
-      borderRadius: BorderRadius.circular(6),
-      onTap: onTap,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _SeriesBadge(seriesId: event.seriesId, compact: true),
-          if (showName) ...[
-            const SizedBox(width: 4),
-            Flexible(
-              child: Text(
-                event.name,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.labelSmall,
-              ),
+    child: Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _SeriesBadge(seriesId: event.seriesId, compact: true),
+        if (showName) ...[
+          const SizedBox(width: 4),
+          Flexible(
+            child: Text(
+              event.name,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: Theme.of(context).textTheme.labelSmall,
             ),
-          ],
+          ),
         ],
-      ),
+      ],
     ),
   );
 }
@@ -1407,6 +1500,9 @@ class _ResultsPageState extends ConsumerState<_ResultsPage>
     final now = DateTime.now().toUtc();
     final missing = widget.selected.sessions.where((session) {
       if (session.cancelled) return false;
+      if (widget.selected.seriesId != 'f1' && session.type != 'R') {
+        return false;
+      }
       final received = _hasResultsForSession(session, results);
       return !received;
     }).toList();
