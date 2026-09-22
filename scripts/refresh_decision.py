@@ -12,7 +12,7 @@ DATA = ROOT / "data"
 
 def expects_results(series: str, session_type: str) -> bool:
     """Return whether the configured importer publishes this classification."""
-    return series == "f1" or session_type == "R"
+    return series in {"f1", "f2", "f3"} or session_type == "R"
 
 
 def timestamp(value: str) -> datetime:

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-08-24T12:24:55.244983Z",
+  "lastSuccessfulUpdate": "2026-09-22T07:32:12.909740Z",
   "source": {
     "name": "official-formula-series",
     "url": "https://www.fiaformula2.com/en/racing/2026"
@@ -26,7 +26,7 @@
           "name": "Practice",
           "startTimeUtc": "2026-03-05T23:00:00Z",
           "startTimeTrack": "2026-03-06T10:00:00",
-          "trackTimeZone": "Australia/Melbourne",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 45
         },
@@ -35,7 +35,7 @@
           "name": "Qualifying",
           "startTimeUtc": "2026-03-06T03:55:00Z",
           "startTimeTrack": "2026-03-06T14:55:00",
-          "trackTimeZone": "Australia/Melbourne",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 30
         },
@@ -44,7 +44,7 @@
           "name": "Sprint Race",
           "startTimeUtc": "2026-03-07T03:10:00Z",
           "startTimeTrack": "2026-03-07T14:10:00",
-          "trackTimeZone": "Australia/Melbourne",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 60
         },
@@ -53,7 +53,7 @@
           "name": "Feature Race",
           "startTimeUtc": "2026-03-08T00:25:00Z",
           "startTimeTrack": "2026-03-08T11:25:00",
-          "trackTimeZone": "Australia/Melbourne",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 120
         }
@@ -80,7 +80,7 @@
           "name": "Practice",
           "startTimeUtc": "2026-05-01T13:30:00Z",
           "startTimeTrack": "2026-05-01T09:30:00",
-          "trackTimeZone": "America/New_York",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 45
         },
@@ -89,7 +89,7 @@
           "name": "Qualifying",
           "startTimeUtc": "2026-05-01T18:30:00Z",
           "startTimeTrack": "2026-05-01T14:30:00",
-          "trackTimeZone": "America/New_York",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 30
         },
@@ -98,7 +98,7 @@
           "name": "Sprint Race",
           "startTimeUtc": "2026-05-02T14:00:00Z",
           "startTimeTrack": "2026-05-02T10:00:00",
-          "trackTimeZone": "America/New_York",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 60
         },
@@ -107,7 +107,7 @@
           "name": "Feature Race",
           "startTimeUtc": "2026-05-03T13:25:00Z",
           "startTimeTrack": "2026-05-03T09:25:00",
-          "trackTimeZone": "America/New_York",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 120
         }
@@ -134,7 +134,7 @@
           "name": "Practice",
           "startTimeUtc": "2026-05-22T14:05:00Z",
           "startTimeTrack": "2026-05-22T10:05:00",
-          "trackTimeZone": "America/Toronto",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 45
         },
@@ -143,7 +143,7 @@
           "name": "Qualifying",
           "startTimeUtc": "2026-05-22T18:00:00Z",
           "startTimeTrack": "2026-05-22T14:00:00",
-          "trackTimeZone": "America/Toronto",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 30
         },
@@ -152,7 +152,7 @@
           "name": "Sprint Race",
           "startTimeUtc": "2026-05-23T18:10:00Z",
           "startTimeTrack": "2026-05-23T14:10:00",
-          "trackTimeZone": "America/Toronto",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 60
         },
@@ -161,7 +161,7 @@
           "name": "Feature Race",
           "startTimeUtc": "2026-05-24T16:05:00Z",
           "startTimeTrack": "2026-05-24T12:05:00",
-          "trackTimeZone": "America/Toronto",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 120
         }
@@ -188,34 +188,34 @@
           "name": "Practice",
           "startTimeUtc": "2026-06-04T13:00:00Z",
           "startTimeTrack": "2026-06-04T15:00:00",
-          "trackTimeZone": "Europe/Monaco",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 45
         },
         {
-          "type": "FP1",
+          "type": "Q",
           "name": "Qualifying A",
           "startTimeUtc": "2026-06-05T13:10:00Z",
           "startTimeTrack": "2026-06-05T15:10:00",
-          "trackTimeZone": "Europe/Monaco",
+          "trackTimeZone": null,
           "cancelled": false,
-          "durationMinutes": 45
+          "durationMinutes": 30
         },
         {
-          "type": "FP1",
+          "type": "Q",
           "name": "Qualifying B",
           "startTimeUtc": "2026-06-05T13:34:00Z",
           "startTimeTrack": "2026-06-05T15:34:00",
-          "trackTimeZone": "Europe/Monaco",
+          "trackTimeZone": null,
           "cancelled": false,
-          "durationMinutes": 45
+          "durationMinutes": 30
         },
         {
           "type": "SPRINT",
           "name": "Sprint Race",
           "startTimeUtc": "2026-06-06T12:15:00Z",
           "startTimeTrack": "2026-06-06T14:15:00",
-          "trackTimeZone": "Europe/Monaco",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 60
         },
@@ -224,7 +224,7 @@
           "name": "Feature Race",
           "startTimeUtc": "2026-06-07T07:25:00Z",
           "startTimeTrack": "2026-06-07T09:25:00",
-          "trackTimeZone": "Europe/Monaco",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 120
         }
@@ -251,7 +251,7 @@
           "name": "Practice",
           "startTimeUtc": "2026-06-12T09:05:00Z",
           "startTimeTrack": "2026-06-12T11:05:00",
-          "trackTimeZone": "Europe/Madrid",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 45
         },
@@ -260,7 +260,7 @@
           "name": "Qualifying",
           "startTimeUtc": "2026-06-12T13:55:00Z",
           "startTimeTrack": "2026-06-12T15:55:00",
-          "trackTimeZone": "Europe/Madrid",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 30
         },
@@ -269,7 +269,7 @@
           "name": "Sprint Race",
           "startTimeUtc": "2026-06-13T12:15:00Z",
           "startTimeTrack": "2026-06-13T14:15:00",
-          "trackTimeZone": "Europe/Madrid",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 60
         },
@@ -278,7 +278,7 @@
           "name": "Feature Race",
           "startTimeUtc": "2026-06-14T09:25:00Z",
           "startTimeTrack": "2026-06-14T11:25:00",
-          "trackTimeZone": "Europe/Madrid",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 120
         }
@@ -305,7 +305,7 @@
           "name": "Practice",
           "startTimeUtc": "2026-06-26T09:05:00Z",
           "startTimeTrack": "2026-06-26T11:05:00",
-          "trackTimeZone": "Europe/Vienna",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 45
         },
@@ -314,7 +314,7 @@
           "name": "Qualifying",
           "startTimeUtc": "2026-06-26T13:55:00Z",
           "startTimeTrack": "2026-06-26T15:55:00",
-          "trackTimeZone": "Europe/Vienna",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 30
         },
@@ -323,7 +323,7 @@
           "name": "Sprint Race",
           "startTimeUtc": "2026-06-27T12:15:00Z",
           "startTimeTrack": "2026-06-27T14:15:00",
-          "trackTimeZone": "Europe/Vienna",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 60
         },
@@ -332,7 +332,7 @@
           "name": "Feature Race",
           "startTimeUtc": "2026-06-28T08:10:00Z",
           "startTimeTrack": "2026-06-28T10:10:00",
-          "trackTimeZone": "Europe/Vienna",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 120
         }
@@ -359,7 +359,7 @@
           "name": "Practice",
           "startTimeUtc": "2026-07-03T09:00:00Z",
           "startTimeTrack": "2026-07-03T10:00:00",
-          "trackTimeZone": "Europe/London",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 45
         },
@@ -368,7 +368,7 @@
           "name": "Qualifying",
           "startTimeUtc": "2026-07-03T13:55:00Z",
           "startTimeTrack": "2026-07-03T14:55:00",
-          "trackTimeZone": "Europe/London",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 30
         },
@@ -377,7 +377,7 @@
           "name": "Sprint Race",
           "startTimeUtc": "2026-07-04T12:45:00Z",
           "startTimeTrack": "2026-07-04T13:45:00",
-          "trackTimeZone": "Europe/London",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 60
         },
@@ -386,7 +386,7 @@
           "name": "Feature Race",
           "startTimeUtc": "2026-07-05T10:15:00Z",
           "startTimeTrack": "2026-07-05T11:15:00",
-          "trackTimeZone": "Europe/London",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 120
         }
@@ -413,7 +413,7 @@
           "name": "Practice",
           "startTimeUtc": "2026-07-17T09:05:00Z",
           "startTimeTrack": "2026-07-17T11:05:00",
-          "trackTimeZone": "Europe/Brussels",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 45
         },
@@ -422,7 +422,7 @@
           "name": "Qualifying",
           "startTimeUtc": "2026-07-17T13:55:00Z",
           "startTimeTrack": "2026-07-17T15:55:00",
-          "trackTimeZone": "Europe/Brussels",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 30
         },
@@ -431,7 +431,7 @@
           "name": "Sprint Race",
           "startTimeUtc": "2026-07-18T12:15:00Z",
           "startTimeTrack": "2026-07-18T14:15:00",
-          "trackTimeZone": "Europe/Brussels",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 60
         },
@@ -440,7 +440,7 @@
           "name": "Feature Race",
           "startTimeUtc": "2026-07-19T08:00:00Z",
           "startTimeTrack": "2026-07-19T10:00:00",
-          "trackTimeZone": "Europe/Brussels",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 120
         }
@@ -467,7 +467,7 @@
           "name": "Practice",
           "startTimeUtc": "2026-07-24T09:05:00Z",
           "startTimeTrack": "2026-07-24T11:05:00",
-          "trackTimeZone": "Europe/Budapest",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 45
         },
@@ -476,7 +476,7 @@
           "name": "Qualifying",
           "startTimeUtc": "2026-07-24T13:55:00Z",
           "startTimeTrack": "2026-07-24T15:55:00",
-          "trackTimeZone": "Europe/Budapest",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 30
         },
@@ -485,7 +485,7 @@
           "name": "Sprint Race",
           "startTimeUtc": "2026-07-25T12:15:00Z",
           "startTimeTrack": "2026-07-25T14:15:00",
-          "trackTimeZone": "Europe/Budapest",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 60
         },
@@ -494,7 +494,7 @@
           "name": "Feature Race",
           "startTimeUtc": "2026-07-26T09:25:00Z",
           "startTimeTrack": "2026-07-26T11:25:00",
-          "trackTimeZone": "Europe/Budapest",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 120
         }
@@ -521,7 +521,7 @@
           "name": "Practice",
           "startTimeUtc": "2026-09-04T08:00:00Z",
           "startTimeTrack": "2026-09-04T10:00:00",
-          "trackTimeZone": "Europe/Rome",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 45
         },
@@ -530,7 +530,7 @@
           "name": "Qualifying",
           "startTimeUtc": "2026-09-04T12:55:00Z",
           "startTimeTrack": "2026-09-04T14:55:00",
-          "trackTimeZone": "Europe/Rome",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 30
         },
@@ -539,7 +539,7 @@
           "name": "Sprint Race",
           "startTimeUtc": "2026-09-05T12:15:00Z",
           "startTimeTrack": "2026-09-05T14:15:00",
-          "trackTimeZone": "Europe/Rome",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 60
         },
@@ -548,7 +548,7 @@
           "name": "Feature Race",
           "startTimeUtc": "2026-09-06T07:45:00Z",
           "startTimeTrack": "2026-09-06T09:45:00",
-          "trackTimeZone": "Europe/Rome",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 120
         }
@@ -575,7 +575,7 @@
           "name": "Practice",
           "startTimeUtc": "2026-09-11T09:05:00Z",
           "startTimeTrack": "2026-09-11T11:05:00",
-          "trackTimeZone": "Europe/Madrid",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 45
         },
@@ -584,7 +584,7 @@
           "name": "Qualifying",
           "startTimeUtc": "2026-09-11T13:00:00Z",
           "startTimeTrack": "2026-09-11T15:00:00",
-          "trackTimeZone": "Europe/Madrid",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 30
         },
@@ -593,7 +593,7 @@
           "name": "Sprint Race",
           "startTimeUtc": "2026-09-12T12:15:00Z",
           "startTimeTrack": "2026-09-12T14:15:00",
-          "trackTimeZone": "Europe/Madrid",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 60
         },
@@ -602,7 +602,7 @@
           "name": "Feature Race",
           "startTimeUtc": "2026-09-13T09:25:00Z",
           "startTimeTrack": "2026-09-13T11:25:00",
-          "trackTimeZone": "Europe/Madrid",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 120
         }
@@ -627,17 +627,26 @@
         {
           "type": "FP1",
           "name": "Practice",
-          "startTimeUtc": "2026-09-23T20:00:00Z",
-          "startTimeTrack": "2026-09-24T00:00:00",
+          "startTimeUtc": "2026-09-24T06:00:00Z",
+          "startTimeTrack": "2026-09-24T10:00:00",
           "trackTimeZone": "Asia/Baku",
           "cancelled": false,
           "durationMinutes": 45
         },
         {
-          "type": "Q",
-          "name": "Qualifying",
-          "startTimeUtc": "2026-09-23T20:00:00Z",
-          "startTimeTrack": "2026-09-24T00:00:00",
+          "type": "Q1",
+          "name": "Qualifying 1",
+          "startTimeUtc": "2026-09-24T10:00:00Z",
+          "startTimeTrack": "2026-09-24T14:00:00",
+          "trackTimeZone": "Asia/Baku",
+          "cancelled": false,
+          "durationMinutes": 30
+        },
+        {
+          "type": "Q2",
+          "name": "Qualifying 2",
+          "startTimeUtc": "2026-09-24T10:30:00Z",
+          "startTimeTrack": "2026-09-24T14:30:00",
           "trackTimeZone": "Asia/Baku",
           "cancelled": false,
           "durationMinutes": 30
@@ -645,17 +654,26 @@
         {
           "type": "SPRINT",
           "name": "Sprint Race",
-          "startTimeUtc": "2026-09-24T20:00:00Z",
-          "startTimeTrack": "2026-09-25T00:00:00",
+          "startTimeUtc": "2026-09-25T04:15:00Z",
+          "startTimeTrack": "2026-09-25T08:15:00",
           "trackTimeZone": "Asia/Baku",
           "cancelled": false,
           "durationMinutes": 60
         },
         {
-          "type": "R",
-          "name": "Feature Race",
-          "startTimeUtc": "2026-09-25T20:00:00Z",
-          "startTimeTrack": "2026-09-26T00:00:00",
+          "type": "R1",
+          "name": "Feature Race 1",
+          "startTimeUtc": "2026-09-25T10:15:00Z",
+          "startTimeTrack": "2026-09-25T14:15:00",
+          "trackTimeZone": "Asia/Baku",
+          "cancelled": false,
+          "durationMinutes": 120
+        },
+        {
+          "type": "R2",
+          "name": "Feature Race 2",
+          "startTimeUtc": "2026-09-26T07:00:00Z",
+          "startTimeTrack": "2026-09-26T11:00:00",
           "trackTimeZone": "Asia/Baku",
           "cancelled": false,
           "durationMinutes": 120

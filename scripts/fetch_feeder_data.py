@@ -8,6 +8,7 @@ import re
 import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import parse_qs, urlparse
 
 from http_retry import read
 
@@ -94,6 +95,13 @@ def page(url: str) -> str:
     return read(url, HEADERS, timeout=45).decode("utf-8").replace('\\"', '"')
 
 
+def api_key(html: str) -> str:
+    match = re.search(r'"key":\{"public":"([^"]+)"', html)
+    if not match:
+        raise RuntimeError("Official page does not expose the public results API key")
+    return match.group(1)
+
+
 def embedded_array(html: str, key: str) -> list[dict]:
     marker = f'"{key}":['
     start = html.find(marker)
@@ -115,19 +123,61 @@ def official_portraits(series: str) -> dict[str, str]:
     return portraits
 
 
-def session_objects(html: str) -> list[dict]:
-    decoder = json.JSONDecoder()
-    found: dict[str, dict] = {}
-    for match in re.finditer(r'\{"session":"[^"]+","shortName":', html):
-        try:
-            item, _ = decoder.raw_decode(html[match.start():])
-        except json.JSONDecodeError:
+def official_sessions(series: str, html: str) -> list[dict]:
+    """Load every classification listed by the official race hub.
+
+    The race page server-renders only the currently selected classification.
+    The complete session list contains stable links to the same public API used
+    by the page, so query each completed session explicitly instead of assuming
+    that changing a page query parameter changes the server-rendered result.
+    """
+    key = api_key(html)
+    sessions = embedded_array(html, "meetingSessions")
+    loaded: list[dict] = []
+    for session in sessions:
+        item = dict(session)
+        if item.get("state") != "completed":
+            item["results"] = []
+            loaded.append(item)
             continue
-        # Prefer the occurrence that actually includes the classification.
-        key = item.get("shortName", "")
-        if key and (key not in found or len(item.get("results", [])) > len(found[key].get("results", []))):
-            found[key] = item
-    return list(found.values())
+        value = str(item.get("value") or "")
+        parsed = urlparse(value)
+        query = parse_qs(parsed.query)
+        meeting = query.get("meeting", [None])[0]
+        number = query.get("session", [item.get("sessionNumber")])[0]
+        kind = str(item.get("sessionType") or "").lower()
+        if not meeting or not number or kind not in {"practice", "qualifying", "race"}:
+            raise RuntimeError(f"Incomplete official session link: {value}")
+        url = f"https://api.formula1.com/v2/core-fom-results/{series}/{kind}?meeting={meeting}&session={number}"
+        payload = json.loads(read(url, {**HEADERS, "apikey": key}, timeout=45))
+        official = payload.get("sessionResults")
+        if not isinstance(official, dict):
+            raise RuntimeError(f"Official API returned no classification for {value}")
+        loaded.append(official)
+    return loaded
+
+
+def session_type(item: dict) -> str:
+    short = str(item.get("shortName") or "")
+    session = str(item.get("session") or "")
+    if short == "Sprint Race":
+        return "SPRINT"
+    if short == "Feature Race":
+        return "R"
+    if short.startswith("Feature Race "):
+        return f"R{short.rsplit(' ', 1)[-1]}"
+    if "Qualifying" in short:
+        number = re.search(r"(\d+)$", short)
+        if number:
+            return f"Q{number.group(1)}"
+        if "Group A" in short:
+            return "QA"
+        if "Group B" in short:
+            return "QB"
+        return "Q"
+    if "Practice" in short:
+        return "FP1"
+    raise RuntimeError(f"Unknown official session type: {short or session}")
 
 
 def utc(session: dict, fallback_date: str) -> str:
@@ -157,25 +207,14 @@ def build(series: str) -> None:
     for number, row in enumerate(ROUNDS[series], 1):
         race_slug, name, circuit, locality, country, code, start, end = row
         url = f"{base}/{race_slug}"
-        # The official page renders one selected classification at a time.
-        # Merge all server-rendered session variants so Sprint and Feature
-        # results are both stored offline.
-        variants = [page(url)]
-        if datetime.fromisoformat(end).replace(tzinfo=timezone.utc) < NOW:
-            variants.extend(page(f"{url}?session={session}") for session in range(4))
-        sessions_by_name: dict[str, dict] = {}
-        for html in variants:
-            for item in session_objects(html):
-                key = item.get("shortName", "")
-                if key and (key not in sessions_by_name or len(item.get("results", [])) > len(sessions_by_name[key].get("results", []))):
-                    sessions_by_name[key] = item
-        sessions = list(sessions_by_name.values())
+        html = page(url)
+        sessions = official_sessions(series, html)
         calendar_sessions, result_sessions = [], []
         for item in sessions:
             short = item.get("shortName", "")
-            session_type = "R" if short == "Feature Race" else "SPRINT" if short == "Sprint Race" else "Q" if short == "Qualifying" else "FP1"
+            classification = session_type(item)
             stamp = utc(item, start)
-            calendar_sessions.append({"type": session_type, "name": short or item.get("session", "Session"), "startTimeUtc": stamp, "startTimeTrack": item.get("startTime"), "trackTimeZone": item.get("timezone"), "cancelled": False})
+            calendar_sessions.append({"type": classification, "name": short or item.get("session", "Session"), "startTimeUtc": stamp, "startTimeTrack": item.get("startTime"), "trackTimeZone": item.get("timezone"), "cancelled": False})
             rows = [result_row(raw, index) for index, raw in enumerate(item.get("results", []), 1)]
             for result in rows:
                 driver_metadata[result["driver"]["id"]] = {
@@ -184,7 +223,7 @@ def build(series: str) -> None:
                     "code": result["driver"].get("code") or "",
                 }
             if rows:
-                result_sessions.append({"type": session_type, "name": short, "startTimeUtc": stamp, "results": rows})
+                result_sessions.append({"type": classification, "name": short, "startTimeUtc": stamp, "results": rows})
         if not calendar_sessions:
             calendar_sessions = [{"type": "R", "name": "Feature Race", "startTimeUtc": f"{end}T12:00:00Z", "cancelled": False}]
         filename = f"{number:02d}-{slug(name)}.json"

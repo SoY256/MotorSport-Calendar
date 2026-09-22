@@ -667,6 +667,7 @@ class _ListPage extends ConsumerWidget {
     final matching = data.events
         .where((event) => selectedSeries.contains(event.seriesId))
         .toList();
+    final nextEvent = _nextEvent(matching, now);
     final events = settings.showPastEvents
         ? matching
         : matching.where((event) => event.endsAt.isAfter(now)).toList();
@@ -676,12 +677,12 @@ class _ListPage extends ConsumerWidget {
           '${strings.events(events.length)} • ${settings.timeMode == EventTimeMode.local ? strings.localTime : strings.trackTime}',
       child: Column(
         children: [
-          if (matching.isNotEmpty)
+          if (nextEvent != null)
             _NextRaceHero(
-              event: _nearestEvent(matching),
+              event: nextEvent,
               settings: settings,
               strings: strings,
-              onTap: () => onEventTap(_nearestEvent(matching)),
+              onTap: () => onEventTap(nextEvent),
             ),
           const SizedBox(height: 14),
           Card(
@@ -2977,10 +2978,15 @@ class _ErrorState extends StatelessWidget {
 
 RaceEvent _nearestEvent(List<RaceEvent> events) {
   final now = DateTime.now().toUtc();
-  return events.cast<RaceEvent?>().firstWhere(
-    (event) => event!.endsAt.isAfter(now) && !event.cancelled,
-    orElse: () => events.where((event) => !event.cancelled).last,
-  )!;
+  return _nextEvent(events, now) ??
+      events.lastWhere((event) => !event.cancelled);
+}
+
+RaceEvent? _nextEvent(List<RaceEvent> events, DateTime now) {
+  for (final event in events) {
+    if (!event.cancelled && event.endsAt.isAfter(now)) return event;
+  }
+  return null;
 }
 
 String _sessionLabel(String type, String original, AppStrings strings) {
@@ -2992,20 +2998,32 @@ String _sessionLabel(String type, String original, AppStrings strings) {
     'SQ' => 'Kwalifikacje sprintu',
     'SPRINT' => 'Sprint',
     'Q' => 'Kwalifikacje',
+    'Q1' => 'Kwalifikacje 1',
+    'Q2' => 'Kwalifikacje 2',
+    'QA' => 'Kwalifikacje – grupa A',
+    'QB' => 'Kwalifikacje – grupa B',
     'R' => 'Wyścig',
+    'R1' => 'Wyścig 1',
+    'R2' => 'Wyścig 2',
     _ => original,
   };
 }
 
 int _resultOrder(String type) => switch (type) {
   'R' => 0,
-  'SPRINT' => 1,
-  'Q' => 2,
-  'SQ' => 3,
-  'FP3' => 4,
-  'FP2' => 5,
-  'FP1' => 6,
-  _ => 7,
+  'R2' => 0,
+  'R1' => 1,
+  'SPRINT' => 2,
+  'Q2' => 3,
+  'Q1' => 4,
+  'QB' => 5,
+  'QA' => 6,
+  'Q' => 7,
+  'SQ' => 8,
+  'FP3' => 9,
+  'FP2' => 10,
+  'FP1' => 11,
+  _ => 12,
 };
 
 String _teamName(String id) => switch (id) {

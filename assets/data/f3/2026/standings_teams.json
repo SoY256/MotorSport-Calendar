@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-08-24T12:24:55.244983Z",
+  "lastSuccessfulUpdate": "2026-09-22T07:32:12.909740Z",
   "source": {
     "name": "official-formula-series",
     "url": "https://www.fiaformula3.com/en/standings/2026/teams"
@@ -8,83 +8,93 @@
   "data": [
     {
       "position": 1,
-      "points": 201,
+      "points": 334,
       "wins": 0,
-      "id": "van-amersfoort",
-      "name": "Van Amersfoort Racing",
-      "nationality": null
+      "id": "campos-racing",
+      "name": "Campos Racing",
+      "nationality": null,
+      "color": "#7c7c7c"
     },
     {
       "position": 2,
-      "points": 196,
+      "points": 217,
       "wins": 0,
       "id": "trident",
-      "name": "Trident",
-      "nationality": null
+      "name": "TRIDENT",
+      "nationality": null,
+      "color": "#6464ff"
     },
     {
       "position": 3,
-      "points": 194,
+      "points": 208,
       "wins": 0,
-      "id": "campos",
-      "name": "Campos Racing",
-      "nationality": null
+      "id": "mp-motorsport",
+      "name": "MP Motorsport",
+      "nationality": null,
+      "color": "#ff9141"
     },
     {
       "position": 4,
-      "points": 134,
+      "points": 189,
       "wins": 0,
-      "id": "mp",
-      "name": "MP Motorsport",
-      "nationality": null
+      "id": "art-grand-prix",
+      "name": "ART Grand Prix",
+      "nationality": null,
+      "color": "#af2f22"
     },
     {
       "position": 5,
-      "points": 127,
+      "points": 168,
       "wins": 0,
-      "id": "art",
-      "name": "ART Grand Prix",
-      "nationality": null
+      "id": "van-amersfoort-racing",
+      "name": "Van Amersfoort Racing",
+      "nationality": null,
+      "color": "#dc4600"
     },
     {
       "position": 6,
-      "points": 97,
+      "points": 161,
       "wins": 0,
-      "id": "rodin",
+      "id": "rodin-motorsport",
       "name": "Rodin Motorsport",
-      "nationality": null
+      "nationality": null,
+      "color": "#c3a752"
     },
     {
       "position": 7,
-      "points": 59,
+      "points": 75,
       "wins": 0,
-      "id": "hitech",
-      "name": "Hitech TGR",
-      "nationality": null
+      "id": "prema-racing",
+      "name": "PREMA Racing",
+      "nationality": null,
+      "color": "#f00000"
     },
     {
       "position": 8,
-      "points": 39,
+      "points": 55,
       "wins": 0,
-      "id": "dams",
-      "name": "DAMS Lucas Oil",
-      "nationality": null
+      "id": "hitech",
+      "name": "Hitech",
+      "nationality": null,
+      "color": "#a0b4c8"
     },
     {
       "position": 9,
-      "points": 21,
+      "points": 53,
       "wins": 0,
-      "id": "aix",
-      "name": "AIX Racing",
-      "nationality": null
+      "id": "dams-lucas-oil",
+      "name": "DAMS Lucas Oil",
+      "nationality": null,
+      "color": "#00b4ff"
     },
     {
       "position": 10,
-      "points": 6,
+      "points": 43,
       "wins": 0,
-      "id": "prema",
-      "name": "PREMA Racing",
-      "nationality": null
+      "id": "aix-racing",
+      "name": "AIX Racing",
+      "nationality": null,
+      "color": "#64f00f"
     }
   ]
 }
