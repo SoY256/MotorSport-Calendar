@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-25T07:14:50.282369Z",
+  "lastSuccessfulUpdate": "2026-09-25T09:52:37.080767Z",
   "source": {
     "name": "official-formula-series",
     "url": "https://www.fiaformula2.com/en/racing/2026/baku"
@@ -1878,29 +1878,6 @@
             "position": 15,
             "positionText": "15",
             "driver": {
-              "id": "oliver-goethe",
-              "code": "GOE",
-              "givenName": "Oliver",
-              "familyName": "Goethe",
-              "nationality": "German"
-            },
-            "team": {
-              "id": "mp-motorsport",
-              "name": "MP Motorsport",
-              "color": "#ff9141"
-            },
-            "carNumber": "10",
-            "time": "+24.774s",
-            "laps": 21,
-            "points": 0,
-            "status": "OK",
-            "classified": true,
-            "components": {}
-          },
-          {
-            "position": 16,
-            "positionText": "16",
-            "driver": {
               "id": "rafael-camara",
               "code": "CAM",
               "givenName": "Rafael",
@@ -1914,6 +1891,29 @@
             },
             "carNumber": "1",
             "time": "+26.204s",
+            "laps": 21,
+            "points": 0,
+            "status": "OK",
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 16,
+            "positionText": "16",
+            "driver": {
+              "id": "oliver-goethe",
+              "code": "GOE",
+              "givenName": "Oliver",
+              "familyName": "Goethe",
+              "nationality": "German"
+            },
+            "team": {
+              "id": "mp-motorsport",
+              "name": "MP Motorsport",
+              "color": "#ff9141"
+            },
+            "carNumber": "10",
+            "time": "+34.774s",
             "laps": 21,
             "points": 0,
             "status": "OK",

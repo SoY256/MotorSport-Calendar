@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-25T07:14:50.282369Z",
+  "lastSuccessfulUpdate": "2026-09-25T09:52:37.080767Z",
   "source": {
     "name": "official-formula-series",
     "url": "https://www.fiaformula2.com/en/standings/2026/drivers"
@@ -8,7 +8,7 @@
   "data": [
     {
       "position": 1,
-      "points": 177,
+      "points": 181,
       "wins": 0,
       "id": "nikola-tsolov",
       "code": "TSO",
@@ -50,7 +50,7 @@
     },
     {
       "position": 4,
-      "points": 139,
+      "points": 146,
       "wins": 0,
       "id": "alexander-dunne",
       "code": "DUN",
@@ -78,7 +78,7 @@
     },
     {
       "position": 6,
-      "points": 106,
+      "points": 116,
       "wins": 0,
       "id": "dino-beganovic",
       "code": "BEG",
@@ -106,7 +106,7 @@
     },
     {
       "position": 8,
-      "points": 88,
+      "points": 89,
       "wins": 0,
       "id": "kush-maini",
       "code": "MAI",
@@ -120,7 +120,7 @@
     },
     {
       "position": 9,
-      "points": 72,
+      "points": 80,
       "wins": 0,
       "id": "laurens-van-hoepen",
       "code": "HOE",
@@ -134,6 +134,20 @@
     },
     {
       "position": 10,
+      "points": 75,
+      "wins": 0,
+      "id": "martinius-stenshorne",
+      "code": "STE",
+      "givenName": "Martinius",
+      "familyName": "Stenshorne",
+      "nationality": "Norwegian",
+      "teamIds": [
+        "rodin-motorsport"
+      ],
+      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/rodinmotorsport/marste01/2026rodinmotorsportmarste01right.webp"
+    },
+    {
+      "position": 11,
       "points": 71,
       "wins": 0,
       "id": "tasanapol-inthraphuvasak",
@@ -145,20 +159,6 @@
         "art-grand-prix"
       ],
       "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/artgrandprix/tasint01/2026artgrandprixtasint01right.webp"
-    },
-    {
-      "position": 11,
-      "points": 70,
-      "wins": 0,
-      "id": "martinius-stenshorne",
-      "code": "STE",
-      "givenName": "Martinius",
-      "familyName": "Stenshorne",
-      "nationality": "Norwegian",
-      "teamIds": [
-        "rodin-motorsport"
-      ],
-      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/rodinmotorsport/marste01/2026rodinmotorsportmarste01right.webp"
     },
     {
       "position": 12,
@@ -218,7 +218,7 @@
     },
     {
       "position": 16,
-      "points": 28,
+      "points": 30,
       "wins": 0,
       "id": "sebastian-montoya",
       "code": "MON",
@@ -232,20 +232,7 @@
     },
     {
       "position": 17,
-      "points": 28,
-      "wins": 0,
-      "id": "emerson-fittipaldi",
-      "code": "FIT",
-      "givenName": "Emerson",
-      "familyName": "Fittipaldi",
-      "nationality": null,
-      "teamIds": [
-        "aix-racing"
-      ]
-    },
-    {
-      "position": 18,
-      "points": 26,
+      "points": 29,
       "wins": 0,
       "id": "roman-bilinski",
       "code": "BIL",
@@ -256,6 +243,19 @@
         "dams-lucas-oil"
       ],
       "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/damslucasoil/rombil01/2026damslucasoilrombil01right.webp"
+    },
+    {
+      "position": 18,
+      "points": 28,
+      "wins": 0,
+      "id": "emerson-fittipaldi",
+      "code": "FIT",
+      "givenName": "Emerson",
+      "familyName": "Fittipaldi",
+      "nationality": null,
+      "teamIds": [
+        "aix-racing"
+      ]
     },
     {
       "position": 19,
@@ -311,6 +311,20 @@
         "aix-racing"
       ],
       "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/aixracing/ciashi01/2026aixracingciashi01right.webp"
+    },
+    {
+      "position": 23,
+      "points": 0,
+      "wins": 0,
+      "id": "hiyu-yamakoshi",
+      "code": "YAM",
+      "givenName": "Hiyu",
+      "familyName": "Yamakoshi",
+      "nationality": "Japanese",
+      "teamIds": [
+        "van-amersfoort-racing"
+      ],
+      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/vanamersfoortracing/hiyyam01/2026vanamersfoortracinghiyyam01right.webp"
     }
   ]
 }
