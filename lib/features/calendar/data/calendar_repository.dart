@@ -171,7 +171,10 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
     EventResults base,
   ) async {
     final now = DateTime.now().toUtc();
-    final available = {for (final session in base.sessions) session.type};
+    final available = {
+      for (final session in base.sessions)
+        if (session.results.isNotEmpty) session.type,
+    };
     final missing = event.sessions.where(
       (session) =>
           !session.cancelled &&
