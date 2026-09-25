@@ -132,6 +132,12 @@ def main() -> int:
                 shutil.rmtree(staged / "f1")
                 shutil.copytree(f1_output / "f1", staged / "f1")
 
+            # formula1.com is the primary and fastest official classification
+            # source. Jolpica remains the schedule/fallback adapter only.
+            f1_env = os.environ.copy()
+            f1_env["MOTORSPORT_DATA_ROOT"] = str(staged)
+            run("fetch_f1_official_results.py", f1_env)
+
             importers = {
                 "fetch_feeder_data.py": ("f2", "f3"),
                 "fetch_imsa_results.py": ("imsa",),
