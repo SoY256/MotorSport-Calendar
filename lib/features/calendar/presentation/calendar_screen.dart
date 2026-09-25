@@ -866,8 +866,7 @@ class _NextRaceHero extends StatelessWidget {
                       children: [
                         _HeroPill(
                           icon: Icons.calendar_today,
-                          label:
-                              '${_sessionDate(first, settings)} – ${_sessionDate(last, settings)}',
+                          label: _sessionDateRange(first, last, settings),
                         ),
                         _HeroPill(
                           icon: Icons.schedule,
@@ -906,11 +905,14 @@ class _HeroPill extends StatelessWidget {
       children: [
         Icon(icon, color: Colors.white, size: 16),
         const SizedBox(width: 7),
-        Text(
-          label,
-          style: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w700,
+        Flexible(
+          child: Text(
+            label,
+            softWrap: true,
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w700,
+            ),
           ),
         ),
       ],
@@ -1051,22 +1053,31 @@ class _EventCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 10),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    _sessionDate(race, settings),
-                    style: const TextStyle(fontWeight: FontWeight.w800),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    _sessionTime(race, settings.timeMode),
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.primary,
-                      fontWeight: FontWeight.w900,
+              SizedBox(
+                width: 78,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      _sessionDate(race, settings),
+                      maxLines: 2,
+                      softWrap: true,
+                      textAlign: TextAlign.end,
+                      style: const TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w800,
+                      ),
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 4),
+                    Text(
+                      _sessionTime(race, settings.timeMode),
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(width: 4),
               const Icon(Icons.chevron_right),
@@ -3257,13 +3268,33 @@ List<int>? _trackParts(RaceSession session) {
 }
 
 String _sessionDate(RaceSession session, AppSettings settings) {
+  return _date(_sessionDisplayDate(session, settings), settings.language);
+}
+
+DateTime _sessionDisplayDate(RaceSession session, AppSettings settings) {
   final track = settings.timeMode == EventTimeMode.track
       ? _trackParts(session)
       : null;
   if (track != null) {
-    return '${_two(track[1])} ${_monthName(track[0], settings.language)}';
+    return DateTime(session.startTimeUtc.year, track[0], track[1]);
   }
-  return _date(session.startTimeUtc.toLocal(), settings.language);
+  return session.startTimeUtc.toLocal();
+}
+
+String _sessionDateRange(
+  RaceSession first,
+  RaceSession last,
+  AppSettings settings,
+) {
+  final from = _sessionDisplayDate(first, settings);
+  final to = _sessionDisplayDate(last, settings);
+  if (from.year == to.year && from.month == to.month) {
+    return '${_weekdayName(from.weekday, settings.language)}–'
+        '${_weekdayName(to.weekday, settings.language)}, '
+        '${_two(from.day)}–${_two(to.day)} '
+        '${_monthName(from.month, settings.language)}';
+  }
+  return '${_date(from, settings.language)} – ${_date(to, settings.language)}';
 }
 
 String _sessionTime(RaceSession session, EventTimeMode mode) {
@@ -3319,8 +3350,30 @@ const _monthsEn = [
 String _two(int value) => value.toString().padLeft(2, '0');
 String _monthName(int month, AppLanguage language) =>
     (language == AppLanguage.english ? _monthsEn : _monthsPl)[month - 1];
+const _weekdaysFullPl = [
+  'Poniedziałek',
+  'Wtorek',
+  'Środa',
+  'Czwartek',
+  'Piątek',
+  'Sobota',
+  'Niedziela',
+];
+const _weekdaysFullEn = [
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday',
+];
+String _weekdayName(int weekday, AppLanguage language) =>
+    (language == AppLanguage.english
+    ? _weekdaysFullEn
+    : _weekdaysFullPl)[weekday - 1];
 String _date(DateTime value, AppLanguage language) =>
-    '${_two(value.day)} ${_monthName(value.month, language)}';
+    '${_weekdayName(value.weekday, language)}, ${_two(value.day)} ${_monthName(value.month, language)}';
 String _time(DateTime value) => '${_two(value.hour)}:${_two(value.minute)}';
 String _dateTime(DateTime value, AppLanguage language) =>
     '${_date(value, language)} ${value.year}, ${_time(value)}';

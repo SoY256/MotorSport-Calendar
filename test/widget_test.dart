@@ -379,10 +379,10 @@ void main() {
     await tester.pump(const Duration(milliseconds: 300));
     expect(find.text('Ukryj poprzednie wydarzenia'), findsOneWidget);
 
-    await tester.tap(find.text('Ukryj poprzednie wydarzenia'));
+    tester.widget<Switch>(find.byType(Switch).first).onChanged!(false);
     await tester.pump(const Duration(milliseconds: 300));
     expect(find.text('Australian Grand Prix'), findsNothing);
-    await tester.tap(find.text('Pokaż poprzednie wydarzenia'));
+    tester.widget<Switch>(find.byType(Switch).first).onChanged!(true);
     await tester.pump(const Duration(milliseconds: 300));
     expect(find.text('Australian Grand Prix'), findsNWidgets(3));
 
