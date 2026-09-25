@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-25T00:07:27.657230Z",
+  "lastSuccessfulUpdate": "2026-09-25T07:14:50.282369Z",
   "source": {
     "name": "official-formula-series",
     "url": "https://www.fiaformula2.com/en/racing/2026"
@@ -656,7 +656,7 @@
           "name": "Sprint Race",
           "startTimeUtc": "2026-09-25T04:15:00Z",
           "startTimeTrack": "2026-09-25T08:15:00",
-          "trackTimeZone": "Asia/Baku",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 60
         },
