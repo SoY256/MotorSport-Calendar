@@ -153,17 +153,38 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
       final json = await _remote('${event.seriesId}/2026/${event.resultsPath}');
       if (json != null) {
         final remote = EventResults.fromJson(json);
-        final hasIncompleteDrivers = remote.sessions
-            .expand((session) => session.results)
-            .any((result) => (result.driver.nationality ?? '').isEmpty);
-        if (!hasIncompleteDrivers) selected = remote;
+        // A missing optional flag must never hide an otherwise valid official
+        // classification. Metadata is enriched separately. An event mismatch,
+        // however, means the classification belongs to a different round.
+        if (remote.eventId == event.id) selected = remote;
       }
     } on Object {
       // Keep the bundled fallback and try the live F1 endpoint below.
     }
-    return event.seriesId == 'f1'
+    final loaded = event.seriesId == 'f1'
         ? await _withLiveF1Results(event, selected)
         : selected;
+    return _onlyCompletedScheduledSessions(event, loaded);
+  }
+
+  EventResults _onlyCompletedScheduledSessions(
+    RaceEvent event,
+    EventResults results,
+  ) {
+    final now = DateTime.now().toUtc();
+    final scheduled = {
+      for (final session in event.sessions) session.type: session,
+    };
+    final verified = results.sessions
+        .where((result) {
+          final session = scheduled[result.type];
+          return session != null &&
+              !session.cancelled &&
+              !session.expectedEnd.isAfter(now) &&
+              result.results.isNotEmpty;
+        })
+        .toList(growable: false);
+    return EventResults(eventId: event.id, sessions: verified);
   }
 
   Future<EventResults> _withLiveF1Results(

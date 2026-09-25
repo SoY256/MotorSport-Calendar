@@ -65,6 +65,35 @@ def completed_event_codes() -> list[str]:
     return sorted(code for code in codes if not re.fullmatch(r"\d+_20\d{2}(?:-20\d{2})?", code))
 
 
+EVENT_CODE_ALIASES = {
+    "6 Hours of Imola": ("IMOLA",),
+    "6 Hours of Spa-Francorchamps": ("SPA",),
+    "24 Hours of Le Mans": ("LE MANS",),
+    "6 Hours of São Paulo": ("SAO PAULO", "SÃO PAULO"),
+    "Lone Star Le Mans": ("CIRCUIT OF THE AMERICAS", "COTA", "LONE STAR", "AUSTIN"),
+    "6 Hours of Fuji": ("FUJI",),
+    "Qatar 1812 km": ("QATAR", "LOSAIL"),
+    "8 Hours of Bahrain": ("BAHRAIN",),
+}
+
+
+def event_code(event: dict, codes: list[str]) -> str | None:
+    """Match an official timing event to the calendar by venue, never position.
+
+    The timing site can repeat or omit event entries while a weekend is live.
+    Positional ``zip(calendar, codes)`` therefore assigned old classifications
+    to later rounds (including future races).  Venue identity is stable.
+    """
+    aliases = EVENT_CODE_ALIASES.get(event["name"], ())
+    matches = [
+        code for code in codes
+        if any(alias in code.upper().replace("%20", " ") for alias in aliases)
+    ]
+    if len(matches) > 1:
+        raise RuntimeError(f"Ambiguous WEC event code for {event['name']}: {matches}")
+    return matches[0] if matches else None
+
+
 def slug(value: str) -> str:
     plain = unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode().lower()
     return "-".join(re.findall(r"[a-z0-9]+", plain))
@@ -256,7 +285,20 @@ def main() -> None:
     nationalities = entry_nationalities(fetch(ENTRY_LIST_URL))
     driver_wins: dict[tuple[str, str], int] = {}
     team_wins: dict[tuple[str, str], int] = {}
-    for event, code in zip(calendar, events):
+    now = datetime.now(timezone.utc)
+    for event in calendar:
+        scheduled_end = datetime.fromisoformat(
+            event["sessions"][-1]["startTimeUtc"].replace("Z", "+00:00")
+        )
+        code = event_code(event, events)
+        if code is None or scheduled_end > now:
+            payload = {"schemaVersion": 1, "lastSuccessfulUpdate": updated,
+                       "source": {"name": "fia-wec-official", "url": STANDINGS_URL},
+                       "data": {"eventId": event["id"], "sessions": []}}
+            (root / event["resultsPath"]).write_text(
+                json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+            )
+            continue
         url = classification_url(code)
         rows = parse_rows(fetch(url), nationalities)
         for category in ("HYPERCAR", "LMGT3"):

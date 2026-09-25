@@ -81,25 +81,25 @@ def enrich(root: Path, series: str, portraits: dict[str, str]) -> int:
 def main() -> None:
     imsa = stored_portraits("imsa_driver_portraits.json")
     wikipedia = stored_portraits("wikipedia_driver_portraits.json")
+    verified = stored_portraits("official_driver_portraits.json")
+    local = bundled_portraits()
     if os.environ.get("PORTRAIT_STORED_ONLY"):
         sources = {
-            "imsa": imsa | wikipedia,
-            "indycar": bundled_portraits() | wikipedia,
-            "indynxt": bundled_portraits() | wikipedia,
-            "wec": bundled_portraits() | imsa | wikipedia,
+            series: imsa | wikipedia | verified | local
+            for series in ("f1", "f2", "f3", "imsa", "indycar", "indynxt", "wec")
         }
     else:
         sources = {
-            "f1": official_f1_portraits(),
-            "f2": official_portraits("f2"),
-            "f3": official_portraits("f3"),
-            "imsa": imsa | wikipedia,
-            "indycar": indy_portraits("indycar"),
-            "indynxt": indy_portraits("indynxt"),
+            "f1": official_f1_portraits() | verified | local,
+            "f2": official_portraits("f2") | verified | local,
+            "f3": official_portraits("f3") | verified | local,
+            "imsa": imsa | wikipedia | verified | local,
+            "indycar": indy_portraits("indycar") | verified | local,
+            "indynxt": indy_portraits("indynxt") | verified | local,
             # A substantial part of the WEC grid also races in IMSA. Official
             # IMSA portraits are an identity-safe fallback until WEC exposes a
             # portrait for a given driver.
-            "wec": imsa | wikipedia,
+            "wec": imsa | wikipedia | verified | local,
         }
     configured = os.environ.get("PORTRAIT_SINGLE_ROOT")
     roots = (Path(configured),) if configured else (ROOT / "assets" / "data", ROOT / "data")

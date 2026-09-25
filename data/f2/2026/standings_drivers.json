@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-25T09:52:37.080767Z",
+  "lastSuccessfulUpdate": "2026-09-25T09:58:37.585542Z",
   "source": {
     "name": "official-formula-series",
     "url": "https://www.fiaformula2.com/en/standings/2026/drivers"
@@ -182,7 +182,7 @@
       "code": "BEN",
       "givenName": "John",
       "familyName": "Bennett",
-      "nationality": null,
+      "nationality": "British",
       "teamIds": [
         "trident"
       ],
@@ -252,10 +252,11 @@
       "code": "FIT",
       "givenName": "Emerson",
       "familyName": "Fittipaldi",
-      "nationality": null,
+      "nationality": "Brazilian",
       "teamIds": [
         "aix-racing"
-      ]
+      ],
+      "imageUrl": "assets/portraits/faces/f2/emerson-fittipaldi.jpg"
     },
     {
       "position": 19,
@@ -269,7 +270,7 @@
       "teamIds": [
         "hitech"
       ],
-      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/hitech/colher01/2026hitechcolher01right.webp"
+      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/17/2026_IWSC_ColtonHerta_355x355-290x290.png"
     },
     {
       "position": 20,
@@ -279,10 +280,11 @@
       "code": "VAR",
       "givenName": "Nico",
       "familyName": "Varrone",
-      "nationality": null,
+      "nationality": "Argentine",
       "teamIds": [
         "van-amersfoort-racing"
-      ]
+      ],
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Nico_Varrone_in_2023.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
       "position": 21,
@@ -292,7 +294,7 @@
       "code": "BOY",
       "givenName": "Mari",
       "familyName": "Boya",
-      "nationality": null,
+      "nationality": "Spanish",
       "teamIds": [
         "prema-racing"
       ],
@@ -306,7 +308,7 @@
       "code": "SHI",
       "givenName": "Cian",
       "familyName": "Shields",
-      "nationality": null,
+      "nationality": "British",
       "teamIds": [
         "aix-racing"
       ],
@@ -324,7 +326,7 @@
       "teamIds": [
         "van-amersfoort-racing"
       ],
-      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f2:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f2/2026/vanamersfoortracing/hiyyam01/2026vanamersfoortracinghiyyam01right.webp"
+      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/vanamersfoortracing/hiyyam01/2026vanamersfoortracinghiyyam01right.webp"
     }
   ]
 }

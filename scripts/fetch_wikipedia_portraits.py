@@ -69,8 +69,9 @@ def portrait(name: str) -> str | None:
 
 def main() -> None:
     output = ROOT / "data" / "sources" / "wikipedia_driver_portraits.json"
+    output.parent.mkdir(parents=True, exist_ok=True)
     found = json.loads(output.read_text(encoding="utf-8")) if output.exists() else {}
-    for series in ("wec", "imsa", "indycar", "indynxt"):
+    for series in ("f1", "f2", "f3", "wec", "imsa", "indycar", "indynxt"):
         source = ROOT / "assets" / "data" / series / "2026" / "standings_drivers.json"
         drivers = json.loads(source.read_text(encoding="utf-8"))["data"]
         for driver in drivers:

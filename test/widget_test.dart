@@ -82,7 +82,7 @@ void main() {
   );
 
   test(
-    'remote F1 results without flags fall back to bundled results',
+    'remote results for a different event fall back to bundled results',
     () async {
       final fallback = AssetCalendarRepository();
       final calendar = await fallback.load();

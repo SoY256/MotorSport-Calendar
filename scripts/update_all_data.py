@@ -8,7 +8,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -55,6 +55,7 @@ def write_indexes(data_root: Path) -> None:
 
 
 def validate(data_root: Path) -> None:
+    now = datetime.now(timezone.utc)
     for series in SERIES:
         season = data_root / series / "2026"
         for name in ("calendar.json", "standings_drivers.json", "standings_teams.json"):
@@ -72,6 +73,27 @@ def validate(data_root: Path) -> None:
             result = season / event["resultsPath"]
             if not result.is_file():
                 raise RuntimeError(f"Missing result document: {result}")
+            result_document = json.loads(result.read_text(encoding="utf-8"))
+            result_data = result_document.get("data", {})
+            if result_data.get("eventId") != event["id"]:
+                raise RuntimeError(f"Wrong event id in result document: {result}")
+            scheduled = {session["type"]: session for session in event.get("sessions", [])}
+            for classification in result_data.get("sessions", []):
+                session_type = classification.get("type")
+                if session_type not in scheduled:
+                    raise RuntimeError(
+                        f"Unscheduled result type {session_type}: {series}/{event['id']}"
+                    )
+                start = datetime.fromisoformat(
+                    scheduled[session_type]["startTimeUtc"].replace("Z", "+00:00")
+                )
+                end = start + timedelta(
+                    minutes=int(scheduled[session_type].get("durationMinutes", 120))
+                )
+                if classification.get("results") and end > now:
+                    raise RuntimeError(
+                        f"Future session has results: {series}/{event['id']}/{session_type}"
+                    )
 
 
 def main() -> int:
@@ -81,6 +103,8 @@ def main() -> int:
             temp = Path(temp_name)
             staged = temp / "data"
             shutil.copytree(ROOT / "assets" / "data", staged)
+            if (target / "sources").is_dir():
+                shutil.copytree(target / "sources", staged / "sources", dirs_exist_ok=True)
             if target.is_dir():
                 for series in SERIES:
                     published = target / series

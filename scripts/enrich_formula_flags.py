@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1] / "assets" / "data"
+PROJECT = Path(__file__).resolve().parents[1]
 FALLBACK_COUNTRIES = {
     "ayumu iwasa": "Japanese", "colton herta": "American", "dino beganovic": "Swedish",
     "frederik vesti": "Danish", "jak crawford": "American", "leonardo fornaroli": "Italian",
@@ -15,13 +15,27 @@ FALLBACK_COUNTRIES = {
     "fionn mclaughlin": "Irish", "jose garfias": "Mexican", "nandhavud bhirombhakdi": "Thai",
     "patrick heuzenroeder": "Australian", "ricardo escotto": "Mexican", "salim hanna": "Colombian",
     "woohyun shin": "KOR",
+    "alex powell": "Jamaican",
 }
 
 
 def main() -> None:
-    for series in ("f1", "f2", "f3"):
-        root = ROOT / series / "2026"
+    for data_root in (PROJECT / "assets" / "data", PROJECT / "data"):
+      for series in ("f1", "f2", "f3"):
+        root = data_root / series / "2026"
         standings = json.loads((root / "standings_drivers.json").read_text(encoding="utf-8"))["data"]
+        standings_changed = False
+        for item in standings:
+            full_name = f"{item.get('givenName', '')} {item.get('familyName', '')}".strip().casefold()
+            if not item.get("nationality") and FALLBACK_COUNTRIES.get(full_name):
+                item["nationality"] = FALLBACK_COUNTRIES[full_name]
+                standings_changed = True
+        if standings_changed:
+            document = json.loads((root / "standings_drivers.json").read_text(encoding="utf-8"))
+            document["data"] = standings
+            (root / "standings_drivers.json").write_text(
+                json.dumps(document, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+            )
         countries = {item["id"]: item.get("nationality") for item in standings}
         countries.update({f"{item['givenName']} {item['familyName']}".casefold(): item.get("nationality") for item in standings})
         for path in (root / "events").glob("*.json"):

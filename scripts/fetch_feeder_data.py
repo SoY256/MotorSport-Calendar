@@ -78,6 +78,24 @@ TEAM_NAMES = {
 }
 TEAM_COLOURS = {"campos": "#E5D100", "prema": "#E10600", "invicta": "#26A9E0", "rodin": "#F36F21", "aix": "#00A651", "dams": "#0067B1", "hitech": "#ED1C24", "trident": "#183883", "art": "#EE3124", "van-amersfoort": "#F58220", "mp": "#F15A29"}
 DRIVER_NATIONALITIES = {f"{given} {family}": nationality for values in DRIVERS.values() for given, family, nationality, _, _ in values}
+DRIVER_NATIONALITIES.update({
+    # Verified against the official 2026 F2/F3 entry lists and result sheets.
+    "John Bennett": "British",
+    "Emerson Fittipaldi": "Brazilian",
+    "Nico Varrone": "Argentine",
+    "Nicolas Varrone": "Argentine",
+    "Mari Boya": "Spanish",
+    "Cian Shields": "British",
+    "Alex Powell": "American",
+    "Fionn McLaughlin": "Irish",
+    "Fernando Barrichello": "Brazilian",
+    "Jose Garfias": "Mexican",
+    "Nandhavud Bhirombhakdi": "Thai",
+    "Ricardo Escotto": "Mexican",
+    "Patrick Heuzenroeder": "Australian",
+    "Woohyun Shin": "South Korean",
+    "Salim Hanna": "Colombian",
+})
 
 
 def slug(value: str) -> str:

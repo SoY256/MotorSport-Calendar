@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-25T09:52:37.080767Z",
+  "lastSuccessfulUpdate": "2026-09-25T09:58:37.585542Z",
   "source": {
     "name": "official-formula-series",
     "url": "https://www.fiaformula3.com/en/standings/2026/drivers"
@@ -297,7 +297,8 @@
       "nationality": "New Zealander",
       "teamIds": [
         "prema-racing"
-      ]
+      ],
+      "imageUrl": "assets/portraits/faces/f3/louis-sharp.jpg"
     },
     {
       "position": 22,
@@ -321,7 +322,7 @@
       "code": "POW",
       "givenName": "Alex",
       "familyName": "Powell",
-      "nationality": null,
+      "nationality": "American",
       "teamIds": [
         "prema-racing"
       ],
@@ -352,7 +353,8 @@
       "nationality": "American",
       "teamIds": [
         "aix-racing"
-      ]
+      ],
+      "imageUrl": "assets/portraits/faces/f3/brad-benavides.jpg"
     },
     {
       "position": 26,
@@ -365,7 +367,8 @@
       "nationality": "Singaporean",
       "teamIds": [
         "rodin-motorsport"
-      ]
+      ],
+      "imageUrl": "assets/portraits/faces/f3/christian-ho.jpg"
     },
     {
       "position": 27,
@@ -375,7 +378,7 @@
       "code": "MCL",
       "givenName": "Fionn",
       "familyName": "Mclaughlin",
-      "nationality": null,
+      "nationality": "Irish",
       "teamIds": [
         "hitech"
       ],
@@ -389,7 +392,7 @@
       "code": "BAR",
       "givenName": "Fernando",
       "familyName": "Barrichello",
-      "nationality": null,
+      "nationality": "Brazilian",
       "teamIds": [
         "aix-racing"
       ],
@@ -403,7 +406,7 @@
       "code": "GAR",
       "givenName": "Jose",
       "familyName": "Garfias",
-      "nationality": null,
+      "nationality": "Mexican",
       "teamIds": [
         "prema-racing"
       ],
@@ -417,7 +420,7 @@
       "code": "BHI",
       "givenName": "Nandhavud",
       "familyName": "Bhirombhakdi",
-      "nationality": null,
+      "nationality": "Thai",
       "teamIds": [
         "dams-lucas-oil"
       ],
@@ -431,11 +434,11 @@
       "code": "ESC",
       "givenName": "Ricardo",
       "familyName": "Escotto",
-      "nationality": null,
+      "nationality": "Mexican",
       "teamIds": [
         "aix-racing"
       ],
-      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/aixracing/ricesc01/2026aixracingricesc01right.webp"
+      "imageUrl": "assets/portraits/faces/indynxt/ricardo-escotto.jpg"
     },
     {
       "position": 32,
@@ -445,10 +448,11 @@
       "code": "HEU",
       "givenName": "Patrick",
       "familyName": "Heuzenroeder",
-      "nationality": null,
+      "nationality": "Australian",
       "teamIds": [
         "campos-racing"
-      ]
+      ],
+      "imageUrl": "assets/portraits/faces/f3/patrick-heuzenroeder.jpg"
     },
     {
       "position": 33,
@@ -458,11 +462,11 @@
       "code": "SHI",
       "givenName": "Woohyun",
       "familyName": "Shin",
-      "nationality": null,
+      "nationality": "South Korean",
       "teamIds": [
         "hitech"
       ],
-      "imageUrl": "https://res.cloudinary.com/prod-f2f3/c_lfill,w_1024/q_auto/d_common:f3:2026:fallback:driver:2026fallbackdriverright.webp/v1770000000/common/f3/2026/hitech/wooshi01/2026hitechwooshi01right.webp"
+      "imageUrl": "assets/portraits/faces/f3/woohyun-shin.jpg"
     },
     {
       "position": 35,
@@ -472,10 +476,11 @@
       "code": "HAN",
       "givenName": "Salim",
       "familyName": "Hanna",
-      "nationality": null,
+      "nationality": "Colombian",
       "teamIds": [
         "aix-racing"
-      ]
+      ],
+      "imageUrl": "assets/portraits/faces/f3/salim-hanna.jpg"
     }
   ]
 }

@@ -17,8 +17,14 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 HEADERS = {"User-Agent": "MotorSport-Calendar/0.1 (+https://github.com/SoY256/MotorSport-Calendar)"}
 MODEL = str(ROOT / "scripts" / "models" / "face_detection_yunet_2023mar.onnx")
-WIKI = json.loads((ROOT / "data" / "sources" / "wikipedia_driver_portraits.json").read_text(encoding="utf-8"))
-IMSA = json.loads((ROOT / "data" / "sources" / "imsa_driver_portraits.json").read_text(encoding="utf-8"))
+def stored_sources(name: str) -> dict[str, str]:
+    path = ROOT / "data" / "sources" / name
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+
+
+WIKI = stored_sources("wikipedia_driver_portraits.json")
+IMSA = stored_sources("imsa_driver_portraits.json")
+OFFICIAL = stored_sources("official_driver_portraits.json")
 
 
 def original_source(series: str, driver: dict) -> str | None:
@@ -28,8 +34,14 @@ def original_source(series: str, driver: dict) -> str | None:
         local = ROOT / "assets" / "portraits" / series / f"{slug}.{suffix}"
         if local.exists():
             return local.relative_to(ROOT).as_posix()
+    for suffix in ("jpg", "png"):
+        matches = list((ROOT / "assets" / "portraits").glob(f"*/{slug}.{suffix}"))
+        if matches:
+            return matches[0].relative_to(ROOT).as_posix()
     if name in IMSA:
         return IMSA[name]
+    if name in OFFICIAL:
+        return OFFICIAL[name]
     if name in WIKI:
         return WIKI[name]
     current = driver.get("imageUrl")
@@ -59,7 +71,7 @@ def face_crop(image: np.ndarray, crop_factor: float = 1.72) -> np.ndarray | None
     if image is None:
         return None
     height, width = image.shape[:2]
-    detector = cv2.FaceDetectorYN.create(MODEL, "", (width, height), 0.72, 0.3, 5000)
+    detector = cv2.FaceDetectorYN.create(MODEL, "", (width, height), 0.5, 0.3, 5000)
     _, faces = detector.detect(image)
     if faces is None or len(faces) == 0:
         return None
@@ -95,7 +107,7 @@ def face_crop(image: np.ndarray, crop_factor: float = 1.72) -> np.ndarray | None
     return cv2.resize(crop, (320, 320), interpolation=cv2.INTER_LANCZOS4)
 
 
-def process(series: str, only_slug: str | None = None) -> None:
+def process(series: str, only_slug: str | None = None, *, only_missing: bool = False) -> None:
     bundled_path = ROOT / "assets" / "data" / series / "2026" / "standings_drivers.json"
     document = json.loads(bundled_path.read_text(encoding="utf-8"))
     output = ROOT / "assets" / "portraits" / "faces" / series
@@ -104,6 +116,8 @@ def process(series: str, only_slug: str | None = None) -> None:
     failed = 0
     for driver in document["data"]:
         name = f"{driver['givenName']} {driver['familyName']}"
+        if only_missing and driver.get("imageUrl"):
+            continue
         if only_slug and slugify(name) != only_slug:
             continue
         source = original_source(series, driver)
@@ -125,11 +139,39 @@ def process(series: str, only_slug: str | None = None) -> None:
         success += 1
     text = json.dumps(document, ensure_ascii=False, indent=2) + "\n"
     bundled_path.write_text(text, encoding="utf-8")
-    (ROOT / "data" / series / "2026" / "standings_drivers.json").write_text(text, encoding="utf-8")
+
+    # Live standings can contain a newer/larger field than the bundled
+    # fallback. Preserve every live row and merge only identity-bound portrait
+    # metadata; never replace current points with the bundled snapshot.
+    published_path = ROOT / "data" / series / "2026" / "standings_drivers.json"
+    if published_path.is_file():
+        published = json.loads(published_path.read_text(encoding="utf-8"))
+        portraits = {
+            (item.get("id") or f"{item.get('givenName', '')} {item.get('familyName', '')}".casefold()): item.get("imageUrl")
+            for item in document["data"]
+            if item.get("imageUrl")
+        }
+        by_name = {
+            f"{item.get('givenName', '')} {item.get('familyName', '')}".strip().casefold(): item.get("imageUrl")
+            for item in document["data"]
+            if item.get("imageUrl")
+        }
+        for item in published.get("data", []):
+            key = item.get("id")
+            name = f"{item.get('givenName', '')} {item.get('familyName', '')}".strip().casefold()
+            portrait = portraits.get(key) or by_name.get(name)
+            if portrait:
+                item["imageUrl"] = portrait
+        published_path.write_text(
+            json.dumps(published, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        )
     print(f"{series}: faces={success}, initials={failed}")
 
 
 def main() -> None:
+    if len(sys.argv) == 3 and sys.argv[2] == "--missing":
+        process(sys.argv[1], only_missing=True)
+        return
     if len(sys.argv) == 2:
         process(sys.argv[1])
         return
