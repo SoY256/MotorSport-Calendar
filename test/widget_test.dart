@@ -112,6 +112,49 @@ void main() {
     },
   );
 
+  test('missing F1 session results are loaded directly from Jolpica', () async {
+    final event = RaceEvent(
+      id: 'round_live',
+      seriesId: 'f1',
+      season: 2026,
+      round: 1,
+      name: 'Live Grand Prix',
+      cancelled: false,
+      circuit: const Circuit(name: 'Live Circuit'),
+      sessions: [
+        RaceSession(
+          type: 'FP1',
+          name: 'Practice 1',
+          startTimeUtc: DateTime.now().toUtc().subtract(
+            const Duration(hours: 3),
+          ),
+          cancelled: false,
+          durationMinutes: 60,
+        ),
+      ],
+      resultsPath: 'events/live.json',
+    );
+    final repository = NetworkFirstCalendarRepository(
+      fallback: _EmptyResultsRepository(event),
+      client: MockClient((request) async {
+        if (request.url.host == 'api.jolpi.ca') {
+          return http.Response(
+            '''{"data":{"code":"FP1","title":"Practice 1","timestamp":"2026-09-24T12:00:00Z","results":[{"position":1,"position_text":"1","driver":{"id":"driver","abbreviation":"DRV","given_name":"Test","family_name":"Driver","country_code":"POL"},"team":{"id":"team","name":"Test Team","primary_color":"E10600"},"time":"1:20.000","points":0,"status":"Finished","components":{}}]}}''',
+            200,
+            headers: {'content-type': 'application/json'},
+          );
+        }
+        return http.Response('Not found', 404);
+      }),
+    );
+
+    final results = await repository.loadResults(event);
+
+    expect(results.sessions, hasLength(1));
+    expect(results.sessions.single.type, 'FP1');
+    expect(results.sessions.single.results.single.driver.familyName, 'Driver');
+  });
+
   test(
     'official driver portraits are attached to supported standings',
     () async {
@@ -485,6 +528,27 @@ class _InProgressWeekendRepository implements CalendarRepository {
       ),
     ],
   );
+
+  @override
+  Future<StandingsData> loadStandings(String seriesId) async =>
+      const StandingsData(drivers: [], teams: []);
+}
+
+class _EmptyResultsRepository implements CalendarRepository {
+  const _EmptyResultsRepository(this.event);
+
+  final RaceEvent event;
+
+  @override
+  Future<CalendarData> load() async => CalendarData(
+    schemaVersion: 1,
+    updatedAt: DateTime.now().toUtc(),
+    events: [event],
+  );
+
+  @override
+  Future<EventResults> loadResults(RaceEvent event) async =>
+      EventResults(eventId: event.id, sessions: const []);
 
   @override
   Future<StandingsData> loadStandings(String seriesId) async =>

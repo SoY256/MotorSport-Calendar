@@ -75,6 +75,20 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
   final CalendarRepository fallback;
   final http.Client _client;
 
+  Future<Map<String, dynamic>?> _absoluteJson(Uri uri) async {
+    try {
+      final response = await _client
+          .get(uri, headers: const {'Cache-Control': 'no-cache'})
+          .timeout(const Duration(seconds: 8));
+      if (response.statusCode == 200) {
+        return jsonDecode(response.body) as Map<String, dynamic>;
+      }
+    } on Object {
+      // Live reads are best-effort and always retain the verified fallback.
+    }
+    return null;
+  }
+
   Future<Map<String, dynamic>?> _remote(String path) async {
     try {
       final uri = _dataRoot
@@ -133,17 +147,106 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
 
   @override
   Future<EventResults> loadResults(RaceEvent event) async {
+    final local = await fallback.loadResults(event);
+    var selected = local;
     try {
       final json = await _remote('${event.seriesId}/2026/${event.resultsPath}');
-      if (json == null) return await fallback.loadResults(event);
-      final remote = EventResults.fromJson(json);
-      final hasIncompleteDrivers = remote.sessions
-          .expand((session) => session.results)
-          .any((result) => (result.driver.nationality ?? '').isEmpty);
-      return hasIncompleteDrivers ? await fallback.loadResults(event) : remote;
+      if (json != null) {
+        final remote = EventResults.fromJson(json);
+        final hasIncompleteDrivers = remote.sessions
+            .expand((session) => session.results)
+            .any((result) => (result.driver.nationality ?? '').isEmpty);
+        if (!hasIncompleteDrivers) selected = remote;
+      }
     } on Object {
-      return await fallback.loadResults(event);
+      // Keep the bundled fallback and try the live F1 endpoint below.
     }
+    return event.seriesId == 'f1'
+        ? await _withLiveF1Results(event, selected)
+        : selected;
+  }
+
+  Future<EventResults> _withLiveF1Results(
+    RaceEvent event,
+    EventResults base,
+  ) async {
+    final now = DateTime.now().toUtc();
+    final available = {for (final session in base.sessions) session.type};
+    final missing = event.sessions.where(
+      (session) =>
+          !session.cancelled &&
+          !available.contains(session.type) &&
+          !session.expectedEnd.add(const Duration(minutes: 5)).isAfter(now),
+    );
+    if (missing.isEmpty) return base;
+
+    final fresh = <SessionResults>[];
+    for (final session in missing) {
+      final code = session.type == 'SPRINT' ? 'SR' : session.type;
+      final payload = await _absoluteJson(
+        Uri.parse('https://api.jolpi.ca/f1/alpha/results/${event.id}/$code/'),
+      );
+      final data = payload?['data'];
+      if (data is! Map<String, dynamic> || data['results'] is! List) continue;
+      try {
+        final rows = (data['results'] as List<dynamic>)
+            .map((item) {
+              final raw = item as Map<String, dynamic>;
+              final driver = raw['driver'] as Map<String, dynamic>;
+              final team = raw['team'] as Map<String, dynamic>;
+              final color = team['primary_color'] as String?;
+              return {
+                'position': (raw['position'] as num?)?.toInt(),
+                'positionText': raw['position_text']?.toString(),
+                'driver': {
+                  'id': driver['id'],
+                  'code': driver['abbreviation'],
+                  'givenName': driver['given_name'],
+                  'familyName': driver['family_name'],
+                  'nationality':
+                      driver['country_code'] ?? driver['nationality'],
+                },
+                'team': {
+                  'id': team['id'],
+                  'name': team['name'],
+                  'color': color == null || color.startsWith('#')
+                      ? color
+                      : '#$color',
+                },
+                'time': raw['time']?.toString(),
+                'points': raw['points'],
+                'status': raw['status']?.toString(),
+                'components': raw['components'] ?? <String, dynamic>{},
+              };
+            })
+            .toList(growable: false);
+        if (rows.isEmpty) continue;
+        fresh.add(
+          SessionResults.fromJson({
+            'type': session.type,
+            'name': data['title']?.toString() ?? session.name,
+            'startTimeUtc':
+                data['timestamp']?.toString() ??
+                session.startTimeUtc.toIso8601String(),
+            'results': rows,
+          }),
+        );
+      } on Object {
+        // Reject malformed live data instead of replacing verified data.
+      }
+    }
+    if (fresh.isEmpty) return base;
+    final merged = <String, SessionResults>{
+      for (final session in base.sessions) session.type: session,
+      for (final session in fresh) session.type: session,
+    };
+    final order = {
+      for (var index = 0; index < event.sessions.length; index++)
+        event.sessions[index].type: index,
+    };
+    final sessions = merged.values.toList()
+      ..sort((a, b) => (order[a.type] ?? 999).compareTo(order[b.type] ?? 999));
+    return EventResults(eventId: event.id, sessions: sessions);
   }
 
   @override

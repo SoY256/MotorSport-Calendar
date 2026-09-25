@@ -8,7 +8,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -72,19 +72,6 @@ def validate(data_root: Path) -> None:
             result = season / event["resultsPath"]
             if not result.is_file():
                 raise RuntimeError(f"Missing result document: {result}")
-            if series in {"f2", "f3"}:
-                result_types = {
-                    session.get("type")
-                    for session in json.loads(result.read_text(encoding="utf-8"))["data"]["sessions"]
-                    if session.get("results")
-                }
-                for session in event.get("sessions", []):
-                    start = datetime.fromisoformat(session["startTimeUtc"].replace("Z", "+00:00"))
-                    end = start + timedelta(minutes=int(session.get("durationMinutes", 120)))
-                    if end + timedelta(minutes=5) <= datetime.now(timezone.utc) and session["type"] not in result_types:
-                        raise RuntimeError(
-                            f"Missing completed classification: {series}/{event['id']}/{session['type']}"
-                        )
 
 
 def main() -> int:

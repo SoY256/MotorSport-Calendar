@@ -1501,7 +1501,8 @@ class _ResultsPageState extends ConsumerState<_ResultsPage>
     final now = DateTime.now().toUtc();
     final missing = widget.selected.sessions.where((session) {
       if (session.cancelled) return false;
-      if (widget.selected.seriesId != 'f1' && session.type != 'R') {
+      if (!{'f1', 'f2', 'f3'}.contains(widget.selected.seriesId) &&
+          session.type != 'R') {
         return false;
       }
       final received = _hasResultsForSession(session, results);
