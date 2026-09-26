@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-26T13:10:00.182036Z",
+  "lastSuccessfulUpdate": "2026-09-26T20:02:07.316938Z",
   "source": {
     "name": "formula1-official",
     "url": "https://www.formula1.com/en/results/2026/drivers"
@@ -8,7 +8,7 @@
   "data": [
     {
       "position": 1,
-      "points": 292.0,
+      "points": 302.0,
       "wins": 8,
       "id": "antonelli",
       "code": "ANT",
@@ -22,8 +22,8 @@
     },
     {
       "position": 2,
-      "points": 211.0,
-      "wins": 2,
+      "points": 236.0,
+      "wins": 3,
       "id": "russell",
       "code": "RUS",
       "givenName": "George",
@@ -36,7 +36,7 @@
     },
     {
       "position": 3,
-      "points": 191.0,
+      "points": 199.0,
       "wins": 1,
       "id": "hamilton",
       "code": "HAM",
@@ -64,7 +64,7 @@
     },
     {
       "position": 5,
-      "points": 167.0,
+      "points": 179.0,
       "wins": 1,
       "id": "leclerc",
       "code": "LEC",
@@ -78,7 +78,7 @@
     },
     {
       "position": 6,
-      "points": 145.0,
+      "points": 163.0,
       "wins": 0,
       "id": "max_verstappen",
       "code": "VER",
@@ -106,7 +106,7 @@
     },
     {
       "position": 8,
-      "points": 71.0,
+      "points": 86.0,
       "wins": 0,
       "id": "hadjar",
       "code": "HAD",
@@ -149,7 +149,7 @@
     },
     {
       "position": 11,
-      "points": 31.0,
+      "points": 37.0,
       "wins": 0,
       "id": "arvid_lindblad",
       "code": "LIN",
@@ -177,7 +177,7 @@
     },
     {
       "position": 13,
-      "points": 18.0,
+      "points": 20.0,
       "wins": 0,
       "id": "bearman",
       "code": "BEA",
@@ -219,7 +219,21 @@
     },
     {
       "position": 16,
-      "points": 6.0,
+      "points": 7.0,
+      "wins": 0,
+      "id": "ocon",
+      "code": "OCO",
+      "givenName": "Esteban",
+      "familyName": "Ocon",
+      "nationality": "French",
+      "teamIds": [
+        "haas"
+      ],
+      "imageUrl": "https://media.formula1.com/image/upload/c_lfill,w_1024/q_auto/d_common:f1:2026:fallback:driver:2026fallbackdriverright.webp/v1740000001/common/f1/2026/haasf1team/estoco01/2026haasf1teamestoco01right.webp"
+    },
+    {
+      "position": 17,
+      "points": 7.0,
       "wins": 0,
       "id": "sainz",
       "code": "SAI",
@@ -232,7 +246,7 @@
       "imageUrl": "https://media.formula1.com/image/upload/c_lfill,w_1024/q_auto/d_common:f1:2026:fallback:driver:2026fallbackdriverright.webp/v1740000001/common/f1/2026/williams/carsai01/2026williamscarsai01right.webp"
     },
     {
-      "position": 17,
+      "position": 18,
       "points": 5.0,
       "wins": 0,
       "id": "albon",
@@ -244,20 +258,6 @@
         "williams"
       ],
       "imageUrl": "https://media.formula1.com/image/upload/c_lfill,w_1024/q_auto/d_common:f1:2026:fallback:driver:2026fallbackdriverright.webp/v1740000001/common/f1/2026/williams/alealb01/2026williamsalealb01right.webp"
-    },
-    {
-      "position": 18,
-      "points": 3.0,
-      "wins": 0,
-      "id": "ocon",
-      "code": "OCO",
-      "givenName": "Esteban",
-      "familyName": "Ocon",
-      "nationality": "French",
-      "teamIds": [
-        "haas"
-      ],
-      "imageUrl": "https://media.formula1.com/image/upload/c_lfill,w_1024/q_auto/d_common:f1:2026:fallback:driver:2026fallbackdriverright.webp/v1740000001/common/f1/2026/haasf1team/estoco01/2026haasf1teamestoco01right.webp"
     },
     {
       "position": 19,
