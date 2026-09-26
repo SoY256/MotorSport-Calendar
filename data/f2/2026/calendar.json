@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-26T09:10:44.353158Z",
+  "lastSuccessfulUpdate": "2026-09-26T09:15:45.260122Z",
   "source": {
     "name": "official-formula-series",
     "url": "https://www.fiaformula2.com/en/racing/2026"
@@ -674,7 +674,7 @@
           "name": "Feature Race 2",
           "startTimeUtc": "2026-09-26T07:00:00Z",
           "startTimeTrack": "2026-09-26T11:00:00",
-          "trackTimeZone": "Asia/Baku",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 120
         }
