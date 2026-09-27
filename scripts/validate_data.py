@@ -9,6 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "assets" / "data"
+PUBLISHED_DATA = ROOT / "data"
 
 
 def load(path: Path):
@@ -42,6 +43,25 @@ def main() -> None:
                 failures.append(f"{series_id} R{event['round']}: missing {event['resultsPath']}")
                 continue
             sessions = load(result_path)["data"]["sessions"]
+            published_path = PUBLISHED_DATA / series_id / "2026" / event["resultsPath"]
+            if published_path.exists():
+                published_sessions = load(published_path)["data"]["sessions"]
+                bundled_types = {
+                    session["type"]
+                    for session in sessions
+                    if session.get("results")
+                }
+                published_types = {
+                    session["type"]
+                    for session in published_sessions
+                    if session.get("results")
+                }
+                missing_types = published_types - bundled_types
+                if missing_types:
+                    failures.append(
+                        f"{series_id} R{event['round']}: bundled fallback is missing "
+                        f"published results for {', '.join(sorted(missing_types))}"
+                    )
             ended = (
                 not event.get("cancelled", False)
                 and max(datetime.fromisoformat(item["startTimeUtc"].replace("Z", "+00:00")) for item in event["sessions"]) < now

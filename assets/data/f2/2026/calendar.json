@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-22T07:32:12.909740Z",
+  "lastSuccessfulUpdate": "2026-09-25T10:47:53.216857Z",
   "source": {
     "name": "official-formula-series",
     "url": "https://www.fiaformula2.com/en/racing/2026"
@@ -629,7 +629,7 @@
           "name": "Practice",
           "startTimeUtc": "2026-09-24T06:00:00Z",
           "startTimeTrack": "2026-09-24T10:00:00",
-          "trackTimeZone": "Asia/Baku",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 45
         },
@@ -638,7 +638,7 @@
           "name": "Qualifying 1",
           "startTimeUtc": "2026-09-24T10:00:00Z",
           "startTimeTrack": "2026-09-24T14:00:00",
-          "trackTimeZone": "Asia/Baku",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 30
         },
@@ -647,7 +647,7 @@
           "name": "Qualifying 2",
           "startTimeUtc": "2026-09-24T10:30:00Z",
           "startTimeTrack": "2026-09-24T14:30:00",
-          "trackTimeZone": "Asia/Baku",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 30
         },
@@ -656,7 +656,7 @@
           "name": "Sprint Race",
           "startTimeUtc": "2026-09-25T04:15:00Z",
           "startTimeTrack": "2026-09-25T08:15:00",
-          "trackTimeZone": "Asia/Baku",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 60
         },

@@ -1924,10 +1924,7 @@ class _SessionResultsCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 10),
-                Text(
-                  _nationalityFlag(result.driver.nationality),
-                  style: const TextStyle(fontSize: 20),
-                ),
+                _DriverFlags(nationality: result.driver.nationality),
                 const SizedBox(width: 8),
                 Expanded(
                   child: Column(
@@ -2098,7 +2095,7 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
                                                 ? null
                                                 : item.teamIds.first,
                                           ),
-                                    flag: _nationalityFlag(item.nationality),
+                                    nationality: item.nationality,
                                     imageUrl: item.imageUrl,
                                     teamLogoAsset: null,
                                     initials:
@@ -2117,7 +2114,7 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
                                     color: item.color == null
                                         ? _teamColor(item.id)
                                         : _hexColor(item.color),
-                                    flag: null,
+                                    nationality: null,
                                     imageUrl: null,
                                     teamLogoAsset: _teamLogoAsset(
                                       item.id,
@@ -2149,7 +2146,7 @@ class _StandingRow extends StatelessWidget {
     required this.points,
     required this.strings,
     required this.color,
-    required this.flag,
+    required this.nationality,
     required this.imageUrl,
     required this.teamLogoAsset,
     required this.initials,
@@ -2160,7 +2157,7 @@ class _StandingRow extends StatelessWidget {
   final double points;
   final AppStrings strings;
   final Color color;
-  final String? flag;
+  final String? nationality;
   final String? imageUrl;
   final String? teamLogoAsset;
   final String initials;
@@ -2207,8 +2204,8 @@ class _StandingRow extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      if (flag != null) ...[
-                        Text(flag!, style: const TextStyle(fontSize: 20)),
+                      if (_nationalityCodes(nationality).isNotEmpty) ...[
+                        _DriverFlags(nationality: nationality),
                         const SizedBox(width: 8),
                       ],
                       Flexible(
@@ -2238,6 +2235,35 @@ class _StandingRow extends StatelessWidget {
       const Divider(height: 1),
     ],
   );
+}
+
+class _DriverFlags extends StatelessWidget {
+  const _DriverFlags({required this.nationality});
+
+  final String? nationality;
+
+  @override
+  Widget build(BuildContext context) {
+    final codes = _nationalityCodes(nationality);
+    if (codes.isEmpty) return const SizedBox.shrink();
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        for (var index = 0; index < codes.length; index++) ...[
+          if (index > 0) const SizedBox(width: 3),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(2),
+            child: SvgPicture.asset(
+              'assets/flags/${codes[index]}.svg',
+              width: 27,
+              height: 18,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ],
+      ],
+    );
+  }
 }
 
 class _TeamLogo extends StatelessWidget {
@@ -3120,84 +3146,70 @@ Color _teamColor(String? id) => switch (id) {
   _ => Colors.grey,
 };
 
-String _nationalityFlag(String? nationality) {
-  if (nationality?.contains(',') ?? false) {
-    return nationality!
-        .split(',')
-        .map((country) => _nationalityFlag(country.trim()))
-        .join();
-  }
-  return switch (nationality?.toUpperCase()) {
-    'USA' || 'US' => '🇺🇸',
-    'GBR' || 'GB' => '🇬🇧',
-    'ESP' || 'ES' => '🇪🇸',
-    'DNK' || 'DEN' || 'DK' => '🇩🇰',
-    'SWE' || 'SE' => '🇸🇪',
-    'NZL' || 'NZ' => '🇳🇿',
-    'NLD' || 'NED' || 'NL' => '🇳🇱',
-    'BRA' || 'BR' => '🇧🇷',
-    'MEX' || 'MX' => '🇲🇽',
-    'FRA' || 'FR' => '🇫🇷',
-    'DEU' || 'GER' || 'DE' => '🇩🇪',
-    'JPN' || 'JP' => '🇯🇵',
-    'POL' || 'PL' => '🇵🇱',
-    'CAN' || 'CA' => '🇨🇦',
-    'ITA' || 'IT' => '🇮🇹',
-    'AUS' || 'AU' => '🇦🇺',
-    'COL' || 'CO' => '🇨🇴',
-    'NOR' || 'NO' => '🇳🇴',
-    'CHE' || 'SUI' || 'CH' => '🇨🇭',
-    'BEL' || 'BE' => '🇧🇪',
-    'PRT' || 'POR' || 'PT' => '🇵🇹',
-    'ARG' || 'AR' => '🇦🇷',
-    'AUT' || 'AT' => '🇦🇹',
-    'ZAF' || 'RSA' || 'ZA' => '🇿🇦',
-    'IRL' || 'IE' => '🇮🇪',
-    'VEN' || 'VE' => '🇻🇪',
-    'CHL' || 'CL' => '🇨🇱',
-    'URY' || 'UY' => '🇺🇾',
-    'TUR' || 'TR' => '🇹🇷',
-    'ROU' || 'RO' => '🇷🇴',
-    'KOR' || 'KR' => '🇰🇷',
-    'CHN' || 'CN' => '🇨🇳',
-    'EST' || 'EE' => '🇪🇪',
-    'IDN' || 'INA' || 'ID' => '🇮🇩',
-    'RUS' || 'RU' => '🇷🇺',
-    'QAT' || 'QA' => '🇶🇦',
-    'LUX' || 'LU' => '🇱🇺',
-    'CYM' || 'KY' => '🇰🇾',
-    'ITALIAN' => '🇮🇹',
-    'BRITISH' => '🇬🇧',
-    'MONEGASQUE' => '🇲🇨',
-    'DUTCH' => '🇳🇱',
-    'AUSTRALIAN' => '🇦🇺',
-    'FRENCH' => '🇫🇷',
-    'SPANISH' => '🇪🇸',
-    'GERMAN' => '🇩🇪',
-    'BRAZILIAN' => '🇧🇷',
-    'CANADIAN' => '🇨🇦',
-    'NEW ZEALANDER' => '🇳🇿',
-    'MEXICAN' => '🇲🇽',
-    'AMERICAN' => '🇺🇸',
-    'DANISH' => '🇩🇰',
-    'SWEDISH' => '🇸🇪',
-    'POLISH' => '🇵🇱',
-    'JAPANESE' => '🇯🇵',
-    'BULGARIAN' => '🇧🇬',
-    'IRISH' => '🇮🇪',
-    'INDIAN' => '🇮🇳',
-    'NORWEGIAN' => '🇳🇴',
-    'THAI' => '🇹🇭',
-    'PARAGUAYAN' => '🇵🇾',
-    'COLOMBIAN' => '🇨🇴',
-    'FINNISH' => '🇫🇮',
-    'CHINESE' => '🇨🇳',
-    'SRI LANKAN' => '🇱🇰',
-    'SINGAPOREAN' => '🇸🇬',
-    'SOUTH AFRICAN' => '🇿🇦',
-    _ => '🏁',
-  };
-}
+List<String> _nationalityCodes(String? nationality) =>
+    nationality
+        ?.split(',')
+        .map((value) => _nationalityCode(value.trim()))
+        .whereType<String>()
+        .toSet()
+        .toList(growable: false) ??
+    const [];
+
+String? _nationalityCode(String nationality) =>
+    switch (nationality.toUpperCase()) {
+      'USA' || 'US' || 'AMERICAN' => 'us',
+      'GBR' || 'GB' || 'BRITISH' => 'gb',
+      'ESP' || 'ES' || 'SPANISH' => 'es',
+      'DNK' || 'DEN' || 'DK' || 'DANISH' => 'dk',
+      'SWE' || 'SE' || 'SWEDISH' => 'se',
+      'NZL' || 'NZ' || 'NEW ZEALANDER' => 'nz',
+      'NLD' || 'NED' || 'NL' || 'DUTCH' => 'nl',
+      'BRA' || 'BR' || 'BRAZILIAN' => 'br',
+      'MEX' || 'MX' || 'MEXICAN' => 'mx',
+      'FRA' || 'FR' || 'FRENCH' => 'fr',
+      'DEU' || 'GER' || 'DE' || 'GERMAN' => 'de',
+      'JPN' || 'JP' || 'JAPANESE' => 'jp',
+      'POL' || 'PL' || 'POLISH' => 'pl',
+      'CAN' || 'CA' || 'CANADIAN' => 'ca',
+      'ITA' || 'IT' || 'ITALIAN' => 'it',
+      'AUS' || 'AU' || 'AUSTRALIAN' => 'au',
+      'COL' || 'CO' || 'COLOMBIAN' => 'co',
+      'NOR' || 'NO' || 'NORWEGIAN' => 'no',
+      'CHE' || 'SUI' || 'CH' => 'ch',
+      'BEL' || 'BE' => 'be',
+      'PRT' || 'POR' || 'PT' => 'pt',
+      'ARG' || 'AR' || 'ARGENTINE' => 'ar',
+      'AUT' || 'AT' || 'AUSTRIAN' => 'at',
+      'ZAF' || 'RSA' || 'ZA' || 'SOUTH AFRICAN' => 'za',
+      'IRL' || 'IE' || 'IRISH' => 'ie',
+      'VEN' || 'VE' => 've',
+      'CHL' || 'CL' => 'cl',
+      'URY' || 'UY' => 'uy',
+      'TUR' || 'TR' => 'tr',
+      'ROU' || 'RO' => 'ro',
+      'KOR' || 'KR' || 'SOUTH KOREAN' => 'kr',
+      'CHN' || 'CN' || 'CHINESE' => 'cn',
+      'EST' || 'EE' => 'ee',
+      'IDN' || 'INA' || 'ID' => 'id',
+      'RUS' || 'RU' => 'ru',
+      'QAT' || 'QA' => 'qa',
+      'LUX' || 'LU' => 'lu',
+      'CYM' || 'KY' => 'ky',
+      'MONEGASQUE' => 'mc',
+      'FINNISH' => 'fi',
+      'BULGARIAN' => 'bg',
+      'INDIAN' => 'in',
+      'THA' || 'THAI' => 'th',
+      'PARAGUAYAN' => 'py',
+      'SRI LANKAN' => 'lk',
+      'SINGAPOREAN' => 'sg',
+      'JAMAICAN' => 'jm',
+      'GRC' || 'GR' => 'gr',
+      'HKG' || 'HK' => 'hk',
+      'CRI' || 'CR' => 'cr',
+      'ANG' || 'AO' => 'ao',
+      _ => null,
+    };
 
 String _seriesLabel(String id) => switch (id.toLowerCase()) {
   'f1' => 'F1',

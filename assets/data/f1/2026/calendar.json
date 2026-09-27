@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-08-24T08:43:55.705249Z",
+  "lastSuccessfulUpdate": "2026-09-25T10:47:09.574227Z",
   "source": {
     "name": "jolpica-f1",
     "url": "https://api.jolpi.ca/f1/alpha/schedules/2026/"
@@ -12,6 +12,7 @@
       "season": 2026,
       "round": 1,
       "name": "Australian Grand Prix",
+      "resultsPath": "events/01-australian-grand-prix.json",
       "cancelled": false,
       "circuit": {
         "id": "circuit_5jHWvmoM",
@@ -68,8 +69,7 @@
           "cancelled": false,
           "durationMinutes": 120
         }
-      ],
-      "resultsPath": "events/01-australian-grand-prix.json"
+      ]
     },
     {
       "id": "round_JqmngOvt",
@@ -77,6 +77,7 @@
       "season": 2026,
       "round": 2,
       "name": "Chinese Grand Prix",
+      "resultsPath": "events/02-chinese-grand-prix.json",
       "cancelled": false,
       "circuit": {
         "id": "circuit_UZRLsrE2",
@@ -133,8 +134,7 @@
           "cancelled": false,
           "durationMinutes": 120
         }
-      ],
-      "resultsPath": "events/02-chinese-grand-prix.json"
+      ]
     },
     {
       "id": "round_9fXol7IF",
@@ -142,6 +142,7 @@
       "season": 2026,
       "round": 3,
       "name": "Japanese Grand Prix",
+      "resultsPath": "events/03-japanese-grand-prix.json",
       "cancelled": false,
       "circuit": {
         "id": "circuit_0Bbz8sT8",
@@ -198,8 +199,7 @@
           "cancelled": false,
           "durationMinutes": 120
         }
-      ],
-      "resultsPath": "events/03-japanese-grand-prix.json"
+      ]
     },
     {
       "id": "round_01d4Qacj",
@@ -207,6 +207,7 @@
       "season": 2026,
       "round": 4,
       "name": "Miami Grand Prix",
+      "resultsPath": "events/04-miami-grand-prix.json",
       "cancelled": false,
       "circuit": {
         "id": "circuit_nukLDdFs",
@@ -263,8 +264,7 @@
           "cancelled": false,
           "durationMinutes": 120
         }
-      ],
-      "resultsPath": "events/04-miami-grand-prix.json"
+      ]
     },
     {
       "id": "round_TFkjXvlD",
@@ -272,6 +272,7 @@
       "season": 2026,
       "round": 5,
       "name": "Canadian Grand Prix",
+      "resultsPath": "events/05-canadian-grand-prix.json",
       "cancelled": false,
       "circuit": {
         "id": "circuit_xo04lqNS",
@@ -328,8 +329,7 @@
           "cancelled": false,
           "durationMinutes": 120
         }
-      ],
-      "resultsPath": "events/05-canadian-grand-prix.json"
+      ]
     },
     {
       "id": "round_haMdTaCK",
@@ -337,6 +337,7 @@
       "season": 2026,
       "round": 6,
       "name": "Monaco Grand Prix",
+      "resultsPath": "events/06-monaco-grand-prix.json",
       "cancelled": false,
       "circuit": {
         "id": "circuit_r30Ojrot",
@@ -393,8 +394,7 @@
           "cancelled": false,
           "durationMinutes": 120
         }
-      ],
-      "resultsPath": "events/06-monaco-grand-prix.json"
+      ]
     },
     {
       "id": "round_oJLKMXh3",
@@ -402,6 +402,7 @@
       "season": 2026,
       "round": 7,
       "name": "Barcelona Grand Prix",
+      "resultsPath": "events/07-barcelona-grand-prix.json",
       "cancelled": false,
       "circuit": {
         "id": "circuit_Yxr9ajWK",
@@ -458,8 +459,7 @@
           "cancelled": false,
           "durationMinutes": 120
         }
-      ],
-      "resultsPath": "events/07-barcelona-grand-prix.json"
+      ]
     },
     {
       "id": "round_iD1C6J1b",
@@ -467,6 +467,7 @@
       "season": 2026,
       "round": 8,
       "name": "Austrian Grand Prix",
+      "resultsPath": "events/08-austrian-grand-prix.json",
       "cancelled": false,
       "circuit": {
         "id": "circuit_VrXQoBf5",
@@ -523,8 +524,7 @@
           "cancelled": false,
           "durationMinutes": 120
         }
-      ],
-      "resultsPath": "events/08-austrian-grand-prix.json"
+      ]
     },
     {
       "id": "round_XIS0uRlu",
@@ -532,6 +532,7 @@
       "season": 2026,
       "round": 9,
       "name": "British Grand Prix",
+      "resultsPath": "events/09-british-grand-prix.json",
       "cancelled": false,
       "circuit": {
         "id": "circuit_W8rwFAJs",
@@ -588,8 +589,7 @@
           "cancelled": false,
           "durationMinutes": 120
         }
-      ],
-      "resultsPath": "events/09-british-grand-prix.json"
+      ]
     },
     {
       "id": "round_9K3rFCix",
@@ -597,6 +597,7 @@
       "season": 2026,
       "round": 10,
       "name": "Belgian Grand Prix",
+      "resultsPath": "events/10-belgian-grand-prix.json",
       "cancelled": false,
       "circuit": {
         "id": "circuit_agKQuDST",
@@ -653,8 +654,7 @@
           "cancelled": false,
           "durationMinutes": 120
         }
-      ],
-      "resultsPath": "events/10-belgian-grand-prix.json"
+      ]
     },
     {
       "id": "round_SftqlqVl",
@@ -662,6 +662,7 @@
       "season": 2026,
       "round": 11,
       "name": "Hungarian Grand Prix",
+      "resultsPath": "events/11-hungarian-grand-prix.json",
       "cancelled": false,
       "circuit": {
         "id": "circuit_pd4fBIQZ",
@@ -718,8 +719,7 @@
           "cancelled": false,
           "durationMinutes": 120
         }
-      ],
-      "resultsPath": "events/11-hungarian-grand-prix.json"
+      ]
     },
     {
       "id": "round_OlKoikhn",
@@ -727,6 +727,7 @@
       "season": 2026,
       "round": 12,
       "name": "Dutch Grand Prix",
+      "resultsPath": "events/12-dutch-grand-prix.json",
       "cancelled": false,
       "circuit": {
         "id": "circuit_OLNnxVES",
@@ -783,8 +784,7 @@
           "cancelled": false,
           "durationMinutes": 120
         }
-      ],
-      "resultsPath": "events/12-dutch-grand-prix.json"
+      ]
     },
     {
       "id": "round_rcsVMlOc",
@@ -792,6 +792,7 @@
       "season": 2026,
       "round": 13,
       "name": "Italian Grand Prix",
+      "resultsPath": "events/13-italian-grand-prix.json",
       "cancelled": false,
       "circuit": {
         "id": "circuit_vmT5q8o7",
@@ -848,8 +849,7 @@
           "cancelled": false,
           "durationMinutes": 120
         }
-      ],
-      "resultsPath": "events/13-italian-grand-prix.json"
+      ]
     },
     {
       "id": "round_lxBo1wL0",
@@ -857,6 +857,7 @@
       "season": 2026,
       "round": 14,
       "name": "Spanish Grand Prix",
+      "resultsPath": "events/14-spanish-grand-prix.json",
       "cancelled": false,
       "circuit": {
         "id": "circuit_AkJjYbDY",
@@ -913,8 +914,7 @@
           "cancelled": false,
           "durationMinutes": 120
         }
-      ],
-      "resultsPath": "events/14-spanish-grand-prix.json"
+      ]
     },
     {
       "id": "round_St4SXfGd",
@@ -922,6 +922,7 @@
       "season": 2026,
       "round": 15,
       "name": "Azerbaijan Grand Prix",
+      "resultsPath": "events/15-azerbaijan-grand-prix.json",
       "cancelled": false,
       "circuit": {
         "id": "circuit_l6rYoxTr",
@@ -978,8 +979,7 @@
           "cancelled": false,
           "durationMinutes": 120
         }
-      ],
-      "resultsPath": "events/15-azerbaijan-grand-prix.json"
+      ]
     },
     {
       "id": "round_2DxcilOU",
@@ -987,6 +987,7 @@
       "season": 2026,
       "round": 16,
       "name": "Bahrain Grand Prix in Malaysia",
+      "resultsPath": "events/16-bahrain-grand-prix-in-malaysia.json",
       "cancelled": false,
       "circuit": {
         "id": "circuit_tqQTg7rI",
@@ -1043,8 +1044,7 @@
           "cancelled": false,
           "durationMinutes": 120
         }
-      ],
-      "resultsPath": "events/16-bahrain-grand-prix-in-malaysia.json"
+      ]
     },
     {
       "id": "round_nxOKfUxB",
@@ -1052,6 +1052,7 @@
       "season": 2026,
       "round": 17,
       "name": "Singapore Grand Prix",
+      "resultsPath": "events/17-singapore-grand-prix.json",
       "cancelled": false,
       "circuit": {
         "id": "circuit_DAiie4ft",
@@ -1108,8 +1109,7 @@
           "cancelled": false,
           "durationMinutes": 120
         }
-      ],
-      "resultsPath": "events/17-singapore-grand-prix.json"
+      ]
     },
     {
       "id": "round_K2Oe8smo",
@@ -1117,6 +1117,7 @@
       "season": 2026,
       "round": 18,
       "name": "United States Grand Prix",
+      "resultsPath": "events/18-united-states-grand-prix.json",
       "cancelled": false,
       "circuit": {
         "id": "circuit_C8L45nCq",
@@ -1173,8 +1174,7 @@
           "cancelled": false,
           "durationMinutes": 120
         }
-      ],
-      "resultsPath": "events/18-united-states-grand-prix.json"
+      ]
     },
     {
       "id": "round_FoE51DGC",
@@ -1182,6 +1182,7 @@
       "season": 2026,
       "round": 19,
       "name": "Mexico City Grand Prix",
+      "resultsPath": "events/19-mexico-city-grand-prix.json",
       "cancelled": false,
       "circuit": {
         "id": "circuit_xmtY0hcp",
@@ -1238,8 +1239,7 @@
           "cancelled": false,
           "durationMinutes": 120
         }
-      ],
-      "resultsPath": "events/19-mexico-city-grand-prix.json"
+      ]
     },
     {
       "id": "round_h4DL0SNq",
@@ -1247,6 +1247,7 @@
       "season": 2026,
       "round": 20,
       "name": "Brazilian Grand Prix",
+      "resultsPath": "events/20-brazilian-grand-prix.json",
       "cancelled": false,
       "circuit": {
         "id": "circuit_tpDerpEj",
@@ -1303,8 +1304,7 @@
           "cancelled": false,
           "durationMinutes": 120
         }
-      ],
-      "resultsPath": "events/20-brazilian-grand-prix.json"
+      ]
     },
     {
       "id": "round_iNZBT7AE",
@@ -1312,6 +1312,7 @@
       "season": 2026,
       "round": 21,
       "name": "Las Vegas Grand Prix",
+      "resultsPath": "events/21-las-vegas-grand-prix.json",
       "cancelled": false,
       "circuit": {
         "id": "circuit_MGz9yps6",
@@ -1368,8 +1369,7 @@
           "cancelled": false,
           "durationMinutes": 120
         }
-      ],
-      "resultsPath": "events/21-las-vegas-grand-prix.json"
+      ]
     },
     {
       "id": "round_GLPBnOq8",
@@ -1377,10 +1377,11 @@
       "season": 2026,
       "round": 22,
       "name": "Qatar Grand Prix",
+      "resultsPath": "events/22-qatar-grand-prix.json",
       "cancelled": false,
       "circuit": {
         "id": "circuit_2ZoWBxNn",
-        "name": "Losail International Circuit",
+        "name": "Lusail International Circuit",
         "locality": "Lusail",
         "country": "Qatar",
         "countryCode": "QAT",
@@ -1433,8 +1434,7 @@
           "cancelled": false,
           "durationMinutes": 120
         }
-      ],
-      "resultsPath": "events/22-qatar-grand-prix.json"
+      ]
     },
     {
       "id": "round_rrpq1Fex",
@@ -1442,6 +1442,7 @@
       "season": 2026,
       "round": 23,
       "name": "Abu Dhabi Grand Prix",
+      "resultsPath": "events/23-abu-dhabi-grand-prix.json",
       "cancelled": false,
       "circuit": {
         "id": "circuit_6MnmIQpm",
@@ -1498,8 +1499,7 @@
           "cancelled": false,
           "durationMinutes": 120
         }
-      ],
-      "resultsPath": "events/23-abu-dhabi-grand-prix.json"
+      ]
     },
     {
       "id": "round_ekzL3LtS",
@@ -1507,6 +1507,7 @@
       "season": 2026,
       "round": null,
       "name": "Saudi Arabian Grand Prix",
+      "resultsPath": "events/cancelled-saudi-arabian-grand-prix.json",
       "cancelled": true,
       "circuit": {
         "id": "circuit_gtqp9VKv",
@@ -1563,8 +1564,7 @@
           "cancelled": true,
           "durationMinutes": 120
         }
-      ],
-      "resultsPath": "events/cancelled-saudi-arabian-grand-prix.json"
+      ]
     }
   ]
 }

@@ -23,6 +23,7 @@ jobs:
       - run: flutter pub get
       - run: dart format --output=none --set-exit-if-changed lib test
       - run: flutter analyze
+      - run: python scripts/validate_data.py
       # Pixel goldens are generated on Windows and are intentionally verified locally.
       - run: flutter test --exclude-tags golden
       - run: flutter build web --release

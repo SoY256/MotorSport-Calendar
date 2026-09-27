@@ -156,7 +156,9 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
         // A missing optional flag must never hide an otherwise valid official
         // classification. Metadata is enriched separately. An event mismatch,
         // however, means the classification belongs to a different round.
-        if (remote.eventId == event.id) selected = remote;
+        if (remote.eventId == event.id) {
+          selected = _mergeVerifiedResults(event, local, remote);
+        }
       }
     } on Object {
       // Keep the bundled fallback and try the live F1 endpoint below.
@@ -165,6 +167,29 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
         ? await _withLiveF1Results(event, selected)
         : selected;
     return _onlyCompletedScheduledSessions(event, loaded);
+  }
+
+  EventResults _mergeVerifiedResults(
+    RaceEvent event,
+    EventResults bundled,
+    EventResults remote,
+  ) {
+    // A CDN/cache can temporarily return an older event document. Never let
+    // an empty or partial response erase a classification already shipped in
+    // the app; only non-empty remote sessions may add to or update it.
+    final merged = <String, SessionResults>{
+      for (final session in bundled.sessions)
+        if (session.results.isNotEmpty) session.type: session,
+      for (final session in remote.sessions)
+        if (session.results.isNotEmpty) session.type: session,
+    };
+    final order = {
+      for (var index = 0; index < event.sessions.length; index++)
+        event.sessions[index].type: index,
+    };
+    final sessions = merged.values.toList()
+      ..sort((a, b) => (order[a.type] ?? 999).compareTo(order[b.type] ?? 999));
+    return EventResults(eventId: event.id, sessions: sessions);
   }
 
   EventResults _onlyCompletedScheduledSessions(

@@ -1,22 +1,22 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-08-24T08:43:55.705249Z",
+  "lastSuccessfulUpdate": "2026-09-25T10:47:09.574227Z",
   "source": {
-    "name": "jolpica-f1",
-    "url": "https://api.jolpi.ca/ergast/f1/2026/constructorstandings.json"
+    "name": "formula1-official",
+    "url": "https://www.formula1.com/en/results/2026/team"
   },
   "data": [
     {
       "position": 1,
-      "points": 425.0,
-      "wins": 8,
+      "points": 503.0,
+      "wins": 10,
       "id": "mercedes",
       "name": "Mercedes",
       "nationality": "German"
     },
     {
       "position": 2,
-      "points": 338.0,
+      "points": 358.0,
       "wins": 2,
       "id": "ferrari",
       "name": "Ferrari",
@@ -24,7 +24,7 @@
     },
     {
       "position": 3,
-      "points": 263.0,
+      "points": 306.0,
       "wins": 2,
       "id": "mclaren",
       "name": "McLaren",
@@ -32,7 +32,7 @@
     },
     {
       "position": 4,
-      "points": 186.0,
+      "points": 230.0,
       "wins": 0,
       "id": "red_bull",
       "name": "Red Bull",
@@ -40,7 +40,7 @@
     },
     {
       "position": 5,
-      "points": 66.0,
+      "points": 77.0,
       "wins": 0,
       "id": "rb",
       "name": "RB F1 Team",
@@ -48,7 +48,7 @@
     },
     {
       "position": 6,
-      "points": 63.0,
+      "points": 68.0,
       "wins": 0,
       "id": "alpine",
       "name": "Alpine F1 Team",
@@ -64,7 +64,7 @@
     },
     {
       "position": 8,
-      "points": 16.0,
+      "points": 17.0,
       "wins": 0,
       "id": "audi",
       "name": "Audi",

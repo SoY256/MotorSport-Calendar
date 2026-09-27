@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-08-24T14:34:59.878133Z",
+  "lastSuccessfulUpdate": "2026-09-25T10:48:21.034572Z",
   "source": {
     "name": "imsa-alkamel-official-points",
     "url": "https://imsa.results.alkamelcloud.com/"
   },
   "data": [
     {
-      "points": 2373.0,
+      "points": 2693.0,
       "wins": 4,
       "category": "GTD",
       "id": "philip-ellis",
@@ -25,10 +25,10 @@
         "#00A19C"
       ],
       "position": 1,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_PhilipEllis_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/philip-ellis.jpg"
     },
     {
-      "points": 2373.0,
+      "points": 2693.0,
       "wins": 4,
       "category": "GTD",
       "id": "russell-ward",
@@ -46,11 +46,11 @@
         "#00A19C"
       ],
       "position": 2,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Winward_AMG_WGI25_01.jpg/960px-Winward_AMG_WGI25_01.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "assets/portraits/faces/imsa/russell-ward.jpg"
     },
     {
-      "points": 2337.0,
-      "wins": 0,
+      "points": 2687.0,
+      "wins": 1,
       "category": "GTD",
       "id": "patrick-gallagher",
       "code": "",
@@ -67,11 +67,11 @@
         "#0066B1"
       ],
       "position": 3,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_PatrickGallagher_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/patrick-gallagher.jpg"
     },
     {
-      "points": 2337.0,
-      "wins": 0,
+      "points": 2687.0,
+      "wins": 1,
       "category": "GTD",
       "id": "robby-foley",
       "code": "",
@@ -88,10 +88,10 @@
         "#0066B1"
       ],
       "position": 4,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_RobbyFoley_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/robby-foley.jpg"
     },
     {
-      "points": 2317.0,
+      "points": 2577.0,
       "wins": 0,
       "category": "GTD",
       "id": "dudu-barrichello",
@@ -109,10 +109,10 @@
         "#006F62"
       ],
       "position": 5,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_DuduBarrichello_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/dudu-barrichello.jpg"
     },
     {
-      "points": 2217.0,
+      "points": 2447.0,
       "wins": 1,
       "category": "GTD",
       "id": "aaron-telitz",
@@ -130,10 +130,10 @@
         "#222222"
       ],
       "position": 6,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Aaron_Telitz_Victory_Lane_Road_America_2018.jpg/960px-Aaron_Telitz_Victory_Lane_Road_America_2018.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "assets/portraits/faces/imsa/aaron-telitz.jpg"
     },
     {
-      "points": 2217.0,
+      "points": 2447.0,
       "wins": 1,
       "category": "GTD",
       "id": "benjamin-pedersen",
@@ -151,52 +151,10 @@
         "#222222"
       ],
       "position": 7,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/18/2026_IWSC_BenjaminPedersen_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/benjamin-pedersen.jpg"
     },
     {
-      "points": 1959.0,
-      "wins": 0,
-      "category": "GTD",
-      "id": "albert-costa",
-      "code": "",
-      "givenName": "Albert",
-      "familyName": "Costa",
-      "nationality": "ESP",
-      "teamIds": [
-        "conquest-racing"
-      ],
-      "teamNames": [
-        "Conquest Racing"
-      ],
-      "teamColors": [
-        "#E10600"
-      ],
-      "position": 8,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2025/01/22/2026_IWSC_AntonioFelixdaCosta_355x355-290x290.png"
-    },
-    {
-      "points": 1943.0,
-      "wins": 0,
-      "category": "GTD",
-      "id": "brendan-iribe",
-      "code": "",
-      "givenName": "Brendan",
-      "familyName": "Iribe",
-      "nationality": "USA",
-      "teamIds": [
-        "inception-racing"
-      ],
-      "teamNames": [
-        "Inception Racing"
-      ],
-      "teamColors": [
-        "#E10600"
-      ],
-      "position": 9,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2022/01/23/2023_IWSC_BrendanIribe_355x355-290x290.png"
-    },
-    {
-      "points": 1888.0,
+      "points": 2188.0,
       "wins": 0,
       "category": "GTD",
       "id": "matthew-bell",
@@ -213,11 +171,11 @@
       "teamColors": [
         "#F2C500"
       ],
-      "position": 10,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/02/18/2026_IWSC_MatthewBell_New1_355x355-290x290.png"
+      "position": 8,
+      "imageUrl": "assets/portraits/faces/imsa/matthew-bell.jpg"
     },
     {
-      "points": 1888.0,
+      "points": 2188.0,
       "wins": 0,
       "category": "GTD",
       "id": "orey-fidani",
@@ -234,11 +192,53 @@
       "teamColors": [
         "#F2C500"
       ],
-      "position": 11,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/02/18/2026_IWSC_OreyFidani_New1_355x355-290x290.png"
+      "position": 9,
+      "imageUrl": "assets/portraits/faces/imsa/orey-fidani.jpg"
     },
     {
-      "points": 1877.0,
+      "points": 2159.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "albert-costa",
+      "code": "",
+      "givenName": "Albert",
+      "familyName": "Costa",
+      "nationality": "ESP",
+      "teamIds": [
+        "conquest-racing"
+      ],
+      "teamNames": [
+        "Conquest Racing"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 10,
+      "imageUrl": "assets/portraits/faces/imsa/albert-costa.jpg"
+    },
+    {
+      "points": 2153.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "brendan-iribe",
+      "code": "",
+      "givenName": "Brendan",
+      "familyName": "Iribe",
+      "nationality": "USA",
+      "teamIds": [
+        "inception-racing"
+      ],
+      "teamNames": [
+        "Inception Racing"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 11,
+      "imageUrl": "assets/portraits/faces/imsa/brendan-iribe.jpg"
+    },
+    {
+      "points": 2127.0,
       "wins": 0,
       "category": "GTD",
       "id": "adam-adelson",
@@ -256,10 +256,10 @@
         "#D5001C"
       ],
       "position": 12,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_AdamAdelson_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/adam-adelson.jpg"
     },
     {
-      "points": 1877.0,
+      "points": 2127.0,
       "wins": 0,
       "category": "GTD",
       "id": "callum-ilott",
@@ -277,73 +277,10 @@
         "#D5001C"
       ],
       "position": 13,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Callum_Ilott_2024_WEC_Fuji.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+      "imageUrl": "assets/portraits/faces/imsa/callum-ilott.jpg"
     },
     {
-      "points": 1862.0,
-      "wins": 1,
-      "category": "GTD",
-      "id": "danny-formal",
-      "code": "",
-      "givenName": "Danny",
-      "familyName": "Formal",
-      "nationality": "CRI",
-      "teamIds": [
-        "wayne-taylor-racing"
-      ],
-      "teamNames": [
-        "Wayne Taylor Racing"
-      ],
-      "teamColors": [
-        "#DDB321"
-      ],
-      "position": 14,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_DannyFormal_355x355-290x290.png"
-    },
-    {
-      "points": 1862.0,
-      "wins": 1,
-      "category": "GTD",
-      "id": "trent-hindman",
-      "code": "",
-      "givenName": "Trent",
-      "familyName": "Hindman",
-      "nationality": "USA",
-      "teamIds": [
-        "wayne-taylor-racing"
-      ],
-      "teamNames": [
-        "Wayne Taylor Racing"
-      ],
-      "teamColors": [
-        "#DDB321"
-      ],
-      "position": 15,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_TrentHindman_355x355-290x290.png"
-    },
-    {
-      "points": 1813.0,
-      "wins": 0,
-      "category": "GTD",
-      "id": "frederik-schandorff",
-      "code": "",
-      "givenName": "Frederik",
-      "familyName": "Schandorff",
-      "nationality": "DNK",
-      "teamIds": [
-        "inception-racing"
-      ],
-      "teamNames": [
-        "Inception Racing"
-      ],
-      "teamColors": [
-        "#E10600"
-      ],
-      "position": 16,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_FrederikSchandorff_355x355-290x290.png"
-    },
-    {
-      "points": 1792.0,
+      "points": 2052.0,
       "wins": 0,
       "category": "GTD",
       "id": "tom-gamble",
@@ -360,11 +297,74 @@
       "teamColors": [
         "#006F62"
       ],
-      "position": 17,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_TomGamble_355x355-290x290.png"
+      "position": 14,
+      "imageUrl": "assets/portraits/faces/imsa/tom-gamble.jpg"
     },
     {
-      "points": 1698.0,
+      "points": 2042.0,
+      "wins": 1,
+      "category": "GTD",
+      "id": "danny-formal",
+      "code": "",
+      "givenName": "Danny",
+      "familyName": "Formal",
+      "nationality": "CRI",
+      "teamIds": [
+        "wayne-taylor-racing"
+      ],
+      "teamNames": [
+        "Wayne Taylor Racing"
+      ],
+      "teamColors": [
+        "#DDB321"
+      ],
+      "position": 15,
+      "imageUrl": "assets/portraits/faces/imsa/danny-formal.jpg"
+    },
+    {
+      "points": 2042.0,
+      "wins": 1,
+      "category": "GTD",
+      "id": "trent-hindman",
+      "code": "",
+      "givenName": "Trent",
+      "familyName": "Hindman",
+      "nationality": "USA",
+      "teamIds": [
+        "wayne-taylor-racing"
+      ],
+      "teamNames": [
+        "Wayne Taylor Racing"
+      ],
+      "teamColors": [
+        "#DDB321"
+      ],
+      "position": 16,
+      "imageUrl": "assets/portraits/faces/imsa/trent-hindman.jpg"
+    },
+    {
+      "points": 2023.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "frederik-schandorff",
+      "code": "",
+      "givenName": "Frederik",
+      "familyName": "Schandorff",
+      "nationality": "DNK",
+      "teamIds": [
+        "inception-racing"
+      ],
+      "teamNames": [
+        "Inception Racing"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 17,
+      "imageUrl": "assets/portraits/faces/imsa/frederik-schandorff.jpg"
+    },
+    {
+      "points": 1978.0,
       "wins": 0,
       "category": "GTD",
       "id": "giacomo-altoe",
@@ -382,31 +382,10 @@
         "#F2C500"
       ],
       "position": 18,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_GIacomoAltoe_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/giacomo-altoe.jpg"
     },
     {
-      "points": 1635.0,
-      "wins": 0,
-      "category": "GTD",
-      "id": "lorenzo-patrese",
-      "code": "",
-      "givenName": "Lorenzo",
-      "familyName": "Patrese",
-      "nationality": "ITA",
-      "teamIds": [
-        "conquest-racing"
-      ],
-      "teamNames": [
-        "Conquest Racing"
-      ],
-      "teamColors": [
-        "#E10600"
-      ],
-      "position": 19,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_LorenzoPatrese_355x355-290x290.png"
-    },
-    {
-      "points": 1615.0,
+      "points": 1855.0,
       "wins": 0,
       "category": "GTD",
       "id": "jake-walker",
@@ -423,11 +402,32 @@
       "teamColors": [
         "#003478"
       ],
-      "position": 20,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/47M_LST_77_WGI23_05.jpg/960px-47M_LST_77_WGI23_05.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "position": 19,
+      "imageUrl": "assets/portraits/faces/imsa/jake-walker.jpg"
     },
     {
-      "points": 1604.0,
+      "points": 1835.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "lorenzo-patrese",
+      "code": "",
+      "givenName": "Lorenzo",
+      "familyName": "Patrese",
+      "nationality": "ITA",
+      "teamIds": [
+        "conquest-racing"
+      ],
+      "teamNames": [
+        "Conquest Racing"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "position": 20,
+      "imageUrl": "assets/portraits/faces/imsa/lorenzo-patrese.jpg"
+    },
+    {
+      "points": 1824.0,
       "wins": 0,
       "category": "GTD",
       "id": "felipe-fraga",
@@ -445,10 +445,10 @@
         "#003478"
       ],
       "position": 21,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_FelipeFraga_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/felipe-fraga.jpg"
     },
     {
-      "points": 1604.0,
+      "points": 1824.0,
       "wins": 0,
       "category": "GTD",
       "id": "sheena-monk",
@@ -466,10 +466,10 @@
         "#003478"
       ],
       "position": 22,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_SheenaMonk_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/sheena-monk.jpg"
     },
     {
-      "points": 1552.0,
+      "points": 1742.0,
       "wins": 0,
       "category": "GTD",
       "id": "mason-filippi",
@@ -487,7 +487,49 @@
         "#F2C500"
       ],
       "position": 23,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_MasonFilippi_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/mason-filippi.jpg"
+    },
+    {
+      "points": 1544.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "casper-stevenson",
+      "code": "",
+      "givenName": "Casper",
+      "familyName": "Stevenson",
+      "nationality": "GBR",
+      "teamIds": [
+        "dragonspeed"
+      ],
+      "teamNames": [
+        "DragonSpeed"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 24,
+      "imageUrl": "assets/portraits/faces/imsa/casper-stevenson.jpg"
+    },
+    {
+      "points": 1431.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "corey-lewis",
+      "code": "",
+      "givenName": "Corey",
+      "familyName": "Lewis",
+      "nationality": "USA",
+      "teamIds": [
+        "gradient-racing"
+      ],
+      "teamNames": [
+        "Gradient Racing"
+      ],
+      "teamColors": [
+        "#003478"
+      ],
+      "position": 25,
+      "imageUrl": "assets/portraits/faces/imsa/corey-lewis.jpg"
     },
     {
       "points": 1308.0,
@@ -507,8 +549,8 @@
       "teamColors": [
         "#006F62"
       ],
-      "position": 24,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2025/01/18/2026_IWSC_ValentinHasseClot_355x355-290x290.png"
+      "position": 26,
+      "imageUrl": "assets/portraits/faces/imsa/valentin-hasse-clot.jpg"
     },
     {
       "points": 1299.0,
@@ -528,29 +570,8 @@
       "teamColors": [
         "#00A19C"
       ],
-      "position": 25,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_ScottAndrews_355x355-290x290.png"
-    },
-    {
-      "points": 1264.0,
-      "wins": 0,
-      "category": "GTD",
-      "id": "casper-stevenson",
-      "code": "",
-      "givenName": "Casper",
-      "familyName": "Stevenson",
-      "nationality": "GBR",
-      "teamIds": [
-        "dragonspeed"
-      ],
-      "teamNames": [
-        "DragonSpeed"
-      ],
-      "teamColors": [
-        "#F2C500"
-      ],
-      "position": 26,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_CasperStevenson_355x355-290x290.png"
+      "position": 27,
+      "imageUrl": "assets/portraits/faces/imsa/scott-andrews.jpg"
     },
     {
       "points": 1231.0,
@@ -570,29 +591,8 @@
       "teamColors": [
         "#222222"
       ],
-      "position": 27,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/18/2026_IWSC_FrankieMontecalvo_355x355-290x290.png"
-    },
-    {
-      "points": 1191.0,
-      "wins": 0,
-      "category": "GTD",
-      "id": "corey-lewis",
-      "code": "",
-      "givenName": "Corey",
-      "familyName": "Lewis",
-      "nationality": "USA",
-      "teamIds": [
-        "gradient-racing"
-      ],
-      "teamNames": [
-        "Gradient Racing"
-      ],
-      "teamColors": [
-        "#003478"
-      ],
       "position": 28,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/22/2026_IWSC_CoreyLewis_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/frankie-montecalvo.jpg"
     },
     {
       "points": 1142.0,
@@ -613,7 +613,28 @@
         "#006F62"
       ],
       "position": 29,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_ZacharieRobichon_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/zacharie-robichon.jpg"
+    },
+    {
+      "points": 1133.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "robert-wickens",
+      "code": "",
+      "givenName": "Robert",
+      "familyName": "Wickens",
+      "nationality": "CAN",
+      "teamIds": [
+        "dxdt-racing"
+      ],
+      "teamNames": [
+        "DXDT Racing"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 30,
+      "imageUrl": "assets/portraits/faces/imsa/robert-wickens.jpg"
     },
     {
       "points": 1079.0,
@@ -633,8 +654,8 @@
       "teamColors": [
         "#00A19C"
       ],
-      "position": 30,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_IndyDontje_355x355-290x290.png"
+      "position": 31,
+      "imageUrl": "assets/portraits/faces/imsa/indy-dontje.jpg"
     },
     {
       "points": 1064.0,
@@ -654,8 +675,8 @@
       "teamColors": [
         "#00A19C"
       ],
-      "position": 31,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/95JamesRoeJr_F3Americas_Road_America.jpg/960px-95JamesRoeJr_F3Americas_Road_America.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "position": 32,
+      "imageUrl": "assets/portraits/faces/imsa/james-roe.jpg"
     },
     {
       "points": 1064.0,
@@ -675,8 +696,8 @@
       "teamColors": [
         "#00A19C"
       ],
-      "position": 32,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_LinHodenius_355x355-290x290.png"
+      "position": 33,
+      "imageUrl": "assets/portraits/faces/imsa/lin-hodenius.jpg"
     },
     {
       "points": 1056.0,
@@ -696,8 +717,8 @@
       "teamColors": [
         "#0066B1"
       ],
-      "position": 33,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_FrancisSelldorff_355x355-290x290.png"
+      "position": 34,
+      "imageUrl": "assets/portraits/faces/imsa/francis-selldorff.jpg"
     },
     {
       "points": 1036.0,
@@ -717,8 +738,8 @@
       "teamColors": [
         "#E10600"
       ],
-      "position": 34,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2021/01/22/2026_IWSC_AntonioFuoco_355x355-290x290.png"
+      "position": 35,
+      "imageUrl": "assets/portraits/faces/imsa/antonio-fuoco.jpg"
     },
     {
       "points": 1036.0,
@@ -738,8 +759,8 @@
       "teamColors": [
         "#E10600"
       ],
-      "position": 35,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_SimonMann_355x355-290x290.png"
+      "position": 36,
+      "imageUrl": "assets/portraits/faces/imsa/simon-mann.jpg"
     },
     {
       "points": 1023.0,
@@ -759,8 +780,8 @@
       "teamColors": [
         "#E10600"
       ],
-      "position": 36,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_KentonKoch_355x355-290x290.png"
+      "position": 37,
+      "imageUrl": "assets/portraits/faces/imsa/kenton-koch.jpg"
     },
     {
       "points": 1023.0,
@@ -780,8 +801,8 @@
       "teamColors": [
         "#E10600"
       ],
-      "position": 37,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Triarsi_023_WGI25_03.jpg/960px-Triarsi_023_WGI25_03.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "position": 38,
+      "imageUrl": "assets/portraits/faces/imsa/onofrio-triarsi.jpg"
     },
     {
       "points": 1023.0,
@@ -801,8 +822,8 @@
       "teamColors": [
         "#E10600"
       ],
-      "position": 38,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_RobertMegennis_355x355-290x290.png"
+      "position": 39,
+      "imageUrl": "assets/portraits/faces/imsa/robert-megennis.jpg"
     },
     {
       "points": 995.0,
@@ -822,29 +843,8 @@
       "teamColors": [
         "#F2C500"
       ],
-      "position": 39,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/23/2026_IWSC_LarsKern_New_355x355-290x290.png"
-    },
-    {
-      "points": 943.0,
-      "wins": 0,
-      "category": "GTD",
-      "id": "robert-wickens",
-      "code": "",
-      "givenName": "Robert",
-      "familyName": "Wickens",
-      "nationality": "CAN",
-      "teamIds": [
-        "dxdt-racing"
-      ],
-      "teamNames": [
-        "DXDT Racing"
-      ],
-      "teamColors": [
-        "#F2C500"
-      ],
       "position": 40,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Robert_Wickens_Indianapolis_2019.jpg/960px-Robert_Wickens_Indianapolis_2019.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "assets/portraits/faces/imsa/lars-kern.jpg"
     },
     {
       "points": 931.0,
@@ -865,7 +865,7 @@
         "#F2C500"
       ],
       "position": 41,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_HenrickHedman_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/henrik-hedman.jpg"
     },
     {
       "points": 927.0,
@@ -886,7 +886,7 @@
         "#D5001C"
       ],
       "position": 42,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_TomSargent_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/tom-sargent.jpg"
     },
     {
       "points": 924.0,
@@ -907,7 +907,7 @@
         "#006F62"
       ],
       "position": 43,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/22/2026_IWSC_SpencerPumpelly_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/spencer-pumpelly.jpg"
     },
     {
       "points": 913.0,
@@ -970,7 +970,7 @@
         "#D5001C"
       ],
       "position": 46,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_RiccardoPera_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/riccardo-pera.jpg"
     },
     {
       "points": 855.0,
@@ -991,7 +991,7 @@
         "#D5001C"
       ],
       "position": 47,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_RyanHardwick_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/ryan-hardwick.jpg"
     },
     {
       "points": 801.0,
@@ -1012,7 +1012,7 @@
         "#F2C500"
       ],
       "position": 48,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_CharlieEastwood_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/charlie-eastwood.jpg"
     },
     {
       "points": 793.0,
@@ -1033,7 +1033,7 @@
         "#D5001C"
       ],
       "position": 49,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2020/01/20/2026_IMPC_JanHeylen_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/jan-heylen.jpg"
     },
     {
       "points": 769.0,
@@ -1054,7 +1054,7 @@
         "#E10600"
       ],
       "position": 50,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_MannyFranco_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/manny-franco.jpg"
     },
     {
       "points": 758.0,
@@ -1075,7 +1075,7 @@
         "#003478"
       ],
       "position": 51,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2022/01/22/2023_IWSC_TillBechtolsheimer_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/till-bechtolsheimer.jpg"
     },
     {
       "points": 739.0,
@@ -1096,7 +1096,7 @@
         "#E10600"
       ],
       "position": 52,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_OllieMillroy_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/ollie-millroy.jpg"
     },
     {
       "points": 734.0,
@@ -1117,7 +1117,7 @@
         "#DDB321"
       ],
       "position": 53,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_GrahamDoyle_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/graham-doyle.jpg"
     },
     {
       "points": 649.0,
@@ -1138,7 +1138,7 @@
         "#003478"
       ],
       "position": 54,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_JensonAltzman_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/jenson-altzman.jpg"
     },
     {
       "points": 630.0,
@@ -1180,7 +1180,7 @@
         "#006F62"
       ],
       "position": 56,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2020/01/23/2023_IWSC_TrentonEstep_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/trenton-estep.jpg"
     },
     {
       "points": 609.0,
@@ -1201,7 +1201,7 @@
         "#F2C500"
       ],
       "position": 57,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Salih_Yolu%C3%A7_%2832173305308%29.jpg/960px-Salih_Yolu%C3%A7_%2832173305308%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "assets/portraits/faces/imsa/salih-yoluc.jpg"
     },
     {
       "points": 568.0,
@@ -1222,7 +1222,7 @@
         "#003478"
       ],
       "position": 58,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/22/2026_IWSC_JoeyHand_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/joey-hand.jpg"
     },
     {
       "points": 559.0,
@@ -1243,7 +1243,7 @@
         "#D5001C"
       ],
       "position": 59,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/22/2026_IWSC_DillonMachavern_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/dillon-machavern.jpg"
     },
     {
       "points": 553.0,
@@ -1264,7 +1264,7 @@
         "#D5001C"
       ],
       "position": 60,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_RichardLietz_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/richard-lietz.jpg"
     },
     {
       "points": 505.0,
@@ -1285,7 +1285,7 @@
         "#D5001C"
       ],
       "position": 61,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_MorrisSchuring_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/morris-schuring.jpg"
     },
     {
       "points": 456.0,
@@ -1306,7 +1306,7 @@
         "#006F62"
       ],
       "position": 62,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/22/2026_IWSC_JohnPotter_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/john-potter.jpg"
     },
     {
       "points": 448.0,
@@ -1327,7 +1327,7 @@
         "#F2C500"
       ],
       "position": 63,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/DXDT_Corvette_WGI25_04.jpg/960px-DXDT_Corvette_WGI25_04.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "assets/portraits/faces/imsa/alec-udell.jpg"
     },
     {
       "points": 429.0,
@@ -1348,7 +1348,7 @@
         "#006F62"
       ],
       "position": 64,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2025/01/18/2026_IWSC_SebastienBaud_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/sebastien-baud.jpg"
     },
     {
       "points": 406.0,
@@ -1369,7 +1369,7 @@
         "#D5001C"
       ],
       "position": 65,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Top_of_the_Hill_%2852625894020%29.jpg/960px-Top_of_the_Hill_%2852625894020%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "assets/portraits/faces/imsa/ryan-yardley.jpg"
     },
     {
       "points": 400.0,
@@ -1390,7 +1390,7 @@
         "#E10600"
       ],
       "position": 66,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/International_GT_Open_2023_Spielberg_Nr._84_%281%29.jpg/960px-International_GT_Open_2023_Spielberg_Nr._84_%281%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "assets/portraits/faces/imsa/fran-rueda.jpg"
     },
     {
       "points": 382.0,
@@ -1411,7 +1411,7 @@
         "#00A19C"
       ],
       "position": 67,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_LucasAuer_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/lucas-auer.jpg"
     },
     {
       "points": 336.0,
@@ -1432,7 +1432,7 @@
         "#006F62"
       ],
       "position": 68,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2020/01/22/2026_IWSC_MadisonSnow_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/madison-snow.jpg"
     },
     {
       "points": 336.0,
@@ -1453,7 +1453,7 @@
         "#006F62"
       ],
       "position": 69,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/2026-07-05_Motorsport%2C_DTM%2C_Norisring_N%C3%BCrnberg_2026_STP_0521.jpg/960px-2026-07-05_Motorsport%2C_DTM%2C_Norisring_N%C3%BCrnberg_2026_STP_0521.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "assets/portraits/faces/imsa/nicki-thiim.jpg"
     },
     {
       "points": 335.0,
@@ -1474,7 +1474,7 @@
         "#006F62"
       ],
       "position": 70,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_MattiaDrudi_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/mattia-drudi.jpg"
     },
     {
       "points": 295.0,
@@ -1495,28 +1495,7 @@
         "#F2C500"
       ],
       "position": 71,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/23/2026_IWSC_BenGreen_New_355x355-290x290.png"
-    },
-    {
-      "points": 285.0,
-      "wins": 0,
-      "category": "GTD",
-      "id": "roman-de-angelis",
-      "code": "",
-      "givenName": "Roman De",
-      "familyName": "Angelis",
-      "nationality": "CAN",
-      "teamIds": [
-        "aston-martin-thor-team"
-      ],
-      "teamNames": [
-        "ASTON MARTIN THOR Team"
-      ],
-      "teamColors": [
-        "#006F62"
-      ],
-      "position": 72,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2020/01/17/2026_IWSC_RomanDeAngelis_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/ben-green.jpg"
     },
     {
       "points": 285.0,
@@ -1536,8 +1515,29 @@
       "teamColors": [
         "#E10600"
       ],
+      "position": 72,
+      "imageUrl": "assets/portraits/faces/imsa/tommaso-mosca.jpg"
+    },
+    {
+      "points": 285.0,
+      "wins": 0,
+      "category": "GTD",
+      "id": "roman-de-angelis",
+      "code": "",
+      "givenName": "Roman De",
+      "familyName": "Angelis",
+      "nationality": "CAN",
+      "teamIds": [
+        "aston-martin-thor-team"
+      ],
+      "teamNames": [
+        "ASTON MARTIN THOR Team"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
       "position": 73,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/22/2026_IWSC_TommasoMosca_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/roman-de-angelis.jpg"
     },
     {
       "points": 273.0,
@@ -1558,7 +1558,7 @@
         "#00A19C"
       ],
       "position": 74,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_RalfAron_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/ralf-aron.jpg"
     },
     {
       "points": 260.0,
@@ -1579,7 +1579,7 @@
         "#222222"
       ],
       "position": 75,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/18/2026_IWSC_JackHawksworth_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/jack-hawksworth.jpg"
     },
     {
       "points": 260.0,
@@ -1600,7 +1600,7 @@
         "#E10600"
       ],
       "position": 76,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/24H_Le_Mans_2025_Winning_picture_of_car_83_%28cropped%29.jpg/960px-24H_Le_Mans_2025_Winning_picture_of_car_83_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "assets/portraits/faces/imsa/yifei-ye.jpg"
     },
     {
       "points": 249.0,
@@ -1621,7 +1621,7 @@
         "#DDB321"
       ],
       "position": 77,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/87/Marcus_Ericsson_in_2023.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+      "imageUrl": "assets/portraits/faces/imsa/marcus-ericsson.jpg"
     },
     {
       "points": 240.0,
@@ -1642,7 +1642,7 @@
         "#0066B1"
       ],
       "position": 78,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_JensKlingmann_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/jens-klingmann.jpg"
     },
     {
       "points": 237.0,
@@ -1663,7 +1663,7 @@
         "#222222"
       ],
       "position": 79,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/18/2026_IWSC_EstebanMasson_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/esteban-masson.jpg"
     },
     {
       "points": 234.0,
@@ -1684,7 +1684,7 @@
         "#D5001C"
       ],
       "position": 80,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Drafting_%2853006966214%29.jpg/960px-Drafting_%2853006966214%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "assets/portraits/faces/imsa/devlin-defrancesco.jpg"
     },
     {
       "points": 226.0,
@@ -1705,7 +1705,7 @@
         "#006F62"
       ],
       "position": 81,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2025/01/18/2026_IWSC_CarlBennett_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/carl-bennett.jpg"
     },
     {
       "points": 220.0,
@@ -1726,7 +1726,7 @@
         "#D5001C"
       ],
       "position": 82,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/PLM_2011_063_Genoa_LMPC.jpg/960px-PLM_2011_063_Genoa_LMPC.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "assets/portraits/faces/imsa/eric-lux.jpg"
     },
     {
       "points": 202.0,
@@ -1747,7 +1747,7 @@
         "#E10600"
       ],
       "position": 83,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_DavidFumanelli_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/david-fumanelli.jpg"
     },
     {
       "points": 202.0,
@@ -1768,7 +1768,7 @@
         "#E91E63"
       ],
       "position": 84,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/18/2026_IWSC_HarryKing_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/harry-king.jpg"
     },
     {
       "points": 202.0,
@@ -1789,7 +1789,7 @@
         "#E91E63"
       ],
       "position": 85,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/18/2026_IWSC_BenjaminPedersen_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/mikkel-pedersen.jpg"
     },
     {
       "points": 193.0,
@@ -1810,7 +1810,7 @@
         "#DDB321"
       ],
       "position": 86,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/18/2026_IWSC_AndreaCaldarelli_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/andrea-caldarelli.jpg"
     },
     {
       "points": 193.0,
@@ -1831,7 +1831,7 @@
         "#DDB321"
       ],
       "position": 87,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Vanier_9_WGI25_01.jpg/960px-Vanier_9_WGI25_01.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "assets/portraits/faces/imsa/zachary-vanier.jpg"
     },
     {
       "points": 188.0,
@@ -1852,7 +1852,7 @@
         "#E10600"
       ],
       "position": 88,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Vermeulen_2023.jpg/960px-Vermeulen_2023.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "assets/portraits/faces/imsa/thierry-vermeulen.jpg"
     },
     {
       "points": 174.0,
@@ -1873,7 +1873,7 @@
         "#F2C500"
       ],
       "position": 89,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/22/2026_IWSC_MatteoCairoli_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/matteo-cairoli.jpg"
     },
     {
       "points": 172.0,
@@ -1894,7 +1894,7 @@
         "#D5001C"
       ],
       "position": 90,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/22/2026_IWSC_DaveMusial_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/dave-musial.jpg"
     },
     {
       "points": 172.0,
@@ -1915,7 +1915,7 @@
         "#D5001C"
       ],
       "position": 91,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/22/2026_IWSC_DaveMusialJr_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/dave-musial-jr.jpg"
     },
     {
       "points": 172.0,
@@ -1936,7 +1936,7 @@
         "#D5001C"
       ],
       "position": 92,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/22/2026_IWSC_PeterLudwig_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/peter-ludwig.jpg"
     },
     {
       "points": 168.0,
@@ -1957,7 +1957,7 @@
         "#F2C500"
       ],
       "position": 93,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/84/Scott_McLaughlin_2026.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+      "imageUrl": "assets/portraits/faces/imsa/scott-mclaughlin.jpg"
     },
     {
       "points": 131.0,
@@ -1978,7 +1978,7 @@
         "#D5001C"
       ],
       "position": 94,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_ElliottSkeer_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/elliott-skeer.jpg"
     },
     {
       "points": 130.0,
@@ -1999,7 +1999,7 @@
         "#E10600"
       ],
       "position": 95,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/FIA_Porsche_Supercup_Austria_2022_Nr._13_%28side_2%29.jpg/960px-FIA_Porsche_Supercup_Austria_2022_Nr._13_%28side_2%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "assets/portraits/faces/imsa/jaxon-evans.jpg"
     },
     {
       "points": 130.0,
@@ -2020,7 +2020,7 @@
         "#003478"
       ],
       "position": 96,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Grosjean_at_2024_Chevrolet_Detroit_Grand_Prix.jpg/960px-Grosjean_at_2024_Chevrolet_Detroit_Grand_Prix.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "assets/portraits/faces/imsa/romain-grosjean.jpg"
     },
     {
       "points": 120.0,
@@ -2083,52 +2083,10 @@
         "#D5001C"
       ],
       "position": 99,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/22/2026_IWSC_SvenMuller_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/sven-muller.jpg"
     },
     {
-      "points": 2432.0,
-      "wins": 1,
-      "category": "GTD PRO",
-      "id": "connor-de-phillippi",
-      "code": "",
-      "givenName": "Connor De",
-      "familyName": "Phillippi",
-      "nationality": "USA",
-      "teamIds": [
-        "paul-miller-racing"
-      ],
-      "teamNames": [
-        "Paul Miller Racing"
-      ],
-      "teamColors": [
-        "#0066B1"
-      ],
-      "position": 1,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/19/2026_IWSC_ConnorDePhillippi_355x355-290x290.png"
-    },
-    {
-      "points": 2432.0,
-      "wins": 1,
-      "category": "GTD PRO",
-      "id": "neil-verhagen",
-      "code": "",
-      "givenName": "Neil",
-      "familyName": "Verhagen",
-      "nationality": "USA",
-      "teamIds": [
-        "paul-miller-racing"
-      ],
-      "teamNames": [
-        "Paul Miller Racing"
-      ],
-      "teamColors": [
-        "#0066B1"
-      ],
-      "position": 2,
-      "imageUrl": "assets/portraits/faces/imsa/neil-verhagen.jpg"
-    },
-    {
-      "points": 2409.0,
+      "points": 2729.0,
       "wins": 0,
       "category": "GTD PRO",
       "id": "nicky-catsburg",
@@ -2145,11 +2103,11 @@
       "teamColors": [
         "#F2C500"
       ],
-      "position": 3,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/18/2026_IWSC_NickyCatsburg_355x355-290x290.png"
+      "position": 1,
+      "imageUrl": "assets/portraits/faces/imsa/nicky-catsburg.jpg"
     },
     {
-      "points": 2409.0,
+      "points": 2729.0,
       "wins": 0,
       "category": "GTD PRO",
       "id": "tommy-milner",
@@ -2166,11 +2124,53 @@
       "teamColors": [
         "#F2C500"
       ],
-      "position": 4,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/18/2026_IWSC_TommyMilner_355x355-290x290.png"
+      "position": 2,
+      "imageUrl": "assets/portraits/faces/imsa/tommy-milner.jpg"
     },
     {
-      "points": 2376.0,
+      "points": 2682.0,
+      "wins": 1,
+      "category": "GTD PRO",
+      "id": "connor-de-phillippi",
+      "code": "",
+      "givenName": "Connor De",
+      "familyName": "Phillippi",
+      "nationality": "USA",
+      "teamIds": [
+        "paul-miller-racing"
+      ],
+      "teamNames": [
+        "Paul Miller Racing"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "position": 3,
+      "imageUrl": "assets/portraits/faces/imsa/connor-de-phillippi.jpg"
+    },
+    {
+      "points": 2682.0,
+      "wins": 1,
+      "category": "GTD PRO",
+      "id": "neil-verhagen",
+      "code": "",
+      "givenName": "Neil",
+      "familyName": "Verhagen",
+      "nationality": "USA",
+      "teamIds": [
+        "paul-miller-racing"
+      ],
+      "teamNames": [
+        "Paul Miller Racing"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "position": 4,
+      "imageUrl": "assets/portraits/faces/imsa/neil-verhagen.jpg"
+    },
+    {
+      "points": 2676.0,
       "wins": 2,
       "category": "GTD PRO",
       "id": "andrea-caldarelli",
@@ -2188,10 +2188,10 @@
         "#DDB321"
       ],
       "position": 5,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/18/2026_IWSC_AndreaCaldarelli_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/andrea-caldarelli.jpg"
     },
     {
-      "points": 2376.0,
+      "points": 2676.0,
       "wins": 2,
       "category": "GTD PRO",
       "id": "sandy-mitchell",
@@ -2209,52 +2209,10 @@
         "#DDB321"
       ],
       "position": 6,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/18/2026_IWSC_SandyMitchell_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/sandy-mitchell.jpg"
     },
     {
-      "points": 2365.0,
-      "wins": 0,
-      "category": "GTD PRO",
-      "id": "harry-king",
-      "code": "",
-      "givenName": "Harry",
-      "familyName": "King",
-      "nationality": "GBR",
-      "teamIds": [
-        "ao-racing"
-      ],
-      "teamNames": [
-        "AO Racing"
-      ],
-      "teamColors": [
-        "#E91E63"
-      ],
-      "position": 7,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/18/2026_IWSC_HarryKing_355x355-290x290.png"
-    },
-    {
-      "points": 2365.0,
-      "wins": 0,
-      "category": "GTD PRO",
-      "id": "nick-tandy",
-      "code": "",
-      "givenName": "Nick",
-      "familyName": "Tandy",
-      "nationality": "GBR",
-      "teamIds": [
-        "ao-racing"
-      ],
-      "teamNames": [
-        "AO Racing"
-      ],
-      "teamColors": [
-        "#E91E63"
-      ],
-      "position": 8,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/18/2026_IWSC_NickTandy_355x355-290x290.png"
-    },
-    {
-      "points": 2365.0,
+      "points": 2605.0,
       "wins": 1,
       "category": "GTD PRO",
       "id": "christopher-mies",
@@ -2271,11 +2229,11 @@
       "teamColors": [
         "#003478"
       ],
-      "position": 9,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/18/2026_IWSC_ChristopherMies_355x355-290x290.png"
+      "position": 7,
+      "imageUrl": "assets/portraits/faces/imsa/christopher-mies.jpg"
     },
     {
-      "points": 2365.0,
+      "points": 2605.0,
       "wins": 1,
       "category": "GTD PRO",
       "id": "frederic-vervisch",
@@ -2292,11 +2250,95 @@
       "teamColors": [
         "#003478"
       ],
-      "position": 10,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Vervischkampioen.JPG/960px-Vervischkampioen.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "position": 8,
+      "imageUrl": "assets/portraits/faces/imsa/frederic-vervisch.jpg"
     },
     {
-      "points": 2290.0,
+      "points": 2580.0,
+      "wins": 1,
+      "category": "GTD PRO",
+      "id": "ben-barker",
+      "code": "",
+      "givenName": "Ben",
+      "familyName": "Barker",
+      "nationality": "GBR",
+      "teamIds": [
+        "ford-racing"
+      ],
+      "teamNames": [
+        "Ford Racing"
+      ],
+      "teamColors": [
+        "#003478"
+      ],
+      "position": 9,
+      "imageUrl": "assets/portraits/faces/imsa/ben-barker.jpg"
+    },
+    {
+      "points": 2580.0,
+      "wins": 1,
+      "category": "GTD PRO",
+      "id": "dennis-olsen",
+      "code": "",
+      "givenName": "Dennis",
+      "familyName": "Olsen",
+      "nationality": "NOR",
+      "teamIds": [
+        "ford-racing"
+      ],
+      "teamNames": [
+        "Ford Racing"
+      ],
+      "teamColors": [
+        "#003478"
+      ],
+      "position": 10,
+      "imageUrl": "assets/portraits/faces/imsa/dennis-olsen.jpg"
+    },
+    {
+      "points": 2575.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "harry-king",
+      "code": "",
+      "givenName": "Harry",
+      "familyName": "King",
+      "nationality": "GBR",
+      "teamIds": [
+        "ao-racing"
+      ],
+      "teamNames": [
+        "AO Racing"
+      ],
+      "teamColors": [
+        "#E91E63"
+      ],
+      "position": 11,
+      "imageUrl": "assets/portraits/faces/imsa/harry-king.jpg"
+    },
+    {
+      "points": 2575.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "nick-tandy",
+      "code": "",
+      "givenName": "Nick",
+      "familyName": "Tandy",
+      "nationality": "GBR",
+      "teamIds": [
+        "ao-racing"
+      ],
+      "teamNames": [
+        "AO Racing"
+      ],
+      "teamColors": [
+        "#E91E63"
+      ],
+      "position": 12,
+      "imageUrl": "assets/portraits/faces/imsa/nick-tandy.jpg"
+    },
+    {
+      "points": 2550.0,
       "wins": 2,
       "category": "GTD PRO",
       "id": "ben-barnicoat",
@@ -2313,11 +2355,11 @@
       "teamColors": [
         "#222222"
       ],
-      "position": 11,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/18/2026_IWSC_BenBarnicoat_355x355-290x290.png"
+      "position": 13,
+      "imageUrl": "assets/portraits/faces/imsa/ben-barnicoat.jpg"
     },
     {
-      "points": 2290.0,
+      "points": 2550.0,
       "wins": 2,
       "category": "GTD PRO",
       "id": "jack-hawksworth",
@@ -2334,11 +2376,11 @@
       "teamColors": [
         "#222222"
       ],
-      "position": 12,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/18/2026_IWSC_JackHawksworth_355x355-290x290.png"
+      "position": 14,
+      "imageUrl": "assets/portraits/faces/imsa/jack-hawksworth.jpg"
     },
     {
-      "points": 2238.0,
+      "points": 2518.0,
       "wins": 1,
       "category": "GTD PRO",
       "id": "alexander-sims",
@@ -2355,11 +2397,11 @@
       "teamColors": [
         "#F2C500"
       ],
-      "position": 13,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/18/2026_IWSC_AlexanderSims_355x355-290x290.png"
+      "position": 15,
+      "imageUrl": "assets/portraits/faces/imsa/alexander-sims.jpg"
     },
     {
-      "points": 2238.0,
+      "points": 2518.0,
       "wins": 1,
       "category": "GTD PRO",
       "id": "antonio-garcia",
@@ -2376,53 +2418,11 @@
       "teamColors": [
         "#F2C500"
       ],
-      "position": 14,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/18/2026_IWSC_AntonioGarcia_355x355-290x290.png"
-    },
-    {
-      "points": 2230.0,
-      "wins": 0,
-      "category": "GTD PRO",
-      "id": "ben-barker",
-      "code": "",
-      "givenName": "Ben",
-      "familyName": "Barker",
-      "nationality": "GBR",
-      "teamIds": [
-        "ford-racing"
-      ],
-      "teamNames": [
-        "Ford Racing"
-      ],
-      "teamColors": [
-        "#003478"
-      ],
-      "position": 15,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/18/2026_IWSC_BenBarker_355x355-290x290.png"
-    },
-    {
-      "points": 2230.0,
-      "wins": 0,
-      "category": "GTD PRO",
-      "id": "dennis-olsen",
-      "code": "",
-      "givenName": "Dennis",
-      "familyName": "Olsen",
-      "nationality": "NOR",
-      "teamIds": [
-        "ford-racing"
-      ],
-      "teamNames": [
-        "Ford Racing"
-      ],
-      "teamColors": [
-        "#003478"
-      ],
       "position": 16,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/18/2026_IWSC_DennisOlsen_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/antonio-garcia.jpg"
     },
     {
-      "points": 1970.0,
+      "points": 2200.0,
       "wins": 0,
       "category": "GTD PRO",
       "id": "max-esterson",
@@ -2440,10 +2440,10 @@
         "#EF6C00"
       ],
       "position": 17,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_MaxEsterson_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/max-esterson.jpg"
     },
     {
-      "points": 1970.0,
+      "points": 2200.0,
       "wins": 0,
       "category": "GTD PRO",
       "id": "nikita-johnson",
@@ -2461,7 +2461,7 @@
         "#EF6C00"
       ],
       "position": 18,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/FIA_F3_Austria_2025_Nr._29_Johnson.jpg/960px-FIA_F3_Austria_2025_Nr._29_Johnson.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "assets/portraits/faces/imsa/nikita-johnson.jpg"
     },
     {
       "points": 1114.0,
@@ -2482,7 +2482,7 @@
         "#D5001C"
       ],
       "position": 19,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/18/2026_IWSC_KlausBachler_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/klaus-bachler.jpg"
     },
     {
       "points": 1060.0,
@@ -2503,7 +2503,7 @@
         "#E10600"
       ],
       "position": 20,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/22/2026_IWSC_JamesCalado_355x35-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/james-calado.jpg"
     },
     {
       "points": 1060.0,
@@ -2524,7 +2524,7 @@
         "#E10600"
       ],
       "position": 21,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2024/01/22/2026_IWSC_RiccardoAgostini_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/riccardo-agostini.jpg"
     },
     {
       "points": 922.0,
@@ -2545,7 +2545,7 @@
         "#E10600"
       ],
       "position": 22,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2020/01/18/2026_IWSC_DanielSerra_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/daniel-serra.jpg"
     },
     {
       "points": 922.0,
@@ -2566,7 +2566,7 @@
         "#E10600"
       ],
       "position": 23,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2020/01/18/2026_IWSC_DavideRigon_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/davide-rigon.jpg"
     },
     {
       "points": 904.0,
@@ -2587,7 +2587,28 @@
         "#D5001C"
       ],
       "position": 24,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2024/01/18/2026_IWSC_ThomasPreining_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/thomas-preining.jpg"
+    },
+    {
+      "points": 762.0,
+      "wins": 0,
+      "category": "GTD PRO",
+      "id": "valentin-hasse-clot",
+      "code": "",
+      "givenName": "Valentin Hasse",
+      "familyName": "Clot",
+      "nationality": "FRA",
+      "teamIds": [
+        "car-blanche"
+      ],
+      "teamNames": [
+        "Car Blanche"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "position": 25,
+      "imageUrl": "assets/portraits/faces/imsa/valentin-hasse-clot.jpg"
     },
     {
       "points": 658.0,
@@ -2607,8 +2628,8 @@
       "teamColors": [
         "#0066B1"
       ],
-      "position": 25,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/19/2026_IWSC_MaxHesse_355x355-290x290.png"
+      "position": 26,
+      "imageUrl": "assets/portraits/faces/imsa/max-hesse.jpg"
     },
     {
       "points": 658.0,
@@ -2628,8 +2649,8 @@
       "teamColors": [
         "#D5001C"
       ],
-      "position": 26,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2024/01/18/2026_IWSC_RicardoFeller_35x355-290x290.png"
+      "position": 27,
+      "imageUrl": "assets/portraits/faces/imsa/ricardo-feller.jpg"
     },
     {
       "points": 628.0,
@@ -2649,8 +2670,8 @@
       "teamColors": [
         "#F2C500"
       ],
-      "position": 27,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Nico_Varrone_in_2023.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+      "position": 28,
+      "imageUrl": "assets/portraits/faces/imsa/nico-varrone.jpg"
     },
     {
       "points": 584.0,
@@ -2670,8 +2691,8 @@
       "teamColors": [
         "#222222"
       ],
-      "position": 28,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/22/2026_IWSC_ChazMostert_355x355-290x290.png"
+      "position": 29,
+      "imageUrl": "assets/portraits/faces/imsa/chaz-mostert.jpg"
     },
     {
       "points": 580.0,
@@ -2691,18 +2712,18 @@
       "teamColors": [
         "#E91E63"
       ],
-      "position": 29,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/18/2026_IWSC_AlessioPicariello_355x355-290x290.png"
+      "position": 30,
+      "imageUrl": "assets/portraits/faces/imsa/alessio-picariello.jpg"
     },
     {
-      "points": 542.0,
+      "points": 526.0,
       "wins": 0,
       "category": "GTD PRO",
-      "id": "valentin-hasse-clot",
+      "id": "marco-sorensen",
       "code": "",
-      "givenName": "Valentin Hasse",
-      "familyName": "Clot",
-      "nationality": "FRA",
+      "givenName": "Marco",
+      "familyName": "Sorensen",
+      "nationality": "DNK",
       "teamIds": [
         "car-blanche"
       ],
@@ -2712,8 +2733,8 @@
       "teamColors": [
         "#006F62"
       ],
-      "position": 30,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2025/01/18/2026_IWSC_ValentinHasseClot_355x355-290x290.png"
+      "position": 31,
+      "imageUrl": "assets/portraits/faces/imsa/marco-sorensen.jpg"
     },
     {
       "points": 521.0,
@@ -2733,8 +2754,8 @@
       "teamColors": [
         "#F2C500"
       ],
-      "position": 31,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2023/01/22/2026_IWSC_MarvinKirchhofer_355x355-290x290.png"
+      "position": 32,
+      "imageUrl": "assets/portraits/faces/imsa/marvin-kirchhofer.jpg"
     },
     {
       "points": 520.0,
@@ -2754,8 +2775,8 @@
       "teamColors": [
         "#E10600"
       ],
-      "position": 32,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/22/2026_IWSC_MiguelMolina_355x355-290x290.png"
+      "position": 33,
+      "imageUrl": "assets/portraits/faces/imsa/miguel-molina.jpg"
     },
     {
       "points": 517.0,
@@ -2775,8 +2796,8 @@
       "teamColors": [
         "#003478"
       ],
-      "position": 33,
-      "imageUrl": "assets/portraits/faces/wec/sebastian-priaulx.jpg"
+      "position": 34,
+      "imageUrl": "assets/portraits/faces/imsa/sebastian-priaulx.jpg"
     },
     {
       "points": 512.0,
@@ -2796,8 +2817,8 @@
       "teamColors": [
         "#00A19C"
       ],
-      "position": 34,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2023/01/18/2026_IWSC_JasonHart_355x355-290x290.png"
+      "position": 35,
+      "imageUrl": "assets/portraits/faces/imsa/jason-hart.jpg"
     },
     {
       "points": 512.0,
@@ -2817,8 +2838,8 @@
       "teamColors": [
         "#00A19C"
       ],
-      "position": 35,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2025/01/18/2025_IWSC_LucaStolz_355x355-290x290.jpg"
+      "position": 36,
+      "imageUrl": "assets/portraits/faces/imsa/luca-stolz.jpg"
     },
     {
       "points": 512.0,
@@ -2838,8 +2859,8 @@
       "teamColors": [
         "#00A19C"
       ],
-      "position": 36,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2023/01/18/2026_IWSC_ScottNoble_355x355-290x290.png"
+      "position": 37,
+      "imageUrl": "assets/portraits/faces/imsa/scott-noble.jpg"
     },
     {
       "points": 470.0,
@@ -2859,8 +2880,8 @@
       "teamColors": [
         "#EF6C00"
       ],
-      "position": 37,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_DeanMacDonald_355x355-290x290.png"
+      "position": 38,
+      "imageUrl": "assets/portraits/faces/imsa/dean-macdonald.jpg"
     },
     {
       "points": 465.0,
@@ -2880,8 +2901,8 @@
       "teamColors": [
         "#222222"
       ],
-      "position": 38,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/05/Kyle_kirkwood_%2852261679565%29_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+      "position": 39,
+      "imageUrl": "assets/portraits/faces/imsa/kyle-kirkwood.jpg"
     },
     {
       "points": 459.0,
@@ -2901,8 +2922,8 @@
       "teamColors": [
         "#003478"
       ],
-      "position": 39,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/22/2026_IWSC_MikeRockenfeller_355x355-290x290.png"
+      "position": 40,
+      "imageUrl": "assets/portraits/faces/imsa/mike-rockenfeller.jpg"
     },
     {
       "points": 388.0,
@@ -2922,8 +2943,8 @@
       "teamColors": [
         "#E10600"
       ],
-      "position": 40,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2020/01/18/2026_IWSC_AlessandroPierGuidi_355x355-290x290.png"
+      "position": 41,
+      "imageUrl": "assets/portraits/faces/imsa/alessandro-pier-guidi.jpg"
     },
     {
       "points": 366.0,
@@ -2943,8 +2964,8 @@
       "teamColors": [
         "#0066B1"
       ],
-      "position": 41,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/19/2026_IWSC_DanHarper_355x355-290x290.png"
+      "position": 42,
+      "imageUrl": "assets/portraits/faces/imsa/dan-harper.jpg"
     },
     {
       "points": 350.0,
@@ -2964,8 +2985,8 @@
       "teamColors": [
         "#00A19C"
       ],
-      "position": 42,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2021/01/22/2026_IWSC_KennyHabul_355x355-290x290.png"
+      "position": 43,
+      "imageUrl": "assets/portraits/faces/imsa/kenny-habul.jpg"
     },
     {
       "points": 350.0,
@@ -2985,8 +3006,8 @@
       "teamColors": [
         "#00A19C"
       ],
-      "position": 43,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2022/01/22/2026_IWSC_MaroEngel_355x355-290x290.png"
+      "position": 44,
+      "imageUrl": "assets/portraits/faces/imsa/maro-engel.jpg"
     },
     {
       "points": 350.0,
@@ -3006,8 +3027,8 @@
       "teamColors": [
         "#00A19C"
       ],
-      "position": 44,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Will_Power_%282021%29.jpg/960px-Will_Power_%282021%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "position": 45,
+      "imageUrl": "assets/portraits/faces/imsa/will-power.jpg"
     },
     {
       "points": 322.0,
@@ -3027,29 +3048,8 @@
       "teamColors": [
         "#00A19C"
       ],
-      "position": 45,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2023/01/18/2026_IWSC_MaximiMartin_355x355-290x290.png"
-    },
-    {
-      "points": 306.0,
-      "wins": 0,
-      "category": "GTD PRO",
-      "id": "marco-sorensen",
-      "code": "",
-      "givenName": "Marco",
-      "familyName": "Sorensen",
-      "nationality": "DNK",
-      "teamIds": [
-        "car-blanche"
-      ],
-      "teamNames": [
-        "Car Blanche"
-      ],
-      "teamColors": [
-        "#006F62"
-      ],
       "position": 46,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2020/01/17/2026_IWSC_MarcoSorensen_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/maxime-martin.jpg"
     },
     {
       "points": 278.0,
@@ -3070,7 +3070,7 @@
         "#D5001C"
       ],
       "position": 47,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2025/01/22/2026_IWSC_AyhancanGuven_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/ayhancan-guven.jpg"
     },
     {
       "points": 271.0,
@@ -3091,7 +3091,7 @@
         "#DDB321"
       ],
       "position": 48,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2024/01/22/2026_IWSC_JamesHinchcliffe_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/james-hinchcliffe.jpg"
     },
     {
       "points": 271.0,
@@ -3112,7 +3112,7 @@
         "#DDB321"
       ],
       "position": 49,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/22/2026_IWSC_MirkoBortolotti_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/mirko-bortolotti.jpg"
     },
     {
       "points": 258.0,
@@ -3133,7 +3133,7 @@
         "#E10600"
       ],
       "position": 50,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2022/02/22/2026_IWSC_AlessioRovera_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/alessio-rovera.jpg"
     },
     {
       "points": 236.0,
@@ -3154,7 +3154,7 @@
         "#00A19C"
       ],
       "position": 51,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_ScottAndrews_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/scott-andrews.jpg"
     },
     {
       "points": 234.0,
@@ -3175,7 +3175,7 @@
         "#222222"
       ],
       "position": 52,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Aaron_Telitz_Victory_Lane_Road_America_2018.jpg/960px-Aaron_Telitz_Victory_Lane_Road_America_2018.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "assets/portraits/faces/imsa/aaron-telitz.jpg"
     },
     {
       "points": 229.0,
@@ -3196,7 +3196,7 @@
         "#DDB321"
       ],
       "position": 53,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Frank_Perera_%28portrait%2C_2024%29.jpg/960px-Frank_Perera_%28portrait%2C_2024%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "assets/portraits/faces/imsa/franck-perera.jpg"
     },
     {
       "points": 225.0,
@@ -3217,7 +3217,7 @@
         "#00A19C"
       ],
       "position": 54,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2025/01/18/2026_IWSC_AnthonyBartone_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/anthony-bartone.jpg"
     },
     {
       "points": 225.0,
@@ -3238,7 +3238,7 @@
         "#00A19C"
       ],
       "position": 55,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2025/01/18/2026_IWSC_FabianSchiller_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/fabian-schiller.jpg"
     },
     {
       "points": 225.0,
@@ -3259,7 +3259,7 @@
         "#00A19C"
       ],
       "position": 56,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2020/01/22/2026_IWSC_JulesGounon_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/jules-gounon.jpg"
     },
     {
       "points": 225.0,
@@ -3280,7 +3280,7 @@
         "#00A19C"
       ],
       "position": 57,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2025/01/18/2026_IWSC_MaximilianGoetz_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/maximilian-goetz.jpg"
     },
     {
       "points": 222.0,
@@ -3301,7 +3301,7 @@
         "#EF6C00"
       ],
       "position": 58,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Juri_Vips_Austria_2022.jpg/960px-Juri_Vips_Austria_2022.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "assets/portraits/faces/imsa/juri-vips.jpg"
     },
     {
       "points": 210.0,
@@ -3322,7 +3322,7 @@
         "#D5001C"
       ],
       "position": 59,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Loek_Hartog_N%C3%BCrburgring_2024.jpg/960px-Loek_Hartog_N%C3%BCrburgring_2024.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "assets/portraits/faces/imsa/loek-hartog.jpg"
     },
     {
       "points": 210.0,
@@ -3343,10 +3343,10 @@
         "#D5001C"
       ],
       "position": 60,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Michael_Christensen_2024_WEC_Fuji.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+      "imageUrl": "assets/portraits/faces/imsa/michael-christensen.jpg"
     },
     {
-      "points": 2400.0,
+      "points": 2752.0,
       "wins": 2,
       "category": "GTP",
       "id": "jack-aitken",
@@ -3364,10 +3364,10 @@
         "#D4AF37"
       ],
       "position": 1,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2023/01/17/2026_IWSC_JackAitken_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/jack-aitken.jpg"
     },
     {
-      "points": 2282.0,
+      "points": 2605.0,
       "wins": 3,
       "category": "GTP",
       "id": "laurin-heinrich",
@@ -3376,19 +3376,19 @@
       "familyName": "Heinrich",
       "nationality": "DEU",
       "teamIds": [
-        "jdc-miller-motorsports"
+        "porsche-penske-motorsport"
       ],
       "teamNames": [
-        "JDC-Miller MotorSports"
+        "Porsche Penske Motorsport"
       ],
       "teamColors": [
-        "#F2C500"
+        "#D5001C"
       ],
       "position": 2,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2024/01/17/2026_IWSC_LaurinHeinrich_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/laurin-heinrich.jpg"
     },
     {
-      "points": 2215.0,
+      "points": 2481.0,
       "wins": 1,
       "category": "GTP",
       "id": "nick-yelloly",
@@ -3406,10 +3406,10 @@
         "#E40521"
       ],
       "position": 3,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/18/Nick_Yelloly_at_Chevrolet_Detroit_Sportscar_Classic_2025.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+      "imageUrl": "assets/portraits/faces/imsa/nick-yelloly.jpg"
     },
     {
-      "points": 2215.0,
+      "points": 2481.0,
       "wins": 1,
       "category": "GTP",
       "id": "renger-van-der-zande",
@@ -3427,52 +3427,10 @@
         "#E40521"
       ],
       "position": 4,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Renger_van_der_Zande_-_Cadillac_V-Series.R_Hybrid_during_the_pitwalk_at_the_2023_Le_Mans_%2853467918276%29.jpg/960px-Renger_van_der_Zande_-_Cadillac_V-Series.R_Hybrid_during_the_pitwalk_at_the_2023_Le_Mans_%2853467918276%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "assets/portraits/faces/imsa/renger-van-der-zande.jpg"
     },
     {
-      "points": 2159.0,
-      "wins": 2,
-      "category": "GTP",
-      "id": "felipe-nasr",
-      "code": "",
-      "givenName": "Felipe",
-      "familyName": "Nasr",
-      "nationality": "BRA",
-      "teamIds": [
-        "porsche-penske-motorsport"
-      ],
-      "teamNames": [
-        "Porsche Penske Motorsport"
-      ],
-      "teamColors": [
-        "#D5001C"
-      ],
-      "position": 5,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/17/2026_IWSC_FelipeNasr_355x355-290x290.png"
-    },
-    {
-      "points": 2159.0,
-      "wins": 2,
-      "category": "GTP",
-      "id": "julien-andlauer",
-      "code": "",
-      "givenName": "Julien",
-      "familyName": "Andlauer",
-      "nationality": "FRA",
-      "teamIds": [
-        "porsche-penske-motorsport"
-      ],
-      "teamNames": [
-        "Porsche Penske Motorsport"
-      ],
-      "teamColors": [
-        "#D5001C"
-      ],
-      "position": 6,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2022/01/17/2026_IWSC_JulienAndlauer_355x355-290x290.png"
-    },
-    {
-      "points": 2052.0,
+      "points": 2404.0,
       "wins": 2,
       "category": "GTP",
       "id": "earl-bamber",
@@ -3489,32 +3447,53 @@
       "teamColors": [
         "#D4AF37"
       ],
-      "position": 7,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2023/01/17/2026_IWSC_EarlBamber_355x355-290x290.png"
+      "position": 5,
+      "imageUrl": "assets/portraits/faces/imsa/earl-bamber.jpg"
     },
     {
-      "points": 2045.0,
-      "wins": 1,
+      "points": 2384.0,
+      "wins": 2,
       "category": "GTP",
-      "id": "tijmen-van-der-helm",
+      "id": "felipe-nasr",
       "code": "",
-      "givenName": "Tijmen van der",
-      "familyName": "Helm",
-      "nationality": "NLD",
+      "givenName": "Felipe",
+      "familyName": "Nasr",
+      "nationality": "BRA",
       "teamIds": [
-        "jdc-miller-motorsports"
+        "porsche-penske-motorsport"
       ],
       "teamNames": [
-        "JDC-Miller MotorSports"
+        "Porsche Penske Motorsport"
       ],
       "teamColors": [
-        "#F2C500"
+        "#D5001C"
       ],
-      "position": 8,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/59/Van_der_Helm_Spielberg.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+      "position": 6,
+      "imageUrl": "assets/portraits/faces/imsa/felipe-nasr.jpg"
     },
     {
-      "points": 2010.0,
+      "points": 2384.0,
+      "wins": 2,
+      "category": "GTP",
+      "id": "julien-andlauer",
+      "code": "",
+      "givenName": "Julien",
+      "familyName": "Andlauer",
+      "nationality": "FRA",
+      "teamIds": [
+        "porsche-penske-motorsport"
+      ],
+      "teamNames": [
+        "Porsche Penske Motorsport"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "position": 7,
+      "imageUrl": "assets/portraits/faces/imsa/julien-andlauer.jpg"
+    },
+    {
+      "points": 2333.0,
       "wins": 0,
       "category": "GTP",
       "id": "kevin-estre",
@@ -3531,8 +3510,239 @@
       "teamColors": [
         "#D5001C"
       ],
+      "position": 8,
+      "imageUrl": "assets/portraits/faces/imsa/kevin-estre.jpg"
+    },
+    {
+      "points": 2300.0,
+      "wins": 1,
+      "category": "GTP",
+      "id": "dries-vanthoor",
+      "code": "",
+      "givenName": "Dries",
+      "familyName": "Vanthoor",
+      "nationality": "BEL",
+      "teamIds": [
+        "bmw-m-team-wrt"
+      ],
+      "teamNames": [
+        "BMW M Team WRT"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
       "position": 9,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2021/01/17/2026_IWSC_KevinEstre_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/dries-vanthoor.jpg"
+    },
+    {
+      "points": 2300.0,
+      "wins": 1,
+      "category": "GTP",
+      "id": "sheldon-van-der-linde",
+      "code": "",
+      "givenName": "Sheldon van der",
+      "familyName": "Linde",
+      "nationality": "ZAF",
+      "teamIds": [
+        "bmw-m-team-wrt"
+      ],
+      "teamNames": [
+        "BMW M Team WRT"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "position": 10,
+      "imageUrl": "assets/portraits/faces/imsa/sheldon-van-der-linde.jpg"
+    },
+    {
+      "points": 2285.0,
+      "wins": 1,
+      "category": "GTP",
+      "id": "tijmen-van-der-helm",
+      "code": "",
+      "givenName": "Tijmen van der",
+      "familyName": "Helm",
+      "nationality": "NLD",
+      "teamIds": [
+        "jdc-miller-motorsports"
+      ],
+      "teamNames": [
+        "JDC-Miller MotorSports"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 11,
+      "imageUrl": "assets/portraits/faces/imsa/tijmen-van-der-helm.jpg"
+    },
+    {
+      "points": 2231.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "jordan-taylor",
+      "code": "",
+      "givenName": "Jordan",
+      "familyName": "Taylor",
+      "nationality": "USA",
+      "teamIds": [
+        "cadillac-wayne-taylor-racing"
+      ],
+      "teamNames": [
+        "Cadillac Wayne Taylor Racing"
+      ],
+      "teamColors": [
+        "#D4AF37"
+      ],
+      "position": 12,
+      "imageUrl": "assets/portraits/faces/imsa/jordan-taylor.jpg"
+    },
+    {
+      "points": 2231.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "louis-deletraz",
+      "code": "",
+      "givenName": "Louis",
+      "familyName": "Deletraz",
+      "nationality": "CHE",
+      "teamIds": [
+        "cadillac-wayne-taylor-racing"
+      ],
+      "teamNames": [
+        "Cadillac Wayne Taylor Racing"
+      ],
+      "teamColors": [
+        "#D4AF37"
+      ],
+      "position": 13,
+      "imageUrl": "assets/portraits/faces/imsa/louis-deletraz.jpg"
+    },
+    {
+      "points": 2180.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "colin-braun",
+      "code": "",
+      "givenName": "Colin",
+      "familyName": "Braun",
+      "nationality": "USA",
+      "teamIds": [
+        "acura-meyer-shank-racing-w-curb-agajanian"
+      ],
+      "teamNames": [
+        "Acura Meyer Shank Racing w/Curb Agajanian"
+      ],
+      "teamColors": [
+        "#E40521"
+      ],
+      "position": 14,
+      "imageUrl": "assets/portraits/faces/imsa/colin-braun.jpg"
+    },
+    {
+      "points": 2180.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "tom-blomqvist",
+      "code": "",
+      "givenName": "Tom",
+      "familyName": "Blomqvist",
+      "nationality": "GBR",
+      "teamIds": [
+        "acura-meyer-shank-racing-w-curb-agajanian"
+      ],
+      "teamNames": [
+        "Acura Meyer Shank Racing w/Curb Agajanian"
+      ],
+      "teamColors": [
+        "#E40521"
+      ],
+      "position": 15,
+      "imageUrl": "assets/portraits/faces/imsa/tom-blomqvist.jpg"
+    },
+    {
+      "points": 2147.0,
+      "wins": 1,
+      "category": "GTP",
+      "id": "filipe-albuquerque",
+      "code": "",
+      "givenName": "Filipe",
+      "familyName": "Albuquerque",
+      "nationality": "PRT",
+      "teamIds": [
+        "cadillac-wayne-taylor-racing"
+      ],
+      "teamNames": [
+        "Cadillac Wayne Taylor Racing"
+      ],
+      "teamColors": [
+        "#D4AF37"
+      ],
+      "position": 16,
+      "imageUrl": "assets/portraits/faces/imsa/filipe-albuquerque.jpg"
+    },
+    {
+      "points": 2147.0,
+      "wins": 1,
+      "category": "GTP",
+      "id": "ricky-taylor",
+      "code": "",
+      "givenName": "Ricky",
+      "familyName": "Taylor",
+      "nationality": "USA",
+      "teamIds": [
+        "cadillac-wayne-taylor-racing"
+      ],
+      "teamNames": [
+        "Cadillac Wayne Taylor Racing"
+      ],
+      "teamColors": [
+        "#D4AF37"
+      ],
+      "position": 17,
+      "imageUrl": "assets/portraits/faces/imsa/ricky-taylor.jpg"
+    },
+    {
+      "points": 2116.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "marco-wittmann",
+      "code": "",
+      "givenName": "Marco",
+      "familyName": "Wittmann",
+      "nationality": "DEU",
+      "teamIds": [
+        "bmw-m-team-wrt"
+      ],
+      "teamNames": [
+        "BMW M Team WRT"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "position": 18,
+      "imageUrl": "assets/portraits/faces/imsa/marco-wittmann.jpg"
+    },
+    {
+      "points": 2116.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "philipp-eng",
+      "code": "",
+      "givenName": "Philipp",
+      "familyName": "Eng",
+      "nationality": "AUT",
+      "teamIds": [
+        "bmw-m-team-wrt"
+      ],
+      "teamNames": [
+        "BMW M Team WRT"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "position": 19,
+      "imageUrl": "assets/portraits/faces/imsa/philipp-eng.jpg"
     },
     {
       "points": 2010.0,
@@ -3552,221 +3762,11 @@
       "teamColors": [
         "#D5001C"
       ],
-      "position": 10,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Laurens_Vanthoor_%28portrait%2C_2024%29.jpg/960px-Laurens_Vanthoor_%28portrait%2C_2024%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-    },
-    {
-      "points": 1923.0,
-      "wins": 0,
-      "category": "GTP",
-      "id": "jordan-taylor",
-      "code": "",
-      "givenName": "Jordan",
-      "familyName": "Taylor",
-      "nationality": "USA",
-      "teamIds": [
-        "cadillac-wayne-taylor-racing"
-      ],
-      "teamNames": [
-        "Cadillac Wayne Taylor Racing"
-      ],
-      "teamColors": [
-        "#D4AF37"
-      ],
-      "position": 11,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/17/2026_IWSC_JordanTaylor_355x355-290x290.png"
-    },
-    {
-      "points": 1923.0,
-      "wins": 0,
-      "category": "GTP",
-      "id": "louis-deletraz",
-      "code": "",
-      "givenName": "Louis",
-      "familyName": "Deletraz",
-      "nationality": "CHE",
-      "teamIds": [
-        "cadillac-wayne-taylor-racing"
-      ],
-      "teamNames": [
-        "Cadillac Wayne Taylor Racing"
-      ],
-      "teamColors": [
-        "#D4AF37"
-      ],
-      "position": 12,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/17/2026_IWSC_LouisDeletraz_355x355-290x290.png"
-    },
-    {
-      "points": 1920.0,
-      "wins": 0,
-      "category": "GTP",
-      "id": "dries-vanthoor",
-      "code": "",
-      "givenName": "Dries",
-      "familyName": "Vanthoor",
-      "nationality": "BEL",
-      "teamIds": [
-        "bmw-m-team-wrt"
-      ],
-      "teamNames": [
-        "BMW M Team WRT"
-      ],
-      "teamColors": [
-        "#0066B1"
-      ],
-      "position": 13,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Podium_Hypercar_2024_WEC_Fuji_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-    },
-    {
-      "points": 1920.0,
-      "wins": 0,
-      "category": "GTP",
-      "id": "sheldon-van-der-linde",
-      "code": "",
-      "givenName": "Sheldon van der",
-      "familyName": "Linde",
-      "nationality": "ZAF",
-      "teamIds": [
-        "bmw-m-team-wrt"
-      ],
-      "teamNames": [
-        "BMW M Team WRT"
-      ],
-      "teamColors": [
-        "#0066B1"
-      ],
-      "position": 14,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/2024-04-27_Motorsport%2C_DTM%2C_Oschersleben_STP_1916.jpg/960px-2024-04-27_Motorsport%2C_DTM%2C_Oschersleben_STP_1916.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-    },
-    {
-      "points": 1885.0,
-      "wins": 0,
-      "category": "GTP",
-      "id": "colin-braun",
-      "code": "",
-      "givenName": "Colin",
-      "familyName": "Braun",
-      "nationality": "USA",
-      "teamIds": [
-        "acura-meyer-shank-racing-w-curb-agajanian"
-      ],
-      "teamNames": [
-        "Acura Meyer Shank Racing w/Curb Agajanian"
-      ],
-      "teamColors": [
-        "#E40521"
-      ],
-      "position": 15,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/17/2026_IWSC_ColinBraun_355x355-290x290.png"
-    },
-    {
-      "points": 1885.0,
-      "wins": 0,
-      "category": "GTP",
-      "id": "tom-blomqvist",
-      "code": "",
-      "givenName": "Tom",
-      "familyName": "Blomqvist",
-      "nationality": "GBR",
-      "teamIds": [
-        "acura-meyer-shank-racing-w-curb-agajanian"
-      ],
-      "teamNames": [
-        "Acura Meyer Shank Racing w/Curb Agajanian"
-      ],
-      "teamColors": [
-        "#E40521"
-      ],
-      "position": 16,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/17/2026_IWSC_TomBlomqvist_355x355-290x290.png"
-    },
-    {
-      "points": 1884.0,
-      "wins": 0,
-      "category": "GTP",
-      "id": "marco-wittmann",
-      "code": "",
-      "givenName": "Marco",
-      "familyName": "Wittmann",
-      "nationality": "DEU",
-      "teamIds": [
-        "bmw-m-team-wrt"
-      ],
-      "teamNames": [
-        "BMW M Team WRT"
-      ],
-      "teamColors": [
-        "#0066B1"
-      ],
-      "position": 17,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/2025-04-26_Motorsport%2C_DTM%2C_Oschersleben_STP_3020.jpg/960px-2025-04-26_Motorsport%2C_DTM%2C_Oschersleben_STP_3020.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-    },
-    {
-      "points": 1884.0,
-      "wins": 0,
-      "category": "GTP",
-      "id": "philipp-eng",
-      "code": "",
-      "givenName": "Philipp",
-      "familyName": "Eng",
-      "nationality": "AUT",
-      "teamIds": [
-        "bmw-m-team-wrt"
-      ],
-      "teamNames": [
-        "BMW M Team WRT"
-      ],
-      "teamColors": [
-        "#0066B1"
-      ],
-      "position": 18,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2021/01/17/2026_IWSC_PhilippEng_355x355-290x290.png"
-    },
-    {
-      "points": 1873.0,
-      "wins": 1,
-      "category": "GTP",
-      "id": "filipe-albuquerque",
-      "code": "",
-      "givenName": "Filipe",
-      "familyName": "Albuquerque",
-      "nationality": "PRT",
-      "teamIds": [
-        "cadillac-wayne-taylor-racing"
-      ],
-      "teamNames": [
-        "Cadillac Wayne Taylor Racing"
-      ],
-      "teamColors": [
-        "#D4AF37"
-      ],
-      "position": 19,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/17/2026_IWSC_FilipeAlbuquerque_355x355-290x290.png"
-    },
-    {
-      "points": 1873.0,
-      "wins": 1,
-      "category": "GTP",
-      "id": "ricky-taylor",
-      "code": "",
-      "givenName": "Ricky",
-      "familyName": "Taylor",
-      "nationality": "USA",
-      "teamIds": [
-        "cadillac-wayne-taylor-racing"
-      ],
-      "teamNames": [
-        "Cadillac Wayne Taylor Racing"
-      ],
-      "teamColors": [
-        "#D4AF37"
-      ],
       "position": 20,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/17/2026_IWSC_RickyTaylor_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/laurens-vanthoor.jpg"
     },
     {
-      "points": 1708.0,
+      "points": 1959.0,
       "wins": 0,
       "category": "GTP",
       "id": "roman-de-angelis",
@@ -3784,10 +3784,10 @@
         "#006F62"
       ],
       "position": 21,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2020/01/17/2026_IWSC_RomanDeAngelis_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/roman-de-angelis.jpg"
     },
     {
-      "points": 1708.0,
+      "points": 1959.0,
       "wins": 0,
       "category": "GTP",
       "id": "ross-gunn",
@@ -3805,7 +3805,7 @@
         "#006F62"
       ],
       "position": 22,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2020/01/17/2026_IWSC_RossGunn_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/ross-gunn.jpg"
     },
     {
       "points": 1663.0,
@@ -3826,7 +3826,7 @@
         "#D4AF37"
       ],
       "position": 23,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Vestispa2024.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+      "imageUrl": "assets/portraits/faces/imsa/frederik-vesti.jpg"
     },
     {
       "points": 1184.0,
@@ -3847,7 +3847,7 @@
         "#F2C500"
       ],
       "position": 24,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2022/02/17/2026_IWSC_KaylenFrederick_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/kaylen-frederick.jpg"
     },
     {
       "points": 654.0,
@@ -3868,7 +3868,7 @@
         "#D5001C"
       ],
       "position": 25,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/17/2026_IWSC_MattCampbell_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/matt-campbell.jpg"
     },
     {
       "points": 643.0,
@@ -3889,7 +3889,7 @@
         "#E40521"
       ],
       "position": 26,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/17/2026_IWSC_KakuOhta_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/kaku-ohta.jpg"
     },
     {
       "points": 606.0,
@@ -3910,7 +3910,7 @@
         "#0066B1"
       ],
       "position": 27,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2022/01/17/2026_IWSC_RobinFrijns_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/robin-frijns.jpg"
     },
     {
       "points": 567.0,
@@ -3931,7 +3931,7 @@
         "#E40521"
       ],
       "position": 28,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Alex_Palou_at_2024_Chevrolet_Detroit_Grand_Prix.jpg/960px-Alex_Palou_at_2024_Chevrolet_Detroit_Grand_Prix.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "assets/portraits/faces/imsa/alex-palou.jpg"
     },
     {
       "points": 560.0,
@@ -3952,7 +3952,7 @@
         "#E40521"
       ],
       "position": 29,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Scott_Dixon_at_Road_America_in_2021.png/960px-Scott_Dixon_at_Road_America_in_2021.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "assets/portraits/faces/imsa/scott-dixon.jpg"
     },
     {
       "points": 548.0,
@@ -3973,7 +3973,7 @@
         "#D4AF37"
       ],
       "position": 30,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/17/2026_IWSC_ColtonHerta_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/colton-herta.jpg"
     },
     {
       "points": 518.0,
@@ -3994,7 +3994,7 @@
         "#F2C500"
       ],
       "position": 31,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2022/02/17/2026_IWSC_NicoPino_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/nico-pino.jpg"
     },
     {
       "points": 482.0,
@@ -4015,7 +4015,7 @@
         "#0066B1"
       ],
       "position": 32,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2021/01/17/2026_IWSC_KevinMagnussen_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/kevin-magnussen.jpg"
     },
     {
       "points": 472.0,
@@ -4036,7 +4036,7 @@
         "#006F62"
       ],
       "position": 33,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2020/01/17/2026_IWSC_AlexRiberas_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/alex-riberas.jpg"
     },
     {
       "points": 455.0,
@@ -4057,7 +4057,7 @@
         "#D4AF37"
       ],
       "position": 34,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2022/01/17/2026_IWSC_WillStevens_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/will-stevens.jpg"
     },
     {
       "points": 340.0,
@@ -4078,7 +4078,7 @@
         "#D4AF37"
       ],
       "position": 35,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Connor_Zilisch_Sonoma_2026.jpg/960px-Connor_Zilisch_Sonoma_2026.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "assets/portraits/faces/imsa/connor-zilisch.jpg"
     },
     {
       "points": 323.0,
@@ -4099,7 +4099,7 @@
         "#0066B1"
       ],
       "position": 36,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2022/01/17/2026_IWSC_ReneRast_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/rene-rast.jpg"
     },
     {
       "points": 252.0,
@@ -4120,7 +4120,7 @@
         "#0066B1"
       ],
       "position": 37,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2021/01/17/2026_IWSC_RaffaeleMarciello_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/raffaele-marciello.jpg"
     },
     {
       "points": 248.0,
@@ -4141,7 +4141,28 @@
         "#E40521"
       ],
       "position": 38,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/19/2026_IWSC_AJAllmendinger_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/aj-allmendinger.jpg"
+    },
+    {
+      "points": 240.0,
+      "wins": 0,
+      "category": "GTP",
+      "id": "nico-mueller",
+      "code": "",
+      "givenName": "Nico",
+      "familyName": "Mueller",
+      "nationality": "CHE",
+      "teamIds": [
+        "jdc-miller-motorsports"
+      ],
+      "teamNames": [
+        "JDC-Miller MotorSports"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 39,
+      "imageUrl": "https://www.fiawec.com/umbrella_media/2025-nicomuller-ppm-wec-680b38d30b868183958410.jpg"
     },
     {
       "points": 231.0,
@@ -4161,53 +4182,11 @@
       "teamColors": [
         "#006F62"
       ],
-      "position": 39,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2020/01/17/2026_IWSC_MarcoSorensen_355x355-290x290.png"
+      "position": 40,
+      "imageUrl": "assets/portraits/faces/imsa/marco-sorensen.jpg"
     },
     {
-      "points": 1701.0,
-      "wins": 1,
-      "category": "LMP2",
-      "id": "alex-quinn",
-      "code": "",
-      "givenName": "Alex",
-      "familyName": "Quinn",
-      "nationality": "GBR",
-      "teamIds": [
-        "crowdstrike-racing-by-apr"
-      ],
-      "teamNames": [
-        "Crowdstrike Racing by APR"
-      ],
-      "teamColors": [
-        "#E31B23"
-      ],
-      "position": 1,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2022/02/17/2026_IWSC_AlexQuinn_355x355-290x290.png"
-    },
-    {
-      "points": 1701.0,
-      "wins": 1,
-      "category": "LMP2",
-      "id": "george-kurtz",
-      "code": "",
-      "givenName": "George",
-      "familyName": "Kurtz",
-      "nationality": "USA",
-      "teamIds": [
-        "crowdstrike-racing-by-apr"
-      ],
-      "teamNames": [
-        "Crowdstrike Racing by APR"
-      ],
-      "teamColors": [
-        "#E31B23"
-      ],
-      "position": 2,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2022/02/17/2026_IWSC_GeorgeKurtz_355x355-290x290.png"
-    },
-    {
-      "points": 1665.0,
+      "points": 1950.0,
       "wins": 2,
       "category": "LMP2",
       "id": "jeremy-clarke",
@@ -4224,11 +4203,11 @@
       "teamColors": [
         "#C7D300"
       ],
-      "position": 3,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2024/01/17/2026_IWSC_JeremyClarke_355x355-290x290.png"
+      "position": 1,
+      "imageUrl": "assets/portraits/faces/imsa/jeremy-clarke.jpg"
     },
     {
-      "points": 1665.0,
+      "points": 1950.0,
       "wins": 2,
       "category": "LMP2",
       "id": "tom-dillmann",
@@ -4245,53 +4224,53 @@
       "teamColors": [
         "#C7D300"
       ],
+      "position": 2,
+      "imageUrl": "assets/portraits/faces/imsa/tom-dillmann.jpg"
+    },
+    {
+      "points": 1946.0,
+      "wins": 1,
+      "category": "LMP2",
+      "id": "alex-quinn",
+      "code": "",
+      "givenName": "Alex",
+      "familyName": "Quinn",
+      "nationality": "GBR",
+      "teamIds": [
+        "crowdstrike-racing-by-apr"
+      ],
+      "teamNames": [
+        "Crowdstrike Racing by APR"
+      ],
+      "teamColors": [
+        "#E31B23"
+      ],
+      "position": 3,
+      "imageUrl": "assets/portraits/faces/imsa/alex-quinn.jpg"
+    },
+    {
+      "points": 1946.0,
+      "wins": 1,
+      "category": "LMP2",
+      "id": "george-kurtz",
+      "code": "",
+      "givenName": "George",
+      "familyName": "Kurtz",
+      "nationality": "USA",
+      "teamIds": [
+        "crowdstrike-racing-by-apr"
+      ],
+      "teamNames": [
+        "Crowdstrike Racing by APR"
+      ],
+      "teamColors": [
+        "#E31B23"
+      ],
       "position": 4,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2024/01/17/2026_IWSC_TomDillman_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/george-kurtz.jpg"
     },
     {
-      "points": 1582.0,
-      "wins": 1,
-      "category": "LMP2",
-      "id": "dane-cameron",
-      "code": "",
-      "givenName": "Dane",
-      "familyName": "Cameron",
-      "nationality": "USA",
-      "teamIds": [
-        "ao-racing"
-      ],
-      "teamNames": [
-        "AO Racing"
-      ],
-      "teamColors": [
-        "#E91E63"
-      ],
-      "position": 5,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2023/01/18/2026_IWSC_DaneCameron_355x355-290x290.png"
-    },
-    {
-      "points": 1582.0,
-      "wins": 1,
-      "category": "LMP2",
-      "id": "pj-hyett",
-      "code": "",
-      "givenName": "PJ",
-      "familyName": "Hyett",
-      "nationality": "USA",
-      "teamIds": [
-        "ao-racing"
-      ],
-      "teamNames": [
-        "AO Racing"
-      ],
-      "teamColors": [
-        "#E91E63"
-      ],
-      "position": 6,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2023/01/18/2026_IWSC_PJHyett_355x355-290x290.png"
-    },
-    {
-      "points": 1517.0,
+      "points": 1849.0,
       "wins": 0,
       "category": "LMP2",
       "id": "daniel-goldburg",
@@ -4308,11 +4287,53 @@
       "teamColors": [
         "#0057B8"
       ],
-      "position": 7,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2022/01/25/2026_IWSC_DanielGoldburg_355x355-290x290.png"
+      "position": 5,
+      "imageUrl": "assets/portraits/faces/imsa/daniel-goldburg.jpg"
     },
     {
-      "points": 1413.0,
+      "points": 1842.0,
+      "wins": 1,
+      "category": "LMP2",
+      "id": "dane-cameron",
+      "code": "",
+      "givenName": "Dane",
+      "familyName": "Cameron",
+      "nationality": "USA",
+      "teamIds": [
+        "ao-racing"
+      ],
+      "teamNames": [
+        "AO Racing"
+      ],
+      "teamColors": [
+        "#E91E63"
+      ],
+      "position": 6,
+      "imageUrl": "assets/portraits/faces/imsa/dane-cameron.jpg"
+    },
+    {
+      "points": 1842.0,
+      "wins": 1,
+      "category": "LMP2",
+      "id": "pj-hyett",
+      "code": "",
+      "givenName": "PJ",
+      "familyName": "Hyett",
+      "nationality": "USA",
+      "teamIds": [
+        "ao-racing"
+      ],
+      "teamNames": [
+        "AO Racing"
+      ],
+      "teamColors": [
+        "#E91E63"
+      ],
+      "position": 7,
+      "imageUrl": "assets/portraits/faces/imsa/pj-hyett.jpg"
+    },
+    {
+      "points": 1761.0,
       "wins": 0,
       "category": "LMP2",
       "id": "misha-goikhberg",
@@ -4330,10 +4351,10 @@
         "#00A3E0"
       ],
       "position": 8,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/23/2026_IWSC_MishaGoikhberg_New_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/misha-goikhberg.jpg"
     },
     {
-      "points": 1366.0,
+      "points": 1667.0,
       "wins": 0,
       "category": "LMP2",
       "id": "john-farano",
@@ -4351,7 +4372,154 @@
         "#1E3A5F"
       ],
       "position": 9,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2020/01/17/2026_IWSC_JohnFarano_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/john-farano.jpg"
+    },
+    {
+      "points": 1591.0,
+      "wins": 1,
+      "category": "LMP2",
+      "id": "mikkel-jensen",
+      "code": "",
+      "givenName": "Mikkel",
+      "familyName": "Jensen",
+      "nationality": "DNK",
+      "teamIds": [
+        "united-autosports-usa"
+      ],
+      "teamNames": [
+        "United Autosports USA"
+      ],
+      "teamColors": [
+        "#0057B8"
+      ],
+      "position": 10,
+      "imageUrl": "assets/portraits/faces/imsa/mikkel-jensen.jpg"
+    },
+    {
+      "points": 1591.0,
+      "wins": 1,
+      "category": "LMP2",
+      "id": "phil-fayer",
+      "code": "",
+      "givenName": "Phil",
+      "familyName": "Fayer",
+      "nationality": "CAN",
+      "teamIds": [
+        "united-autosports-usa"
+      ],
+      "teamNames": [
+        "United Autosports USA"
+      ],
+      "teamColors": [
+        "#0057B8"
+      ],
+      "position": 11,
+      "imageUrl": "assets/portraits/faces/imsa/phil-fayer.jpg"
+    },
+    {
+      "points": 1559.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "paul-di-resta",
+      "code": "",
+      "givenName": "Paul Di",
+      "familyName": "Resta",
+      "nationality": "GBR",
+      "teamIds": [
+        "united-autosports-usa"
+      ],
+      "teamNames": [
+        "United Autosports USA"
+      ],
+      "teamColors": [
+        "#0057B8"
+      ],
+      "position": 12,
+      "imageUrl": "assets/portraits/faces/imsa/paul-di-resta.jpg"
+    },
+    {
+      "points": 1550.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "tobi-lutke",
+      "code": "",
+      "givenName": "Tobi",
+      "familyName": "Lutke",
+      "nationality": "CAN",
+      "teamIds": [
+        "tds-racing"
+      ],
+      "teamNames": [
+        "TDS Racing"
+      ],
+      "teamColors": [
+        "#D71920"
+      ],
+      "position": 13,
+      "imageUrl": "assets/portraits/faces/imsa/tobi-lutke.jpg"
+    },
+    {
+      "points": 1500.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "chris-cumming",
+      "code": "",
+      "givenName": "Chris",
+      "familyName": "Cumming",
+      "nationality": "CAN",
+      "teamIds": [
+        "pratt-miller-motorsports"
+      ],
+      "teamNames": [
+        "Pratt Miller Motorsports"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 14,
+      "imageUrl": "assets/portraits/faces/imsa/chris-cumming.jpg"
+    },
+    {
+      "points": 1500.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "pietro-fittipaldi",
+      "code": "",
+      "givenName": "Pietro",
+      "familyName": "Fittipaldi",
+      "nationality": "BRA",
+      "teamIds": [
+        "pratt-miller-motorsports"
+      ],
+      "teamNames": [
+        "Pratt Miller Motorsports"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "position": 15,
+      "imageUrl": "assets/portraits/faces/imsa/pietro-fittipaldi.jpg"
+    },
+    {
+      "points": 1449.0,
+      "wins": 0,
+      "category": "LMP2",
+      "id": "harry-tincknell",
+      "code": "",
+      "givenName": "Harry",
+      "familyName": "Tincknell",
+      "nationality": "GBR",
+      "teamIds": [
+        "bryan-herta-autosport-with-pr1-mathiasen"
+      ],
+      "teamNames": [
+        "Bryan Herta Autosport with PR1/Mathiasen"
+      ],
+      "teamColors": [
+        "#00A3E0"
+      ],
+      "position": 16,
+      "imageUrl": "assets/portraits/faces/imsa/harry-tincknell.jpg"
     },
     {
       "points": 1366.0,
@@ -4371,50 +4539,8 @@
       "teamColors": [
         "#1E3A5F"
       ],
-      "position": 10,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2020/01/17/2026_IWSC_SebastianAlvarez_355x355-290x290.png"
-    },
-    {
-      "points": 1358.0,
-      "wins": 1,
-      "category": "LMP2",
-      "id": "mikkel-jensen",
-      "code": "",
-      "givenName": "Mikkel",
-      "familyName": "Jensen",
-      "nationality": "DNK",
-      "teamIds": [
-        "united-autosports-usa"
-      ],
-      "teamNames": [
-        "United Autosports USA"
-      ],
-      "teamColors": [
-        "#0057B8"
-      ],
-      "position": 11,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/17/2026_IWSC_MikkelJensen_355x355-290x290.png"
-    },
-    {
-      "points": 1358.0,
-      "wins": 1,
-      "category": "LMP2",
-      "id": "phil-fayer",
-      "code": "",
-      "givenName": "Phil",
-      "familyName": "Fayer",
-      "nationality": "CAN",
-      "teamIds": [
-        "united-autosports-usa"
-      ],
-      "teamNames": [
-        "United Autosports USA"
-      ],
-      "teamColors": [
-        "#0057B8"
-      ],
-      "position": 12,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/23/2026_IWSC_PhilFayer_355x355-290x290.png"
+      "position": 17,
+      "imageUrl": "assets/portraits/faces/imsa/sebastian-alvarez.jpg"
     },
     {
       "points": 1353.0,
@@ -4434,18 +4560,18 @@
       "teamColors": [
         "#E31B23"
       ],
-      "position": 13,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2022/02/17/2026_IWSC_TobySowery_355x355-290x290.png"
+      "position": 18,
+      "imageUrl": "assets/portraits/faces/imsa/toby-sowery.jpg"
     },
     {
-      "points": 1284.0,
+      "points": 1286.0,
       "wins": 0,
       "category": "LMP2",
-      "id": "tobi-lutke",
+      "id": "mathias-beche",
       "code": "",
-      "givenName": "Tobi",
-      "familyName": "Lutke",
-      "nationality": "CAN",
+      "givenName": "Mathias",
+      "familyName": "Beche",
+      "nationality": "CHE",
       "teamIds": [
         "tds-racing"
       ],
@@ -4455,8 +4581,8 @@
       "teamColors": [
         "#D71920"
       ],
-      "position": 14,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2025/01/17/2026_IWSC_TobiLutke_355x355-290x290.png"
+      "position": 19,
+      "imageUrl": "assets/portraits/faces/imsa/mathias-beche.jpg"
     },
     {
       "points": 1280.0,
@@ -4476,8 +4602,8 @@
       "teamColors": [
         "#C7D300"
       ],
-      "position": 15,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2024/01/17/2026_IWSC_BijoyGarg_355x355-290x290.png"
+      "position": 20,
+      "imageUrl": "assets/portraits/faces/imsa/bijoy-garg.jpg"
     },
     {
       "points": 1260.0,
@@ -4497,29 +4623,8 @@
       "teamColors": [
         "#E91E63"
       ],
-      "position": 16,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2023/01/18/2026_IWSC_JonnyEdgar_355x355-290x290.png"
-    },
-    {
-      "points": 1227.0,
-      "wins": 0,
-      "category": "LMP2",
-      "id": "paul-di-resta",
-      "code": "",
-      "givenName": "Paul Di",
-      "familyName": "Resta",
-      "nationality": "GBR",
-      "teamIds": [
-        "united-autosports-usa"
-      ],
-      "teamNames": [
-        "United Autosports USA"
-      ],
-      "teamColors": [
-        "#0057B8"
-      ],
-      "position": 17,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2024/01/17/2026_IWSC_PaulDiResta_355x355-290x290.png"
+      "position": 21,
+      "imageUrl": "assets/portraits/faces/imsa/jonny-edgar.jpg"
     },
     {
       "points": 1227.0,
@@ -4539,71 +4644,29 @@
       "teamColors": [
         "#0057B8"
       ],
-      "position": 18,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2024/01/17/2026_IWSC_RasmusLindh_355x355-290x290.png"
+      "position": 22,
+      "imageUrl": "assets/portraits/faces/imsa/rasmus-lindh.jpg"
     },
     {
-      "points": 1218.0,
+      "points": 1164.0,
       "wins": 0,
       "category": "LMP2",
-      "id": "chris-cumming",
+      "id": "tristan-vautier",
       "code": "",
-      "givenName": "Chris",
-      "familyName": "Cumming",
-      "nationality": "CAN",
+      "givenName": "Tristan",
+      "familyName": "Vautier",
+      "nationality": "FRA",
       "teamIds": [
-        "pratt-miller-motorsports"
+        "tower-motorsports"
       ],
       "teamNames": [
-        "Pratt Miller Motorsports"
+        "Tower Motorsports"
       ],
       "teamColors": [
-        "#F2C500"
+        "#1E3A5F"
       ],
-      "position": 19,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2025/01/22/2026_IWSC_ChrisCumming_355x355-290x290.png"
-    },
-    {
-      "points": 1218.0,
-      "wins": 0,
-      "category": "LMP2",
-      "id": "pietro-fittipaldi",
-      "code": "",
-      "givenName": "Pietro",
-      "familyName": "Fittipaldi",
-      "nationality": "BRA",
-      "teamIds": [
-        "pratt-miller-motorsports"
-      ],
-      "teamNames": [
-        "Pratt Miller Motorsports"
-      ],
-      "teamColors": [
-        "#F2C500"
-      ],
-      "position": 20,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2023/01/17/2026_IWSC_PietroFittipaldi_355x355-290x290.png"
-    },
-    {
-      "points": 1101.0,
-      "wins": 0,
-      "category": "LMP2",
-      "id": "harry-tincknell",
-      "code": "",
-      "givenName": "Harry",
-      "familyName": "Tincknell",
-      "nationality": "GBR",
-      "teamIds": [
-        "bryan-herta-autosport-with-pr1-mathiasen"
-      ],
-      "teamNames": [
-        "Bryan Herta Autosport with PR1/Mathiasen"
-      ],
-      "teamColors": [
-        "#00A3E0"
-      ],
-      "position": 21,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Harry_Tincknell_%28portrait%2C_2024%29.jpg/960px-Harry_Tincknell_%28portrait%2C_2024%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "position": 23,
+      "imageUrl": "assets/portraits/faces/imsa/tristan-vautier.jpg"
     },
     {
       "points": 1101.0,
@@ -4623,8 +4686,8 @@
       "teamColors": [
         "#00A3E0"
       ],
-      "position": 22,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Parker_Thompson_-_2024_IMSA_VSR.jpg/960px-Parker_Thompson_-_2024_IMSA_VSR.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "position": 24,
+      "imageUrl": "assets/portraits/faces/imsa/parker-thompson.jpg"
     },
     {
       "points": 1097.0,
@@ -4644,8 +4707,8 @@
       "teamColors": [
         "#1769AA"
       ],
-      "position": 23,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2021/01/17/2026_IWSC_FerdinandHabsburg_355x355-290x290.png"
+      "position": 25,
+      "imageUrl": "assets/portraits/faces/imsa/ferdinand-habsburg.jpg"
     },
     {
       "points": 1097.0,
@@ -4665,8 +4728,8 @@
       "teamColors": [
         "#1769AA"
       ],
-      "position": 24,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/68/Jacob_Abel_Indy_NXT.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+      "position": 26,
+      "imageUrl": "assets/portraits/faces/imsa/jacob-abel.jpg"
     },
     {
       "points": 1097.0,
@@ -4686,8 +4749,8 @@
       "teamColors": [
         "#1769AA"
       ],
-      "position": 25,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_NaveenRao_355x355-290x290.png"
+      "position": 27,
+      "imageUrl": "assets/portraits/faces/imsa/naveen-rao.jpg"
     },
     {
       "points": 1092.0,
@@ -4707,8 +4770,8 @@
       "teamColors": [
         "#0057B8"
       ],
-      "position": 26,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/17/2026_IWSC_HunterMcElrea_355x355-290x290.png"
+      "position": 28,
+      "imageUrl": "assets/portraits/faces/imsa/hunter-mcelrea.jpg"
     },
     {
       "points": 1040.0,
@@ -4728,29 +4791,8 @@
       "teamColors": [
         "#D71920"
       ],
-      "position": 27,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2025/01/17/2026_IWSC_DavidHeinemeierHansson_355x355-290x290.png"
-    },
-    {
-      "points": 1020.0,
-      "wins": 0,
-      "category": "LMP2",
-      "id": "mathias-beche",
-      "code": "",
-      "givenName": "Mathias",
-      "familyName": "Beche",
-      "nationality": "CHE",
-      "teamIds": [
-        "tds-racing"
-      ],
-      "teamNames": [
-        "TDS Racing"
-      ],
-      "teamColors": [
-        "#D71920"
-      ],
-      "position": 28,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2025/01/17/2026_IWSC_MathiasBeche_355x355-290x290.png"
+      "position": 29,
+      "imageUrl": "assets/portraits/faces/imsa/david-heinemeier-hansson.jpg"
     },
     {
       "points": 943.0,
@@ -4770,8 +4812,8 @@
       "teamColors": [
         "#F2C500"
       ],
-      "position": 29,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2023/01/17/2026_IWSC_ManuelEspiritoSanto_355x355-290x290.png"
+      "position": 30,
+      "imageUrl": "assets/portraits/faces/imsa/manuel-espirito-santo.jpg"
     },
     {
       "points": 921.0,
@@ -4791,8 +4833,8 @@
       "teamColors": [
         "#F57C00"
       ],
-      "position": 30,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/29/2026_IWSC_JonField_355x355-290x290.png"
+      "position": 31,
+      "imageUrl": "assets/portraits/faces/imsa/jon-field.jpg"
     },
     {
       "points": 921.0,
@@ -4812,29 +4854,8 @@
       "teamColors": [
         "#F57C00"
       ],
-      "position": 31,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2025/01/18/2025_IWSC_OliverJarvis_355x355-290x290.jpg"
-    },
-    {
-      "points": 863.0,
-      "wins": 0,
-      "category": "LMP2",
-      "id": "tristan-vautier",
-      "code": "",
-      "givenName": "Tristan",
-      "familyName": "Vautier",
-      "nationality": "FRA",
-      "teamIds": [
-        "tower-motorsports"
-      ],
-      "teamNames": [
-        "Tower Motorsports"
-      ],
-      "teamColors": [
-        "#1E3A5F"
-      ],
       "position": 32,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Tristan_Vautier_at_Carb_Day_2015_-_Sarah_Stierch_%28cropped%29.jpg/960px-Tristan_Vautier_at_Carb_Day_2015_-_Sarah_Stierch_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "assets/portraits/faces/imsa/oliver-jarvis.jpg"
     },
     {
       "points": 710.0,
@@ -4855,7 +4876,28 @@
         "#F57C00"
       ],
       "position": 33,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2021/01/17/2026_IWSC_SethLucas_355x355-290x290.png"
+      "imageUrl": "assets/portraits/faces/imsa/seth-lucas.jpg"
+    },
+    {
+      "points": 666.0,
+      "wins": 1,
+      "category": "LMP2",
+      "id": "christian-rasmussen",
+      "code": "",
+      "givenName": "Christian",
+      "familyName": "Rasmussen",
+      "nationality": "DNK",
+      "teamIds": [
+        "era-motorsport"
+      ],
+      "teamNames": [
+        "Era Motorsport"
+      ],
+      "teamColors": [
+        "#1769AA"
+      ],
+      "position": 34,
+      "imageUrl": "assets/portraits/faces/imsa/christian-rasmussen.jpg"
     },
     {
       "points": 521.0,
@@ -4875,8 +4917,8 @@
       "teamColors": [
         "#0057B8"
       ],
-      "position": 34,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/17/2026_IWSC_BenHanley_355x355-290x290.png"
+      "position": 35,
+      "imageUrl": "assets/portraits/faces/imsa/ben-hanley.jpg"
     },
     {
       "points": 480.0,
@@ -4896,8 +4938,29 @@
       "teamColors": [
         "#D71920"
       ],
-      "position": 35,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2025/01/17/2026_IWSC_CharlesMilesi_355x355-290x290.png"
+      "position": 36,
+      "imageUrl": "assets/portraits/faces/imsa/charles-milesi.jpg"
+    },
+    {
+      "points": 374.0,
+      "wins": 1,
+      "category": "LMP2",
+      "id": "nick-boulle",
+      "code": "",
+      "givenName": "Nick",
+      "familyName": "Boulle",
+      "nationality": "USA",
+      "teamIds": [
+        "era-motorsport"
+      ],
+      "teamNames": [
+        "Era Motorsport"
+      ],
+      "teamColors": [
+        "#1769AA"
+      ],
+      "position": 37,
+      "imageUrl": "https://storage.googleapis.com/ecm-prod/assets/1/pilote/5887/nick-boulle_76849a.png"
     },
     {
       "points": 373.0,
@@ -4917,8 +4980,8 @@
       "teamColors": [
         "#E31B23"
       ],
-      "position": 36,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2022/02/17/2026_IWSC_MaltheJakobsen_355x355-290x290.png"
+      "position": 38,
+      "imageUrl": "assets/portraits/faces/imsa/malthe-jakobsen.jpg"
     },
     {
       "points": 355.0,
@@ -4938,8 +5001,8 @@
       "teamColors": [
         "#C7D300"
       ],
-      "position": 37,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2025/01/22/2026_IWSC_AntonioFelixdaCosta_355x355-290x290.png"
+      "position": 39,
+      "imageUrl": "assets/portraits/faces/imsa/antonio-felix-da-costa.jpg"
     },
     {
       "points": 325.0,
@@ -4959,8 +5022,8 @@
       "teamColors": [
         "#C7D300"
       ],
-      "position": 38,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2023/01/18/2026_IWSC_GeorgeKolovos_355x355-290x290.png"
+      "position": 40,
+      "imageUrl": "assets/portraits/faces/imsa/george-kolovos.jpg"
     },
     {
       "points": 325.0,
@@ -4980,8 +5043,8 @@
       "teamColors": [
         "#C7D300"
       ],
-      "position": 39,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2023/01/18/2026_IWSC_JakubSmiechowski_355x355-290x290.png"
+      "position": 41,
+      "imageUrl": "assets/portraits/faces/imsa/jakub-smiechowski.jpg"
     },
     {
       "points": 325.0,
@@ -5001,8 +5064,8 @@
       "teamColors": [
         "#C7D300"
       ],
-      "position": 40,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/20/2026_IMPC_NickCassidy_355x355-290x290.png"
+      "position": 42,
+      "imageUrl": "assets/portraits/faces/imsa/nick-cassidy.jpg"
     },
     {
       "points": 325.0,
@@ -5022,8 +5085,8 @@
       "teamColors": [
         "#C7D300"
       ],
-      "position": 41,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Nolan_Siegel_Road_America_2026.jpg/960px-Nolan_Siegel_Road_America_2026.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "position": 43,
+      "imageUrl": "assets/portraits/faces/imsa/nolan-siegel.jpg"
     },
     {
       "points": 312.0,
@@ -5043,8 +5106,8 @@
       "teamColors": [
         "#D4AF37"
       ],
-      "position": 42,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/17/2026_IWSC_RickyTaylor_355x355-290x290.png"
+      "position": 44,
+      "imageUrl": "assets/portraits/faces/imsa/ricky-taylor.jpg"
     },
     {
       "points": 310.0,
@@ -5064,29 +5127,8 @@
       "teamColors": [
         "#0057B8"
       ],
-      "position": 43,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2024/01/17/2026_IWSC_GregoireSaucy_355x355-290x290.png"
-    },
-    {
-      "points": 292.0,
-      "wins": 0,
-      "category": "LMP2",
-      "id": "christian-rasmussen",
-      "code": "",
-      "givenName": "Christian",
-      "familyName": "Rasmussen",
-      "nationality": "DNK",
-      "teamIds": [
-        "ao-racing"
-      ],
-      "teamNames": [
-        "AO Racing"
-      ],
-      "teamColors": [
-        "#E91E63"
-      ],
-      "position": 44,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Era_LMP2_WGI23_03.jpg/960px-Era_LMP2_WGI23_03.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "position": 45,
+      "imageUrl": "assets/portraits/faces/imsa/gregoire-saucy.jpg"
     },
     {
       "points": 278.0,
@@ -5106,8 +5148,8 @@
       "teamColors": [
         "#00A3E0"
       ],
-      "position": 45,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2021/01/22/2026_IWSC_BenKeating_355x355-290x290.png"
+      "position": 46,
+      "imageUrl": "assets/portraits/faces/imsa/ben-keating.jpg"
     },
     {
       "points": 268.0,
@@ -5127,7 +5169,7 @@
       "teamColors": [
         "#F2C500"
       ],
-      "position": 46,
+      "position": 47,
       "imageUrl": "assets/portraits/faces/imsa/gerry-kraut.jpg"
     },
     {
@@ -5148,8 +5190,8 @@
       "teamColors": [
         "#F2C500"
       ],
-      "position": 47,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Riley_LMP3_WGI23_03.jpg/960px-Riley_LMP3_WGI23_03.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "position": 48,
+      "imageUrl": "assets/portraits/faces/imsa/josh-burdon.jpg"
     },
     {
       "points": 268.0,
@@ -5169,8 +5211,8 @@
       "teamColors": [
         "#F2C500"
       ],
-      "position": 48,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/99/SennanFielding.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+      "position": 49,
+      "imageUrl": "assets/portraits/faces/imsa/sennan-fielding.jpg"
     },
     {
       "points": 258.0,
@@ -5190,8 +5232,8 @@
       "teamColors": [
         "#F57C00"
       ],
-      "position": 49,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Job_van_uitert.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+      "position": 50,
+      "imageUrl": "assets/portraits/faces/imsa/job-van-uitert.jpg"
     },
     {
       "points": 250.0,
@@ -5211,8 +5253,8 @@
       "teamColors": [
         "#1E3A5F"
       ],
-      "position": 50,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Kyffin_Simpson_at_Long_Beach_%282024%29.jpg/960px-Kyffin_Simpson_at_Long_Beach_%282024%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "position": 51,
+      "imageUrl": "assets/portraits/faces/imsa/kyffin-simpson.jpg"
     },
     {
       "points": 250.0,
@@ -5232,8 +5274,8 @@
       "teamColors": [
         "#1E3A5F"
       ],
-      "position": 51,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2020/01/17/2026_IWSC_SebastienBourdais_355x355-290x290.png"
+      "position": 52,
+      "imageUrl": "assets/portraits/faces/imsa/sebastien-bourdais.jpg"
     },
     {
       "points": 244.0,
@@ -5253,8 +5295,8 @@
       "teamColors": [
         "#1769AA"
       ],
-      "position": 52,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_LoganSargeant_355x355_1-290x290.png"
+      "position": 53,
+      "imageUrl": "assets/portraits/faces/imsa/logan-sargeant.jpg"
     },
     {
       "points": 222.0,
@@ -5274,8 +5316,8 @@
       "teamColors": [
         "#F2C500"
       ],
-      "position": 53,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Enzo_Fittipaldi_Austria_2022.jpg/960px-Enzo_Fittipaldi_Austria_2022.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "position": 54,
+      "imageUrl": "assets/portraits/faces/imsa/enzo-fittipaldi.jpg"
     },
     {
       "points": 211.0,
@@ -5295,7 +5337,7 @@
       "teamColors": [
         "#F57C00"
       ],
-      "position": 54,
+      "position": 55,
       "imageUrl": "assets/portraits/faces/imsa/max-van-der-snel.jpg"
     },
     {
@@ -5316,8 +5358,8 @@
       "teamColors": [
         "#E10600"
       ],
-      "position": 55,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2023/01/17/2026_IWSC_DylanMurry_355x355-290x290.png"
+      "position": 56,
+      "imageUrl": "assets/portraits/faces/imsa/dylan-murry.jpg"
     },
     {
       "points": 199.0,
@@ -5337,8 +5379,8 @@
       "teamColors": [
         "#E10600"
       ],
-      "position": 56,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2023/01/17/2026_IWSC_FrancoisPerrodo_355x355-290x290.png"
+      "position": 57,
+      "imageUrl": "assets/portraits/faces/imsa/francois-perrodo.jpg"
     },
     {
       "points": 199.0,
@@ -5358,8 +5400,8 @@
       "teamColors": [
         "#E10600"
       ],
-      "position": 57,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/00/Matthieu_Vaxivi%C3%A8re_in_2023.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+      "position": 58,
+      "imageUrl": "assets/portraits/faces/imsa/matthieu-vaxiviere.jpg"
     },
     {
       "points": 199.0,
@@ -5379,8 +5421,8 @@
       "teamColors": [
         "#E10600"
       ],
-      "position": 58,
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2023/01/17/2026_IWSC_NicklasNielsen_355x355-290x290.png"
+      "position": 59,
+      "imageUrl": "assets/portraits/faces/imsa/nicklas-nielsen.jpg"
     }
   ]
 }

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import shutil
 import sys
 import time
 from pathlib import Path
@@ -27,9 +28,27 @@ IMSA = stored_sources("imsa_driver_portraits.json")
 OFFICIAL = stored_sources("official_driver_portraits.json")
 
 
+def mapped_source(mapping: dict[str, str], name: str) -> str | None:
+    normalized = " ".join(name.split()).casefold()
+    return next(
+        (value for key, value in mapping.items() if " ".join(key.split()).casefold() == normalized),
+        None,
+    )
+
+
 def original_source(series: str, driver: dict) -> str | None:
     name = f"{driver['givenName']} {driver['familyName']}"
     slug = slugify(name)
+    verified_face = {
+        "christian-rasmussen": "assets/portraits/faces/indycar/christian-rasmussen.jpg",
+        "james-roe": "assets/portraits/faces/indynxt/james-roe.jpg",
+    }.get(slug)
+    if verified_face and (ROOT / verified_face).exists():
+        return verified_face
+    for mapping in (IMSA, OFFICIAL, WIKI):
+        source = mapped_source(mapping, name)
+        if source:
+            return source
     for suffix in ("jpg", "png"):
         local = ROOT / "assets" / "portraits" / series / f"{slug}.{suffix}"
         if local.exists():
@@ -38,12 +57,16 @@ def original_source(series: str, driver: dict) -> str | None:
         matches = list((ROOT / "assets" / "portraits").glob(f"*/{slug}.{suffix}"))
         if matches:
             return matches[0].relative_to(ROOT).as_posix()
-    if name in IMSA:
-        return IMSA[name]
-    if name in OFFICIAL:
-        return OFFICIAL[name]
-    if name in WIKI:
-        return WIKI[name]
+    # Only reuse an old crop after checking current verified sources. This
+    # prevents a previously bad crop (car, torso, or background) from
+    # permanently shadowing a corrected official portrait URL.
+    for suffix in ("jpg", "png"):
+        local_face = ROOT / "assets" / "portraits" / "faces" / series / f"{slug}.{suffix}"
+        if local_face.exists():
+            return local_face.relative_to(ROOT).as_posix()
+        matches = list((ROOT / "assets" / "portraits" / "faces").glob(f"*/{slug}.{suffix}"))
+        if matches:
+            return matches[0].relative_to(ROOT).as_posix()
     current = driver.get("imageUrl")
     return current if current and "/faces/" not in current else None
 
@@ -83,27 +106,37 @@ def face_crop(image: np.ndarray, crop_factor: float = 1.72) -> np.ndarray | None
     size = max(1, int(max(w, h) * crop_factor))
     cx = x + w // 2
     cy = y + int(h * 0.52)
-    left = cx - size // 2
-    top = cy - size // 2
+    # Keep the square inside the original photograph. Padding with duplicated
+    # edge pixels visibly stretched heads near the image boundary.
+    size = min(size, width, height)
+    left = max(0, min(cx - size // 2, width - size))
+    top = max(0, min(cy - size // 2, height - size))
     right = left + size
     bottom = top + size
-    # Pad beyond the photograph instead of clipping and stretching.  This is
-    # what previously distorted portraits close to an edge (notably Kubica).
-    pad_left = max(0, -left)
-    pad_top = max(0, -top)
-    pad_right = max(0, right - width)
-    pad_bottom = max(0, bottom - height)
-    if pad_left or pad_top or pad_right or pad_bottom:
-        image = cv2.copyMakeBorder(
-            image, pad_top, pad_bottom, pad_left, pad_right, cv2.BORDER_REPLICATE
-        )
-        left += pad_left
-        right += pad_left
-        top += pad_top
-        bottom += pad_top
     crop = image[top:bottom, left:right]
     if crop.size == 0:
         return None
+    return cv2.resize(crop, (320, 320), interpolation=cv2.INTER_LANCZOS4)
+
+
+def verified_manual_crop(image: np.ndarray, slug: str) -> np.ndarray | None:
+    # Normalized, visually verified boxes for authentic portraits on which
+    # YuNet does not return a detection. Values are center-x, center-y and
+    # square size relative to the source dimensions.
+    boxes = {
+        "alec-udell": (0.67, 0.29, 0.48),
+        "ryan-yardley": (0.62, 0.28, 0.45),
+        "fran-rueda": (0.50, 0.26, 0.58),
+    }
+    box = boxes.get(slug)
+    if image is None or box is None:
+        return None
+    height, width = image.shape[:2]
+    size = max(1, int(min(width, height) * box[2]))
+    cx, cy = int(width * box[0]), int(height * box[1])
+    left = max(0, min(cx - size // 2, width - size))
+    top = max(0, min(cy - size // 2, height - size))
+    crop = image[top : top + size, left : left + size]
     return cv2.resize(crop, (320, 320), interpolation=cv2.INTER_LANCZOS4)
 
 
@@ -125,10 +158,23 @@ def process(series: str, only_slug: str | None = None, *, only_missing: bool = F
             failed += 1
             continue
         target = output / f"{slugify(name)}.jpg"
-        crop = face_crop(
-            read_image(source),
-            crop_factor=1.32 if series == "indynxt" else 1.72,
-        )
+        if (
+            source.startswith("assets/portraits/faces/")
+            and slugify(name) in {"christian-rasmussen", "james-roe"}
+        ):
+            source_path = ROOT / source
+            if source_path.resolve() != target.resolve():
+                shutil.copyfile(source_path, target)
+            driver["imageUrl"] = f"assets/portraits/faces/{series}/{target.name}"
+            success += 1
+            continue
+        # Keep the complete head inside the square with a small margin.  The
+        # previous tighter INDY NXT crop cut off chins, hair and sometimes half
+        # of the face when the detected box sat close to an image edge.
+        image = read_image(source)
+        crop = face_crop(image, crop_factor=1.78)
+        if crop is None:
+            crop = verified_manual_crop(image, slugify(name))
         if crop is None:
             driver["imageUrl"] = None
             failed += 1
