@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-27T08:08:00.380202Z",
+  "lastSuccessfulUpdate": "2026-09-27T15:41:33.835549Z",
   "source": {
     "name": "fia-wec-official-championship",
     "url": "https://www.fiawec.com/en/season/2026"
@@ -8,49 +8,70 @@
   "data": [
     {
       "position": 1,
-      "points": 75.0,
+      "points": 89.0,
       "wins": 2,
-      "id": "rene-rast",
-      "code": "20",
-      "givenName": "René",
-      "familyName": "Rast",
-      "nationality": "GER",
+      "id": "brendon-hartley",
+      "code": "8",
+      "givenName": "Brendon",
+      "familyName": "Hartley",
+      "nationality": "NZL",
       "teamIds": [
-        "bmw"
+        "toyota"
       ],
       "teamNames": [
-        "BMW"
+        "Toyota"
       ],
       "teamColors": [
-        "#0066B1"
+        "#EB0A1E"
       ],
       "category": "HYPERCAR",
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2022/01/17/2026_IWSC_ReneRast_355x355-290x290.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Brendon_Hartley_at_the_2025_Adelaide_Grand_Final_-_01.jpg/960px-Brendon_Hartley_at_the_2025_Adelaide_Grand_Final_-_01.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
       "position": 1,
-      "points": 75.0,
-      "wins": 2,
-      "id": "robin-frijns",
-      "code": "20",
-      "givenName": "Robin",
-      "familyName": "Frijns",
-      "nationality": "NED",
+      "points": 89.0,
+      "wins": 0,
+      "id": "ryo-hirakawa",
+      "code": "8",
+      "givenName": "Ryō",
+      "familyName": "Hirakawa",
+      "nationality": "JPN",
       "teamIds": [
-        "bmw"
+        "toyota"
       ],
       "teamNames": [
-        "BMW"
+        "Toyota"
       ],
       "teamColors": [
-        "#0066B1"
+        "#EB0A1E"
       ],
       "category": "HYPERCAR",
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2022/01/17/2026_IWSC_RobinFrijns_355x355-290x290.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Ryo_Hirakawa_2024_WEC_Fuji_3.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
+      "position": 1,
+      "points": 89.0,
+      "wins": 2,
+      "id": "sebastien-buemi",
+      "code": "8",
+      "givenName": "Sébastien",
+      "familyName": "Buemi",
+      "nationality": "SUI",
+      "teamIds": [
+        "toyota"
+      ],
+      "teamNames": [
+        "Toyota"
+      ],
+      "teamColors": [
+        "#EB0A1E"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/05/Ryo_Hirakawa%2C_Brendon_Hartley_%26_Sebastien_Buemi_take_the_podium_for_2nd_in_Hypercar_at_the_2023_Le_Mans_%2853468554280%29_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
       "position": 2,
-      "points": 75.0,
+      "points": 79.0,
       "wins": 0,
       "id": "kamui-kobayashi",
       "code": "7",
@@ -71,7 +92,7 @@
     },
     {
       "position": 2,
-      "points": 75.0,
+      "points": 79.0,
       "wins": 0,
       "id": "mike-conway",
       "code": "7",
@@ -92,7 +113,7 @@
     },
     {
       "position": 2,
-      "points": 75.0,
+      "points": 79.0,
       "wins": 0,
       "id": "nyck-de-vries",
       "code": "7",
@@ -113,6 +134,90 @@
     },
     {
       "position": 3,
+      "points": 75.0,
+      "wins": 4,
+      "id": "rene-rast",
+      "code": "20",
+      "givenName": "René",
+      "familyName": "Rast",
+      "nationality": "GER",
+      "teamIds": [
+        "bmw"
+      ],
+      "teamNames": [
+        "BMW"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2022/01/17/2026_IWSC_ReneRast_355x355-290x290.png"
+    },
+    {
+      "position": 3,
+      "points": 75.0,
+      "wins": 4,
+      "id": "robin-frijns",
+      "code": "20",
+      "givenName": "Robin",
+      "familyName": "Frijns",
+      "nationality": "NED",
+      "teamIds": [
+        "bmw"
+      ],
+      "teamNames": [
+        "BMW"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2022/01/17/2026_IWSC_RobinFrijns_355x355-290x290.png"
+    },
+    {
+      "position": 4,
+      "points": 69.0,
+      "wins": 0,
+      "id": "kevin-magnussen",
+      "code": "15",
+      "givenName": "Kevin",
+      "familyName": "Magnussen",
+      "nationality": "DEN",
+      "teamIds": [
+        "bmw"
+      ],
+      "teamNames": [
+        "BMW"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2021/01/17/2026_IWSC_KevinMagnussen_355x355-290x290.png"
+    },
+    {
+      "position": 4,
+      "points": 69.0,
+      "wins": 0,
+      "id": "raffaele-marciello",
+      "code": "15",
+      "givenName": "Raffaele",
+      "familyName": "Marciello",
+      "nationality": "SUI",
+      "teamIds": [
+        "bmw"
+      ],
+      "teamNames": [
+        "BMW"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2021/01/17/2026_IWSC_RaffaeleMarciello_355x355-290x290.png"
+    },
+    {
+      "position": 5,
       "points": 65.0,
       "wins": 0,
       "id": "sheldon-van-der-linde",
@@ -133,71 +238,29 @@
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/2024-04-27_Motorsport%2C_DTM%2C_Oschersleben_STP_1916.jpg/960px-2024-04-27_Motorsport%2C_DTM%2C_Oschersleben_STP_1916.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
-      "position": 4,
-      "points": 64.0,
-      "wins": 1,
-      "id": "brendon-hartley",
-      "code": "8",
-      "givenName": "Brendon",
-      "familyName": "Hartley",
-      "nationality": "NZL",
-      "teamIds": [
-        "toyota"
-      ],
-      "teamNames": [
-        "Toyota"
-      ],
-      "teamColors": [
-        "#EB0A1E"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Brendon_Hartley_at_the_2025_Adelaide_Grand_Final_-_01.jpg/960px-Brendon_Hartley_at_the_2025_Adelaide_Grand_Final_-_01.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-    },
-    {
-      "position": 4,
-      "points": 64.0,
+      "position": 6,
+      "points": 63.0,
       "wins": 0,
-      "id": "ryo-hirakawa",
-      "code": "8",
-      "givenName": "Ryō",
-      "familyName": "Hirakawa",
-      "nationality": "JPN",
+      "id": "dries-vanthoor",
+      "code": "15",
+      "givenName": "Dries",
+      "familyName": "Vanthoor",
+      "nationality": "BEL",
       "teamIds": [
-        "toyota"
+        "bmw"
       ],
       "teamNames": [
-        "Toyota"
+        "BMW"
       ],
       "teamColors": [
-        "#EB0A1E"
+        "#0066B1"
       ],
       "category": "HYPERCAR",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Ryo_Hirakawa_2024_WEC_Fuji_3.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Podium_Hypercar_2024_WEC_Fuji_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
-      "position": 4,
-      "points": 64.0,
-      "wins": 1,
-      "id": "sebastien-buemi",
-      "code": "8",
-      "givenName": "Sébastien",
-      "familyName": "Buemi",
-      "nationality": "SUI",
-      "teamIds": [
-        "toyota"
-      ],
-      "teamNames": [
-        "Toyota"
-      ],
-      "teamColors": [
-        "#EB0A1E"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/05/Ryo_Hirakawa%2C_Brendon_Hartley_%26_Sebastien_Buemi_take_the_podium_for_2nd_in_Hypercar_at_the_2023_Le_Mans_%2853468554280%29_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-    },
-    {
-      "position": 5,
-      "points": 58.0,
+      "position": 7,
+      "points": 59.0,
       "wins": 0,
       "id": "alessandro-pier-guidi",
       "code": "51",
@@ -217,8 +280,8 @@
       "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2020/01/18/2026_IWSC_AlessandroPierGuidi_355x355-290x290.png"
     },
     {
-      "position": 5,
-      "points": 58.0,
+      "position": 7,
+      "points": 59.0,
       "wins": 0,
       "id": "antonio-giovinazzi",
       "code": "51",
@@ -238,8 +301,8 @@
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Antonio_Giovinazzi_-_Ferrari_499P_-_Hybrid_during_the_pitwalk_at_the_2023_Le_Mans_%2853468237574%29.jpg/960px-Antonio_Giovinazzi_-_Ferrari_499P_-_Hybrid_during_the_pitwalk_at_the_2023_Le_Mans_%2853468237574%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
-      "position": 5,
-      "points": 58.0,
+      "position": 7,
+      "points": 59.0,
       "wins": 0,
       "id": "james-calado",
       "code": "51",
@@ -259,49 +322,49 @@
       "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/22/2026_IWSC_JamesCalado_355x35-290x290.png"
     },
     {
-      "position": 6,
-      "points": 54.0,
-      "wins": 3,
-      "id": "kevin-magnussen",
-      "code": "15",
-      "givenName": "Kevin",
-      "familyName": "Magnussen",
-      "nationality": "DEN",
+      "position": 8,
+      "points": 56.0,
+      "wins": 0,
+      "id": "charles-milesi",
+      "code": "35",
+      "givenName": "Charles",
+      "familyName": "Milesi",
+      "nationality": "FRA",
       "teamIds": [
-        "bmw"
+        "alpine"
       ],
       "teamNames": [
-        "BMW"
+        "Alpine"
       ],
       "teamColors": [
-        "#0066B1"
+        "#005BAA"
       ],
       "category": "HYPERCAR",
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2021/01/17/2026_IWSC_KevinMagnussen_355x355-290x290.png"
+      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2025/01/17/2026_IWSC_CharlesMilesi_355x355-290x290.png"
     },
     {
-      "position": 6,
-      "points": 54.0,
-      "wins": 3,
-      "id": "raffaele-marciello",
-      "code": "15",
-      "givenName": "Raffaele",
-      "familyName": "Marciello",
-      "nationality": "SUI",
+      "position": 8,
+      "points": 56.0,
+      "wins": 0,
+      "id": "ferdinand-habsburg",
+      "code": "35",
+      "givenName": "Ferdinand",
+      "familyName": "Habsburg",
+      "nationality": "AUT",
       "teamIds": [
-        "bmw"
+        "alpine"
       ],
       "teamNames": [
-        "BMW"
+        "Alpine"
       ],
       "teamColors": [
-        "#0066B1"
+        "#005BAA"
       ],
       "category": "HYPERCAR",
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2021/01/17/2026_IWSC_RaffaeleMarciello_355x355-290x290.png"
+      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2021/01/17/2026_IWSC_FerdinandHabsburg_355x355-290x290.png"
     },
     {
-      "position": 7,
+      "position": 9,
       "points": 54.0,
       "wins": 0,
       "id": "antonio-fuoco",
@@ -322,7 +385,7 @@
       "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2021/01/22/2026_IWSC_AntonioFuoco_355x355-290x290.png"
     },
     {
-      "position": 7,
+      "position": 9,
       "points": 54.0,
       "wins": 0,
       "id": "miguel-molina",
@@ -343,7 +406,7 @@
       "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/22/2026_IWSC_MiguelMolina_355x355-290x290.png"
     },
     {
-      "position": 7,
+      "position": 9,
       "points": 54.0,
       "wins": 0,
       "id": "nicklas-nielsen",
@@ -364,92 +427,8 @@
       "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2023/01/17/2026_IWSC_NicklasNielsen_355x355-290x290.png"
     },
     {
-      "position": 8,
-      "points": 48.0,
-      "wins": 0,
-      "id": "dries-vanthoor",
-      "code": "15",
-      "givenName": "Dries",
-      "familyName": "Vanthoor",
-      "nationality": "BEL",
-      "teamIds": [
-        "bmw"
-      ],
-      "teamNames": [
-        "BMW"
-      ],
-      "teamColors": [
-        "#0066B1"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Podium_Hypercar_2024_WEC_Fuji_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-    },
-    {
-      "position": 9,
-      "points": 44.0,
-      "wins": 0,
-      "id": "antonio-felix-da-costa",
-      "code": "35",
-      "givenName": "António Félix da",
-      "familyName": "Costa",
-      "nationality": "POR",
-      "teamIds": [
-        "alpine"
-      ],
-      "teamNames": [
-        "Alpine"
-      ],
-      "teamColors": [
-        "#005BAA"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2025/01/22/2026_IWSC_AntonioFelixdaCosta_355x355-290x290.png"
-    },
-    {
-      "position": 9,
-      "points": 44.0,
-      "wins": 0,
-      "id": "charles-milesi",
-      "code": "35",
-      "givenName": "Charles",
-      "familyName": "Milesi",
-      "nationality": "FRA",
-      "teamIds": [
-        "alpine"
-      ],
-      "teamNames": [
-        "Alpine"
-      ],
-      "teamColors": [
-        "#005BAA"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2025/01/17/2026_IWSC_CharlesMilesi_355x355-290x290.png"
-    },
-    {
-      "position": 9,
-      "points": 44.0,
-      "wins": 0,
-      "id": "ferdinand-habsburg",
-      "code": "35",
-      "givenName": "Ferdinand",
-      "familyName": "Habsburg",
-      "nationality": "AUT",
-      "teamIds": [
-        "alpine"
-      ],
-      "teamNames": [
-        "Alpine"
-      ],
-      "teamColors": [
-        "#005BAA"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2021/01/17/2026_IWSC_FerdinandHabsburg_355x355-290x290.png"
-    },
-    {
       "position": 10,
-      "points": 44.0,
+      "points": 50.0,
       "wins": 0,
       "id": "norman-nato",
       "code": "12",
@@ -470,7 +449,7 @@
     },
     {
       "position": 10,
-      "points": 44.0,
+      "points": 50.0,
       "wins": 0,
       "id": "will-stevens",
       "code": "12",
@@ -491,6 +470,69 @@
     },
     {
       "position": 11,
+      "points": 44.0,
+      "wins": 0,
+      "id": "earl-bamber",
+      "code": "38",
+      "givenName": "Earl",
+      "familyName": "Bamber",
+      "nationality": "NZL",
+      "teamIds": [
+        "cadillac"
+      ],
+      "teamNames": [
+        "Cadillac"
+      ],
+      "teamColors": [
+        "#C6A15B"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2023/01/17/2026_IWSC_EarlBamber_355x355-290x290.png"
+    },
+    {
+      "position": 11,
+      "points": 44.0,
+      "wins": 0,
+      "id": "sebastien-bourdais",
+      "code": "38",
+      "givenName": "Sébastien",
+      "familyName": "Bourdais",
+      "nationality": "FRA",
+      "teamIds": [
+        "cadillac"
+      ],
+      "teamNames": [
+        "Cadillac"
+      ],
+      "teamColors": [
+        "#C6A15B"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2020/01/17/2026_IWSC_SebastienBourdais_355x355-290x290.png"
+    },
+    {
+      "position": 12,
+      "points": 44.0,
+      "wins": 0,
+      "id": "antonio-felix-da-costa",
+      "code": "35",
+      "givenName": "António Félix da",
+      "familyName": "Costa",
+      "nationality": "POR",
+      "teamIds": [
+        "alpine"
+      ],
+      "teamNames": [
+        "Alpine"
+      ],
+      "teamColors": [
+        "#005BAA"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2025/01/22/2026_IWSC_AntonioFelixdaCosta_355x355-290x290.png"
+    },
+    {
+      "position": 13,
       "points": 42.0,
       "wins": 0,
       "id": "harry-tincknell",
@@ -511,7 +553,7 @@
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Harry_Tincknell_%28portrait%2C_2024%29.jpg/960px-Harry_Tincknell_%28portrait%2C_2024%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
-      "position": 11,
+      "position": 13,
       "points": 42.0,
       "wins": 0,
       "id": "tom-gamble",
@@ -532,113 +574,8 @@
       "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_TomGamble_355x355-290x290.png"
     },
     {
-      "position": 12,
-      "points": 34.0,
-      "wins": 0,
-      "id": "earl-bamber",
-      "code": "38",
-      "givenName": "Earl",
-      "familyName": "Bamber",
-      "nationality": "NZL",
-      "teamIds": [
-        "cadillac"
-      ],
-      "teamNames": [
-        "Cadillac"
-      ],
-      "teamColors": [
-        "#C6A15B"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2023/01/17/2026_IWSC_EarlBamber_355x355-290x290.png"
-    },
-    {
-      "position": 12,
-      "points": 34.0,
-      "wins": 0,
-      "id": "sebastien-bourdais",
-      "code": "38",
-      "givenName": "Sébastien",
-      "familyName": "Bourdais",
-      "nationality": "FRA",
-      "teamIds": [
-        "cadillac"
-      ],
-      "teamNames": [
-        "Cadillac"
-      ],
-      "teamColors": [
-        "#C6A15B"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2020/01/17/2026_IWSC_SebastienBourdais_355x355-290x290.png"
-    },
-    {
-      "position": 13,
-      "points": 31.0,
-      "wins": 0,
-      "id": "philip-hanson",
-      "code": "83",
-      "givenName": "Philip",
-      "familyName": "Hanson",
-      "nationality": "GBR",
-      "teamIds": [
-        "ferrari"
-      ],
-      "teamNames": [
-        "Ferrari"
-      ],
-      "teamColors": [
-        "#E10600"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/philip-hanson.jpg"
-    },
-    {
-      "position": 13,
-      "points": 31.0,
-      "wins": 0,
-      "id": "robert-kubica",
-      "code": "83",
-      "givenName": "Robert",
-      "familyName": "Kubica",
-      "nationality": "POL",
-      "teamIds": [
-        "ferrari"
-      ],
-      "teamNames": [
-        "Ferrari"
-      ],
-      "teamColors": [
-        "#E10600"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/robert-kubica.jpg"
-    },
-    {
-      "position": 13,
-      "points": 31.0,
-      "wins": 0,
-      "id": "yifei-ye",
-      "code": "83",
-      "givenName": "Yifei",
-      "familyName": "Ye",
-      "nationality": "CHN",
-      "teamIds": [
-        "ferrari"
-      ],
-      "teamNames": [
-        "Ferrari"
-      ],
-      "teamColors": [
-        "#E10600"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/24H_Le_Mans_2025_Winning_picture_of_car_83_%28cropped%29.jpg/960px-24H_Le_Mans_2025_Winning_picture_of_car_83_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-    },
-    {
       "position": 14,
-      "points": 30.0,
+      "points": 40.0,
       "wins": 0,
       "id": "jack-aitken",
       "code": "38",
@@ -659,6 +596,111 @@
     },
     {
       "position": 15,
+      "points": 32.0,
+      "wins": 0,
+      "id": "jules-gounon",
+      "code": "36",
+      "givenName": "Jules",
+      "familyName": "Gounon",
+      "nationality": "FRA",
+      "teamIds": [
+        "alpine"
+      ],
+      "teamNames": [
+        "Alpine"
+      ],
+      "teamColors": [
+        "#005BAA"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2020/01/22/2026_IWSC_JulesGounon_355x355-290x290.png"
+    },
+    {
+      "position": 15,
+      "points": 32.0,
+      "wins": 0,
+      "id": "victor-martins",
+      "code": "36",
+      "givenName": "Victor",
+      "familyName": "Martins",
+      "nationality": "FRA",
+      "teamIds": [
+        "alpine"
+      ],
+      "teamNames": [
+        "Alpine"
+      ],
+      "teamColors": [
+        "#005BAA"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Victor_Martins_Austria_2022.jpg/960px-Victor_Martins_Austria_2022.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+    },
+    {
+      "position": 16,
+      "points": 31.0,
+      "wins": 0,
+      "id": "philip-hanson",
+      "code": "83",
+      "givenName": "Philip",
+      "familyName": "Hanson",
+      "nationality": "GBR",
+      "teamIds": [
+        "ferrari"
+      ],
+      "teamNames": [
+        "Ferrari"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "assets/portraits/faces/wec/philip-hanson.jpg"
+    },
+    {
+      "position": 16,
+      "points": 31.0,
+      "wins": 0,
+      "id": "robert-kubica",
+      "code": "83",
+      "givenName": "Robert",
+      "familyName": "Kubica",
+      "nationality": "POL",
+      "teamIds": [
+        "ferrari"
+      ],
+      "teamNames": [
+        "Ferrari"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "assets/portraits/faces/wec/robert-kubica.jpg"
+    },
+    {
+      "position": 16,
+      "points": 31.0,
+      "wins": 0,
+      "id": "yifei-ye",
+      "code": "83",
+      "givenName": "Yifei",
+      "familyName": "Ye",
+      "nationality": "CHN",
+      "teamIds": [
+        "ferrari"
+      ],
+      "teamNames": [
+        "Ferrari"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/24H_Le_Mans_2025_Winning_picture_of_car_83_%28cropped%29.jpg/960px-24H_Le_Mans_2025_Winning_picture_of_car_83_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+    },
+    {
+      "position": 17,
       "points": 26.0,
       "wins": 0,
       "id": "louis-deletraz",
@@ -679,7 +721,7 @@
       "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/17/2026_IWSC_LouisDeletraz_355x355-290x290.png"
     },
     {
-      "position": 16,
+      "position": 18,
       "points": 14.0,
       "wins": 0,
       "id": "frederic-makowiecki",
@@ -700,49 +742,70 @@
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Frederic_Makowiecki_2024_WEC_Fuji.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
-      "position": 16,
-      "points": 14.0,
+      "position": 19,
+      "points": 12.0,
       "wins": 0,
-      "id": "jules-gounon",
-      "code": "36",
-      "givenName": "Jules",
-      "familyName": "Gounon",
+      "id": "loic-duval",
+      "code": "94",
+      "givenName": "Loïc",
+      "familyName": "Duval",
       "nationality": "FRA",
       "teamIds": [
-        "alpine"
+        "peugeot"
       ],
       "teamNames": [
-        "Alpine"
+        "Peugeot"
       ],
       "teamColors": [
-        "#005BAA"
+        "#003B70"
       ],
       "category": "HYPERCAR",
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2020/01/22/2026_IWSC_JulesGounon_355x355-290x290.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Lo%C3%AFc_Duval.jpg/960px-Lo%C3%AFc_Duval.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
-      "position": 16,
-      "points": 14.0,
+      "position": 19,
+      "points": 12.0,
       "wins": 0,
-      "id": "victor-martins",
-      "code": "36",
-      "givenName": "Victor",
-      "familyName": "Martins",
+      "id": "malthe-jakobsen",
+      "code": "94",
+      "givenName": "Malthe",
+      "familyName": "Jakobsen",
+      "nationality": "DNK",
+      "teamIds": [
+        "peugeot"
+      ],
+      "teamNames": [
+        "Peugeot"
+      ],
+      "teamColors": [
+        "#003B70"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2022/02/17/2026_IWSC_MaltheJakobsen_355x355-290x290.png"
+    },
+    {
+      "position": 19,
+      "points": 12.0,
+      "wins": 0,
+      "id": "theo-pourchaire",
+      "code": "94",
+      "givenName": "Théo",
+      "familyName": "Pourchaire",
       "nationality": "FRA",
       "teamIds": [
-        "alpine"
+        "peugeot"
       ],
       "teamNames": [
-        "Alpine"
+        "Peugeot"
       ],
       "teamColors": [
-        "#005BAA"
+        "#003B70"
       ],
       "category": "HYPERCAR",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Victor_Martins_Austria_2022.jpg/960px-Victor_Martins_Austria_2022.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Th%C3%A9o_Pourchaire_2023.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
-      "position": 17,
+      "position": 20,
       "points": 10.0,
       "wins": 0,
       "id": "andre-lotterer",
@@ -763,7 +826,7 @@
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Andre_Lotterer_2024_WEC_Fuji_2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
-      "position": 17,
+      "position": 20,
       "points": 10.0,
       "wins": 0,
       "id": "luis-felipe-derani",
@@ -784,7 +847,7 @@
       "imageUrl": "assets/portraits/faces/wec/luis-felipe-derani.jpg"
     },
     {
-      "position": 17,
+      "position": 20,
       "points": 10.0,
       "wins": 0,
       "id": "mathys-jaubert",
@@ -805,7 +868,7 @@
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/2026_6_Hours_of_Spa-Francorchamps_Genesis_Magma_Racing_Genesis_GMR-001_No.17_%28DSC2771%29.jpg/960px-2026_6_Hours_of_Spa-Francorchamps_Genesis_Magma_Racing_Genesis_GMR-001_No.17_%28DSC2771%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
-      "position": 18,
+      "position": 21,
       "points": 8.0,
       "wins": 0,
       "id": "ross-gunn",
@@ -826,7 +889,7 @@
       "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2020/01/17/2026_IWSC_RossGunn_355x355-290x290.png"
     },
     {
-      "position": 19,
+      "position": 22,
       "points": 6.0,
       "wins": 0,
       "id": "nick-cassidy",
@@ -847,7 +910,7 @@
       "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/20/2026_IMPC_NickCassidy_355x355-290x290.png"
     },
     {
-      "position": 19,
+      "position": 22,
       "points": 6.0,
       "wins": 0,
       "id": "paul-di-resta",
@@ -868,7 +931,7 @@
       "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2024/01/17/2026_IWSC_PaulDiResta_355x355-290x290.png"
     },
     {
-      "position": 19,
+      "position": 22,
       "points": 6.0,
       "wins": 0,
       "id": "stoffel-vandoorne",
@@ -889,70 +952,49 @@
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/2023-04-23_Motorsport%2C_ABB_FIA_Formula_E_World_Championship%2C_Berlin_E-Prix_2023_1DX_1774_by_Stepro_%28cropped%29.jpg/960px-2023-04-23_Motorsport%2C_ABB_FIA_Formula_E_World_Championship%2C_Berlin_E-Prix_2023_1DX_1774_by_Stepro_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
-      "position": 20,
+      "position": 23,
       "points": 4.0,
       "wins": 0,
-      "id": "loic-duval",
-      "code": "94",
-      "givenName": "Loïc",
-      "familyName": "Duval",
-      "nationality": "FRA",
+      "id": "alex-riberas",
+      "code": "009",
+      "givenName": "Alex",
+      "familyName": "Riberas",
+      "nationality": "ESP",
       "teamIds": [
-        "peugeot"
+        "aston-martin"
       ],
       "teamNames": [
-        "Peugeot"
+        "Aston Martin"
       ],
       "teamColors": [
-        "#003B70"
+        "#006F62"
       ],
       "category": "HYPERCAR",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Lo%C3%AFc_Duval.jpg/960px-Lo%C3%AFc_Duval.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2020/01/17/2026_IWSC_AlexRiberas_355x355-290x290.png"
     },
     {
-      "position": 20,
+      "position": 23,
       "points": 4.0,
       "wins": 0,
-      "id": "malthe-jakobsen",
-      "code": "94",
-      "givenName": "Malthe",
-      "familyName": "Jakobsen",
-      "nationality": "DNK",
+      "id": "marco-srensen",
+      "code": "009",
+      "givenName": "Marco",
+      "familyName": "Sørensen",
+      "nationality": "DEN",
       "teamIds": [
-        "peugeot"
+        "aston-martin"
       ],
       "teamNames": [
-        "Peugeot"
+        "Aston Martin"
       ],
       "teamColors": [
-        "#003B70"
+        "#006F62"
       ],
       "category": "HYPERCAR",
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2022/02/17/2026_IWSC_MaltheJakobsen_355x355-290x290.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/93/Marco_soerensen.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
-      "position": 20,
-      "points": 4.0,
-      "wins": 0,
-      "id": "theo-pourchaire",
-      "code": "94",
-      "givenName": "Théo",
-      "familyName": "Pourchaire",
-      "nationality": "FRA",
-      "teamIds": [
-        "peugeot"
-      ],
-      "teamNames": [
-        "Peugeot"
-      ],
-      "teamColors": [
-        "#003B70"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Th%C3%A9o_Pourchaire_2023.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-    },
-    {
-      "position": 21,
+      "position": 24,
       "points": 2.0,
       "wins": 0,
       "id": "ricky-taylor",
@@ -973,49 +1015,7 @@
       "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/17/2026_IWSC_RickyTaylor_355x355-290x290.png"
     },
     {
-      "position": 22,
-      "points": 2.0,
-      "wins": 0,
-      "id": "alex-riberas",
-      "code": "009",
-      "givenName": "Alex",
-      "familyName": "Riberas",
-      "nationality": "ESP",
-      "teamIds": [
-        "aston-martin"
-      ],
-      "teamNames": [
-        "Aston Martin"
-      ],
-      "teamColors": [
-        "#006F62"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2020/01/17/2026_IWSC_AlexRiberas_355x355-290x290.png"
-    },
-    {
-      "position": 22,
-      "points": 2.0,
-      "wins": 0,
-      "id": "marco-srensen",
-      "code": "009",
-      "givenName": "Marco",
-      "familyName": "Sørensen",
-      "nationality": "DEN",
-      "teamIds": [
-        "aston-martin"
-      ],
-      "teamNames": [
-        "Aston Martin"
-      ],
-      "teamColors": [
-        "#006F62"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/93/Marco_soerensen.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-    },
-    {
-      "position": 23,
+      "position": 25,
       "points": 0.0,
       "wins": 0,
       "id": "daniel-juncadella",
@@ -1036,7 +1036,7 @@
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Daniel_Juncadella_SP25.jpg/960px-Daniel_Juncadella_SP25.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
-      "position": 23,
+      "position": 25,
       "points": 0.0,
       "wins": 0,
       "id": "mathieu-jaminet",
@@ -1057,7 +1057,7 @@
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Porsche_963_-_Felipe_Nasr%2C_Mathieu_Jaminet_%26_Nick_Tandy_exits_Dunlop_Chicane_at_the_2023_Le_Mans_%2853366976999%29.jpg/960px-Porsche_963_-_Felipe_Nasr%2C_Mathieu_Jaminet_%26_Nick_Tandy_exits_Dunlop_Chicane_at_the_2023_Le_Mans_%2853366976999%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
-      "position": 23,
+      "position": 25,
       "points": 0.0,
       "wins": 0,
       "id": "paul-loup-chatin",
@@ -1078,7 +1078,7 @@
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Paul-Loup_Chatin_SP25.jpg/960px-Paul-Loup_Chatin_SP25.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
-      "position": 24,
+      "position": 26,
       "points": 0.0,
       "wins": 0,
       "id": "roman-de-angelis",
@@ -1100,7 +1100,7 @@
     },
     {
       "position": 1,
-      "points": 76.0,
+      "points": 86.0,
       "wins": 0,
       "id": "jonny-edgar",
       "code": "33",
@@ -1121,7 +1121,7 @@
     },
     {
       "position": 2,
-      "points": 72.0,
+      "points": 82.0,
       "wins": 0,
       "id": "nicky-catsburg",
       "code": "33",
@@ -1142,7 +1142,7 @@
     },
     {
       "position": 3,
-      "points": 54.0,
+      "points": 64.0,
       "wins": 0,
       "id": "ben-keating",
       "code": "33",
@@ -1163,6 +1163,195 @@
     },
     {
       "position": 4,
+      "points": 62.0,
+      "wins": 0,
+      "id": "ian-james",
+      "code": "27",
+      "givenName": "Ian",
+      "familyName": "James",
+      "nationality": "USA",
+      "teamIds": [
+        "aston-martin"
+      ],
+      "teamNames": [
+        "Aston Martin"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/2024_6_Hours_of_Spa-Francorchamps_Heart_of_Racing_Team_Aston_Martin_Vantage_GT3_No.27_%28DSC02313%29.jpg/960px-2024_6_Hours_of_Spa-Francorchamps_Heart_of_Racing_Team_Aston_Martin_Vantage_GT3_No.27_%28DSC02313%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+    },
+    {
+      "position": 4,
+      "points": 62.0,
+      "wins": 0,
+      "id": "mattia-drudi",
+      "code": "27",
+      "givenName": "Mattia",
+      "familyName": "Drudi",
+      "nationality": "ITA",
+      "teamIds": [
+        "aston-martin"
+      ],
+      "teamNames": [
+        "Aston Martin"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_MattiaDrudi_355x355-290x290.png"
+    },
+    {
+      "position": 4,
+      "points": 62.0,
+      "wins": 0,
+      "id": "zacharie-robichon",
+      "code": "27",
+      "givenName": "Zacharie",
+      "familyName": "Robichon",
+      "nationality": "CAN",
+      "teamIds": [
+        "aston-martin"
+      ],
+      "teamNames": [
+        "Aston Martin"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_ZacharieRobichon_355x355-290x290.png"
+    },
+    {
+      "position": 5,
+      "points": 58.0,
+      "wins": 0,
+      "id": "charlie-eastwood",
+      "code": "34",
+      "givenName": "Charlie",
+      "familyName": "Eastwood",
+      "nationality": "IRL",
+      "teamIds": [
+        "corvette"
+      ],
+      "teamNames": [
+        "Corvette"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_CharlieEastwood_355x355-290x290.png"
+    },
+    {
+      "position": 5,
+      "points": 58.0,
+      "wins": 0,
+      "id": "peter-dempsey",
+      "code": "34",
+      "givenName": "Peter",
+      "familyName": "Dempsey",
+      "nationality": "USA",
+      "teamIds": [
+        "corvette"
+      ],
+      "teamNames": [
+        "Corvette"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/FIL_Conor_Daly_Follows_Peter_Dempsey_into_Turn_10_p3_GPSP_27March2011_%2814512954708%29.jpg/960px-FIL_Conor_Daly_Follows_Peter_Dempsey_into_Turn_10_p3_GPSP_27March2011_%2814512954708%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+    },
+    {
+      "position": 5,
+      "points": 58.0,
+      "wins": 0,
+      "id": "salih-yoluc",
+      "code": "34",
+      "givenName": "Salih",
+      "familyName": "Yoluç",
+      "nationality": "TUR",
+      "teamIds": [
+        "corvette"
+      ],
+      "teamNames": [
+        "Corvette"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Salih_Yolu%C3%A7_%2832173305308%29.jpg/960px-Salih_Yolu%C3%A7_%2832173305308%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+    },
+    {
+      "position": 6,
+      "points": 54.0,
+      "wins": 0,
+      "id": "ayhancan-guven",
+      "code": "91",
+      "givenName": "Ayhancan",
+      "familyName": "Güven",
+      "nationality": "TUR",
+      "teamIds": [
+        "porsche"
+      ],
+      "teamNames": [
+        "Porsche"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2025/01/22/2026_IWSC_AyhancanGuven_355x355-290x290.png"
+    },
+    {
+      "position": 6,
+      "points": 54.0,
+      "wins": 0,
+      "id": "james-cottingham",
+      "code": "91",
+      "givenName": "James",
+      "familyName": "Cottingham",
+      "nationality": "GBR",
+      "teamIds": [
+        "porsche"
+      ],
+      "teamNames": [
+        "Porsche"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/2024_6_Hours_of_Spa-Francorchamps_United_Autosports_McLaren_720S_GT3_Evo_No.59_%28DSC02336%29.jpg/960px-2024_6_Hours_of_Spa-Francorchamps_United_Autosports_McLaren_720S_GT3_Evo_No.59_%28DSC02336%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+    },
+    {
+      "position": 6,
+      "points": 54.0,
+      "wins": 0,
+      "id": "timur-boguslavskiy",
+      "code": "91",
+      "givenName": "Timur",
+      "familyName": "Boguslavskiy",
+      "nationality": "RUS",
+      "teamIds": [
+        "porsche"
+      ],
+      "teamNames": [
+        "Porsche"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Boguslavskiy_Timur_.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
+      "position": 7,
       "points": 54.0,
       "wins": 0,
       "id": "alessio-rovera",
@@ -1183,7 +1372,7 @@
       "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2022/02/22/2026_IWSC_AlessioRovera_355x355-290x290.png"
     },
     {
-      "position": 4,
+      "position": 7,
       "points": 54.0,
       "wins": 0,
       "id": "francois-heriau",
@@ -1204,7 +1393,7 @@
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Francois_Heriau_SP25.jpg/960px-Francois_Heriau_SP25.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
-      "position": 4,
+      "position": 7,
       "points": 54.0,
       "wins": 0,
       "id": "simon-mann",
@@ -1225,7 +1414,70 @@
       "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_SimonMann_355x355-290x290.png"
     },
     {
-      "position": 5,
+      "position": 8,
+      "points": 51.0,
+      "wins": 1,
+      "id": "anthony-mcintosh",
+      "code": "69",
+      "givenName": "Anthony",
+      "familyName": "Mcintosh",
+      "nationality": "USA",
+      "teamIds": [
+        "bmw"
+      ],
+      "teamNames": [
+        "BMW"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Car_69%2C_Mazda_Miata%2C_HPDE4_%2852040779023%29.jpg/960px-Car_69%2C_Mazda_Miata%2C_HPDE4_%2852040779023%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+    },
+    {
+      "position": 8,
+      "points": 51.0,
+      "wins": 0,
+      "id": "daniel-harper",
+      "code": "69",
+      "givenName": "Daniel",
+      "familyName": "Harper",
+      "nationality": "GBR",
+      "teamIds": [
+        "bmw"
+      ],
+      "teamNames": [
+        "BMW"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "assets/portraits/faces/wec/daniel-harper.jpg"
+    },
+    {
+      "position": 8,
+      "points": 51.0,
+      "wins": 1,
+      "id": "parker-thompson",
+      "code": "69",
+      "givenName": "Parker",
+      "familyName": "Thompson",
+      "nationality": "CAN",
+      "teamIds": [
+        "bmw"
+      ],
+      "teamNames": [
+        "BMW"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Parker_Thompson_-_2024_IMSA_VSR.jpg/960px-Parker_Thompson_-_2024_IMSA_VSR.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+    },
+    {
+      "position": 9,
       "points": 49.0,
       "wins": 0,
       "id": "riccardo-pera",
@@ -1246,7 +1498,7 @@
       "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_RiccardoPera_355x355-290x290.png"
     },
     {
-      "position": 5,
+      "position": 9,
       "points": 49.0,
       "wins": 0,
       "id": "richard-lietz",
@@ -1267,7 +1519,7 @@
       "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_RichardLietz_355x355-290x290.png"
     },
     {
-      "position": 5,
+      "position": 9,
       "points": 49.0,
       "wins": 0,
       "id": "yasser-shahin",
@@ -1288,7 +1540,7 @@
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/2024_6_Hours_of_Spa-Francorchamps_Manthey_EMA_Porsche_911_GT3_R_No.91_%28DSC02368%29.jpg/960px-2024_6_Hours_of_Spa-Francorchamps_Manthey_EMA_Porsche_911_GT3_R_No.91_%28DSC02368%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
-      "position": 6,
+      "position": 10,
       "points": 49.0,
       "wins": 0,
       "id": "gray-newell",
@@ -1309,7 +1561,7 @@
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/24H_Series_2023_Spa_Nr._27_%282%29.jpg/960px-24H_Series_2023_Spa_Nr._27_%282%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
-      "position": 6,
+      "position": 10,
       "points": 49.0,
       "wins": 0,
       "id": "jonny-adam",
@@ -1330,70 +1582,70 @@
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Jonny_adam_brandshatch2014.JPG/960px-Jonny_adam_brandshatch2014.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
-      "position": 7,
-      "points": 48.0,
+      "position": 11,
+      "points": 47.0,
       "wins": 0,
-      "id": "ayhancan-guven",
-      "code": "91",
-      "givenName": "Ayhancan",
-      "familyName": "Güven",
-      "nationality": "TUR",
+      "id": "augusto-farfus",
+      "code": "32",
+      "givenName": "Augusto",
+      "familyName": "Farfus",
+      "nationality": "BRA",
       "teamIds": [
-        "porsche"
+        "bmw"
       ],
       "teamNames": [
-        "Porsche"
+        "BMW"
       ],
       "teamColors": [
-        "#D5001C"
+        "#0066B1"
       ],
       "category": "LMGT3",
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2025/01/22/2026_IWSC_AyhancanGuven_355x355-290x290.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Augusto_Farfus%2C_Brands_Hatch_2018_%2845568475721%29.jpg/960px-Augusto_Farfus%2C_Brands_Hatch_2018_%2845568475721%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
-      "position": 7,
-      "points": 48.0,
-      "wins": 0,
-      "id": "james-cottingham",
-      "code": "91",
-      "givenName": "James",
-      "familyName": "Cottingham",
+      "position": 11,
+      "points": 47.0,
+      "wins": 1,
+      "id": "darren-leung",
+      "code": "32",
+      "givenName": "Darren",
+      "familyName": "Leung",
       "nationality": "GBR",
       "teamIds": [
-        "porsche"
+        "bmw"
       ],
       "teamNames": [
-        "Porsche"
+        "BMW"
       ],
       "teamColors": [
-        "#D5001C"
+        "#0066B1"
       ],
       "category": "LMGT3",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/2024_6_Hours_of_Spa-Francorchamps_United_Autosports_McLaren_720S_GT3_Evo_No.59_%28DSC02336%29.jpg/960px-2024_6_Hours_of_Spa-Francorchamps_United_Autosports_McLaren_720S_GT3_Evo_No.59_%28DSC02336%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/2024_6_Hours_of_Spa-Francorchamps_Team_WRT_BMW_M4_GT3_No.31_%28DSC02566%29.jpg/960px-2024_6_Hours_of_Spa-Francorchamps_Team_WRT_BMW_M4_GT3_No.31_%28DSC02566%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
-      "position": 7,
-      "points": 48.0,
-      "wins": 0,
-      "id": "timur-boguslavskiy",
-      "code": "91",
-      "givenName": "Timur",
-      "familyName": "Boguslavskiy",
-      "nationality": "RUS",
+      "position": 11,
+      "points": 47.0,
+      "wins": 1,
+      "id": "sean-gelael",
+      "code": "32",
+      "givenName": "Sean",
+      "familyName": "Gelael",
+      "nationality": "IDN",
       "teamIds": [
-        "porsche"
+        "bmw"
       ],
       "teamNames": [
-        "Porsche"
+        "BMW"
       ],
       "teamColors": [
-        "#D5001C"
+        "#0066B1"
       ],
       "category": "LMGT3",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Boguslavskiy_Timur_.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Sean_Gelael_2023_Monza.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
-      "position": 8,
+      "position": 12,
       "points": 46.0,
       "wins": 0,
       "id": "eduardo-barrichello",
@@ -1414,260 +1666,8 @@
       "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_DuduBarrichello_355x355-290x290.png"
     },
     {
-      "position": 9,
-      "points": 44.0,
-      "wins": 0,
-      "id": "ian-james",
-      "code": "27",
-      "givenName": "Ian",
-      "familyName": "James",
-      "nationality": "USA",
-      "teamIds": [
-        "aston-martin"
-      ],
-      "teamNames": [
-        "Aston Martin"
-      ],
-      "teamColors": [
-        "#006F62"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/2024_6_Hours_of_Spa-Francorchamps_Heart_of_Racing_Team_Aston_Martin_Vantage_GT3_No.27_%28DSC02313%29.jpg/960px-2024_6_Hours_of_Spa-Francorchamps_Heart_of_Racing_Team_Aston_Martin_Vantage_GT3_No.27_%28DSC02313%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-    },
-    {
-      "position": 9,
-      "points": 44.0,
-      "wins": 0,
-      "id": "mattia-drudi",
-      "code": "27",
-      "givenName": "Mattia",
-      "familyName": "Drudi",
-      "nationality": "ITA",
-      "teamIds": [
-        "aston-martin"
-      ],
-      "teamNames": [
-        "Aston Martin"
-      ],
-      "teamColors": [
-        "#006F62"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_MattiaDrudi_355x355-290x290.png"
-    },
-    {
-      "position": 9,
-      "points": 44.0,
-      "wins": 0,
-      "id": "zacharie-robichon",
-      "code": "27",
-      "givenName": "Zacharie",
-      "familyName": "Robichon",
-      "nationality": "CAN",
-      "teamIds": [
-        "aston-martin"
-      ],
-      "teamNames": [
-        "Aston Martin"
-      ],
-      "teamColors": [
-        "#006F62"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_ZacharieRobichon_355x355-290x290.png"
-    },
-    {
-      "position": 10,
-      "points": 43.0,
-      "wins": 1,
-      "id": "anthony-mcintosh",
-      "code": "69",
-      "givenName": "Anthony",
-      "familyName": "Mcintosh",
-      "nationality": "USA",
-      "teamIds": [
-        "bmw"
-      ],
-      "teamNames": [
-        "BMW"
-      ],
-      "teamColors": [
-        "#0066B1"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Car_69%2C_Mazda_Miata%2C_HPDE4_%2852040779023%29.jpg/960px-Car_69%2C_Mazda_Miata%2C_HPDE4_%2852040779023%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-    },
-    {
-      "position": 10,
-      "points": 43.0,
-      "wins": 0,
-      "id": "daniel-harper",
-      "code": "69",
-      "givenName": "Daniel",
-      "familyName": "Harper",
-      "nationality": "GBR",
-      "teamIds": [
-        "bmw"
-      ],
-      "teamNames": [
-        "BMW"
-      ],
-      "teamColors": [
-        "#0066B1"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/daniel-harper.jpg"
-    },
-    {
-      "position": 10,
-      "points": 43.0,
-      "wins": 1,
-      "id": "parker-thompson",
-      "code": "69",
-      "givenName": "Parker",
-      "familyName": "Thompson",
-      "nationality": "CAN",
-      "teamIds": [
-        "bmw"
-      ],
-      "teamNames": [
-        "BMW"
-      ],
-      "teamColors": [
-        "#0066B1"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Parker_Thompson_-_2024_IMSA_VSR.jpg/960px-Parker_Thompson_-_2024_IMSA_VSR.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-    },
-    {
-      "position": 11,
-      "points": 43.0,
-      "wins": 0,
-      "id": "charlie-eastwood",
-      "code": "34",
-      "givenName": "Charlie",
-      "familyName": "Eastwood",
-      "nationality": "IRL",
-      "teamIds": [
-        "corvette"
-      ],
-      "teamNames": [
-        "Corvette"
-      ],
-      "teamColors": [
-        "#F2C500"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_CharlieEastwood_355x355-290x290.png"
-    },
-    {
-      "position": 11,
-      "points": 43.0,
-      "wins": 3,
-      "id": "peter-dempsey",
-      "code": "34",
-      "givenName": "Peter",
-      "familyName": "Dempsey",
-      "nationality": "USA",
-      "teamIds": [
-        "corvette"
-      ],
-      "teamNames": [
-        "Corvette"
-      ],
-      "teamColors": [
-        "#F2C500"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/FIL_Conor_Daly_Follows_Peter_Dempsey_into_Turn_10_p3_GPSP_27March2011_%2814512954708%29.jpg/960px-FIL_Conor_Daly_Follows_Peter_Dempsey_into_Turn_10_p3_GPSP_27March2011_%2814512954708%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-    },
-    {
-      "position": 11,
-      "points": 43.0,
-      "wins": 3,
-      "id": "salih-yoluc",
-      "code": "34",
-      "givenName": "Salih",
-      "familyName": "Yoluç",
-      "nationality": "TUR",
-      "teamIds": [
-        "corvette"
-      ],
-      "teamNames": [
-        "Corvette"
-      ],
-      "teamColors": [
-        "#F2C500"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Salih_Yolu%C3%A7_%2832173305308%29.jpg/960px-Salih_Yolu%C3%A7_%2832173305308%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-    },
-    {
-      "position": 12,
-      "points": 38.0,
-      "wins": 0,
-      "id": "clemens-schmid",
-      "code": "87",
-      "givenName": "Clemens",
-      "familyName": "Schmid",
-      "nationality": "CHE",
-      "teamIds": [
-        "lexus"
-      ],
-      "teamNames": [
-        "Lexus"
-      ],
-      "teamColors": [
-        "#222222"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/2024-07-06_Motorsport%2C_DTM%2C_Norisring_N%C3%BCrnberg_2024_STP_0069.jpg/960px-2024-07-06_Motorsport%2C_DTM%2C_Norisring_N%C3%BCrnberg_2024_STP_0069.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-    },
-    {
-      "position": 12,
-      "points": 38.0,
-      "wins": 0,
-      "id": "jose-maria-lopez",
-      "code": "87",
-      "givenName": "José María",
-      "familyName": "López",
-      "nationality": "ARG",
-      "teamIds": [
-        "lexus"
-      ],
-      "teamNames": [
-        "Lexus"
-      ],
-      "teamColors": [
-        "#222222"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/21/Jose_Maria_Lopez_2014_WTCC_Race_of_Japan.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-    },
-    {
-      "position": 12,
-      "points": 38.0,
-      "wins": 0,
-      "id": "petru-umbrarescu",
-      "code": "87",
-      "givenName": "Petru",
-      "familyName": "Umbrărescu",
-      "nationality": "ROU",
-      "teamIds": [
-        "lexus"
-      ],
-      "teamNames": [
-        "Lexus"
-      ],
-      "teamColors": [
-        "#222222"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/petru-umbrarescu.jpg"
-    },
-    {
       "position": 13,
-      "points": 37.0,
+      "points": 39.0,
       "wins": 0,
       "id": "hadrien-david",
       "code": "78",
@@ -1688,7 +1688,7 @@
     },
     {
       "position": 13,
-      "points": 37.0,
+      "points": 39.0,
       "wins": 0,
       "id": "tom-van-rompuy",
       "code": "78",
@@ -1709,6 +1709,132 @@
     },
     {
       "position": 14,
+      "points": 38.0,
+      "wins": 4,
+      "id": "antares-au",
+      "code": "10",
+      "givenName": "Antares",
+      "familyName": "Au",
+      "nationality": "HKG",
+      "teamIds": [
+        "mclaren"
+      ],
+      "teamNames": [
+        "McLaren"
+      ],
+      "teamColors": [
+        "#FF8000"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Antares_Au_-_Manthey_2024_-_ALMS_-_10.png/960px-Antares_Au_-_Manthey_2024_-_ALMS_-_10.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+    },
+    {
+      "position": 14,
+      "points": 38.0,
+      "wins": 0,
+      "id": "marvin-kirchhofer",
+      "code": "10",
+      "givenName": "Marvin",
+      "familyName": "Kirchhöfer",
+      "nationality": "GER",
+      "teamIds": [
+        "mclaren"
+      ],
+      "teamNames": [
+        "McLaren"
+      ],
+      "teamColors": [
+        "#FF8000"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2023/01/22/2026_IWSC_MarvinKirchhofer_355x355-290x290.png"
+    },
+    {
+      "position": 14,
+      "points": 38.0,
+      "wins": 4,
+      "id": "thomas-fleming",
+      "code": "10",
+      "givenName": "Thomas",
+      "familyName": "Fleming",
+      "nationality": "GBR",
+      "teamIds": [
+        "mclaren"
+      ],
+      "teamNames": [
+        "McLaren"
+      ],
+      "teamColors": [
+        "#FF8000"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "assets/portraits/faces/wec/thomas-fleming.jpg"
+    },
+    {
+      "position": 15,
+      "points": 38.0,
+      "wins": 0,
+      "id": "clemens-schmid",
+      "code": "87",
+      "givenName": "Clemens",
+      "familyName": "Schmid",
+      "nationality": "CHE",
+      "teamIds": [
+        "lexus"
+      ],
+      "teamNames": [
+        "Lexus"
+      ],
+      "teamColors": [
+        "#222222"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/2024-07-06_Motorsport%2C_DTM%2C_Norisring_N%C3%BCrnberg_2024_STP_0069.jpg/960px-2024-07-06_Motorsport%2C_DTM%2C_Norisring_N%C3%BCrnberg_2024_STP_0069.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+    },
+    {
+      "position": 15,
+      "points": 38.0,
+      "wins": 0,
+      "id": "jose-maria-lopez",
+      "code": "87",
+      "givenName": "José María",
+      "familyName": "López",
+      "nationality": "ARG",
+      "teamIds": [
+        "lexus"
+      ],
+      "teamNames": [
+        "Lexus"
+      ],
+      "teamColors": [
+        "#222222"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/21/Jose_Maria_Lopez_2014_WTCC_Race_of_Japan.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
+      "position": 15,
+      "points": 38.0,
+      "wins": 0,
+      "id": "petru-umbrarescu",
+      "code": "87",
+      "givenName": "Petru",
+      "familyName": "Umbrărescu",
+      "nationality": "ROU",
+      "teamIds": [
+        "lexus"
+      ],
+      "teamNames": [
+        "Lexus"
+      ],
+      "teamColors": [
+        "#222222"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "assets/portraits/faces/wec/petru-umbrarescu.jpg"
+    },
+    {
+      "position": 16,
       "points": 36.0,
       "wins": 0,
       "id": "jack-hawksworth",
@@ -1729,70 +1855,7 @@
       "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/18/2026_IWSC_JackHawksworth_355x355-290x290.png"
     },
     {
-      "position": 15,
-      "points": 34.0,
-      "wins": 2,
-      "id": "antares-au",
-      "code": "10",
-      "givenName": "Antares",
-      "familyName": "Au",
-      "nationality": "HKG",
-      "teamIds": [
-        "mclaren"
-      ],
-      "teamNames": [
-        "McLaren"
-      ],
-      "teamColors": [
-        "#FF8000"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Antares_Au_-_Manthey_2024_-_ALMS_-_10.png/960px-Antares_Au_-_Manthey_2024_-_ALMS_-_10.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-    },
-    {
-      "position": 15,
-      "points": 34.0,
-      "wins": 0,
-      "id": "marvin-kirchhofer",
-      "code": "10",
-      "givenName": "Marvin",
-      "familyName": "Kirchhöfer",
-      "nationality": "GER",
-      "teamIds": [
-        "mclaren"
-      ],
-      "teamNames": [
-        "McLaren"
-      ],
-      "teamColors": [
-        "#FF8000"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2023/01/22/2026_IWSC_MarvinKirchhofer_355x355-290x290.png"
-    },
-    {
-      "position": 15,
-      "points": 34.0,
-      "wins": 2,
-      "id": "thomas-fleming",
-      "code": "10",
-      "givenName": "Thomas",
-      "familyName": "Fleming",
-      "nationality": "GBR",
-      "teamIds": [
-        "mclaren"
-      ],
-      "teamNames": [
-        "McLaren"
-      ],
-      "teamColors": [
-        "#FF8000"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/thomas-fleming.jpg"
-    },
-    {
-      "position": 16,
+      "position": 17,
       "points": 22.0,
       "wins": 0,
       "id": "blake-mcdonald",
@@ -1813,7 +1876,7 @@
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/2026_6_Hours_of_Spa-Francorchamps_TF_Sport_Chevrolet_Corvette_Z06_LMGT3.R_No.33_%28DSC5992%29.jpg/960px-2026_6_Hours_of_Spa-Francorchamps_TF_Sport_Chevrolet_Corvette_Z06_LMGT3.R_No.33_%28DSC5992%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
-      "position": 17,
+      "position": 18,
       "points": 22.0,
       "wins": 0,
       "id": "alexander-west",
@@ -1834,7 +1897,7 @@
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/International_GT_Open_2025_Mogyor%C3%B3d_Nr._188_Sansom%2C_West.jpg/960px-International_GT_Open_2025_Mogyor%C3%B3d_Nr._188_Sansom%2C_West.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
-      "position": 17,
+      "position": 18,
       "points": 22.0,
       "wins": 0,
       "id": "benjamin-goethe",
@@ -1855,7 +1918,7 @@
       "imageUrl": "assets/portraits/faces/wec/benjamin-goethe.jpg"
     },
     {
-      "position": 17,
+      "position": 18,
       "points": 22.0,
       "wins": 0,
       "id": "finn-gehrsitz",
@@ -1874,69 +1937,6 @@
       ],
       "category": "LMGT3",
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Finn_Gehrsitz.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-    },
-    {
-      "position": 18,
-      "points": 22.0,
-      "wins": 0,
-      "id": "augusto-farfus",
-      "code": "32",
-      "givenName": "Augusto",
-      "familyName": "Farfus",
-      "nationality": "BRA",
-      "teamIds": [
-        "bmw"
-      ],
-      "teamNames": [
-        "BMW"
-      ],
-      "teamColors": [
-        "#0066B1"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Augusto_Farfus%2C_Brands_Hatch_2018_%2845568475721%29.jpg/960px-Augusto_Farfus%2C_Brands_Hatch_2018_%2845568475721%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-    },
-    {
-      "position": 18,
-      "points": 22.0,
-      "wins": 0,
-      "id": "darren-leung",
-      "code": "32",
-      "givenName": "Darren",
-      "familyName": "Leung",
-      "nationality": "GBR",
-      "teamIds": [
-        "bmw"
-      ],
-      "teamNames": [
-        "BMW"
-      ],
-      "teamColors": [
-        "#0066B1"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/2024_6_Hours_of_Spa-Francorchamps_Team_WRT_BMW_M4_GT3_No.31_%28DSC02566%29.jpg/960px-2024_6_Hours_of_Spa-Francorchamps_Team_WRT_BMW_M4_GT3_No.31_%28DSC02566%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-    },
-    {
-      "position": 18,
-      "points": 22.0,
-      "wins": 0,
-      "id": "sean-gelael",
-      "code": "32",
-      "givenName": "Sean",
-      "familyName": "Gelael",
-      "nationality": "IDN",
-      "teamIds": [
-        "bmw"
-      ],
-      "teamNames": [
-        "BMW"
-      ],
-      "teamColors": [
-        "#0066B1"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Sean_Gelael_2023_Monza.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
       "position": 19,
@@ -2066,7 +2066,70 @@
     },
     {
       "position": 21,
-      "points": 12.0,
+      "points": 13.0,
+      "wins": 0,
+      "id": "davide-rigon",
+      "code": "54",
+      "givenName": "Davide",
+      "familyName": "Rigon",
+      "nationality": "ITA",
+      "teamIds": [
+        "ferrari"
+      ],
+      "teamNames": [
+        "Ferrari"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2020/01/18/2026_IWSC_DavideRigon_355x355-290x290.png"
+    },
+    {
+      "position": 21,
+      "points": 13.0,
+      "wins": 0,
+      "id": "francesco-castellacci",
+      "code": "54",
+      "givenName": "Francesco",
+      "familyName": "Castellacci",
+      "nationality": "ITA",
+      "teamIds": [
+        "ferrari"
+      ],
+      "teamNames": [
+        "Ferrari"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Francesco_Castellacci_Driver_of_AF_Corse%27s_Ferrari_488_GTE.jpg/960px-Francesco_Castellacci_Driver_of_AF_Corse%27s_Ferrari_488_GTE.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+    },
+    {
+      "position": 21,
+      "points": 13.0,
+      "wins": 0,
+      "id": "thomas-flohr",
+      "code": "54",
+      "givenName": "Thomas",
+      "familyName": "Flohr",
+      "nationality": "SUI",
+      "teamIds": [
+        "ferrari"
+      ],
+      "teamNames": [
+        "Ferrari"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Thomas_Flohr.jpg/960px-Thomas_Flohr.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+    },
+    {
+      "position": 22,
+      "points": 13.0,
       "wins": 0,
       "id": "ben-tuck",
       "code": "77",
@@ -2086,8 +2149,8 @@
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Ben_Tuck_SP25.jpg/960px-Ben_Tuck_SP25.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
-      "position": 21,
-      "points": 12.0,
+      "position": 22,
+      "points": 13.0,
       "wins": 0,
       "id": "eric-powell",
       "code": "77",
@@ -2107,8 +2170,8 @@
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/2026_6_Hours_of_Spa-Francorchamps_Proton_Competition_Ford_Mustang_LMGT3_No.77_%28DSC06808%29.jpg/960px-2026_6_Hours_of_Spa-Francorchamps_Proton_Competition_Ford_Mustang_LMGT3_No.77_%28DSC06808%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
-      "position": 21,
-      "points": 12.0,
+      "position": 22,
+      "points": 13.0,
       "wins": 0,
       "id": "sebastian-priaulx",
       "code": "77",
@@ -2128,7 +2191,7 @@
       "imageUrl": "assets/portraits/faces/wec/sebastian-priaulx.jpg"
     },
     {
-      "position": 22,
+      "position": 23,
       "points": 6.0,
       "wins": 0,
       "id": "johannes-zelger",
@@ -2149,7 +2212,7 @@
       "imageUrl": "assets/portraits/faces/wec/johannes-zelger.jpg"
     },
     {
-      "position": 22,
+      "position": 23,
       "points": 6.0,
       "wins": 0,
       "id": "lin-hodenius",
@@ -2170,7 +2233,7 @@
       "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2026/01/18/2026_IWSC_LinHodenius_355x355-290x290.png"
     },
     {
-      "position": 22,
+      "position": 23,
       "points": 6.0,
       "wins": 0,
       "id": "matteo-cressoni",
@@ -2191,7 +2254,7 @@
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Matteo_Cressoni_%28portrait%2C_2024%29.jpg/960px-Matteo_Cressoni_%28portrait%2C_2024%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
     },
     {
-      "position": 23,
+      "position": 24,
       "points": 4.0,
       "wins": 0,
       "id": "nicolas-varrone",
@@ -2212,7 +2275,28 @@
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Nico_Varrone_in_2023.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
-      "position": 24,
+      "position": 25,
+      "points": 3.0,
+      "wins": 0,
+      "id": "esteban-masson",
+      "code": "78",
+      "givenName": "Esteban",
+      "familyName": "Masson",
+      "nationality": "FRA",
+      "teamIds": [
+        "lexus"
+      ],
+      "teamNames": [
+        "Lexus"
+      ],
+      "teamColors": [
+        "#222222"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/18/2026_IWSC_EstebanMasson_355x355-290x290.png"
+    },
+    {
+      "position": 26,
       "points": 3.0,
       "wins": 0,
       "id": "kobe-pauwels",
@@ -2231,90 +2315,6 @@
       ],
       "category": "LMGT3",
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Porsche_Carrera_Cup_Benelux_2024_Spa-Francorchamps_D%27Ieteren_Luxury_Performance_Porsche_911_GT3_Cup_%28992%29_No.22_Kobe_Pauwels_%28DSC08606%29.jpg/960px-Porsche_Carrera_Cup_Benelux_2024_Spa-Francorchamps_D%27Ieteren_Luxury_Performance_Porsche_911_GT3_Cup_%28992%29_No.22_Kobe_Pauwels_%28DSC08606%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-    },
-    {
-      "position": 25,
-      "points": 1.0,
-      "wins": 0,
-      "id": "davide-rigon",
-      "code": "54",
-      "givenName": "Davide",
-      "familyName": "Rigon",
-      "nationality": "ITA",
-      "teamIds": [
-        "ferrari"
-      ],
-      "teamNames": [
-        "Ferrari"
-      ],
-      "teamColors": [
-        "#E10600"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2020/01/18/2026_IWSC_DavideRigon_355x355-290x290.png"
-    },
-    {
-      "position": 25,
-      "points": 1.0,
-      "wins": 0,
-      "id": "francesco-castellacci",
-      "code": "54",
-      "givenName": "Francesco",
-      "familyName": "Castellacci",
-      "nationality": "ITA",
-      "teamIds": [
-        "ferrari"
-      ],
-      "teamNames": [
-        "Ferrari"
-      ],
-      "teamColors": [
-        "#E10600"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Francesco_Castellacci_Driver_of_AF_Corse%27s_Ferrari_488_GTE.jpg/960px-Francesco_Castellacci_Driver_of_AF_Corse%27s_Ferrari_488_GTE.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-    },
-    {
-      "position": 25,
-      "points": 1.0,
-      "wins": 0,
-      "id": "thomas-flohr",
-      "code": "54",
-      "givenName": "Thomas",
-      "familyName": "Flohr",
-      "nationality": "SUI",
-      "teamIds": [
-        "ferrari"
-      ],
-      "teamNames": [
-        "Ferrari"
-      ],
-      "teamColors": [
-        "#E10600"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Thomas_Flohr.jpg/960px-Thomas_Flohr.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
-    },
-    {
-      "position": 26,
-      "points": 1.0,
-      "wins": 0,
-      "id": "esteban-masson",
-      "code": "78",
-      "givenName": "Esteban",
-      "familyName": "Masson",
-      "nationality": "FRA",
-      "teamIds": [
-        "lexus"
-      ],
-      "teamNames": [
-        "Lexus"
-      ],
-      "teamColors": [
-        "#222222"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "https://www.imsa.com/wp-content/uploads/sites/32/2019/09/18/2026_IWSC_EstebanMasson_355x355-290x290.png"
     }
   ]
 }
