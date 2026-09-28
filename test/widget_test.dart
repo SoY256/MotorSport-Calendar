@@ -64,20 +64,23 @@ void main() {
     },
   );
 
-  test('IMSA standings contain one fully illustrated row per driver and class', () async {
-    final standings = await AssetCalendarRepository().loadStandings('imsa');
-    final driverKeys = standings.drivers
-        .map((item) => '${item.category}:${item.id}')
-        .toSet();
-    final teamKeys = standings.teams
-        .map((item) => '${item.category}:${item.id}')
-        .toSet();
+  test(
+    'IMSA standings contain one fully illustrated row per driver and class',
+    () async {
+      final standings = await AssetCalendarRepository().loadStandings('imsa');
+      final driverKeys = standings.drivers
+          .map((item) => '${item.category}:${item.id}')
+          .toSet();
+      final teamKeys = standings.teams
+          .map((item) => '${item.category}:${item.id}')
+          .toSet();
 
-    expect(standings.drivers, hasLength(258));
-    expect(driverKeys, hasLength(standings.drivers.length));
-    expect(teamKeys, hasLength(standings.teams.length));
-    expect(standings.drivers.every((item) => item.imageUrl != null), isTrue);
-  });
+      expect(standings.drivers, hasLength(258));
+      expect(driverKeys, hasLength(standings.drivers.length));
+      expect(teamKeys, hasLength(standings.teams.length));
+      expect(standings.drivers.every((item) => item.imageUrl != null), isTrue);
+    },
+  );
 
   test(
     'truncated remote standings cannot replace complete bundled data',
