@@ -66,6 +66,26 @@ def entrant_color(team: str, vehicle: str) -> str:
     return TEAM_COLORS.get(team, manufacturer_color(vehicle))
 
 
+def deduplicate_standings(entries: list[dict], kind: str) -> list[dict]:
+    """Keep one official championship row per class and competitor.
+
+    Alkamel exposes the same IWSC points file from several links on an event
+    page.  A driver may legitimately appear in more than one class, so the
+    class is part of the identity; repeated links within the same class are
+    not separate standings entries.
+    """
+    unique: dict[tuple[str, str], dict] = {}
+    for entry in entries:
+        category = entry.get("category", "").replace("GTDPRO", "GTD PRO")
+        competitor = entry.get("id") if kind == "drivers" else entry.get("id")
+        key = (category, str(competitor or ""))
+        existing = unique.get(key)
+        if existing is None or float(entry.get("points", 0)) > float(existing.get("points", 0)):
+            entry["category"] = category
+            unique[key] = entry
+    return list(unique.values())
+
+
 def main() -> None:
     data_root = Path(os.environ.get("MOTORSPORT_DATA_ROOT", ROOT / "assets" / "data"))
     root = data_root / "imsa" / "2026"
@@ -150,6 +170,7 @@ def main() -> None:
                     team_id, team_name, team_color = car_teams.get((normalized_category, str(name)), (slug(name), name, "#607D8B"))
                     base.update({"id": team_id, "name": f"{team_name} · #{name}" if team_name != name else name, "color": team_color, "nationality": None})
                 entries.append(base)
+        entries = deduplicate_standings(entries, kind)
         entries.sort(key=lambda item: (item.get("category", ""), -float(item["points"])))
         category_positions: dict[str, int] = {}
         for item in entries:

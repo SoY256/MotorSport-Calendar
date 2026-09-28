@@ -34,6 +34,31 @@ def main() -> None:
         teams = load(root / "standings_teams.json")["data"]
         if not calendar or not drivers or not teams:
             failures.append(f"{series_id}: empty calendar/driver/team standings")
+        driver_keys = [(item.get("category"), item["id"]) for item in drivers]
+        team_keys = [(item.get("category"), item["id"]) for item in teams]
+        if len(driver_keys) != len(set(driver_keys)):
+            failures.append(f"{series_id}: duplicate driver standings rows within a category")
+        if len(team_keys) != len(set(team_keys)):
+            failures.append(f"{series_id}: duplicate team standings rows within a category")
+        missing_portraits = [
+            f"{item.get('givenName', '')} {item.get('familyName', '')}".strip()
+            for item in drivers
+            if not item.get("imageUrl")
+        ]
+        if missing_portraits:
+            failures.append(
+                f"{series_id}: missing driver portraits for {', '.join(missing_portraits)}"
+            )
+        if series_id == "wec":
+            entry_teams: dict[tuple[str | None, int, str], set[tuple[str, ...]]] = {}
+            for item in drivers:
+                entry_key = (item.get("category"), item["position"], item.get("code", ""))
+                entry_teams.setdefault(entry_key, set()).add(tuple(item.get("teamIds", [])))
+            inconsistent_entries = [key for key, values in entry_teams.items() if len(values) > 1]
+            if inconsistent_entries:
+                failures.append(
+                    f"wec: inconsistent teams within standings entries {inconsistent_entries}"
+                )
         completed = populated = 0
         for event in calendar:
             if event["circuit"]["name"] not in mapped:

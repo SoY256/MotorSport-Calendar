@@ -6,8 +6,7 @@ import json
 import sys
 from pathlib import Path
 
-import cv2
-import numpy as np
+from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "build" / "portrait_audit"
@@ -28,42 +27,28 @@ def contact_sheets(series: str) -> None:
     for page, offset in enumerate(range(0, len(items), PER_PAGE), 1):
         group = items[offset : offset + PER_PAGE]
         rows = (len(group) + COLS - 1) // COLS
-        sheet = np.full((rows * (TILE + LABEL), COLS * TILE, 3), 255, np.uint8)
+        sheet = Image.new("RGB", (COLS * TILE, rows * (TILE + LABEL)), "white")
+        draw = ImageDraw.Draw(sheet)
         for index, driver in enumerate(group):
             x = (index % COLS) * TILE
             y = (index // COLS) * (TILE + LABEL)
             value = driver.get("imageUrl")
             image = None
             if value and value.startswith("assets/"):
-                image = cv2.imread(str(ROOT / value))
+                try:
+                    image = Image.open(ROOT / value).convert("RGB")
+                except (OSError, ValueError):
+                    image = None
             if image is None:
-                image = np.full((TILE, TILE, 3), (40, 40, 220), np.uint8)
+                image = Image.new("RGB", (TILE, TILE), (220, 40, 40))
             else:
-                image = cv2.resize(image, (TILE, TILE), interpolation=cv2.INTER_AREA)
-            sheet[y : y + TILE, x : x + TILE] = image
+                image = image.resize((TILE, TILE), Image.Resampling.LANCZOS)
+            sheet.paste(image, (x, y))
             name = f"{driver['givenName']} {driver['familyName']}"
-            cv2.putText(
-                sheet,
-                name[:24],
-                (x + 4, y + TILE + 19),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                0.42,
-                (0, 0, 0),
-                1,
-                cv2.LINE_AA,
-            )
-            cv2.putText(
-                sheet,
-                str(offset + index + 1),
-                (x + 4, y + TILE + 36),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                0.38,
-                (80, 80, 80),
-                1,
-                cv2.LINE_AA,
-            )
+            draw.text((x + 4, y + TILE + 3), name[:24], fill="black")
+            draw.text((x + 4, y + TILE + 20), str(offset + index + 1), fill=(80, 80, 80))
         target = OUTPUT / f"{series}-{page:02d}.jpg"
-        cv2.imwrite(str(target), sheet, [cv2.IMWRITE_JPEG_QUALITY, 93])
+        sheet.save(target, quality=93)
         print(target.relative_to(ROOT))
 
 
