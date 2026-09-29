@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-27T15:39:06.331732Z",
+  "lastSuccessfulUpdate": "2026-09-29T06:24:00.147029Z",
   "source": {
     "name": "official-formula-series",
     "url": "https://www.fiaformula3.com/en/racing/2026"
@@ -18,7 +18,8 @@
         "name": "Albert Park Grand Prix Circuit",
         "locality": "Melbourne",
         "country": "Australia",
-        "countryCode": "AUS"
+        "countryCode": "AUS",
+        "lapRecord": "1:34.187 • Théophile Naël (2026)"
       },
       "sessions": [
         {
@@ -27,8 +28,7 @@
           "startTimeUtc": "2026-03-05T21:50:00Z",
           "startTimeTrack": "2026-03-06T08:50:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 45
+          "cancelled": false
         },
         {
           "type": "Q",
@@ -36,8 +36,7 @@
           "startTimeUtc": "2026-03-06T03:00:00Z",
           "startTimeTrack": "2026-03-06T14:00:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 30
+          "cancelled": false
         },
         {
           "type": "SPRINT",
@@ -45,8 +44,7 @@
           "startTimeUtc": "2026-03-07T00:15:00Z",
           "startTimeTrack": "2026-03-07T11:15:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 45
+          "cancelled": false
         },
         {
           "type": "R",
@@ -54,8 +52,7 @@
           "startTimeUtc": "2026-03-07T21:50:00Z",
           "startTimeTrack": "2026-03-08T08:50:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 120
+          "cancelled": false
         }
       ],
       "resultsPath": "events/01-australian-grand-prix.json"
@@ -72,7 +69,8 @@
         "name": "Circuit de Monaco",
         "locality": "Monte Carlo",
         "country": "Monaco",
-        "countryCode": "MCO"
+        "countryCode": "MCO",
+        "lapRecord": "1:24.471 • Théophile Naël (2026)"
       },
       "sessions": [
         {
@@ -81,8 +79,7 @@
           "startTimeUtc": "2026-06-04T11:25:00Z",
           "startTimeTrack": "2026-06-04T13:25:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 45
+          "cancelled": false
         },
         {
           "type": "Q",
@@ -90,8 +87,7 @@
           "startTimeUtc": "2026-06-05T09:05:00Z",
           "startTimeTrack": "2026-06-05T11:05:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 30
+          "cancelled": false
         },
         {
           "type": "Q",
@@ -99,8 +95,7 @@
           "startTimeUtc": "2026-06-05T09:29:00Z",
           "startTimeTrack": "2026-06-05T11:29:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 30
+          "cancelled": false
         },
         {
           "type": "SPRINT",
@@ -108,8 +103,7 @@
           "startTimeUtc": "2026-06-06T08:45:00Z",
           "startTimeTrack": "2026-06-06T10:45:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 45
+          "cancelled": false
         },
         {
           "type": "R",
@@ -117,8 +111,7 @@
           "startTimeUtc": "2026-06-07T05:45:00Z",
           "startTimeTrack": "2026-06-07T07:45:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 120
+          "cancelled": false
         }
       ],
       "resultsPath": "events/02-monaco-grand-prix.json"
@@ -135,7 +128,8 @@
         "name": "Circuit de Barcelona-Catalunya",
         "locality": "Barcelona",
         "country": "Spain",
-        "countryCode": "ESP"
+        "countryCode": "ESP",
+        "lapRecord": "1:28.263 • Théophile Naël (2026)"
       },
       "sessions": [
         {
@@ -144,8 +138,7 @@
           "startTimeUtc": "2026-06-12T07:55:00Z",
           "startTimeTrack": "2026-06-12T09:55:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 45
+          "cancelled": false
         },
         {
           "type": "Q",
@@ -153,8 +146,7 @@
           "startTimeUtc": "2026-06-12T13:00:00Z",
           "startTimeTrack": "2026-06-12T15:00:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 30
+          "cancelled": false
         },
         {
           "type": "SPRINT",
@@ -162,8 +154,7 @@
           "startTimeUtc": "2026-06-13T08:05:00Z",
           "startTimeTrack": "2026-06-13T10:05:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 45
+          "cancelled": false
         },
         {
           "type": "R",
@@ -171,8 +162,7 @@
           "startTimeUtc": "2026-06-14T06:40:00Z",
           "startTimeTrack": "2026-06-14T08:40:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 120
+          "cancelled": false
         }
       ],
       "resultsPath": "events/03-barcelona-grand-prix.json"
@@ -189,7 +179,8 @@
         "name": "Red Bull Ring",
         "locality": "Spielberg",
         "country": "Austria",
-        "countryCode": "AUT"
+        "countryCode": "AUT",
+        "lapRecord": "1:21.730 • Hiyu Yamakoshi (2026)"
       },
       "sessions": [
         {
@@ -198,8 +189,7 @@
           "startTimeUtc": "2026-06-26T07:55:00Z",
           "startTimeTrack": "2026-06-26T09:55:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 45
+          "cancelled": false
         },
         {
           "type": "Q",
@@ -207,8 +197,7 @@
           "startTimeUtc": "2026-06-26T13:00:00Z",
           "startTimeTrack": "2026-06-26T15:00:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 30
+          "cancelled": false
         },
         {
           "type": "SPRINT",
@@ -216,8 +205,7 @@
           "startTimeUtc": "2026-06-27T08:05:00Z",
           "startTimeTrack": "2026-06-27T10:05:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 45
+          "cancelled": false
         },
         {
           "type": "R",
@@ -225,8 +213,7 @@
           "startTimeUtc": "2026-06-28T06:40:00Z",
           "startTimeTrack": "2026-06-28T08:40:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 120
+          "cancelled": false
         }
       ],
       "resultsPath": "events/04-austrian-grand-prix.json"
@@ -243,7 +230,8 @@
         "name": "Silverstone Circuit",
         "locality": "Silverstone",
         "country": "United Kingdom",
-        "countryCode": "GBR"
+        "countryCode": "GBR",
+        "lapRecord": "1:45.620 • Freddie Slater (2026)"
       },
       "sessions": [
         {
@@ -252,8 +240,7 @@
           "startTimeUtc": "2026-07-03T07:50:00Z",
           "startTimeTrack": "2026-07-03T08:50:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 45
+          "cancelled": false
         },
         {
           "type": "Q",
@@ -261,8 +248,7 @@
           "startTimeUtc": "2026-07-03T13:00:00Z",
           "startTimeTrack": "2026-07-03T14:00:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 30
+          "cancelled": false
         },
         {
           "type": "SPRINT",
@@ -270,8 +256,7 @@
           "startTimeUtc": "2026-07-04T08:35:00Z",
           "startTimeTrack": "2026-07-04T09:35:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 45
+          "cancelled": false
         },
         {
           "type": "R",
@@ -279,8 +264,7 @@
           "startTimeUtc": "2026-07-05T07:25:00Z",
           "startTimeTrack": "2026-07-05T08:25:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 120
+          "cancelled": false
         }
       ],
       "resultsPath": "events/05-british-grand-prix.json"
@@ -297,7 +281,8 @@
         "name": "Circuit de Spa-Francorchamps",
         "locality": "Stavelot",
         "country": "Belgium",
-        "countryCode": "BEL"
+        "countryCode": "BEL",
+        "lapRecord": "2:05.150 • Freddie Slater (2026)"
       },
       "sessions": [
         {
@@ -306,8 +291,7 @@
           "startTimeUtc": "2026-07-17T07:55:00Z",
           "startTimeTrack": "2026-07-17T09:55:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 45
+          "cancelled": false
         },
         {
           "type": "Q",
@@ -315,8 +299,7 @@
           "startTimeUtc": "2026-07-17T13:00:00Z",
           "startTimeTrack": "2026-07-17T15:00:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 30
+          "cancelled": false
         },
         {
           "type": "SPRINT",
@@ -324,8 +307,7 @@
           "startTimeUtc": "2026-07-18T08:00:00Z",
           "startTimeTrack": "2026-07-18T10:00:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 45
+          "cancelled": false
         },
         {
           "type": "R",
@@ -333,8 +315,7 @@
           "startTimeUtc": "2026-07-19T06:30:00Z",
           "startTimeTrack": "2026-07-19T08:30:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 120
+          "cancelled": false
         }
       ],
       "resultsPath": "events/06-belgian-grand-prix.json"
@@ -351,7 +332,8 @@
         "name": "Hungaroring",
         "locality": "Budapest",
         "country": "Hungary",
-        "countryCode": "HUN"
+        "countryCode": "HUN",
+        "lapRecord": "1:33.411 • Tuukka Taponen (2026)"
       },
       "sessions": [
         {
@@ -360,8 +342,7 @@
           "startTimeUtc": "2026-07-24T07:55:00Z",
           "startTimeTrack": "2026-07-24T09:55:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 45
+          "cancelled": false
         },
         {
           "type": "Q",
@@ -369,8 +350,7 @@
           "startTimeUtc": "2026-07-24T13:00:00Z",
           "startTimeTrack": "2026-07-24T15:00:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 30
+          "cancelled": false
         },
         {
           "type": "SPRINT",
@@ -378,8 +358,7 @@
           "startTimeUtc": "2026-07-25T08:05:00Z",
           "startTimeTrack": "2026-07-25T10:05:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 45
+          "cancelled": false
         },
         {
           "type": "R",
@@ -387,8 +366,7 @@
           "startTimeUtc": "2026-07-26T06:40:00Z",
           "startTimeTrack": "2026-07-26T08:40:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 120
+          "cancelled": false
         }
       ],
       "resultsPath": "events/07-hungarian-grand-prix.json"
@@ -405,7 +383,8 @@
         "name": "Autodromo Nazionale di Monza",
         "locality": "Monza",
         "country": "Italy",
-        "countryCode": "ITA"
+        "countryCode": "ITA",
+        "lapRecord": "1:37.445 • Alessandro Giusti (2026)"
       },
       "sessions": [
         {
@@ -414,8 +393,7 @@
           "startTimeUtc": "2026-09-04T06:35:00Z",
           "startTimeTrack": "2026-09-04T08:35:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 45
+          "cancelled": false
         },
         {
           "type": "QA",
@@ -423,8 +401,7 @@
           "startTimeUtc": "2026-09-04T12:00:00Z",
           "startTimeTrack": "2026-09-04T14:00:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 30
+          "cancelled": false
         },
         {
           "type": "QB",
@@ -432,8 +409,7 @@
           "startTimeUtc": "2026-09-04T12:20:00Z",
           "startTimeTrack": "2026-09-04T14:20:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 30
+          "cancelled": false
         },
         {
           "type": "SPRINT",
@@ -441,8 +417,7 @@
           "startTimeUtc": "2026-09-05T07:30:00Z",
           "startTimeTrack": "2026-09-05T09:30:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 45
+          "cancelled": false
         },
         {
           "type": "R",
@@ -450,8 +425,7 @@
           "startTimeUtc": "2026-09-06T06:15:00Z",
           "startTimeTrack": "2026-09-06T08:15:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 120
+          "cancelled": false
         }
       ],
       "resultsPath": "events/08-italian-grand-prix.json"
@@ -468,7 +442,8 @@
         "name": "Madring",
         "locality": "Madrid",
         "country": "Spain",
-        "countryCode": "ESP"
+        "countryCode": "ESP",
+        "lapRecord": "1:49.750 • Tuukka Taponen (2026)"
       },
       "sessions": [
         {
@@ -477,8 +452,7 @@
           "startTimeUtc": "2026-09-11T07:55:00Z",
           "startTimeTrack": "2026-09-11T09:55:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 45
+          "cancelled": false
         },
         {
           "type": "Q1",
@@ -486,8 +460,7 @@
           "startTimeUtc": "2026-09-11T16:25:00Z",
           "startTimeTrack": "2026-09-11T18:25:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 30
+          "cancelled": false
         },
         {
           "type": "Q2",
@@ -495,8 +468,7 @@
           "startTimeUtc": "2026-09-11T16:55:00Z",
           "startTimeTrack": "2026-09-11T18:55:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 30
+          "cancelled": false
         },
         {
           "type": "SPRINT",
@@ -504,8 +476,7 @@
           "startTimeUtc": "2026-09-12T09:05:00Z",
           "startTimeTrack": "2026-09-12T11:05:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 45
+          "cancelled": false
         },
         {
           "type": "R1",
@@ -513,8 +484,7 @@
           "startTimeUtc": "2026-09-12T16:00:00Z",
           "startTimeTrack": "2026-09-12T18:00:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 120
+          "cancelled": false
         },
         {
           "type": "R2",
@@ -522,8 +492,7 @@
           "startTimeUtc": "2026-09-13T07:45:00Z",
           "startTimeTrack": "2026-09-13T09:45:00",
           "trackTimeZone": null,
-          "cancelled": false,
-          "durationMinutes": 120
+          "cancelled": false
         }
       ],
       "resultsPath": "events/09-madrid-grand-prix.json"

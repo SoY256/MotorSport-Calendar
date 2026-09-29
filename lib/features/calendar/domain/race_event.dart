@@ -37,6 +37,7 @@ class Circuit {
     this.locality,
     this.country,
     this.countryCode,
+    this.lapRecord,
   });
 
   factory Circuit.fromJson(Map<String, dynamic> json) => Circuit(
@@ -44,12 +45,14 @@ class Circuit {
     locality: json['locality'] as String?,
     country: json['country'] as String?,
     countryCode: json['countryCode'] as String?,
+    lapRecord: json['lapRecord'] as String?,
   );
 
   final String name;
   final String? locality;
   final String? country;
   final String? countryCode;
+  final String? lapRecord;
 }
 
 class RaceEvent {

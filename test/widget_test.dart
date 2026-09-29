@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 import 'package:secar/app/app.dart';
 import 'package:secar/features/calendar/data/calendar_repository.dart';
+import 'package:secar/features/calendar/domain/circuit_metadata.dart';
 import 'package:secar/features/calendar/domain/race_event.dart';
 import 'package:secar/features/calendar/presentation/calendar_providers.dart';
 import 'package:secar/features/settings/domain/app_settings.dart';
@@ -14,6 +15,23 @@ import 'package:shared_preferences/shared_preferences.dart';
 void main() {
   test('fresh installations default to English', () {
     expect(const AppSettings().language, AppLanguage.english);
+  });
+
+  test('lap records are selected by racing series', () {
+    final spa = metadataForCircuit('Circuit de Spa-Francorchamps');
+    expect(
+      spa.lapRecordFor('f1', 'Circuit de Spa-Francorchamps'),
+      contains('Sergio Pérez'),
+    );
+    expect(
+      spa.lapRecordFor('f2', 'Circuit de Spa-Francorchamps'),
+      contains('Rafael Câmara'),
+    );
+    expect(
+      spa.lapRecordFor('wec', 'Circuit de Spa-Francorchamps'),
+      contains('Stoffel Vandoorne'),
+    );
+    expect(spa.lapRecordFor('imsa', 'Circuit de Spa-Francorchamps'), isNull);
   });
 
   test(
@@ -446,13 +464,15 @@ void main() {
     expect(find.text('Australian Grand Prix'), findsNothing);
     await tester.tap(find.text('Wszystkie'));
     await tester.pump(const Duration(milliseconds: 300));
-    expect(find.text('Ukryj poprzednie wydarzenia'), findsOneWidget);
+    expect(find.text('Ukryj ukończone wyścigi'), findsOneWidget);
 
     tester.widget<Switch>(find.byType(Switch).first).onChanged!(false);
     await tester.pump(const Duration(milliseconds: 300));
+    expect(find.text('Ukryj ukończone wyścigi'), findsOneWidget);
     expect(find.text('Australian Grand Prix'), findsNothing);
     tester.widget<Switch>(find.byType(Switch).first).onChanged!(true);
     await tester.pump(const Duration(milliseconds: 300));
+    expect(find.text('Ukryj ukończone wyścigi'), findsOneWidget);
     expect(find.text('Australian Grand Prix'), findsNWidgets(3));
 
     await tester.ensureVisible(find.text('Australian Grand Prix').first);

@@ -689,7 +689,7 @@ class _ListPage extends ConsumerWidget {
             child: SwitchListTile(
               secondary: const Icon(Icons.history_rounded),
               title: Text(
-                settings.showPastEvents ? strings.hidePast : strings.showPast,
+                strings.hideCompletedRaces,
                 style: const TextStyle(fontWeight: FontWeight.w800),
               ),
               value: settings.showPastEvents,
@@ -1769,6 +1769,9 @@ class _CircuitInfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final metadata = metadataForCircuit(event.circuit.name);
+    final lapRecord =
+        event.circuit.lapRecord ??
+        metadata.lapRecordFor(event.seriesId, event.circuit.name);
     final asset = circuitAssetFor(event.circuit.name);
     return Card(
       child: Padding(
@@ -1797,7 +1800,9 @@ class _CircuitInfoCard extends StatelessWidget {
                   '${strings.circuitLength}: ${metadata.lengthKm?.toStringAsFixed(3) ?? '–'} km',
                 ),
                 const SizedBox(height: 6),
-                Text('${strings.lapRecord}: ${metadata.lapRecord ?? '–'}'),
+                Text(
+                  '${strings.lapRecord} (${_seriesLabel(event.seriesId)}): ${lapRecord ?? '–'}',
+                ),
               ],
             );
             final flag = Text(

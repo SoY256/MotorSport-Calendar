@@ -89,7 +89,9 @@ def deduplicate_standings(entries: list[dict], kind: str) -> list[dict]:
 def main() -> None:
     data_root = Path(os.environ.get("MOTORSPORT_DATA_ROOT", ROOT / "assets" / "data"))
     root = data_root / "imsa" / "2026"
-    calendar = json.loads((root / "calendar.json").read_text(encoding="utf-8"))["data"]
+    calendar_path = root / "calendar.json"
+    calendar_doc = json.loads(calendar_path.read_text(encoding="utf-8"))
+    calendar = calendar_doc["data"]
     events = []
     for event_code in completed_event_codes():
         try:
@@ -106,6 +108,10 @@ def main() -> None:
     team_wins: dict[tuple[str, str], int] = {}
     for event, (event_code, url) in zip(calendar, events):
         raw = json.loads(fetch(url).decode("utf-8-sig"))
+        fastest = raw.get("fastest_lap") or {}
+        if fastest.get("time") and fastest.get("driver_surname"):
+            driver = f"{fastest.get('driver_firstname', '')} {fastest['driver_surname']}".strip()
+            event["circuit"]["lapRecord"] = f"{fastest['time']} • {driver} (2026)"
         rows = []
         winning_classes: set[str] = set()
         for item in raw.get("classification", []):
@@ -146,6 +152,9 @@ def main() -> None:
                    "data": {"eventId": event["id"], "sessions": [{"type": "R", "name": "Race", "startTimeUtc": event["sessions"][-1]["startTimeUtc"], "results": rows}]}}
         (root / event["resultsPath"]).write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(f"{event['name']}: {len(rows)}")
+
+    calendar_doc["lastSuccessfulUpdate"] = updated
+    calendar_path.write_text(json.dumps(calendar_doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     if not events:
         raise RuntimeError("No completed official IMSA events found")

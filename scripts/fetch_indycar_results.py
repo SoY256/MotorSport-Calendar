@@ -42,10 +42,15 @@ def slug(value: str) -> str:
     return "-".join(re.findall(r"[a-z0-9]+", plain))
 
 
+def display_lap_time(value: str) -> str:
+    return f"0:{value[3:]}" if value.startswith("00:") else value.lstrip("0")
+
+
 def main() -> None:
     data_root = Path(os.environ.get("MOTORSPORT_DATA_ROOT", ROOT / "assets" / "data"))
     root = data_root / "indycar" / "2026"
-    calendar_doc = json.loads((root / "calendar.json").read_text(encoding="utf-8"))
+    calendar_path = root / "calendar.json"
+    calendar_doc = json.loads(calendar_path.read_text(encoding="utf-8"))
     official = get(f"{API}/SeasonDropDown?id={SERIES_ID}")
     season = next(item for item in official if item["Year"] == "2026")
     completed = list(reversed(season["Events"]))
@@ -57,6 +62,10 @@ def main() -> None:
     for event, official_event in zip(events, completed):
         race = next(item for item in official_event["Sessions"] if item["SessionName"] == "Race")
         details = get(f"{API}/EventsSessionDetails?id={race['EventsSessionID']}")
+        timed = [row for row in details.get("records", []) if row.get("BestLapTime")]
+        if timed:
+            fastest = min(timed, key=lambda row: row["BestLapTime"])
+            event["circuit"]["lapRecord"] = f"{display_lap_time(fastest['BestLapTime'])} • {fastest['DriverName']} (2026)"
         rows = []
         for raw in details.get("records", []):
             team = raw.get("TeamName") or ""
@@ -77,6 +86,9 @@ def main() -> None:
             "data": {"eventId": event["id"], "sessions": [{"type": "R", "name": "Race", "startTimeUtc": event["sessions"][-1]["startTimeUtc"], "results": rows}]},
         }
         (root / event["resultsPath"]).write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    calendar_doc["lastSuccessfulUpdate"] = updated
+    calendar_path.write_text(json.dumps(calendar_doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     # INDYCAR publishes a drivers' championship, not a separate teams'
     # championship. For the app's team tab, aggregate the official driver

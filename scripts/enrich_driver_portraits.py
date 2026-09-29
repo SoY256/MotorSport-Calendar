@@ -27,12 +27,13 @@ def stored_portraits(name: str) -> dict[str, str]:
 
 def bundled_portraits() -> dict[str, str]:
     portraits: dict[str, str] = {}
-    for path in (ROOT / "assets" / "data").glob("*/2026/standings_drivers.json"):
-        document = json.loads(path.read_text(encoding="utf-8"))
-        for driver in document["data"]:
-            image = driver.get("imageUrl")
-            if image:
-                portraits[slugify(f"{driver.get('givenName', '')} {driver.get('familyName', '')}")] = image
+    for data_root in (ROOT / "assets" / "data", ROOT / "data"):
+        for path in data_root.glob("*/2026/standings_drivers.json"):
+            document = json.loads(path.read_text(encoding="utf-8"))
+            for driver in document["data"]:
+                image = driver.get("imageUrl")
+                if image:
+                    portraits[slugify(f"{driver.get('givenName', '')} {driver.get('familyName', '')}")] = image
     return portraits
 
 

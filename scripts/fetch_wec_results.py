@@ -226,6 +226,27 @@ def classification_url(code: str) -> str:
     return urljoin(BASE, hrefs[-1])
 
 
+def fastest_lap_url(code: str) -> str:
+    index_url = f"{BASE}?evvent={quote(code)}&season=15_2026"
+    page = fetch(index_url).decode("utf-8", "replace")
+    hrefs = re.findall(r'href="([^"]+07_FastestLapByDriver_Race_Hour[^"?]+\.PDF)"', page, re.I)
+    if not hrefs:
+        raise RuntimeError(f"No race fastest-lap PDF for {code}")
+    return urljoin(BASE, hrefs[-1])
+
+
+def fastest_lap_record(pdf: bytes) -> str:
+    text = "\n".join(page.extract_text() or "" for page in pdfplumber.open(io.BytesIO(pdf)).pages)
+    match = re.search(
+        r"^1\s+\S+\s+.+?\s+HYPERCAR\s+(.+?)\s+(\d+:\d+\.\d+)\s+\d+\s+\d+\s+\d+\.\d+$",
+        text,
+        re.M,
+    )
+    if not match:
+        raise RuntimeError("No overall WEC fastest lap parsed")
+    return f"{match.group(2)} • {display_name(match.group(1))} (2026)"
+
+
 def manufacturer_color(car: str) -> str:
     return next((color for make, color in MANUFACTURER_COLORS.items() if make.lower() in car.lower()), "#607D8B")
 
@@ -279,7 +300,9 @@ def parse_rows(pdf: bytes, nationalities: dict[str, str]) -> list[dict]:
 def main() -> None:
     data_root = Path(os.environ.get("MOTORSPORT_DATA_ROOT", ROOT / "assets" / "data"))
     root = data_root / "wec" / "2026"
-    calendar = json.loads((root / "calendar.json").read_text(encoding="utf-8"))["data"]
+    calendar_path = root / "calendar.json"
+    calendar_doc = json.loads(calendar_path.read_text(encoding="utf-8"))
+    calendar = calendar_doc["data"]
     events = completed_event_codes()
     updated = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
     nationalities = entry_nationalities(fetch(ENTRY_LIST_URL))
@@ -301,6 +324,7 @@ def main() -> None:
             continue
         url = classification_url(code)
         rows = parse_rows(fetch(url), nationalities)
+        event["circuit"]["lapRecord"] = fastest_lap_record(fetch(fastest_lap_url(code)))
         for category in ("HYPERCAR", "LMGT3"):
             winner = next((row for row in rows if row["components"]["category"] == category), None)
             if not winner:
@@ -321,6 +345,10 @@ def main() -> None:
                    "data": {"eventId": event["id"], "sessions": [{"type": "R", "name": "Race", "startTimeUtc": event["sessions"][-1]["startTimeUtc"], "results": rows}]}}
         (root / event["resultsPath"]).write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(f"{event['name']}: {len(rows)}", file=sys.stderr)
+    calendar_doc["lastSuccessfulUpdate"] = updated
+    calendar_path.write_text(
+        json.dumps(calendar_doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
     driver_doc, team_doc = full_standings(
         fetch(STANDINGS_URL).decode("utf-8", "replace"), nationalities, driver_wins, team_wins, updated,
     )

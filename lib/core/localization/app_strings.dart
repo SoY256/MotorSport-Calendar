@@ -29,10 +29,8 @@ class AppStrings {
       _en ? 'Expected duration' : 'Przewidywany czas';
   String get updated => _en ? 'Updated' : 'Dane zaktualizowano';
   String get refresh => _en ? 'Refresh data' : 'Odśwież dane';
-  String get showPast =>
-      _en ? 'Show completed events' : 'Pokaż poprzednie wydarzenia';
-  String get hidePast =>
-      _en ? 'Hide completed events' : 'Ukryj poprzednie wydarzenia';
+  String get hideCompletedRaces =>
+      _en ? 'Hide completed races' : 'Ukryj ukończone wyścigi';
   String get noUpcoming =>
       _en ? 'No upcoming events' : 'Brak nadchodzących wydarzeń';
   String get selectEvent => _en ? 'Select an event' : 'Wybierz wydarzenie';

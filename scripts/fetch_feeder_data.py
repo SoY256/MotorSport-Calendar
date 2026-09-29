@@ -218,6 +218,16 @@ def result_row(raw: dict, position: int) -> dict:
     }
 
 
+def timed_lap(raw: dict) -> tuple[float, str, str] | None:
+    value = str(raw.get("classifiedTime") or "")
+    match = re.fullmatch(r"(\d+):(\d{2})\.(\d{3})", value)
+    if not match:
+        return None
+    seconds = int(match.group(1)) * 60 + int(match.group(2)) + int(match.group(3)) / 1000
+    driver = f"{raw.get('driverFirstName', '')} {raw.get('driverLastName', '')}".strip()
+    return seconds, value, driver
+
+
 def build(series: str) -> None:
     base = f"https://www.fiaformula{2 if series == 'f2' else 3}.com/en/racing/2026"
     events = []
@@ -228,12 +238,17 @@ def build(series: str) -> None:
         html = page(url)
         sessions = official_sessions(series, html)
         calendar_sessions, result_sessions = [], []
+        fastest_lap: tuple[float, str, str] | None = None
         for item in sessions:
             short = item.get("shortName", "")
             classification = session_type(item)
             stamp = utc(item, start)
             calendar_sessions.append({"type": classification, "name": short or item.get("session", "Session"), "startTimeUtc": stamp, "startTimeTrack": item.get("startTime"), "trackTimeZone": item.get("timezone"), "cancelled": False})
             rows = [result_row(raw, index) for index, raw in enumerate(item.get("results", []), 1)]
+            for raw in item.get("results", []):
+                candidate = timed_lap(raw)
+                if candidate is not None and (fastest_lap is None or candidate[0] < fastest_lap[0]):
+                    fastest_lap = candidate
             for result in rows:
                 driver_metadata[result["driver"]["id"]] = {
                     "nationality": result["driver"].get("nationality"),
@@ -246,8 +261,11 @@ def build(series: str) -> None:
             calendar_sessions = [{"type": "R", "name": "Feature Race", "startTimeUtc": f"{end}T12:00:00Z", "cancelled": False}]
         filename = f"{number:02d}-{slug(name)}.json"
         event_id = f"{series}-2026-{number}"
+        circuit_data = {"id": slug(circuit), "name": circuit, "locality": locality, "country": country, "countryCode": code}
+        if fastest_lap is not None:
+            circuit_data["lapRecord"] = f"{fastest_lap[1]} • {fastest_lap[2]} (2026)"
         events.append({"id": event_id, "seriesId": series, "season": 2026, "round": number, "name": name, "cancelled": False,
-                       "circuit": {"id": slug(circuit), "name": circuit, "locality": locality, "country": country, "countryCode": code},
+                       "circuit": circuit_data,
                        "sessions": calendar_sessions, "resultsPath": f"events/{filename}"})
         write(OUT / series / "2026" / "events" / filename, {"eventId": event_id, "sessions": result_sessions}, url)
     write(OUT / series / "2026" / "calendar.json", events, base)
