@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-04T10:50:15.520109Z",
+  "lastSuccessfulUpdate": "2026-10-04T18:08:26.956817Z",
   "source": {
     "name": "formula1-official",
     "url": "https://www.formula1.com/en/results/2026/drivers"
@@ -8,7 +8,7 @@
   "data": [
     {
       "position": 1,
-      "points": 302.0,
+      "points": 320.0,
       "wins": 8,
       "id": "antonelli",
       "code": "ANT",
@@ -36,7 +36,7 @@
     },
     {
       "position": 3,
-      "points": 199.0,
+      "points": 214.0,
       "wins": 1,
       "id": "hamilton",
       "code": "HAM",
@@ -50,21 +50,7 @@
     },
     {
       "position": 4,
-      "points": 186.0,
-      "wins": 2,
-      "id": "norris",
-      "code": "NOR",
-      "givenName": "Lando",
-      "familyName": "Norris",
-      "nationality": "British",
-      "teamIds": [
-        "mclaren"
-      ],
-      "imageUrl": "assets/portraits/faces/f1/lando-norris.jpg"
-    },
-    {
-      "position": 5,
-      "points": 179.0,
+      "points": 191.0,
       "wins": 1,
       "id": "leclerc",
       "code": "LEC",
@@ -77,8 +63,22 @@
       "imageUrl": "assets/portraits/faces/f1/charles-leclerc.jpg"
     },
     {
+      "position": 5,
+      "points": 188.0,
+      "wins": 2,
+      "id": "norris",
+      "code": "NOR",
+      "givenName": "Lando",
+      "familyName": "Norris",
+      "nationality": "British",
+      "teamIds": [
+        "mclaren"
+      ],
+      "imageUrl": "assets/portraits/faces/f1/lando-norris.jpg"
+    },
+    {
       "position": 6,
-      "points": 163.0,
+      "points": 188.0,
       "wins": 0,
       "id": "max_verstappen",
       "code": "VER",
@@ -92,7 +92,7 @@
     },
     {
       "position": 7,
-      "points": 120.0,
+      "points": 128.0,
       "wins": 0,
       "id": "piastri",
       "code": "PIA",
@@ -106,7 +106,7 @@
     },
     {
       "position": 8,
-      "points": 86.0,
+      "points": 96.0,
       "wins": 0,
       "id": "hadjar",
       "code": "HAD",
@@ -120,7 +120,7 @@
     },
     {
       "position": 9,
-      "points": 59.0,
+      "points": 65.0,
       "wins": 0,
       "id": "lawson",
       "code": "LAW",
@@ -149,7 +149,7 @@
     },
     {
       "position": 11,
-      "points": 37.0,
+      "points": 38.0,
       "wins": 0,
       "id": "arvid_lindblad",
       "code": "LIN",
@@ -235,6 +235,20 @@
       "position": 17,
       "points": 7.0,
       "wins": 0,
+      "id": "alonso",
+      "code": "ALO",
+      "givenName": "Fernando",
+      "familyName": "Alonso",
+      "nationality": "Spanish",
+      "teamIds": [
+        "aston_martin"
+      ],
+      "imageUrl": "assets/portraits/faces/f1/fernando-alonso.jpg"
+    },
+    {
+      "position": 18,
+      "points": 7.0,
+      "wins": 0,
       "id": "sainz",
       "code": "SAI",
       "givenName": "Carlos",
@@ -246,7 +260,7 @@
       "imageUrl": "assets/portraits/faces/f1/carlos-sainz.jpg"
     },
     {
-      "position": 18,
+      "position": 19,
       "points": 5.0,
       "wins": 0,
       "id": "albon",
@@ -258,20 +272,6 @@
         "williams"
       ],
       "imageUrl": "https://media.formula1.com/image/upload/c_lfill,w_1024/q_auto/d_common:f1:2026:fallback:driver:2026fallbackdriverright.webp/v1740000001/common/f1/2026/williams/alealb01/2026williamsalealb01right.webp"
-    },
-    {
-      "position": 19,
-      "points": 3.0,
-      "wins": 0,
-      "id": "alonso",
-      "code": "ALO",
-      "givenName": "Fernando",
-      "familyName": "Alonso",
-      "nationality": "Spanish",
-      "teamIds": [
-        "aston_martin"
-      ],
-      "imageUrl": "assets/portraits/faces/f1/fernando-alonso.jpg"
     },
     {
       "position": 20,
