@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-10T10:45:00.472018Z",
+  "lastSuccessfulUpdate": "2026-10-10T14:40:29.962513Z",
   "source": {
     "name": "formula1-official",
     "url": "https://www.formula1.com/en/results/2026/drivers"
@@ -8,7 +8,7 @@
   "data": [
     {
       "position": 1,
-      "points": 320.0,
+      "points": 325.0,
       "wins": 8,
       "id": "antonelli",
       "code": "ANT",
@@ -36,7 +36,7 @@
     },
     {
       "position": 3,
-      "points": 214.0,
+      "points": 221.0,
       "wins": 1,
       "id": "hamilton",
       "code": "HAM",
@@ -50,7 +50,7 @@
     },
     {
       "position": 4,
-      "points": 191.0,
+      "points": 197.0,
       "wins": 1,
       "id": "leclerc",
       "code": "LEC",
@@ -64,21 +64,7 @@
     },
     {
       "position": 5,
-      "points": 188.0,
-      "wins": 2,
-      "id": "norris",
-      "code": "NOR",
-      "givenName": "Lando",
-      "familyName": "Norris",
-      "nationality": "British",
-      "teamIds": [
-        "mclaren"
-      ],
-      "imageUrl": "assets/portraits/faces/f1/lando-norris.jpg"
-    },
-    {
-      "position": 6,
-      "points": 188.0,
+      "points": 196.0,
       "wins": 1,
       "id": "max_verstappen",
       "code": "VER",
@@ -89,6 +75,20 @@
         "red_bull"
       ],
       "imageUrl": "assets/portraits/faces/f1/max-verstappen.jpg"
+    },
+    {
+      "position": 6,
+      "points": 189.0,
+      "wins": 2,
+      "id": "norris",
+      "code": "NOR",
+      "givenName": "Lando",
+      "familyName": "Norris",
+      "nationality": "British",
+      "teamIds": [
+        "mclaren"
+      ],
+      "imageUrl": "assets/portraits/faces/f1/lando-norris.jpg"
     },
     {
       "position": 7,
@@ -120,7 +120,7 @@
     },
     {
       "position": 9,
-      "points": 65.0,
+      "points": 69.0,
       "wins": 0,
       "id": "lawson",
       "code": "LAW",
@@ -177,7 +177,7 @@
     },
     {
       "position": 13,
-      "points": 20.0,
+      "points": 23.0,
       "wins": 0,
       "id": "bearman",
       "code": "BEA",
@@ -205,7 +205,7 @@
     },
     {
       "position": 15,
-      "points": 7.0,
+      "points": 9.0,
       "wins": 0,
       "id": "hulkenberg",
       "code": "HUL",

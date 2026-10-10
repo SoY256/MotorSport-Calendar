@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-10T10:45:00.472018Z",
+  "lastSuccessfulUpdate": "2026-10-10T14:40:29.962513Z",
   "source": {
     "name": "formula1-official",
     "url": "https://www.formula1.com/en/results/2026/races/1296/singapore/race-result"
@@ -1670,6 +1670,12 @@
             "components": {}
           }
         ]
+      },
+      {
+        "type": "Q",
+        "name": "Qualifying",
+        "startTimeUtc": "2026-10-10T13:00:00Z",
+        "results": []
       }
     ]
   }
