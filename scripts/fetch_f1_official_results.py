@@ -3,11 +3,12 @@
 from __future__ import annotations
 
 import html
+import argparse
 import json
 import os
 import re
 from html.parser import HTMLParser
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from http_retry import read
@@ -21,10 +22,22 @@ ROUTES = {
     "FP2": "practice/2",
     "FP3": "practice/3",
     "Q": "qualifying",
-    "SQ": "sprint-shootout",
+    "SQ": "sprint-qualifying",
     "SPRINT": "sprint-results",
     "R": "race-result",
 }
+
+RACE_SLUGS = {'Australian': 'australia', 'Chinese': 'china', 'Japanese': 'japan',
+    'Canadian': 'canada', 'Barcelona': 'barcelona-catalunya', 'Austrian': 'austria',
+    'British': 'great-britain', 'Belgian': 'belgium', 'Hungarian': 'hungary',
+    'Dutch': 'netherlands', 'Italian': 'italy', 'Spanish': 'spain',
+    'Mexico City': 'mexico', 'Brazilian': 'brazil'}
+
+
+def page_for_event(event: dict, pages: dict) -> tuple[str, str] | None:
+    name = event['name'].split(' Grand Prix')[0]
+    slug = RACE_SLUGS.get(name, name.lower().replace(' ', '-'))
+    return next((page for page in pages.values() if page[1] == slug), None)
 
 
 class Tables(HTMLParser):
@@ -63,7 +76,9 @@ class Tables(HTMLParser):
 
 
 def fetch(url: str) -> str:
-    return read(url, HEADERS, timeout=40).decode("utf-8", "replace")
+    separator = '&' if '?' in url else '?'
+    url = f'{url}{separator}refresh={int(datetime.now(timezone.utc).timestamp())}'
+    return read(url, {**HEADERS, 'Cache-Control': 'no-cache'}, timeout=10, attempts=2).decode("utf-8", "replace")
 
 
 def race_pages(year: int) -> dict[int, tuple[str, str]]:
@@ -97,9 +112,9 @@ def official_rows(body: str, session_type: str, drivers: dict[str, dict], teams:
     parser.feed(body)
     rows: list[dict] = []
     for cells in parser.rows[1:]:
-        if len(cells) < 5 or not cells[0].isdigit():
+        if len(cells) < 5 or not cells[1].isdigit():
             continue
-        position = int(cells[0])
+        position = int(cells[0]) if cells[0].isdigit() else None
         number = int(cells[1]) if cells[1].isdigit() else None
         words = cells[2].split()
         code = words[-1] if words and len(words[-1]) == 3 else None
@@ -132,7 +147,7 @@ def official_rows(body: str, session_type: str, drivers: dict[str, dict], teams:
             points = None
         rows.append({
             "position": position,
-            "positionText": str(position),
+            "positionText": cells[0],
             "driver": {
                 "id": known.get("id") or f"f1-{code or number}",
                 "code": code,
@@ -150,7 +165,7 @@ def official_rows(body: str, session_type: str, drivers: dict[str, dict], teams:
             "laps": laps,
             "points": points,
             "status": None,
-            "classified": True,
+            "classified": position is not None,
             "components": {},
         })
     return rows
@@ -210,16 +225,17 @@ def official_standings(root: Path) -> None:
         team_path.write_text(json.dumps(team_document, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-def main() -> None:
+def main(live: bool = False) -> None:
     root = DATA / "f1" / "2026"
     calendar = json.loads((root / "calendar.json").read_text(encoding="utf-8"))["data"]
     pages = race_pages(2026)
     drivers, teams = metadata(root)
-    official_standings(root)
+    if not live:
+        official_standings(root)
     for event in calendar:
         if event.get("round") is None or event.get("cancelled"):
             continue
-        page = pages.get(int(event["round"]))
+        page = page_for_event(event, pages)
         if page is None:
             continue
         race_id, slug = page
@@ -236,12 +252,14 @@ def main() -> None:
             # Existing classifications have already been verified. During the
             # live weekend query only completed, still-missing sessions so the
             # five-minute job reaches F1 quickly and does not hammer old pages.
-            if target is not None and target.get("results"):
+            if target is not None and target.get("results") and target.get("source", {}).get("name") == "formula1-official":
                 continue
             start = datetime.fromisoformat(
                 scheduled["startTimeUtc"].replace("Z", "+00:00")
             )
             if start > datetime.now(timezone.utc):
+                continue
+            if live and datetime.now(timezone.utc) - start > timedelta(days=3):
                 continue
             try:
                 body = fetch(f"{BASE}/en/results/2026/races/{race_id}/{slug}/{route}")
@@ -259,6 +277,8 @@ def main() -> None:
                 }
                 document["data"].setdefault("sessions", []).append(target)
             target["results"] = rows
+            target["source"] = {"name": "formula1-official", "url": f"{BASE}/en/results/2026/races/{race_id}/{slug}/{route}"}
+            document["updatedAt"] = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
             changed = True
             print(f"{event['name']} {session_type}: {len(rows)} official rows")
         if changed:
@@ -267,4 +287,6 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--live', action='store_true', help='Only recent sessions; never wait for standings or other series')
+    main(parser.parse_args().live)
