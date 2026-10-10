@@ -1,7 +1,7 @@
 name: secar
 description: Secar — a modern, multi-series motorsport calendar.
 publish_to: "none"
-version: 0.1.10+13
+version: 0.1.13+16
 
 environment:
   sdk: ^3.13.0
@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   flutter_riverpod: ^3.4.2
   http: ^1.6.0
+  html: ^0.15.6
   shared_preferences: ^2.5.5
   flutter_svg: ^2.2.1
 

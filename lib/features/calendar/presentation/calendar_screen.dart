@@ -13,6 +13,7 @@ import '../../settings/presentation/theme_controller.dart';
 import '../domain/circuit_metadata.dart';
 import '../domain/race_event.dart';
 import 'calendar_providers.dart';
+import '../../settings/presentation/notification_settings.dart';
 
 bool get _runningWidgetTest => WidgetsBinding.instance.runtimeType
     .toString()
@@ -143,6 +144,11 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen>
   @override
   Widget build(BuildContext context) {
     final settings = ref.watch(settingsProvider);
+    ref.listen(calendarProvider, (_, next) {
+      if (!_runningWidgetTest) {
+        next.whenData((data) => NotificationPreferences.sync(data.events));
+      }
+    });
     final strings = AppStrings(settings.language);
     final calendar = ref.watch(calendarProvider);
     final wide = MediaQuery.sizeOf(context).width >= 850;
@@ -692,8 +698,9 @@ class _ListPage extends ConsumerWidget {
                 strings.hideCompletedRaces,
                 style: const TextStyle(fontWeight: FontWeight.w800),
               ),
-              value: settings.showPastEvents,
-              onChanged: ref.read(settingsProvider.notifier).setShowPastEvents,
+              value: !settings.showPastEvents,
+              onChanged: (hide) =>
+                  ref.read(settingsProvider.notifier).setShowPastEvents(!hide),
             ),
           ),
           const SizedBox(height: 14),
@@ -1521,15 +1528,20 @@ class _ResultsPageState extends ConsumerState<_ResultsPage>
     }).toList();
     if (missing.isEmpty) return;
     missing.sort((a, b) => a.expectedEnd.compareTo(b.expectedEnd));
-    final due = missing.first.expectedEnd.add(const Duration(minutes: 5));
+    final due = widget.selected.seriesId == 'f1'
+        ? missing.first.startTimeUtc
+        : missing.first.expectedEnd;
+    final pollInterval = widget.selected.seriesId == 'f1'
+        ? const Duration(minutes: 1)
+        : const Duration(minutes: 5);
     final sinceLastPoll = _lastResultPoll == null
         ? null
         : now.difference(_lastResultPoll!);
     final delay = due.isAfter(now)
         ? due.difference(now)
-        : sinceLastPoll == null || sinceLastPoll >= const Duration(minutes: 5)
+        : sinceLastPoll == null || sinceLastPoll >= pollInterval
         ? Duration.zero
-        : const Duration(minutes: 5) - sinceLastPoll;
+        : pollInterval - sinceLastPoll;
     final intendedPollAt = now.add(delay);
     _resultTimer = Timer(delay, () {
       if (!mounted) return;
@@ -1630,6 +1642,13 @@ class _ResultsPageState extends ConsumerState<_ResultsPage>
                     _SessionResultsCard(
                       session: sessions[index],
                       strings: strings,
+                      timeLabel: _sessionTime(
+                        selected.sessions.firstWhere(
+                          (s) => s.type == sessions[index].type,
+                          orElse: () => selected.sessions.first,
+                        ),
+                        settings.timeMode,
+                      ),
                       initiallyExpanded: index == 0,
                     ),
                     if (index < sessions.length - 1 ||
@@ -1885,10 +1904,12 @@ class _SessionResultsCard extends StatelessWidget {
     required this.session,
     required this.strings,
     this.initiallyExpanded = false,
+    required this.timeLabel,
   });
   final SessionResults session;
   final AppStrings strings;
   final bool initiallyExpanded;
+  final String timeLabel;
 
   @override
   Widget build(BuildContext context) => Card(
@@ -1900,7 +1921,7 @@ class _SessionResultsCard extends StatelessWidget {
         style: const TextStyle(fontWeight: FontWeight.w900),
       ),
       subtitle: Text(
-        '${_date(session.startTimeUtc.toLocal(), strings.language)} • ${session.results.length}',
+        '${_date(session.startTimeUtc.toLocal(), strings.language)} • $timeLabel • ${session.results.length}',
       ),
       children: [
         const Divider(height: 1),
@@ -2531,6 +2552,8 @@ class _SettingsPage extends ConsumerWidget {
               controller.setMotorsportCategories(next);
             },
           ),
+          const SizedBox(height: 12),
+          NotificationSettings(polish: settings.language == AppLanguage.polish),
           const SizedBox(height: 12),
           _CategorySelectionCard(
             title: strings.esportCategories,

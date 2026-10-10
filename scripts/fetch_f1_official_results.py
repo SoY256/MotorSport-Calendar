@@ -252,7 +252,7 @@ def main(live: bool = False) -> None:
             # Existing classifications have already been verified. During the
             # live weekend query only completed, still-missing sessions so the
             # five-minute job reaches F1 quickly and does not hammer old pages.
-            if target is not None and target.get("results") and target.get("source", {}).get("name") == "formula1-official":
+            if live and target is not None and target.get("results") and target.get("source", {}).get("name") == "formula1-official":
                 continue
             start = datetime.fromisoformat(
                 scheduled["startTimeUtc"].replace("Z", "+00:00")

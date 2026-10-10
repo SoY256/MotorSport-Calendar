@@ -90,7 +90,8 @@ def validate(data_root: Path) -> None:
                 end = start + timedelta(
                     minutes=int(scheduled[session_type].get("durationMinutes", 120))
                 )
-                if classification.get("results") and end > now:
+                official_f1 = series == 'f1' and classification.get('source', {}).get('name') == 'formula1-official'
+                if classification.get("results") and (start if official_f1 else end) > now:
                     raise RuntimeError(
                         f"Future session has results: {series}/{event['id']}/{session_type}"
                     )

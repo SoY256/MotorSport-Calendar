@@ -11,8 +11,34 @@ import 'package:secar/features/calendar/presentation/calendar_providers.dart';
 import 'package:secar/features/settings/domain/app_settings.dart';
 import 'package:secar/features/settings/presentation/settings_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:secar/features/settings/presentation/notification_settings.dart';
 
 void main() {
+  test('session reminders subtract lead time across day boundaries', () {
+    final start = DateTime.utc(2026, 10, 10, 15);
+    expect(NotificationPreferences.reminderTime(start, 0), start);
+    expect(
+      NotificationPreferences.reminderTime(start, 15),
+      DateTime.utc(2026, 10, 10, 14, 45),
+    );
+    expect(
+      NotificationPreferences.reminderTime(start, 120),
+      DateTime.utc(2026, 10, 10, 13),
+    );
+    expect(
+      NotificationPreferences.reminderTime(start, 2880),
+      DateTime.utc(2026, 10, 8, 15),
+    );
+    expect(NotificationPreferences.leadLabel(1440, false), '1 day');
+    expect(NotificationPreferences.leadLabel(2880, false), '2 days');
+  });
+  test('notification groups include qualifying and sprint sessions', () {
+    expect(NotificationPreferences.kind('FP3'), 'practice');
+    expect(NotificationPreferences.kind('Q'), 'qualifying');
+    expect(NotificationPreferences.kind('SQ'), 'qualifying');
+    expect(NotificationPreferences.kind('R'), 'race');
+    expect(NotificationPreferences.kind('SPRINT'), 'race');
+  });
   test('fresh installations default to English', () {
     expect(const AppSettings().language, AppLanguage.english);
   });
@@ -466,11 +492,11 @@ void main() {
     await tester.pump(const Duration(milliseconds: 300));
     expect(find.text('Ukryj ukończone wyścigi'), findsOneWidget);
 
-    tester.widget<Switch>(find.byType(Switch).first).onChanged!(false);
+    tester.widget<Switch>(find.byType(Switch).first).onChanged!(true);
     await tester.pump(const Duration(milliseconds: 300));
     expect(find.text('Ukryj ukończone wyścigi'), findsOneWidget);
     expect(find.text('Australian Grand Prix'), findsNothing);
-    tester.widget<Switch>(find.byType(Switch).first).onChanged!(true);
+    tester.widget<Switch>(find.byType(Switch).first).onChanged!(false);
     await tester.pump(const Duration(milliseconds: 300));
     expect(find.text('Ukryj ukończone wyścigi'), findsOneWidget);
     expect(find.text('Australian Grand Prix'), findsNWidgets(3));

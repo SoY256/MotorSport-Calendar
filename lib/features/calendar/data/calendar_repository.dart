@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
+import 'package:html/parser.dart' as html;
 
 import '../domain/race_event.dart';
 
@@ -205,7 +206,10 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
           final session = scheduled[result.type];
           return session != null &&
               !session.cancelled &&
-              !session.expectedEnd.isAfter(now) &&
+              !(event.seriesId == 'f1'
+                      ? session.startTimeUtc
+                      : session.expectedEnd)
+                  .isAfter(now) &&
               result.results.isNotEmpty;
         })
         .toList(growable: false);
@@ -216,6 +220,7 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
     RaceEvent event,
     EventResults base,
   ) async {
+    base = await _withOfficialF1Results(event, base);
     final now = DateTime.now().toUtc();
     final available = {
       for (final session in base.sessions)
@@ -225,7 +230,7 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
       (session) =>
           !session.cancelled &&
           !available.contains(session.type) &&
-          !session.expectedEnd.add(const Duration(minutes: 5)).isAfter(now),
+          !session.expectedEnd.isAfter(now),
     );
     if (missing.isEmpty) return base;
 
@@ -296,6 +301,145 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
     final sessions = merged.values.toList()
       ..sort((a, b) => (order[a.type] ?? 999).compareTo(order[b.type] ?? 999));
     return EventResults(eventId: event.id, sessions: sessions);
+  }
+
+  Future<EventResults> _withOfficialF1Results(
+    RaceEvent event,
+    EventResults base,
+  ) async {
+    final now = DateTime.now().toUtc();
+    final received = {
+      for (final session in base.sessions)
+        if (session.results.isNotEmpty) session.type,
+    };
+    final missing = event.sessions
+        .where(
+          (s) =>
+              !s.cancelled &&
+              !s.startTimeUtc.isAfter(now) &&
+              !received.contains(s.type),
+        )
+        .toList();
+    if (missing.isEmpty) return base;
+    Future<String?> page(String path) async {
+      try {
+        final uri =
+            Uri.parse(
+              'https://www.formula1.com/en/results/${event.season}/$path',
+            ).replace(
+              queryParameters: {
+                'refresh': now.millisecondsSinceEpoch.toString(),
+              },
+            );
+        final response = await _client
+            .get(uri, headers: const {'Cache-Control': 'no-cache'})
+            .timeout(const Duration(seconds: 8));
+        return response.statusCode == 200 ? response.body : null;
+      } on Object {
+        return null;
+      }
+    }
+
+    final index = await page('races');
+    if (index == null) return base;
+    final paths = RegExp(
+      '/en/results/${event.season}/races/(\\d+)/([^/"?]+)/race-result',
+    ).allMatches(index).map((m) => '${m[1]}/${m[2]}').toSet().toList();
+    const slugs = {
+      'Australian': 'australia',
+      'Chinese': 'china',
+      'Japanese': 'japan',
+      'Canadian': 'canada',
+      'Barcelona': 'barcelona-catalunya',
+      'Austrian': 'austria',
+      'British': 'great-britain',
+      'Belgian': 'belgium',
+      'Hungarian': 'hungary',
+      'Dutch': 'netherlands',
+      'Italian': 'italy',
+      'Spanish': 'spain',
+      'Mexico City': 'mexico',
+      'Brazilian': 'brazil',
+    };
+    final name = event.name.split(' Grand Prix').first;
+    final slug = slugs[name] ?? name.toLowerCase().replaceAll(' ', '-');
+    final matching = paths.where((p) => p.split('/').last == slug);
+    if (matching.length != 1) return base;
+    final path = matching.single;
+    final standings = await loadStandings('f1');
+    final drivers = {for (final d in standings.drivers) d.code: d};
+    const routes = {
+      'FP1': 'practice/1',
+      'FP2': 'practice/2',
+      'FP3': 'practice/3',
+      'Q': 'qualifying',
+      'SQ': 'sprint-qualifying',
+      'SPRINT': 'sprint-results',
+      'R': 'race-result',
+    };
+    final fresh = <SessionResults>[];
+    for (final session in missing) {
+      final route = routes[session.type];
+      if (route == null) continue;
+      final body = await page('races/$path/$route');
+      if (body == null) continue;
+      final rows = <Map<String, dynamic>>[];
+      for (final tr in html.parse(body).querySelectorAll('table tr')) {
+        final cells = tr
+            .querySelectorAll('td')
+            .map((td) => td.text.replaceAll(RegExp(r'\s+'), ' ').trim())
+            .toList();
+        if (cells.length < 5 || int.tryParse(cells[1]) == null) continue;
+        final match = RegExp(r'([A-Z]{3})$').firstMatch(cells[2]);
+        final driver = drivers[match?[1]];
+        if (driver == null) {
+          continue; // Never guess an unknown driver's identity.
+        }
+        final timed = cells
+            .skip(4)
+            .where((v) => RegExp(r'^(?:\d+:)?\d+\.\d+$').hasMatch(v))
+            .toList();
+        rows.add({
+          'position': int.tryParse(cells[0]),
+          'positionText': cells[0],
+          'driver': {
+            'id': driver.id,
+            'code': driver.code,
+            'givenName': driver.givenName,
+            'familyName': driver.familyName,
+            'nationality': driver.nationality,
+          },
+          'team': {
+            'name': cells[3],
+            'id': driver.teamIds.firstOrNull,
+            'color': driver.teamColors.firstOrNull,
+          },
+          'time': {'Q', 'SQ'}.contains(session.type)
+              ? (timed.isEmpty ? null : timed.last)
+              : cells.length > 5 && {'R', 'SPRINT'}.contains(session.type)
+              ? cells[5]
+              : cells[4],
+          'points': {'R', 'SPRINT'}.contains(session.type)
+              ? double.tryParse(cells.last)
+              : null,
+          'components': <String, dynamic>{},
+        });
+      }
+      if (rows.isNotEmpty) {
+        fresh.add(
+          SessionResults.fromJson({
+            'type': session.type,
+            'name': session.name,
+            'startTimeUtc': session.startTimeUtc.toIso8601String(),
+            'results': rows,
+          }),
+        );
+      }
+    }
+    return EventResults(
+      eventId: event.id,
+      sessions: [...base.sessions, ...fresh],
+    );
   }
 
   @override
