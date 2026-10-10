@@ -203,6 +203,18 @@ class EventResults {
 
   final String eventId;
   final List<SessionResults> sessions;
+
+  List<SessionResults> newestFirst(RaceEvent event) {
+    final starts = {
+      for (final session in event.sessions) session.type: session.startTimeUtc,
+    };
+    return [...sessions]..sort((a, b) {
+      final comparison = (starts[b.type] ?? b.startTimeUtc).compareTo(
+        starts[a.type] ?? a.startTimeUtc,
+      );
+      return comparison != 0 ? comparison : a.type.compareTo(b.type);
+    });
+  }
 }
 
 class DriverStanding {

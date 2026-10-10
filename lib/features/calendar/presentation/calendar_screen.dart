@@ -1612,14 +1612,10 @@ class _ResultsPageState extends ConsumerState<_ResultsPage>
             ),
             data: (data) {
               final now = DateTime.now().toUtc();
-              final sessions =
-                  data.sessions
-                      .where((session) => session.results.isNotEmpty)
-                      .toList()
-                    ..sort(
-                      (a, b) =>
-                          _resultOrder(a.type).compareTo(_resultOrder(b.type)),
-                    );
+              final sessions = data
+                  .newestFirst(selected)
+                  .where((session) => session.results.isNotEmpty)
+                  .toList();
               final withoutResults =
                   selected.sessions
                       .where(
@@ -3074,23 +3070,6 @@ String _sessionLabel(String type, String original, AppStrings strings) {
     _ => original,
   };
 }
-
-int _resultOrder(String type) => switch (type) {
-  'R' => 0,
-  'R2' => 0,
-  'R1' => 1,
-  'SPRINT' => 2,
-  'Q2' => 3,
-  'Q1' => 4,
-  'QB' => 5,
-  'QA' => 6,
-  'Q' => 7,
-  'SQ' => 8,
-  'FP3' => 9,
-  'FP2' => 10,
-  'FP1' => 11,
-  _ => 12,
-};
 
 String _teamName(String id) => switch (id) {
   'red_bull' => 'Oracle Red Bull Racing',

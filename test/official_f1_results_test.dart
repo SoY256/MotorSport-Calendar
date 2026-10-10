@@ -13,6 +13,27 @@ class EmptyResults extends AssetCalendarRepository {
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   test(
+    'Singapore qualifying is newer than sprint regardless of session type',
+    () async {
+      final repository = AssetCalendarRepository();
+      final calendar = await repository.load();
+      final event = calendar.events.firstWhere(
+        (e) => e.seriesId == 'f1' && e.name == 'Singapore Grand Prix',
+      );
+      final results = await repository.loadResults(event);
+      expect(results.newestFirst(event).map((s) => s.type).toList(), [
+        'Q',
+        'SPRINT',
+        'SQ',
+        'FP1',
+      ]);
+      expect(
+        results.sessions.first.type,
+        'FP1',
+      ); // Sorting must not mutate cached data.
+    },
+  );
+  test(
     'official qualifying appears before estimated end without Jolpica',
     () async {
       final event = RaceEvent(
