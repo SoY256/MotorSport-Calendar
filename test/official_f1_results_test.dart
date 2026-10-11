@@ -21,12 +21,14 @@ void main() {
         (e) => e.seriesId == 'f1' && e.name == 'Singapore Grand Prix',
       );
       final results = await repository.loadResults(event);
-      expect(results.newestFirst(event).map((s) => s.type).toList(), [
-        'Q',
-        'SPRINT',
-        'SQ',
-        'FP1',
-      ]);
+      expect(
+        results
+            .newestFirst(event)
+            .where((s) => s.type != 'R')
+            .map((s) => s.type)
+            .toList(),
+        ['Q', 'SPRINT', 'SQ', 'FP1'],
+      );
       expect(
         results.sessions.first.type,
         'FP1',

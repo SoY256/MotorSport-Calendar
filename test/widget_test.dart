@@ -14,6 +14,44 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:secar/features/settings/presentation/notification_settings.dart';
 
 void main() {
+  for (final brightness in Brightness.values) {
+    testWidgets(
+      'completed events have a subtle distinct background in $brightness',
+      (tester) async {
+        final calendar = await tester.runAsync(
+          () => AssetCalendarRepository().load(),
+        );
+        SharedPreferences.setMockInitialValues({});
+        tester.platformDispatcher.platformBrightnessTestValue = brightness;
+        addTearDown(tester.platformDispatcher.clearPlatformBrightnessTestValue);
+        await tester.pumpWidget(
+          ProviderScope(
+            overrides: [
+              calendarRepositoryProvider.overrideWithValue(
+                _LoadedCalendarRepository(calendar!),
+              ),
+            ],
+            child: const MotorsportCalendarApp(),
+          ),
+        );
+        await tester.pumpAndSettle();
+        final completed = find.byWidgetPredicate(
+          (widget) =>
+              widget is Card && widget.key.toString().contains('-completed'),
+        );
+        final upcoming = find.byWidgetPredicate(
+          (widget) =>
+              widget is Card && widget.key.toString().contains('-upcoming'),
+        );
+        expect(completed, findsWidgets);
+        expect(upcoming, findsWidgets);
+        expect(tester.widget<Card>(completed.first).color, isNotNull);
+        expect(tester.widget<Card>(upcoming.first).color, isNull);
+        expect(tester.takeException(), isNull);
+        await tester.pumpWidget(const SizedBox.shrink());
+      },
+    );
+  }
   test('session reminders subtract lead time across day boundaries', () {
     final start = DateTime.utc(2026, 10, 10, 15);
     expect(NotificationPreferences.reminderTime(start, 0), start);
@@ -562,6 +600,10 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.text('Qualifying'), findsOneWidget);
+      final tile = tester.widget<ExpansionTile>(
+        find.byType(ExpansionTile).first,
+      );
+      expect((tile.subtitle as Text).data, matches(RegExp(r' • \d{2}:\d{2}$')));
       expect(find.text('Scheduled sessions'), findsOneWidget);
       expect(find.text('Race'), findsWidgets);
       expect(tester.takeException(), isNull);
@@ -647,6 +689,13 @@ class _InProgressWeekendRepository implements CalendarRepository {
   @override
   Future<StandingsData> loadStandings(String seriesId) async =>
       const StandingsData(drivers: [], teams: []);
+}
+
+class _LoadedCalendarRepository extends AssetCalendarRepository {
+  _LoadedCalendarRepository(this.data);
+  final CalendarData data;
+  @override
+  Future<CalendarData> load() async => data;
 }
 
 class _EmptyResultsRepository implements CalendarRepository {

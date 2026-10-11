@@ -944,7 +944,18 @@ class _EventCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final race = event.sessions.last;
+    final scheme = Theme.of(context).colorScheme;
+    final dark = Theme.of(context).brightness == Brightness.dark;
     return Card(
+      key: ValueKey(
+        'event-${event.id}-${completed ? 'completed' : 'upcoming'}',
+      ),
+      color: completed
+          ? Color.alphaBlend(
+              const Color(0xFF78909C).withValues(alpha: dark ? .20 : .12),
+              scheme.surface,
+            )
+          : null,
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
         onTap: onTap,
@@ -1917,7 +1928,7 @@ class _SessionResultsCard extends StatelessWidget {
         style: const TextStyle(fontWeight: FontWeight.w900),
       ),
       subtitle: Text(
-        '${_date(session.startTimeUtc.toLocal(), strings.language)} • $timeLabel • ${session.results.length}',
+        '${_date(session.startTimeUtc.toLocal(), strings.language)} • $timeLabel',
       ),
       children: [
         const Divider(height: 1),

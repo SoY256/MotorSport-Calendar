@@ -87,12 +87,50 @@ def publish_changed_data() -> None:
         ("git", "config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com"),
         ("git", "add", "data"),
         ("git", "commit", "-m", "Update motorsport data"),
-        ("git", "fetch", "origin", "main"),
-        ("git", "rebase", "origin/main"),
-        ("git", "push"),
     )
     for command in commands:
         subprocess.run(command, cwd=ROOT, check=True)
+    for attempt in range(3):
+        subprocess.run(['git', 'fetch', 'origin', 'main'], cwd=ROOT, check=True)
+        rebase_data()
+        if subprocess.run(['git', 'push', 'origin', 'HEAD:main'], cwd=ROOT).returncode == 0:
+            return
+    raise RuntimeError('Remote changed during three publication attempts; local results retained')
+
+
+def merge_event_results(upstream: dict, local: dict) -> dict:
+    """Keep independently published classifications when rebasing a data update."""
+    if upstream.get('data', {}).get('eventId') != local.get('data', {}).get('eventId'):
+        raise ValueError('Cannot merge results from different events')
+    merged = dict(local)
+    sessions = {s['type']: s for s in upstream['data'].get('sessions', [])}
+    for session in local['data'].get('sessions', []):
+        previous = sessions.get(session['type'])
+        if not session.get('results') and previous and previous.get('results'):
+            continue
+        if previous and previous.get('results') and previous.get('source', {}).get('name') == 'formula1-official' and session.get('source', {}).get('name') != 'formula1-official':
+            continue
+        sessions[session['type']] = session
+    merged['data'] = {**local['data'], 'sessions': list(sessions.values())}
+    return merged
+
+
+def rebase_data() -> None:
+    result = subprocess.run(['git', 'rebase', 'origin/main'], cwd=ROOT)
+    while result.returncode:
+        conflicts = subprocess.run(['git', 'diff', '--name-only', '--diff-filter=U'], cwd=ROOT, check=True, capture_output=True, text=True).stdout.splitlines()
+        if not conflicts:
+            raise RuntimeError('Rebase failed without resolvable result conflicts')
+        for name in conflicts:
+            path = (ROOT / name).resolve()
+            if not path.is_relative_to(DATA.resolve()) or '/events/' not in name.replace('\\', '/') or path.suffix != '.json':
+                raise RuntimeError(f'Refusing to auto-resolve non-result conflict: {name}')
+            def stage(number):
+                return json.loads(subprocess.run(['git', 'show', f':{number}:{name}'], cwd=ROOT, check=True, capture_output=True, text=True, encoding='utf-8').stdout)
+            merged = merge_event_results(stage(2), stage(3))
+            path.write_text(json.dumps(merged, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+            subprocess.run(['git', 'add', '--', name], cwd=ROOT, check=True)
+        result = subprocess.run(['git', 'rebase', '--continue'], cwd=ROOT, env={**os.environ, 'GIT_EDITOR': 'true'})
 
 
 def watch(max_seconds: int, interval_seconds: int) -> int:
