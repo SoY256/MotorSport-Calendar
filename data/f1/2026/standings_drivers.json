@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-11T13:26:15.664030Z",
+  "lastSuccessfulUpdate": "2026-10-11T22:05:37.489550Z",
   "source": {
     "name": "formula1-official",
     "url": "https://www.formula1.com/en/results/2026/drivers"
@@ -8,7 +8,7 @@
   "data": [
     {
       "position": 1,
-      "points": 325.0,
+      "points": 340.0,
       "wins": 8,
       "id": "antonelli",
       "code": "ANT",
@@ -22,7 +22,7 @@
     },
     {
       "position": 2,
-      "points": 236.0,
+      "points": 238.0,
       "wins": 3,
       "id": "russell",
       "code": "RUS",
@@ -36,7 +36,7 @@
     },
     {
       "position": 3,
-      "points": 221.0,
+      "points": 229.0,
       "wins": 1,
       "id": "hamilton",
       "code": "HAM",
@@ -50,7 +50,21 @@
     },
     {
       "position": 4,
-      "points": 197.0,
+      "points": 221.0,
+      "wins": 2,
+      "id": "max_verstappen",
+      "code": "VER",
+      "givenName": "Max",
+      "familyName": "Verstappen",
+      "nationality": "Dutch",
+      "teamIds": [
+        "red_bull"
+      ],
+      "imageUrl": "assets/portraits/faces/f1/max-verstappen.jpg"
+    },
+    {
+      "position": 5,
+      "points": 215.0,
       "wins": 1,
       "id": "leclerc",
       "code": "LEC",
@@ -63,22 +77,8 @@
       "imageUrl": "assets/portraits/faces/f1/charles-leclerc.jpg"
     },
     {
-      "position": 5,
-      "points": 196.0,
-      "wins": 1,
-      "id": "max_verstappen",
-      "code": "VER",
-      "givenName": "Max",
-      "familyName": "Verstappen",
-      "nationality": "Dutch",
-      "teamIds": [
-        "red_bull"
-      ],
-      "imageUrl": "assets/portraits/faces/f1/max-verstappen.jpg"
-    },
-    {
       "position": 6,
-      "points": 189.0,
+      "points": 201.0,
       "wins": 2,
       "id": "norris",
       "code": "NOR",
@@ -92,7 +92,7 @@
     },
     {
       "position": 7,
-      "points": 128.0,
+      "points": 138.0,
       "wins": 0,
       "id": "piastri",
       "code": "PIA",
@@ -106,7 +106,7 @@
     },
     {
       "position": 8,
-      "points": 96.0,
+      "points": 97.0,
       "wins": 0,
       "id": "hadjar",
       "code": "HAD",
@@ -120,7 +120,7 @@
     },
     {
       "position": 9,
-      "points": 69.0,
+      "points": 75.0,
       "wins": 0,
       "id": "lawson",
       "code": "LAW",
@@ -191,6 +191,20 @@
     },
     {
       "position": 14,
+      "points": 13.0,
+      "wins": 0,
+      "id": "hulkenberg",
+      "code": "HUL",
+      "givenName": "Nico",
+      "familyName": "Hülkenberg",
+      "nationality": "German",
+      "teamIds": [
+        "audi"
+      ],
+      "imageUrl": "assets/portraits/faces/f1/nico-hulkenberg.jpg"
+    },
+    {
+      "position": 15,
       "points": 10.0,
       "wins": 0,
       "id": "bortoleto",
@@ -202,20 +216,6 @@
         "audi"
       ],
       "imageUrl": "assets/portraits/faces/f1/gabriel-bortoleto.jpg"
-    },
-    {
-      "position": 15,
-      "points": 9.0,
-      "wins": 0,
-      "id": "hulkenberg",
-      "code": "HUL",
-      "givenName": "Nico",
-      "familyName": "Hülkenberg",
-      "nationality": "German",
-      "teamIds": [
-        "audi"
-      ],
-      "imageUrl": "assets/portraits/faces/f1/nico-hulkenberg.jpg"
     },
     {
       "position": 16,
