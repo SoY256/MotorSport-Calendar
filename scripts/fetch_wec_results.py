@@ -105,6 +105,90 @@ def slug(value: str) -> str:
     return "-".join(re.findall(r"[a-z0-9]+", plain))
 
 
+RACE_PAGE_ALIASES = {
+    "6 Hours of Imola": "imola",
+    "6 Hours of Spa-Francorchamps": "spa-francorchamps",
+    "24 Hours of Le Mans": "24-hours-of-le-mans",
+    "6 Hours of São Paulo": "sao-paulo",
+    "Lone Star Le Mans": "lone-star",
+    "6 Hours of Fuji": "fuji",
+    "6 Hours of Barcelona": "barcelona",
+    "6 Hours of Monza": "monza",
+}
+
+
+def race_pages(season_html: str) -> list[str]:
+    pages = re.findall(r'href="(/en/race/[a-z0-9-]+-2026)"', season_html)
+    return sorted({page for page in pages if "prologue" not in page})
+
+
+def race_page_for(event: dict, pages: list[str]) -> str | None:
+    alias = RACE_PAGE_ALIASES.get(event["name"])
+    matches = [page for page in pages if alias and alias in page]
+    if len(matches) > 1:
+        raise RuntimeError(f"Ambiguous WEC race page for {event['name']}: {matches}")
+    return matches[0] if matches else None
+
+
+def session_type(name: str) -> str:
+    """Stable session type; only the race keeps the shared type ``R``."""
+    if name.strip().casefold() == "race":
+        return "R"
+    compact = re.sub(r"[^A-Z0-9]+", "_", slug(name).upper()).strip("_")
+    compact = compact.replace("FREE_PRACTICE_", "FP")
+    return compact or "SESSION"
+
+
+def official_timetable(page_html: str) -> list[dict]:
+    """Every session listed on an official fiawec.com race page, in order."""
+    sessions = []
+    pattern = re.compile(
+        r'<div class="fw-bold lh-sm[^"]*">\s*([^<]+?)\s*</div>\s*'
+        r'<div class="[^"]*">\s*<span[^>]*data-timestamp="(\d+)"',
+        re.S,
+    )
+    seen = set()
+    for raw_name, stamp in pattern.findall(page_html):
+        name = " ".join(html_lib.unescape(raw_name).split())
+        start = datetime.fromtimestamp(int(stamp), timezone.utc)
+        key = (name, start)
+        if key in seen:
+            continue
+        seen.add(key)
+        sessions.append({
+            "type": session_type(name),
+            "name": name,
+            "startTimeUtc": start.isoformat().replace("+00:00", "Z"),
+            "cancelled": False,
+        })
+    sessions.sort(key=lambda item: item["startTimeUtc"])
+    return sessions
+
+
+def refresh_timetable(event: dict, pages: list[str]) -> None:
+    """Replace the event sessions with the official timetable when available."""
+    page = race_page_for(event, pages)
+    if page is None:
+        return
+    try:
+        sessions = official_timetable(fetch(f"https://www.fiawec.com{page}").decode("utf-8", "replace"))
+    except Exception as error:  # keep the previous verified timetable
+        print(f"{event['name']}: timetable unavailable: {error}", file=sys.stderr)
+        return
+    if sum(1 for item in sessions if item["type"] == "R") != 1:
+        print(f"{event['name']}: timetable without a single race; kept", file=sys.stderr)
+        return
+    previous = {item["type"]: item for item in event.get("sessions", [])}
+    for item in sessions:
+        if "durationMinutes" in previous.get(item["type"], {}):
+            item["durationMinutes"] = previous[item["type"]]["durationMinutes"]
+    event["sessions"] = sessions
+
+
+def race_session(event: dict) -> dict:
+    return next(item for item in event["sessions"] if item["type"] == "R")
+
+
 def clean_html(value: str) -> str:
     value = re.sub(r"<[^>]+>", " ", value)
     return re.sub(r"\s+", " ", html_lib.unescape(value)).strip()
@@ -327,8 +411,14 @@ def main() -> None:
     driver_wins: dict[tuple[str, str], int] = {}
     team_wins: dict[tuple[str, str], int] = {}
     now = datetime.now(timezone.utc)
+    try:
+        pages = race_pages(fetch(STANDINGS_URL).decode("utf-8", "replace"))
+    except Exception as error:
+        print(f"WEC race pages unavailable: {error}", file=sys.stderr)
+        pages = []
     for event in calendar:
-        session = event["sessions"][-1]
+        refresh_timetable(event, pages)
+        session = race_session(event)
         scheduled_end = datetime.fromisoformat(
             session["startTimeUtc"].replace("Z", "+00:00")
         ) + timedelta(minutes=int(session.get("durationMinutes", 360)))
@@ -379,7 +469,7 @@ def main() -> None:
             team_wins[key] = team_wins.get(key, 0) + 1
         payload = {"schemaVersion": 1, "lastSuccessfulUpdate": updated,
                    "source": {"name": "fia-wec-alkamel-official-timing", "url": url},
-                   "data": {"eventId": event["id"], "sessions": [{"type": "R", "name": "Race", "startTimeUtc": event["sessions"][-1]["startTimeUtc"], "results": rows}]}}
+                   "data": {"eventId": event["id"], "sessions": [{"type": "R", "name": "Race", "startTimeUtc": session["startTimeUtc"], "results": rows}]}}
         (root / event["resultsPath"]).write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(f"{event['name']}: {len(rows)}", file=sys.stderr)
     calendar_doc["lastSuccessfulUpdate"] = updated

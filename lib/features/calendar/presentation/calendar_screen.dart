@@ -1784,8 +1784,7 @@ class _ResultsPageState extends ConsumerState<_ResultsPage>
     final now = DateTime.now().toUtc();
     final missing = widget.selected.sessions.where((session) {
       if (session.cancelled) return false;
-      if (!{'f1', 'f2', 'f3'}.contains(widget.selected.seriesId) &&
-          session.type != 'R') {
+      if (!_publishesResults(widget.selected.seriesId, session)) {
         return false;
       }
       final received = _hasResultsForSession(session, results);
@@ -1891,10 +1890,16 @@ class _ResultsPageState extends ConsumerState<_ResultsPage>
                       .toList()
                     ..sort((a, b) => a.startTimeUtc.compareTo(b.startTimeUtc));
               final awaiting = withoutResults
-                  .where((session) => !session.expectedEnd.isAfter(now))
+                  .where(
+                    (session) =>
+                        !session.expectedEnd.isAfter(now) &&
+                        _publishesResults(selected.seriesId, session),
+                  )
                   .toList();
+              // Sessions without an official results feed (e.g. WEC practice
+              // and qualifying) stay in the timetable instead of "waiting".
               final planned = withoutResults
-                  .where((session) => session.expectedEnd.isAfter(now))
+                  .where((session) => !awaiting.contains(session))
                   .toList();
 
               return Column(
@@ -3387,12 +3392,17 @@ RaceEvent? _nextEvent(List<RaceEvent> events, DateTime now) {
   return null;
 }
 
+/// Whether the data pipeline imports a classification for this session.
+bool _publishesResults(String seriesId, RaceSession session) =>
+    {'f1', 'f2', 'f3'}.contains(seriesId) || session.type == 'R';
+
 String _sessionLabel(String type, String original, AppStrings strings) {
   if (strings.language == AppLanguage.english) return original;
-  return switch (type) {
+  final fixed = switch (type) {
     'FP1' => 'Trening 1',
     'FP2' => 'Trening 2',
     'FP3' => 'Trening 3',
+    'FP4' => 'Trening 4',
     'SQ' => 'Kwalifikacje sprintu',
     'SPRINT' => 'Sprint',
     'Q' => 'Kwalifikacje',
@@ -3403,8 +3413,19 @@ String _sessionLabel(String type, String original, AppStrings strings) {
     'R' => 'Wyścig',
     'R1' => 'Wyścig 1',
     'R2' => 'Wyścig 2',
-    _ => original,
+    'WARM_UP' => 'Rozgrzewka',
+    _ => null,
   };
+  if (fixed != null) return fixed;
+  // Endurance sessions carry the class in the name, e.g.
+  // "Qualifying - HYPERCAR" or "Free Practice 3 - LMGT3".
+  return original
+      .replaceFirst(RegExp(r'^Free Practice', caseSensitive: false), 'Trening')
+      .replaceFirst(
+        RegExp(r'^Qualifying', caseSensitive: false),
+        'Kwalifikacje',
+      )
+      .replaceAll(' - ', ' – ');
 }
 
 String _teamName(String id) => switch (id) {

@@ -23,6 +23,55 @@
       },
       "sessions": [
         {
+          "type": "FP1",
+          "name": "Free Practice 1",
+          "startTimeUtc": "2026-04-17T08:15:00Z",
+          "cancelled": false,
+          "durationMinutes": 90
+        },
+        {
+          "type": "FP2",
+          "name": "Free Practice 2",
+          "startTimeUtc": "2026-04-17T13:15:00Z",
+          "cancelled": false,
+          "durationMinutes": 90
+        },
+        {
+          "type": "FP3",
+          "name": "Free Practice 3",
+          "startTimeUtc": "2026-04-18T08:30:00Z",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "QUALIFYING_LMGT3",
+          "name": "Qualifying - LMGT3",
+          "startTimeUtc": "2026-04-18T12:30:00Z",
+          "cancelled": false,
+          "durationMinutes": 12
+        },
+        {
+          "type": "HYPERPOLE_LMGT3",
+          "name": "Hyperpole - LMGT3",
+          "startTimeUtc": "2026-04-18T12:50:00Z",
+          "cancelled": false,
+          "durationMinutes": 10
+        },
+        {
+          "type": "QUALIFYING_HYPERCAR",
+          "name": "Qualifying - HYPERCAR",
+          "startTimeUtc": "2026-04-18T13:10:00Z",
+          "cancelled": false,
+          "durationMinutes": 12
+        },
+        {
+          "type": "HYPERPOLE_HYPERCAR",
+          "name": "Hyperpole - HYPERCAR",
+          "startTimeUtc": "2026-04-18T13:30:00Z",
+          "cancelled": false,
+          "durationMinutes": 10
+        },
+        {
           "type": "R",
           "name": "Race",
           "startTimeUtc": "2026-04-19T11:00:00Z",
@@ -48,6 +97,55 @@
         "lapRecord": "2:04.177 • Stoffel Vandoorne (2026)"
       },
       "sessions": [
+        {
+          "type": "FP1",
+          "name": "Free Practice 1",
+          "startTimeUtc": "2026-05-07T09:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 90
+        },
+        {
+          "type": "FP2",
+          "name": "Free Practice 2",
+          "startTimeUtc": "2026-05-07T13:40:00Z",
+          "cancelled": false,
+          "durationMinutes": 90
+        },
+        {
+          "type": "FP3",
+          "name": "Free Practice 3",
+          "startTimeUtc": "2026-05-08T08:10:00Z",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "QUALIFYING_LMGT3",
+          "name": "Qualifying - LMGT3",
+          "startTimeUtc": "2026-05-08T12:30:00Z",
+          "cancelled": false,
+          "durationMinutes": 12
+        },
+        {
+          "type": "HYPERPOLE_LMGT3",
+          "name": "Hyperpole - LMGT3",
+          "startTimeUtc": "2026-05-08T12:55:00Z",
+          "cancelled": false,
+          "durationMinutes": 10
+        },
+        {
+          "type": "QUALIFYING_HYPERCAR",
+          "name": "Qualifying - HYPERCAR",
+          "startTimeUtc": "2026-05-08T13:20:00Z",
+          "cancelled": false,
+          "durationMinutes": 12
+        },
+        {
+          "type": "HYPERPOLE_HYPERCAR",
+          "name": "Hyperpole - HYPERCAR",
+          "startTimeUtc": "2026-05-08T13:45:00Z",
+          "cancelled": false,
+          "durationMinutes": 10
+        },
         {
           "type": "R",
           "name": "Race",
@@ -75,6 +173,83 @@
       },
       "sessions": [
         {
+          "type": "FP1",
+          "name": "Free Practice 1",
+          "startTimeUtc": "2026-06-10T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 180
+        },
+        {
+          "type": "QUALIFYING_LMP2_LMGT3",
+          "name": "Qualifying - LMP2 & LMGT3",
+          "startTimeUtc": "2026-06-10T16:45:00Z",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "QUALIFYING_HYPERCAR",
+          "name": "Qualifying - HYPERCAR",
+          "startTimeUtc": "2026-06-10T17:30:00Z",
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "FP2",
+          "name": "Free Practice 2",
+          "startTimeUtc": "2026-06-10T20:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120
+        },
+        {
+          "type": "FP3",
+          "name": "Free Practice 3",
+          "startTimeUtc": "2026-06-11T12:45:00Z",
+          "cancelled": false,
+          "durationMinutes": 120
+        },
+        {
+          "type": "HYPERPOLE_1_LMP2_LMGT3",
+          "name": "Hyperpole 1 - LMP2 & LMGT3",
+          "startTimeUtc": "2026-06-11T18:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 30
+        },
+        {
+          "type": "HYPERPOLE_2_LMP2_LMGT3",
+          "name": "Hyperpole 2 - LMP2 & LMGT3",
+          "startTimeUtc": "2026-06-11T18:35:00Z",
+          "cancelled": false,
+          "durationMinutes": 30
+        },
+        {
+          "type": "HYPERPOLE_1_HYPERCAR",
+          "name": "Hyperpole 1 - HYPERCAR",
+          "startTimeUtc": "2026-06-11T19:05:00Z",
+          "cancelled": false,
+          "durationMinutes": 30
+        },
+        {
+          "type": "HYPERPOLE_2_HYPERCAR",
+          "name": "Hyperpole 2 - HYPERCAR",
+          "startTimeUtc": "2026-06-11T19:40:00Z",
+          "cancelled": false,
+          "durationMinutes": 30
+        },
+        {
+          "type": "FP4",
+          "name": "Free Practice 4",
+          "startTimeUtc": "2026-06-11T21:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120
+        },
+        {
+          "type": "WARM_UP",
+          "name": "Warm-up",
+          "startTimeUtc": "2026-06-13T10:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 15
+        },
+        {
           "type": "R",
           "name": "Race",
           "startTimeUtc": "2026-06-13T14:00:00Z",
@@ -100,6 +275,55 @@
         "lapRecord": "1:25.508 • Will Stevens (2026)"
       },
       "sessions": [
+        {
+          "type": "FP1",
+          "name": "Free Practice 1",
+          "startTimeUtc": "2026-07-10T14:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 90
+        },
+        {
+          "type": "FP2",
+          "name": "Free Practice 2",
+          "startTimeUtc": "2026-07-10T18:50:00Z",
+          "cancelled": false,
+          "durationMinutes": 90
+        },
+        {
+          "type": "FP3",
+          "name": "Free Practice 3",
+          "startTimeUtc": "2026-07-11T13:10:00Z",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "QUALIFYING_LMGT3",
+          "name": "Qualifying - LMGT3",
+          "startTimeUtc": "2026-07-11T17:30:00Z",
+          "cancelled": false,
+          "durationMinutes": 12
+        },
+        {
+          "type": "HYPERPOLE_LMGT3",
+          "name": "Hyperpole - LMGT3",
+          "startTimeUtc": "2026-07-11T17:50:00Z",
+          "cancelled": false,
+          "durationMinutes": 10
+        },
+        {
+          "type": "QUALIFYING_HYPERCAR",
+          "name": "Qualifying - HYPERCAR",
+          "startTimeUtc": "2026-07-11T18:10:00Z",
+          "cancelled": false,
+          "durationMinutes": 12
+        },
+        {
+          "type": "HYPERPOLE_HYPERCAR",
+          "name": "Hyperpole - HYPERCAR",
+          "startTimeUtc": "2026-07-11T18:30:00Z",
+          "cancelled": false,
+          "durationMinutes": 10
+        },
         {
           "type": "R",
           "name": "Race",
@@ -127,9 +351,58 @@
       },
       "sessions": [
         {
+          "type": "FP1",
+          "name": "Free Practice 1",
+          "startTimeUtc": "2026-09-04T16:30:00Z",
+          "cancelled": false,
+          "durationMinutes": 90
+        },
+        {
+          "type": "FP2",
+          "name": "Free Practice 2",
+          "startTimeUtc": "2026-09-04T21:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 90
+        },
+        {
+          "type": "FP3",
+          "name": "Free Practice 3",
+          "startTimeUtc": "2026-09-05T16:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "QUALIFYING_LMGT3",
+          "name": "Qualifying - LMGT3",
+          "startTimeUtc": "2026-09-05T20:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 12
+        },
+        {
+          "type": "HYPERPOLE_LMGT3",
+          "name": "Hyperpole - LMGT3",
+          "startTimeUtc": "2026-09-05T20:20:00Z",
+          "cancelled": false,
+          "durationMinutes": 10
+        },
+        {
+          "type": "QUALIFYING_HYPERCAR",
+          "name": "Qualifying - HYPERCAR",
+          "startTimeUtc": "2026-09-05T20:40:00Z",
+          "cancelled": false,
+          "durationMinutes": 12
+        },
+        {
+          "type": "HYPERPOLE_HYPERCAR",
+          "name": "Hyperpole - HYPERCAR",
+          "startTimeUtc": "2026-09-05T21:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 10
+        },
+        {
           "type": "R",
           "name": "Race",
-          "startTimeUtc": "2026-09-06T17:00:00Z",
+          "startTimeUtc": "2026-09-06T18:00:00Z",
           "cancelled": false,
           "durationMinutes": 360
         }
@@ -152,6 +425,27 @@
         "lapRecord": "1:30.486 • Victor Martins (2026)"
       },
       "sessions": [
+        {
+          "type": "FP1",
+          "name": "Free Practice 1",
+          "startTimeUtc": "2026-09-25T01:15:00Z",
+          "cancelled": false,
+          "durationMinutes": 90
+        },
+        {
+          "type": "FP2",
+          "name": "Free Practice 2",
+          "startTimeUtc": "2026-09-25T05:30:00Z",
+          "cancelled": false,
+          "durationMinutes": 90
+        },
+        {
+          "type": "FP3",
+          "name": "Free Practice 3",
+          "startTimeUtc": "2026-09-26T00:30:00Z",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
         {
           "type": "R",
           "name": "Race",
@@ -178,6 +472,62 @@
       },
       "sessions": [
         {
+          "type": "FP1",
+          "name": "Free Practice 1",
+          "startTimeUtc": "2026-10-16T09:30:00Z",
+          "cancelled": false,
+          "durationMinutes": 90
+        },
+        {
+          "type": "FP2",
+          "name": "Free Practice 2",
+          "startTimeUtc": "2026-10-16T14:30:00Z",
+          "cancelled": false,
+          "durationMinutes": 90
+        },
+        {
+          "type": "FP3_LMGT3",
+          "name": "Free Practice 3 - LMGT3",
+          "startTimeUtc": "2026-10-17T06:50:00Z",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "QUALIFYING_LMGT3",
+          "name": "Qualifying - LMGT3",
+          "startTimeUtc": "2026-10-17T09:50:00Z",
+          "cancelled": false,
+          "durationMinutes": 12
+        },
+        {
+          "type": "HYPERPOLE_LMGT3",
+          "name": "Hyperpole - LMGT3",
+          "startTimeUtc": "2026-10-17T10:10:00Z",
+          "cancelled": false,
+          "durationMinutes": 10
+        },
+        {
+          "type": "FP3_HYPERCAR",
+          "name": "Free Practice 3 - Hypercar",
+          "startTimeUtc": "2026-10-17T10:40:00Z",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "QUALIFYING_HYPERCAR",
+          "name": "Qualifying - HYPERCAR",
+          "startTimeUtc": "2026-10-17T13:40:00Z",
+          "cancelled": false,
+          "durationMinutes": 12
+        },
+        {
+          "type": "HYPERPOLE_HYPERCAR",
+          "name": "Hyperpole - HYPERCAR",
+          "startTimeUtc": "2026-10-17T14:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 10
+        },
+        {
           "type": "R",
           "name": "Race",
           "startTimeUtc": "2026-10-18T10:00:00Z",
@@ -202,6 +552,55 @@
         "countryCode": "ITA"
       },
       "sessions": [
+        {
+          "type": "FP1",
+          "name": "Free Practice 1",
+          "startTimeUtc": "2026-11-06T09:30:00Z",
+          "cancelled": false,
+          "durationMinutes": 90
+        },
+        {
+          "type": "FP2",
+          "name": "Free Practice 2",
+          "startTimeUtc": "2026-11-06T13:30:00Z",
+          "cancelled": false,
+          "durationMinutes": 90
+        },
+        {
+          "type": "FP3",
+          "name": "Free Practice 3",
+          "startTimeUtc": "2026-11-07T09:30:00Z",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "QUALIFYING_LMGT3",
+          "name": "Qualifying - LMGT3",
+          "startTimeUtc": "2026-11-07T13:20:00Z",
+          "cancelled": false,
+          "durationMinutes": 12
+        },
+        {
+          "type": "HYPERPOLE_LMGT3",
+          "name": "Hyperpole - LMGT3",
+          "startTimeUtc": "2026-11-07T13:40:00Z",
+          "cancelled": false,
+          "durationMinutes": 10
+        },
+        {
+          "type": "QUALIFYING_HYPERCAR",
+          "name": "Qualifying - HYPERCAR",
+          "startTimeUtc": "2026-11-07T14:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 12
+        },
+        {
+          "type": "HYPERPOLE_HYPERCAR",
+          "name": "Hyperpole - HYPERCAR",
+          "startTimeUtc": "2026-11-07T14:20:00Z",
+          "cancelled": false,
+          "durationMinutes": 10
+        },
         {
           "type": "R",
           "name": "Race",

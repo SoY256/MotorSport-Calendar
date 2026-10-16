@@ -48,18 +48,58 @@ class WecClassificationTests(unittest.TestCase):
 
 
 class WecCalendarTests(unittest.TestCase):
+    def test_official_timetable_is_parsed_from_the_race_page(self):
+        page = (
+            '<div class="fw-bold lh-sm ">Free Practice 1</div>'
+            '<div class="text-primary fst-italic"> <span data-local="11:30 AM" data-timestamp="1792143000">'
+            '<div class="fw-bold lh-sm ">Qualifying - HYPERCAR</div>'
+            '<div class="text-primary fst-italic"> <span data-local="03:40 PM" data-timestamp="1792244400">'
+            '<div class="fw-bold lh-sm ">Race</div>'
+            '<div class="text-primary fst-italic"> <span data-local="12:00 PM" data-timestamp="1792317600">'
+            # Mobile duplicate of the same timetable.
+            '<div class="fw-bold lh-sm ">Race</div>'
+            '<div class="text-primary fst-italic"> <span data-local="12:00 PM" data-timestamp="1792317600">'
+        )
+        sessions = fetch_wec_results.official_timetable(page)
+        self.assertEqual(
+            [(item["type"], item["startTimeUtc"]) for item in sessions],
+            [
+                ("FP1", "2026-10-16T09:30:00Z"),
+                ("QUALIFYING_HYPERCAR", "2026-10-17T13:40:00Z"),
+                ("R", "2026-10-18T10:00:00Z"),
+            ],
+        )
+
+    def test_race_pages_are_matched_by_venue(self):
+        pages = fetch_wec_results.race_pages(
+            '<a href="/en/race/24-hours-of-le-mans-2026"></a>'
+            '<a href="/en/race/lone-star-le-mans-2026"></a>'
+            '<a href="/en/race/official-prologue-imola-2026"></a>'
+            '<a href="/en/race/6-hours-of-imola-2026"></a>'
+        )
+        self.assertEqual(
+            fetch_wec_results.race_page_for({"name": "24 Hours of Le Mans"}, pages),
+            "/en/race/24-hours-of-le-mans-2026",
+        )
+        self.assertEqual(
+            fetch_wec_results.race_page_for({"name": "6 Hours of Imola"}, pages),
+            "/en/race/6-hours-of-imola-2026",
+        )
+
     def test_cancelled_middle_east_rounds_are_replaced(self):
         for base in ("data", "assets/data"):
             calendar = json.loads((ROOT / base / "wec/2026/calendar.json").read_text(encoding="utf-8"))["data"]
             rounds = {event["round"]: event for event in calendar}
             self.assertEqual(len(calendar), 8)
             self.assertEqual(rounds[7]["name"], "6 Hours of Barcelona")
-            self.assertEqual(rounds[7]["sessions"][0]["startTimeUtc"], "2026-10-18T10:00:00Z")
+            self.assertEqual(fetch_wec_results.race_session(rounds[7])["startTimeUtc"], "2026-10-18T10:00:00Z")
+            self.assertEqual(rounds[7]["sessions"][0]["startTimeUtc"], "2026-10-16T09:30:00Z")
             self.assertEqual(rounds[8]["name"], "6 Hours of Monza")
-            self.assertEqual(rounds[8]["sessions"][0]["startTimeUtc"], "2026-11-08T10:00:00Z")
+            self.assertEqual(fetch_wec_results.race_session(rounds[8])["startTimeUtc"], "2026-11-08T10:00:00Z")
             for event in calendar:
                 self.assertNotIn(event["circuit"]["countryCode"], {"QAT", "BHR"})
                 self.assertTrue((ROOT / base / "wec/2026" / event["resultsPath"]).is_file())
+                self.assertGreater(len(event["sessions"]), 1, event["name"])
 
     def test_every_calendar_event_is_matched_to_its_timing_page(self):
         calendar = json.loads((ROOT / "data/wec/2026/calendar.json").read_text(encoding="utf-8"))["data"]

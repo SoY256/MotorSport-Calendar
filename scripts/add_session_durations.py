@@ -36,9 +36,32 @@ def race_duration(series: str, event_name: str) -> int:
     return 120
 
 
+def wec_session_duration(kind: str, label: str, event_name: str) -> int | None:
+    """Approximate official FIA WEC session lengths; ``None`` for the race."""
+    le_mans = "le mans" in event_name.casefold() and "24" in event_name
+    if kind == "R":
+        return None
+    if "warm" in label:
+        return 15
+    if "hyperpole" in label:
+        return 30 if le_mans else 10
+    if "qualifying" in label:
+        return 45 if le_mans else 12
+    if kind.startswith("FP"):
+        if le_mans:
+            return 180 if kind == "FP1" else 120
+        return 90 if kind in {"FP1", "FP2"} else 60
+    return 60
+
+
 def duration(series: str, event_name: str, session_type: str, session_name: str) -> int:
     kind = session_type.upper()
     label = session_name.casefold()
+    if series == "wec":
+        minutes = wec_session_duration(kind, label, event_name)
+        if minutes is not None:
+            return minutes
+        return race_duration(series, event_name)
     if kind.startswith("FP") or "practice" in label:
         return 60 if series == "f1" else 45
     if kind in {"SQ", "SPRINT_SHOOTOUT"} or "shootout" in label:
