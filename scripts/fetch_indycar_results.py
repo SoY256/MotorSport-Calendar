@@ -6,7 +6,7 @@ import json
 import os
 import re
 import unicodedata
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 from http_retry import read
@@ -46,6 +46,73 @@ def display_lap_time(value: str) -> str:
     return f"0:{value[3:]}" if value.startswith("00:") else value.lstrip("0")
 
 
+MATCH_WINDOW_DAYS = 2
+
+
+def official_race_number(official_event: dict) -> int | None:
+    """Doubleheader race number from ``"... Race 2"`` or ``"Qualifying - Race 2"``."""
+    found = re.search(r"\bRace\s+([1-9])\b", official_event.get("EventName") or "")
+    if found:
+        return int(found.group(1))
+    numbers = {int(number) for session in official_event.get("Sessions", [])
+               for number in re.findall(r"\bRace\s+([1-9])\b", session.get("SessionName") or "")}
+    return numbers.pop() if len(numbers) == 1 else None
+
+
+def calendar_race_number(event: dict) -> int | None:
+    """``"Barber Race 2"`` and ``"Milwaukee 2"`` are second races of a weekend."""
+    found = re.search(r"\s([1-9])$", event["name"])
+    return int(found.group(1)) if found else None
+
+
+def session_date(details: dict) -> date:
+    return datetime.strptime(details["SessionDate"], "%m/%d/%Y").date()
+
+
+def calendar_event(events: list[dict], official_day: date, race_number: int | None,
+                   label: str = "") -> dict | None:
+    """Match an official race to the calendar by race day, never position.
+
+    ``SeasonDropDown`` lists only completed events and its sponsor names do
+    not identify the venue, so positional ``zip(events, completed)`` shifted
+    results after a cancelled, inserted or reordered round.  The official
+    session date (local, possibly a rain-delayed day) must be within two days
+    of our race session; doubleheaders are told apart by their race number.
+    """
+    candidates = []
+    for event in events:
+        ours_day = datetime.fromisoformat(event["sessions"][-1]["startTimeUtc"].replace("Z", "+00:00")).date()
+        if abs((ours_day - official_day).days) <= MATCH_WINDOW_DAYS:
+            candidates.append(event)
+    if len(candidates) > 1 and race_number is not None:
+        candidates = [event for event in candidates if calendar_race_number(event) == race_number]
+    if len(candidates) > 1:
+        raise RuntimeError(f"Ambiguous calendar event for {label or official_day}: "
+                           f"{[event['name'] for event in candidates]}")
+    return candidates[0] if candidates else None
+
+
+def matched_official_events(api: str, events: list[dict], completed: list[dict]) -> list[tuple[dict, dict, dict]]:
+    """``(calendar event, official race session, race details)`` for completed races."""
+    matched = []
+    seen: dict[str, str] = {}
+    for official_event in completed:
+        race = next((item for item in official_event["Sessions"] if item["SessionName"] == "Race"), None)
+        if race is None:
+            continue
+        details = get(f"{api}/EventsSessionDetails?id={race['EventsSessionID']}")
+        event = calendar_event(events, session_date(details), official_race_number(official_event),
+                               official_event["EventName"])
+        if event is None:
+            print(f"Skipping {official_event['EventName']}: no matching calendar event")
+            continue
+        if event["id"] in seen:
+            raise RuntimeError(f"{official_event['EventName']} and {seen[event['id']]} both match {event['name']}")
+        seen[event["id"]] = official_event["EventName"]
+        matched.append((event, race, details))
+    return matched
+
+
 def main() -> None:
     data_root = Path(os.environ.get("MOTORSPORT_DATA_ROOT", ROOT / "assets" / "data"))
     root = data_root / "indycar" / "2026"
@@ -55,13 +122,9 @@ def main() -> None:
     season = next(item for item in official if item["Year"] == "2026")
     completed = list(reversed(season["Events"]))
     events = calendar_doc["data"]
-    if len(completed) > len(events):
-        raise RuntimeError("Official result count is larger than the app calendar")
     updated = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
     driver_teams: dict[str, str] = {}
-    for event, official_event in zip(events, completed):
-        race = next(item for item in official_event["Sessions"] if item["SessionName"] == "Race")
-        details = get(f"{API}/EventsSessionDetails?id={race['EventsSessionID']}")
+    for event, race, details in matched_official_events(API, events, completed):
         timed = [row for row in details.get("records", []) if row.get("BestLapTime")]
         if timed:
             fastest = min(timed, key=lambda row: row["BestLapTime"])
@@ -79,7 +142,7 @@ def main() -> None:
                 "classified": raw.get("Status") == "Running", "components": {},
             })
         if not rows:
-            raise RuntimeError(f"No official records for {official_event['EventName']}")
+            raise RuntimeError(f"No official records for {details.get('EventName')}")
         payload = {
             "schemaVersion": 1, "lastSuccessfulUpdate": updated,
             "source": {"name": "official-indycar", "url": f"{API}/EventsSessionDetails?id={race['EventsSessionID']}"},

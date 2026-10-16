@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 import 'package:secar/app/app.dart';
+import 'package:secar/core/widgets/racing_ui.dart';
 import 'package:secar/features/calendar/data/calendar_repository.dart';
 import 'package:secar/features/calendar/domain/circuit_metadata.dart';
 import 'package:secar/features/calendar/domain/race_event.dart';
@@ -534,7 +535,12 @@ void main() {
     await tester.pump(const Duration(milliseconds: 300));
 
     expect(find.text('Australian Grand Prix'), findsNWidgets(3));
-    expect(find.text('🇦🇺'), findsNWidgets(3));
+    expect(
+      find.byWidgetPredicate(
+        (widget) => widget is RacingFlag && widget.countryCode == 'AUS',
+      ),
+      findsNWidgets(3),
+    );
     expect(find.text('Wszystkie'), findsOneWidget);
     expect(find.text('INDYCAR'), findsWidgets);
     expect(find.text('INDY NXT'), findsWidgets);

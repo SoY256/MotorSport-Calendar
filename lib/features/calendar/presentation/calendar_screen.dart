@@ -7,6 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../core/localization/app_strings.dart';
 import '../../../core/widgets/app_logo.dart';
+import '../../../core/widgets/racing_ui.dart';
 import '../../settings/domain/app_settings.dart';
 import '../../settings/presentation/settings_controller.dart';
 import '../../settings/presentation/theme_controller.dart';
@@ -463,14 +464,14 @@ class _SeriesTabsBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final ids = available.toList()..sort();
     return Material(
-      color: Theme.of(context).colorScheme.surface.withValues(alpha: .94),
+      color: Theme.of(context).colorScheme.surface.withValues(alpha: .96),
       elevation: 3,
       shadowColor: Colors.black26,
       child: SizedBox(
-        height: 62,
+        height: 58,
         child: ListView(
           scrollDirection: Axis.horizontal,
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 11),
           children: [
             _SeriesTab(
               label: language == AppLanguage.polish ? 'Wszystkie' : 'All',
@@ -478,7 +479,7 @@ class _SeriesTabsBar extends StatelessWidget {
               onTap: () => onChanged(null),
             ),
             for (final id in ids) ...[
-              const SizedBox(width: 8),
+              const SizedBox(width: 6),
               _SeriesTab(
                 label: _seriesLabel(id),
                 color: _seriesColor(id),
@@ -506,30 +507,53 @@ class _SeriesTab extends StatelessWidget {
   final Color? color;
 
   @override
-  Widget build(BuildContext context) => Material(
-    color: selected
-        ? (color ?? Theme.of(context).colorScheme.primary)
-        : Theme.of(context).colorScheme.surfaceContainer,
-    shape: StadiumBorder(
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final accent = color ?? scheme.primary;
+    final shape = SlantBorder(
+      slant: 9,
       side: BorderSide(
         color: selected ? Colors.transparent : Theme.of(context).dividerColor,
       ),
-    ),
-    child: InkWell(
-      customBorder: const StadiumBorder(),
-      onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
-        child: Text(
-          label,
-          style: TextStyle(
-            color: selected ? Colors.white : null,
-            fontWeight: FontWeight.w900,
+    );
+    return Material(
+      color: selected ? accent : scheme.surfaceContainer,
+      shape: shape,
+      elevation: selected ? 4 : 0,
+      shadowColor: accent.withValues(alpha: .6),
+      child: InkWell(
+        customBorder: shape,
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 18),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (!selected && color != null) ...[
+                Container(
+                  width: 4,
+                  height: 14,
+                  decoration: ShapeDecoration(
+                    color: accent,
+                    shape: const SlantBorder(slant: 2),
+                  ),
+                ),
+                const SizedBox(width: 7),
+              ],
+              Text(
+                label,
+                style: racingDisplay(
+                  size: 16,
+                  color: selected ? Colors.white : scheme.onSurface,
+                  letterSpacing: .6,
+                ),
+              ),
+            ],
           ),
         ),
       ),
-    ),
-  );
+    );
+  }
 }
 
 class _PageFrame extends StatelessWidget {
@@ -564,53 +588,62 @@ class _PageFrame extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Container(
-                        width: 34,
-                        height: 4,
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.primary,
-                          borderRadius: BorderRadius.circular(4),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Theme.of(context).colorScheme.primary
-                                  .withValues(alpha: .42),
-                              blurRadius: 10,
-                            ),
-                          ],
-                        ),
+                      SlantTag(
+                        label: 'Secar',
+                        color: Theme.of(context).colorScheme.primary,
+                        fontSize: 11,
                       ),
-                      const SizedBox(width: 9),
+                      const SizedBox(width: 8),
                       Expanded(
                         child: Text(
-                          'SECAR  /  LIVE MOTORSPORT',
+                          'LIVE MOTORSPORT',
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                            color: Theme.of(context).colorScheme.primary,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onSurfaceVariant,
                             fontSize: 10,
                             fontWeight: FontWeight.w900,
-                            letterSpacing: 1.35,
+                            letterSpacing: 1.6,
                           ),
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 9),
-                  Text(
-                    title.toUpperCase(),
-                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      fontWeight: FontWeight.w900,
-                      fontStyle: FontStyle.italic,
-                      letterSpacing: -1.1,
-                    ),
-                  ),
                   const SizedBox(height: 6),
-                  Text(
-                    subtitle,
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.onSurfaceVariant,
-                    ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          title.toUpperCase(),
+                          style: racingDisplay(size: 40, height: 1.05),
+                        ),
+                      ),
+                      const SizedBox(width: 14),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: CheckeredStrip(
+                          width: 54,
+                          height: 16,
+                          cell: 5.4,
+                          color: Theme.of(context).colorScheme.onSurface
+                              .withValues(alpha: .55),
+                        ),
+                      ),
+                    ],
                   ),
+                  if (subtitle.isNotEmpty) ...[
+                    const SizedBox(height: 4),
+                    Text(
+                      subtitle,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
                 ],
               ),
             ),
@@ -674,14 +707,52 @@ class _ListPage extends ConsumerWidget {
         .where((event) => selectedSeries.contains(event.seriesId))
         .toList();
     final nextEvent = _nextEvent(matching, now);
-    final events = settings.showPastEvents
-        ? matching
-        : matching.where((event) => event.endsAt.isAfter(now)).toList();
+    final upcoming = matching
+        .where((event) => event.endsAt.isAfter(now))
+        .toList();
+    // Most recent results first, below everything that is still to come.
+    final completedEvents = settings.showPastEvents
+        ? matching.where((event) => !event.endsAt.isAfter(now)).toList()
+        : <RaceEvent>[];
+    completedEvents.sort((a, b) => b.endsAt.compareTo(a.endsAt));
+    final events = [...upcoming, ...completedEvents];
+    Iterable<Widget> group(List<RaceEvent> items, {required bool completed}) =>
+        [
+          for (var index = 0; index < items.length; index++) ...[
+            if (index == 0 ||
+                _monthKey(items[index], settings) !=
+                    _monthKey(items[index - 1], settings))
+              RacingSectionHeader(
+                label: _monthHeader(items[index], settings),
+                color: completed
+                    ? Theme.of(context).colorScheme.onSurfaceVariant
+                    : null,
+                trailing: strings.events(
+                  items
+                      .where(
+                        (item) =>
+                            _monthKey(item, settings) ==
+                            _monthKey(items[index], settings),
+                      )
+                      .length,
+                ),
+              ),
+            _EventCard(
+              event: items[index],
+              settings: settings,
+              strings: strings,
+              completed: completed,
+              onTap: () => onEventTap(items[index]),
+            ),
+            const SizedBox(height: 10),
+          ],
+        ];
     return _PageFrame(
       title: '${strings.season} ${data.events.first.season}',
       subtitle:
           '${strings.events(events.length)} • ${settings.timeMode == EventTimeMode.local ? strings.localTime : strings.trackTime}',
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           if (nextEvent != null)
             _NextRaceHero(
@@ -690,33 +761,57 @@ class _ListPage extends ConsumerWidget {
               strings: strings,
               onTap: () => onEventTap(nextEvent),
             ),
-          const SizedBox(height: 14),
-          Card(
-            child: SwitchListTile(
-              secondary: const Icon(Icons.history_rounded),
-              title: Text(
-                strings.hideCompletedRaces,
-                style: const TextStyle(fontWeight: FontWeight.w800),
+          const SizedBox(height: 12),
+          Material(
+            color: Theme.of(context).colorScheme.surfaceContainer,
+            shape: SlantBorder(
+              slant: 10,
+              side: BorderSide(color: Theme.of(context).dividerColor),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(22, 2, 14, 2),
+              child: Row(
+                children: [
+                  const Icon(Icons.sports_score, size: 20),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      strings.hideCompletedRaces,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(fontWeight: FontWeight.w800),
+                    ),
+                  ),
+                  Switch(
+                    value: !settings.showPastEvents,
+                    onChanged: (hide) => ref
+                        .read(settingsProvider.notifier)
+                        .setShowPastEvents(!hide),
+                  ),
+                ],
               ),
-              value: !settings.showPastEvents,
-              onChanged: (hide) =>
-                  ref.read(settingsProvider.notifier).setShowPastEvents(!hide),
             ),
           ),
-          const SizedBox(height: 14),
+          const SizedBox(height: 6),
           if (events.isEmpty)
             _EmptyCard(icon: Icons.event_busy, message: strings.noUpcoming)
-          else
-            for (final event in events) ...[
-              _EventCard(
-                event: event,
-                settings: settings,
-                strings: strings,
-                completed: event.endsAt.isBefore(now),
-                onTap: () => onEventTap(event),
+          else ...[
+            ...group(upcoming, completed: false),
+            if (completedEvents.isNotEmpty) ...[
+              const SizedBox(height: 8),
+              Row(
+                children: [
+                  const CheckeredStrip(width: 36, height: 12, cell: 4),
+                  const SizedBox(width: 10),
+                  Text(
+                    strings.completed.toUpperCase(),
+                    style: racingDisplay(size: 24),
+                  ),
+                ],
               ),
-              const SizedBox(height: 12),
+              ...group(completedEvents, completed: true),
             ],
+          ],
           Padding(
             padding: const EdgeInsets.only(top: 8),
             child: Text(
@@ -728,6 +823,65 @@ class _ListPage extends ConsumerWidget {
       ),
     );
   }
+}
+
+int _monthKey(RaceEvent event, AppSettings settings) {
+  final date = _sessionDisplayDate(event.sessions.last, settings);
+  return date.year * 12 + date.month;
+}
+
+String _monthHeader(RaceEvent event, AppSettings settings) {
+  final date = _sessionDisplayDate(event.sessions.last, settings);
+  final names = settings.language == AppLanguage.english
+      ? const [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December',
+        ]
+      : const [
+          'Styczeń',
+          'Luty',
+          'Marzec',
+          'Kwiecień',
+          'Maj',
+          'Czerwiec',
+          'Lipiec',
+          'Sierpień',
+          'Wrzesień',
+          'Październik',
+          'Listopad',
+          'Grudzień',
+        ];
+  return '${names[date.month - 1]} ${date.year}';
+}
+
+/// The session currently on track, or the next one to start.
+({RaceSession session, bool live})? _focusSession(
+  RaceEvent event,
+  DateTime now,
+) {
+  for (final session in event.sessions) {
+    if (session.cancelled) continue;
+    if (!session.startTimeUtc.isAfter(now) &&
+        session.expectedEnd.isAfter(now)) {
+      return (session: session, live: true);
+    }
+  }
+  for (final session in event.sessions) {
+    if (!session.cancelled && session.startTimeUtc.isAfter(now)) {
+      return (session: session, live: false);
+    }
+  }
+  return null;
 }
 
 class _NextRaceHero extends StatelessWidget {
@@ -748,148 +902,219 @@ class _NextRaceHero extends StatelessWidget {
     final last = event.sessions.last;
     final seriesColor = _seriesColor(event.seriesId);
     final circuitAsset = circuitAssetFor(event.circuit.name);
+    final focus = _focusSession(event, DateTime.now().toUtc());
+    const shape = BeveledRectangleBorder(
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(6),
+        topRight: Radius.circular(26),
+        bottomLeft: Radius.circular(26),
+        bottomRight: Radius.circular(6),
+      ),
+    );
     return Material(
-      color: Colors.transparent,
+      key: const ValueKey('next-round-hero'),
+      shape: shape,
+      clipBehavior: Clip.antiAlias,
+      color: const Color(0xFF0D1117),
+      elevation: 6,
+      shadowColor: seriesColor.withValues(alpha: .45),
       child: InkWell(
-        key: const ValueKey('next-round-hero'),
-        borderRadius: BorderRadius.circular(24),
         onTap: onTap,
-        child: Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(24),
-            gradient: LinearGradient(
-              colors: const [Color(0xFF111722), Color(0xFF202B3A)],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      const Color(0xFF0D1117),
+                      const Color(0xFF151C26),
+                      Color.lerp(const Color(0xFF151C26), seriesColor, .45)!,
+                    ],
+                    stops: const [0, .55, 1],
+                  ),
+                ),
+              ),
             ),
-            boxShadow: [
-              BoxShadow(
-                color: seriesColor.withValues(alpha: .24),
-                blurRadius: 28,
-                offset: const Offset(0, 12),
-              ),
-            ],
-          ),
-          clipBehavior: Clip.antiAlias,
-          child: Stack(
-            children: [
-              Positioned.fill(
-                child: IgnorePointer(
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: FractionallySizedBox(
-                      widthFactor: .48,
-                      child: Row(
-                        textDirection: TextDirection.ltr,
-                        children: [
-                          SizedBox(
-                            width: 94,
-                            height: 82,
-                            child: Opacity(
-                              opacity: .86,
-                              child: FittedBox(
-                                fit: BoxFit.contain,
-                                child: Text(
-                                  _countryFlag(event.circuit.countryCode),
-                                  style: const TextStyle(
-                                    fontSize: 82,
-                                    height: 1,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 18),
-                          if (circuitAsset != null)
-                            Expanded(
-                              child: ClipRect(
-                                child: Opacity(
-                                  opacity: .42,
-                                  child: _CircuitAsset(
-                                    path: circuitAsset,
-                                    fit: BoxFit.contain,
-                                    tint: Colors.white,
-                                    semanticsLabel: event.circuit.name,
-                                    quarterTurns: circuitQuarterTurns(
-                                      event.circuit.name,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Positioned.fill(
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        const Color(0xFF111722),
-                        const Color(0xFF111722).withValues(alpha: .88),
-                        seriesColor.withValues(alpha: .22),
-                      ],
-                      stops: const [0, .56, 1],
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(24),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+            // Diagonal series-coloured speed stripes.
+            Positioned(
+              right: -40,
+              top: -20,
+              bottom: -20,
+              width: 150,
+              child: Transform(
+                alignment: Alignment.center,
+                transform: Matrix4.skewX(-.35),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Text(
-                      '${strings.nextRound} • ${_seriesLabel(event.seriesId)}',
-                      style: TextStyle(
-                        color: Color.lerp(Colors.white, seriesColor, .28),
-                        fontWeight: FontWeight.w800,
-                        letterSpacing: 1.2,
+                    for (final alpha in [.85, .5, .25]) ...[
+                      Expanded(
+                        child: ColoredBox(
+                          color: Color.lerp(
+                            seriesColor,
+                            Colors.white,
+                            .12,
+                          )!.withValues(alpha: alpha),
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 18),
-                    Text(
-                      event.name,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 26,
-                        fontWeight: FontWeight.w900,
-                        shadows: [Shadow(color: Colors.black, blurRadius: 10)],
-                      ),
-                    ),
-                    const SizedBox(height: 6),
-                    Text(
-                      '${event.circuit.name} • ${event.circuit.country ?? ''}',
-                      style: const TextStyle(color: Colors.white70),
-                    ),
-                    const SizedBox(height: 20),
-                    Wrap(
-                      spacing: 10,
-                      runSpacing: 10,
-                      children: [
-                        _HeroPill(
-                          icon: Icons.calendar_today,
-                          label: _sessionDateRange(first, last, settings),
-                        ),
-                        _HeroPill(
-                          icon: Icons.schedule,
-                          label: strings.sessions(event.sessions.length),
-                        ),
-                        _HeroPill(
-                          icon: Icons.public,
-                          label: _zoneName(first, settings, strings),
-                        ),
-                      ],
-                    ),
+                      const SizedBox(width: 10),
+                    ],
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+            if (circuitAsset != null)
+              Positioned(
+                right: 18,
+                top: 52,
+                width: 150,
+                height: 120,
+                child: IgnorePointer(
+                  child: Opacity(
+                    opacity: .5,
+                    child: _CircuitAsset(
+                      path: circuitAsset,
+                      fit: BoxFit.contain,
+                      tint: Colors.white,
+                      semanticsLabel: event.circuit.name,
+                      quarterTurns: circuitQuarterTurns(event.circuit.name),
+                    ),
+                  ),
+                ),
+              ),
+            Positioned(
+              top: 18,
+              right: 18,
+              child: CheckeredStrip(
+                width: 48,
+                height: 14,
+                cell: 4.8,
+                color: Colors.white.withValues(alpha: .7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(22, 20, 22, 22),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 6,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      SlantTag(
+                        label: _seriesLabel(event.seriesId),
+                        color: seriesColor,
+                        fontSize: 13,
+                      ),
+                      Text(
+                        '${strings.nextRound}${event.round == null ? '' : ' · R${event.round}'}',
+                        style: const TextStyle(
+                          color: Colors.white70,
+                          fontSize: 11,
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: 1.4,
+                        ),
+                      ),
+                      if (focus?.live ?? false)
+                        LiveBadge(label: strings.liveNow),
+                    ],
+                  ),
+                  const SizedBox(height: 14),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 70),
+                    child: Text(
+                      event.name.toUpperCase(),
+                      style: racingDisplay(
+                        size: 34,
+                        color: Colors.white,
+                        height: 1,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Row(
+                    children: [
+                      RacingFlag(
+                        countryCode: event.circuit.countryCode,
+                        width: 24,
+                        semanticsLabel: event.circuit.country,
+                      ),
+                      const SizedBox(width: 8),
+                      Flexible(
+                        child: Text(
+                          [
+                            event.circuit.name,
+                            event.circuit.country,
+                          ].whereType<String>().join(' · '),
+                          maxLines: 2,
+                          style: const TextStyle(
+                            color: Colors.white70,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  if (focus != null) ...[
+                    const SizedBox(height: 18),
+                    Text(
+                      focus.live
+                          ? '${strings.onTrackNow}: ${_sessionLabel(focus.session.type, focus.session.name, strings)}'
+                                .toUpperCase()
+                          : strings
+                                .startsIn(
+                                  _sessionLabel(
+                                    focus.session.type,
+                                    focus.session.name,
+                                    strings,
+                                  ),
+                                )
+                                .toUpperCase(),
+                      style: TextStyle(
+                        color: Color.lerp(Colors.white, seriesColor, .35),
+                        fontSize: 11,
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: 1.6,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    if (!focus.live && !focus.session.timeTbc)
+                      FittedBox(
+                        fit: BoxFit.scaleDown,
+                        alignment: Alignment.centerLeft,
+                        child: RaceCountdown(
+                          target: focus.session.startTimeUtc,
+                          units: strings.countdownUnits,
+                        ),
+                      ),
+                  ],
+                  const SizedBox(height: 16),
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 8,
+                    children: [
+                      _HeroPill(
+                        icon: Icons.calendar_today,
+                        label: _sessionDateRange(first, last, settings),
+                      ),
+                      _HeroPill(
+                        icon: Icons.timer_outlined,
+                        label: strings.sessions(event.sessions.length),
+                      ),
+                      _HeroPill(
+                        icon: Icons.public,
+                        label: _zoneName(first, settings, strings),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -902,15 +1127,18 @@ class _HeroPill extends StatelessWidget {
   final String label;
   @override
   Widget build(BuildContext context) => Container(
-    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-    decoration: BoxDecoration(
-      color: Colors.white.withValues(alpha: .14),
-      borderRadius: BorderRadius.circular(30),
+    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+    decoration: ShapeDecoration(
+      color: Colors.white.withValues(alpha: .10),
+      shape: SlantBorder(
+        slant: 7,
+        side: BorderSide(color: Colors.white.withValues(alpha: .14)),
+      ),
     ),
     child: Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(icon, color: Colors.white, size: 16),
+        Icon(icon, color: Colors.white, size: 15),
         const SizedBox(width: 7),
         Flexible(
           child: Text(
@@ -918,6 +1146,7 @@ class _HeroPill extends StatelessWidget {
             softWrap: true,
             style: const TextStyle(
               color: Colors.white,
+              fontSize: 13,
               fontWeight: FontWeight.w700,
             ),
           ),
@@ -946,159 +1175,184 @@ class _EventCard extends StatelessWidget {
     final race = event.sessions.last;
     final scheme = Theme.of(context).colorScheme;
     final dark = Theme.of(context).brightness == Brightness.dark;
+    final seriesColor = _seriesColor(event.seriesId);
+    final now = DateTime.now().toUtc();
+    final live = !completed && _focusSession(event, now)?.live == true;
+    final raceDate = _sessionDisplayDate(race, settings);
+    final firstDate = _sessionDisplayDate(event.sessions.first, settings);
+    final multiDay =
+        firstDate.day != raceDate.day || firstDate.month != raceDate.month;
+    final muted = scheme.onSurfaceVariant;
     return Card(
       key: ValueKey(
         'event-${event.id}-${completed ? 'completed' : 'upcoming'}',
       ),
       color: completed
           ? Color.alphaBlend(
-              const Color(0xFF78909C).withValues(alpha: dark ? .20 : .12),
+              const Color(0xFF78909C).withValues(alpha: dark ? .16 : .10),
               scheme.surface,
             )
           : null,
       child: InkWell(
-        borderRadius: BorderRadius.circular(16),
         onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.all(18),
+        child: IntrinsicHeight(
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              // Date "ticket" in the series colour.
               Container(
-                width: 4,
-                height: 48,
+                width: 62,
+                padding: const EdgeInsets.symmetric(vertical: 10),
                 decoration: BoxDecoration(
-                  color: _seriesColor(event.seriesId),
-                  borderRadius: BorderRadius.circular(4),
-                  boxShadow: [
-                    BoxShadow(
-                      color: _seriesColor(event.seriesId)
-                          .withValues(alpha: .35),
-                      blurRadius: 8,
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: completed
+                        ? [
+                            muted.withValues(alpha: .18),
+                            muted.withValues(alpha: .10),
+                          ]
+                        : [
+                            seriesColor,
+                            Color.lerp(seriesColor, Colors.black, .35)!,
+                          ],
+                  ),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      multiDay
+                          ? '${_two(firstDate.day)}–${_two(raceDate.day)}'
+                          : _two(raceDate.day),
+                      style: racingDisplay(
+                        size: multiDay ? 19 : 28,
+                        color: completed ? scheme.onSurface : Colors.white,
+                        height: 1,
+                      ),
+                    ),
+                    const SizedBox(height: 3),
+                    Text(
+                      _monthName(raceDate.month, settings.language),
+                      style: TextStyle(
+                        color: completed ? muted : Colors.white,
+                        fontSize: 11,
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: 1.4,
+                      ),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(width: 10),
-              SizedBox(
-                width: 52,
-                height: 46,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.surfaceContainer,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Center(
-                    child: Text(
-                      _countryFlag(event.circuit.countryCode),
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(fontSize: 28),
-                    ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(14, 12, 6, 12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          Flexible(
+                            child: SlantTag(
+                              label: _seriesLabel(event.seriesId),
+                              color: completed
+                                  ? muted.withValues(alpha: .7)
+                                  : seriesColor,
+                              fontSize: 11,
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            'R${event.round ?? '–'}',
+                            style: racingDisplay(size: 14, color: muted),
+                          ),
+                          if (live) ...[
+                            const SizedBox(width: 8),
+                            Flexible(child: LiveBadge(label: strings.liveNow)),
+                          ],
+                        ],
+                      ),
+                      const SizedBox(height: 6),
+                      Text(
+                        event.name,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w800,
+                          color: completed ? muted : null,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Row(
+                        children: [
+                          RacingFlag(
+                            countryCode: event.circuit.countryCode,
+                            width: 18,
+                            semanticsLabel: event.circuit.country,
+                          ),
+                          const SizedBox(width: 7),
+                          Expanded(
+                            child: Text(
+                              event.circuit.name,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(color: muted, fontSize: 12),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ),
-              const SizedBox(width: 15),
-              Expanded(
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 12, 4, 12),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            event.name,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                              fontSize: 16,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: completed
+                      ? [
+                          Icon(Icons.sports_score, color: muted),
+                          const SizedBox(height: 2),
+                          Text(
+                            strings.completed,
+                            style: TextStyle(
+                              color: muted,
+                              fontSize: 10,
                               fontWeight: FontWeight.w800,
                             ),
                           ),
-                        ),
-                        if (completed &&
-                            MediaQuery.sizeOf(context).width >= 520)
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 7,
-                              vertical: 3,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .surfaceContainerHighest,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Text(
-                              strings.completed,
-                              style: const TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w800,
-                              ),
+                        ]
+                      : [
+                          Text(
+                            _sessionTime(race, settings.timeMode),
+                            style: racingDisplay(
+                              size: 22,
+                              color: scheme.primary,
+                              italic: false,
+                              height: 1,
                             ),
                           ),
-                      ],
-                    ),
-                    const SizedBox(height: 5),
-                    Row(
-                      children: [
-                        Flexible(
-                          child: Text(
-                            _seriesLabel(event.seriesId),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
+                          const SizedBox(height: 3),
+                          Text(
+                            _weekdayName(
+                              raceDate.weekday,
+                              settings.language,
+                            ).substring(0, 3).toUpperCase(),
                             style: TextStyle(
-                              color: _seriesColor(event.seriesId),
-                              fontSize: 12,
+                              color: muted,
+                              fontSize: 10,
                               fontWeight: FontWeight.w900,
+                              letterSpacing: 1.2,
                             ),
                           ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            '  •  R${event.round ?? '–'}  •  ${event.circuit.name}',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .onSurfaceVariant,
-                              fontSize: 12,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
                 ),
               ),
-              const SizedBox(width: 10),
-              SizedBox(
-                width: 78,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      _sessionDate(race, settings),
-                      maxLines: 2,
-                      softWrap: true,
-                      textAlign: TextAlign.end,
-                      style: const TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      _sessionTime(race, settings.timeMode),
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 4),
-              const Icon(Icons.chevron_right),
+              Icon(Icons.chevron_right, color: muted),
+              const SizedBox(width: 6),
             ],
           ),
         ),
@@ -1808,11 +2062,8 @@ class _CircuitInfoCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  event.circuit.name,
-                  style: const TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.w900,
-                  ),
+                  event.circuit.name.toUpperCase(),
+                  style: racingDisplay(size: 21, height: 1.05),
                 ),
                 const SizedBox(height: 4),
                 Text(
@@ -1831,40 +2082,39 @@ class _CircuitInfoCard extends StatelessWidget {
                 ),
               ],
             );
-            final flag = Text(
-              _countryFlag(event.circuit.countryCode),
-              style: const TextStyle(fontSize: 48),
+            final flag = RacingFlag(
+              countryCode: event.circuit.countryCode,
+              width: 44,
               semanticsLabel: event.circuit.country,
             );
+            final seriesColor = _seriesColor(event.seriesId);
             Widget circuitGraphic({double? width, double? height}) => Container(
               width: width ?? 220,
               height: height ?? 130,
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
+              padding: const EdgeInsets.all(12),
+              decoration: ShapeDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    Theme.of(context).colorScheme.primaryContainer,
-                    Theme.of(context).colorScheme.surfaceContainerHighest,
+                    const Color(0xFF0D1117),
+                    Color.lerp(const Color(0xFF151C26), seriesColor, .35)!,
                   ],
                 ),
-                borderRadius: BorderRadius.circular(18),
-                border: Border.all(
-                  color: Theme.of(context).colorScheme.primary
-                      .withValues(alpha: .35),
+                shape: BeveledRectangleBorder(
+                  borderRadius: const BorderRadius.only(
+                    topRight: Radius.circular(14),
+                    bottomLeft: Radius.circular(14),
+                  ),
+                  side: BorderSide(color: seriesColor.withValues(alpha: .55)),
                 ),
               ),
               child: asset == null
-                  ? Icon(
-                      Icons.route,
-                      size: 72,
-                      color: Theme.of(context).colorScheme.primary,
-                    )
+                  ? const Icon(Icons.route, size: 72, color: Colors.white)
                   : _CircuitAsset(
                       path: asset,
                       fit: BoxFit.contain,
-                      tint: Theme.of(context).colorScheme.primary,
+                      tint: Colors.white,
                       semanticsLabel: event.circuit.name,
                       quarterTurns: circuitQuarterTurns(event.circuit.name),
                     ),
@@ -1880,10 +2130,10 @@ class _CircuitInfoCard extends StatelessWidget {
                       clipBehavior: Clip.none,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(right: 44),
+                          padding: const EdgeInsets.only(right: 52),
                           child: info,
                         ),
-                        Positioned(right: 0, top: 0, child: flag),
+                        Positioned(right: 0, top: 2, child: flag),
                       ],
                     ),
                   ),
@@ -1921,11 +2171,21 @@ class _SessionResultsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Card(
     child: ExpansionTile(
+      shape: const Border(),
+      collapsedShape: const Border(),
       initiallyExpanded:
           initiallyExpanded || session.type == 'R' || session.type == 'SPRINT',
+      leading: Container(
+        width: 6,
+        height: 30,
+        decoration: ShapeDecoration(
+          color: Theme.of(context).colorScheme.primary,
+          shape: const SlantBorder(slant: 3),
+        ),
+      ),
       title: Text(
         _sessionLabel(session.type, session.name, strings),
-        style: const TextStyle(fontWeight: FontWeight.w900),
+        style: racingDisplay(size: 20),
       ),
       subtitle: Text(
         '${_date(session.startTimeUtc.toLocal(), strings.language)} • $timeLabel',
@@ -1934,20 +2194,30 @@ class _SessionResultsCard extends StatelessWidget {
         const Divider(height: 1),
         for (final result in session.results)
           Container(
-            color: _categoryColor(result.category).withValues(alpha: .11),
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            decoration: BoxDecoration(
+              color: _categoryColor(result.category).withValues(alpha: .11),
+              gradient: podiumColor(result.position) == null
+                  ? null
+                  : LinearGradient(
+                      colors: [
+                        podiumColor(result.position)!.withValues(alpha: .16),
+                        podiumColor(result.position)!.withValues(alpha: 0),
+                      ],
+                    ),
+              border: Border(
+                bottom: BorderSide(
+                  color: Theme.of(context).dividerColor.withValues(alpha: .45),
+                ),
+              ),
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
             child: Row(
               children: [
-                SizedBox(
-                  width: 34,
-                  child: Text(
-                    result.positionText,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
+                PositionBadge(
+                  label: result.positionText,
+                  position: result.position,
                 ),
+                const SizedBox(width: 8),
                 Container(
                   width: 4,
                   height: 34,
@@ -1982,7 +2252,7 @@ class _SessionResultsCard extends StatelessWidget {
                   children: [
                     Text(
                       result.time ?? result.status ?? '–',
-                      style: const TextStyle(fontWeight: FontWeight.w700),
+                      style: racingDisplay(size: 16, italic: false),
                     ),
                     if (result.points != null)
                       Text(
@@ -2134,6 +2404,12 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
                                     initials:
                                         '${item.givenName.isEmpty ? '' : item.givenName[0]}${item.familyName.isEmpty ? '' : item.familyName[0]}',
                                     points: item.points,
+                                    leaderPoints: drivers.fold<double>(
+                                      0,
+                                      (max, other) => other.points > max
+                                          ? other.points
+                                          : max,
+                                    ),
                                     strings: strings,
                                   ),
                                 )
@@ -2155,6 +2431,12 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
                                     ),
                                     initials: '',
                                     points: item.points,
+                                    leaderPoints: teams.fold<double>(
+                                      0,
+                                      (max, other) => other.points > max
+                                          ? other.points
+                                          : max,
+                                    ),
                                     strings: strings,
                                   ),
                                 )
@@ -2177,6 +2459,7 @@ class _StandingRow extends StatelessWidget {
     required this.title,
     required this.subtitle,
     required this.points,
+    required this.leaderPoints,
     required this.strings,
     required this.color,
     required this.nationality,
@@ -2188,6 +2471,7 @@ class _StandingRow extends StatelessWidget {
   final String title;
   final String subtitle;
   final double points;
+  final double leaderPoints;
   final AppStrings strings;
   final Color color;
   final String? nationality;
@@ -2196,40 +2480,49 @@ class _StandingRow extends StatelessWidget {
   final String initials;
 
   @override
-  Widget build(BuildContext context) => Column(
-    children: [
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final gap = leaderPoints - points;
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            color.withValues(alpha: position == 1 ? .30 : .12),
+            color.withValues(alpha: 0),
+          ],
+          stops: const [0, .55],
+        ),
+        border: Border(
+          bottom: BorderSide(color: Theme.of(context).dividerColor),
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(10, 9, 14, 9),
         child: Row(
           children: [
-            SizedBox(
-              width: 28,
-              child: Text(
-                '$position',
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w900,
-                ),
-              ),
-            ),
+            PositionBadge(label: '$position', position: position, width: 38),
+            const SizedBox(width: 8),
             Container(
               width: 4,
               height: 52,
-              margin: const EdgeInsets.only(right: 8),
+              margin: const EdgeInsets.only(right: 9),
               decoration: BoxDecoration(
                 color: color,
                 borderRadius: BorderRadius.circular(4),
+                boxShadow: [
+                  BoxShadow(color: color.withValues(alpha: .5), blurRadius: 6),
+                ],
               ),
             ),
             if (imageUrl != null) ...[
               _DriverPortrait(imageUrl: imageUrl!, initials: initials),
-              const SizedBox(width: 9),
+              const SizedBox(width: 10),
             ] else if (initials.isNotEmpty) ...[
               _DriverInitials(initials: initials),
-              const SizedBox(width: 9),
+              const SizedBox(width: 10),
             ] else if (teamLogoAsset != null) ...[
               _TeamLogo(asset: teamLogoAsset!),
-              const SizedBox(width: 9),
+              const SizedBox(width: 10),
             ],
             Expanded(
               child: Column(
@@ -2257,17 +2550,49 @@ class _StandingRow extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(width: 6),
-            Text(
-              '${_number(points)} ${strings.points}',
-              style: const TextStyle(fontWeight: FontWeight.w900),
+            const SizedBox(width: 8),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  textBaseline: TextBaseline.alphabetic,
+                  children: [
+                    Text(
+                      _number(points),
+                      style: racingDisplay(size: 24, italic: false, height: 1),
+                    ),
+                    const SizedBox(width: 3),
+                    Text(
+                      strings.points,
+                      style: TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w900,
+                        color: scheme.onSurfaceVariant,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  position == 1 || gap <= 0
+                      ? strings.leader.toUpperCase()
+                      : '−${_number(gap)}',
+                  style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w800,
+                    color: position == 1 ? podiumGold : scheme.onSurfaceVariant,
+                    fontFeatures: const [FontFeature.tabularFigures()],
+                  ),
+                ),
+              ],
             ),
           ],
         ),
       ),
-      const Divider(height: 1),
-    ],
-  );
+    );
+  }
 }
 
 class _DriverFlags extends StatelessWidget {
@@ -3251,31 +3576,6 @@ Color _seriesColor(String id) => switch (id.toLowerCase()) {
   _ => const Color(0xFF455A64),
 };
 
-String _countryFlag(String? code) => switch (code) {
-  'AUS' => '🇦🇺',
-  'CHN' => '🇨🇳',
-  'JPN' => '🇯🇵',
-  'USA' => '🇺🇸',
-  'CAN' => '🇨🇦',
-  'MCO' => '🇲🇨',
-  'ESP' => '🇪🇸',
-  'AUT' => '🇦🇹',
-  'GBR' => '🇬🇧',
-  'BEL' => '🇧🇪',
-  'HUN' => '🇭🇺',
-  'NLD' => '🇳🇱',
-  'ITA' => '🇮🇹',
-  'AZE' => '🇦🇿',
-  'MYS' => '🇲🇾',
-  'SGP' => '🇸🇬',
-  'MEX' => '🇲🇽',
-  'BRA' => '🇧🇷',
-  'QAT' => '🇶🇦',
-  'ARE' => '🇦🇪',
-  'SAU' => '🇸🇦',
-  _ => '🏁',
-};
-
 String _zoneName(
   RaceSession session,
   AppSettings settings,
@@ -3318,6 +3618,9 @@ String _sessionDateRange(
 ) {
   final from = _sessionDisplayDate(first, settings);
   final to = _sessionDisplayDate(last, settings);
+  if (from.year == to.year && from.month == to.month && from.day == to.day) {
+    return _date(from, settings.language);
+  }
   if (from.year == to.year && from.month == to.month) {
     return '${_weekdayName(from.weekday, settings.language)}–'
         '${_weekdayName(to.weekday, settings.language)}, '
@@ -3328,6 +3631,7 @@ String _sessionDateRange(
 }
 
 String _sessionTime(RaceSession session, EventTimeMode mode) {
+  if (session.timeTbc) return 'TBC';
   final track = mode == EventTimeMode.track ? _trackParts(session) : null;
   if (track != null) return '${_two(track[2])}:${_two(track[3])}';
   return _time(session.startTimeUtc.toLocal());

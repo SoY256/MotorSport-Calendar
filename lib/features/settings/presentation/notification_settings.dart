@@ -30,6 +30,7 @@ class NotificationPreferences {
           final type = kind(session.type);
           final scheduled = reminderTime(session.startTimeUtc, leadMinutes);
           if (session.cancelled ||
+              session.timeTbc ||
               !types.contains(type) ||
               !scheduled.isAfter(now)) {
             continue;

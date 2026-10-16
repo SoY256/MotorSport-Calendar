@@ -9,9 +9,25 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   testWidgets('generate accurate Play Store phone screenshots', (tester) async {
-    final roboto = FontLoader('Roboto')
-      ..addFont(rootBundle.load('assets/fonts/Roboto-Regular.ttf'));
-    await roboto.load();
+    for (final family in {
+      'Roboto': [
+        'assets/fonts/Roboto-Regular.ttf',
+        'assets/fonts/Roboto-Medium.ttf',
+        'assets/fonts/Roboto-Bold.ttf',
+      ],
+      'BarlowCondensed': [
+        'assets/fonts/BarlowCondensed-SemiBold.ttf',
+        'assets/fonts/BarlowCondensed-Bold.ttf',
+        'assets/fonts/BarlowCondensed-BoldItalic.ttf',
+        'assets/fonts/BarlowCondensed-ExtraBoldItalic.ttf',
+      ],
+    }.entries) {
+      final loader = FontLoader(family.key);
+      for (final path in family.value) {
+        loader.addFont(rootBundle.load(path));
+      }
+      await loader.load();
+    }
     final materialIcons = FontLoader('MaterialIcons')
       ..addFont(rootBundle.load('assets/fonts/MaterialIcons-Regular.otf'));
     await materialIcons.load();

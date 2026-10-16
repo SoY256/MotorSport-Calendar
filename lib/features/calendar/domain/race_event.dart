@@ -7,6 +7,7 @@ class RaceSession {
     required this.durationMinutes,
     this.startTimeTrack,
     this.trackTimeZone,
+    this.timeTbc = false,
   });
 
   factory RaceSession.fromJson(Map<String, dynamic> json) => RaceSession(
@@ -17,6 +18,7 @@ class RaceSession {
     durationMinutes: json['durationMinutes'] as int? ?? 120,
     startTimeTrack: json['startTimeTrack'] as String?,
     trackTimeZone: json['trackTimeZone'] as String?,
+    timeTbc: json['timeTbc'] as bool? ?? false,
   );
 
   final String type;
@@ -26,6 +28,9 @@ class RaceSession {
   final int durationMinutes;
   final String? startTimeTrack;
   final String? trackTimeZone;
+
+  /// The organiser has published the day but not yet the start time.
+  final bool timeTbc;
 
   DateTime get expectedEnd =>
       startTimeUtc.add(Duration(minutes: durationMinutes));

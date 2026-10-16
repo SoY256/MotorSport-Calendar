@@ -34,6 +34,8 @@ The bundled 2026 WEC and IMSA calendars are curated from the official [FIA WEC](
 
 The 2026 INDYCAR and INDY NXT calendars and driver standings come from the official [INDYCAR](https://www.indycar.com/) and [INDY NXT](https://www.indynxt.com/) sites and are published by `scripts/seed_indy_data.py`.
 
+Because these curated calendars (F2/F3, WEC, IMSA, INDYCAR, INDY NXT) are not rebuilt from a live API like F1, the `Check official schedules` workflow runs `scripts/check_schedules.py` once per day. It compares the upcoming events in `data/` with the official FIA WEC, F2, F3 and IMSA schedule pages and opens (or updates) a single `Official schedule changed` issue when an event was cancelled, added or moved, or when a source could not be checked; the issue is closed automatically once everything matches again. Run it locally with `PYTHONPATH=scripts python scripts/check_schedules.py`. Result importers match official classifications to calendar events by venue and race day, never by position, so a changed calendar cannot shift results onto the wrong round.
+
 ## Flutter application
 
 The application uses a feature-first structure with Riverpod, a shared light/dark design system, responsive phone/desktop navigation, and a complete offline season snapshot. It includes:

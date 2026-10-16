@@ -765,38 +765,42 @@
         {
           "type": "FP1",
           "name": "Practice",
-          "startTimeUtc": "2026-12-03T20:00:00Z",
+          "startTimeUtc": "2026-12-04T08:00:00Z",
           "startTimeTrack": "2026-12-04T00:00:00",
           "trackTimeZone": "Asia/Dubai",
           "cancelled": false,
-          "durationMinutes": 45
+          "durationMinutes": 45,
+          "timeTbc": true
         },
         {
           "type": "Q",
           "name": "Qualifying",
-          "startTimeUtc": "2026-12-03T20:00:00Z",
+          "startTimeUtc": "2026-12-04T08:00:00Z",
           "startTimeTrack": "2026-12-04T00:00:00",
           "trackTimeZone": "Asia/Dubai",
           "cancelled": false,
-          "durationMinutes": 30
+          "durationMinutes": 30,
+          "timeTbc": true
         },
         {
           "type": "SPRINT",
           "name": "Sprint Race",
-          "startTimeUtc": "2026-12-04T20:00:00Z",
+          "startTimeUtc": "2026-12-05T08:00:00Z",
           "startTimeTrack": "2026-12-05T00:00:00",
           "trackTimeZone": "Asia/Dubai",
           "cancelled": false,
-          "durationMinutes": 60
+          "durationMinutes": 60,
+          "timeTbc": true
         },
         {
           "type": "R",
           "name": "Feature Race",
-          "startTimeUtc": "2026-12-05T20:00:00Z",
+          "startTimeUtc": "2026-12-06T08:00:00Z",
           "startTimeTrack": "2026-12-06T00:00:00",
           "trackTimeZone": "Asia/Dubai",
           "cancelled": false,
-          "durationMinutes": 120
+          "durationMinutes": 120,
+          "timeTbc": true
         }
       ],
       "resultsPath": "events/14-abu-dhabi-grand-prix.json"

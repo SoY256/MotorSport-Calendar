@@ -1,0 +1,30 @@
+name: Check official schedules
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Once per day: compare the curated F2/F3, WEC and IMSA calendars in data/
+    # with the official schedules and track differences in a single issue.
+    - cron: "17 6 * * *"
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: schedule-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compare calendars with official schedules
+        env:
+          PYTHONPATH: scripts
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/check_schedules.py --github-issue

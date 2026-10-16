@@ -200,9 +200,17 @@ def session_type(item: dict) -> str:
 
 def utc(session: dict, fallback_date: str) -> str:
     value = session.get("startTime") or f"{fallback_date}T12:00:00"
+    if time_tbc(session):
+        # Unpublished timetables use local midnight; anchor to local noon so
+        # the UTC date stays on the correct day while the time is unknown.
+        value = value[:10] + "T12:00:00"
     offset = session.get("gmtOffset") or "+00:00"
     parsed = datetime.fromisoformat(value + offset)
     return parsed.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+
+
+def time_tbc(session: dict) -> bool:
+    return str(session.get("startTime") or "").endswith("T00:00:00")
 
 
 def result_row(raw: dict, position: int) -> dict:
@@ -244,6 +252,8 @@ def build(series: str) -> None:
             classification = session_type(item)
             stamp = utc(item, start)
             calendar_sessions.append({"type": classification, "name": short or item.get("session", "Session"), "startTimeUtc": stamp, "startTimeTrack": item.get("startTime"), "trackTimeZone": item.get("timezone"), "cancelled": False})
+            if time_tbc(item):
+                calendar_sessions[-1]["timeTbc"] = True
             rows = [result_row(raw, index) for index, raw in enumerate(item.get("results", []), 1)]
             for raw in item.get("results", []):
                 candidate = timed_lap(raw)

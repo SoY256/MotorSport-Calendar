@@ -6,7 +6,7 @@ import json
 import os
 import re
 import unicodedata
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 from urllib.parse import quote, urljoin
 
@@ -58,6 +58,47 @@ def result_url(event_code: str) -> str:
     return urljoin(BASE, (official or weathertech)[-1])
 
 
+VENUE_STOPWORDS = {"at", "car", "circuit", "course", "international", "mc", "motor", "of", "raceway",
+                   "rc", "speedway", "sports", "street", "the"}
+MATCH_WINDOW_DAYS = 2
+
+
+def venue_tokens(value: str) -> set[str]:
+    plain = unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode().lower()
+    plain = re.sub(r"\([^)]*\)", " ", re.sub(r"^\d+_", "", plain))
+    return set(re.findall(r"[a-z0-9]+", plain)) - VENUE_STOPWORDS
+
+
+def race_date(url: str) -> date | None:
+    """Local race day encoded in Alkamel paths such as ``/202610031210_Race/``."""
+    found = re.search(r"/(\d{8})\d{0,4}_Race/", url)
+    return datetime.strptime(found.group(1), "%Y%m%d").date() if found else None
+
+
+def calendar_event(calendar: list[dict], event_code: str, url: str) -> dict | None:
+    """Match an Alkamel event to the calendar by venue and race day, never position.
+
+    The official index interleaves support series and test days; positional
+    ``zip(calendar, events)`` shifted every later classification after a
+    cancelled or inserted round.  The venue in the event code must be part of
+    the calendar circuit/locality, and the race day in the result path must be
+    within two days of our race session (local vs. UTC dates).
+    """
+    official_venue = venue_tokens(event_code)
+    official_day = race_date(url)
+    matches = []
+    for event in calendar:
+        ours = venue_tokens(f"{event['circuit']['name']} {event['circuit'].get('locality', '')}")
+        if not official_venue or not official_venue <= ours:
+            continue
+        ours_day = datetime.fromisoformat(event["sessions"][-1]["startTimeUtc"].replace("Z", "+00:00")).date()
+        if official_day is None or abs((ours_day - official_day).days) <= MATCH_WINDOW_DAYS:
+            matches.append(event)
+    if len(matches) > 1:
+        raise RuntimeError(f"Ambiguous IMSA calendar event for {event_code}: {[event['name'] for event in matches]}")
+    return matches[0] if matches else None
+
+
 def manufacturer_color(vehicle: str) -> str:
     return next((color for make, color in MANUFACTURER_COLORS.items() if make.lower() in vehicle.lower()), "#EF6C00")
 
@@ -106,7 +147,15 @@ def main() -> None:
     car_teams: dict[tuple[str, str], tuple[str, str, str]] = {}
     driver_wins: dict[tuple[str, str], int] = {}
     team_wins: dict[tuple[str, str], int] = {}
-    for event, (event_code, url) in zip(calendar, events):
+    matched_ids: dict[str, str] = {}
+    for event_code, url in events:
+        event = calendar_event(calendar, event_code, url)
+        if event is None:
+            print(f"Skipping {event_code}: no matching calendar event")
+            continue
+        if event["id"] in matched_ids:
+            raise RuntimeError(f"{event_code} and {matched_ids[event['id']]} both match {event['name']}")
+        matched_ids[event["id"]] = event_code
         raw = json.loads(fetch(url).decode("utf-8-sig"))
         fastest = raw.get("fastest_lap") or {}
         if fastest.get("time") and fastest.get("driver_surname"):

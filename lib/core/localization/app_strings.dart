@@ -12,11 +12,32 @@ class AppStrings {
   String get settings => _en ? 'Settings' : 'Ustawienia';
   String get season => _en ? 'Season' : 'Sezon';
   String rounds(int count) => _en ? '$count rounds' : '$count rund';
-  String events(int count) => _en ? '$count events' : '$count wydarzeń';
+  String events(int count) => _en
+      ? '$count ${count == 1 ? 'event' : 'events'}'
+      : '$count ${_polishPlural(count, 'wydarzenie', 'wydarzenia', 'wydarzeń')}';
   String get timesInZone =>
       _en ? 'times in the selected time zone' : 'godziny w wybranej strefie';
   String get nextRound => _en ? 'NEXT ROUND' : 'NAJBLIŻSZA RUNDA';
-  String sessions(int count) => _en ? '$count sessions' : '$count sesji';
+  String sessions(int count) => _en
+      ? '$count ${count == 1 ? 'session' : 'sessions'}'
+      : '$count ${_polishPlural(count, 'sesja', 'sesje', 'sesji')}';
+  String _polishPlural(int count, String one, String few, String many) {
+    if (count == 1) return one;
+    final lastDigit = count % 10;
+    final lastTwo = count % 100;
+    return lastDigit >= 2 && lastDigit <= 4 && (lastTwo < 12 || lastTwo > 14)
+        ? few
+        : many;
+  }
+
+  String startsIn(String session) => _en ? '$session in' : '$session za';
+  String get liveNow => _en ? 'LIVE' : 'NA ŻYWO';
+  String get onTrackNow => _en ? 'On track now' : 'Teraz na torze';
+  List<String> get countdownUnits => _en
+      ? const ['DAYS', 'HRS', 'MIN', 'SEC']
+      : const ['DNI', 'GODZ', 'MIN', 'SEK'];
+  String get leader => _en ? 'Leader' : 'Lider';
+  String get round => _en ? 'Round' : 'Runda';
   String duration(int minutes) {
     if (minutes >= 60 && minutes % 60 == 0) {
       final hours = minutes ~/ 60;

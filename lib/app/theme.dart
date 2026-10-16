@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../core/widgets/racing_ui.dart';
+
 abstract final class MotorsportTheme {
   static const racingRed = Color(0xFFE10600);
   static const electricBlue = Color(0xFF168BFF);
@@ -62,12 +64,14 @@ abstract final class MotorsportTheme {
       highlightColor: racingRed.withValues(alpha: .05),
       textTheme: baseText.copyWith(
         headlineLarge: baseText.headlineLarge?.copyWith(
-          fontWeight: FontWeight.w900,
-          letterSpacing: -1.2,
+          fontFamily: 'BarlowCondensed',
+          fontWeight: FontWeight.w800,
+          fontStyle: FontStyle.italic,
         ),
         headlineMedium: baseText.headlineMedium?.copyWith(
-          fontWeight: FontWeight.w900,
-          letterSpacing: -.8,
+          fontFamily: 'BarlowCondensed',
+          fontWeight: FontWeight.w800,
+          fontStyle: FontStyle.italic,
         ),
         titleLarge: baseText.titleLarge?.copyWith(fontWeight: FontWeight.w900),
         titleMedium: baseText.titleMedium?.copyWith(
@@ -75,12 +79,19 @@ abstract final class MotorsportTheme {
         ),
       ),
       cardTheme: CardThemeData(
-        color: surface.withValues(alpha: dark ? .86 : .96),
+        color: surface.withValues(alpha: dark ? .90 : .97),
         elevation: dark ? 0 : 2,
         shadowColor: Colors.black.withValues(alpha: .12),
         margin: EdgeInsets.zero,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(18),
+        clipBehavior: Clip.antiAlias,
+        // Chamfered corners echo the cut lines of timing screens.
+        shape: BeveledRectangleBorder(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(4),
+            topRight: Radius.circular(16),
+            bottomLeft: Radius.circular(16),
+            bottomRight: Radius.circular(4),
+          ),
           side: BorderSide(color: outline.withValues(alpha: .85)),
         ),
       ),
@@ -101,13 +112,11 @@ abstract final class MotorsportTheme {
         ),
       ),
       navigationBarTheme: NavigationBarThemeData(
-        height: 74,
+        height: 70,
         elevation: 0,
-        backgroundColor: dark ? const Color(0xFF0D1014) : Colors.white,
-        indicatorColor: racingRed.withValues(alpha: dark ? .22 : .12),
-        indicatorShape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(14),
-        ),
+        backgroundColor: dark ? const Color(0xFF0A0C10) : Colors.white,
+        indicatorColor: racingRed.withValues(alpha: dark ? .26 : .12),
+        indicatorShape: const SlantBorder(slant: 10),
         iconTheme: WidgetStateProperty.resolveWith(
           (states) => IconThemeData(
             color: states.contains(WidgetState.selected)
@@ -150,7 +159,7 @@ abstract final class MotorsportTheme {
                 : scheme.onSurface,
           ),
           textStyle: WidgetStateProperty.all(
-            const TextStyle(fontWeight: FontWeight.w800),
+            const TextStyle(fontFamily: 'Roboto', fontWeight: FontWeight.w800),
           ),
         ),
       ),

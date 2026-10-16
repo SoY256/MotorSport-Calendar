@@ -34,6 +34,18 @@ flutter:
     - family: MaterialIcons
       fonts:
         - asset: assets/fonts/MaterialIcons-Regular.otf
+    - family: BarlowCondensed
+      fonts:
+        - asset: assets/fonts/BarlowCondensed-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/BarlowCondensed-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/BarlowCondensed-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/BarlowCondensed-ExtraBoldItalic.ttf
+          weight: 800
+          style: italic
   assets:
     - assets/data/
     - assets/data/f1/2026/

@@ -658,28 +658,31 @@
       },
       "sessions": [
         {
-          "type": "Q",
-          "name": "Qualifying",
-          "startTimeUtc": "2026-11-26T21:00:00Z",
-          "startTimeTrack": "2026-11-27T00:00:00",
-          "trackTimeZone": "Asia/Qatar",
-          "cancelled": false
-        },
-        {
           "type": "FP1",
           "name": "Practice",
           "startTimeUtc": "2026-11-27T09:00:00Z",
           "startTimeTrack": "2026-11-27T12:00:00",
           "trackTimeZone": "Asia/Qatar",
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 45
+        },
+        {
+          "type": "Q",
+          "name": "Qualifying",
+          "startTimeUtc": "2026-11-27T13:00:00Z",
+          "startTimeTrack": "2026-11-27T16:00:00",
+          "trackTimeZone": "Asia/Qatar",
+          "cancelled": false,
+          "durationMinutes": 30
         },
         {
           "type": "SPRINT",
           "name": "Sprint Race",
-          "startTimeUtc": "2026-11-27T21:00:00Z",
-          "startTimeTrack": "2026-11-28T00:00:00",
+          "startTimeUtc": "2026-11-28T10:00:00Z",
+          "startTimeTrack": "2026-11-28T13:00:00",
           "trackTimeZone": "Asia/Qatar",
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 60
         },
         {
           "type": "R",
@@ -687,7 +690,8 @@
           "startTimeUtc": "2026-11-29T09:00:00Z",
           "startTimeTrack": "2026-11-29T12:00:00",
           "trackTimeZone": "Asia/Qatar",
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 120
         }
       ],
       "resultsPath": "events/13-qatar-grand-prix.json"
@@ -710,34 +714,38 @@
         {
           "type": "FP1",
           "name": "Practice",
-          "startTimeUtc": "2026-12-03T20:00:00Z",
+          "startTimeUtc": "2026-12-04T08:00:00Z",
           "startTimeTrack": "2026-12-04T00:00:00",
           "trackTimeZone": "Asia/Dubai",
-          "cancelled": false
+          "cancelled": false,
+          "timeTbc": true
         },
         {
           "type": "Q",
           "name": "Qualifying",
-          "startTimeUtc": "2026-12-03T20:00:00Z",
+          "startTimeUtc": "2026-12-04T08:00:00Z",
           "startTimeTrack": "2026-12-04T00:00:00",
           "trackTimeZone": "Asia/Dubai",
-          "cancelled": false
+          "cancelled": false,
+          "timeTbc": true
         },
         {
           "type": "SPRINT",
           "name": "Sprint Race",
-          "startTimeUtc": "2026-12-04T20:00:00Z",
+          "startTimeUtc": "2026-12-05T08:00:00Z",
           "startTimeTrack": "2026-12-05T00:00:00",
           "trackTimeZone": "Asia/Dubai",
-          "cancelled": false
+          "cancelled": false,
+          "timeTbc": true
         },
         {
           "type": "R",
           "name": "Feature Race",
-          "startTimeUtc": "2026-12-05T20:00:00Z",
+          "startTimeUtc": "2026-12-06T08:00:00Z",
           "startTimeTrack": "2026-12-06T00:00:00",
           "trackTimeZone": "Asia/Dubai",
-          "cancelled": false
+          "cancelled": false,
+          "timeTbc": true
         }
       ],
       "resultsPath": "events/14-abu-dhabi-grand-prix.json"

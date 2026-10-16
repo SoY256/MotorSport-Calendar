@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import shutil
+from datetime import datetime, timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -64,8 +65,12 @@ def publish(series_id, schedule, standings):
         circuit, locality, start = TRACKS[key]
         occurrences[key] = occurrences.get(key, 0) + 1
         if schedule.count(key) > 1:
-            day_offset = occurrences[key] - 1
-            stamp = start[:8] + f"{int(start[8:10]) + day_offset:02d}" + start[10:]
+            # TRACKS holds the final (Sunday) race; earlier races of a
+            # doubleheader run on the preceding days.
+            day_offset = occurrences[key] - schedule.count(key)
+            stamp = (
+                datetime.fromisoformat(start.replace("Z", "+00:00")) + timedelta(days=day_offset)
+            ).strftime("%Y-%m-%dT%H:%M:%SZ")
             name = f"{key.replace(' 2', '').replace(' 1', '')} Race {occurrences[key]}"
         else:
             stamp, name = start, key

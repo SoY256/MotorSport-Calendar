@@ -7,7 +7,7 @@ import os
 from pathlib import Path
 from datetime import datetime, timezone
 
-from fetch_indycar_results import ROOT, display_lap_time, get, slug
+from fetch_indycar_results import ROOT, display_lap_time, get, matched_official_events, slug
 
 API = "https://www.indynxt.com/api/results"
 SERIES_ID = "09341e09-3216-4f89-a45f-db697d72ee13"
@@ -38,9 +38,7 @@ def main() -> None:
     entrant_points: dict[str, float] = {}
     driver_teams: dict[str, str] = {}
     team_names: dict[str, str] = {}
-    for event, official_event in zip(events, completed):
-        race = next(item for item in official_event["Sessions"] if item["SessionName"] == "Race")
-        details = get(f"{API}/EventsSessionDetails?id={race['EventsSessionID']}")
+    for event, race, details in matched_official_events(API, events, completed):
         timed = [row for row in details.get("records", []) if row.get("BestLapTime")]
         if timed:
             fastest = min(timed, key=lambda row: row["BestLapTime"])
@@ -60,7 +58,7 @@ def main() -> None:
                 "points": raw.get("PointsEarned"), "status": raw.get("Status"), "classified": raw.get("Status") == "Running", "components": {},
             })
         if not rows:
-            raise RuntimeError(f"No official records for {official_event['EventName']}")
+            raise RuntimeError(f"No official records for {details.get('EventName')}")
         payload = {"schemaVersion": 1, "lastSuccessfulUpdate": updated,
                    "source": {"name": "official-indynxt", "url": f"{API}/EventsSessionDetails?id={race['EventsSessionID']}"},
                    "data": {"eventId": event["id"], "sessions": [{"type": "R", "name": "Race", "startTimeUtc": event["sessions"][-1]["startTimeUtc"], "results": rows}]}}
