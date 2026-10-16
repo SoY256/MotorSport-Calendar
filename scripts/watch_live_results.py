@@ -148,8 +148,15 @@ def rebase_data() -> None:
             raise RuntimeError('Rebase failed without resolvable result conflicts')
         for name in conflicts:
             path = (ROOT / name).resolve()
-            if not path.is_relative_to(DATA.resolve()) or '/events/' not in name.replace('\\', '/') or path.suffix != '.json':
-                raise RuntimeError(f'Refusing to auto-resolve non-result conflict: {name}')
+            if not path.is_relative_to(DATA.resolve()) or path.suffix != '.json':
+                raise RuntimeError(f'Refusing to auto-resolve non-data conflict: {name}')
+            if '/events/' not in name.replace('\\', '/'):
+                # Calendars, standings and indexes are regenerated as a whole by
+                # each run; the snapshot being replayed is the most recent one.
+                # (During a rebase "--theirs" is the commit being replayed.)
+                subprocess.run(['git', 'checkout', '--theirs', '--', name], cwd=ROOT, check=True)
+                subprocess.run(['git', 'add', '--', name], cwd=ROOT, check=True)
+                continue
             def stage(number):
                 return json.loads(subprocess.run(['git', 'show', f':{number}:{name}'], cwd=ROOT, check=True, capture_output=True, text=True, encoding='utf-8').stdout)
             merged = merge_event_results(stage(2), stage(3))

@@ -37,6 +37,32 @@ class PublicationTests(unittest.TestCase):
             sessions = {s['type']: s['results'] for s in json.loads(path.read_text())['data']['sessions']}
             self.assertEqual(sessions, {'Q': [1, 2], 'R': [1]})
 
+    def test_overlapping_full_refresh_keeps_newest_calendar_snapshot(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            calendar = root / 'data/wec/2026/calendar.json'
+            calendar.parent.mkdir(parents=True)
+            def git(*args):
+                return subprocess.run(['git', *args], cwd=root, check=True, capture_output=True, text=True).stdout.strip()
+            def save(value):
+                calendar.write_text(json.dumps({'lastSuccessfulUpdate': value}), encoding='utf-8')
+                git('add', 'data')
+                git('commit', '-m', 'Update motorsport data')
+            git('init', '-b', 'main')
+            git('config', 'user.name', 'Test')
+            git('config', 'user.email', 'test@example.invalid')
+            save('t0')
+            git('branch', 'upstream')
+            save('t2-newest')
+            git('checkout', 'upstream')
+            save('t1')
+            git('update-ref', 'refs/remotes/origin/main', git('rev-parse', 'HEAD'))
+            git('checkout', 'main')
+            with patch.object(watch_live_results, 'ROOT', root), patch.object(watch_live_results, 'DATA', root / 'data'):
+                watch_live_results.rebase_data()
+            self.assertEqual(json.loads(calendar.read_text())['lastSuccessfulUpdate'], 't2-newest')
+            self.assertIn(git('rev-parse', 'origin/main'), git('rev-list', 'HEAD'))
+
     def test_concurrent_race_result_survives_older_full_refresh(self):
         race = {'type': 'R', 'results': [{'position': 1}], 'source': {'name': 'formula1-official'}}
         upstream = {'data': {'eventId': 'same', 'sessions': [race]}}
