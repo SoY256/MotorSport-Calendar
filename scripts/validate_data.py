@@ -12,7 +12,7 @@ DATA = ROOT / "assets" / "data"
 PUBLISHED_DATA = ROOT / "data"
 # Drivers without an identity-verified face photo show initials instead of a
 # guessed or shared portrait.
-PORTRAIT_EXEMPT = {"imsa": {"Mikkel Pedersen"}}
+PORTRAIT_EXEMPT: dict[str, set[str]] = {}
 
 
 def load(path: Path):

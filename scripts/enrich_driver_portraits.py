@@ -1,6 +1,6 @@
 """Link standings to the verified local face crops (never remote full-body art).
 
-Face crops are produced by ``build_face_portraits.py`` and stored in
+Face crops are produced by ``official_headshots.py`` and stored in
 ``assets/portraits/faces/<series>/<driver-slug>.jpg``. A driver without a
 verified crop deliberately gets no ``imageUrl`` so the app shows initials
 instead of a wrong or non-face image.
