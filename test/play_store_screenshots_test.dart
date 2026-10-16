@@ -62,6 +62,13 @@ void main() {
     );
 
     await tester.tap(find.text('Details').last);
+    // Result documents are loaded from the asset bundle with real I/O.
+    for (var pass = 0; pass < 3; pass++) {
+      await tester.runAsync(
+        () => Future<void>.delayed(const Duration(milliseconds: 200)),
+      );
+      await tester.pump(const Duration(milliseconds: 300));
+    }
     await tester.pumpAndSettle();
     await expectLater(
       find.byType(Scaffold),

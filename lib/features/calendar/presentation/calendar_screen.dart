@@ -1795,9 +1795,9 @@ class _ResultsPageState extends ConsumerState<_ResultsPage>
     final due = widget.selected.seriesId == 'f1'
         ? missing.first.startTimeUtc
         : missing.first.expectedEnd;
-    final pollInterval = widget.selected.seriesId == 'f1'
-        ? const Duration(minutes: 1)
-        : const Duration(minutes: 5);
+    // Published data is refreshed every minute while a classification is
+    // due, so the app checks at the same pace for every series.
+    const pollInterval = Duration(minutes: 1);
     final sinceLastPoll = _lastResultPoll == null
         ? null
         : now.difference(_lastResultPoll!);
@@ -3394,7 +3394,7 @@ RaceEvent? _nextEvent(List<RaceEvent> events, DateTime now) {
 
 /// Whether the data pipeline imports a classification for this session.
 bool _publishesResults(String seriesId, RaceSession session) =>
-    {'f1', 'f2', 'f3'}.contains(seriesId) || session.type == 'R';
+    {'f1', 'f2', 'f3', 'wec'}.contains(seriesId) || session.type == 'R';
 
 String _sessionLabel(String type, String original, AppStrings strings) {
   if (strings.language == AppLanguage.english) return original;

@@ -11,7 +11,7 @@ import sys
 import unicodedata
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from urllib.parse import quote, urljoin
+from urllib.parse import quote, unquote, urljoin
 
 from http_retry import read
 
@@ -308,33 +308,77 @@ class ClassificationUnavailable(RuntimeError):
     """The official final race classification has not been published yet."""
 
 
-def classification_url(code: str, total_hours: int) -> str:
+def classification_url(code: str, total_hours: int, hrefs: list[str] | None = None) -> str:
     """Return the final race classification, never an intermediate hourly one.
 
     Alkamel publishes ``Classification_Race_Hour N`` after every hour of the
     race. The last hour's document (``..._Final.PDF`` once verified) is the
     only complete result.
     """
-    index_url = f"{BASE}?evvent={quote(code)}&season=15_2026"
-    html = fetch(index_url).decode("utf-8", "replace")
-    hrefs = re.findall(
-        r'href="([^"]+/03_Classification_Race_Hour(?:%20|\s)(\d+)[^"?]*\.PDF)"', html, re.I
-    )
-    finals = [href for href, _hour in hrefs if href.upper().endswith("_FINAL.PDF")]
-    complete = [href for href, hour in hrefs if int(hour) >= total_hours]
+    if hrefs is None:
+        hrefs = event_hrefs(code)
+    found = [
+        (href, hour)
+        for href in hrefs
+        for hour in re.findall(r"/03_Classification_Race_Hour(?:%20|\s)(\d+)[^/?]*\.PDF$", href, re.I)
+    ]
+    finals = [href for href, _hour in found if re.search(r"[_ ]Final\.PDF$|%20Final\.PDF$", href, re.I)]
+    complete = [href for href, hour in found if int(hour) >= total_hours]
     chosen = finals or complete
     if not chosen:
         raise ClassificationUnavailable(f"No final race classification PDF for {code}")
     return urljoin(BASE, chosen[-1])
 
 
-def fastest_lap_url(code: str) -> str:
-    index_url = f"{BASE}?evvent={quote(code)}&season=15_2026"
-    page = fetch(index_url).decode("utf-8", "replace")
-    hrefs = re.findall(r'href="([^"]+07_FastestLapByDriver_Race_Hour[^"?]+\.PDF)"', page, re.I)
-    if not hrefs:
+def fastest_lap_url(code: str, hrefs: list[str] | None = None) -> str:
+    if hrefs is None:
+        hrefs = event_hrefs(code)
+    found = [href for href in hrefs if re.search(r"07_FastestLapByDriver_Race_Hour[^/?]+\.PDF$", href, re.I)]
+    if not found:
         raise RuntimeError(f"No race fastest-lap PDF for {code}")
-    return urljoin(BASE, hrefs[-1])
+    return urljoin(BASE, found[-1])
+
+
+def event_hrefs(code: str, html: str | None = None) -> list[str]:
+    """FIA WEC timing documents that belong to ``code`` itself.
+
+    The timing site answers requests for an older event with the documents of
+    the current one, so every link is checked against the event folder; the
+    support-series folders on the same page are ignored as well.
+    """
+    if html is None:
+        html = fetch(f"{BASE}?evvent={quote(code)}&season=15_2026").decode("utf-8", "replace")
+    prefix = f"Results/15_2026/{code}/".casefold()
+    hrefs = []
+    for href in re.findall(r'href="([^"]+\.PDF)"', html, re.I):
+        plain = unquote(html_lib.unescape(href))
+        if plain.casefold().startswith(prefix) and re.search(r"/\d+_FIA WEC/", plain):
+            hrefs.append(href)
+    return hrefs
+
+
+def session_key(name: str) -> str:
+    """Compare timetable names with timing folder names.
+
+    ``Qualifying - LMP2 & LMGT3`` (fiawec.com) and ``Qualifying LMP2-LMGT3``
+    (Al Kamel) both become ``qualifyinglmp2lmgt3``.
+    """
+    return re.sub(r"[^a-z0-9]", "", name.casefold())
+
+
+def session_classifications(hrefs: list[str]) -> dict[str, str]:
+    """Session key -> best overall classification PDF (final preferred)."""
+    folders: dict[str, list[str]] = {}
+    for href in hrefs:
+        plain = unquote(html_lib.unescape(href))
+        match = re.search(r"/\d+_FIA WEC/\d{12}_([^/]+)/03_Classification_[^/]+\.PDF$", plain, re.I)
+        if match and not match.group(1).casefold().startswith("race"):
+            folders.setdefault(session_key(match.group(1)), []).append(href)
+    chosen = {}
+    for key, links in folders.items():
+        finals = [link for link in links if re.search(r"Final\.PDF$", link, re.I)]
+        chosen[key] = urljoin(BASE, (finals or links)[-1])
+    return chosen
 
 
 def fastest_lap_record(pdf: bytes) -> str:
@@ -364,37 +408,102 @@ def entry_nationalities(pdf: bytes) -> dict[str, str]:
     return {**KNOWN_DRIVER_COUNTRIES, **mappings}
 
 
-def parse_rows(pdf: bytes, nationalities: dict[str, str]) -> list[dict]:
-    text = pdf_text(pdf)
+DRIVER_NAMES = r"(?:[A-Z]\.?\s+[A-ZÀ-ÖØ-Ý?' -]+)(?:\s+/\s+(?:[A-Z]\.?\s+[A-ZÀ-ÖØ-Ý?' -]+))"
+CATEGORIES = r"(HYPERCAR|LMGT3|LMP2(?: P/A)?)"
+
+
+def clean_drivers(drivers: str, nationalities: dict[str, str]) -> tuple[str, str]:
+    clean_names, countries = [], []
+    for part in drivers.split("/"):
+        tokens = part.strip().split()
+        matched = next(((index, nationalities[token.upper()]) for index, token in reversed(list(enumerate(tokens))) if token.upper() in nationalities), None)
+        if matched:
+            index, country = matched
+            clean_names.append(" ".join(tokens[:index + 1]))
+            countries.append(country)
+        else:
+            clean_names.append(part.strip())
+    return " / ".join(clean_names), ",".join(countries)
+
+
+ENTRY_LINE = re.compile(
+    rf"^(\d+)\s*(.+?)\s+({DRIVER_NAMES}*?)\s+(.+?)\s+{CATEGORIES}\s+[A-Z](?:\s+(.*))?$"
+)
+
+
+def classification_entries(text: str) -> list[tuple]:
+    """``(position | None, car, team, drivers, car model, category, tail)``.
+
+    Classified cars are listed in running order; qualifying adds an "HP"
+    marker for Hyperpole qualifiers and may glue the car number to the team
+    ("12007Aston" = P12, car #007), so positions come from the order. Cars
+    listed after the classified ones without a position are not classified.
+    """
+    entries: list[tuple] = []
+    expected = 1
+    for raw in text.splitlines():
+        line = re.sub(r"^HP\s+", "", raw.strip())
+        prefix = str(expected)
+        if line.startswith(prefix):
+            match = ENTRY_LINE.match(line[len(prefix):].lstrip())
+            if match:
+                entries.append((expected, *match.groups()))
+                expected += 1
+                continue
+        match = ENTRY_LINE.match(line)
+        if match and entries:
+            entries.append((None, *match.groups()))
+    return entries
+
+
+def result_row(position, number, team, drivers, car, category, nationalities) -> dict:
+    driver_names, flags = clean_drivers(drivers, nationalities)
+    return {
+        "position": position, "positionText": str(position) if position else "NC",
+        "driver": {"id": slug(driver_names), "code": number, "givenName": driver_names, "familyName": "", "nationality": flags or None},
+        "team": {"id": slug(team), "name": team, "color": manufacturer_color(f"{team} {car}")}, "carNumber": number,
+        "points": None, "status": category, "classified": position is not None,
+        "components": {"car": car, "category": category},
+    }
+
+
+def parse_session_rows(pdf: bytes, nationalities: dict[str, str], text: str | None = None) -> list[dict]:
+    """Practice, qualifying, Hyperpole and warm-up classifications.
+
+    Line layout: ``Pos No Team Drivers Car Cat Tyre BestLap BestLapNo TotalLaps Gap Kph``.
+    """
+    text = pdf_text(pdf) if text is None else text
     rows = []
-    pattern = re.compile(
-        r"^(\d+)\s+(\w+)\s+(.+?)\s+((?:[A-Z]\.?\s+[A-ZÀ-ÖØ-Ý?' -]+)(?:\s+/\s+(?:[A-Z]\.?\s+[A-ZÀ-ÖØ-Ý?' -]+))+?)\s+(.+?)\s+(HYPERCAR|LMGT3|LMP2(?: P/A)?)\s+[A-Z]\s+(\d+)\s*(.+)$"
-    )
-    for line in text.splitlines():
-        match = pattern.match(line.strip())
-        if not match:
-            continue
-        position, number, team, drivers, car, category, laps, tail = match.groups()
-        clean_names, countries = [], []
-        for part in drivers.split("/"):
-            tokens = part.strip().split()
-            matched = next(((index, nationalities[token.upper()]) for index, token in reversed(list(enumerate(tokens))) if token.upper() in nationalities), None)
-            if matched:
-                index, country = matched
-                clean_names.append(" ".join(tokens[:index + 1]))
-                countries.append(country)
-            else:
-                clean_names.append(part.strip())
-        driver_names = " / ".join(clean_names)
-        flags = ",".join(countries)
-        rows.append({
-            "position": int(position), "positionText": position,
-            "driver": {"id": slug(driver_names), "code": number, "givenName": driver_names, "familyName": "", "nationality": flags or None},
-            "team": {"id": slug(team), "name": team, "color": manufacturer_color(f"{team} {car}")}, "carNumber": number,
-            "time": tail.split()[0] if tail else None, "laps": int(laps), "points": None, "status": category,
-            "classified": True, "components": {"car": car, "category": category},
-        })
-    if len(rows) < 10:
+    for position, number, team, drivers, car, category, tail in classification_entries(text):
+        tail = tail or ""
+        best = re.search(r"\b(\d+:\d{2}\.\d{3})\b", tail)
+        after = tail[best.end():].split() if best else []
+        numbers = [int(value) for value in after[:2] if value.isdigit()]
+        gap = re.search(r"\+(\d+(?::\d{2})?\.\d{3})", tail)
+        row = result_row(position, number, team, drivers, car, category, nationalities)
+        row["time"] = best.group(1) if best else None
+        row["laps"] = numbers[-1] if numbers else None
+        if gap:
+            row["components"]["gap"] = f"+{gap.group(1)}"
+        rows.append(row)
+    if sum(1 for row in rows if row["classified"]) < 3:
+        raise RuntimeError(f"Only {len(rows)} WEC session rows parsed")
+    return rows
+
+
+def parse_rows(pdf: bytes, nationalities: dict[str, str], text: str | None = None) -> list[dict]:
+    """Race classification: ``... Tyre Laps Time|Gap ...``."""
+    text = pdf_text(pdf) if text is None else text
+    rows = []
+    for position, number, team, drivers, car, category, tail in classification_entries(text):
+        # Laps have at most three digits; the time may follow without a
+        # space in the PDF text ("38124:01:..." = 381 laps, 24:01:...).
+        match = re.match(r"(\d{1,3})\s*(.*)", tail or "")
+        row = result_row(position, number, team, drivers, car, category, nationalities)
+        row["laps"] = int(match.group(1)) if match else None
+        row["time"] = (match.group(2).split() or [None])[0] if match else None
+        rows.append(row)
+    if sum(1 for row in rows if row["classified"]) < 10:
         raise RuntimeError(f"Only {len(rows)} WEC rows parsed")
     return rows
 
@@ -424,7 +533,17 @@ def main() -> None:
         ) + timedelta(minutes=int(session.get("durationMinutes", 360)))
         code = event_code(event, events)
         results_path = root / event["resultsPath"]
-        if code is None or scheduled_end > now:
+        previous: dict[str, dict] = {}
+        if results_path.is_file():
+            try:
+                kept = json.loads(results_path.read_text(encoding="utf-8"))
+                previous = {item["type"]: item for item in kept["data"].get("sessions", []) if item.get("results")}
+            except (KeyError, ValueError):
+                previous = {}
+        first_start = min(
+            datetime.fromisoformat(item["startTimeUtc"].replace("Z", "+00:00")) for item in event["sessions"]
+        )
+        if code is None or first_start > now:
             payload = {"schemaVersion": 1, "lastSuccessfulUpdate": updated,
                        "source": {"name": "fia-wec-official", "url": STANDINGS_URL},
                        "data": {"eventId": event["id"], "sessions": []}}
@@ -432,26 +551,69 @@ def main() -> None:
                 json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
             )
             continue
-        try:
-            url = classification_url(code, max(1, int(session.get("durationMinutes", 360)) // 60))
-        except ClassificationUnavailable as error:
-            print(f"{event['name']}: {error}", file=sys.stderr)
-            if not results_path.is_file():
+        hrefs = event_hrefs(code)
+        sessions_out: dict[str, dict] = {}
+        source_url = STANDINGS_URL
+        # Practice, qualifying, Hyperpole and warm-up classifications.
+        documents = session_classifications(hrefs)
+        for item in event["sessions"]:
+            if item["type"] == "R":
                 continue
-            kept = json.loads(results_path.read_text(encoding="utf-8"))
-            if any(item.get("results") for item in kept["data"].get("sessions", [])):
-                continue
-            kept["lastSuccessfulUpdate"] = updated
-            results_path.write_text(
-                json.dumps(kept, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+            end = datetime.fromisoformat(item["startTimeUtc"].replace("Z", "+00:00")) + timedelta(
+                minutes=int(item.get("durationMinutes", 60))
             )
+            url = documents.get(session_key(item["name"]))
+            if end > now or url is None:
+                if item["type"] in previous:
+                    sessions_out[item["type"]] = previous[item["type"]]
+                continue
+            earlier = previous.get(item["type"])
+            if earlier and earlier.get("source", {}).get("url") == url and re.search(r"Final\.PDF$", url, re.I):
+                # Final classifications never change; skip the download.
+                sessions_out[item["type"]] = earlier
+                continue
+            try:
+                rows = parse_session_rows(fetch(url), nationalities)
+            except Exception as error:  # keep the last verified classification
+                print(f"{event['name']} {item['name']}: {error}", file=sys.stderr)
+                if item["type"] in previous:
+                    sessions_out[item["type"]] = previous[item["type"]]
+                continue
+            sessions_out[item["type"]] = {
+                "type": item["type"], "name": item["name"], "startTimeUtc": item["startTimeUtc"],
+                "source": {"name": "fia-wec-alkamel-official-timing", "url": url}, "results": rows,
+            }
+            print(f"{event['name']} {item['name']}: {len(rows)}", file=sys.stderr)
+        race_rows = None
+        if scheduled_end <= now:
+            try:
+                url = classification_url(code, max(1, int(session.get("durationMinutes", 360)) // 60), hrefs)
+            except ClassificationUnavailable as error:
+                print(f"{event['name']}: {error}", file=sys.stderr)
+            else:
+                race_rows = parse_rows(fetch(url), nationalities)
+                source_url = url
+                sessions_out["R"] = {"type": "R", "name": "Race", "startTimeUtc": session["startTimeUtc"],
+                                     "source": {"name": "fia-wec-alkamel-official-timing", "url": url},
+                                     "results": race_rows}
+                try:
+                    event["circuit"]["lapRecord"] = fastest_lap_record(fetch(fastest_lap_url(code, hrefs)))
+                except RuntimeError as error:
+                    # The fastest-lap PDF can follow the classification by some minutes.
+                    print(f"{event['name']}: lap record unavailable: {error}", file=sys.stderr)
+        if race_rows is None and "R" in previous:
+            sessions_out["R"] = previous["R"]
+            race_rows = previous["R"]["results"]
+        order = {item["type"]: index for index, item in enumerate(event["sessions"])}
+        payload = {"schemaVersion": 1, "lastSuccessfulUpdate": updated,
+                   "source": {"name": "fia-wec-alkamel-official-timing", "url": source_url},
+                   "data": {"eventId": event["id"],
+                            "sessions": sorted(sessions_out.values(), key=lambda item: order.get(item["type"], 999))}}
+        results_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        if not race_rows:
             continue
-        rows = parse_rows(fetch(url), nationalities)
-        try:
-            event["circuit"]["lapRecord"] = fastest_lap_record(fetch(fastest_lap_url(code)))
-        except RuntimeError as error:
-            # The fastest-lap PDF can follow the classification by some minutes.
-            print(f"{event['name']}: lap record unavailable: {error}", file=sys.stderr)
+        rows = race_rows
+        print(f"{event['name']}: {len(rows)}", file=sys.stderr)
         for category in ("HYPERCAR", "LMGT3"):
             winner = next((row for row in rows if row["components"]["category"] == category), None)
             if not winner:
@@ -467,11 +629,6 @@ def main() -> None:
                 team_key = winner["carNumber"]
             key = (category, team_key)
             team_wins[key] = team_wins.get(key, 0) + 1
-        payload = {"schemaVersion": 1, "lastSuccessfulUpdate": updated,
-                   "source": {"name": "fia-wec-alkamel-official-timing", "url": url},
-                   "data": {"eventId": event["id"], "sessions": [{"type": "R", "name": "Race", "startTimeUtc": session["startTimeUtc"], "results": rows}]}}
-        (root / event["resultsPath"]).write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-        print(f"{event['name']}: {len(rows)}", file=sys.stderr)
     calendar_doc["lastSuccessfulUpdate"] = updated
     calendar_path.write_text(
         json.dumps(calendar_doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"

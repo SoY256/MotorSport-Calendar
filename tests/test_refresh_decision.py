@@ -75,6 +75,10 @@ class RefreshDecisionTests(unittest.TestCase):
         with patch.object(refresh_decision, "DATA", root):
             self.assertEqual(refresh_decision.decision(now), (False, "not-due"))
 
+    def test_wec_practice_and_qualifying_are_polled(self):
+        self.assertTrue(refresh_decision.expects_results("wec", "FP1"))
+        self.assertTrue(refresh_decision.expects_results("wec", "HYPERPOLE_HYPERCAR"))
+
 
 if __name__ == "__main__":
     unittest.main()
