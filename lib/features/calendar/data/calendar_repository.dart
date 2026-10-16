@@ -79,7 +79,7 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
   Future<Map<String, dynamic>?> _absoluteJson(Uri uri) async {
     try {
       final response = await _client
-          .get(uri, headers: const {'Cache-Control': 'no-cache'})
+          .get(uri)
           .timeout(const Duration(seconds: 8));
       if (response.statusCode == 200) {
         return jsonDecode(response.body) as Map<String, dynamic>;
@@ -92,6 +92,9 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
 
   Future<Map<String, dynamic>?> _remote(String path) async {
     try {
+      // The query parameter bypasses caches. Custom request headers are
+      // avoided: on the web they trigger a CORS preflight that GitHub's raw
+      // file host rejects, which silently disabled live data there.
       final uri = _dataRoot
           .resolve(path)
           .replace(
@@ -100,7 +103,7 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
             },
           );
       final response = await _client
-          .get(uri, headers: const {'Cache-Control': 'no-cache'})
+          .get(uri)
           .timeout(const Duration(seconds: 8));
       if (response.statusCode == 200) {
         return jsonDecode(response.body) as Map<String, dynamic>;
@@ -332,7 +335,7 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
               },
             );
         final response = await _client
-            .get(uri, headers: const {'Cache-Control': 'no-cache'})
+            .get(uri)
             .timeout(const Duration(seconds: 8));
         return response.statusCode == 200 ? response.body : null;
       } on Object {
