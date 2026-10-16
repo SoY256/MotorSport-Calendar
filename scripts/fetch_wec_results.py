@@ -15,7 +15,6 @@ from urllib.parse import quote, urljoin
 
 from http_retry import read
 
-import pdfplumber
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "https://fiawec.alkamelsystems.com/"
@@ -53,6 +52,13 @@ KNOWN_DRIVER_COUNTRIES = {
     "SARGEANT": "USA", "GATTUSO": "ITA", "VARRONE": "ARG", "POWELL": "GBR",
     "PRIAULX": "GBR",
 }
+
+
+def pdf_text(pdf: bytes) -> str:
+    # Imported lazily so the pure parsing helpers stay testable without it.
+    import pdfplumber
+
+    return "\n".join(page.extract_text() or "" for page in pdfplumber.open(io.BytesIO(pdf)).pages)
 
 
 def fetch(url: str) -> bytes:
@@ -248,7 +254,7 @@ def fastest_lap_url(code: str) -> str:
 
 
 def fastest_lap_record(pdf: bytes) -> str:
-    text = "\n".join(page.extract_text() or "" for page in pdfplumber.open(io.BytesIO(pdf)).pages)
+    text = pdf_text(pdf)
     match = re.search(
         r"^1\s+\S+\s+.+?\s+HYPERCAR\s+(.+?)\s+(\d+:\d+\.\d+)\s+\d+\s+\d+\s+\d+\.\d+$",
         text,
@@ -264,7 +270,7 @@ def manufacturer_color(car: str) -> str:
 
 
 def entry_nationalities(pdf: bytes) -> dict[str, str]:
-    text = "\n".join(page.extract_text() or "" for page in pdfplumber.open(io.BytesIO(pdf)).pages)
+    text = pdf_text(pdf)
     mappings = {}
     for full_name, country in re.findall(r"([A-ZÀ-ÖØ-Ý' -]{2,})\s+\(([A-Z]{3})\)", text):
         mappings[full_name.strip().split()[-1].upper()] = country
@@ -275,7 +281,7 @@ def entry_nationalities(pdf: bytes) -> dict[str, str]:
 
 
 def parse_rows(pdf: bytes, nationalities: dict[str, str]) -> list[dict]:
-    text = "\n".join(page.extract_text() or "" for page in pdfplumber.open(io.BytesIO(pdf)).pages)
+    text = pdf_text(pdf)
     rows = []
     pattern = re.compile(
         r"^(\d+)\s+(\w+)\s+(.+?)\s+((?:[A-Z]\.?\s+[A-ZÀ-ÖØ-Ý?' -]+)(?:\s+/\s+(?:[A-Z]\.?\s+[A-ZÀ-ÖØ-Ý?' -]+))+?)\s+(.+?)\s+(HYPERCAR|LMGT3|LMP2(?: P/A)?)\s+[A-Z]\s+(\d+)\s*(.+)$"
