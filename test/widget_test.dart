@@ -160,7 +160,22 @@ void main() {
       expect(standings.drivers, hasLength(258));
       expect(driverKeys, hasLength(standings.drivers.length));
       expect(teamKeys, hasLength(standings.teams.length));
-      expect(standings.drivers.every((item) => item.imageUrl != null), isTrue);
+      // No verified face exists for Mikkel Pedersen; initials are shown
+      // instead of another driver's portrait.
+      expect(
+        standings.drivers
+            .where((item) => item.imageUrl == null)
+            .map((item) => item.id),
+        ['mikkel-pedersen'],
+      );
+      expect(
+        standings.drivers.every(
+          (item) =>
+              item.imageUrl == null ||
+              item.imageUrl!.startsWith('assets/portraits/faces/'),
+        ),
+        isTrue,
+      );
     },
   );
 

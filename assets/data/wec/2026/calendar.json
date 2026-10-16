@@ -167,50 +167,50 @@
       "seriesId": "wec",
       "season": 2026,
       "round": 7,
-      "name": "Qatar 1812 km",
+      "name": "6 Hours of Barcelona",
       "cancelled": false,
       "circuit": {
-        "id": "lusail-international-circuit",
-        "name": "Lusail International Circuit",
-        "locality": "Lusail",
-        "country": "Qatar",
-        "countryCode": "QAT"
+        "id": "circuit-de-barcelona-catalunya",
+        "name": "Circuit de Barcelona-Catalunya",
+        "locality": "Montmeló",
+        "country": "Spain",
+        "countryCode": "ESP"
       },
       "sessions": [
         {
           "type": "R",
           "name": "Race",
-          "startTimeUtc": "2026-10-24T12:00:00Z",
+          "startTimeUtc": "2026-10-18T10:00:00Z",
           "cancelled": false,
-          "durationMinutes": 600
+          "durationMinutes": 360
         }
       ],
-      "resultsPath": "events/07-qatar-1812-km.json"
+      "resultsPath": "events/07-6-hours-of-barcelona.json"
     },
     {
       "id": "wec-2026-8",
       "seriesId": "wec",
       "season": 2026,
       "round": 8,
-      "name": "8 Hours of Bahrain",
+      "name": "6 Hours of Monza",
       "cancelled": false,
       "circuit": {
-        "id": "bahrain-international-circuit",
-        "name": "Bahrain International Circuit",
-        "locality": "Sakhir",
-        "country": "Bahrain",
-        "countryCode": "BHR"
+        "id": "autodromo-nazionale-di-monza",
+        "name": "Autodromo Nazionale di Monza",
+        "locality": "Monza",
+        "country": "Italy",
+        "countryCode": "ITA"
       },
       "sessions": [
         {
           "type": "R",
           "name": "Race",
-          "startTimeUtc": "2026-11-07T11:00:00Z",
+          "startTimeUtc": "2026-11-08T10:00:00Z",
           "cancelled": false,
-          "durationMinutes": 480
+          "durationMinutes": 360
         }
       ],
-      "resultsPath": "events/08-8-hours-of-bahrain.json"
+      "resultsPath": "events/08-6-hours-of-monza.json"
     }
   ]
 }

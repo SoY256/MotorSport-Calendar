@@ -21,6 +21,10 @@ from refresh_decision import expects_results, result_types, timestamp
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
+# Official classifications appear within minutes of the flag; polling starts
+# this long after the scheduled end and then repeats every interval.
+LIVE_GRACE_MINUTES = 2
+FOLLOWUP_LOOKAHEAD_HOURS = 8
 
 
 def missing_sessions(now: datetime) -> list[tuple[datetime, str]]:
@@ -41,7 +45,7 @@ def missing_sessions(now: datetime) -> list[tuple[datetime, str]]:
                 ):
                     continue
                 due = timestamp(session["startTimeUtc"]) + timedelta(
-                    minutes=int(session.get("durationMinutes", 120)) + 5
+                    minutes=int(session.get("durationMinutes", 120)) + LIVE_GRACE_MINUTES
                 )
                 missing.append(
                     (due, f"{series_dir.name}/{event['id']}/{session_type}")
@@ -57,16 +61,37 @@ def manifest_is_stale(now: datetime) -> bool:
         return True
 
 
-def refresh() -> bool:
-    completed = subprocess.run(
-        [sys.executable, str(ROOT / "scripts" / "update_all_data.py")],
-        cwd=ROOT,
-        check=False,
-    )
+def refresh(series: set[str] | None = None) -> bool:
+    command = [sys.executable, str(ROOT / "scripts" / "update_all_data.py")]
+    if series:
+        command += ["--series", ",".join(sorted(series))]
+    completed = subprocess.run(command, cwd=ROOT, check=False)
     if completed.returncode == 0:
         publish_changed_data()
         return True
     return False
+
+
+def needs_followup(now: datetime) -> bool:
+    """Whether a live session is overdue or due soon enough to keep chaining runs."""
+    return any(
+        now - timedelta(hours=6) <= due <= now + timedelta(hours=FOLLOWUP_LOOKAHEAD_HOURS)
+        for due, _label in missing_sessions(now)
+    )
+
+
+def dispatch_followup() -> None:
+    """Start the next watcher before this one ends.
+
+    GitHub's cron is best effort and in practice fires only every few hours, so
+    a watcher that stops without handing over leaves a gap in which a finished
+    session waits for the next (late) scheduled run.
+    """
+    if os.environ.get("GITHUB_ACTIONS") != "true" or not needs_followup(datetime.now(timezone.utc)):
+        return
+    subprocess.run(
+        ["gh", "workflow", "run", "update-data.yml", "--ref", "main"], cwd=ROOT, check=False
+    )
 
 
 def publish_changed_data() -> None:
@@ -148,7 +173,19 @@ def watch(max_seconds: int, interval_seconds: int) -> int:
             if now - timedelta(hours=6) <= item[0] <= deadline
         ]
         if not candidates:
-            print("No live classification needs a persistent watcher")
+            upcoming = [
+                item[0] for item in missing_sessions(now)
+                if deadline < item[0] <= now + timedelta(hours=FOLLOWUP_LOOKAHEAD_HOURS)
+            ]
+            if upcoming:
+                # Hold the hand-over until the next watcher can cover the
+                # session for its whole job window.
+                wake = min(upcoming) - timedelta(seconds=max_seconds)
+                wait_seconds = max(0.0, (wake - now).total_seconds())
+                print(f"Idle for {int(wait_seconds)}s before handing over to the next watcher", flush=True)
+                time.sleep(wait_seconds)
+            else:
+                print("No live classification needs a persistent watcher")
             return 0
 
         due, label = candidates[0]
@@ -161,10 +198,15 @@ def watch(max_seconds: int, interval_seconds: int) -> int:
             continue
 
         attempt_started = time.monotonic()
-        print(f"Refreshing official data for {label}", flush=True)
-        refresh()
-        if all(item[1] != label for item in missing_sessions(datetime.now(timezone.utc))):
-            print(f"Official classification received for {label}", flush=True)
+        overdue = [item for item in candidates if item[0] <= now]
+        series = {item[1].split("/", 1)[0] for item in overdue}
+        print(f"Refreshing official data for {', '.join(item[1] for item in overdue)}", flush=True)
+        refresh(series)
+        still_missing = {item[1] for item in missing_sessions(datetime.now(timezone.utc))}
+        for _due, overdue_label in overdue:
+            if overdue_label not in still_missing:
+                print(f"Official classification received for {overdue_label}", flush=True)
+        if any(item[1] not in still_missing for item in overdue):
             continue
 
         remaining = (deadline - datetime.now(timezone.utc)).total_seconds()
@@ -182,9 +224,11 @@ def watch(max_seconds: int, interval_seconds: int) -> int:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--max-seconds", type=int, default=19_800)
-    parser.add_argument("--interval-seconds", type=int, default=300)
+    parser.add_argument("--interval-seconds", type=int, default=60)
     args = parser.parse_args()
-    return watch(args.max_seconds, args.interval_seconds)
+    code = watch(args.max_seconds, args.interval_seconds)
+    dispatch_followup()
+    return code
 
 
 if __name__ == "__main__":

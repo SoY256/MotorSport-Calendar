@@ -9,7 +9,7 @@ import os
 import re
 import sys
 import unicodedata
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import quote, urljoin
 
@@ -72,8 +72,8 @@ EVENT_CODE_ALIASES = {
     "6 Hours of São Paulo": ("SAO PAULO", "SÃO PAULO"),
     "Lone Star Le Mans": ("CIRCUIT OF THE AMERICAS", "COTA", "LONE STAR", "AUSTIN"),
     "6 Hours of Fuji": ("FUJI",),
-    "Qatar 1812 km": ("QATAR", "LOSAIL"),
-    "8 Hours of Bahrain": ("BAHRAIN",),
+    "6 Hours of Barcelona": ("BARCELONA", "CATALUNYA"),
+    "6 Hours of Monza": ("MONZA",),
 }
 
 
@@ -214,16 +214,28 @@ def full_standings(page: str, nationalities: dict[str, str], driver_wins: dict[t
             {"schemaVersion": 1, "lastSuccessfulUpdate": updated, "source": source, "data": teams})
 
 
-def classification_url(code: str) -> str:
+class ClassificationUnavailable(RuntimeError):
+    """The official final race classification has not been published yet."""
+
+
+def classification_url(code: str, total_hours: int) -> str:
+    """Return the final race classification, never an intermediate hourly one.
+
+    Alkamel publishes ``Classification_Race_Hour N`` after every hour of the
+    race. The last hour's document (``..._Final.PDF`` once verified) is the
+    only complete result.
+    """
     index_url = f"{BASE}?evvent={quote(code)}&season=15_2026"
     html = fetch(index_url).decode("utf-8", "replace")
-    hrefs = re.findall(r'href="([^"]+Classification_Race_Hour[^"?]+\.PDF)"', html, re.I)
-    if not hrefs:
-        # Le Mans uses Hour 24 while shorter rounds use their final numbered hour.
-        hrefs = re.findall(r'href="([^"]+Classification[^"?]+Race[^"?]+\.PDF)"', html, re.I)
-    if not hrefs:
-        raise RuntimeError(f"No race classification PDF for {code}")
-    return urljoin(BASE, hrefs[-1])
+    hrefs = re.findall(
+        r'href="([^"]+/03_Classification_Race_Hour(?:%20|\s)(\d+)[^"?]*\.PDF)"', html, re.I
+    )
+    finals = [href for href, _hour in hrefs if href.upper().endswith("_FINAL.PDF")]
+    complete = [href for href, hour in hrefs if int(hour) >= total_hours]
+    chosen = finals or complete
+    if not chosen:
+        raise ClassificationUnavailable(f"No final race classification PDF for {code}")
+    return urljoin(BASE, chosen[-1])
 
 
 def fastest_lap_url(code: str) -> str:
@@ -310,21 +322,40 @@ def main() -> None:
     team_wins: dict[tuple[str, str], int] = {}
     now = datetime.now(timezone.utc)
     for event in calendar:
+        session = event["sessions"][-1]
         scheduled_end = datetime.fromisoformat(
-            event["sessions"][-1]["startTimeUtc"].replace("Z", "+00:00")
-        )
+            session["startTimeUtc"].replace("Z", "+00:00")
+        ) + timedelta(minutes=int(session.get("durationMinutes", 360)))
         code = event_code(event, events)
+        results_path = root / event["resultsPath"]
         if code is None or scheduled_end > now:
             payload = {"schemaVersion": 1, "lastSuccessfulUpdate": updated,
                        "source": {"name": "fia-wec-official", "url": STANDINGS_URL},
                        "data": {"eventId": event["id"], "sessions": []}}
-            (root / event["resultsPath"]).write_text(
+            results_path.write_text(
                 json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
             )
             continue
-        url = classification_url(code)
+        try:
+            url = classification_url(code, max(1, int(session.get("durationMinutes", 360)) // 60))
+        except ClassificationUnavailable as error:
+            print(f"{event['name']}: {error}", file=sys.stderr)
+            if not results_path.is_file():
+                continue
+            kept = json.loads(results_path.read_text(encoding="utf-8"))
+            if any(item.get("results") for item in kept["data"].get("sessions", [])):
+                continue
+            kept["lastSuccessfulUpdate"] = updated
+            results_path.write_text(
+                json.dumps(kept, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+            )
+            continue
         rows = parse_rows(fetch(url), nationalities)
-        event["circuit"]["lapRecord"] = fastest_lap_record(fetch(fastest_lap_url(code)))
+        try:
+            event["circuit"]["lapRecord"] = fastest_lap_record(fetch(fastest_lap_url(code)))
+        except RuntimeError as error:
+            # The fastest-lap PDF can follow the classification by some minutes.
+            print(f"{event['name']}: lap record unavailable: {error}", file=sys.stderr)
         for category in ("HYPERCAR", "LMGT3"):
             winner = next((row for row in rows if row["components"]["category"] == category), None)
             if not winner:

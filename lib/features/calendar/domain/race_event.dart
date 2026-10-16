@@ -248,8 +248,15 @@ class DriverStanding {
     teamColors: (json['teamColors'] as List<dynamic>? ?? const [])
         .cast<String>(),
     category: json['category'] as String?,
-    imageUrl: json['imageUrl'] as String?,
+    imageUrl: _faceAsset(json['imageUrl'] as String?),
   );
+
+  // Only verified local face crops may be shown. Remote feeds can contain
+  // full-body art, and initials are preferable to an unverified image.
+  static String? _faceAsset(String? value) =>
+      value != null && value.startsWith('assets/portraits/faces/')
+      ? value
+      : null;
 
   final int position;
   final double points;

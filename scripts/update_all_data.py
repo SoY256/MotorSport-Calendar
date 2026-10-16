@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import argparse
 import json
 import os
 import shutil
@@ -97,7 +98,21 @@ def validate(data_root: Path) -> None:
                     )
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--series",
+        help="Comma-separated series to refresh; others keep their published data",
+    )
+    args = parser.parse_args(argv)
+    selected = set(SERIES)
+    if args.series:
+        selected = {item.strip() for item in args.series.split(",") if item.strip()}
+        unknown = selected - set(SERIES)
+        if unknown:
+            print(f"Unknown series: {sorted(unknown)}", file=sys.stderr)
+            return 2
+    full_refresh = selected == set(SERIES)
     target = ROOT / "data"
     try:
         with tempfile.TemporaryDirectory(prefix="all-motorsport-data-", dir=ROOT) as temp_name:
@@ -124,20 +139,21 @@ def main() -> int:
                         shutil.rmtree(staged / series)
                         shutil.copytree(published, staged / series)
             f1_output = temp / "f1-output"
-            shutil.copytree(staged / "f1", f1_output / "f1")
-            try:
-                run("fetch_data.py", os.environ.copy(), "--year", "2026", "--output", str(f1_output))
-            except subprocess.CalledProcessError as error:
-                print(f"F1 refresh failed; retaining last verified F1 data: {error}", file=sys.stderr)
-            else:
-                shutil.rmtree(staged / "f1")
-                shutil.copytree(f1_output / "f1", staged / "f1")
+            if "f1" in selected:
+                shutil.copytree(staged / "f1", f1_output / "f1")
+                try:
+                    run("fetch_data.py", os.environ.copy(), "--year", "2026", "--output", str(f1_output))
+                except subprocess.CalledProcessError as error:
+                    print(f"F1 refresh failed; retaining last verified F1 data: {error}", file=sys.stderr)
+                else:
+                    shutil.rmtree(staged / "f1")
+                    shutil.copytree(f1_output / "f1", staged / "f1")
 
-            # formula1.com is the primary and fastest official classification
-            # source. Jolpica remains the schedule/fallback adapter only.
-            f1_env = os.environ.copy()
-            f1_env["MOTORSPORT_DATA_ROOT"] = str(staged)
-            run("fetch_f1_official_results.py", f1_env)
+                # formula1.com is the primary and fastest official classification
+                # source. Jolpica remains the schedule/fallback adapter only.
+                f1_env = os.environ.copy()
+                f1_env["MOTORSPORT_DATA_ROOT"] = str(staged)
+                run("fetch_f1_official_results.py", f1_env)
 
             importers = {
                 "fetch_feeder_data.py": ("f2", "f3"),
@@ -147,6 +163,8 @@ def main() -> int:
                 "fetch_wec_results.py": ("wec",),
             }
             for index, (script, affected) in enumerate(importers.items()):
+                if not selected.intersection(affected):
+                    continue
                 candidate = temp / f"candidate-{index}"
                 shutil.copytree(staged, candidate)
                 env = os.environ.copy()
@@ -169,7 +187,10 @@ def main() -> int:
             portrait_env["PORTRAIT_SINGLE_ROOT"] = str(staged)
             run("enrich_driver_portraits.py", portrait_env)
 
-            write_indexes(staged)
+            if full_refresh:
+                # Targeted live refreshes must not hide that other series are
+                # still waiting for their regular six-hour update.
+                write_indexes(staged)
             validate(staged)
             backup = ROOT / "data.previous"
             if backup.exists():

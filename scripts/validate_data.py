@@ -10,6 +10,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "assets" / "data"
 PUBLISHED_DATA = ROOT / "data"
+# Drivers without an identity-verified face photo show initials instead of a
+# guessed or shared portrait.
+PORTRAIT_EXEMPT = {"imsa": {"Mikkel Pedersen"}}
 
 
 def load(path: Path):
@@ -44,11 +47,24 @@ def main() -> None:
             f"{item.get('givenName', '')} {item.get('familyName', '')}".strip()
             for item in drivers
             if not item.get("imageUrl")
+            and f"{item.get('givenName', '')} {item.get('familyName', '')}".strip()
+            not in PORTRAIT_EXEMPT.get(series_id, set())
         ]
         if missing_portraits:
             failures.append(
                 f"{series_id}: missing driver portraits for {', '.join(missing_portraits)}"
             )
+        not_faces = [
+            f"{item.get('givenName', '')} {item.get('familyName', '')}".strip()
+            for item in drivers
+            if item.get("imageUrl")
+            and not (
+                item["imageUrl"].startswith("assets/portraits/faces/")
+                and (ROOT / item["imageUrl"]).is_file()
+            )
+        ]
+        if not_faces:
+            failures.append(f"{series_id}: portraits must be bundled face crops: {', '.join(not_faces)}")
         if series_id == "wec":
             entry_teams: dict[tuple[str | None, int, str], set[tuple[str, ...]]] = {}
             for item in drivers:

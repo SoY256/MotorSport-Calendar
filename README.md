@@ -26,7 +26,9 @@ python -m unittest discover -s tests -v
 python scripts/fetch_data.py --year 2026
 ```
 
-GitHub Actions runs the same tests and refreshes data every six hours. The workflow can also be started manually with an optional season year.
+GitHub Actions runs the same tests and refreshes data every six hours. Because GitHub's cron is best effort (it fires only every few hours in practice), the workflows hand over to a fresh run before they end whenever a session is due within eight hours. During a session they wait for the expected finish and then poll the official timing sources every minute, refreshing only the series that is awaiting a classification, until the result is published. The workflow can also be started manually with an optional season year.
+
+Portraits are always local face crops from `assets/portraits/faces/<series>/`; `scripts/enrich_driver_portraits.py` links them by driver name and drivers without a verified face fall back to initials.
 
 The bundled 2026 WEC and IMSA calendars are curated from the official [FIA WEC](https://www.fiawec.com/) and [IMSA WeatherTech](https://www.imsa.com/weathertech/weathertech-2026-schedule/) schedules by `scripts/seed_endurance_data.py`.
 

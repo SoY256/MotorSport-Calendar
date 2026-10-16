@@ -1,77 +1,49 @@
-"""Attach verified official portrait URLs to bundled and published standings."""
+"""Link standings to the verified local face crops (never remote full-body art).
+
+Face crops are produced by ``build_face_portraits.py`` and stored in
+``assets/portraits/faces/<series>/<driver-slug>.jpg``. A driver without a
+verified crop deliberately gets no ``imageUrl`` so the app shows initials
+instead of a wrong or non-face image.
+"""
 
 from __future__ import annotations
 
 import json
-from pathlib import Path
 import os
-import re
-from concurrent.futures import ThreadPoolExecutor
-from urllib.parse import urljoin
+from pathlib import Path
 
-from fetch_data import official_f1_portraits, slugify
-from fetch_feeder_data import official_portraits
-from http_retry import read
+from fetch_data import slugify
+from portrait_identity import PORTRAIT_ALIASES
 
 ROOT = Path(__file__).resolve().parents[1]
-HEADERS = {"User-Agent": "MotorSport-Calendar/0.1 (+https://github.com/SoY256/MotorSport-Calendar)"}
+FACES = ROOT / "assets" / "portraits" / "faces"
 
 
-def stored_portraits(name: str) -> dict[str, str]:
-    path = ROOT / "data" / "sources" / name
-    if not path.exists():
-        return {}
-    raw = json.loads(path.read_text(encoding="utf-8"))
-    return {slugify(driver): url for driver, url in raw.items()}
+def local_face(series: str, driver: dict) -> str | None:
+    slugs = [slugify(f"{driver.get('givenName', '')} {driver.get('familyName', '')}")]
+    slugs.append(slugify(driver.get("id", "")))
+    slugs += [PORTRAIT_ALIASES[slug] for slug in list(slugs) if slug in PORTRAIT_ALIASES]
+    # The same driver often races in several series; the exact name is an
+    # identity-safe key, so a crop from another series is accepted.
+    folders = [FACES / series] + sorted(
+        folder for folder in FACES.iterdir() if folder.is_dir() and folder.name != series
+    )
+    for slug in dict.fromkeys(slug for slug in slugs if slug):
+        for folder in folders:
+            path = folder / f"{slug}.jpg"
+            if path.is_file():
+                return path.relative_to(ROOT).as_posix()
+    return None
 
 
-def bundled_portraits() -> dict[str, str]:
-    portraits: dict[str, str] = {}
-    for data_root in (ROOT / "assets" / "data", ROOT / "data"):
-        for path in data_root.glob("*/2026/standings_drivers.json"):
-            document = json.loads(path.read_text(encoding="utf-8"))
-            for driver in document["data"]:
-                image = driver.get("imageUrl")
-                if image:
-                    portraits[slugify(f"{driver.get('givenName', '')} {driver.get('familyName', '')}")] = image
-    return portraits
-
-
-def indy_portraits(domain: str) -> dict[str, str]:
-    base = f"https://www.{domain}.com"
-    html = read(f"{base}/Drivers", HEADERS).decode("utf-8", "replace")
-    profiles = sorted(set(re.findall(r'href="(/Drivers/[^"]+)"', html, re.I)))
-
-    def portrait(profile: str) -> tuple[str, str] | None:
-        page = read(urljoin(base, profile), HEADERS).decode("utf-8", "replace")
-        match = re.search(
-            r'<img src="([^"]+/FullBody/[^"]+\.png[^"]*)"[\s\S]{0,300}?alt="([^"]+) standing"',
-            page,
-            re.I,
-        )
-        if not match:
-            return None
-        return slugify(match.group(2)), urljoin(base, match.group(1))
-
-    with ThreadPoolExecutor(max_workers=6) as pool:
-        found = list(pool.map(portrait, profiles))
-    return dict(item for item in found if item is not None)
-
-
-def enrich(root: Path, series: str, portraits: dict[str, str]) -> int:
+def enrich(root: Path, series: str) -> int:
     path = root / series / "2026" / "standings_drivers.json"
     document = json.loads(path.read_text(encoding="utf-8"))
     matched = 0
     for driver in document["data"]:
-        driver_id = slugify(f"{driver.get('givenName', '')} {driver.get('familyName', '')}")
-        image = portraits.get(driver_id) or portraits.get(slugify(driver.get("id", "")))
-        if not image:
-            family = slugify(driver.get("familyName", ""))
-            family_matches = [url for key, url in portraits.items() if key == family or key.endswith(f"-{family}")]
-            if len(family_matches) == 1:
-                image = family_matches[0]
+        image = local_face(series, driver)
         if image:
-            driver["imageUrl"] = image.replace("w_406", "w_1024").replace("w_440", "w_1024")
+            driver["imageUrl"] = image
             matched += 1
         else:
             driver.pop("imageUrl", None)
@@ -80,34 +52,12 @@ def enrich(root: Path, series: str, portraits: dict[str, str]) -> int:
 
 
 def main() -> None:
-    imsa = stored_portraits("imsa_driver_portraits.json")
-    wikipedia = stored_portraits("wikipedia_driver_portraits.json")
-    verified = stored_portraits("official_driver_portraits.json")
-    local = bundled_portraits()
-    if os.environ.get("PORTRAIT_STORED_ONLY"):
-        sources = {
-            series: imsa | wikipedia | verified | local
-            for series in ("f1", "f2", "f3", "imsa", "indycar", "indynxt", "wec")
-        }
-    else:
-        sources = {
-            "f1": official_f1_portraits() | verified | local,
-            "f2": official_portraits("f2") | verified | local,
-            "f3": official_portraits("f3") | verified | local,
-            "imsa": imsa | wikipedia | verified | local,
-            "indycar": indy_portraits("indycar") | verified | local,
-            "indynxt": indy_portraits("indynxt") | verified | local,
-            # A substantial part of the WEC grid also races in IMSA. Official
-            # IMSA portraits are an identity-safe fallback until WEC exposes a
-            # portrait for a given driver.
-            "wec": imsa | wikipedia | verified | local,
-        }
     configured = os.environ.get("PORTRAIT_SINGLE_ROOT")
     roots = (Path(configured),) if configured else (ROOT / "assets" / "data", ROOT / "data")
     for root in roots:
-        for series, portraits in sources.items():
-            matched = enrich(root, series, portraits)
-            print(f"{root.name}/{series}: {matched} portraits")
+        for series in ("f1", "f2", "f3", "imsa", "indycar", "indynxt", "wec"):
+            matched = enrich(root, series)
+            print(f"{root.name}/{series}: {matched} face portraits")
 
 
 if __name__ == "__main__":

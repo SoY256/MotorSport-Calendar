@@ -16,8 +16,8 @@ WEC = [
     (4, "6 Hours of São Paulo", "Autódromo José Carlos Pace", "São Paulo", "Brazil", "BRA", "2026-07-12T14:30:00Z"),
     (5, "Lone Star Le Mans", "Circuit of the Americas", "Austin", "United States", "USA", "2026-09-06T17:00:00Z"),
     (6, "6 Hours of Fuji", "Fuji Speedway", "Oyama", "Japan", "JPN", "2026-09-27T02:00:00Z"),
-    (7, "Qatar 1812 km", "Lusail International Circuit", "Lusail", "Qatar", "QAT", "2026-10-24T12:00:00Z"),
-    (8, "8 Hours of Bahrain", "Bahrain International Circuit", "Sakhir", "Bahrain", "BHR", "2026-11-07T11:00:00Z"),
+    (7, "6 Hours of Barcelona", "Circuit de Barcelona-Catalunya", "Montmeló", "Spain", "ESP", "2026-10-18T10:00:00Z"),
+    (8, "6 Hours of Monza", "Autodromo Nazionale di Monza", "Monza", "Italy", "ITA", "2026-11-08T10:00:00Z"),
 ]
 
 IMSA = [

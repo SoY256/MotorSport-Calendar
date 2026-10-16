@@ -13,6 +13,7 @@ import cv2
 import numpy as np
 
 from fetch_data import slugify
+from portrait_identity import SOURCE_NAME_ALIASES
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -47,6 +48,9 @@ def original_source(series: str, driver: dict) -> str | None:
         return verified_face
     for mapping in (IMSA, OFFICIAL, WIKI):
         source = mapped_source(mapping, name)
+        alias = SOURCE_NAME_ALIASES.get(" ".join(name.split()).casefold())
+        if not source and alias:
+            source = mapped_source(mapping, alias)
         if source:
             return source
     for suffix in ("jpg", "png"):
