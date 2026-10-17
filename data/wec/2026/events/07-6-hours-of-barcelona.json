@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-17T14:47:51.433833Z",
+  "lastSuccessfulUpdate": "2026-10-17T14:48:51.203753Z",
   "source": {
     "name": "fia-wec-alkamel-official-timing",
     "url": "https://www.fiawec.com/en/season/2026"
@@ -4125,6 +4125,286 @@
             },
             "time": "1:31.713",
             "laps": 7
+          }
+        ]
+      },
+      {
+        "type": "HYPERPOLE_HYPERCAR",
+        "name": "Hyperpole - HYPERCAR",
+        "startTimeUtc": "2026-10-17T14:00:00Z",
+        "source": {
+          "name": "fia-wec-alkamel-official-timing",
+          "url": "https://fiawec.alkamelsystems.com/Results/15_2026/07_BARCELONA-CATALUNYA/688_FIA%20WEC/202610171615_Hyperpole%20HYPERCAR/03_Classification_Hyperpole%20HYPERCAR.PDF"
+        },
+        "results": [
+          {
+            "position": 1,
+            "positionText": "1",
+            "driver": {
+              "id": "a-lotterer",
+              "code": "17",
+              "givenName": "A. LOTTERER",
+              "familyName": "",
+              "nationality": "GER"
+            },
+            "team": {
+              "id": "genesis-magma-racing",
+              "name": "Genesis Magma Racing",
+              "color": "#C36B28"
+            },
+            "carNumber": "17",
+            "points": null,
+            "status": "HYPERCAR",
+            "classified": true,
+            "components": {
+              "car": "/ L. DERANI / M. JAUBERT Genesis GMR-001-Hypercar",
+              "category": "HYPERCAR"
+            },
+            "time": "1:30.166",
+            "laps": 6
+          },
+          {
+            "position": 2,
+            "positionText": "2",
+            "driver": {
+              "id": "s-buemi",
+              "code": "8",
+              "givenName": "S. BUEMI",
+              "familyName": "",
+              "nationality": "SUI"
+            },
+            "team": {
+              "id": "toyota-racing",
+              "name": "Toyota Racing",
+              "color": "#EB0A1E"
+            },
+            "carNumber": "8",
+            "points": null,
+            "status": "HYPERCAR",
+            "classified": true,
+            "components": {
+              "car": "/ B. HARTLEY / R. HIRAKAWA Toyota TR010 Hybrid",
+              "category": "HYPERCAR",
+              "gap": "+0.170"
+            },
+            "time": "1:30.336",
+            "laps": 6
+          },
+          {
+            "position": 3,
+            "positionText": "3",
+            "driver": {
+              "id": "m-jaminet",
+              "code": "19",
+              "givenName": "M. JAMINET",
+              "familyName": "",
+              "nationality": "FRA"
+            },
+            "team": {
+              "id": "genesis-magma-racing",
+              "name": "Genesis Magma Racing",
+              "color": "#C36B28"
+            },
+            "carNumber": "19",
+            "points": null,
+            "status": "HYPERCAR",
+            "classified": true,
+            "components": {
+              "car": "/ P. CHATIN / D. JUNCADELLA Genesis GMR-001-Hypercar",
+              "category": "HYPERCAR",
+              "gap": "+0.324"
+            },
+            "time": "1:30.490",
+            "laps": 6
+          },
+          {
+            "position": 4,
+            "positionText": "4",
+            "driver": {
+              "id": "c-milesi",
+              "code": "35",
+              "givenName": "C. MILESI",
+              "familyName": "",
+              "nationality": "FRA"
+            },
+            "team": {
+              "id": "alpine-endurance-team",
+              "name": "Alpine Endurance Team",
+              "color": "#005BAA"
+            },
+            "carNumber": "35",
+            "points": null,
+            "status": "HYPERCAR",
+            "classified": true,
+            "components": {
+              "car": "/ F. HABSBURG Alpine A424",
+              "category": "HYPERCAR",
+              "gap": "+0.556"
+            },
+            "time": "1:30.722",
+            "laps": 6
+          },
+          {
+            "position": 5,
+            "positionText": "5",
+            "driver": {
+              "id": "w-stevens",
+              "code": "12",
+              "givenName": "W. STEVENS",
+              "familyName": "",
+              "nationality": "GBR"
+            },
+            "team": {
+              "id": "cadillac-hertz-team-jota",
+              "name": "Cadillac Hertz Team Jota",
+              "color": "#C6A15B"
+            },
+            "carNumber": "12",
+            "points": null,
+            "status": "HYPERCAR",
+            "classified": true,
+            "components": {
+              "car": "/ N. NATO / A. LYNN Cadillac V-Series.R",
+              "category": "HYPERCAR",
+              "gap": "+0.618"
+            },
+            "time": "1:30.784",
+            "laps": 7
+          },
+          {
+            "position": 6,
+            "positionText": "6",
+            "driver": {
+              "id": "y-ye",
+              "code": "83",
+              "givenName": "Y. YE",
+              "familyName": "",
+              "nationality": "CHN"
+            },
+            "team": {
+              "id": "af-corse",
+              "name": "AF Corse",
+              "color": "#E10600"
+            },
+            "carNumber": "83",
+            "points": null,
+            "status": "HYPERCAR",
+            "classified": true,
+            "components": {
+              "car": "/ R. KUBICA / P. HANSON Ferrari 499P",
+              "category": "HYPERCAR",
+              "gap": "+0.638"
+            },
+            "time": "1:30.804",
+            "laps": 6
+          },
+          {
+            "position": 7,
+            "positionText": "7",
+            "driver": {
+              "id": "j-gounon",
+              "code": "36",
+              "givenName": "J. GOUNON",
+              "familyName": "",
+              "nationality": "FRA"
+            },
+            "team": {
+              "id": "alpine-endurance-team",
+              "name": "Alpine Endurance Team",
+              "color": "#005BAA"
+            },
+            "carNumber": "36",
+            "points": null,
+            "status": "HYPERCAR",
+            "classified": true,
+            "components": {
+              "car": "/ V. MARTINS Alpine A424",
+              "category": "HYPERCAR",
+              "gap": "+0.648"
+            },
+            "time": "1:30.814",
+            "laps": 6
+          },
+          {
+            "position": 8,
+            "positionText": "8",
+            "driver": {
+              "id": "a-fuoco",
+              "code": "50",
+              "givenName": "A. FUOCO",
+              "familyName": "",
+              "nationality": "ITA"
+            },
+            "team": {
+              "id": "ferrari-af-corse",
+              "name": "Ferrari AF Corse",
+              "color": "#E10600"
+            },
+            "carNumber": "50",
+            "points": null,
+            "status": "HYPERCAR",
+            "classified": true,
+            "components": {
+              "car": "/ M. MOLINA / N. NIELSEN Ferrari 499P",
+              "category": "HYPERCAR",
+              "gap": "+0.670"
+            },
+            "time": "1:30.836",
+            "laps": 6
+          },
+          {
+            "position": 9,
+            "positionText": "9",
+            "driver": {
+              "id": "m-conway",
+              "code": "7",
+              "givenName": "M. CONWAY",
+              "familyName": "",
+              "nationality": "GBR"
+            },
+            "team": {
+              "id": "toyota-racing",
+              "name": "Toyota Racing",
+              "color": "#EB0A1E"
+            },
+            "carNumber": "7",
+            "points": null,
+            "status": "HYPERCAR",
+            "classified": true,
+            "components": {
+              "car": "/ K. KOBAYASHI / N. DE VRIES Toyota TR010 Hybrid",
+              "category": "HYPERCAR",
+              "gap": "+0.787"
+            },
+            "time": "1:30.953",
+            "laps": 6
+          },
+          {
+            "position": 10,
+            "positionText": "10",
+            "driver": {
+              "id": "e-bamber",
+              "code": "38",
+              "givenName": "E. BAMBER",
+              "familyName": "",
+              "nationality": "NZL"
+            },
+            "team": {
+              "id": "cadillac-hertz-team-jota",
+              "name": "Cadillac Hertz Team Jota",
+              "color": "#C6A15B"
+            },
+            "carNumber": "38",
+            "points": null,
+            "status": "HYPERCAR",
+            "classified": true,
+            "components": {
+              "car": "/ S. BOURDAIS / J. AITKEN Cadillac V-Series.R",
+              "category": "HYPERCAR",
+              "gap": "+0.899"
+            },
+            "time": "1:31.065",
+            "laps": 6
           }
         ]
       }
