@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-18T16:53:43.822037Z",
+  "lastSuccessfulUpdate": "2026-10-18T23:28:17.845269Z",
   "source": {
     "name": "fia-wec-alkamel-official-timing",
-    "url": "https://fiawec.alkamelsystems.com/Results/15_2026/07_BARCELONA-CATALUNYA/688_FIA%20WEC/202610181200_Race/06_Hour%206/03_Classification_Race_Hour%206.PDF"
+    "url": "https://fiawec.alkamelsystems.com/Results/15_2026/07_BARCELONA-CATALUNYA/688_FIA%20WEC/202610181200_Race/06_Hour%206/03_Classification_Race_Hour%206_Final.PDF"
   },
   "data": {
     "eventId": "wec-2026-7",
@@ -4414,7 +4414,7 @@
         "startTimeUtc": "2026-10-18T10:00:00Z",
         "source": {
           "name": "fia-wec-alkamel-official-timing",
-          "url": "https://fiawec.alkamelsystems.com/Results/15_2026/07_BARCELONA-CATALUNYA/688_FIA%20WEC/202610181200_Race/06_Hour%206/03_Classification_Race_Hour%206.PDF"
+          "url": "https://fiawec.alkamelsystems.com/Results/15_2026/07_BARCELONA-CATALUNYA/688_FIA%20WEC/202610181200_Race/06_Hour%206/03_Classification_Race_Hour%206_Final.PDF"
         },
         "results": [
           {
@@ -5019,32 +5019,6 @@
             "position": 24,
             "positionText": "24",
             "driver": {
-              "id": "s-gattuso",
-              "code": "88",
-              "givenName": "S. GATTUSO",
-              "familyName": "",
-              "nationality": "ITA"
-            },
-            "team": {
-              "id": "proton-competition",
-              "name": "Proton Competition",
-              "color": "#003478"
-            },
-            "carNumber": "88",
-            "points": null,
-            "status": "LMGT3",
-            "classified": true,
-            "components": {
-              "car": "/ G. LEVORATO / L. SARGEANT Ford Mustang LMGT3",
-              "category": "LMGT3"
-            },
-            "laps": 182,
-            "time": "6:01:31.132"
-          },
-          {
-            "position": 25,
-            "positionText": "25",
-            "driver": {
               "id": "j-zelger",
               "code": "79",
               "givenName": "J. ZELGER",
@@ -5068,8 +5042,8 @@
             "time": "6:01:36.740"
           },
           {
-            "position": 26,
-            "positionText": "26",
+            "position": 25,
+            "positionText": "25",
             "driver": {
               "id": "g-newell",
               "code": "23",
@@ -5092,6 +5066,32 @@
             },
             "laps": 182,
             "time": "6:02:12.333"
+          },
+          {
+            "position": 26,
+            "positionText": "26",
+            "driver": {
+              "id": "d-leung",
+              "code": "32",
+              "givenName": "D. LEUNG",
+              "familyName": "",
+              "nationality": "GBR"
+            },
+            "team": {
+              "id": "team-wrt",
+              "name": "Team WRT",
+              "color": "#0066B1"
+            },
+            "carNumber": "32",
+            "points": null,
+            "status": "LMGT3",
+            "classified": true,
+            "components": {
+              "car": "/ S. GELAEL / A. FARFUS BMW M4 LMGT3 Evo",
+              "category": "LMGT3"
+            },
+            "laps": 182,
+            "time": "6:02:26.167"
           },
           {
             "position": 27,
@@ -5117,37 +5117,11 @@
               "category": "LMGT3"
             },
             "laps": 182,
-            "time": "6:02:16.766"
+            "time": "6:03:00.766"
           },
           {
             "position": 28,
             "positionText": "28",
-            "driver": {
-              "id": "d-leung",
-              "code": "32",
-              "givenName": "D. LEUNG",
-              "familyName": "",
-              "nationality": "GBR"
-            },
-            "team": {
-              "id": "team-wrt",
-              "name": "Team WRT",
-              "color": "#0066B1"
-            },
-            "carNumber": "32",
-            "points": null,
-            "status": "LMGT3",
-            "classified": true,
-            "components": {
-              "car": "/ S. GELAEL / A. FARFUS BMW M4 LMGT3 Evo",
-              "category": "LMGT3"
-            },
-            "laps": 182,
-            "time": "6:02:26.167"
-          },
-          {
-            "position": 29,
-            "positionText": "29",
             "driver": {
               "id": "t-flohr",
               "code": "54",
@@ -5172,8 +5146,8 @@
             "time": "6:01:39.128"
           },
           {
-            "position": 30,
-            "positionText": "30",
+            "position": 29,
+            "positionText": "29",
             "driver": {
               "id": "p-umbrarescu",
               "code": "87",
@@ -5198,8 +5172,8 @@
             "time": "6:02:07.468"
           },
           {
-            "position": 31,
-            "positionText": "31",
+            "position": 30,
+            "positionText": "30",
             "driver": {
               "id": "t-van-rompuy",
               "code": "78",
@@ -5224,8 +5198,8 @@
             "time": "6:01:30.251"
           },
           {
-            "position": 32,
-            "positionText": "32",
+            "position": 31,
+            "positionText": "31",
             "driver": {
               "id": "i-james",
               "code": "27",
@@ -5250,8 +5224,8 @@
             "time": "6:01:37.333"
           },
           {
-            "position": 33,
-            "positionText": "33",
+            "position": 32,
+            "positionText": "32",
             "driver": {
               "id": "j-cottingham",
               "code": "91",
@@ -5326,6 +5300,32 @@
             },
             "laps": 115,
             "time": "3:41:51.500"
+          },
+          {
+            "position": null,
+            "positionText": "NC",
+            "driver": {
+              "id": "s-gattuso",
+              "code": "88",
+              "givenName": "S. GATTUSO",
+              "familyName": "",
+              "nationality": "ITA"
+            },
+            "team": {
+              "id": "proton-competition",
+              "name": "Proton Competition",
+              "color": "#003478"
+            },
+            "carNumber": "88",
+            "points": null,
+            "status": "LMGT3",
+            "classified": false,
+            "components": {
+              "car": "/ G. LEVORATO / L. SARGEANT Ford Mustang LMGT3",
+              "category": "LMGT3"
+            },
+            "laps": 182,
+            "time": "6:01:31.132"
           }
         ]
       }
