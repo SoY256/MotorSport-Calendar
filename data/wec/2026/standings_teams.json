@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-18T16:02:00.786204Z",
+  "lastSuccessfulUpdate": "2026-10-18T16:06:37.061537Z",
   "source": {
     "name": "fia-wec-official-championship",
     "url": "https://www.fiawec.com/en/season/2026"
@@ -8,7 +8,7 @@
   "data": [
     {
       "position": 1,
-      "points": 169.0,
+      "points": 212.0,
       "wins": 3,
       "id": "hypercar-toyota",
       "name": "Toyota",
@@ -17,7 +17,7 @@
     },
     {
       "position": 2,
-      "points": 146.0,
+      "points": 154.0,
       "wins": 2,
       "id": "hypercar-bmw",
       "name": "BMW",
@@ -26,7 +26,7 @@
     },
     {
       "position": 3,
-      "points": 115.0,
+      "points": 130.0,
       "wins": 1,
       "id": "hypercar-ferrari",
       "name": "Ferrari",
@@ -35,16 +35,7 @@
     },
     {
       "position": 4,
-      "points": 96.0,
-      "wins": 0,
-      "id": "hypercar-alpine",
-      "name": "Alpine",
-      "category": "HYPERCAR",
-      "color": "#005BAA"
-    },
-    {
-      "position": 5,
-      "points": 96.0,
+      "points": 118.0,
       "wins": 0,
       "id": "hypercar-cadillac",
       "name": "Cadillac",
@@ -52,8 +43,17 @@
       "color": "#C6A15B"
     },
     {
+      "position": 5,
+      "points": 104.0,
+      "wins": 0,
+      "id": "hypercar-alpine",
+      "name": "Alpine",
+      "category": "HYPERCAR",
+      "color": "#005BAA"
+    },
+    {
       "position": 6,
-      "points": 54.0,
+      "points": 58.0,
       "wins": 0,
       "id": "hypercar-aston-martin",
       "name": "Aston Martin",
@@ -71,7 +71,7 @@
     },
     {
       "position": 8,
-      "points": 12.0,
+      "points": 15.0,
       "wins": 0,
       "id": "hypercar-genesis",
       "name": "Genesis",
@@ -80,7 +80,7 @@
     },
     {
       "position": 1,
-      "points": 86.0,
+      "points": 92.0,
       "wins": 1,
       "id": "lmgt3-33-tf-sport",
       "name": "#33 TF SPORT",
@@ -89,16 +89,16 @@
     },
     {
       "position": 2,
-      "points": 62.0,
-      "wins": 1,
-      "id": "lmgt3-27-heart-of-racing-team",
-      "name": "#27 HEART OF RACING TEAM",
+      "points": 74.0,
+      "wins": 0,
+      "id": "lmgt3-92-the-bend-manthey",
+      "name": "#92 THE BEND MANTHEY",
       "category": "LMGT3",
-      "color": "#006F62"
+      "color": "#D5001C"
     },
     {
       "position": 3,
-      "points": 58.0,
+      "points": 70.0,
       "wins": 1,
       "id": "lmgt3-34-racing-team-turkey-by-tf",
       "name": "#34 RACING TEAM TURKEY BY TF",
@@ -107,16 +107,16 @@
     },
     {
       "position": 4,
-      "points": 54.0,
-      "wins": 0,
-      "id": "lmgt3-91-manthey-dk-engineering",
-      "name": "#91 MANTHEY DK ENGINEERING",
+      "points": 66.0,
+      "wins": 1,
+      "id": "lmgt3-69-team-wrt",
+      "name": "#69 TEAM WRT",
       "category": "LMGT3",
-      "color": "#D5001C"
+      "color": "#0066B1"
     },
     {
       "position": 5,
-      "points": 54.0,
+      "points": 64.0,
       "wins": 0,
       "id": "lmgt3-21-vista-af-corse",
       "name": "#21 VISTA AF CORSE",
@@ -125,25 +125,34 @@
     },
     {
       "position": 6,
-      "points": 51.0,
+      "points": 62.0,
       "wins": 1,
-      "id": "lmgt3-69-team-wrt",
-      "name": "#69 TEAM WRT",
+      "id": "lmgt3-27-heart-of-racing-team",
+      "name": "#27 HEART OF RACING TEAM",
       "category": "LMGT3",
-      "color": "#0066B1"
+      "color": "#006F62"
     },
     {
       "position": 7,
-      "points": 49.0,
+      "points": 58.0,
+      "wins": 1,
+      "id": "lmgt3-10-garage-59",
+      "name": "#10 GARAGE 59",
+      "category": "LMGT3",
+      "color": "#FF8000"
+    },
+    {
+      "position": 8,
+      "points": 54.0,
       "wins": 0,
-      "id": "lmgt3-92-the-bend-manthey",
-      "name": "#92 THE BEND MANTHEY",
+      "id": "lmgt3-91-manthey-dk-engineering",
+      "name": "#91 MANTHEY DK ENGINEERING",
       "category": "LMGT3",
       "color": "#D5001C"
     },
     {
-      "position": 8,
-      "points": 49.0,
+      "position": 9,
+      "points": 50.0,
       "wins": 0,
       "id": "lmgt3-23-heart-of-racing-team",
       "name": "#23 HEART OF RACING TEAM",
@@ -151,7 +160,7 @@
       "color": "#006F62"
     },
     {
-      "position": 9,
+      "position": 10,
       "points": 47.0,
       "wins": 1,
       "id": "lmgt3-32-team-wrt",
@@ -160,22 +169,13 @@
       "color": "#0066B1"
     },
     {
-      "position": 10,
+      "position": 11,
       "points": 39.0,
       "wins": 0,
       "id": "lmgt3-78-akkodis-asp-team",
       "name": "#78 AKKODIS ASP TEAM",
       "category": "LMGT3",
       "color": "#222222"
-    },
-    {
-      "position": 11,
-      "points": 38.0,
-      "wins": 1,
-      "id": "lmgt3-10-garage-59",
-      "name": "#10 GARAGE 59",
-      "category": "LMGT3",
-      "color": "#FF8000"
     },
     {
       "position": 12,
@@ -188,6 +188,15 @@
     },
     {
       "position": 13,
+      "points": 25.0,
+      "wins": 0,
+      "id": "lmgt3-61-iron-lynx",
+      "name": "#61 IRON LYNX",
+      "category": "LMGT3",
+      "color": "#00A19C"
+    },
+    {
+      "position": 14,
       "points": 22.0,
       "wins": 0,
       "id": "lmgt3-58-garage-59",
@@ -196,17 +205,8 @@
       "color": "#FF8000"
     },
     {
-      "position": 14,
-      "points": 17.0,
-      "wins": 0,
-      "id": "lmgt3-61-iron-lynx",
-      "name": "#61 IRON LYNX",
-      "category": "LMGT3",
-      "color": "#00A19C"
-    },
-    {
       "position": 15,
-      "points": 16.0,
+      "points": 20.0,
       "wins": 0,
       "id": "lmgt3-88-proton-competition",
       "name": "#88 PROTON COMPETITION",
@@ -233,7 +233,7 @@
     },
     {
       "position": 18,
-      "points": 6.0,
+      "points": 8.0,
       "wins": 0,
       "id": "lmgt3-79-iron-lynx",
       "name": "#79 IRON LYNX",
