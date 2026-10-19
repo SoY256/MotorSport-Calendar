@@ -74,8 +74,12 @@ def duration(series: str, event_name: str, session_type: str, session_name: str)
 
 
 def main(root: Path) -> None:
+    from fetch_gt3_results import SERIES as GT3_SERIES  # durations come from official timetables
+
     for calendar_path in root.glob("*/2026/calendar.json"):
         series = calendar_path.parent.parent.name
+        if series in GT3_SERIES:
+            continue
         document = json.loads(calendar_path.read_text(encoding="utf-8"))
         for event in document["data"]:
             for session in event["sessions"]:

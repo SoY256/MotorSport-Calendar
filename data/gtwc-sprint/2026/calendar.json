@@ -1,0 +1,460 @@
+{
+  "schemaVersion": 1,
+  "lastSuccessfulUpdate": "2026-10-19T14:20:53.712807Z",
+  "source": {
+    "name": "sro-official-calendar",
+    "url": "https://www.gt-world-challenge-europe.com/calendar"
+  },
+  "data": [
+    {
+      "id": "gtwc-sprint-2026-1",
+      "seriesId": "gtwc-sprint",
+      "season": 2026,
+      "round": 1,
+      "name": "Brands Hatch",
+      "cancelled": false,
+      "circuit": {
+        "id": "brands-hatch",
+        "name": "Brands Hatch",
+        "locality": "West Kingsdown",
+        "country": "Great Britain",
+        "countryCode": "GBR"
+      },
+      "sessions": [
+        {
+          "type": "FP1",
+          "name": "Free Practice 1",
+          "startTimeUtc": "2026-05-02T08:35:00Z",
+          "startTimeTrack": "2026-05-02 09:35:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP2",
+          "name": "Free Practice 2",
+          "startTimeUtc": "2026-05-02T11:00:00Z",
+          "startTimeTrack": "2026-05-02 12:00:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "Q1",
+          "name": "Qualifying 1",
+          "startTimeUtc": "2026-05-02T15:40:00Z",
+          "startTimeTrack": "2026-05-02 16:40:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "Q2",
+          "name": "Qualifying 2",
+          "startTimeUtc": "2026-05-02T16:05:00Z",
+          "startTimeTrack": "2026-05-02 17:05:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "R1",
+          "name": "Race 1",
+          "startTimeUtc": "2026-05-03T10:15:00Z",
+          "startTimeTrack": "2026-05-03 11:15:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "R2",
+          "name": "Race 2",
+          "startTimeUtc": "2026-05-03T14:45:00Z",
+          "startTimeTrack": "2026-05-03 15:45:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        }
+      ],
+      "resultsPath": "events/01-brands-hatch.json"
+    },
+    {
+      "id": "gtwc-sprint-2026-2",
+      "seriesId": "gtwc-sprint",
+      "season": 2026,
+      "round": 2,
+      "name": "Misano",
+      "cancelled": false,
+      "circuit": {
+        "id": "misano-world-circuit",
+        "name": "Misano World Circuit",
+        "locality": "Misano Adriatico",
+        "country": "Italy",
+        "countryCode": "ITA"
+      },
+      "sessions": [
+        {
+          "type": "OFFICIAL_TEST_SESSIONS",
+          "name": "Official test sessions",
+          "startTimeUtc": "2026-07-16T11:00:00Z",
+          "startTimeTrack": "2026-07-16 13:00:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP1",
+          "name": "Free Practice 1",
+          "startTimeUtc": "2026-07-17T12:50:00Z",
+          "startTimeTrack": "2026-07-17 14:50:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP2",
+          "name": "Free Practice 2",
+          "startTimeUtc": "2026-07-17T18:10:00Z",
+          "startTimeTrack": "2026-07-17 20:10:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "QUALIFYING_1_GROUP_A",
+          "name": "Qualifying 1 - Group A",
+          "startTimeUtc": "2026-07-18T11:05:00Z",
+          "startTimeTrack": "2026-07-18 13:05:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 15
+        },
+        {
+          "type": "QUALIFYING_1_GROUP_B",
+          "name": "Qualifying 1 - Group B",
+          "startTimeUtc": "2026-07-18T11:20:00Z",
+          "startTimeTrack": "2026-07-18 13:20:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 15
+        },
+        {
+          "type": "R1",
+          "name": "Race 1",
+          "startTimeUtc": "2026-07-18T18:30:00Z",
+          "startTimeTrack": "2026-07-18 20:30:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "QUALIFYING_2_GROUP_A",
+          "name": "Qualifying 2 - Group A",
+          "startTimeUtc": "2026-07-19T08:05:00Z",
+          "startTimeTrack": "2026-07-19 10:05:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 15
+        },
+        {
+          "type": "QUALIFYING_2_GROUP_B",
+          "name": "Qualifying 2 - Group B",
+          "startTimeUtc": "2026-07-19T08:20:00Z",
+          "startTimeTrack": "2026-07-19 10:20:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 15
+        },
+        {
+          "type": "Q2",
+          "name": "Qualifying 2",
+          "startTimeUtc": "2026-07-19T08:40:00Z",
+          "startTimeTrack": "2026-07-19 10:40:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "R2",
+          "name": "Race 2",
+          "startTimeUtc": "2026-07-19T12:30:00Z",
+          "startTimeTrack": "2026-07-19 14:30:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        }
+      ],
+      "resultsPath": "events/02-misano.json"
+    },
+    {
+      "id": "gtwc-sprint-2026-3",
+      "seriesId": "gtwc-sprint",
+      "season": 2026,
+      "round": 3,
+      "name": "Magny-Cours",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit-de-nevers-magny-cours",
+        "name": "Circuit de Nevers Magny-Cours",
+        "locality": "Magny-Cours",
+        "country": "France",
+        "countryCode": "FRA"
+      },
+      "sessions": [
+        {
+          "type": "OFFICIAL_TEST_SESSIONS",
+          "name": "Official test sessions",
+          "startTimeUtc": "2026-07-30T11:45:00Z",
+          "startTimeTrack": "2026-07-30 13:45:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP1",
+          "name": "Free Practice 1",
+          "startTimeUtc": "2026-07-31T11:30:00Z",
+          "startTimeTrack": "2026-07-31 13:30:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP2",
+          "name": "Free Practice 2",
+          "startTimeUtc": "2026-07-31T18:40:00Z",
+          "startTimeTrack": "2026-07-31 20:40:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "QUALIFYING_1_GROUP_A",
+          "name": "Qualifying 1 - Group A",
+          "startTimeUtc": "2026-08-01T12:55:00Z",
+          "startTimeTrack": "2026-08-01 14:55:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 15
+        },
+        {
+          "type": "QUALIFYING_1_GROUP_B",
+          "name": "Qualifying 1 - Group B",
+          "startTimeUtc": "2026-08-01T13:10:00Z",
+          "startTimeTrack": "2026-08-01 15:10:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 10
+        },
+        {
+          "type": "QUALIFYING_1_COMBINED",
+          "name": "Qualifying 1 Combined",
+          "startTimeUtc": "2026-08-01T13:20:00Z",
+          "startTimeTrack": "2026-08-01 15:20:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 5
+        },
+        {
+          "type": "R1",
+          "name": "Race 1",
+          "startTimeUtc": "2026-08-01T19:05:00Z",
+          "startTimeTrack": "2026-08-01 21:05:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "QUALIFYING_2_GROUP_A",
+          "name": "Qualifying 2 - Group A",
+          "startTimeUtc": "2026-08-02T08:50:00Z",
+          "startTimeTrack": "2026-08-02 10:50:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 15
+        },
+        {
+          "type": "QUALIFYING_2_GROUP_B",
+          "name": "Qualifying 2 - Group B",
+          "startTimeUtc": "2026-08-02T09:05:00Z",
+          "startTimeTrack": "2026-08-02 11:05:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 10
+        },
+        {
+          "type": "QUALIFYING_2_COMBINED",
+          "name": "Qualifying 2 Combined",
+          "startTimeUtc": "2026-08-02T09:15:00Z",
+          "startTimeTrack": "2026-08-02 11:15:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 5
+        },
+        {
+          "type": "R2",
+          "name": "Race 2",
+          "startTimeUtc": "2026-08-02T13:30:00Z",
+          "startTimeTrack": "2026-08-02 15:30:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        }
+      ],
+      "resultsPath": "events/03-magny-cours.json"
+    },
+    {
+      "id": "gtwc-sprint-2026-4",
+      "seriesId": "gtwc-sprint",
+      "season": 2026,
+      "round": 4,
+      "name": "Zandvoort",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit-park-zandvoort",
+        "name": "Circuit Park Zandvoort",
+        "locality": "Zandvoort",
+        "country": "Netherlands",
+        "countryCode": "NLD"
+      },
+      "sessions": [
+        {
+          "type": "FP1",
+          "name": "Free Practice 1",
+          "startTimeUtc": "2026-09-18T07:00:00Z",
+          "startTimeTrack": "2026-09-18 09:00:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP2",
+          "name": "Free Practice 2",
+          "startTimeUtc": "2026-09-18T11:50:00Z",
+          "startTimeTrack": "2026-09-18 13:50:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "QUALIFYING_1_GROUP_A",
+          "name": "Qualifying 1 - Group A",
+          "startTimeUtc": "2026-09-19T07:50:00Z",
+          "startTimeTrack": "2026-09-19 09:50:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 15
+        },
+        {
+          "type": "QUALIFYING_1_GROUP_B",
+          "name": "Qualifying 1 - Group B",
+          "startTimeUtc": "2026-09-19T08:05:00Z",
+          "startTimeTrack": "2026-09-19 10:05:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 10
+        },
+        {
+          "type": "QUALIFYING_1_COMBINED",
+          "name": "Qualifying 1 Combined",
+          "startTimeUtc": "2026-09-19T08:15:00Z",
+          "startTimeTrack": "2026-09-19 10:15:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 5
+        },
+        {
+          "type": "R1",
+          "name": "Race 1",
+          "startTimeUtc": "2026-09-19T12:45:00Z",
+          "startTimeTrack": "2026-09-19 14:45:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "QUALIFYING_2_GROUP_A",
+          "name": "Qualifying 2 - Group A",
+          "startTimeUtc": "2026-09-20T08:35:00Z",
+          "startTimeTrack": "2026-09-20 10:35:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 15
+        },
+        {
+          "type": "QUALIFYING_2_GROUP_B",
+          "name": "Qualifying 2 - Group B",
+          "startTimeUtc": "2026-09-20T08:50:00Z",
+          "startTimeTrack": "2026-09-20 10:50:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 10
+        },
+        {
+          "type": "QUALIFYING_2_COMBINED",
+          "name": "Qualifying 2 Combined",
+          "startTimeUtc": "2026-09-20T09:00:00Z",
+          "startTimeTrack": "2026-09-20 11:00:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 5
+        },
+        {
+          "type": "R2",
+          "name": "Race 2",
+          "startTimeUtc": "2026-09-20T12:15:00Z",
+          "startTimeTrack": "2026-09-20 14:15:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        }
+      ],
+      "resultsPath": "events/04-zandvoort.json"
+    },
+    {
+      "id": "gtwc-sprint-2026-5",
+      "seriesId": "gtwc-sprint",
+      "season": 2026,
+      "round": 5,
+      "name": "Barcelona",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit-de-barcelona-catalunya",
+        "name": "Circuit de Barcelona-Catalunya",
+        "locality": "Montmeló",
+        "country": "Spain",
+        "countryCode": "ESP"
+      },
+      "sessions": [
+        {
+          "type": "OFFICIAL_TEST_SESSIONS",
+          "name": "Official test sessions",
+          "startTimeUtc": "2026-10-01T11:30:00Z",
+          "startTimeTrack": "2026-10-01 13:30:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP1",
+          "name": "Free Practice 1",
+          "startTimeUtc": "2026-10-02T07:00:00Z",
+          "startTimeTrack": "2026-10-02 09:00:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP2",
+          "name": "Free Practice 2",
+          "startTimeUtc": "2026-10-02T11:55:00Z",
+          "startTimeTrack": "2026-10-02 13:55:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "Q1",
+          "name": "Qualifying 1",
+          "startTimeUtc": "2026-10-03T07:45:00Z",
+          "startTimeTrack": "2026-10-03 09:45:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 5
+        },
+        {
+          "type": "QUALIFYING_1_GROUP_A",
+          "name": "Qualifying 1 - Group A",
+          "startTimeUtc": "2026-10-03T07:50:00Z",
+          "startTimeTrack": "2026-10-03 09:50:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 15
+        },
+        {
+          "type": "QUALIFYING_1_GROUP_B",
+          "name": "Qualifying 1 - Group B",
+          "startTimeUtc": "2026-10-03T08:05:00Z",
+          "startTimeTrack": "2026-10-03 10:05:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 15
+        },
+        {
+          "type": "R1",
+          "name": "Race 1",
+          "startTimeUtc": "2026-10-03T12:00:00Z",
+          "startTimeTrack": "2026-10-03 14:00:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "R2",
+          "name": "Race 2",
+          "startTimeUtc": "2026-10-04T16:20:00Z",
+          "startTimeTrack": "2026-10-04 18:20:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        }
+      ],
+      "resultsPath": "events/05-barcelona.json"
+    }
+  ]
+}

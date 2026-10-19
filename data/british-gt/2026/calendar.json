@@ -1,0 +1,510 @@
+{
+  "schemaVersion": 1,
+  "lastSuccessfulUpdate": "2026-10-19T14:23:07.895160Z",
+  "source": {
+    "name": "sro-official-calendar",
+    "url": "https://www.britishgt.com/calendar"
+  },
+  "data": [
+    {
+      "id": "british-gt-2026-1",
+      "seriesId": "british-gt",
+      "season": 2026,
+      "round": 1,
+      "name": "Silverstone 500",
+      "cancelled": false,
+      "circuit": {
+        "id": "silverstone-circuit",
+        "name": "Silverstone Circuit",
+        "locality": "Silverstone",
+        "country": "Great Britain",
+        "countryCode": "GBR"
+      },
+      "sessions": [
+        {
+          "type": "TEST_1",
+          "name": "Test 1",
+          "startTimeUtc": "2026-04-24T12:25:00Z",
+          "startTimeTrack": "2026-04-24 13:25:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "TEST_2",
+          "name": "Test 2",
+          "startTimeUtc": "2026-04-24T15:25:00Z",
+          "startTimeTrack": "2026-04-24 16:25:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP1",
+          "name": "Free Practice 1",
+          "startTimeUtc": "2026-04-25T08:30:00Z",
+          "startTimeTrack": "2026-04-25 09:30:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "PRE_QUALIFYING",
+          "name": "Pre-Qualifying",
+          "startTimeUtc": "2026-04-25T11:15:00Z",
+          "startTimeTrack": "2026-04-25 12:15:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "GT3_QUALIFYING_1",
+          "name": "GT3 Qualifying 1",
+          "startTimeUtc": "2026-04-25T14:45:00Z",
+          "startTimeTrack": "2026-04-25 15:45:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 14
+        },
+        {
+          "type": "GT3_QUALIFYING_2",
+          "name": "GT3 Qualifying 2",
+          "startTimeUtc": "2026-04-25T14:59:00Z",
+          "startTimeTrack": "2026-04-25 15:59:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "WARM_UP",
+          "name": "Warm Up",
+          "startTimeUtc": "2026-04-26T08:40:00Z",
+          "startTimeTrack": "2026-04-26 09:40:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 30
+        },
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-04-26T12:00:00Z",
+          "startTimeTrack": "2026-04-26 13:00:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 180
+        }
+      ],
+      "resultsPath": "events/01-silverstone-500.json"
+    },
+    {
+      "id": "british-gt-2026-2",
+      "seriesId": "british-gt",
+      "season": 2026,
+      "round": 2,
+      "name": "Oulton Park",
+      "cancelled": false,
+      "circuit": {
+        "id": "oulton-park",
+        "name": "Oulton Park",
+        "locality": "Little Budworth",
+        "country": "Great Britain",
+        "countryCode": "GBR"
+      },
+      "sessions": [
+        {
+          "type": "TEST_1",
+          "name": "Test 1",
+          "startTimeUtc": "2026-05-22T09:45:00Z",
+          "startTimeTrack": "2026-05-22 10:45:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "TEST_2",
+          "name": "Test 2",
+          "startTimeUtc": "2026-05-22T12:20:00Z",
+          "startTimeTrack": "2026-05-22 13:20:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "TEST_3",
+          "name": "Test 3",
+          "startTimeUtc": "2026-05-22T14:30:00Z",
+          "startTimeTrack": "2026-05-22 15:30:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP1",
+          "name": "Free Practice 1",
+          "startTimeUtc": "2026-05-23T08:30:00Z",
+          "startTimeTrack": "2026-05-23 09:30:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "PRE_QUALIFYING",
+          "name": "Pre-Qualifying",
+          "startTimeUtc": "2026-05-23T11:00:00Z",
+          "startTimeTrack": "2026-05-23 12:00:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "GT3_QUALIFYING_1",
+          "name": "GT3 Qualifying 1",
+          "startTimeUtc": "2026-05-23T14:35:00Z",
+          "startTimeTrack": "2026-05-23 15:35:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 14
+        },
+        {
+          "type": "GT3_QUALIFYING_2",
+          "name": "GT3 Qualifying 2",
+          "startTimeUtc": "2026-05-23T14:49:00Z",
+          "startTimeTrack": "2026-05-23 15:49:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "WARM_UP",
+          "name": "Warm Up",
+          "startTimeUtc": "2026-05-25T08:15:00Z",
+          "startTimeTrack": "2026-05-25 09:15:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 30
+        },
+        {
+          "type": "R1",
+          "name": "Race 1",
+          "startTimeUtc": "2026-05-25T10:05:00Z",
+          "startTimeTrack": "2026-05-25 11:05:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 120
+        },
+        {
+          "type": "R2",
+          "name": "Race 2",
+          "startTimeUtc": "2026-05-25T16:15:00Z",
+          "startTimeTrack": "2026-05-25 17:15:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 120
+        }
+      ],
+      "resultsPath": "events/02-oulton-park.json"
+    },
+    {
+      "id": "british-gt-2026-3",
+      "seriesId": "british-gt",
+      "season": 2026,
+      "round": 3,
+      "name": "Spa-Francorchamps",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit-de-spa-francorchamps",
+        "name": "Circuit de Spa-Francorchamps",
+        "locality": "Stavelot",
+        "country": "Belgium",
+        "countryCode": "BEL"
+      },
+      "sessions": [
+        {
+          "type": "TESTING",
+          "name": "Testing",
+          "startTimeUtc": "2026-06-19T12:20:00Z",
+          "startTimeTrack": "2026-06-19 14:20:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP1",
+          "name": "Free Practice 1",
+          "startTimeUtc": "2026-06-20T07:00:00Z",
+          "startTimeTrack": "2026-06-20 09:00:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP2",
+          "name": "Free Practice 2",
+          "startTimeUtc": "2026-06-20T11:10:00Z",
+          "startTimeTrack": "2026-06-20 13:10:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "GT3_QUALIFYING_1",
+          "name": "GT3 Qualifying 1",
+          "startTimeUtc": "2026-06-20T16:35:00Z",
+          "startTimeTrack": "2026-06-20 18:35:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "GT3_QUALIFYING_2",
+          "name": "GT3 Qualifying 2",
+          "startTimeUtc": "2026-06-20T17:15:00Z",
+          "startTimeTrack": "2026-06-20 19:15:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-06-21T12:20:00Z",
+          "startTimeTrack": "2026-06-21 14:20:00+02:00",
+          "cancelled": false,
+          "durationMinutes": 120
+        }
+      ],
+      "resultsPath": "events/03-spa-francorchamps.json"
+    },
+    {
+      "id": "british-gt-2026-4",
+      "seriesId": "british-gt",
+      "season": 2026,
+      "round": 4,
+      "name": "Snetterton",
+      "cancelled": false,
+      "circuit": {
+        "id": "snetterton-circuit",
+        "name": "Snetterton Circuit",
+        "locality": "Snetterton",
+        "country": "Great Britain",
+        "countryCode": "GBR"
+      },
+      "sessions": [
+        {
+          "type": "TEST_1",
+          "name": "Test 1",
+          "startTimeUtc": "2026-08-14T09:45:00Z",
+          "startTimeTrack": "2026-08-14 10:45:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "TEST_2",
+          "name": "Test 2",
+          "startTimeUtc": "2026-08-14T12:50:00Z",
+          "startTimeTrack": "2026-08-14 13:50:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "TEST_3",
+          "name": "Test 3",
+          "startTimeUtc": "2026-08-14T15:00:00Z",
+          "startTimeTrack": "2026-08-14 16:00:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP1",
+          "name": "Free Practice 1",
+          "startTimeUtc": "2026-08-15T08:25:00Z",
+          "startTimeTrack": "2026-08-15 09:25:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "PRE_QUALIFYING",
+          "name": "Pre-Qualifying",
+          "startTimeUtc": "2026-08-15T10:55:00Z",
+          "startTimeTrack": "2026-08-15 11:55:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "GT3_QUALIFYING_1",
+          "name": "GT3 Qualifying 1",
+          "startTimeUtc": "2026-08-15T14:30:00Z",
+          "startTimeTrack": "2026-08-15 15:30:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 14
+        },
+        {
+          "type": "GT3_QUALIFYING_2",
+          "name": "GT3 Qualifying 2",
+          "startTimeUtc": "2026-08-15T14:44:00Z",
+          "startTimeTrack": "2026-08-15 15:44:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "WARM_UP",
+          "name": "Warm Up",
+          "startTimeUtc": "2026-08-16T08:45:00Z",
+          "startTimeTrack": "2026-08-16 09:45:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 30
+        },
+        {
+          "type": "R1",
+          "name": "Race 1",
+          "startTimeUtc": "2026-08-16T10:35:00Z",
+          "startTimeTrack": "2026-08-16 11:35:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 120
+        },
+        {
+          "type": "R2",
+          "name": "Race 2",
+          "startTimeUtc": "2026-08-16T15:00:00Z",
+          "startTimeTrack": "2026-08-16 16:00:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 120
+        }
+      ],
+      "resultsPath": "events/04-snetterton.json"
+    },
+    {
+      "id": "british-gt-2026-5",
+      "seriesId": "british-gt",
+      "season": 2026,
+      "round": 5,
+      "name": "Donington Park",
+      "cancelled": false,
+      "circuit": {
+        "id": "donington-park",
+        "name": "Donington Park",
+        "locality": "Castle Donington",
+        "country": "Great Britain",
+        "countryCode": "GBR"
+      },
+      "sessions": [
+        {
+          "type": "TEST_1",
+          "name": "Test 1",
+          "startTimeUtc": "2026-09-03T09:55:00Z",
+          "startTimeTrack": "2026-09-03 10:55:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "TEST_2",
+          "name": "Test 2",
+          "startTimeUtc": "2026-09-03T12:20:00Z",
+          "startTimeTrack": "2026-09-03 13:20:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "TEST_3",
+          "name": "Test 3",
+          "startTimeUtc": "2026-09-03T14:30:00Z",
+          "startTimeTrack": "2026-09-03 15:30:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP1",
+          "name": "Free Practice 1",
+          "startTimeUtc": "2026-09-05T08:35:00Z",
+          "startTimeTrack": "2026-09-05 09:35:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "PRE_QUALIFYING",
+          "name": "Pre-Qualifying",
+          "startTimeUtc": "2026-09-05T10:55:00Z",
+          "startTimeTrack": "2026-09-05 11:55:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "GT3_QUALIFYING_1",
+          "name": "GT3 Qualifying 1",
+          "startTimeUtc": "2026-09-05T14:45:00Z",
+          "startTimeTrack": "2026-09-05 15:45:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 14
+        },
+        {
+          "type": "GT3_QUALIFYING_2",
+          "name": "GT3 Qualifying 2",
+          "startTimeUtc": "2026-09-05T14:59:00Z",
+          "startTimeTrack": "2026-09-05 15:59:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "WARM_UP",
+          "name": "Warm Up",
+          "startTimeUtc": "2026-09-06T08:40:00Z",
+          "startTimeTrack": "2026-09-06 09:40:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 30
+        },
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-09-06T12:45:00Z",
+          "startTimeTrack": "2026-09-06 13:45:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 120
+        }
+      ],
+      "resultsPath": "events/05-donington-park.json"
+    },
+    {
+      "id": "british-gt-2026-6",
+      "seriesId": "british-gt",
+      "season": 2026,
+      "round": 6,
+      "name": "Brands Hatch",
+      "cancelled": false,
+      "circuit": {
+        "id": "brands-hatch",
+        "name": "Brands Hatch",
+        "locality": "West Kingsdown",
+        "country": "Great Britain",
+        "countryCode": "GBR"
+      },
+      "sessions": [
+        {
+          "type": "FP1",
+          "name": "Free Practice 1",
+          "startTimeUtc": "2026-09-26T08:25:00Z",
+          "startTimeTrack": "2026-09-26 09:25:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "PRE_QUALIFYING",
+          "name": "Pre-Qualifying",
+          "startTimeUtc": "2026-09-26T10:45:00Z",
+          "startTimeTrack": "2026-09-26 11:45:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "GT3_QUALIFYING_1",
+          "name": "GT3 Qualifying 1",
+          "startTimeUtc": "2026-09-26T15:15:00Z",
+          "startTimeTrack": "2026-09-26 16:15:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 14
+        },
+        {
+          "type": "GT3_QUALIFYING_2",
+          "name": "GT3 Qualifying 2",
+          "startTimeUtc": "2026-09-26T15:29:00Z",
+          "startTimeTrack": "2026-09-26 16:29:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "WARM_UP",
+          "name": "Warm Up",
+          "startTimeUtc": "2026-09-27T09:00:00Z",
+          "startTimeTrack": "2026-09-27 10:00:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 30
+        },
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-09-27T12:30:00Z",
+          "startTimeTrack": "2026-09-27 13:30:00+01:00",
+          "cancelled": false,
+          "durationMinutes": 120
+        }
+      ],
+      "resultsPath": "events/06-brands-hatch.json"
+    }
+  ]
+}

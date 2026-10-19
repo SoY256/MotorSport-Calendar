@@ -1,0 +1,534 @@
+{
+  "schemaVersion": 1,
+  "lastSuccessfulUpdate": "2026-10-19T14:21:28.218584Z",
+  "source": {
+    "name": "sro-official-calendar",
+    "url": "https://www.gt-world-challenge-asia.com/calendar"
+  },
+  "data": [
+    {
+      "id": "gtwc-asia-2026-1",
+      "seriesId": "gtwc-asia",
+      "season": 2026,
+      "round": 1,
+      "name": "Sepang International Circuit",
+      "cancelled": false,
+      "circuit": {
+        "id": "sepang-international-circuit",
+        "name": "Sepang International Circuit",
+        "locality": "Sepang",
+        "country": "Malaysia",
+        "countryCode": "MYS"
+      },
+      "sessions": [
+        {
+          "type": "TEST_SESSION_1",
+          "name": "Test Session 1",
+          "startTimeUtc": "2026-04-02T04:30:00Z",
+          "startTimeTrack": "2026-04-02 12:30:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "TEST_SESSION_2",
+          "name": "Test Session 2",
+          "startTimeUtc": "2026-04-02T05:45:00Z",
+          "startTimeTrack": "2026-04-02 13:45:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "TEST_SESSION_3",
+          "name": "Test Session 3",
+          "startTimeUtc": "2026-04-02T07:00:00Z",
+          "startTimeTrack": "2026-04-02 15:00:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "TEST_SESSION_4",
+          "name": "Test Session 4",
+          "startTimeUtc": "2026-04-02T08:15:00Z",
+          "startTimeTrack": "2026-04-02 16:15:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "OFFICIAL_PRACTICE",
+          "name": "Official Practice",
+          "startTimeUtc": "2026-04-03T03:00:00Z",
+          "startTimeTrack": "2026-04-03 11:00:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "PRE_QUALIFYING",
+          "name": "Pre-Qualifying",
+          "startTimeUtc": "2026-04-03T07:40:00Z",
+          "startTimeTrack": "2026-04-03 15:40:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "Q1",
+          "name": "Qualifying 1",
+          "startTimeUtc": "2026-04-04T02:25:00Z",
+          "startTimeTrack": "2026-04-04 10:25:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "Q2",
+          "name": "Qualifying 2",
+          "startTimeUtc": "2026-04-04T02:47:00Z",
+          "startTimeTrack": "2026-04-04 10:47:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "R1",
+          "name": "Race 1",
+          "startTimeUtc": "2026-04-04T06:15:00Z",
+          "startTimeTrack": "2026-04-04 14:15:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "R2",
+          "name": "Race 2",
+          "startTimeUtc": "2026-04-05T03:30:00Z",
+          "startTimeTrack": "2026-04-05 11:30:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        }
+      ],
+      "resultsPath": "events/01-sepang-international-circuit.json"
+    },
+    {
+      "id": "gtwc-asia-2026-2",
+      "seriesId": "gtwc-asia",
+      "season": 2026,
+      "round": 2,
+      "name": "Pertamina Mandalika International Circuit",
+      "cancelled": false,
+      "circuit": {
+        "id": "pertamina-mandalika-international-circuit",
+        "name": "Pertamina Mandalika International Circuit",
+        "locality": "Lombok",
+        "country": "Indonesia",
+        "countryCode": "IDN"
+      },
+      "sessions": [
+        {
+          "type": "TEST_SESSION_1",
+          "name": "Test Session 1",
+          "startTimeUtc": "2026-04-30T03:00:00Z",
+          "startTimeTrack": "2026-04-30 11:00:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "TEST_SESSION_2",
+          "name": "Test Session 2",
+          "startTimeUtc": "2026-04-30T05:00:00Z",
+          "startTimeTrack": "2026-04-30 13:00:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "TEST_SESSION_3",
+          "name": "Test Session 3",
+          "startTimeUtc": "2026-04-30T07:00:00Z",
+          "startTimeTrack": "2026-04-30 15:00:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "TEST_SESSION_4",
+          "name": "Test Session 4",
+          "startTimeUtc": "2026-04-30T08:05:00Z",
+          "startTimeTrack": "2026-04-30 16:05:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "TEST_SESSION_5",
+          "name": "Test Session 5",
+          "startTimeUtc": "2026-05-01T00:30:00Z",
+          "startTimeTrack": "2026-05-01 08:30:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "OFFICIAL_PRACTICE",
+          "name": "Official Practice",
+          "startTimeUtc": "2026-05-01T02:50:00Z",
+          "startTimeTrack": "2026-05-01 10:50:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "PRE_QUALIFYING",
+          "name": "Pre-Qualifying",
+          "startTimeUtc": "2026-05-01T06:55:00Z",
+          "startTimeTrack": "2026-05-01 14:55:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "Q1",
+          "name": "Qualifying 1",
+          "startTimeUtc": "2026-05-02T01:15:00Z",
+          "startTimeTrack": "2026-05-02 09:15:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "Q2",
+          "name": "Qualifying 2",
+          "startTimeUtc": "2026-05-02T01:37:00Z",
+          "startTimeTrack": "2026-05-02 09:37:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "R1",
+          "name": "Race 1",
+          "startTimeUtc": "2026-05-02T05:30:00Z",
+          "startTimeTrack": "2026-05-02 13:30:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "R2",
+          "name": "Race 2",
+          "startTimeUtc": "2026-05-03T03:30:00Z",
+          "startTimeTrack": "2026-05-03 11:30:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        }
+      ],
+      "resultsPath": "events/02-pertamina-mandalika-international-circuit.json"
+    },
+    {
+      "id": "gtwc-asia-2026-3",
+      "seriesId": "gtwc-asia",
+      "season": 2026,
+      "round": 3,
+      "name": "Fuji International Speedway (SRO GT PowerTour)",
+      "cancelled": false,
+      "circuit": {
+        "id": "fuji-speedway",
+        "name": "Fuji Speedway",
+        "locality": "Oyama",
+        "country": "Japan",
+        "countryCode": "JPN"
+      },
+      "sessions": [
+        {
+          "type": "TEST_SESSION_1",
+          "name": "Test Session 1",
+          "startTimeUtc": "2026-07-09T04:00:00Z",
+          "startTimeTrack": "2026-07-09 13:00:00+09:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "TEST_SESSION_2",
+          "name": "Test Session 2",
+          "startTimeUtc": "2026-07-09T06:20:00Z",
+          "startTimeTrack": "2026-07-09 15:20:00+09:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "OFFICIAL_PRACTICE",
+          "name": "Official Practice",
+          "startTimeUtc": "2026-07-10T02:10:00Z",
+          "startTimeTrack": "2026-07-10 11:10:00+09:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "PRE_QUALIFYING",
+          "name": "Pre-Qualifying",
+          "startTimeUtc": "2026-07-10T06:45:00Z",
+          "startTimeTrack": "2026-07-10 15:45:00+09:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "Q1",
+          "name": "Qualifying 1",
+          "startTimeUtc": "2026-07-10T23:30:00Z",
+          "startTimeTrack": "2026-07-11 08:30:00+09:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "Q2",
+          "name": "Qualifying 2",
+          "startTimeUtc": "2026-07-10T23:52:00Z",
+          "startTimeTrack": "2026-07-11 08:52:00+09:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "R1",
+          "name": "Race 1",
+          "startTimeUtc": "2026-07-11T03:35:00Z",
+          "startTimeTrack": "2026-07-11 12:35:00+09:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "R2",
+          "name": "Race 2",
+          "startTimeUtc": "2026-07-12T02:35:00Z",
+          "startTimeTrack": "2026-07-12 11:35:00+09:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        }
+      ],
+      "resultsPath": "events/03-fuji-international-speedway-sro-gt-powertour.json"
+    },
+    {
+      "id": "gtwc-asia-2026-4",
+      "seriesId": "gtwc-asia",
+      "season": 2026,
+      "round": 4,
+      "name": "Okayama International Circuit (SRO GT PowerTour)",
+      "cancelled": false,
+      "circuit": {
+        "id": "okayama-international-circuit",
+        "name": "Okayama International Circuit",
+        "locality": "Mimasaka",
+        "country": "Japan",
+        "countryCode": "JPN"
+      },
+      "sessions": [
+        {
+          "type": "TEST_SESSION_1",
+          "name": "Test Session 1",
+          "startTimeUtc": "2026-08-27T03:00:00Z",
+          "startTimeTrack": "2026-08-27 12:00:00+09:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "TEST_SESSION_2",
+          "name": "Test Session 2",
+          "startTimeUtc": "2026-08-27T06:45:00Z",
+          "startTimeTrack": "2026-08-27 15:45:00+09:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "OFFICIAL_PRACTICE",
+          "name": "Official Practice",
+          "startTimeUtc": "2026-08-28T03:20:00Z",
+          "startTimeTrack": "2026-08-28 12:20:00+09:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "PRE_QUALIFYING",
+          "name": "Pre-Qualifying",
+          "startTimeUtc": "2026-08-28T06:40:00Z",
+          "startTimeTrack": "2026-08-28 15:40:00+09:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "Q1",
+          "name": "Qualifying 1",
+          "startTimeUtc": "2026-08-29T00:00:00Z",
+          "startTimeTrack": "2026-08-29 09:00:00+09:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "Q2",
+          "name": "Qualifying 2",
+          "startTimeUtc": "2026-08-29T00:22:00Z",
+          "startTimeTrack": "2026-08-29 09:22:00+09:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "R1",
+          "name": "Race 1",
+          "startTimeUtc": "2026-08-29T04:00:00Z",
+          "startTimeTrack": "2026-08-29 13:00:00+09:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "R2",
+          "name": "Race 2",
+          "startTimeUtc": "2026-08-30T01:00:00Z",
+          "startTimeTrack": "2026-08-30 10:00:00+09:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        }
+      ],
+      "resultsPath": "events/04-okayama-international-circuit-sro-gt-powertour.json"
+    },
+    {
+      "id": "gtwc-asia-2026-5",
+      "seriesId": "gtwc-asia",
+      "season": 2026,
+      "round": 5,
+      "name": "Beijing Street Circuit",
+      "cancelled": false,
+      "circuit": {
+        "id": "beijing-street-circuit",
+        "name": "Beijing Street Circuit",
+        "locality": "Beijing",
+        "country": "China",
+        "countryCode": "CHN"
+      },
+      "sessions": [
+        {
+          "type": "TEST_SESSION_1",
+          "name": "Test Session 1",
+          "startTimeUtc": "2026-10-02T02:10:00Z",
+          "startTimeTrack": "2026-10-02 10:10:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "TEST_SESSION_2",
+          "name": "Test Session 2",
+          "startTimeUtc": "2026-10-02T04:30:00Z",
+          "startTimeTrack": "2026-10-02 12:30:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "OFFICIAL_PRACTICE",
+          "name": "Official Practice",
+          "startTimeUtc": "2026-10-02T07:55:00Z",
+          "startTimeTrack": "2026-10-02 15:55:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "PRE_QUALIFYING",
+          "name": "Pre-Qualifying",
+          "startTimeUtc": "2026-10-03T00:30:00Z",
+          "startTimeTrack": "2026-10-03 08:30:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "Q1",
+          "name": "Qualifying 1",
+          "startTimeUtc": "2026-10-03T03:50:00Z",
+          "startTimeTrack": "2026-10-03 11:50:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "Q2",
+          "name": "Qualifying 2",
+          "startTimeUtc": "2026-10-03T04:12:00Z",
+          "startTimeTrack": "2026-10-03 12:12:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "R1",
+          "name": "Race 1",
+          "startTimeUtc": "2026-10-03T07:45:00Z",
+          "startTimeTrack": "2026-10-03 15:45:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "R2",
+          "name": "Race 2",
+          "startTimeUtc": "2026-10-04T05:00:00Z",
+          "startTimeTrack": "2026-10-04 13:00:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        }
+      ],
+      "resultsPath": "events/05-beijing-street-circuit.json"
+    },
+    {
+      "id": "gtwc-asia-2026-6",
+      "seriesId": "gtwc-asia",
+      "season": 2026,
+      "round": 6,
+      "name": "Shanghai International Circuit",
+      "cancelled": false,
+      "circuit": {
+        "id": "shanghai-international-circuit",
+        "name": "Shanghai International Circuit",
+        "locality": "Shanghai",
+        "country": "China",
+        "countryCode": "CHN"
+      },
+      "sessions": [
+        {
+          "type": "TEST_SESSION_1",
+          "name": "Test Session 1",
+          "startTimeUtc": "2026-10-30T00:30:00Z",
+          "startTimeTrack": "2026-10-30 08:30:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "OFFICIAL_PRACTICE",
+          "name": "Official Practice",
+          "startTimeUtc": "2026-10-30T02:38:00Z",
+          "startTimeTrack": "2026-10-30 10:38:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "PRE_QUALIFYING",
+          "name": "Pre-Qualifying",
+          "startTimeUtc": "2026-10-30T06:55:00Z",
+          "startTimeTrack": "2026-10-30 14:55:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "Q1",
+          "name": "Qualifying 1",
+          "startTimeUtc": "2026-10-31T01:35:00Z",
+          "startTimeTrack": "2026-10-31 09:35:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "Q2",
+          "name": "Qualifying 2",
+          "startTimeUtc": "2026-10-31T01:57:00Z",
+          "startTimeTrack": "2026-10-31 09:57:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "R1",
+          "name": "Race 1",
+          "startTimeUtc": "2026-10-31T04:50:00Z",
+          "startTimeTrack": "2026-10-31 12:50:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "R2",
+          "name": "Race 2",
+          "startTimeUtc": "2026-11-01T05:05:00Z",
+          "startTimeTrack": "2026-11-01 13:05:00+08:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        }
+      ],
+      "resultsPath": "events/06-shanghai-international-circuit.json"
+    }
+  ]
+}

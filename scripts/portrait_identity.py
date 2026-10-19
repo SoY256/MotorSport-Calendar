@@ -16,6 +16,8 @@ MANUAL_SOURCES = {
     "nicholas-monteiro": "https://indynxt-cdn.azureedge.net/-/media/IndyCar/Drivers/INDY-NXT/Driver-List/NicolasMonteiro.jpg",
     # FIA WEC 2025 profile; the upload file name does not contain his name.
     "michael-christensen": "https://www.fiawec.com/uploads/2-d58f99-697a311686989440950556.png",
+    # FIA WEC 2025 profile (Cadillac Hertz Team JOTA); joined the 2026 grid mid-season.
+    "alex-lynn": "https://www.fiawec.com/uploads/2-996353-697a37348a9a2056065011.png",
 }
 
 # Official source name used by the portrait feeds when it differs from the

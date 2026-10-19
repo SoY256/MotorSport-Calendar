@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../core/series_catalog.dart';
 import '../../calendar/domain/race_event.dart';
 
 class NotificationPreferences {
@@ -39,7 +40,7 @@ class NotificationPreferences {
             'id':
                 '${event.id}/${session.type}/${session.startTimeUtc.toIso8601String()}',
             'time': scheduled.millisecondsSinceEpoch,
-            'title': '${event.seriesId.toUpperCase()} • ${event.name}',
+            'title': '${seriesLabel(event.seriesId)} • ${event.name}',
             'body': leadMinutes == 0
                 ? '${session.name} ${pl ? 'rozpoczyna się teraz' : 'starts now'}'
                 : '${session.name} • ${pl ? 'Start za' : 'Starts in'} ${leadLabel(leadMinutes, pl)}',
@@ -64,13 +65,17 @@ class NotificationPreferences {
     return '$minutes min';
   }
 
-  static String kind(String type) => type.toUpperCase().contains('Q')
-      ? 'qualifying'
-      : (type == 'R' ||
-            type.toUpperCase().contains('RACE') ||
-            type.toUpperCase().contains('SPRINT'))
-      ? 'race'
-      : 'practice';
+  static String kind(String type) {
+    final upper = type.toUpperCase();
+    if (RegExp(r'^R\d*$').hasMatch(upper) ||
+        upper.contains('RACE') ||
+        upper.contains('SPRINT')) {
+      return 'race';
+    }
+    return upper.contains('Q') || upper.contains('POLE')
+        ? 'qualifying'
+        : 'practice';
+  }
 }
 
 class NotificationSettings extends StatefulWidget {
@@ -308,15 +313,7 @@ class _NotificationSettingsState extends State<NotificationSettings> {
                 label: Text(pl ? 'Wszystkie serie' : 'All series'),
                 onPressed: () {
                   setState(
-                    () => series = {
-                      'f1',
-                      'f2',
-                      'f3',
-                      'imsa',
-                      'indycar',
-                      'indynxt',
-                      'wec',
-                    },
+                    () => series = {for (final item in allSeries) item.id},
                   );
                   save();
                 },
@@ -324,23 +321,15 @@ class _NotificationSettingsState extends State<NotificationSettings> {
               Wrap(
                 spacing: 8,
                 children: [
-                  for (final id in [
-                    'f1',
-                    'f2',
-                    'f3',
-                    'imsa',
-                    'indycar',
-                    'indynxt',
-                    'wec',
-                  ])
+                  for (final item in allSeries)
                     FilterChip(
-                      label: Text(
-                        id == 'indynxt' ? 'INDY NXT' : id.toUpperCase(),
-                      ),
-                      selected: series.contains(id),
+                      label: Text(item.label),
+                      selected: series.contains(item.id),
                       onSelected: (selected) {
                         setState(() {
-                          selected ? series.add(id) : series.remove(id);
+                          selected
+                              ? series.add(item.id)
+                              : series.remove(item.id);
                         });
                         save();
                       },

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-27T15:41:52.138536Z",
+  "lastSuccessfulUpdate": "2026-10-19T14:22:46.196749Z",
   "source": {
     "name": "multi-source-official-refresh",
     "url": "https://github.com/SoY256/MotorSport-Calendar"
@@ -44,6 +44,48 @@
     },
     {
       "id": "wec",
+      "availableSeasons": [
+        2026
+      ]
+    },
+    {
+      "id": "gtwc-endurance",
+      "availableSeasons": [
+        2026
+      ]
+    },
+    {
+      "id": "gtwc-sprint",
+      "availableSeasons": [
+        2026
+      ]
+    },
+    {
+      "id": "gtwc-america",
+      "availableSeasons": [
+        2026
+      ]
+    },
+    {
+      "id": "gtwc-asia",
+      "availableSeasons": [
+        2026
+      ]
+    },
+    {
+      "id": "gtwc-australia",
+      "availableSeasons": [
+        2026
+      ]
+    },
+    {
+      "id": "british-gt",
+      "availableSeasons": [
+        2026
+      ]
+    },
+    {
+      "id": "igtc",
       "availableSeasons": [
         2026
       ]

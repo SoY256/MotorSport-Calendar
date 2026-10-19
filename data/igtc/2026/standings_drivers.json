@@ -1,0 +1,2563 @@
+{
+  "schemaVersion": 1,
+  "lastSuccessfulUpdate": "2026-10-19T14:22:20.472840Z",
+  "source": {
+    "name": "sro-official-standings",
+    "url": "https://www.intercontinentalgtchallenge.com/standings"
+  },
+  "data": [
+    {
+      "position": 1,
+      "points": 72.0,
+      "wins": 1,
+      "id": "maxime-martin",
+      "code": "34",
+      "givenName": "Maxime",
+      "familyName": "Martin",
+      "nationality": "BEL",
+      "teamIds": [
+        "mercedes-amg-team-jmf-motorsports"
+      ],
+      "teamNames": [
+        "Mercedes-AMG Team JMF Motorsports"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/maxime-martin.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4153.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4153/maxime-martin"
+    },
+    {
+      "position": 2,
+      "points": 68.0,
+      "wins": 1,
+      "id": "maro-engel",
+      "code": "48",
+      "givenName": "Maro",
+      "familyName": "Engel",
+      "nationality": "DEU",
+      "teamIds": [
+        "mercedes-amg-team-mann-filter"
+      ],
+      "teamNames": [
+        "Mercedes-AMG Team MANN-FILTER"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/maro-engel.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4145.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4145/maro-engel"
+    },
+    {
+      "position": 3,
+      "points": 61.0,
+      "wins": 0,
+      "id": "luca-stolz",
+      "code": "80",
+      "givenName": "Luca",
+      "familyName": "Stolz",
+      "nationality": "DEU",
+      "teamIds": [
+        "mercedes-amg-team-lone-star-racing"
+      ],
+      "teamNames": [
+        "Mercedes-AMG Team Lone Star Racing"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/luca-stolz.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4146.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4146/luca-stolz"
+    },
+    {
+      "position": 4,
+      "points": 56.0,
+      "wins": 0,
+      "id": "laurin-heinrich",
+      "code": "31",
+      "givenName": "Laurin",
+      "familyName": "Heinrich",
+      "nationality": "DEU",
+      "teamIds": [
+        "wright-motorsports"
+      ],
+      "teamNames": [
+        "Wright Motorsports"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/laurin-heinrich.jpg",
+      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_873.png",
+      "profile": "https://www.gt-world-challenge-asia.com/driver/873/laurin-heinrich"
+    },
+    {
+      "position": 5,
+      "points": 52.0,
+      "wins": 1,
+      "id": "ayhancan-guven",
+      "code": "32",
+      "givenName": "Ayhancan",
+      "familyName": "Guven",
+      "nationality": "TUR",
+      "teamIds": [
+        "gmg-racing"
+      ],
+      "teamNames": [
+        "GMG Racing"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/ayhancan-guven.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4303.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4303/ayhancan-guven"
+    },
+    {
+      "position": 6,
+      "points": 47.0,
+      "wins": 1,
+      "id": "bastian-buus",
+      "code": "80",
+      "givenName": "Bastian",
+      "familyName": "Buus",
+      "nationality": "DNK",
+      "teamIds": [
+        "lionspeed-gp"
+      ],
+      "teamNames": [
+        "Lionspeed GP"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/bastian-buus.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4087.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4087/bastian-buus"
+    },
+    {
+      "position": 7,
+      "points": 46.0,
+      "wins": 1,
+      "id": "ricardo-feller",
+      "code": "80",
+      "givenName": "Ricardo",
+      "familyName": "Feller",
+      "nationality": "CHE",
+      "teamIds": [
+        "lionspeed-gp"
+      ],
+      "teamNames": [
+        "Lionspeed GP"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/ricardo-feller.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4086.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4086/ricardo-feller"
+    },
+    {
+      "position": 8,
+      "points": 42.0,
+      "wins": 0,
+      "id": "alessio-picariello",
+      "code": "8",
+      "givenName": "Alessio",
+      "familyName": "Picariello",
+      "nationality": "BEL",
+      "teamIds": [
+        "mccann-racing"
+      ],
+      "teamNames": [
+        "McCann Racing"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/alessio-picariello.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4052.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4052/alessio-picariello"
+    },
+    {
+      "position": 9,
+      "points": 39.0,
+      "wins": 0,
+      "id": "dorian-boccolacci",
+      "code": "2",
+      "givenName": "Dorian",
+      "familyName": "Boccolacci",
+      "nationality": "FRA",
+      "teamIds": [
+        "boutsen-vds"
+      ],
+      "teamNames": [
+        "Boutsen VDS"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/dorian-boccolacci.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4162.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4162/dorian-boccolacci"
+    },
+    {
+      "position": 10,
+      "points": 38.0,
+      "wins": 0,
+      "id": "max-hesse",
+      "code": "46",
+      "givenName": "Max",
+      "familyName": "Hesse",
+      "nationality": "DEU",
+      "teamIds": [
+        "team-wrt"
+      ],
+      "teamNames": [
+        "Team WRT"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/max-hesse.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4104.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4104/max-hesse"
+    },
+    {
+      "position": 11,
+      "points": 37.0,
+      "wins": 1,
+      "id": "mikael-grenier",
+      "code": "34",
+      "givenName": "Mikael",
+      "familyName": "Grenier",
+      "nationality": "CAN",
+      "teamIds": [
+        "mercedes-amg-team-jmf-motorsports"
+      ],
+      "teamNames": [
+        "Mercedes-AMG Team JMF Motorsports"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/mikael-grenier.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4187.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4187/mikael-grenier"
+    },
+    {
+      "position": 12,
+      "points": 32.0,
+      "wins": 0,
+      "id": "daniel-harper",
+      "code": "46",
+      "givenName": "Daniel",
+      "familyName": "Harper",
+      "nationality": "GBR",
+      "teamIds": [
+        "team-wrt"
+      ],
+      "teamNames": [
+        "Team WRT"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/daniel-harper.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4147.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4147/daniel-harper"
+    },
+    {
+      "position": 13,
+      "points": 30.0,
+      "wins": 0,
+      "id": "nicklas-nielsen",
+      "code": "12",
+      "givenName": "Nicklas",
+      "familyName": "Nielsen",
+      "nationality": "DNK",
+      "teamIds": [
+        "af-corse-usa"
+      ],
+      "teamNames": [
+        "AF Corse USA"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/nicklas-nielsen.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4210.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4210/Nicklas-nielsen"
+    },
+    {
+      "position": 14,
+      "points": 28.0,
+      "wins": 0,
+      "id": "christopher-mies",
+      "code": "6",
+      "givenName": "Christopher",
+      "familyName": "Mies",
+      "nationality": "",
+      "teamIds": [
+        "dollahite-racing"
+      ],
+      "teamNames": [
+        "Dollahite Racing"
+      ],
+      "teamColors": [
+        "#1F4E9C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/christopher-mies.jpg",
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 14,
+      "points": 28.0,
+      "wins": 0,
+      "id": "dennis-olsen",
+      "code": "64",
+      "givenName": "Dennis",
+      "familyName": "Olsen",
+      "nationality": "",
+      "teamIds": [
+        "hrt-ford-racing"
+      ],
+      "teamNames": [
+        "HRT Ford Racing"
+      ],
+      "teamColors": [
+        "#1F4E9C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/dennis-olsen.jpg",
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 14,
+      "points": 28.0,
+      "wins": 0,
+      "id": "frederic-vervisch",
+      "code": "",
+      "givenName": "Frederic",
+      "familyName": "Vervisch",
+      "nationality": "",
+      "teamIds": [
+        "ford"
+      ],
+      "teamNames": [
+        "Ford"
+      ],
+      "teamColors": [
+        "#1F4E9C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/frederic-vervisch.jpg",
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 15,
+      "points": 25.0,
+      "wins": 0,
+      "id": "fabien-schiller",
+      "code": "6",
+      "givenName": "Fabien",
+      "familyName": "Schiller",
+      "nationality": "",
+      "teamIds": [
+        "mercedes-amg-team-tigani-motor"
+      ],
+      "teamNames": [
+        "Mercedes-AMG Team Tigani Motor"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 15,
+      "points": 25.0,
+      "wins": 1,
+      "id": "thomas-preining",
+      "code": "80",
+      "givenName": "Thomas",
+      "familyName": "Preining",
+      "nationality": "AUT",
+      "teamIds": [
+        "lionspeed-gp"
+      ],
+      "teamNames": [
+        "Lionspeed GP"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/thomas-preining.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4130.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4130/thomas-preining"
+    },
+    {
+      "position": 15,
+      "points": 25.0,
+      "wins": 0,
+      "id": "julian-andlauer",
+      "code": "",
+      "givenName": "Julian",
+      "familyName": "Andlauer",
+      "nationality": "",
+      "teamIds": [
+        "porsche"
+      ],
+      "teamNames": [
+        "Porsche"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 15,
+      "points": 25.0,
+      "wins": 1,
+      "id": "kyle-washington",
+      "code": "32",
+      "givenName": "Kyle",
+      "familyName": "Washington",
+      "nationality": "USA",
+      "teamIds": [
+        "gmg-racing"
+      ],
+      "teamNames": [
+        "GMG Racing"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/kyle-washington.jpg",
+      "portraitSource": "https://www.gt-world-challenge-america.com/images/drivers/photo_384.jpg",
+      "profile": "https://www.gt-world-challenge-america.com/driver/384/kyle-washington"
+    },
+    {
+      "position": 15,
+      "points": 25.0,
+      "wins": 0,
+      "id": "ricardo-pera",
+      "code": "",
+      "givenName": "Ricardo",
+      "familyName": "Pera",
+      "nationality": "",
+      "teamIds": [
+        "porsche"
+      ],
+      "teamNames": [
+        "Porsche"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 16,
+      "points": 24.0,
+      "wins": 0,
+      "id": "anders-fjordbach",
+      "code": "86",
+      "givenName": "Anders",
+      "familyName": "Fjordbach",
+      "nationality": "",
+      "teamIds": [
+        "high-class-racing"
+      ],
+      "teamNames": [
+        "High Class Racing"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 16,
+      "points": 24.0,
+      "wins": 0,
+      "id": "kerong-li",
+      "code": "86",
+      "givenName": "Kerong",
+      "familyName": "Li",
+      "nationality": "CHN",
+      "teamIds": [
+        "high-class-racing"
+      ],
+      "teamNames": [
+        "High Class Racing"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_871.png",
+      "profile": "https://www.gt-world-challenge-asia.com/driver/891/kerong-li"
+    },
+    {
+      "position": 17,
+      "points": 23.0,
+      "wins": 0,
+      "id": "valentino-rossi",
+      "code": "46",
+      "givenName": "Valentino",
+      "familyName": "Rossi",
+      "nationality": "ITA",
+      "teamIds": [
+        "team-wrt"
+      ],
+      "teamNames": [
+        "Team WRT"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/valentino-rossi.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4103.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4103/valentino-rossi-"
+    },
+    {
+      "position": 18,
+      "points": 22.0,
+      "wins": 0,
+      "id": "matt-campbell",
+      "code": "22",
+      "givenName": "Matt",
+      "familyName": "Campbell",
+      "nationality": "AUS",
+      "teamIds": [
+        "schumacher-clrt"
+      ],
+      "teamNames": [
+        "Schumacher CLRT"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/matt-campbell.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4304.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4304/matt-campbell"
+    },
+    {
+      "position": 19,
+      "points": 19.0,
+      "wins": 0,
+      "id": "augusto-farfus",
+      "code": "98",
+      "givenName": "Augusto",
+      "familyName": "Farfus",
+      "nationality": "BRA",
+      "teamIds": [
+        "rowe-racing"
+      ],
+      "teamNames": [
+        "Rowe Racing"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/augusto-farfus.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4117.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4117/augusto-farfus"
+    },
+    {
+      "position": 19,
+      "points": 19.0,
+      "wins": 0,
+      "id": "raffaele-marciello",
+      "code": "98",
+      "givenName": "Raffaele",
+      "familyName": "Marciello",
+      "nationality": "ITA",
+      "teamIds": [
+        "rowe-racing"
+      ],
+      "teamNames": [
+        "Rowe Racing"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/raffaele-marciello.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4118.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4118/raffaele-marciello"
+    },
+    {
+      "position": 20,
+      "points": 18.0,
+      "wins": 0,
+      "id": "dries-vanthoor",
+      "code": "",
+      "givenName": "Dries",
+      "familyName": "Vanthoor",
+      "nationality": "BEL",
+      "teamIds": [
+        "bmw"
+      ],
+      "teamNames": [
+        "BMW"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/dries-vanthoor.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4265.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4265/dries-vanthoor"
+    },
+    {
+      "position": 20,
+      "points": 18.0,
+      "wins": 0,
+      "id": "lucas-auer",
+      "code": "48",
+      "givenName": "Lucas",
+      "familyName": "Auer",
+      "nationality": "AUT",
+      "teamIds": [
+        "mercedes-amg-team-mann-filter"
+      ],
+      "teamNames": [
+        "Mercedes-AMG Team MANN-FILTER"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/lucas-auer.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4102.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4102/lucas-auer"
+    },
+    {
+      "position": 20,
+      "points": 18.0,
+      "wins": 0,
+      "id": "sheldon-van-der-linde",
+      "code": "",
+      "givenName": "Sheldon",
+      "familyName": "van der Linde",
+      "nationality": "",
+      "teamIds": [
+        "bmw"
+      ],
+      "teamNames": [
+        "BMW"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/sheldon-van-der-linde.jpg",
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 20,
+      "points": 18.0,
+      "wins": 0,
+      "id": "justin-rothberg",
+      "code": "29",
+      "givenName": "Justin",
+      "familyName": "Rothberg",
+      "nationality": "USA",
+      "teamIds": [
+        "turner-motorsport"
+      ],
+      "teamNames": [
+        "Turner Motorsport"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/justin-rothberg.jpg",
+      "portraitSource": "https://www.gt-world-challenge-america.com/images/drivers/photo_383.jpg",
+      "profile": "https://www.gt-world-challenge-america.com/driver/383/justin-rothberg"
+    },
+    {
+      "position": 20,
+      "points": 18.0,
+      "wins": 0,
+      "id": "connor-de-phillippi",
+      "code": "29",
+      "givenName": "Connor",
+      "familyName": "de Phillippi",
+      "nationality": "",
+      "teamIds": [
+        "turner-motorsport"
+      ],
+      "teamNames": [
+        "Turner Motorsport"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/connor-de-phillippi.jpg",
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 20,
+      "points": 18.0,
+      "wins": 0,
+      "id": "robby-foley",
+      "code": "29",
+      "givenName": "Robby",
+      "familyName": "Foley",
+      "nationality": "USA",
+      "teamIds": [
+        "turner-motorsport"
+      ],
+      "teamNames": [
+        "Turner Motorsport"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/robby-foley.jpg",
+      "portraitSource": "https://www.gt-world-challenge-america.com/images/drivers/photo_366.jpg",
+      "profile": "https://www.gt-world-challenge-america.com/driver/366/robby-foley"
+    },
+    {
+      "position": 21,
+      "points": 16.0,
+      "wins": 0,
+      "id": "joel-sturm",
+      "code": "8",
+      "givenName": "Joel",
+      "familyName": "Sturm",
+      "nationality": "DEU",
+      "teamIds": [
+        "car-collection-motorsport"
+      ],
+      "teamNames": [
+        "Car Collection Motorsport"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_871.png",
+      "profile": "https://www.gt-world-challenge-asia.com/driver/892/joel-sturm"
+    },
+    {
+      "position": 22,
+      "points": 15.0,
+      "wins": 0,
+      "id": "alessio-rovera",
+      "code": "51",
+      "givenName": "Alessio",
+      "familyName": "Rovera",
+      "nationality": "ITA",
+      "teamIds": [
+        "af-corse"
+      ],
+      "teamNames": [
+        "AF Corse"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/alessio-rovera.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4143.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4143/alessio-rovera"
+    },
+    {
+      "position": 22,
+      "points": 15.0,
+      "wins": 0,
+      "id": "laurens-vanthoor",
+      "code": "",
+      "givenName": "Laurens",
+      "familyName": "Vanthoor",
+      "nationality": "",
+      "teamIds": [
+        "porsche"
+      ],
+      "teamNames": [
+        "Porsche"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/laurens-vanthoor.jpg",
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 22,
+      "points": 15.0,
+      "wins": 0,
+      "id": "tommaso-mosca",
+      "code": "51",
+      "givenName": "Tommaso",
+      "familyName": "Mosca",
+      "nationality": "ITA",
+      "teamIds": [
+        "af-corse"
+      ],
+      "teamNames": [
+        "AF Corse"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/tommaso-mosca.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4100.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4100/tommaso-mosca"
+    },
+    {
+      "position": 22,
+      "points": 15.0,
+      "wins": 0,
+      "id": "alessandro-ghiretti",
+      "code": "10",
+      "givenName": "Alessandro",
+      "familyName": "Ghiretti",
+      "nationality": "FRA",
+      "teamIds": [
+        "boutsen-vds"
+      ],
+      "teamNames": [
+        "Boutsen VDS"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/alessandro-ghiretti.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4184.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4184/alessandro-ghiretti"
+    },
+    {
+      "position": 22,
+      "points": 15.0,
+      "wins": 0,
+      "id": "matias-perez-companc",
+      "code": "12",
+      "givenName": "Matias",
+      "familyName": "Perez Companc",
+      "nationality": "ARG",
+      "teamIds": [
+        "af-corse-usa"
+      ],
+      "teamNames": [
+        "AF Corse USA"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/matias-perez-companc.jpg",
+      "portraitSource": "https://www.gt-world-challenge-america.com/images/drivers/photo_373.jpg",
+      "profile": "https://www.gt-world-challenge-america.com/driver/373/matias-perez-companc"
+    },
+    {
+      "position": 22,
+      "points": 15.0,
+      "wins": 0,
+      "id": "frederik-schandorff",
+      "code": "12",
+      "givenName": "Frederik",
+      "familyName": "Schandorff",
+      "nationality": "DNK",
+      "teamIds": [
+        "af-corse-usa"
+      ],
+      "teamNames": [
+        "AF Corse USA"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/frederik-schandorff.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4223.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4223/frederik-schandorff"
+    },
+    {
+      "position": 23,
+      "points": 14.0,
+      "wins": 0,
+      "id": "daan-arrow",
+      "code": "28",
+      "givenName": "Daan",
+      "familyName": "Arrow",
+      "nationality": "NLD",
+      "teamIds": [
+        "rs1"
+      ],
+      "teamNames": [
+        "RS1"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/daan-arrow.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4326.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4326/daan-arrow"
+    },
+    {
+      "position": 24,
+      "points": 12.0,
+      "wins": 0,
+      "id": "cunfan-ruan",
+      "code": "89",
+      "givenName": "Cunfan",
+      "familyName": "Ruan",
+      "nationality": "",
+      "teamIds": [
+        "team-krc"
+      ],
+      "teamNames": [
+        "Team KRC"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 24,
+      "points": 12.0,
+      "wins": 0,
+      "id": "frederic-makowiecki",
+      "code": "22",
+      "givenName": "Frederic",
+      "familyName": "Makowiecki",
+      "nationality": "FRA",
+      "teamIds": [
+        "schumacher-clrt"
+      ],
+      "teamNames": [
+        "Schumacher CLRT"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/frederic-makowiecki.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4304.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4368/frederic-makoviewcki"
+    },
+    {
+      "position": 24,
+      "points": 12.0,
+      "wins": 0,
+      "id": "maxime-oosten",
+      "code": "65",
+      "givenName": "Maxime",
+      "familyName": "Oosten",
+      "nationality": "NLD",
+      "teamIds": [
+        "hrt-ford-racing"
+      ],
+      "teamNames": [
+        "HRT Ford Racing"
+      ],
+      "teamColors": [
+        "#1F4E9C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4179.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4179/maxime-oosten"
+    },
+    {
+      "position": 24,
+      "points": 12.0,
+      "wins": 0,
+      "id": "michael-christensen",
+      "code": "",
+      "givenName": "Michael",
+      "familyName": "Christensen",
+      "nationality": "",
+      "teamIds": [
+        "porsche"
+      ],
+      "teamNames": [
+        "Porsche"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/michael-christensen.jpg",
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 24,
+      "points": 12.0,
+      "wins": 0,
+      "id": "alexander-sims",
+      "code": "2",
+      "givenName": "Alexander",
+      "familyName": "Sims",
+      "nationality": "",
+      "teamIds": [
+        "johor-motorsports-racing-jmr"
+      ],
+      "teamNames": [
+        "Johor Motorsports Racing JMR"
+      ],
+      "teamColors": [
+        "#E8B500"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/alexander-sims.jpg",
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 24,
+      "points": 12.0,
+      "wins": 0,
+      "id": "scott-mclaughlin",
+      "code": "",
+      "givenName": "Scott",
+      "familyName": "McLaughlin",
+      "nationality": "",
+      "teamIds": [
+        "chevrolet"
+      ],
+      "teamNames": [
+        "Chevrolet"
+      ],
+      "teamColors": [
+        "#E8B500"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/scott-mclaughlin.jpg",
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 24,
+      "points": 12.0,
+      "wins": 0,
+      "id": "nicky-catsburg",
+      "code": "2",
+      "givenName": "Nicky",
+      "familyName": "Catsburg",
+      "nationality": "",
+      "teamIds": [
+        "johor-motorsports-racing-jmr"
+      ],
+      "teamNames": [
+        "Johor Motorsports Racing JMR"
+      ],
+      "teamColors": [
+        "#E8B500"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/nicky-catsburg.jpg",
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 24,
+      "points": 12.0,
+      "wins": 0,
+      "id": "michai-stephens",
+      "code": "34",
+      "givenName": "Michai",
+      "familyName": "Stephens",
+      "nationality": "USA",
+      "teamIds": [
+        "mercedes-amg-team-jmf-motorsports"
+      ],
+      "teamNames": [
+        "Mercedes-AMG Team JMF Motorsports"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/michai-stephens.jpg",
+      "portraitSource": "https://www.gt-world-challenge-america.com/images/drivers/photo_386.jpg",
+      "profile": "https://www.gt-world-challenge-america.com/driver/386/michai-stephens"
+    },
+    {
+      "position": 25,
+      "points": 10.0,
+      "wins": 0,
+      "id": "arthur-leclerc",
+      "code": "50",
+      "givenName": "Arthur",
+      "familyName": "Leclerc",
+      "nationality": "MCO",
+      "teamIds": [
+        "af-corse"
+      ],
+      "teamNames": [
+        "AF Corse"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/arthur-leclerc.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4101.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4101/arthur-leclerc"
+    },
+    {
+      "position": 25,
+      "points": 10.0,
+      "wins": 0,
+      "id": "frank-stippler",
+      "code": "",
+      "givenName": "Frank",
+      "familyName": "Stippler",
+      "nationality": "",
+      "teamIds": [
+        "ford"
+      ],
+      "teamNames": [
+        "Ford"
+      ],
+      "teamColors": [
+        "#1F4E9C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 25,
+      "points": 10.0,
+      "wins": 0,
+      "id": "lilou-wadoux",
+      "code": "50",
+      "givenName": "Lilou",
+      "familyName": "Wadoux",
+      "nationality": "FRA",
+      "teamIds": [
+        "af-corse"
+      ],
+      "teamNames": [
+        "AF Corse"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/lilou-wadoux.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4209.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4209/Lilou-wadoux"
+    },
+    {
+      "position": 25,
+      "points": 10.0,
+      "wins": 0,
+      "id": "sean-gelael",
+      "code": "50",
+      "givenName": "Sean",
+      "familyName": "Gelael",
+      "nationality": "IDN",
+      "teamIds": [
+        "af-corse"
+      ],
+      "teamNames": [
+        "AF Corse"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/sean-gelael.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4144.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4144/sean-gelael"
+    },
+    {
+      "position": 25,
+      "points": 10.0,
+      "wins": 0,
+      "id": "kakunoshin-ohta",
+      "code": "",
+      "givenName": "Kakunoshin",
+      "familyName": "Ohta",
+      "nationality": "",
+      "teamIds": [
+        "mercedes-amg"
+      ],
+      "teamNames": [
+        "Mercedes-AMG"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 25,
+      "points": 10.0,
+      "wins": 0,
+      "id": "morris-schuring",
+      "code": "120",
+      "givenName": "Morris",
+      "familyName": "Schuring",
+      "nationality": "NLD",
+      "teamIds": [
+        "wright-motorsports"
+      ],
+      "teamNames": [
+        "Wright Motorsports"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/morris-schuring.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4053.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4053/morris-schuring"
+    },
+    {
+      "position": 25,
+      "points": 10.0,
+      "wins": 0,
+      "id": "dave-musial-jr",
+      "code": "31",
+      "givenName": "Dave",
+      "familyName": "Musial Jr.",
+      "nationality": "USA",
+      "teamIds": [
+        "wright-motorsports"
+      ],
+      "teamNames": [
+        "Wright Motorsports"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/dave-musial-jr.jpg",
+      "portraitSource": "https://www.gt-world-challenge-america.com/images/drivers/photo_395.jpg",
+      "profile": "https://www.gt-world-challenge-america.com/driver/395/dave-musial-jr."
+    },
+    {
+      "position": 25,
+      "points": 10.0,
+      "wins": 0,
+      "id": "ryan-yardley",
+      "code": "31",
+      "givenName": "Ryan",
+      "familyName": "Yardley",
+      "nationality": "NZE",
+      "teamIds": [
+        "wright-motorsports"
+      ],
+      "teamNames": [
+        "Wright Motorsports"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/ryan-yardley.jpg",
+      "portraitSource": "https://www.gt-world-challenge-america.com/images/drivers/photo_396.jpg",
+      "profile": "https://www.gt-world-challenge-america.com/driver/396/ryan-yardley"
+    },
+    {
+      "position": 26,
+      "points": 8.0,
+      "wins": 0,
+      "id": "charles-weerts",
+      "code": "32",
+      "givenName": "Charles",
+      "familyName": "Weerts",
+      "nationality": "BEL",
+      "teamIds": [
+        "team-wrt"
+      ],
+      "teamNames": [
+        "Team WRT"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/charles-weerts.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4106.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4106/charles-weerts"
+    },
+    {
+      "position": 26,
+      "points": 8.0,
+      "wins": 0,
+      "id": "jules-gounon",
+      "code": "3",
+      "givenName": "Jules",
+      "familyName": "Gounon",
+      "nationality": "FRA",
+      "teamIds": [
+        "mercedes-amg-team-verstappen-racing"
+      ],
+      "teamNames": [
+        "Mercedes-AMG Team Verstappen Racing"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/jules-gounon.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4159.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4159/jules-gounon"
+    },
+    {
+      "position": 26,
+      "points": 8.0,
+      "wins": 0,
+      "id": "kenny-habul",
+      "code": "75",
+      "givenName": "Kenny",
+      "familyName": "Habul",
+      "nationality": "",
+      "teamIds": [
+        "75-express"
+      ],
+      "teamNames": [
+        "75 Express"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/kenny-habul.jpg",
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 26,
+      "points": 8.0,
+      "wins": 0,
+      "id": "marco-wittmann",
+      "code": "",
+      "givenName": "Marco",
+      "familyName": "Wittmann",
+      "nationality": "",
+      "teamIds": [
+        "bmw"
+      ],
+      "teamNames": [
+        "BMW"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/marco-wittmann.jpg",
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 26,
+      "points": 8.0,
+      "wins": 0,
+      "id": "philipp-eng",
+      "code": "",
+      "givenName": "Philipp",
+      "familyName": "Eng",
+      "nationality": "",
+      "teamIds": [
+        "bmw"
+      ],
+      "teamNames": [
+        "BMW"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/philipp-eng.jpg",
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 26,
+      "points": 8.0,
+      "wins": 0,
+      "id": "robin-frijns",
+      "code": "",
+      "givenName": "Robin",
+      "familyName": "Frijns",
+      "nationality": "",
+      "teamIds": [
+        "bmw"
+      ],
+      "teamNames": [
+        "BMW"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/robin-frijns.jpg",
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 26,
+      "points": 8.0,
+      "wins": 0,
+      "id": "takuro-shinohara",
+      "code": "",
+      "givenName": "Takuro",
+      "familyName": "Shinohara",
+      "nationality": "JPN",
+      "teamIds": [
+        "ferrari"
+      ],
+      "teamNames": [
+        "Ferrari"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_882.png",
+      "profile": "https://www.gt-world-challenge-asia.com/driver/893/takuro-shinohara"
+    },
+    {
+      "position": 26,
+      "points": 8.0,
+      "wins": 0,
+      "id": "seita-nonaka",
+      "code": "",
+      "givenName": "Seita",
+      "familyName": "Nonaka",
+      "nationality": "",
+      "teamIds": [
+        "ferrari"
+      ],
+      "teamNames": [
+        "Ferrari"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 26,
+      "points": 8.0,
+      "wins": 0,
+      "id": "tadasuke-makino",
+      "code": "",
+      "givenName": "Tadasuke",
+      "familyName": "Makino",
+      "nationality": "",
+      "teamIds": [
+        "ferrari"
+      ],
+      "teamNames": [
+        "Ferrari"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 26,
+      "points": 8.0,
+      "wins": 0,
+      "id": "alfred-renauer",
+      "code": "91",
+      "givenName": "Alfred",
+      "familyName": "Renauer",
+      "nationality": "DEU",
+      "teamIds": [
+        "herberth-motorsport"
+      ],
+      "teamNames": [
+        "Herberth Motorsport"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/alfred-renauer.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4125.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4125/alfred-renauer"
+    },
+    {
+      "position": 26,
+      "points": 8.0,
+      "wins": 0,
+      "id": "ralf-bohn",
+      "code": "91",
+      "givenName": "Ralf",
+      "familyName": "Bohn",
+      "nationality": "DEU",
+      "teamIds": [
+        "herberth-motorsport"
+      ],
+      "teamNames": [
+        "Herberth Motorsport"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/ralf-bohn.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4124.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4124/ralf-bohn"
+    },
+    {
+      "position": 26,
+      "points": 8.0,
+      "wins": 0,
+      "id": "robert-renauer",
+      "code": "91",
+      "givenName": "Robert",
+      "familyName": "Renauer",
+      "nationality": "DEU",
+      "teamIds": [
+        "herberth-motorsport"
+      ],
+      "teamNames": [
+        "Herberth Motorsport"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/robert-renauer.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4126.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4126/robert-renauer"
+    },
+    {
+      "position": 26,
+      "points": 8.0,
+      "wins": 0,
+      "id": "danny-dyszelski",
+      "code": "28",
+      "givenName": "Danny",
+      "familyName": "Dyszelski",
+      "nationality": "",
+      "teamIds": [
+        "rs1"
+      ],
+      "teamNames": [
+        "RS1"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 26,
+      "points": 8.0,
+      "wins": 0,
+      "id": "jan-heylen",
+      "code": "28",
+      "givenName": "Jan",
+      "familyName": "Heylen",
+      "nationality": "",
+      "teamIds": [
+        "rs1"
+      ],
+      "teamNames": [
+        "RS1"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/jan-heylen.jpg",
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 27,
+      "points": 6.0,
+      "wins": 0,
+      "id": "dylan-pereira",
+      "code": "99",
+      "givenName": "Dylan",
+      "familyName": "Pereira",
+      "nationality": "LUX",
+      "teamIds": [
+        "tresor-attempto-racing"
+      ],
+      "teamNames": [
+        "Tresor Attempto Racing"
+      ],
+      "teamColors": [
+        "#BB0A30"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/dylan-pereira.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4174.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4174/dylan-pereira"
+    },
+    {
+      "position": 27,
+      "points": 6.0,
+      "wins": 0,
+      "id": "klaus-bachler",
+      "code": "61",
+      "givenName": "Klaus",
+      "familyName": "Bachler",
+      "nationality": "DEU",
+      "teamIds": [
+        "ebm"
+      ],
+      "teamNames": [
+        "EBM"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/klaus-bachler.jpg",
+      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_871.png",
+      "profile": "https://www.gt-world-challenge-asia.com/driver/871/klaus-bachler"
+    },
+    {
+      "position": 27,
+      "points": 6.0,
+      "wins": 0,
+      "id": "patrick-assenheimer",
+      "code": "",
+      "givenName": "Patrick",
+      "familyName": "Assenheimer",
+      "nationality": "",
+      "teamIds": [
+        "porsche"
+      ],
+      "teamNames": [
+        "Porsche"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 27,
+      "points": 6.0,
+      "wins": 0,
+      "id": "tobias-muller",
+      "code": "123",
+      "givenName": "Tobias",
+      "familyName": "Muller",
+      "nationality": "DEU",
+      "teamIds": [
+        "muehlner-motorsport"
+      ],
+      "teamNames": [
+        "Muehlner Motorsport"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4342/tobias-mueller"
+    },
+    {
+      "position": 27,
+      "points": 6.0,
+      "wins": 0,
+      "id": "anthony-mcintosh",
+      "code": "",
+      "givenName": "Anthony",
+      "familyName": "McIntosh",
+      "nationality": "",
+      "teamIds": [
+        "bmw"
+      ],
+      "teamNames": [
+        "BMW"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/anthony-mcintosh.jpg",
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 27,
+      "points": 6.0,
+      "wins": 0,
+      "id": "parker-thompson",
+      "code": "",
+      "givenName": "Parker",
+      "familyName": "Thompson",
+      "nationality": "",
+      "teamIds": [
+        "bmw"
+      ],
+      "teamNames": [
+        "BMW"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/parker-thompson.jpg",
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 28,
+      "points": 4.0,
+      "wins": 0,
+      "id": "daniel-serra",
+      "code": "26",
+      "givenName": "Daniel",
+      "familyName": "Serra",
+      "nationality": "",
+      "teamIds": [
+        "arise-racing-gt"
+      ],
+      "teamNames": [
+        "Arise Racing GT"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/daniel-serra.jpg",
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 28,
+      "points": 4.0,
+      "wins": 0,
+      "id": "davide-rigon",
+      "code": "26",
+      "givenName": "Davide",
+      "familyName": "Rigon",
+      "nationality": "",
+      "teamIds": [
+        "arise-racing-gt"
+      ],
+      "teamNames": [
+        "Arise Racing GT"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/davide-rigon.jpg",
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 28,
+      "points": 4.0,
+      "wins": 0,
+      "id": "jake-dennis",
+      "code": "98",
+      "givenName": "Jake",
+      "familyName": "Dennis",
+      "nationality": "GBR",
+      "teamIds": [
+        "rowe-racing"
+      ],
+      "teamNames": [
+        "Rowe Racing"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/jake-dennis.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4119.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4119/jake-dennis"
+    },
+    {
+      "position": 28,
+      "points": 4.0,
+      "wins": 0,
+      "id": "jake-hill",
+      "code": "",
+      "givenName": "Jake",
+      "familyName": "Hill",
+      "nationality": "",
+      "teamIds": [
+        "porsche"
+      ],
+      "teamNames": [
+        "Porsche"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 28,
+      "points": 4.0,
+      "wins": 0,
+      "id": "jaxon-evans",
+      "code": "26",
+      "givenName": "Jaxon",
+      "familyName": "Evans",
+      "nationality": "NZL",
+      "teamIds": [
+        "arise-racing-gt"
+      ],
+      "teamNames": [
+        "Arise Racing GT"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/jaxon-evans.jpg",
+      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_857.png",
+      "profile": "https://www.gt-world-challenge-asia.com/driver/857/jaxon-evans"
+    },
+    {
+      "position": 28,
+      "points": 4.0,
+      "wins": 0,
+      "id": "kyle-tilley",
+      "code": "",
+      "givenName": "Kyle",
+      "familyName": "Tilley",
+      "nationality": "",
+      "teamIds": [
+        "porsche"
+      ],
+      "teamNames": [
+        "Porsche"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 28,
+      "points": 4.0,
+      "wins": 0,
+      "id": "max-hofer",
+      "code": "9",
+      "givenName": "Max",
+      "familyName": "Hofer",
+      "nationality": "AUT",
+      "teamIds": [
+        "pure-rxcing"
+      ],
+      "teamNames": [
+        "Pure Rxcing"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4183.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4183/max-hofer"
+    },
+    {
+      "position": 28,
+      "points": 4.0,
+      "wins": 0,
+      "id": "patrick-kolb",
+      "code": "89",
+      "givenName": "Patrick",
+      "familyName": "Kolb",
+      "nationality": "DEU",
+      "teamIds": [
+        "lionspeed-gp"
+      ],
+      "teamNames": [
+        "Lionspeed GP"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/patrick-kolb.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4127.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4127/patrick-kolb"
+    },
+    {
+      "position": 28,
+      "points": 4.0,
+      "wins": 0,
+      "id": "thomas-merrill",
+      "code": "120",
+      "givenName": "Thomas",
+      "familyName": "Merrill",
+      "nationality": "",
+      "teamIds": [
+        "wright-motorsports"
+      ],
+      "teamNames": [
+        "Wright Motorsports"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 28,
+      "points": 4.0,
+      "wins": 0,
+      "id": "kevin-estre",
+      "code": "120",
+      "givenName": "Kevin",
+      "familyName": "Estre",
+      "nationality": "",
+      "teamIds": [
+        "wright-motorsports"
+      ],
+      "teamNames": [
+        "Wright Motorsports"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/kevin-estre.jpg",
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 29,
+      "points": 2.0,
+      "wins": 0,
+      "id": "alex-brundle",
+      "code": "",
+      "givenName": "Alex",
+      "familyName": "Brundle",
+      "nationality": "",
+      "teamIds": [
+        "porsche"
+      ],
+      "teamNames": [
+        "Porsche"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 29,
+      "points": 2.0,
+      "wins": 0,
+      "id": "ben-bunnagel",
+      "code": "",
+      "givenName": "Ben",
+      "familyName": "Bünnagel",
+      "nationality": "",
+      "teamIds": [
+        "porsche"
+      ],
+      "teamNames": [
+        "Porsche"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 29,
+      "points": 2.0,
+      "wins": 0,
+      "id": "ben-tuck",
+      "code": "74",
+      "givenName": "Ben",
+      "familyName": "Tuck",
+      "nationality": "GBR",
+      "teamIds": [
+        "kessel-racing"
+      ],
+      "teamNames": [
+        "Kessel Racing"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/ben-tuck.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4320.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4320/ben-tuck"
+    },
+    {
+      "position": 29,
+      "points": 2.0,
+      "wins": 0,
+      "id": "chris-froggatt",
+      "code": "193",
+      "givenName": "Chris",
+      "familyName": "Froggatt",
+      "nationality": "",
+      "teamIds": [
+        "ziggo-sport-tempesta-by-argt"
+      ],
+      "teamNames": [
+        "Ziggo Sport Tempesta by ARGT"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 29,
+      "points": 2.0,
+      "wins": 0,
+      "id": "dennis-marschall",
+      "code": "74",
+      "givenName": "Dennis",
+      "familyName": "Marschall",
+      "nationality": "DEU",
+      "teamIds": [
+        "kessel-racing"
+      ],
+      "teamNames": [
+        "Kessel Racing"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/dennis-marschall.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4088.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4088/dennis-marschall"
+    },
+    {
+      "position": 29,
+      "points": 2.0,
+      "wins": 0,
+      "id": "dustin-blattner",
+      "code": "74",
+      "givenName": "Dustin",
+      "familyName": "Blattner",
+      "nationality": "USA",
+      "teamIds": [
+        "kessel-racing"
+      ],
+      "teamNames": [
+        "Kessel Racing"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/dustin-blattner.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4089.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4089/dustin-blattner"
+    },
+    {
+      "position": 29,
+      "points": 2.0,
+      "wins": 0,
+      "id": "jonathan-hui",
+      "code": "93",
+      "givenName": "Jonathan",
+      "familyName": "Hui",
+      "nationality": "HKG",
+      "teamIds": [
+        "ziggo-tempesta-racing"
+      ],
+      "teamNames": [
+        "Ziggo Tempesta Racing"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/jonathan-hui.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4082.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4082/jonathan-hui"
+    },
+    {
+      "position": 29,
+      "points": 2.0,
+      "wins": 0,
+      "id": "lorenzo-patrese",
+      "code": "193",
+      "givenName": "Lorenzo",
+      "familyName": "Patrese",
+      "nationality": "ITA",
+      "teamIds": [
+        "ziggo-sport-tempesta-by-argt"
+      ],
+      "teamNames": [
+        "Ziggo Sport Tempesta by ARGT"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/lorenzo-patrese.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4131.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4131/lorenzo-patrese"
+    },
+    {
+      "position": 29,
+      "points": 2.0,
+      "wins": 0,
+      "id": "martin-rump",
+      "code": "97",
+      "givenName": "Martin",
+      "familyName": "Rump",
+      "nationality": "EST",
+      "teamIds": [
+        "rutronik-racing"
+      ],
+      "teamNames": [
+        "Rutronik Racing"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/martin-rump.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4330.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4330/martin-rump"
+    },
+    {
+      "position": 29,
+      "points": 2.0,
+      "wins": 0,
+      "id": "mathys-jaubert",
+      "code": "74",
+      "givenName": "Mathys",
+      "familyName": "Jaubert",
+      "nationality": "FRA",
+      "teamIds": [
+        "kessel-racing"
+      ],
+      "teamNames": [
+        "Kessel Racing"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/mathys-jaubert.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4089.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4321/mathys-jaubert"
+    },
+    {
+      "position": 29,
+      "points": 2.0,
+      "wins": 0,
+      "id": "ryan-wood",
+      "code": "193",
+      "givenName": "Ryan",
+      "familyName": "Wood",
+      "nationality": "NZD",
+      "teamIds": [
+        "ziggo-sport-tempesta-by-argt"
+      ],
+      "teamNames": [
+        "Ziggo Sport Tempesta by ARGT"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/ryan-wood.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_210.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/210/ryan-wood"
+    },
+    {
+      "position": 29,
+      "points": 2.0,
+      "wins": 0,
+      "id": "kei-nakanishi",
+      "code": "",
+      "givenName": "Kei",
+      "familyName": "Nakanishi",
+      "nationality": "",
+      "teamIds": [
+        "ferrari"
+      ],
+      "teamNames": [
+        "Ferrari"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 29,
+      "points": 2.0,
+      "wins": 0,
+      "id": "shigekazu-wakisaka",
+      "code": "",
+      "givenName": "Shigekazu",
+      "familyName": "Wakisaka",
+      "nationality": "JPN",
+      "teamIds": [
+        "ferrari"
+      ],
+      "teamNames": [
+        "Ferrari"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/shigekazu-wakisaka.jpg",
+      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_878.png",
+      "profile": "https://www.gt-world-challenge-asia.com/driver/878/shigekazu-wakisaka"
+    },
+    {
+      "position": 29,
+      "points": 2.0,
+      "wins": 0,
+      "id": "giancarlo-fisichella",
+      "code": "",
+      "givenName": "Giancarlo",
+      "familyName": "Fisichella",
+      "nationality": "",
+      "teamIds": [
+        "ferrari"
+      ],
+      "teamNames": [
+        "Ferrari"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 29,
+      "points": 2.0,
+      "wins": 0,
+      "id": "hongli-ye",
+      "code": "86",
+      "givenName": "Hongli",
+      "familyName": "Ye",
+      "nationality": "",
+      "teamIds": [
+        "high-class-racing"
+      ],
+      "teamNames": [
+        "High Class Racing"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 30,
+      "points": 1.0,
+      "wins": 0,
+      "id": "jens-klingmann",
+      "code": "998",
+      "givenName": "Jens",
+      "familyName": "Klingmann",
+      "nationality": "DEU",
+      "teamIds": [
+        "rowe-racing"
+      ],
+      "teamNames": [
+        "Rowe Racing"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/jens-klingmann.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4112.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4112/jens-klingmann"
+    },
+    {
+      "position": 30,
+      "points": 1.0,
+      "wins": 0,
+      "id": "jongjyum-kim",
+      "code": "",
+      "givenName": "Jongjyum",
+      "familyName": "Kim",
+      "nationality": "",
+      "teamIds": [
+        "porsche"
+      ],
+      "teamNames": [
+        "Porsche"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 30,
+      "points": 1.0,
+      "wins": 0,
+      "id": "marco-seefried",
+      "code": "",
+      "givenName": "Marco",
+      "familyName": "Seefried",
+      "nationality": "",
+      "teamIds": [
+        "porsche"
+      ],
+      "teamNames": [
+        "Porsche"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 30,
+      "points": 1.0,
+      "wins": 0,
+      "id": "roelof-bruins",
+      "code": "",
+      "givenName": "Roelof",
+      "familyName": "Bruins",
+      "nationality": "",
+      "teamIds": [
+        "porsche"
+      ],
+      "teamNames": [
+        "Porsche"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 30,
+      "points": 1.0,
+      "wins": 0,
+      "id": "steven-cho",
+      "code": "",
+      "givenName": "Steven",
+      "familyName": "Cho",
+      "nationality": "",
+      "teamIds": [
+        "porsche"
+      ],
+      "teamNames": [
+        "Porsche"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "",
+      "profile": ""
+    },
+    {
+      "position": 30,
+      "points": 1.0,
+      "wins": 0,
+      "id": "tim-tramnitz",
+      "code": "998",
+      "givenName": "Tim",
+      "familyName": "Tramnitz",
+      "nationality": "DEU",
+      "teamIds": [
+        "rowe-racing"
+      ],
+      "teamNames": [
+        "Rowe Racing"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/tim-tramnitz.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4247.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4247/tim-tramnitz"
+    },
+    {
+      "position": 30,
+      "points": 1.0,
+      "wins": 0,
+      "id": "ugo-de-wilde",
+      "code": "998",
+      "givenName": "Ugo",
+      "familyName": "de Wilde",
+      "nationality": "BEL",
+      "teamIds": [
+        "rowe-racing"
+      ],
+      "teamNames": [
+        "Rowe Racing"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/ugo-de-wilde.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4111.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4111/ugo-de-wilde"
+    },
+    {
+      "position": 30,
+      "points": 1.0,
+      "wins": 0,
+      "id": "michael-mccann-jr",
+      "code": "8",
+      "givenName": "Michael",
+      "familyName": "McCann Jr.",
+      "nationality": "USA",
+      "teamIds": [
+        "mccann-racing"
+      ],
+      "teamNames": [
+        "McCann Racing"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/michael-mccann-jr.jpg",
+      "portraitSource": "https://www.gt-world-challenge-america.com/images/drivers/photo_369.jpg",
+      "profile": "https://www.gt-world-challenge-america.com/driver/369/michael-mccann-jr."
+    },
+    {
+      "position": 30,
+      "points": 1.0,
+      "wins": 0,
+      "id": "zachary-vanier",
+      "code": "8",
+      "givenName": "Zachary",
+      "familyName": "Vanier",
+      "nationality": "CAN",
+      "teamIds": [
+        "mccann-racing"
+      ],
+      "teamNames": [
+        "McCann Racing"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/zachary-vanier.jpg",
+      "portraitSource": "https://www.gt-world-challenge-america.com/images/drivers/photo_370.jpg",
+      "profile": "https://www.gt-world-challenge-america.com/driver/370/zachary-vanier"
+    }
+  ]
+}

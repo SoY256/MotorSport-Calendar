@@ -8,11 +8,27 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
+# Kept in sync with scripts/fetch_gt3_results.py (not imported: this module
+# must stay dependency-free for the five-minute scheduler).
+GT3_SERIES = frozenset(
+    {"gtwc-endurance", "gtwc-sprint", "gtwc-america", "gtwc-asia", "gtwc-australia", "british-gt", "igtc"}
+)
 
 
 def expects_results(series: str, session_type: str) -> bool:
     """Return whether the configured importer publishes this classification."""
-    return series in {"f1", "f2", "f3", "wec"} or session_type == "R"
+    return (
+        series in {"f1", "f2", "f3", "wec"}
+        or series in GT3_SERIES
+        or session_type == "R"
+    )
+
+
+# A GT3 classification that has not appeared this long after its session is
+# not polled for any more: some never appear on the SRO sites (bronze tests,
+# rounds timed by third parties). The six-hour refresh still picks up late
+# publications. Other series keep polling until their classification exists.
+POLL_WINDOW = timedelta(hours=6)
 
 
 def timestamp(value: str) -> datetime:
@@ -56,8 +72,9 @@ def decision(now: datetime) -> tuple[bool, str]:
                 )
                 due = end + timedelta(minutes=5)
                 # Once a session is due, keep polling until its classification
-                # is present. Only then does the six-hour cadence resume.
-                if due <= now:
+                # is present (GT3: within the polling window). Only then does
+                # the six-hour cadence resume.
+                if due <= now and (series_dir.name not in GT3_SERIES or now <= due + POLL_WINDOW):
                     return True, f"awaiting-{series_dir.name}-{event['id']}-{session_type}"
     return False, "not-due"
 

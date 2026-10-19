@@ -1,0 +1,849 @@
+{
+  "schemaVersion": 1,
+  "lastSuccessfulUpdate": "2026-10-19T14:21:36.087115Z",
+  "source": {
+    "name": "sro-official-standings",
+    "url": "https://www.gt-world-challenge-australia.com/standings"
+  },
+  "data": [
+    {
+      "position": 1,
+      "points": 146.0,
+      "wins": 0,
+      "id": "broc-feeney",
+      "code": "1",
+      "givenName": "Broc",
+      "familyName": "Feeney",
+      "nationality": "AUS",
+      "teamIds": [
+        "kelso-electrical-team-mpc"
+      ],
+      "teamNames": [
+        "Kelso Electrical /Team MPC"
+      ],
+      "teamColors": [
+        "#BB0A30"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": null,
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_150.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/150/broc-feeney"
+    },
+    {
+      "position": 1,
+      "points": 146.0,
+      "wins": 0,
+      "id": "brad-schumacher",
+      "code": "1",
+      "givenName": "Brad",
+      "familyName": "Schumacher",
+      "nationality": "AUS",
+      "teamIds": [
+        "kelso-electrical-team-mpc"
+      ],
+      "teamNames": [
+        "Kelso Electrical /Team MPC"
+      ],
+      "teamColors": [
+        "#BB0A30"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/brad-schumacher.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_176.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/176/brad-schumacher"
+    },
+    {
+      "position": 2,
+      "points": 132.0,
+      "wins": 0,
+      "id": "mark-rosser",
+      "code": "268",
+      "givenName": "Mark",
+      "familyName": "Rosser",
+      "nationality": "AUS",
+      "teamIds": [
+        "team-brm"
+      ],
+      "teamNames": [
+        "Team BRM"
+      ],
+      "teamColors": [
+        "#BB0A30"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/mark-rosser.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_174.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/174/mark-rosser"
+    },
+    {
+      "position": 3,
+      "points": 119.0,
+      "wins": 0,
+      "id": "brendon-leitch",
+      "code": "44",
+      "givenName": "Brendon",
+      "familyName": "Leitch",
+      "nationality": "NZL",
+      "teamIds": [
+        "geyer-valmont-racing-by-tigani"
+      ],
+      "teamNames": [
+        "Geyer Valmont Racing by Tigani"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/brendon-leitch.jpg",
+      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_859.png",
+      "profile": "https://www.gt-world-challenge-asia.com/driver/859/brendon-leitch"
+    },
+    {
+      "position": 3,
+      "points": 119.0,
+      "wins": 0,
+      "id": "sergio-pires",
+      "code": "44",
+      "givenName": "Sergio",
+      "familyName": "Pires",
+      "nationality": "AUS",
+      "teamIds": [
+        "geyer-valmont-racing-by-tigani"
+      ],
+      "teamNames": [
+        "Geyer Valmont Racing by Tigani"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/sergio-pires.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_171.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/171/sergio-pires"
+    },
+    {
+      "position": 4,
+      "points": 106.0,
+      "wins": 0,
+      "id": "jayden-ojeda",
+      "code": "66",
+      "givenName": "Jayden",
+      "familyName": "Ojeda",
+      "nationality": "AUS",
+      "teamIds": [
+        "move-my-wheels-by-tigani"
+      ],
+      "teamNames": [
+        "Move My Wheels by Tigani"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/jayden-ojeda.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_167.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/167/jayden-ojeda"
+    },
+    {
+      "position": 4,
+      "points": 106.0,
+      "wins": 0,
+      "id": "paul-lucchitti",
+      "code": "66",
+      "givenName": "Paul",
+      "familyName": "Lucchitti",
+      "nationality": "AUS",
+      "teamIds": [
+        "move-my-wheels-by-tigani"
+      ],
+      "teamNames": [
+        "Move My Wheels by Tigani"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/paul-lucchitti.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_165.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/165/paul-lucchitti"
+    },
+    {
+      "position": 5,
+      "points": 100.0,
+      "wins": 0,
+      "id": "jaxon-evans",
+      "code": "26",
+      "givenName": "Jaxon",
+      "familyName": "Evans",
+      "nationality": "NZL",
+      "teamIds": [
+        "argt"
+      ],
+      "teamNames": [
+        "ARGT"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/jaxon-evans.jpg",
+      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_857.png",
+      "profile": "https://www.gt-world-challenge-asia.com/driver/857/jaxon-evans"
+    },
+    {
+      "position": 5,
+      "points": 100.0,
+      "wins": 0,
+      "id": "elliott-schutte",
+      "code": "26",
+      "givenName": "Elliott",
+      "familyName": "Schutte",
+      "nationality": "AUS",
+      "teamIds": [
+        "argt"
+      ],
+      "teamNames": [
+        "ARGT"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/elliott-schutte.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_177.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/177/elliott-schutte"
+    },
+    {
+      "position": 6,
+      "points": 95.0,
+      "wins": 0,
+      "id": "ryan-wood",
+      "code": "88",
+      "givenName": "Ryan",
+      "familyName": "Wood",
+      "nationality": "NZD",
+      "teamIds": [
+        "team-brm-wolfbrook-motorsport"
+      ],
+      "teamNames": [
+        "Team BRM /Wolfbrook Motorsport"
+      ],
+      "teamColors": [
+        "#BB0A30"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/ryan-wood.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_210.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/210/ryan-wood"
+    },
+    {
+      "position": 6,
+      "points": 95.0,
+      "wins": 0,
+      "id": "steve-brooks",
+      "code": "88",
+      "givenName": "Steve",
+      "familyName": "Brooks",
+      "nationality": "NZD",
+      "teamIds": [
+        "team-brm-wolfbrook-motorsport"
+      ],
+      "teamNames": [
+        "Team BRM /Wolfbrook Motorsport"
+      ],
+      "teamColors": [
+        "#BB0A30"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": null,
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_139.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/139/steve-brooks"
+    },
+    {
+      "position": 7,
+      "points": 93.0,
+      "wins": 0,
+      "id": "oscar-targett",
+      "code": "56",
+      "givenName": "Oscar",
+      "familyName": "Targett",
+      "nationality": "AUS",
+      "teamIds": [
+        "kollosche-amg-by-tigani"
+      ],
+      "teamNames": [
+        "Kollosche AMG by Tigani"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/oscar-targett.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_192.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/192/oscar-targett"
+    },
+    {
+      "position": 8,
+      "points": 82.0,
+      "wins": 0,
+      "id": "alex-peroni",
+      "code": "268",
+      "givenName": "Alex",
+      "familyName": "Peroni",
+      "nationality": "AUS",
+      "teamIds": [
+        "team-brm"
+      ],
+      "teamNames": [
+        "Team BRM"
+      ],
+      "teamColors": [
+        "#BB0A30"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/alex-peroni.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_170.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/170/alex-peroni"
+    },
+    {
+      "position": 9,
+      "points": 80.0,
+      "wins": 0,
+      "id": "will-davison",
+      "code": "181",
+      "givenName": "Will",
+      "familyName": "Davison",
+      "nationality": "AUS",
+      "teamIds": [
+        "onlyfans-racing"
+      ],
+      "teamNames": [
+        "OnlyFans Racing"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/will-davison.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_198.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/198/william-davison"
+    },
+    {
+      "position": 9,
+      "points": 80.0,
+      "wins": 0,
+      "id": "renee-gracie",
+      "code": "181",
+      "givenName": "Renee",
+      "familyName": "Gracie",
+      "nationality": "AUS",
+      "teamIds": [
+        "onlyfans-racing"
+      ],
+      "teamNames": [
+        "OnlyFans Racing"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/renee-gracie.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_153.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/153/renee-gracie"
+    },
+    {
+      "position": 10,
+      "points": 65.0,
+      "wins": 0,
+      "id": "shane-smollen",
+      "code": "56",
+      "givenName": "Shane",
+      "familyName": "Smollen",
+      "nationality": "AUS",
+      "teamIds": [
+        "kollosche-amg-by-tigani"
+      ],
+      "teamNames": [
+        "Kollosche AMG by Tigani"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": null,
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_216.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/216/Shane-smollen"
+    },
+    {
+      "position": 11,
+      "points": 58.0,
+      "wins": 0,
+      "id": "valentino-astuti",
+      "code": "2",
+      "givenName": "Valentino",
+      "familyName": "Astuti",
+      "nationality": "AUS",
+      "teamIds": [
+        "trading-garage-team-mpc"
+      ],
+      "teamNames": [
+        "Trading Garage /Team MPC"
+      ],
+      "teamColors": [
+        "#BB0A30"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/valentino-astuti.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_205.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/205/valentino-astuti"
+    },
+    {
+      "position": 11,
+      "points": 58.0,
+      "wins": 0,
+      "id": "darren-currie",
+      "code": "2",
+      "givenName": "Darren",
+      "familyName": "Currie",
+      "nationality": "AUS",
+      "teamIds": [
+        "trading-garage-team-mpc"
+      ],
+      "teamNames": [
+        "Trading Garage /Team MPC"
+      ],
+      "teamColors": [
+        "#BB0A30"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/darren-currie.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_206.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/206/darren-currie"
+    },
+    {
+      "position": 12,
+      "points": 52.0,
+      "wins": 0,
+      "id": "josh-buchan",
+      "code": "23",
+      "givenName": "Josh",
+      "familyName": "Buchan",
+      "nationality": "AUS",
+      "teamIds": [
+        "zagame-autosport"
+      ],
+      "teamNames": [
+        "Zagame Autosport"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/josh-buchan.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_141.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/141/josh-buchan"
+    },
+    {
+      "position": 12,
+      "points": 52.0,
+      "wins": 0,
+      "id": "cameron-campbell",
+      "code": "23",
+      "givenName": "Cameron",
+      "familyName": "Campbell",
+      "nationality": "AUS",
+      "teamIds": [
+        "zagame-autosport"
+      ],
+      "teamNames": [
+        "Zagame Autosport"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/cameron-campbell.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_142.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/142/cameron-campbell"
+    },
+    {
+      "position": 13,
+      "points": 50.0,
+      "wins": 0,
+      "id": "thomas-randle",
+      "code": "268",
+      "givenName": "Thomas",
+      "familyName": "Randle",
+      "nationality": "AUS",
+      "teamIds": [
+        "castrol-team-brm"
+      ],
+      "teamNames": [
+        "Castrol Team BRM"
+      ],
+      "teamColors": [
+        "#BB0A30"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": null,
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_172.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/172/thomas-randle"
+    },
+    {
+      "position": 14,
+      "points": 28.0,
+      "wins": 0,
+      "id": "justin-tigani",
+      "code": "56",
+      "givenName": "Justin",
+      "familyName": "Tigani",
+      "nationality": "AUS",
+      "teamIds": [
+        "kollosche-amg-by-tigani"
+      ],
+      "teamNames": [
+        "Kollosche AMG by Tigani"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": null,
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_216.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/217/justin-tigani"
+    },
+    {
+      "position": 15,
+      "points": 16.0,
+      "wins": 0,
+      "id": "antonio-d-alberto",
+      "code": "",
+      "givenName": "Antonio",
+      "familyName": "D'Alberto",
+      "nationality": "AUS",
+      "teamIds": [],
+      "teamNames": [],
+      "teamColors": [],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/antonio-d-alberto.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_145.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/145/tony-dalberto"
+    },
+    {
+      "position": 15,
+      "points": 16.0,
+      "wins": 0,
+      "id": "adrian-deitz",
+      "code": "93",
+      "givenName": "Adrian",
+      "familyName": "Deitz",
+      "nationality": "AUS",
+      "teamIds": [
+        "wall-racing"
+      ],
+      "teamNames": [
+        "Wall Racing"
+      ],
+      "teamColors": [
+        "#C9A227"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/adrian-deitz.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_147.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/147/adrian-deitz"
+    },
+    {
+      "position": 16,
+      "points": 14.0,
+      "wins": 0,
+      "id": "garnet-patterson",
+      "code": "666",
+      "givenName": "Garnet",
+      "familyName": "Patterson",
+      "nationality": "AUS",
+      "teamIds": [
+        "team-brm"
+      ],
+      "teamNames": [
+        "Team BRM"
+      ],
+      "teamColors": [
+        "#BB0A30"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": null,
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4115.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4333/garnet-patterson"
+    },
+    {
+      "position": 16,
+      "points": 14.0,
+      "wins": 0,
+      "id": "jp-drake",
+      "code": "666",
+      "givenName": "JP",
+      "familyName": "Drake",
+      "nationality": "AUS",
+      "teamIds": [
+        "team-brm"
+      ],
+      "teamNames": [
+        "Team BRM"
+      ],
+      "teamColors": [
+        "#BB0A30"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/jp-drake.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_213.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/213/jp-drake"
+    },
+    {
+      "position": 17,
+      "points": 9.0,
+      "wins": 0,
+      "id": "josh-hunt",
+      "code": "15",
+      "givenName": "Josh",
+      "familyName": "Hunt",
+      "nationality": "AUS",
+      "teamIds": [
+        "volante-rosso-motorsport"
+      ],
+      "teamNames": [
+        "Volante Rosso Motorsport"
+      ],
+      "teamColors": [
+        "#FF8000"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/josh-hunt.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_208.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/208/josh-hunt"
+    },
+    {
+      "position": 17,
+      "points": 9.0,
+      "wins": 0,
+      "id": "geoff-emery",
+      "code": "15",
+      "givenName": "Geoff",
+      "familyName": "Emery",
+      "nationality": "AUS",
+      "teamIds": [
+        "volante-rosso-motorsport"
+      ],
+      "teamNames": [
+        "Volante Rosso Motorsport"
+      ],
+      "teamColors": [
+        "#FF8000"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/geoff-emery.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_209.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/209/geoff-emery"
+    },
+    {
+      "position": 1,
+      "points": 216.0,
+      "wins": 0,
+      "id": "paul-stokell",
+      "code": "24",
+      "givenName": "Paul",
+      "familyName": "Stokell",
+      "nationality": "AUS",
+      "teamIds": [
+        "kfc-team-mpc"
+      ],
+      "teamNames": [
+        "KFC /Team MPC"
+      ],
+      "teamColors": [
+        "#BB0A30"
+      ],
+      "category": "TROPHY",
+      "imageUrl": "assets/portraits/faces/gt3/paul-stokell.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_179.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/179/paul-stokell"
+    },
+    {
+      "position": 2,
+      "points": 191.0,
+      "wins": 0,
+      "id": "nathan-halstead",
+      "code": "71",
+      "givenName": "Nathan",
+      "familyName": "Halstead",
+      "nationality": "AUS",
+      "teamIds": [
+        "aed-consulting-by-tigani"
+      ],
+      "teamNames": [
+        "AED Consulting by Tigani"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "TROPHY",
+      "imageUrl": "assets/portraits/faces/gt3/nathan-halstead.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_214.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/214/nathan-halstead"
+    },
+    {
+      "position": 2,
+      "points": 191.0,
+      "wins": 0,
+      "id": "luke-youlden",
+      "code": "71",
+      "givenName": "Luke",
+      "familyName": "Youlden",
+      "nationality": "AUS",
+      "teamIds": [
+        "aed-consulting-by-tigani"
+      ],
+      "teamNames": [
+        "AED Consulting by Tigani"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "TROPHY",
+      "imageUrl": "assets/portraits/faces/gt3/luke-youlden.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_215.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/215/luke-youlden"
+    },
+    {
+      "position": 3,
+      "points": 180.0,
+      "wins": 0,
+      "id": "matthew-stoupas",
+      "code": "24",
+      "givenName": "Matthew",
+      "familyName": "Stoupas",
+      "nationality": "AUS",
+      "teamIds": [
+        "kfc-team-mpc"
+      ],
+      "teamNames": [
+        "KFC /Team MPC"
+      ],
+      "teamColors": [
+        "#BB0A30"
+      ],
+      "category": "TROPHY",
+      "imageUrl": "assets/portraits/faces/gt3/matthew-stoupas.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_180.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/180/matthew-stoupas"
+    },
+    {
+      "position": 4,
+      "points": 77.0,
+      "wins": 0,
+      "id": "alex-gardner",
+      "code": "14",
+      "givenName": "Alex",
+      "familyName": "Gardner",
+      "nationality": "AUS",
+      "teamIds": [
+        "volante-rosso-motorsport"
+      ],
+      "teamNames": [
+        "Volante Rosso Motorsport"
+      ],
+      "teamColors": [
+        "#00665E"
+      ],
+      "category": "TROPHY",
+      "imageUrl": "assets/portraits/faces/gt3/alex-gardner.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_188.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/188/alex-gardner"
+    },
+    {
+      "position": 5,
+      "points": 44.0,
+      "wins": 0,
+      "id": "lee-stibbs",
+      "code": "14",
+      "givenName": "Lee",
+      "familyName": "Stibbs",
+      "nationality": "AUS",
+      "teamIds": [
+        "volante-rosso-motorsport"
+      ],
+      "teamNames": [
+        "Volante Rosso Motorsport"
+      ],
+      "teamColors": [
+        "#00665E"
+      ],
+      "category": "TROPHY",
+      "imageUrl": "assets/portraits/faces/gt3/lee-stibbs.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_207.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/207/lee-stibbs"
+    },
+    {
+      "position": 6,
+      "points": 36.0,
+      "wins": 0,
+      "id": "gary-higgon",
+      "code": "24",
+      "givenName": "Gary",
+      "familyName": "Higgon",
+      "nationality": "AUS",
+      "teamIds": [
+        "kfc-team-mpc"
+      ],
+      "teamNames": [
+        "KFC /Team MPC"
+      ],
+      "teamColors": [
+        "#BB0A30"
+      ],
+      "category": "TROPHY",
+      "imageUrl": "assets/portraits/faces/gt3/gary-higgon.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_218.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/218/gary-higgon"
+    },
+    {
+      "position": 7,
+      "points": 33.0,
+      "wins": 0,
+      "id": "ben-porter",
+      "code": "",
+      "givenName": "Ben",
+      "familyName": "Porter",
+      "nationality": "AUS",
+      "teamIds": [],
+      "teamNames": [],
+      "teamColors": [],
+      "category": "TROPHY",
+      "imageUrl": "assets/portraits/faces/gt3/ben-porter.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_211.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/211/ben-porter"
+    },
+    {
+      "position": 8,
+      "points": 31.0,
+      "wins": 0,
+      "id": "cameron-rees",
+      "code": "14",
+      "givenName": "Cameron",
+      "familyName": "Rees",
+      "nationality": "AUS",
+      "teamIds": [
+        "volante-rosso-motorsport"
+      ],
+      "teamNames": [
+        "Volante Rosso Motorsport"
+      ],
+      "teamColors": [
+        "#00665E"
+      ],
+      "category": "TROPHY",
+      "imageUrl": "assets/portraits/faces/gt3/cameron-rees.jpg",
+      "portraitSource": "https://www.gt-world-challenge-australia.com/images/drivers/photo_219.png",
+      "profile": "https://www.gt-world-challenge-australia.com/driver/219/cameron-rees"
+    }
+  ]
+}

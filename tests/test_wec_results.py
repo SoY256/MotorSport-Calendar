@@ -32,6 +32,27 @@ RACE = """1 8 Toyota Racing S. BUEMI / B. HARTLEY Toyota TR010 Hybrid HYPERCAR M
 
 
 class WecParserTests(unittest.TestCase):
+    def test_every_co_driver_is_kept_out_of_the_car_name(self):
+        text = (
+            "1 83 AF Corse Y. YE / R. KUBICA / P. HANSON Ferrari 499P HYPERCAR M 1:31.891 12 45 171.2\n"
+            "2 20 BMW M Team WRT R. FRIJNS / S. VAN DER LINDE / R. RAST BMW M Hybrid V8 HYPERCAR M "
+            "1:32.000 9 45 +0.109 170.9\n"
+            "3 92 Manthey 1ST Phorm R. LIETZ / R. PERA / B. BARNICOAT Porsche 911 GT3 R LMGT3 G "
+            "1:45.000 5 30 +0.200 150.0\n"
+            "4 7 Toyota Gazoo Racing M. CONWAY / K. KOBAYASHI / N. DE VRIES Toyota TR010 Hybrid HYPERCAR M "
+            "1:32.100 5 30 +0.300 150.0\n"
+        )
+        rows = fetch_wec_results.parse_session_rows(b"", {}, text=text)
+        self.assertEqual(
+            [(row["driver"]["givenName"], row["components"]["car"]) for row in rows],
+            [
+                ("Y. YE / R. KUBICA / P. HANSON", "Ferrari 499P"),
+                ("R. FRIJNS / S. VAN DER LINDE / R. RAST", "BMW M Hybrid V8"),
+                ("R. LIETZ / R. PERA / B. BARNICOAT", "Porsche 911 GT3 R"),
+                ("M. CONWAY / K. KOBAYASHI / N. DE VRIES", "Toyota TR010 Hybrid"),
+            ],
+        )
+
     def test_qualifying_hyperpole_marker_and_glued_car_numbers(self):
         text = QUALIFYING.replace("12007Aston", "4007Aston")
         rows = fetch_wec_results.parse_session_rows(b"", {}, text=text)

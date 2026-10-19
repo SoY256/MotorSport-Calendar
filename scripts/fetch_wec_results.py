@@ -1,4 +1,4 @@
-"""Extract completed 2026 FIA WEC classifications from official timing PDFs."""
+﻿"""Extract completed 2026 FIA WEC classifications from official timing PDFs."""
 
 from __future__ import annotations
 
@@ -408,8 +408,17 @@ def entry_nationalities(pdf: bytes) -> dict[str, str]:
     return {**KNOWN_DRIVER_COUNTRIES, **mappings}
 
 
-DRIVER_NAMES = r"(?:[A-Z]\.?\s+[A-ZÀ-ÖØ-Ý?' -]+)(?:\s+/\s+(?:[A-Z]\.?\s+[A-ZÀ-ÖØ-Ý?' -]+))"
+NAME_CHARS = r"[A-ZÀ-ÖØ-Ý?'-]+(?![a-z])"
+# All co-drivers are captured and surnames may span several upper-case words
+# ("S. VAN DER LINDE", "N. DE VRIES"). Car names start with a mixed-case word
+# ("Toyota TR010") except BMW, which therefore never belongs to a surname.
+DRIVER_NAMES = (
+    rf"(?:[A-Z]\.?\s+{NAME_CHARS}(?:\s+{NAME_CHARS})*\s+/\s+)*"
+    rf"[A-Z]\.?\s+{NAME_CHARS}(?:\s+(?!BMW\b){NAME_CHARS})*"
+)
 CATEGORIES = r"(HYPERCAR|LMGT3|LMP2(?: P/A)?)"
+# Bump when session parsing changes so stored classifications are re-read.
+SESSION_PARSER = 3
 
 
 def clean_drivers(drivers: str, nationalities: dict[str, str]) -> tuple[str, str]:
@@ -427,7 +436,7 @@ def clean_drivers(drivers: str, nationalities: dict[str, str]) -> tuple[str, str
 
 
 ENTRY_LINE = re.compile(
-    rf"^(\d+)\s*(.+?)\s+({DRIVER_NAMES}*?)\s+(.+?)\s+{CATEGORIES}\s+[A-Z](?:\s+(.*))?$"
+    rf"^(\d+)\s*(.+?)\s+({DRIVER_NAMES})\s+(.+?)\s+{CATEGORIES}\s+[A-Z](?:\s+(.*))?$"
 )
 
 
@@ -568,7 +577,12 @@ def main() -> None:
                     sessions_out[item["type"]] = previous[item["type"]]
                 continue
             earlier = previous.get(item["type"])
-            if earlier and earlier.get("source", {}).get("url") == url and re.search(r"Final\.PDF$", url, re.I):
+            earlier_source = (earlier or {}).get("source", {})
+            if (
+                earlier_source.get("url") == url
+                and earlier_source.get("parser") == SESSION_PARSER
+                and re.search(r"Final\.PDF$", url, re.I)
+            ):
                 # Final classifications never change; skip the download.
                 sessions_out[item["type"]] = earlier
                 continue
@@ -581,7 +595,8 @@ def main() -> None:
                 continue
             sessions_out[item["type"]] = {
                 "type": item["type"], "name": item["name"], "startTimeUtc": item["startTimeUtc"],
-                "source": {"name": "fia-wec-alkamel-official-timing", "url": url}, "results": rows,
+                "source": {"name": "fia-wec-alkamel-official-timing", "url": url, "parser": SESSION_PARSER},
+                "results": rows,
             }
             print(f"{event['name']} {item['name']}: {len(rows)}", file=sys.stderr)
         race_rows = None

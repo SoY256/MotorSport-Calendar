@@ -1,23 +1,23 @@
+import '../../../core/series_catalog.dart';
+
 enum AppLanguage { polish, english }
 
 enum EventTimeMode { local, track }
 
+/// Every championship is shown until the user turns it off in Settings.
+final Set<String> defaultMotorsportCategories = {
+  for (final series in allSeries) series.id,
+};
+
 class AppSettings {
-  const AppSettings({
+  AppSettings({
     this.language = AppLanguage.english,
     this.timeMode = EventTimeMode.local,
     this.showPastEvents = true,
-    this.motorsportCategories = const {
-      'f1',
-      'f2',
-      'f3',
-      'imsa',
-      'indycar',
-      'indynxt',
-      'wec',
-    },
+    Set<String>? motorsportCategories,
     this.esportCategories = const <String>{},
-  });
+  }) : motorsportCategories =
+           motorsportCategories ?? defaultMotorsportCategories;
 
   final AppLanguage language;
   final EventTimeMode timeMode;

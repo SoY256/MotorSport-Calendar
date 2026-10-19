@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../core/series_catalog.dart';
 import '../domain/app_settings.dart';
 
 class SettingsController extends Notifier<AppSettings> {
@@ -11,7 +12,7 @@ class SettingsController extends Notifier<AppSettings> {
   @override
   AppSettings build() {
     unawaited(_restore());
-    return const AppSettings();
+    return AppSettings();
   }
 
   SharedPreferencesAsync? _getPreferences() {
@@ -32,18 +33,22 @@ class SettingsController extends Notifier<AppSettings> {
     final motorsport = await preferences.getStringList('motorsportCategories');
     final categorySchema = await preferences.getInt('categorySchema');
     final esport = await preferences.getStringList('esportCategories');
+    // Schema 5 added the GT3 championships: switch them on once for
+    // existing users, keeping every other choice they made.
+    final motorsportCategories = switch (categorySchema) {
+      5 => motorsport?.toSet() ?? defaultMotorsportCategories,
+      4 => {...?motorsport, ...gt3SeriesIds},
+      _ => defaultMotorsportCategories,
+    };
     state = AppSettings(
       language: language == 'pl' ? AppLanguage.polish : AppLanguage.english,
       timeMode: timeMode == 'track' ? EventTimeMode.track : EventTimeMode.local,
       showPastEvents: showPast ?? true,
-      motorsportCategories: categorySchema == 4
-          ? (motorsport?.toSet() ??
-                const {'f1', 'f2', 'f3', 'imsa', 'indycar', 'indynxt', 'wec'})
-          : const {'f1', 'f2', 'f3', 'imsa', 'indycar', 'indynxt', 'wec'},
+      motorsportCategories: motorsportCategories,
       esportCategories: esport?.toSet() ?? const <String>{},
     );
-    if (categorySchema != 4) {
-      unawaited(preferences.setInt('categorySchema', 4));
+    if (categorySchema != 5) {
+      unawaited(preferences.setInt('categorySchema', 5));
       unawaited(
         preferences.setStringList(
           'motorsportCategories',

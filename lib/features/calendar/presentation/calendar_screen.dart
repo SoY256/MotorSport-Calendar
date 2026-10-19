@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../core/localization/app_strings.dart';
+import '../../../core/series_catalog.dart';
 import '../../../core/widgets/app_logo.dart';
 import '../../../core/widgets/racing_ui.dart';
 import '../../settings/domain/app_settings.dart';
@@ -286,7 +287,9 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen>
       child: Scaffold(
         body: Stack(
           children: [
-            const Positioned.fill(child: _RacingBackdrop()),
+            const Positioned.fill(
+              child: RepaintBoundary(child: _RacingBackdrop()),
+            ),
             SafeArea(
               child: Row(
                 children: [
@@ -390,7 +393,7 @@ class _RacingBackdrop extends StatelessWidget {
                   : 'assets/branding/carbon-wallpaper-light.png',
               fit: BoxFit.cover,
               alignment: Alignment.center,
-              filterQuality: FilterQuality.high,
+              filterQuality: FilterQuality.medium,
             ),
           ),
           ColoredBox(
@@ -462,7 +465,8 @@ class _SeriesTabsBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ids = available.toList()..sort();
+    final ids = available.toList()
+      ..sort((a, b) => seriesOrder(a).compareTo(seriesOrder(b)));
     return Material(
       color: Theme.of(context).colorScheme.surface.withValues(alpha: .96),
       elevation: 3,
@@ -560,11 +564,18 @@ class _PageFrame extends StatelessWidget {
   const _PageFrame({
     required this.title,
     required this.subtitle,
-    required this.child,
-  });
+    this.child,
+    this.itemCount = 0,
+    this.itemBuilder,
+  }) : assert(child != null || itemBuilder != null);
   final String title;
   final String subtitle;
-  final Widget child;
+  final Widget? child;
+
+  /// Long pages build their rows lazily so only visible rows are laid out
+  /// and painted while scrolling.
+  final int itemCount;
+  final IndexedWidgetBuilder? itemBuilder;
 
   @override
   Widget build(BuildContext context) => CustomScrollView(
@@ -650,17 +661,34 @@ class _PageFrame extends StatelessWidget {
           ),
         ),
       ),
-      SliverPadding(
-        padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
-        sliver: SliverToBoxAdapter(
-          child: Center(
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 1100),
-              child: child,
+      if (itemBuilder != null)
+        SliverLayoutBuilder(
+          builder: (context, constraints) {
+            final side = ((constraints.crossAxisExtent - 1100) / 2).clamp(
+              20.0,
+              double.infinity,
+            );
+            return SliverPadding(
+              padding: EdgeInsets.fromLTRB(side, 8, side, 32),
+              sliver: SliverList.builder(
+                itemCount: itemCount,
+                itemBuilder: itemBuilder!,
+              ),
+            );
+          },
+        )
+      else
+        SliverPadding(
+          padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
+          sliver: SliverToBoxAdapter(
+            child: Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 1100),
+                child: child,
+              ),
             ),
           ),
         ),
-      ),
     ],
   );
 }
@@ -716,42 +744,46 @@ class _ListPage extends ConsumerWidget {
         : <RaceEvent>[];
     completedEvents.sort((a, b) => b.endsAt.compareTo(a.endsAt));
     final events = [...upcoming, ...completedEvents];
-    Iterable<Widget> group(List<RaceEvent> items, {required bool completed}) =>
-        [
-          for (var index = 0; index < items.length; index++) ...[
-            if (index == 0 ||
-                _monthKey(items[index], settings) !=
-                    _monthKey(items[index - 1], settings))
-              RacingSectionHeader(
-                label: _monthHeader(items[index], settings),
-                color: completed
-                    ? Theme.of(context).colorScheme.onSurfaceVariant
-                    : null,
-                trailing: strings.events(
-                  items
-                      .where(
-                        (item) =>
-                            _monthKey(item, settings) ==
-                            _monthKey(items[index], settings),
-                      )
-                      .length,
-                ),
-              ),
-            _EventCard(
-              event: items[index],
+    final scheme = Theme.of(context).colorScheme;
+    // Rows are created on demand by the sliver list; only the visible ones
+    // are built, laid out and painted while scrolling.
+    final rows = <WidgetBuilder>[];
+    void group(List<RaceEvent> items, {required bool completed}) {
+      final monthCounts = <int, int>{};
+      for (final item in items) {
+        final key = _monthKey(item, settings);
+        monthCounts[key] = (monthCounts[key] ?? 0) + 1;
+      }
+      int? previousMonth;
+      for (final event in items) {
+        final month = _monthKey(event, settings);
+        if (month != previousMonth) {
+          previousMonth = month;
+          rows.add(
+            (context) => RacingSectionHeader(
+              label: _monthHeader(event, settings),
+              color: completed ? scheme.onSurfaceVariant : null,
+              trailing: strings.events(monthCounts[month]!),
+            ),
+          );
+        }
+        rows.add(
+          (context) => Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: _EventCard(
+              event: event,
               settings: settings,
               strings: strings,
               completed: completed,
-              onTap: () => onEventTap(items[index]),
+              onTap: () => onEventTap(event),
             ),
-            const SizedBox(height: 10),
-          ],
-        ];
-    return _PageFrame(
-      title: '${strings.season} ${data.events.first.season}',
-      subtitle:
-          '${strings.events(events.length)} • ${settings.timeMode == EventTimeMode.local ? strings.localTime : strings.trackTime}',
-      child: Column(
+          ),
+        );
+      }
+    }
+
+    rows.add(
+      (context) => Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           if (nextEvent != null)
@@ -763,7 +795,7 @@ class _ListPage extends ConsumerWidget {
             ),
           const SizedBox(height: 12),
           Material(
-            color: Theme.of(context).colorScheme.surfaceContainer,
+            color: scheme.surfaceContainer,
             shape: SlantBorder(
               slant: 10,
               side: BorderSide(color: Theme.of(context).dividerColor),
@@ -793,34 +825,50 @@ class _ListPage extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: 6),
-          if (events.isEmpty)
-            _EmptyCard(icon: Icons.event_busy, message: strings.noUpcoming)
-          else ...[
-            ...group(upcoming, completed: false),
-            if (completedEvents.isNotEmpty) ...[
-              const SizedBox(height: 8),
-              Row(
-                children: [
-                  const CheckeredStrip(width: 36, height: 12, cell: 4),
-                  const SizedBox(width: 10),
-                  Text(
-                    strings.completed.toUpperCase(),
-                    style: racingDisplay(size: 24),
-                  ),
-                ],
-              ),
-              ...group(completedEvents, completed: true),
-            ],
-          ],
-          Padding(
-            padding: const EdgeInsets.only(top: 8),
-            child: Text(
-              '${strings.updated}: ${_dateTime(data.updatedAt.toLocal(), settings.language)}',
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
-          ),
         ],
       ),
+    );
+    if (events.isEmpty) {
+      rows.add(
+        (context) =>
+            _EmptyCard(icon: Icons.event_busy, message: strings.noUpcoming),
+      );
+    } else {
+      group(upcoming, completed: false);
+      if (completedEvents.isNotEmpty) {
+        rows.add(
+          (context) => Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Row(
+              children: [
+                const CheckeredStrip(width: 36, height: 12, cell: 4),
+                const SizedBox(width: 10),
+                Text(
+                  strings.completed.toUpperCase(),
+                  style: racingDisplay(size: 24),
+                ),
+              ],
+            ),
+          ),
+        );
+        group(completedEvents, completed: true);
+      }
+    }
+    rows.add(
+      (context) => Padding(
+        padding: const EdgeInsets.only(top: 8),
+        child: Text(
+          '${strings.updated}: ${_dateTime(data.updatedAt.toLocal(), settings.language)}',
+          style: Theme.of(context).textTheme.bodySmall,
+        ),
+      ),
+    );
+    return _PageFrame(
+      title: '${strings.season} ${data.events.first.season}',
+      subtitle:
+          '${strings.events(events.length)} • ${settings.timeMode == EventTimeMode.local ? strings.localTime : strings.trackTime}',
+      itemCount: rows.length,
+      itemBuilder: (context, index) => rows[index](context),
     );
   }
 }
@@ -972,16 +1020,15 @@ class _NextRaceHero extends StatelessWidget {
                 top: 52,
                 width: 150,
                 height: 120,
+                // A translucent tint instead of Opacity avoids an offscreen
+                // layer that would be re-rendered on every countdown tick.
                 child: IgnorePointer(
-                  child: Opacity(
-                    opacity: .5,
-                    child: _CircuitAsset(
-                      path: circuitAsset,
-                      fit: BoxFit.contain,
-                      tint: Colors.white,
-                      semanticsLabel: event.circuit.name,
-                      quarterTurns: circuitQuarterTurns(event.circuit.name),
-                    ),
+                  child: _CircuitAsset(
+                    path: circuitAsset,
+                    fit: BoxFit.contain,
+                    tint: Colors.white.withValues(alpha: .5),
+                    semanticsLabel: event.circuit.name,
+                    quarterTurns: circuitQuarterTurns(event.circuit.name),
                   ),
                 ),
               ),
@@ -1195,13 +1242,16 @@ class _EventCard extends StatelessWidget {
           : null,
       child: InkWell(
         onTap: onTap,
-        child: IntrinsicHeight(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              // Date "ticket" in the series colour.
-              Container(
-                width: 62,
+        // Positioned date strip instead of IntrinsicHeight: one layout pass
+        // per card keeps long lists smooth.
+        child: Stack(
+          children: [
+            Positioned(
+              left: 0,
+              top: 0,
+              bottom: 0,
+              width: 62,
+              child: Container(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
@@ -1244,117 +1294,132 @@ class _EventCard extends StatelessWidget {
                   ],
                 ),
               ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(14, 12, 6, 12),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Row(
-                        children: [
-                          Flexible(
-                            child: SlantTag(
-                              label: _seriesLabel(event.seriesId),
-                              color: completed
-                                  ? muted.withValues(alpha: .7)
-                                  : seriesColor,
-                              fontSize: 11,
+            ),
+            ConstrainedBox(
+              constraints: const BoxConstraints(minHeight: 78),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 62),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(14, 12, 6, 12),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Row(
+                              children: [
+                                Flexible(
+                                  child: SlantTag(
+                                    label: _seriesLabel(event.seriesId),
+                                    color: completed
+                                        ? muted.withValues(alpha: .7)
+                                        : seriesColor,
+                                    fontSize: 11,
+                                  ),
+                                ),
+                                const SizedBox(width: 8),
+                                Text(
+                                  'R${event.round ?? '–'}',
+                                  style: racingDisplay(size: 14, color: muted),
+                                ),
+                                if (live) ...[
+                                  const SizedBox(width: 8),
+                                  Flexible(
+                                    child: LiveBadge(label: strings.liveNow),
+                                  ),
+                                ],
+                              ],
                             ),
-                          ),
-                          const SizedBox(width: 8),
-                          Text(
-                            'R${event.round ?? '–'}',
-                            style: racingDisplay(size: 14, color: muted),
-                          ),
-                          if (live) ...[
-                            const SizedBox(width: 8),
-                            Flexible(child: LiveBadge(label: strings.liveNow)),
-                          ],
-                        ],
-                      ),
-                      const SizedBox(height: 6),
-                      Text(
-                        event.name,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w800,
-                          color: completed ? muted : null,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Row(
-                        children: [
-                          RacingFlag(
-                            countryCode: event.circuit.countryCode,
-                            width: 18,
-                            semanticsLabel: event.circuit.country,
-                          ),
-                          const SizedBox(width: 7),
-                          Expanded(
-                            child: Text(
-                              event.circuit.name,
+                            const SizedBox(height: 6),
+                            Text(
+                              event.name,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
-                              style: TextStyle(color: muted, fontSize: 12),
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w800,
+                                color: completed ? muted : null,
+                              ),
                             ),
-                          ),
-                        ],
+                            const SizedBox(height: 4),
+                            Row(
+                              children: [
+                                RacingFlag(
+                                  countryCode: event.circuit.countryCode,
+                                  width: 18,
+                                  semanticsLabel: event.circuit.country,
+                                ),
+                                const SizedBox(width: 7),
+                                Expanded(
+                                  child: Text(
+                                    event.circuit.name,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      color: muted,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ],
-                  ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 12, 4, 12),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: completed
+                            ? [
+                                Icon(Icons.sports_score, color: muted),
+                                const SizedBox(height: 2),
+                                Text(
+                                  strings.completed,
+                                  style: TextStyle(
+                                    color: muted,
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w800,
+                                  ),
+                                ),
+                              ]
+                            : [
+                                Text(
+                                  _sessionTime(race, settings.timeMode),
+                                  style: racingDisplay(
+                                    size: 22,
+                                    color: scheme.primary,
+                                    italic: false,
+                                    height: 1,
+                                  ),
+                                ),
+                                const SizedBox(height: 3),
+                                Text(
+                                  _weekdayName(
+                                    raceDate.weekday,
+                                    settings.language,
+                                  ).substring(0, 3).toUpperCase(),
+                                  style: TextStyle(
+                                    color: muted,
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w900,
+                                    letterSpacing: 1.2,
+                                  ),
+                                ),
+                              ],
+                      ),
+                    ),
+                    Icon(Icons.chevron_right, color: muted),
+                    const SizedBox(width: 6),
+                  ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 12, 4, 12),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: completed
-                      ? [
-                          Icon(Icons.sports_score, color: muted),
-                          const SizedBox(height: 2),
-                          Text(
-                            strings.completed,
-                            style: TextStyle(
-                              color: muted,
-                              fontSize: 10,
-                              fontWeight: FontWeight.w800,
-                            ),
-                          ),
-                        ]
-                      : [
-                          Text(
-                            _sessionTime(race, settings.timeMode),
-                            style: racingDisplay(
-                              size: 22,
-                              color: scheme.primary,
-                              italic: false,
-                              height: 1,
-                            ),
-                          ),
-                          const SizedBox(height: 3),
-                          Text(
-                            _weekdayName(
-                              raceDate.weekday,
-                              settings.language,
-                            ).substring(0, 3).toUpperCase(),
-                            style: TextStyle(
-                              color: muted,
-                              fontSize: 10,
-                              fontWeight: FontWeight.w900,
-                              letterSpacing: 1.2,
-                            ),
-                          ),
-                        ],
-                ),
-              ),
-              Icon(Icons.chevron_right, color: muted),
-              const SizedBox(width: 6),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -1436,13 +1501,17 @@ class _CalendarGridPageState extends State<_CalendarGridPage> {
 
   @override
   Widget build(BuildContext context) {
+    // Calendar-day arithmetic: adding 24 h Durations repeats or skips a date
+    // on days with a daylight-saving change (e.g. 25 October in Europe).
+    DateTime plusDays(DateTime date, int days) =>
+        DateTime(date.year, date.month, date.day + days);
     final first = _month
         ? DateTime(_anchor.year, _anchor.month)
         : DateTime(
             _anchor.year,
             _anchor.month,
-            _anchor.day,
-          ).subtract(Duration(days: _anchor.weekday - 1));
+            _anchor.day - _anchor.weekday + 1,
+          );
     final leading = _month ? first.weekday - 1 : 0;
     final count = _month
         ? DateTime(_anchor.year, _anchor.month + 1, 0).day + leading
@@ -1450,7 +1519,7 @@ class _CalendarGridPageState extends State<_CalendarGridPage> {
     final cells = _month ? ((count + 6) ~/ 7) * 7 : 7;
     final title = _month
         ? '${_monthName(_anchor.month, widget.strings.language)} ${_anchor.year}'
-        : '${_date(first, widget.strings.language)} – ${_date(first.add(const Duration(days: 6)), widget.strings.language)}';
+        : '${_date(first, widget.strings.language)} – ${_date(plusDays(first, 6), widget.strings.language)}';
     return _PageFrame(
       title: widget.strings.calendar,
       subtitle: widget.strings.timesInZone,
@@ -1484,7 +1553,7 @@ class _CalendarGridPageState extends State<_CalendarGridPage> {
                       onPressed: () => _setView(
                         anchor: _month
                             ? DateTime(_anchor.year, _anchor.month - 1)
-                            : _anchor.subtract(const Duration(days: 7)),
+                            : plusDays(_anchor, -7),
                       ),
                       icon: const Icon(Icons.chevron_left),
                     ),
@@ -1500,7 +1569,7 @@ class _CalendarGridPageState extends State<_CalendarGridPage> {
                       onPressed: () => _setView(
                         anchor: _month
                             ? DateTime(_anchor.year, _anchor.month + 1)
-                            : _anchor.add(const Duration(days: 7)),
+                            : plusDays(_anchor, 7),
                       ),
                       icon: const Icon(Icons.chevron_right),
                     ),
@@ -1541,9 +1610,7 @@ class _CalendarGridPageState extends State<_CalendarGridPage> {
                       if (_month && (offset < 0 || offset >= count - leading)) {
                         return const SizedBox.shrink();
                       }
-                      final day = first.add(
-                        Duration(days: _month ? offset : index),
-                      );
+                      final day = plusDays(first, _month ? offset : index);
                       final events = _eventsOn(day);
                       final today = DateTime.now();
                       final isToday =
@@ -1787,6 +1854,10 @@ class _ResultsPageState extends ConsumerState<_ResultsPage>
       if (!_publishesResults(widget.selected.seriesId, session)) {
         return false;
       }
+      // Some GT3 sessions never get a classification (e.g. bronze tests).
+      if (_gaveUpWaiting(widget.selected.seriesId, session, now)) {
+        return false;
+      }
       final received = _hasResultsForSession(session, results);
       return !received;
     }).toList();
@@ -1893,6 +1964,7 @@ class _ResultsPageState extends ConsumerState<_ResultsPage>
                   .where(
                     (session) =>
                         !session.expectedEnd.isAfter(now) &&
+                        !_gaveUpWaiting(selected.seriesId, session, now) &&
                         _publishesResults(selected.seriesId, session),
                   )
                   .toList();
@@ -2288,172 +2360,194 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final strings = widget.strings;
     if (widget.availableSeries.isEmpty) {
       return _PageFrame(
-        title: widget.strings.standings,
+        title: strings.standings,
         subtitle: '',
         child: _EmptyCard(
           icon: Icons.category_outlined,
-          message: widget.strings.chooseAny,
+          message: strings.chooseAny,
         ),
       );
     }
     final series = widget.availableSeries.contains('f1')
         ? 'f1'
-        : (widget.availableSeries.toList()..sort()).first;
+        : (widget.availableSeries.toList()
+                ..sort((a, b) => seriesOrder(a).compareTo(seriesOrder(b))))
+              .first;
+    final gt3 = gt3SeriesIds.contains(series);
     final standings = ref.watch(standingsProvider(series));
-    final strings = widget.strings;
-    final supportsTeams = {'f1', 'wec', 'imsa'}.contains(series);
+    final supportsTeams = {'f1', 'wec', 'imsa'}.contains(series) || gt3;
     final showDrivers = !supportsTeams || _drivers;
-    final hasClassStandings = {'wec', 'imsa'}.contains(series);
-    final categories = series == 'wec'
-        ? const ['HYPERCAR', 'LMGT3']
-        : const ['GTP', 'LMP2', 'GTD PRO', 'GTD'];
-    final selectedCategory = categories.contains(_standingsCategory)
-        ? _standingsCategory
-        : categories.first;
-    final teamClassificationLabel = series == 'wec'
-        ? (selectedCategory == 'HYPERCAR'
-              ? strings.manufacturers
-              : strings.teams)
-        : (series == 'imsa' ? strings.teams : strings.constructors);
-    return _PageFrame(
+    Widget frame({Widget? child, List<WidgetBuilder>? rows}) => _PageFrame(
       title: strings.standings,
       subtitle: '${_seriesLabel(series)} • 2026',
-      child: Column(
-        children: [
-          if (supportsTeams)
-            SegmentedButton<bool>(
-              segments: [
-                ButtonSegment(
-                  value: true,
-                  icon: const Icon(Icons.person),
-                  label: Text(strings.drivers),
-                ),
-                ButtonSegment(
-                  value: false,
-                  icon: const Icon(Icons.groups),
-                  label: Text(teamClassificationLabel),
-                ),
-              ],
-              selected: {_drivers},
-              onSelectionChanged: (value) =>
-                  setState(() => _drivers = value.first),
-            ),
-          if (supportsTeams) const SizedBox(height: 16),
-          standings.when(
-            loading: () => const Padding(
-              padding: EdgeInsets.all(32),
-              child: CircularProgressIndicator(),
-            ),
-            error: (error, _) => _ErrorState(
-              message: error.toString(),
-              strings: strings,
-              onRetry: () => ref.invalidate(standingsProvider(series)),
-            ),
-            data: (data) {
-              final drivers = hasClassStandings
-                  ? data.drivers.where(
-                      (item) => item.category == selectedCategory,
-                    )
-                  : data.drivers;
-              final teams = hasClassStandings
-                  ? data.teams.where(
-                      (item) => item.category == selectedCategory,
-                    )
-                  : data.teams;
-              return Column(
-                children: [
-                  if (hasClassStandings)
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: SegmentedButton<String>(
-                        segments: categories
-                            .map(
-                              (category) => ButtonSegment(
-                                value: category,
-                                label: Text(category),
-                              ),
-                            )
-                            .toList(growable: false),
-                        selected: {selectedCategory},
-                        onSelectionChanged: (value) =>
-                            setState(() => _standingsCategory = value.first),
-                      ),
-                    ),
-                  if (hasClassStandings) const SizedBox(height: 16),
-                  Card(
-                    child: Column(
-                      children: showDrivers
-                          ? drivers
-                                .map(
-                                  (item) => _StandingRow(
-                                    position: item.position,
-                                    title:
-                                        '${item.givenName} ${item.familyName}',
-                                    subtitle: item.teamNames.isNotEmpty
-                                        ? item.teamNames.join(' • ')
-                                        : item.teamIds
-                                              .map(_teamName)
-                                              .join(' • '),
-                                    color: item.teamColors.isNotEmpty
-                                        ? _hexColor(item.teamColors.first)
-                                        : _teamColor(
-                                            item.teamIds.isEmpty
-                                                ? null
-                                                : item.teamIds.first,
-                                          ),
-                                    nationality: item.nationality,
-                                    imageUrl: item.imageUrl,
-                                    teamLogoAsset: null,
-                                    initials:
-                                        '${item.givenName.isEmpty ? '' : item.givenName[0]}${item.familyName.isEmpty ? '' : item.familyName[0]}',
-                                    points: item.points,
-                                    leaderPoints: drivers.fold<double>(
-                                      0,
-                                      (max, other) => other.points > max
-                                          ? other.points
-                                          : max,
-                                    ),
-                                    strings: strings,
-                                  ),
-                                )
-                                .toList()
-                          : teams
-                                .map(
-                                  (item) => _StandingRow(
-                                    position: item.position,
-                                    title: item.name,
-                                    subtitle: '',
-                                    color: item.color == null
-                                        ? _teamColor(item.id)
-                                        : _hexColor(item.color),
-                                    nationality: null,
-                                    imageUrl: null,
-                                    teamLogoAsset: _teamLogoAsset(
-                                      item.id,
-                                      item.name,
-                                    ),
-                                    initials: '',
-                                    points: item.points,
-                                    leaderPoints: teams.fold<double>(
-                                      0,
-                                      (max, other) => other.points > max
-                                          ? other.points
-                                          : max,
-                                    ),
-                                    strings: strings,
-                                  ),
-                                )
-                                .toList(),
-                    ),
+      itemCount: rows?.length ?? 0,
+      // Rows are built lazily; each paints the card surface it used to share.
+      itemBuilder: rows == null
+          ? null
+          : (context, index) => index == 0
+                ? rows[0](context)
+                : ColoredBox(
+                    color: Theme.of(context).cardColor,
+                    child: rows[index](context),
                   ),
-                ],
-              );
-            },
+      child: child,
+    );
+    return standings.when(
+      loading: () => frame(
+        child: const Center(
+          child: Padding(
+            padding: EdgeInsets.all(32),
+            child: CircularProgressIndicator(),
           ),
-        ],
+        ),
       ),
+      error: (error, _) => frame(
+        child: _ErrorState(
+          message: error.toString(),
+          strings: strings,
+          onRetry: () => ref.invalidate(standingsProvider(series)),
+        ),
+      ),
+      data: (data) {
+        // WEC and IMSA have fixed classes; GT3 classes (Overall, Pro, Gold,
+        // Silver, Bronze, Pro-Am, ...) come from the official standings.
+        final categories = switch (series) {
+          'wec' => const ['HYPERCAR', 'LMGT3'],
+          'imsa' => const ['GTP', 'LMP2', 'GTD PRO', 'GTD'],
+          _ => {
+            for (final item in data.drivers)
+              if (item.category != null) item.category!,
+          }.toList(),
+        };
+        final hasClassStandings = categories.length > 1;
+        final selectedCategory = categories.contains(_standingsCategory)
+            ? _standingsCategory
+            : (categories.isEmpty ? null : categories.first);
+        final teamClassificationLabel = switch (series) {
+          'wec' when selectedCategory == 'HYPERCAR' => strings.manufacturers,
+          'igtc' => strings.manufacturers,
+          'f1' => strings.constructors,
+          _ => strings.teams,
+        };
+        final drivers = data.drivers
+            .where(
+              (item) => !hasClassStandings || item.category == selectedCategory,
+            )
+            .toList();
+        final teams = data.teams
+            .where(
+              (item) =>
+                  !hasClassStandings ||
+                  item.category == selectedCategory ||
+                  // GT3 team standings may exist for the overall class only.
+                  (gt3 &&
+                      !data.teams.any(
+                        (team) => team.category == selectedCategory,
+                      ) &&
+                      item.category == data.teams.first.category),
+            )
+            .toList();
+        double leader(Iterable<double> points) =>
+            points.fold<double>(0, (max, value) => value > max ? value : max);
+        final driverLeader = leader(drivers.map((item) => item.points));
+        final teamLeader = leader(teams.map((item) => item.points));
+        final rows = <WidgetBuilder>[
+          (context) => Column(
+            children: [
+              if (supportsTeams) ...[
+                SegmentedButton<bool>(
+                  segments: [
+                    ButtonSegment(
+                      value: true,
+                      icon: const Icon(Icons.person),
+                      label: Text(strings.drivers),
+                    ),
+                    ButtonSegment(
+                      value: false,
+                      icon: const Icon(Icons.groups),
+                      label: Text(teamClassificationLabel),
+                    ),
+                  ],
+                  selected: {_drivers},
+                  onSelectionChanged: (value) =>
+                      setState(() => _drivers = value.first),
+                ),
+                const SizedBox(height: 16),
+              ],
+              if (hasClassStandings) ...[
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: SegmentedButton<String>(
+                    segments: categories
+                        .map(
+                          (category) => ButtonSegment(
+                            value: category,
+                            label: Text(category),
+                          ),
+                        )
+                        .toList(growable: false),
+                    selected: {selectedCategory!},
+                    onSelectionChanged: (value) =>
+                        setState(() => _standingsCategory = value.first),
+                  ),
+                ),
+                const SizedBox(height: 16),
+              ],
+            ],
+          ),
+          if (showDrivers)
+            for (final item in drivers)
+              (context) => _StandingRow(
+                position: item.position,
+                title: '${item.givenName} ${item.familyName}',
+                subtitle: item.teamNames.isNotEmpty
+                    ? item.teamNames.join(' • ')
+                    : item.teamIds.map(_teamName).join(' • '),
+                color: item.teamColors.isNotEmpty
+                    ? _hexColor(item.teamColors.first)
+                    : _teamColor(
+                        item.teamIds.isEmpty ? null : item.teamIds.first,
+                      ),
+                nationality: item.nationality,
+                imageUrl: item.imageUrl,
+                teamLogoAsset: null,
+                initials:
+                    '${item.givenName.isEmpty ? '' : item.givenName[0]}${item.familyName.isEmpty ? '' : item.familyName[0]}',
+                points: item.points,
+                leaderPoints: driverLeader,
+                strings: strings,
+              )
+          else
+            for (final item in teams)
+              (context) => _StandingRow(
+                position: item.position,
+                title: item.name,
+                subtitle: '',
+                color: item.color == null
+                    ? _teamColor(item.id)
+                    : _hexColor(item.color),
+                nationality: null,
+                imageUrl: null,
+                teamLogoAsset: _teamLogoAsset(item.id, item.name),
+                initials: '',
+                points: item.points,
+                leaderPoints: teamLeader,
+                strings: strings,
+              ),
+        ];
+        if (rows.length == 1) {
+          rows.add(
+            (context) => _EmptyCard(
+              icon: Icons.emoji_events_outlined,
+              message: strings.noResults,
+            ),
+          );
+        }
+        return frame(rows: rows);
+      },
     );
   }
 }
@@ -2863,24 +2957,9 @@ class _SettingsPage extends ConsumerWidget {
           _CategorySelectionCard(
             title: strings.motorsportCategories,
             subtitle: strings.chooseAny,
-            items: const [
-              ('f1', 'F1', 'assets/brands/f1-official.svg', null),
-              ('f2', 'F2', 'assets/brands/f2-official.svg', null),
-              ('f3', 'F3', 'assets/brands/f3-official.svg', null),
-              ('imsa', 'IMSA', 'assets/brands/imsa.svg', null),
-              (
-                'indycar',
-                'INDYCAR',
-                'assets/brands/indycar-official.png',
-                null,
-              ),
-              (
-                'indynxt',
-                'INDY NXT',
-                'assets/brands/indynxt-official.png',
-                null,
-              ),
-              ('wec', 'WEC', 'assets/brands/wec-official.png', null),
+            items: [
+              for (final series in mainSeries)
+                (series.id, series.label, series.logo!, series.darkLogo),
             ],
             selected: settings.motorsportCategories,
             onToggle: (id) {
@@ -2888,6 +2967,12 @@ class _SettingsPage extends ConsumerWidget {
               next.contains(id) ? next.remove(id) : next.add(id);
               controller.setMotorsportCategories(next);
             },
+          ),
+          const SizedBox(height: 12),
+          _Gt3SelectionCard(
+            selected: settings.motorsportCategories,
+            polish: settings.language == AppLanguage.polish,
+            onChanged: controller.setMotorsportCategories,
           ),
           const SizedBox(height: 12),
           NotificationSettings(polish: settings.language == AppLanguage.polish),
@@ -3129,6 +3214,101 @@ Secar jest ogólnodostępną aplikacją informacyjną o sportach motorowych i ś
 
 Zmiany i kontakt
 Polityka może być aktualizowana, gdy zmienią się funkcje Secar lub sposób przetwarzania danych. Data wejścia w życie zostanie zaktualizowana na publicznej stronie. Pytania i żądania dotyczące prywatności można kierować na marcin.soy@gmail.com.''';
+
+/// GT3 championships: one master switch plus one switch per series, so the
+/// large GT3 calendar can be narrowed to the championships the user follows.
+class _Gt3SelectionCard extends StatelessWidget {
+  const _Gt3SelectionCard({
+    required this.selected,
+    required this.polish,
+    required this.onChanged,
+  });
+  final Set<String> selected;
+  final bool polish;
+  final ValueChanged<Set<String>> onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final enabled = gt3Series.where((item) => selected.contains(item.id));
+    final all = enabled.length == gt3Series.length;
+    return Card(
+      key: const ValueKey('gt3-categories'),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 16, 8, 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                const SlantTag(label: 'GT3', color: Color(0xFF0057B8)),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Text(
+                    polish ? 'MISTRZOSTWA GT3' : 'GT3 CHAMPIONSHIPS',
+                    style: const TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.w900,
+                      letterSpacing: .8,
+                    ),
+                  ),
+                ),
+                Text(
+                  '${enabled.length}/${gt3Series.length}',
+                  style: racingDisplay(size: 18, color: scheme.primary),
+                ),
+                Switch(
+                  key: const ValueKey('gt3-all'),
+                  value: all,
+                  onChanged: (value) => onChanged(
+                    value
+                        ? {...selected, ...gt3SeriesIds}
+                        : selected.difference(gt3SeriesIds),
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 8),
+              child: Text(
+                polish
+                    ? 'SRO GT World Challenge, Intercontinental GT Challenge i British GT. Wybierz, które serie chcesz widzieć.'
+                    : 'SRO GT World Challenge, Intercontinental GT Challenge and British GT. Pick the ones you follow.',
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+            ),
+            const SizedBox(height: 4),
+            for (final series in gt3Series)
+              SwitchListTile(
+                key: ValueKey('gt3-${series.id}'),
+                contentPadding: const EdgeInsets.only(left: 0, right: 0),
+                dense: true,
+                secondary: Container(
+                  width: 8,
+                  height: 34,
+                  decoration: ShapeDecoration(
+                    color: series.color,
+                    shape: const SlantBorder(slant: 3),
+                  ),
+                ),
+                title: Text(
+                  series.label,
+                  style: racingDisplay(size: 17, letterSpacing: .5),
+                ),
+                subtitle: Text(series.name, maxLines: 1),
+                value: selected.contains(series.id),
+                onChanged: (value) => onChanged(
+                  value
+                      ? {...selected, series.id}
+                      : ({...selected}..remove(series.id)),
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}
 
 class _CategorySelectionCard extends StatelessWidget {
   const _CategorySelectionCard({
@@ -3392,9 +3572,18 @@ RaceEvent? _nextEvent(List<RaceEvent> events, DateTime now) {
   return null;
 }
 
+/// GT3 classifications that have not appeared six hours after a session are
+/// not expected any more (bronze tests, rounds timed by third parties); this
+/// matches the polling window of the data pipeline.
+bool _gaveUpWaiting(String seriesId, RaceSession session, DateTime now) =>
+    gt3SeriesIds.contains(seriesId) &&
+    session.expectedEnd.isBefore(now.subtract(const Duration(hours: 6)));
+
 /// Whether the data pipeline imports a classification for this session.
 bool _publishesResults(String seriesId, RaceSession session) =>
-    {'f1', 'f2', 'f3', 'wec'}.contains(seriesId) || session.type == 'R';
+    {'f1', 'f2', 'f3', 'wec'}.contains(seriesId) ||
+    gt3SeriesIds.contains(seriesId) ||
+    session.type == 'R';
 
 String _sessionLabel(String type, String original, AppStrings strings) {
   if (strings.language == AppLanguage.english) return original;
@@ -3417,15 +3606,34 @@ String _sessionLabel(String type, String original, AppStrings strings) {
     _ => null,
   };
   if (fixed != null) return fixed;
-  // Endurance sessions carry the class in the name, e.g.
-  // "Qualifying - HYPERCAR" or "Free Practice 3 - LMGT3".
-  return original
-      .replaceFirst(RegExp(r'^Free Practice', caseSensitive: false), 'Trening')
-      .replaceFirst(
-        RegExp(r'^Qualifying', caseSensitive: false),
-        'Kwalifikacje',
-      )
-      .replaceAll(' - ', ' – ');
+  // Endurance and GT3 sessions carry details in the name, e.g.
+  // "Qualifying - HYPERCAR", "Qualifying 1 - Group A" or "Test Session 2".
+  const words = [
+    (r'^Free Practice', 'Trening'),
+    (r'^Official Practice', 'Trening oficjalny'),
+    (r'^Night Practice', 'Trening nocny'),
+    (r'^Practice', 'Trening'),
+    (r'^Pre[- ]Qualifying', 'Przedkwalifikacje'),
+    (r'^Qualifying', 'Kwalifikacje'),
+    (r'^Official (?:Paid )?Test Sessions?', 'Testy oficjalne'),
+    (r'^(?:Paid )?Test Sessions?', 'Sesja testowa'),
+    (r'^Bronze Test', 'Test kierowców Bronze'),
+    (r'^Main Race', 'Wyścig główny'),
+    (r'^Race', 'Wyścig'),
+    (r'^Warm[- ]?Up', 'Rozgrzewka'),
+    (r'^Pole Shootout', 'Walka o pole position'),
+    (r'\bGroup\b', 'grupa'),
+    (r'\bCombined\b', 'łącznie'),
+    (r'\bBronze Drivers(?: Only)?\b', 'kierowcy Bronze'),
+  ];
+  var label = original;
+  for (final (pattern, replacement) in words) {
+    label = label.replaceFirst(
+      RegExp(pattern, caseSensitive: false),
+      replacement,
+    );
+  }
+  return label.replaceAll(' - ', ' – ');
 }
 
 String _teamName(String id) => switch (id) {
@@ -3575,27 +3783,9 @@ String? _nationalityCode(String nationality) =>
       _ => null,
     };
 
-String _seriesLabel(String id) => switch (id.toLowerCase()) {
-  'f1' => 'F1',
-  'f2' => 'F2',
-  'f3' => 'F3',
-  'wec' => 'WEC',
-  'imsa' => 'IMSA',
-  'indycar' => 'INDYCAR',
-  'indynxt' => 'INDY NXT',
-  _ => id.toUpperCase(),
-};
+String _seriesLabel(String id) => seriesLabel(id);
 
-Color _seriesColor(String id) => switch (id.toLowerCase()) {
-  'f1' => const Color(0xFFE10600),
-  'f2' => const Color(0xFF1565C0),
-  'f3' => const Color(0xFF7B1FA2),
-  'wec' => const Color(0xFF00695C),
-  'imsa' => const Color(0xFFEF6C00),
-  'indycar' => const Color(0xFFD71920),
-  'indynxt' => const Color(0xFFE31837),
-  _ => const Color(0xFF455A64),
-};
+Color _seriesColor(String id) => seriesColor(id);
 
 String _zoneName(
   RaceSession session,
@@ -3663,13 +3853,23 @@ Color _hexColor(String? value) {
   return Color(int.parse(value.replaceFirst('#', '0xFF')));
 }
 
-Color _categoryColor(String? category) => switch (category) {
-  'GTP' => const Color(0xFFE10600),
-  'LMP2' => const Color(0xFF1976D2),
-  'GTD PRO' => const Color(0xFFFFC107),
-  'GTD' => const Color(0xFF43A047),
-  _ => Colors.transparent,
-};
+Color _categoryColor(String? category) =>
+    switch (category?.toUpperCase().replaceAll(' CUP', '').trim()) {
+      'GTP' => const Color(0xFFE10600),
+      'LMP2' => const Color(0xFF1976D2),
+      'GTD PRO' => const Color(0xFFFFC107),
+      'GTD' => const Color(0xFF43A047),
+      // SRO GT3 driver-rating classes.
+      'PRO' => const Color(0xFFE10600),
+      'GOLD' => const Color(0xFFFFC107),
+      'SILVER' => const Color(0xFF90A4AE),
+      'BRONZE' => const Color(0xFFA1887F),
+      'PRO-AM' || 'PA' || 'PRO AM' => const Color(0xFF1976D2),
+      'SILVER-AM' || 'SA' => const Color(0xFF00ACC1),
+      'AM' => const Color(0xFF43A047),
+      'TROPHY' => const Color(0xFF8E24AA),
+      _ => Colors.transparent,
+    };
 
 String _number(double value) => value == value.roundToDouble()
     ? value.toInt().toString()

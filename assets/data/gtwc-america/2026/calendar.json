@@ -1,0 +1,512 @@
+{
+  "schemaVersion": 1,
+  "lastSuccessfulUpdate": "2026-10-19T14:21:05.788015Z",
+  "source": {
+    "name": "sro-official-calendar",
+    "url": "https://www.gt-world-challenge-america.com/calendar"
+  },
+  "data": [
+    {
+      "id": "gtwc-america-2026-1",
+      "seriesId": "gtwc-america",
+      "season": 2026,
+      "round": 1,
+      "name": "Sonoma Raceway",
+      "cancelled": false,
+      "circuit": {
+        "id": "sonoma-raceway",
+        "name": "Sonoma Raceway",
+        "locality": "Sonoma",
+        "country": "United States of America",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "FP1",
+          "name": "Practice 1",
+          "startTimeUtc": "2026-03-27T23:00:00Z",
+          "startTimeTrack": "2026-03-27 16:00:00-07:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP2",
+          "name": "Practice 2",
+          "startTimeUtc": "2026-03-28T18:00:00Z",
+          "startTimeTrack": "2026-03-28 11:00:00-07:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP3",
+          "name": "Practice 3",
+          "startTimeUtc": "2026-03-28T21:15:00Z",
+          "startTimeTrack": "2026-03-28 14:15:00-07:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "Q",
+          "name": "Qualifying",
+          "startTimeUtc": "2026-03-29T15:50:00Z",
+          "startTimeTrack": "2026-03-29 08:50:00-07:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-03-29T20:45:00Z",
+          "startTimeTrack": "2026-03-29 13:45:00-07:00",
+          "cancelled": false,
+          "durationMinutes": 90
+        }
+      ],
+      "resultsPath": "events/01-sonoma-raceway.json"
+    },
+    {
+      "id": "gtwc-america-2026-2",
+      "seriesId": "gtwc-america",
+      "season": 2026,
+      "round": 2,
+      "name": "Circuit of the Americas",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit-of-the-americas",
+        "name": "Circuit of the Americas",
+        "locality": "Austin",
+        "country": "United States of America",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "TEST_SESSION",
+          "name": "Test Session",
+          "startTimeUtc": "2026-04-24T14:35:00Z",
+          "startTimeTrack": "2026-04-24 09:35:00-05:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP1",
+          "name": "Practice 1",
+          "startTimeUtc": "2026-04-24T21:20:00Z",
+          "startTimeTrack": "2026-04-24 16:20:00-05:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP2",
+          "name": "Practice 2",
+          "startTimeUtc": "2026-04-25T15:25:00Z",
+          "startTimeTrack": "2026-04-25 10:25:00-05:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP3",
+          "name": "Practice 3",
+          "startTimeUtc": "2026-04-25T19:30:00Z",
+          "startTimeTrack": "2026-04-25 14:30:00-05:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "QUALIFYING_COMBINED",
+          "name": "Qualifying Combined",
+          "startTimeUtc": "2026-04-26T13:45:00Z",
+          "startTimeTrack": "2026-04-26 08:45:00-05:00",
+          "cancelled": false,
+          "durationMinutes": 5
+        },
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-04-26T17:30:00Z",
+          "startTimeTrack": "2026-04-26 12:30:00-05:00",
+          "cancelled": false,
+          "durationMinutes": 90
+        }
+      ],
+      "resultsPath": "events/02-circuit-of-the-americas.json"
+    },
+    {
+      "id": "gtwc-america-2026-3",
+      "seriesId": "gtwc-america",
+      "season": 2026,
+      "round": 3,
+      "name": "Sebring International Raceway",
+      "cancelled": false,
+      "circuit": {
+        "id": "sebring-international-raceway",
+        "name": "Sebring International Raceway",
+        "locality": "Sebring",
+        "country": "United States of America",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "TEST_SESSION",
+          "name": "Test Session",
+          "startTimeUtc": "2026-05-08T13:35:00Z",
+          "startTimeTrack": "2026-05-08 09:35:00-04:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP1",
+          "name": "Practice 1",
+          "startTimeUtc": "2026-05-08T23:00:00Z",
+          "startTimeTrack": "2026-05-08 19:00:00-04:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP2",
+          "name": "Practice 2",
+          "startTimeUtc": "2026-05-09T12:50:00Z",
+          "startTimeTrack": "2026-05-09 08:50:00-04:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "Q",
+          "name": "Qualifying",
+          "startTimeUtc": "2026-05-09T18:10:00Z",
+          "startTimeTrack": "2026-05-09 14:10:00-04:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-05-09T21:00:00Z",
+          "startTimeTrack": "2026-05-09 17:00:00-04:00",
+          "cancelled": false,
+          "durationMinutes": 90
+        }
+      ],
+      "resultsPath": "events/03-sebring-international-raceway.json"
+    },
+    {
+      "id": "gtwc-america-2026-4",
+      "seriesId": "gtwc-america",
+      "season": 2026,
+      "round": 4,
+      "name": "Michelin Raceway Road Atlanta",
+      "cancelled": false,
+      "circuit": {
+        "id": "michelin-raceway-road-atlanta",
+        "name": "Michelin Raceway Road Atlanta",
+        "locality": "Braselton",
+        "country": "United States of America",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "TEST_SESSION",
+          "name": "Test Session",
+          "startTimeUtc": "2026-06-12T12:50:00Z",
+          "startTimeTrack": "2026-06-12 08:50:00-04:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP1",
+          "name": "Practice 1",
+          "startTimeUtc": "2026-06-12T21:05:00Z",
+          "startTimeTrack": "2026-06-12 17:05:00-04:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP2",
+          "name": "Practice 2",
+          "startTimeUtc": "2026-06-13T14:45:00Z",
+          "startTimeTrack": "2026-06-13 10:45:00-04:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP3",
+          "name": "Practice 3",
+          "startTimeUtc": "2026-06-13T17:45:00Z",
+          "startTimeTrack": "2026-06-13 13:45:00-04:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "Q1",
+          "name": "Qualifying 1",
+          "startTimeUtc": "2026-06-13T21:25:00Z",
+          "startTimeTrack": "2026-06-13 17:25:00-04:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "Q2",
+          "name": "Qualifying 2",
+          "startTimeUtc": "2026-06-13T21:45:00Z",
+          "startTimeTrack": "2026-06-13 17:45:00-04:00",
+          "cancelled": false,
+          "durationMinutes": 5
+        },
+        {
+          "type": "QUALIFYING_COMBINED",
+          "name": "Qualifying Combined",
+          "startTimeUtc": "2026-06-13T21:50:00Z",
+          "startTimeTrack": "2026-06-13 17:50:00-04:00",
+          "cancelled": false,
+          "durationMinutes": 5
+        },
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-06-14T18:30:00Z",
+          "startTimeTrack": "2026-06-14 14:30:00-04:00",
+          "cancelled": false,
+          "durationMinutes": 90
+        }
+      ],
+      "resultsPath": "events/04-michelin-raceway-road-atlanta.json"
+    },
+    {
+      "id": "gtwc-america-2026-5",
+      "seriesId": "gtwc-america",
+      "season": 2026,
+      "round": 5,
+      "name": "Road America",
+      "cancelled": false,
+      "circuit": {
+        "id": "road-america",
+        "name": "Road America",
+        "locality": "Elkhart Lake",
+        "country": "United States of America",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "TEST_SESSION",
+          "name": "Test Session",
+          "startTimeUtc": "2026-08-28T13:05:00Z",
+          "startTimeTrack": "2026-08-28 08:05:00-05:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP1",
+          "name": "Practice 1",
+          "startTimeUtc": "2026-08-28T22:00:00Z",
+          "startTimeTrack": "2026-08-28 17:00:00-05:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP2",
+          "name": "Practice 2",
+          "startTimeUtc": "2026-08-29T15:55:00Z",
+          "startTimeTrack": "2026-08-29 10:55:00-05:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP3",
+          "name": "Practice 3",
+          "startTimeUtc": "2026-08-29T19:25:00Z",
+          "startTimeTrack": "2026-08-29 14:25:00-05:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "Q1",
+          "name": "Qualifying 1",
+          "startTimeUtc": "2026-08-30T14:10:00Z",
+          "startTimeTrack": "2026-08-30 09:10:00-05:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "Q2",
+          "name": "Qualifying 2",
+          "startTimeUtc": "2026-08-30T14:30:00Z",
+          "startTimeTrack": "2026-08-30 09:30:00-05:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-08-30T19:00:00Z",
+          "startTimeTrack": "2026-08-30 14:00:00-05:00",
+          "cancelled": false,
+          "durationMinutes": 90
+        }
+      ],
+      "resultsPath": "events/05-road-america.json"
+    },
+    {
+      "id": "gtwc-america-2026-6",
+      "seriesId": "gtwc-america",
+      "season": 2026,
+      "round": 6,
+      "name": "Barber Motorsports Park",
+      "cancelled": false,
+      "circuit": {
+        "id": "barber-motorsports-park",
+        "name": "Barber Motorsports Park",
+        "locality": "Birmingham",
+        "country": "United States of America",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "TEST_SESSION",
+          "name": "Test Session",
+          "startTimeUtc": "2026-09-25T13:45:00Z",
+          "startTimeTrack": "2026-09-25 08:45:00-05:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP1",
+          "name": "Practice 1",
+          "startTimeUtc": "2026-09-25T21:45:00Z",
+          "startTimeTrack": "2026-09-25 16:45:00-05:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP2",
+          "name": "Practice 2",
+          "startTimeUtc": "2026-09-26T15:15:00Z",
+          "startTimeTrack": "2026-09-26 10:15:00-05:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP3",
+          "name": "Practice 3",
+          "startTimeUtc": "2026-09-26T19:50:00Z",
+          "startTimeTrack": "2026-09-26 14:50:00-05:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "Q1",
+          "name": "Qualifying 1",
+          "startTimeUtc": "2026-09-27T13:30:00Z",
+          "startTimeTrack": "2026-09-27 08:30:00-05:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "Q2",
+          "name": "Qualifying 2",
+          "startTimeUtc": "2026-09-27T13:50:00Z",
+          "startTimeTrack": "2026-09-27 08:50:00-05:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-09-27T17:30:00Z",
+          "startTimeTrack": "2026-09-27 12:30:00-05:00",
+          "cancelled": false,
+          "durationMinutes": 90
+        }
+      ],
+      "resultsPath": "events/06-barber-motorsports-park.json"
+    },
+    {
+      "id": "gtwc-america-2026-7",
+      "seriesId": "gtwc-america",
+      "season": 2026,
+      "round": 7,
+      "name": "Indianapolis Motor Speedway",
+      "cancelled": false,
+      "circuit": {
+        "id": "indianapolis-motor-speedway-road-course",
+        "name": "Indianapolis Motor Speedway Road Course",
+        "locality": "Indianapolis",
+        "country": "United States of America",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "TEST_SESSION",
+          "name": "Test Session",
+          "startTimeUtc": "2026-10-07T19:25:00Z",
+          "startTimeTrack": "2026-10-07 15:25:00-04:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "TEST_SESSION_2",
+          "name": "Test Session",
+          "startTimeUtc": "2026-10-08T14:45:00Z",
+          "startTimeTrack": "2026-10-08 10:45:00-04:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "FP",
+          "name": "Free Practice",
+          "startTimeUtc": "2026-10-08T23:00:00Z",
+          "startTimeTrack": "2026-10-08 19:00:00-04:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "PRE_QUALIFYING",
+          "name": "Pre-Qualifying",
+          "startTimeUtc": "2026-10-09T13:50:00Z",
+          "startTimeTrack": "2026-10-09 09:50:00-04:00",
+          "cancelled": false,
+          "durationMinutes": 60
+        },
+        {
+          "type": "Q1",
+          "name": "Qualifying 1",
+          "startTimeUtc": "2026-10-09T19:35:00Z",
+          "startTimeTrack": "2026-10-09 15:35:00-04:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "Q2",
+          "name": "Qualifying 2",
+          "startTimeUtc": "2026-10-09T19:57:00Z",
+          "startTimeTrack": "2026-10-09 15:57:00-04:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "Q3",
+          "name": "Qualifying 3",
+          "startTimeUtc": "2026-10-09T20:20:00Z",
+          "startTimeTrack": "2026-10-09 16:20:00-04:00",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "SUPERPOLE",
+          "name": "Superpole",
+          "startTimeUtc": "2026-10-09T21:35:00Z",
+          "startTimeTrack": "2026-10-09 17:35:00-04:00",
+          "cancelled": false,
+          "durationMinutes": 15
+        },
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2026-10-10T16:30:00Z",
+          "startTimeTrack": "2026-10-10 12:30:00-04:00",
+          "cancelled": false,
+          "durationMinutes": 480
+        }
+      ],
+      "resultsPath": "events/07-indianapolis-motor-speedway.json"
+    }
+  ]
+}

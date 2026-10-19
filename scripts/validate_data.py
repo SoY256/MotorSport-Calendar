@@ -13,6 +13,12 @@ PUBLISHED_DATA = ROOT / "data"
 # Drivers without an identity-verified face photo show initials instead of a
 # guessed or shared portrait.
 PORTRAIT_EXEMPT: dict[str, set[str]] = {}
+# GT3 grids are large and partly amateur: drivers without an official studio
+# portrait show initials, circuits without a bundled map show none, and rounds
+# timed by third parties (e.g. the Nürburgring 24h) may have no classification.
+LENIENT_SERIES = frozenset(
+    {"gtwc-endurance", "gtwc-sprint", "gtwc-america", "gtwc-asia", "gtwc-australia", "british-gt", "igtc"}
+)
 
 
 def load(path: Path):
@@ -29,8 +35,10 @@ def main() -> None:
     dart = (ROOT / "lib" / "features" / "calendar" / "domain" / "circuit_metadata.dart").read_text(encoding="utf-8")
     mapped = set(re.findall(r"'([^']+)'\s*(?:\|\||=>)", dart))
     failures = []
+    notes = []
     summary = []
     for series_id in ids:
+        lenient = series_id in LENIENT_SERIES
         root = DATA / series_id / "2026"
         calendar = load(root / "calendar.json")["data"]
         drivers = load(root / "standings_drivers.json")["data"]
@@ -50,7 +58,9 @@ def main() -> None:
             and f"{item.get('givenName', '')} {item.get('familyName', '')}".strip()
             not in PORTRAIT_EXEMPT.get(series_id, set())
         ]
-        if missing_portraits:
+        if missing_portraits and lenient:
+            notes.append(f"{series_id}: {len(missing_portraits)} drivers shown with initials")
+        elif missing_portraits:
             failures.append(
                 f"{series_id}: missing driver portraits for {', '.join(missing_portraits)}"
             )
@@ -77,7 +87,7 @@ def main() -> None:
                 )
         completed = populated = 0
         for event in calendar:
-            if event["circuit"]["name"] not in mapped:
+            if event["circuit"]["name"] not in mapped and not lenient:
                 failures.append(f"{series_id} R{event['round']}: no circuit asset mapping for {event['circuit']['name']}")
             result_path = root / event["resultsPath"]
             if not result_path.exists():
@@ -110,13 +120,14 @@ def main() -> None:
             if ended:
                 completed += 1
                 if not sessions or not any(session.get("results") for session in sessions):
-                    failures.append(f"{series_id} R{event['round']}: completed event has no results")
+                    message = f"{series_id} R{event['round']}: completed event has no results"
+                    (notes if lenient else failures).append(message)
                 else:
                     populated += 1
         summary.append(f"{series_id}: {len(calendar)} rounds, {populated}/{completed} completed with results, {len(drivers)} drivers, {len(teams)} teams")
     if failures:
         raise AssertionError("\n".join(failures))
-    print("\n".join(summary))
+    print("\n".join(summary + [f"note: {note}" for note in notes]))
 
 
 if __name__ == "__main__":

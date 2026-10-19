@@ -13,7 +13,10 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SERIES = ("f1", "f2", "f3", "imsa", "indycar", "indynxt", "wec")
+sys.path.insert(0, str(ROOT / "scripts"))
+from fetch_gt3_results import SERIES as GT3_SERIES  # noqa: E402
+
+SERIES = ("f1", "f2", "f3", "imsa", "indycar", "indynxt", "wec", *GT3_SERIES)
 
 
 def run(script: str, env: dict[str, str], *args: str) -> None:
@@ -41,6 +44,10 @@ def write_indexes(data_root: Path) -> None:
         "indycar": ("NTT INDYCAR SERIES", "INDYCAR", "#D71920"),
         "indynxt": ("INDY NXT by Firestone", "INDY NXT", "#E31837"),
         "wec": ("FIA World Endurance Championship", "WEC", "#00695C"),
+        **{
+            series: (config["name"], config["short"], config["color"])
+            for series, config in GT3_SERIES.items()
+        },
     }
     series_doc = {
         "schemaVersion": 1,
@@ -155,14 +162,17 @@ def main(argv: list[str] | None = None) -> int:
                 f1_env["MOTORSPORT_DATA_ROOT"] = str(staged)
                 run("fetch_f1_official_results.py", f1_env)
 
-            importers = {
-                "fetch_feeder_data.py": ("f2", "f3"),
-                "fetch_imsa_results.py": ("imsa",),
-                "fetch_indycar_results.py": ("indycar",),
-                "fetch_indynxt_results.py": ("indynxt",),
-                "fetch_wec_results.py": ("wec",),
-            }
-            for index, (script, affected) in enumerate(importers.items()):
+            importers = [
+                ("fetch_feeder_data.py", (), ("f2", "f3")),
+                ("fetch_imsa_results.py", (), ("imsa",)),
+                ("fetch_indycar_results.py", (), ("indycar",)),
+                ("fetch_indynxt_results.py", (), ("indynxt",)),
+                ("fetch_wec_results.py", (), ("wec",)),
+                # One isolated run per GT3 championship: an outage of one SRO
+                # site never blocks or discards the others.
+                *(("fetch_gt3_results.py", ("--series", series), (series,)) for series in GT3_SERIES),
+            ]
+            for index, (script, script_args, affected) in enumerate(importers):
                 if not selected.intersection(affected):
                     continue
                 candidate = temp / f"candidate-{index}"
@@ -170,7 +180,7 @@ def main(argv: list[str] | None = None) -> int:
                 env = os.environ.copy()
                 env["MOTORSPORT_DATA_ROOT"] = str(candidate)
                 try:
-                    run(script, env)
+                    run(script, env, *script_args)
                 except subprocess.CalledProcessError as error:
                     print(f"{script} failed; retaining last verified data: {error}", file=sys.stderr)
                 else:

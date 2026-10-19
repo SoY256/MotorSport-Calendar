@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 import 'package:secar/app/app.dart';
+import 'package:secar/core/series_catalog.dart';
 import 'package:secar/core/widgets/racing_ui.dart';
 import 'package:secar/features/calendar/data/calendar_repository.dart';
 import 'package:secar/features/calendar/domain/circuit_metadata.dart';
@@ -44,10 +45,14 @@ void main() {
           (widget) =>
               widget is Card && widget.key.toString().contains('-upcoming'),
         );
-        expect(completed, findsWidgets);
+        await _scrollTo(tester, upcoming);
         expect(upcoming, findsWidgets);
+        final upcomingColor = tester.widget<Card>(upcoming.first).color;
+        // The list is built lazily: completed rounds exist once scrolled to.
+        await _scrollTo(tester, completed);
+        expect(completed, findsWidgets);
         expect(tester.widget<Card>(completed.first).color, isNotNull);
-        expect(tester.widget<Card>(upcoming.first).color, isNull);
+        expect(upcomingColor, isNull);
         expect(tester.takeException(), isNull);
         await tester.pumpWidget(const SizedBox.shrink());
       },
@@ -72,6 +77,9 @@ void main() {
     expect(NotificationPreferences.leadLabel(2880, false), '2 days');
   });
   test('notification groups include qualifying and sprint sessions', () {
+    expect(NotificationPreferences.kind('R2'), 'race');
+    expect(NotificationPreferences.kind('QUALIFYING_1_GROUP_A'), 'qualifying');
+    expect(NotificationPreferences.kind('TEST_SESSION_1'), 'practice');
     expect(NotificationPreferences.kind('FP3'), 'practice');
     expect(NotificationPreferences.kind('Q'), 'qualifying');
     expect(NotificationPreferences.kind('SQ'), 'qualifying');
@@ -79,7 +87,7 @@ void main() {
     expect(NotificationPreferences.kind('SPRINT'), 'race');
   });
   test('fresh installations default to English', () {
-    expect(const AppSettings().language, AppLanguage.english);
+    expect(AppSettings().language, AppLanguage.english);
   });
 
   test('lap records are selected by racing series', () {
@@ -471,6 +479,58 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
+  testWidgets('GT3 championships can be switched on and off in settings', (
+    tester,
+  ) async {
+    final calendar = await tester.runAsync(
+      () => AssetCalendarRepository().load(),
+    );
+    expect(
+      calendar!.events.map((event) => event.seriesId).toSet(),
+      containsAll(gt3SeriesIds),
+    );
+    SharedPreferences.setMockInitialValues({});
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          calendarRepositoryProvider.overrideWithValue(
+            _LoadedCalendarRepository(calendar),
+          ),
+        ],
+        child: const MotorsportCalendarApp(),
+      ),
+    );
+    await tester.pump(const Duration(seconds: 1));
+    final container = ProviderScope.containerOf(
+      tester.element(find.byType(MotorsportCalendarApp)),
+    );
+    expect(
+      container.read(settingsProvider).motorsportCategories,
+      containsAll(gt3SeriesIds),
+    );
+
+    await tester.tap(
+      find.descendant(
+        of: find.byType(NavigationBar),
+        matching: find.byIcon(Icons.tune_outlined),
+      ),
+    );
+    await tester.pump(const Duration(milliseconds: 500));
+    await _scrollTo(tester, find.byKey(const ValueKey('gt3-all')));
+    await tester.tap(find.byKey(const ValueKey('gt3-all')));
+    await tester.pump(const Duration(milliseconds: 300));
+    var selected = container.read(settingsProvider).motorsportCategories;
+    expect(selected.intersection(gt3SeriesIds), isEmpty);
+    expect(selected, contains('f1'));
+
+    await _scrollTo(tester, find.byKey(const ValueKey('gt3-igtc')));
+    await tester.tap(find.byKey(const ValueKey('gt3-igtc')));
+    await tester.pump(const Duration(milliseconds: 300));
+    selected = container.read(settingsProvider).motorsportCategories;
+    expect(selected.intersection(gt3SeriesIds), {'igtc'});
+    await tester.pumpWidget(const SizedBox.shrink());
+  });
+
   testWidgets('calendar, results, standings and settings work end to end', (
     tester,
   ) async {
@@ -525,13 +585,16 @@ void main() {
     await tester.tap(find.text('Lista'));
     await tester.pump(const Duration(milliseconds: 300));
 
-    expect(find.text('Australian Grand Prix'), findsNWidgets(3));
+    await _scrollTo(tester, find.text('Australian Grand Prix'));
+    expect(find.text('Australian Grand Prix'), findsWidgets);
     expect(
       find.byWidgetPredicate(
         (widget) => widget is RacingFlag && widget.countryCode == 'AUS',
       ),
-      findsNWidgets(3),
+      findsWidgets,
     );
+    _scrollToTop(tester);
+    await tester.pump(const Duration(milliseconds: 300));
     expect(find.text('Wszystkie'), findsOneWidget);
     expect(find.text('INDYCAR'), findsWidgets);
     expect(find.text('INDY NXT'), findsWidgets);
@@ -549,7 +612,8 @@ void main() {
     tester.widget<Switch>(find.byType(Switch).first).onChanged!(false);
     await tester.pump(const Duration(milliseconds: 300));
     expect(find.text('Ukryj ukończone wyścigi'), findsOneWidget);
-    expect(find.text('Australian Grand Prix'), findsNWidgets(3));
+    await _scrollTo(tester, find.text('Australian Grand Prix'));
+    expect(find.text('Australian Grand Prix'), findsWidgets);
 
     await tester.ensureVisible(find.text('Australian Grand Prix').first);
     await tester.drag(find.byType(CustomScrollView), const Offset(0, 80));
@@ -730,3 +794,23 @@ class _EmptyResultsRepository implements CalendarRepository {
   Future<StandingsData> loadStandings(String seriesId) async =>
       const StandingsData(drivers: [], teams: []);
 }
+
+Finder get _verticalList => find
+    .byWidgetPredicate(
+      (widget) =>
+          widget is Scrollable && widget.axisDirection == AxisDirection.down,
+    )
+    .first;
+
+/// Scrolls the lazily built page until [finder] has been built.
+Future<void> _scrollTo(WidgetTester tester, Finder finder) async {
+  for (var step = 0; step < 400 && finder.evaluate().isEmpty; step++) {
+    await tester.drag(_verticalList, const Offset(0, -500));
+    await tester.pump();
+  }
+  await tester.ensureVisible(finder.first);
+  await tester.pump();
+}
+
+void _scrollToTop(WidgetTester tester) =>
+    tester.state<ScrollableState>(_verticalList).position.jumpTo(0);

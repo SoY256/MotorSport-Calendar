@@ -332,7 +332,10 @@ class _LiveBadgeState extends State<LiveBadge>
         children: [
           FadeTransition(
             opacity: Tween<double>(begin: .25, end: 1).animate(_pulse),
-            child: const Icon(Icons.circle, size: 8, color: Colors.white),
+            // Isolated so the 60 fps pulse never repaints the list around it.
+            child: const RepaintBoundary(
+              child: Icon(Icons.circle, size: 8, color: Colors.white),
+            ),
           ),
           const SizedBox(width: 5),
           Flexible(
@@ -396,60 +399,63 @@ class _RaceCountdownState extends State<RaceCountdown> {
       left.inMinutes % 60,
       left.inSeconds % 60,
     ];
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        for (var index = 0; index < values.length; index++) ...[
-          if (index > 0)
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 3),
-              child: Text(
-                ':',
-                style: racingDisplay(
-                  size: 24,
-                  color: widget.color.withValues(alpha: .45),
-                ),
-              ),
-            ),
-          Container(
-            width: 52,
-            padding: const EdgeInsets.symmetric(vertical: 5),
-            decoration: ShapeDecoration(
-              color: widget.color.withValues(alpha: .08),
-              shape: BeveledRectangleBorder(
-                borderRadius: const BorderRadius.only(
-                  topRight: Radius.circular(8),
-                  bottomLeft: Radius.circular(8),
-                ),
-                side: BorderSide(color: widget.color.withValues(alpha: .16)),
-              ),
-            ),
-            child: Column(
-              children: [
-                Text(
-                  values[index].toString().padLeft(2, '0'),
+    // The ticking digits repaint every second; keep that work local.
+    return RepaintBoundary(
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          for (var index = 0; index < values.length; index++) ...[
+            if (index > 0)
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 3),
+                child: Text(
+                  ':',
                   style: racingDisplay(
-                    size: 28,
-                    color: widget.color,
-                    height: 1,
-                    italic: false,
+                    size: 24,
+                    color: widget.color.withValues(alpha: .45),
                   ),
                 ),
-                const SizedBox(height: 2),
-                Text(
-                  widget.units[index],
-                  style: TextStyle(
-                    fontSize: 9,
-                    letterSpacing: 1.1,
-                    fontWeight: FontWeight.w700,
-                    color: widget.color.withValues(alpha: .62),
+              ),
+            Container(
+              width: 52,
+              padding: const EdgeInsets.symmetric(vertical: 5),
+              decoration: ShapeDecoration(
+                color: widget.color.withValues(alpha: .08),
+                shape: BeveledRectangleBorder(
+                  borderRadius: const BorderRadius.only(
+                    topRight: Radius.circular(8),
+                    bottomLeft: Radius.circular(8),
                   ),
+                  side: BorderSide(color: widget.color.withValues(alpha: .16)),
                 ),
-              ],
+              ),
+              child: Column(
+                children: [
+                  Text(
+                    values[index].toString().padLeft(2, '0'),
+                    style: racingDisplay(
+                      size: 28,
+                      color: widget.color,
+                      height: 1,
+                      italic: false,
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    widget.units[index],
+                    style: TextStyle(
+                      fontSize: 9,
+                      letterSpacing: 1.1,
+                      fontWeight: FontWeight.w700,
+                      color: widget.color.withValues(alpha: .62),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
+          ],
         ],
-      ],
+      ),
     );
   }
 }
