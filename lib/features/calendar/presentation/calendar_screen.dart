@@ -259,6 +259,7 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen>
           3 => _StandingsPage(
             strings: strings,
             availableSeries: selectedSeries,
+            events: data.events,
           ),
           _ => _SettingsPage(settings: settings, strings: strings),
         };
@@ -864,7 +865,8 @@ class _ListPage extends ConsumerWidget {
       ),
     );
     return _PageFrame(
-      title: '${strings.season} ${data.events.first.season}',
+      title:
+          '${strings.season} ${_currentSeason(matching.isEmpty ? data.events : matching)}',
       subtitle:
           '${strings.events(events.length)} • ${settings.timeMode == EventTimeMode.local ? strings.localTime : strings.trackTime}',
       itemCount: rows.length,
@@ -1885,7 +1887,12 @@ class _ResultsPageState extends ConsumerState<_ResultsPage>
       if (DateTime.now().toUtc().isBefore(intendedPollAt)) return;
       _lastResultPoll = DateTime.now().toUtc();
       ref.invalidate(eventResultsProvider(widget.selected));
-      ref.invalidate(standingsProvider(widget.selected.seriesId));
+      ref.invalidate(
+        standingsProvider((
+          seriesId: widget.selected.seriesId,
+          season: widget.selected.season,
+        )),
+      );
     });
   }
 
@@ -1922,7 +1929,7 @@ class _ResultsPageState extends ConsumerState<_ResultsPage>
                   (event) => DropdownMenuItem(
                     value: event.id,
                     child: Text(
-                      '${_seriesLabel(event.seriesId)} • R${event.round} • ${event.name}',
+                      '${_seriesLabel(event.seriesId)} ${event.season} • R${event.round} • ${event.name}',
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
@@ -2347,9 +2354,14 @@ class _SessionResultsCard extends StatelessWidget {
 }
 
 class _StandingsPage extends ConsumerStatefulWidget {
-  const _StandingsPage({required this.strings, required this.availableSeries});
+  const _StandingsPage({
+    required this.strings,
+    required this.availableSeries,
+    required this.events,
+  });
   final AppStrings strings;
   final Set<String> availableSeries;
+  final List<RaceEvent> events;
   @override
   ConsumerState<_StandingsPage> createState() => _StandingsPageState();
 }
@@ -2357,6 +2369,7 @@ class _StandingsPage extends ConsumerStatefulWidget {
 class _StandingsPageState extends ConsumerState<_StandingsPage> {
   bool _drivers = true;
   String _standingsCategory = 'GTP';
+  int? _season;
 
   @override
   Widget build(BuildContext context) {
@@ -2377,12 +2390,15 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
                 ..sort((a, b) => seriesOrder(a).compareTo(seriesOrder(b))))
               .first;
     final gt3 = gt3SeriesIds.contains(series);
-    final standings = ref.watch(standingsProvider(series));
+    final seasons = _standingsSeasons(widget.events, series);
+    final season = seasons.contains(_season) ? _season! : seasons.last;
+    final key = (seriesId: series, season: season);
+    final standings = ref.watch(standingsProvider(key));
     final supportsTeams = {'f1', 'wec', 'imsa'}.contains(series) || gt3;
     final showDrivers = !supportsTeams || _drivers;
     Widget frame({Widget? child, List<WidgetBuilder>? rows}) => _PageFrame(
       title: strings.standings,
-      subtitle: '${_seriesLabel(series)} • 2026',
+      subtitle: '${_seriesLabel(series)} • $season',
       itemCount: rows?.length ?? 0,
       // Rows are built lazily; each paints the card surface it used to share.
       itemBuilder: rows == null
@@ -2408,7 +2424,7 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
         child: _ErrorState(
           message: error.toString(),
           strings: strings,
-          onRetry: () => ref.invalidate(standingsProvider(series)),
+          onRetry: () => ref.invalidate(standingsProvider(key)),
         ),
       ),
       data: (data) {
@@ -2457,6 +2473,18 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
         final rows = <WidgetBuilder>[
           (context) => Column(
             children: [
+              if (seasons.length > 1) ...[
+                SegmentedButton<int>(
+                  segments: [
+                    for (final item in seasons)
+                      ButtonSegment(value: item, label: Text('$item')),
+                  ],
+                  selected: {season},
+                  onSelectionChanged: (value) =>
+                      setState(() => _season = value.first),
+                ),
+                const SizedBox(height: 12),
+              ],
               if (supportsTeams) ...[
                 SegmentedButton<bool>(
                   segments: [
@@ -3570,6 +3598,31 @@ RaceEvent? _nextEvent(List<RaceEvent> events, DateTime now) {
     if (!event.cancelled && event.endsAt.isAfter(now)) return event;
   }
   return null;
+}
+
+/// Seasons of a series whose standings can be shown, oldest first: every
+/// season that has started, or the first upcoming one before any has.
+List<int> _standingsSeasons(List<RaceEvent> events, String seriesId) {
+  final now = DateTime.now().toUtc();
+  final all = {
+    for (final event in events)
+      if (event.seriesId == seriesId) event.season,
+  }.toList()..sort();
+  final started = {
+    for (final event in events)
+      if (event.seriesId == seriesId && !event.startsAt.isAfter(now))
+        event.season,
+  }.toList()..sort();
+  if (started.isNotEmpty) return started;
+  return all.isEmpty ? [now.year] : [all.first];
+}
+
+/// The season a list of events is about: the next event's, otherwise the
+/// most recent one.
+int _currentSeason(List<RaceEvent> events) {
+  final next = _nextEvent(events, DateTime.now().toUtc());
+  if (next != null) return next.season;
+  return events.map((event) => event.season).fold(0, (a, b) => a > b ? a : b);
 }
 
 /// GT3 classifications that have not appeared six hours after a session are

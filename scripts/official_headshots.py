@@ -266,8 +266,7 @@ def standings_drivers() -> dict[str, set[str]]:
     drivers: dict[str, set[str]] = {series: set() for series in SERIES}
     for root in (ROOT / "assets" / "data", ROOT / "data"):
         for series in SERIES:
-            path = root / series / "2026" / "standings_drivers.json"
-            if path.is_file():
+            for path in sorted((root / series).glob("*/standings_drivers.json")):
                 for driver in json.loads(path.read_text(encoding="utf-8"))["data"]:
                     name = f"{driver.get('givenName', '')} {driver.get('familyName', '')}".strip()
                     drivers[series].add(name)

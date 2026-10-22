@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-19T14:22:46.196749Z",
+  "lastSuccessfulUpdate": "2026-10-22T11:50:44.626821Z",
   "source": {
     "name": "multi-source-official-refresh",
     "url": "https://github.com/SoY256/MotorSport-Calendar"
@@ -49,33 +49,27 @@
       "color": "#00695C"
     },
     {
-      "id": "gtwc-endurance",
-      "name": "GT World Challenge Europe Endurance Cup",
-      "shortName": "GTWC ENDURANCE",
+      "id": "gtwc-europe",
+      "name": "GT World Challenge Europe",
+      "shortName": "GT EUROPE",
       "color": "#0057B8"
-    },
-    {
-      "id": "gtwc-sprint",
-      "name": "GT World Challenge Europe Sprint Cup",
-      "shortName": "GTWC SPRINT",
-      "color": "#00A3E0"
     },
     {
       "id": "gtwc-america",
       "name": "GT World Challenge America",
-      "shortName": "GTWC AMERICA",
+      "shortName": "GT AMERICA",
       "color": "#3949AB"
     },
     {
       "id": "gtwc-asia",
       "name": "GT World Challenge Asia",
-      "shortName": "GTWC ASIA",
+      "shortName": "GT ASIA",
       "color": "#C2185B"
     },
     {
       "id": "gtwc-australia",
       "name": "GT World Challenge Australia",
-      "shortName": "GTWC AUSTRALIA",
+      "shortName": "GT AUSTRALIA",
       "color": "#F9A825"
     },
     {
@@ -87,7 +81,7 @@
     {
       "id": "igtc",
       "name": "Intercontinental GT Challenge",
-      "shortName": "IGTC",
+      "shortName": "GT INTERNATIONAL",
       "color": "#B8860B"
     }
   ]

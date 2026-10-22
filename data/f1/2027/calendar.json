@@ -1,0 +1,634 @@
+{
+  "schemaVersion": 1,
+  "lastSuccessfulUpdate": "2026-10-22T11:50:33.639074Z",
+  "source": {
+    "name": "official-next-season-calendar",
+    "url": "https://www.formula1.com/en/racing/2027"
+  },
+  "data": [
+    {
+      "id": "f1-2027-1",
+      "seriesId": "f1",
+      "season": 2027,
+      "round": 1,
+      "name": "Bahrain Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "bahrain-international-circuit",
+        "name": "Bahrain International Circuit",
+        "locality": "Sakhir",
+        "country": "Bahrain",
+        "countryCode": "BHR"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-03-14T11:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/01-bahrain-grand-prix.json"
+    },
+    {
+      "id": "f1-2027-2",
+      "seriesId": "f1",
+      "season": 2027,
+      "round": 2,
+      "name": "Saudi Arabian Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit_gtqp9VKv",
+        "name": "Jeddah Corniche Circuit",
+        "locality": "Jeddah",
+        "country": "Saudi Arabia",
+        "countryCode": "SAU"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-03-21T11:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/02-saudi-arabian-grand-prix.json"
+    },
+    {
+      "id": "f1-2027-3",
+      "seriesId": "f1",
+      "season": 2027,
+      "round": 3,
+      "name": "Australian Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit_5jHWvmoM",
+        "name": "Albert Park Grand Prix Circuit",
+        "locality": "Melbourne",
+        "country": "Australia",
+        "countryCode": "AUS"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-04-04T04:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/03-australian-grand-prix.json"
+    },
+    {
+      "id": "f1-2027-4",
+      "seriesId": "f1",
+      "season": 2027,
+      "round": 4,
+      "name": "Japanese Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit_0Bbz8sT8",
+        "name": "Suzuka Circuit",
+        "locality": "Suzuka",
+        "country": "Japan",
+        "countryCode": "JPN"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-04-11T05:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/04-japanese-grand-prix.json"
+    },
+    {
+      "id": "f1-2027-5",
+      "seriesId": "f1",
+      "season": 2027,
+      "round": 5,
+      "name": "Chinese Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit_UZRLsrE2",
+        "name": "Shanghai International Circuit",
+        "locality": "Shanghai",
+        "country": "China",
+        "countryCode": "CHN"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-04-18T06:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/05-chinese-grand-prix.json"
+    },
+    {
+      "id": "f1-2027-6",
+      "seriesId": "f1",
+      "season": 2027,
+      "round": 6,
+      "name": "Miami Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit_nukLDdFs",
+        "name": "Miami International Autodrome",
+        "locality": "Miami",
+        "country": "USA",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-05-02T20:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/06-miami-grand-prix.json"
+    },
+    {
+      "id": "f1-2027-7",
+      "seriesId": "f1",
+      "season": 2027,
+      "round": 7,
+      "name": "Canadian Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit_xo04lqNS",
+        "name": "Circuit Gilles Villeneuve",
+        "locality": "Montreal",
+        "country": "Canada",
+        "countryCode": "CAN"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-05-23T20:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/07-canadian-grand-prix.json"
+    },
+    {
+      "id": "f1-2027-8",
+      "seriesId": "f1",
+      "season": 2027,
+      "round": 8,
+      "name": "Monaco Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit_r30Ojrot",
+        "name": "Circuit de Monaco",
+        "locality": "Monte Carlo",
+        "country": "Monaco",
+        "countryCode": "MCO"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-06-06T13:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/08-monaco-grand-prix.json"
+    },
+    {
+      "id": "f1-2027-9",
+      "seriesId": "f1",
+      "season": 2027,
+      "round": 9,
+      "name": "Portuguese Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "algarve-international-circuit",
+        "name": "Algarve International Circuit",
+        "locality": "Portimão",
+        "country": "Portugal",
+        "countryCode": "PRT"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-06-20T14:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/09-portuguese-grand-prix.json"
+    },
+    {
+      "id": "f1-2027-10",
+      "seriesId": "f1",
+      "season": 2027,
+      "round": 10,
+      "name": "British Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit_W8rwFAJs",
+        "name": "Silverstone Circuit",
+        "locality": "Silverstone",
+        "country": "UK",
+        "countryCode": "GBR"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-07-04T14:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/10-british-grand-prix.json"
+    },
+    {
+      "id": "f1-2027-11",
+      "seriesId": "f1",
+      "season": 2027,
+      "round": 11,
+      "name": "Austrian Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit_VrXQoBf5",
+        "name": "Red Bull Ring",
+        "locality": "Spielberg",
+        "country": "Austria",
+        "countryCode": "AUT"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-07-11T13:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/11-austrian-grand-prix.json"
+    },
+    {
+      "id": "f1-2027-12",
+      "seriesId": "f1",
+      "season": 2027,
+      "round": 12,
+      "name": "Belgian Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit_agKQuDST",
+        "name": "Circuit de Spa-Francorchamps",
+        "locality": "Spa",
+        "country": "Belgium",
+        "countryCode": "BEL"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-07-25T13:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/12-belgian-grand-prix.json"
+    },
+    {
+      "id": "f1-2027-13",
+      "seriesId": "f1",
+      "season": 2027,
+      "round": 13,
+      "name": "Hungarian Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit_pd4fBIQZ",
+        "name": "Hungaroring",
+        "locality": "Budapest",
+        "country": "Hungary",
+        "countryCode": "HUN"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-08-01T13:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/13-hungarian-grand-prix.json"
+    },
+    {
+      "id": "f1-2027-14",
+      "seriesId": "f1",
+      "season": 2027,
+      "round": 14,
+      "name": "Italian Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit_vmT5q8o7",
+        "name": "Autodromo Nazionale di Monza",
+        "locality": "Monza",
+        "country": "Italy",
+        "countryCode": "ITA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-09-05T13:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/14-italian-grand-prix.json"
+    },
+    {
+      "id": "f1-2027-15",
+      "seriesId": "f1",
+      "season": 2027,
+      "round": 15,
+      "name": "Spanish Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit_AkJjYbDY",
+        "name": "Madring",
+        "locality": "Madrid",
+        "country": "Spain",
+        "countryCode": "ESP"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-09-12T13:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/15-spanish-grand-prix.json"
+    },
+    {
+      "id": "f1-2027-16",
+      "seriesId": "f1",
+      "season": 2027,
+      "round": 16,
+      "name": "Azerbaijan Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit_l6rYoxTr",
+        "name": "Baku City Circuit",
+        "locality": "Baku",
+        "country": "Azerbaijan",
+        "countryCode": "AZE"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-09-26T10:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/16-azerbaijan-grand-prix.json"
+    },
+    {
+      "id": "f1-2027-17",
+      "seriesId": "f1",
+      "season": 2027,
+      "round": 17,
+      "name": "Turkish Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "istanbul-park",
+        "name": "Istanbul Park",
+        "locality": "Istanbul",
+        "country": "Turkey",
+        "countryCode": "TUR"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-10-03T11:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/17-turkish-grand-prix.json"
+    },
+    {
+      "id": "f1-2027-18",
+      "seriesId": "f1",
+      "season": 2027,
+      "round": 18,
+      "name": "Singapore Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit_DAiie4ft",
+        "name": "Marina Bay Street Circuit",
+        "locality": "Marina Bay",
+        "country": "Singapore",
+        "countryCode": "SGP"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-10-10T06:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/18-singapore-grand-prix.json"
+    },
+    {
+      "id": "f1-2027-19",
+      "seriesId": "f1",
+      "season": 2027,
+      "round": 19,
+      "name": "United States Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit_C8L45nCq",
+        "name": "Circuit of the Americas",
+        "locality": "Austin",
+        "country": "USA",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-10-24T21:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/19-united-states-grand-prix.json"
+    },
+    {
+      "id": "f1-2027-20",
+      "seriesId": "f1",
+      "season": 2027,
+      "round": 20,
+      "name": "Mexican Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "autodromo-hermanos-rodriguez",
+        "name": "Autódromo Hermanos Rodríguez",
+        "locality": "Mexico City",
+        "country": "Mexico",
+        "countryCode": "MEX"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-10-31T21:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/20-mexican-grand-prix.json"
+    },
+    {
+      "id": "f1-2027-21",
+      "seriesId": "f1",
+      "season": 2027,
+      "round": 21,
+      "name": "São Paulo Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "autodromo-jose-carlos-pace",
+        "name": "Autódromo José Carlos Pace",
+        "locality": "São Paulo",
+        "country": "Brazil",
+        "countryCode": "BRA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-11-07T18:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/21-sao-paulo-grand-prix.json"
+    },
+    {
+      "id": "f1-2027-22",
+      "seriesId": "f1",
+      "season": 2027,
+      "round": 22,
+      "name": "Las Vegas Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit_MGz9yps6",
+        "name": "Las Vegas Strip Street Circuit",
+        "locality": "Las Vegas",
+        "country": "USA",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-11-20T23:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/22-las-vegas-grand-prix.json"
+    },
+    {
+      "id": "f1-2027-23",
+      "seriesId": "f1",
+      "season": 2027,
+      "round": 23,
+      "name": "Qatar Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit_2ZoWBxNn",
+        "name": "Lusail International Circuit",
+        "locality": "Lusail",
+        "country": "Qatar",
+        "countryCode": "QAT"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-12-05T11:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/23-qatar-grand-prix.json"
+    },
+    {
+      "id": "f1-2027-24",
+      "seriesId": "f1",
+      "season": 2027,
+      "round": 24,
+      "name": "Abu Dhabi Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit_6MnmIQpm",
+        "name": "Yas Marina Circuit",
+        "locality": "Abu Dhabi",
+        "country": "UAE",
+        "countryCode": "ARE"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-12-12T10:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/24-abu-dhabi-grand-prix.json"
+    }
+  ]
+}

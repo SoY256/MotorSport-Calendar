@@ -1,4 +1,4 @@
-﻿"""Extract completed 2026 FIA WEC classifications from official timing PDFs."""
+﻿"""Extract completed FIA WEC classifications from official timing PDFs."""
 
 from __future__ import annotations
 
@@ -14,13 +14,21 @@ from pathlib import Path
 from urllib.parse import quote, unquote, urljoin
 
 from http_retry import read
+from seasons import results_season
 
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "https://fiawec.alkamelsystems.com/"
 HEADERS = {"User-Agent": "MotorSport-Calendar/0.1 (+https://github.com/SoY256/MotorSport-Calendar)"}
 ENTRY_LIST_URL = "https://www.fiawec.com/umbrella_media/wec26-entrylist-a4-6936d72065269710536636.pdf"
-STANDINGS_URL = "https://www.fiawec.com/en/season/2026"
+# The season being imported; main() moves it to the latest started season.
+SEASON = 2026
+STANDINGS_URL = f"https://www.fiawec.com/en/season/{SEASON}"
+
+
+def timing_season() -> str:
+    """Al Kamel season code, e.g. ``15_2026``."""
+    return f"{SEASON - 2011}_{SEASON}"
 MANUFACTURER_COLORS = {"Toyota": "#EB0A1E", "Ferrari": "#E10600", "Cadillac": "#C6A15B",
                        "BMW": "#0066B1", "Alpine": "#005BAA", "Aston Martin": "#006F62",
                        "Peugeot": "#003B70", "Genesis": "#C36B28", "Porsche": "#D5001C",
@@ -65,8 +73,18 @@ def fetch(url: str) -> bytes:
     return read(url, HEADERS)
 
 
+def entry_list_url() -> str:
+    """The season's official entry list (linked from the season page)."""
+    try:
+        page = fetch(STANDINGS_URL).decode("utf-8", "replace")
+    except Exception:
+        page = ""
+    links = re.findall(rf'href="([^"]*wec{SEASON % 100}-entry-?list[^"]*\.pdf)"', page, re.I)
+    return urljoin("https://www.fiawec.com", links[0]) if links else ENTRY_LIST_URL
+
+
 def completed_event_codes() -> list[str]:
-    html = fetch(f"{BASE}?season=15_2026").decode("utf-8", "replace")
+    html = fetch(f"{BASE}?season={timing_season()}").decode("utf-8", "replace")
     codes = set(re.findall(r'<option[^>]+value="(\d+_[^"]+)"', html, re.I))
     return sorted(code for code in codes if not re.fullmatch(r"\d+_20\d{2}(?:-20\d{2})?", code))
 
@@ -80,6 +98,9 @@ EVENT_CODE_ALIASES = {
     "6 Hours of Fuji": ("FUJI",),
     "6 Hours of Barcelona": ("BARCELONA", "CATALUNYA"),
     "6 Hours of Monza": ("MONZA",),
+    "Qatar 1812 km": ("QATAR", "LUSAIL"),
+    "6 Hours of Silverstone": ("SILVERSTONE",),
+    "8 Hours of Bahrain": ("BAHRAIN", "SAKHIR"),
 }
 
 
@@ -114,11 +135,14 @@ RACE_PAGE_ALIASES = {
     "6 Hours of Fuji": "fuji",
     "6 Hours of Barcelona": "barcelona",
     "6 Hours of Monza": "monza",
+    "Qatar 1812 km": "qatar",
+    "6 Hours of Silverstone": "silverstone",
+    "8 Hours of Bahrain": "bahrain",
 }
 
 
 def race_pages(season_html: str) -> list[str]:
-    pages = re.findall(r'href="(/en/race/[a-z0-9-]+-2026)"', season_html)
+    pages = re.findall(rf'href="(/en/race/[a-z0-9-]+-{SEASON})"', season_html)
     return sorted({page for page in pages if "prologue" not in page})
 
 
@@ -347,8 +371,8 @@ def event_hrefs(code: str, html: str | None = None) -> list[str]:
     support-series folders on the same page are ignored as well.
     """
     if html is None:
-        html = fetch(f"{BASE}?evvent={quote(code)}&season=15_2026").decode("utf-8", "replace")
-    prefix = f"Results/15_2026/{code}/".casefold()
+        html = fetch(f"{BASE}?evvent={quote(code)}&season={timing_season()}").decode("utf-8", "replace")
+    prefix = f"Results/{timing_season()}/{code}/".casefold()
     hrefs = []
     for href in re.findall(r'href="([^"]+\.PDF)"', html, re.I):
         plain = unquote(html_lib.unescape(href))
@@ -390,7 +414,7 @@ def fastest_lap_record(pdf: bytes) -> str:
     )
     if not match:
         raise RuntimeError("No overall WEC fastest lap parsed")
-    return f"{match.group(2)} • {display_name(match.group(1))} (2026)"
+    return f"{match.group(2)} • {display_name(match.group(1))} ({SEASON})"
 
 
 def manufacturer_color(car: str) -> str:
@@ -518,14 +542,17 @@ def parse_rows(pdf: bytes, nationalities: dict[str, str], text: str | None = Non
 
 
 def main() -> None:
+    global SEASON, STANDINGS_URL
     data_root = Path(os.environ.get("MOTORSPORT_DATA_ROOT", ROOT / "assets" / "data"))
-    root = data_root / "wec" / "2026"
+    SEASON = results_season(data_root / "wec", SEASON)
+    STANDINGS_URL = f"https://www.fiawec.com/en/season/{SEASON}"
+    root = data_root / "wec" / str(SEASON)
     calendar_path = root / "calendar.json"
     calendar_doc = json.loads(calendar_path.read_text(encoding="utf-8"))
     calendar = calendar_doc["data"]
     events = completed_event_codes()
     updated = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
-    nationalities = entry_nationalities(fetch(ENTRY_LIST_URL))
+    nationalities = entry_nationalities(fetch(entry_list_url()))
     driver_wins: dict[tuple[str, str], int] = {}
     team_wins: dict[tuple[str, str], int] = {}
     now = datetime.now(timezone.utc)

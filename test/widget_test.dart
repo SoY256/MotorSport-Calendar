@@ -110,7 +110,10 @@ void main() {
   test(
     'WEC standings include complete Hypercar and LMGT3 classifications',
     () async {
-      final standings = await AssetCalendarRepository().loadStandings('wec');
+      final standings = await AssetCalendarRepository().loadStandings(
+        'wec',
+        2026,
+      );
       final hypercarDrivers = standings.drivers.where(
         (item) => item.category == 'HYPERCAR',
       );
@@ -158,7 +161,10 @@ void main() {
   test(
     'IMSA standings contain one fully illustrated row per driver and class',
     () async {
-      final standings = await AssetCalendarRepository().loadStandings('imsa');
+      final standings = await AssetCalendarRepository().loadStandings(
+        'imsa',
+        2026,
+      );
       final driverKeys = standings.drivers
           .map((item) => '${item.category}:${item.id}')
           .toSet();
@@ -166,7 +172,7 @@ void main() {
           .map((item) => '${item.category}:${item.id}')
           .toSet();
 
-      expect(standings.drivers, hasLength(258));
+      expect(standings.drivers, hasLength(265));
       expect(driverKeys, hasLength(standings.drivers.length));
       expect(teamKeys, hasLength(standings.teams.length));
       expect(standings.drivers.every((item) => item.imageUrl != null), isTrue);
@@ -193,9 +199,12 @@ void main() {
         ),
       );
 
-      final standings = await repository.loadStandings('wec');
+      final standings = await repository.loadStandings('wec', 2026);
 
-      final bundled = await AssetCalendarRepository().loadStandings('wec');
+      final bundled = await AssetCalendarRepository().loadStandings(
+        'wec',
+        2026,
+      );
       expect(standings.drivers, hasLength(bundled.drivers.length));
       expect(standings.teams, hasLength(26));
       expect(standings.drivers.any((item) => item.wins > 0), isTrue);
@@ -333,7 +342,7 @@ void main() {
         'indynxt': 28,
       };
       for (final entry in expectedMinimum.entries) {
-        final standings = await repository.loadStandings(entry.key);
+        final standings = await repository.loadStandings(entry.key, 2026);
         expect(
           standings.drivers.where((driver) => driver.imageUrl != null).length,
           greaterThanOrEqualTo(entry.value),
@@ -477,6 +486,14 @@ void main() {
     );
     await tester.pump(const Duration(seconds: 1));
     expect(tester.takeException(), isNull);
+  });
+
+  test('saved GT Europe cup selections migrate to the merged series', () {
+    expect(migrateSeriesIds({'f1', 'gtwc-sprint', 'gtwc-endurance'}), {
+      'f1',
+      'gtwc-europe',
+    });
+    expect(seriesLabel('igtc'), 'GT INTERNATIONAL');
   });
 
   testWidgets('GT3 championships can be switched on and off in settings', (
@@ -627,7 +644,8 @@ void main() {
     expect(find.text('Szczegóły'), findsWidgets);
     await tester.tap(find.byType(DropdownButtonFormField<String>));
     await tester.pump(const Duration(milliseconds: 500));
-    await tester.tap(find.text('F1 • R1 • Australian Grand Prix').last);
+    // The list's first match is the announced 2027 race.
+    await tester.tap(find.textContaining('• Australian Grand Prix').last);
     await tester.runAsync(
       () => Future<void>.delayed(const Duration(milliseconds: 100)),
     );
@@ -763,7 +781,7 @@ class _InProgressWeekendRepository implements CalendarRepository {
   );
 
   @override
-  Future<StandingsData> loadStandings(String seriesId) async =>
+  Future<StandingsData> loadStandings(String seriesId, int season) async =>
       const StandingsData(drivers: [], teams: []);
 }
 
@@ -791,7 +809,7 @@ class _EmptyResultsRepository implements CalendarRepository {
       EventResults(eventId: event.id, sessions: const []);
 
   @override
-  Future<StandingsData> loadStandings(String seriesId) async =>
+  Future<StandingsData> loadStandings(String seriesId, int season) async =>
       const StandingsData(drivers: [], teams: []);
 }
 

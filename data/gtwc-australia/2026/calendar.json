@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-22T01:56:57.574955Z",
+  "lastSuccessfulUpdate": "2026-10-22T11:49:04.829951Z",
   "source": {
     "name": "sro-official-calendar",
     "url": "https://www.gt-world-challenge-australia.com/calendar"
@@ -236,9 +236,57 @@
       },
       "sessions": [
         {
-          "type": "R",
-          "name": "Race",
-          "startTimeUtc": "2026-07-26T12:00:00Z",
+          "type": "FP1",
+          "name": "Free Practice 1",
+          "startTimeUtc": "2026-07-24T12:50:00Z",
+          "cancelled": false,
+          "durationMinutes": 60,
+          "timeTbc": true
+        },
+        {
+          "type": "BRONZE_PRACTICE",
+          "name": "Bronze Practice",
+          "startTimeUtc": "2026-07-24T15:31:00Z",
+          "cancelled": false,
+          "durationMinutes": 30,
+          "timeTbc": true
+        },
+        {
+          "type": "FP2",
+          "name": "Free Practice 2",
+          "startTimeUtc": "2026-07-24T17:25:00Z",
+          "cancelled": false,
+          "durationMinutes": 60,
+          "timeTbc": true
+        },
+        {
+          "type": "Q1",
+          "name": "Qualifying 1",
+          "startTimeUtc": "2026-07-25T11:40:00Z",
+          "cancelled": false,
+          "durationMinutes": 20,
+          "timeTbc": true
+        },
+        {
+          "type": "Q2",
+          "name": "Qualifying 2",
+          "startTimeUtc": "2026-07-25T12:05:00Z",
+          "cancelled": false,
+          "durationMinutes": 20,
+          "timeTbc": true
+        },
+        {
+          "type": "R1",
+          "name": "Race 1",
+          "startTimeUtc": "2026-07-25T15:45:00Z",
+          "cancelled": false,
+          "durationMinutes": 60,
+          "timeTbc": true
+        },
+        {
+          "type": "R2",
+          "name": "Race 2",
+          "startTimeUtc": "2026-07-26T10:10:00Z",
           "cancelled": false,
           "durationMinutes": 60,
           "timeTbc": true

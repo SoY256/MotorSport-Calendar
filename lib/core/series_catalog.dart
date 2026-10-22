@@ -85,24 +85,16 @@ const mainSeries = <SeriesInfo>[
 /// SRO GT3 championships, imported by scripts/fetch_gt3_results.py.
 const gt3Series = <SeriesInfo>[
   SeriesInfo(
-    id: 'gtwc-endurance',
-    label: 'GTWC ENDURANCE',
-    name: 'GT World Challenge Europe Endurance Cup',
+    id: 'gtwc-europe',
+    label: 'GT EUROPE',
+    name: 'GT World Challenge Europe · Endurance & Sprint Cup',
     color: Color(0xFF0057B8),
     group: SeriesGroup.gt3,
     region: 'Europe',
   ),
   SeriesInfo(
-    id: 'gtwc-sprint',
-    label: 'GTWC SPRINT',
-    name: 'GT World Challenge Europe Sprint Cup',
-    color: Color(0xFF00A3E0),
-    group: SeriesGroup.gt3,
-    region: 'Europe',
-  ),
-  SeriesInfo(
     id: 'igtc',
-    label: 'IGTC',
+    label: 'GT INTERNATIONAL',
     name: 'Intercontinental GT Challenge',
     color: Color(0xFFB8860B),
     group: SeriesGroup.gt3,
@@ -110,7 +102,7 @@ const gt3Series = <SeriesInfo>[
   ),
   SeriesInfo(
     id: 'gtwc-america',
-    label: 'GTWC AMERICA',
+    label: 'GT AMERICA',
     name: 'GT World Challenge America',
     color: Color(0xFF3949AB),
     group: SeriesGroup.gt3,
@@ -118,7 +110,7 @@ const gt3Series = <SeriesInfo>[
   ),
   SeriesInfo(
     id: 'gtwc-asia',
-    label: 'GTWC ASIA',
+    label: 'GT ASIA',
     name: 'GT World Challenge Asia',
     color: Color(0xFFC2185B),
     group: SeriesGroup.gt3,
@@ -126,7 +118,7 @@ const gt3Series = <SeriesInfo>[
   ),
   SeriesInfo(
     id: 'gtwc-australia',
-    label: 'GTWC AUSTRALIA',
+    label: 'GT AUSTRALIA',
     name: 'GT World Challenge Australia',
     color: Color(0xFFF9A825),
     group: SeriesGroup.gt3,
@@ -158,6 +150,17 @@ Color seriesColor(String id) =>
     seriesInfo(id)?.color ?? const Color(0xFF455A64);
 
 /// Catalog order (main series first, then GT3), unknown ids last.
+/// Former ids of renamed or merged championships.
+const legacySeriesIds = <String, String>{
+  'gtwc-endurance': 'gtwc-europe',
+  'gtwc-sprint': 'gtwc-europe',
+};
+
+/// Replaces retired series ids in a saved selection.
+Set<String> migrateSeriesIds(Iterable<String> ids) => {
+  for (final id in ids) legacySeriesIds[id] ?? id,
+};
+
 int seriesOrder(String id) {
   final index = allSeries.indexWhere((item) => item.id == id);
   return index < 0 ? allSeries.length : index;

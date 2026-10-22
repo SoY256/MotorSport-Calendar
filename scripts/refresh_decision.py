@@ -11,7 +11,7 @@ DATA = ROOT / "data"
 # Kept in sync with scripts/fetch_gt3_results.py (not imported: this module
 # must stay dependency-free for the five-minute scheduler).
 GT3_SERIES = frozenset(
-    {"gtwc-endurance", "gtwc-sprint", "gtwc-america", "gtwc-asia", "gtwc-australia", "british-gt", "igtc"}
+    {"gtwc-europe", "gtwc-america", "gtwc-asia", "gtwc-australia", "british-gt", "igtc"}
 )
 
 
@@ -52,10 +52,9 @@ def decision(now: datetime) -> tuple[bool, str]:
     if now - last_update >= timedelta(hours=6):
         return True, "six-hour-refresh"
 
-    for series_dir in DATA.iterdir():
-        calendar_path = series_dir / "2026" / "calendar.json"
-        if not calendar_path.is_file():
-            continue
+    # Every season, including an announced next season.
+    for calendar_path in sorted(DATA.glob("*/*/calendar.json")):
+        series_dir = calendar_path.parent.parent
         events = json.loads(calendar_path.read_text(encoding="utf-8"))["data"]
         for event in events:
             available = result_types(calendar_path.parent / event["resultsPath"])

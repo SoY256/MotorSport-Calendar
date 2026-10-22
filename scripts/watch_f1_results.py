@@ -22,10 +22,13 @@ def pending_starts(
     now: datetime, horizon: timedelta, lookback: timedelta = timedelta(days=3)
 ) -> list[datetime]:
     """Start times of unreceived, uncancelled sessions around ``now``."""
-    root = DATA / 'f1' / '2026'
-    events = json.loads((root / 'calendar.json').read_text(encoding='utf-8'))['data']
     starts: list[datetime] = []
-    for event in events:
+    events = [
+        (calendar.parent, event)
+        for calendar in sorted((DATA / 'f1').glob('*/calendar.json'))
+        for event in json.loads(calendar.read_text(encoding='utf-8'))['data']
+    ]
+    for root, event in events:
         if event.get('cancelled'):
             continue
         document = json.loads((root / event['resultsPath']).read_text(encoding='utf-8'))
@@ -35,6 +38,8 @@ def pending_starts(
         }
         for session in event.get('sessions', []):
             start = datetime.fromisoformat(session['startTimeUtc'].replace('Z', '+00:00'))
+            if session.get('timeTbc'):
+                continue
             if not session.get('cancelled') and session['type'] not in received and now - lookback <= start <= now + horizon:
                 starts.append(start)
     return sorted(starts)

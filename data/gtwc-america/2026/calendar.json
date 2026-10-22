@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-22T01:56:21.614229Z",
+  "lastSuccessfulUpdate": "2026-10-22T11:48:08.352455Z",
   "source": {
     "name": "sro-official-calendar",
     "url": "https://www.gt-world-challenge-america.com/calendar"
@@ -310,6 +310,14 @@
           "durationMinutes": 60
         },
         {
+          "type": "QUALIFYING_COMBINED",
+          "name": "Qualifying Combined",
+          "startTimeUtc": "2026-08-29T19:24:00Z",
+          "cancelled": false,
+          "durationMinutes": 5,
+          "timeTbc": true
+        },
+        {
           "type": "FP3",
           "name": "Practice 3",
           "startTimeUtc": "2026-08-29T19:25:00Z",
@@ -382,6 +390,14 @@
           "startTimeTrack": "2026-09-26 10:15:00-05:00",
           "cancelled": false,
           "durationMinutes": 60
+        },
+        {
+          "type": "QUALIFYING_COMBINED",
+          "name": "Qualifying Combined",
+          "startTimeUtc": "2026-09-26T19:49:00Z",
+          "cancelled": false,
+          "durationMinutes": 5,
+          "timeTbc": true
         },
         {
           "type": "FP3",

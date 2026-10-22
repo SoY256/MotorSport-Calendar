@@ -39,40 +39,34 @@ EUROPE = "https://www.gt-world-challenge-europe.com"
 
 # id -> (site, name, short name, colour, cup filter, default race minutes)
 SERIES: dict[str, dict[str, Any]] = {
-    "gtwc-endurance": {
+    # One championship made of Endurance Cup and Sprint Cup rounds; both cup
+    # classifications are imported as standings classes next to the overall.
+    "gtwc-europe": {
         "base": EUROPE,
-        "name": "GT World Challenge Europe Endurance Cup",
-        "short": "GTWC ENDURANCE",
+        "name": "GT World Challenge Europe",
+        "short": "GT EUROPE",
         "color": "#0057B8",
-        "cup": "Endurance Cup",
+        "cups": {"Endurance Cup": 180, "Sprint Cup": 60},
         "race_minutes": 180,
-    },
-    "gtwc-sprint": {
-        "base": EUROPE,
-        "name": "GT World Challenge Europe Sprint Cup",
-        "short": "GTWC SPRINT",
-        "color": "#00A3E0",
-        "cup": "Sprint Cup",
-        "race_minutes": 60,
     },
     "gtwc-america": {
         "base": "https://www.gt-world-challenge-america.com",
         "name": "GT World Challenge America",
-        "short": "GTWC AMERICA",
+        "short": "GT AMERICA",
         "color": "#3949AB",
         "race_minutes": 90,
     },
     "gtwc-asia": {
         "base": "https://www.gt-world-challenge-asia.com",
         "name": "GT World Challenge Asia",
-        "short": "GTWC ASIA",
+        "short": "GT ASIA",
         "color": "#C2185B",
         "race_minutes": 60,
     },
     "gtwc-australia": {
         "base": "https://www.gt-world-challenge-australia.com",
         "name": "GT World Challenge Australia",
-        "short": "GTWC AUSTRALIA",
+        "short": "GT AUSTRALIA",
         "color": "#F9A825",
         "race_minutes": 60,
     },
@@ -88,7 +82,7 @@ SERIES: dict[str, dict[str, Any]] = {
     "igtc": {
         "base": "https://www.intercontinentalgtchallenge.com",
         "name": "Intercontinental GT Challenge",
-        "short": "IGTC",
+        "short": "GT INTERNATIONAL",
         "color": "#B8860B",
         "race_minutes": 360,
     },
@@ -207,13 +201,15 @@ def get(url: str) -> str:
         return raw.decode("cp1252", "replace")
 
 
-def round_cups(base: str) -> dict[str, str]:
+def round_cups(base: str, season: int = SEASON) -> dict[str, str]:
     """Event name -> cup, from the round headers of the overall standings.
 
     Event pages mention both cups in news teasers, but every standings
     column is labelled with the cup its round belongs to.
     """
-    page = get(f"{base}/standings?filter_standing_type=0_0_drivers")
+    season_id = season_option(get(f"{base}/standings"), season)
+    year = f"&filter_season_id={season_id}" if season_id else ""
+    page = get(f"{base}/standings?filter_standing_type=0_0_drivers{year}")
     cups = {}
     for name, cup in re.findall(r'<th colspan="\d+">([^<]+)<span class="cup">([^<]+)</span>', page):
         label = clean(cup)
@@ -221,6 +217,25 @@ def round_cups(base: str) -> dict[str, str]:
             if option.lower() in label.lower():
                 cups[slugify(clean(name))] = option
     return cups
+
+
+def calendar_season(page: str) -> int:
+    """Season shown by an SRO calendar page ("Calendar 2026 | ...")."""
+    title = re.search(r"<title>\s*Calendar\s+(\d{4})", page)
+    if title:
+        return int(title.group(1))
+    years = re.findall(r"\b(20\d\d)\b", clean(page))
+    return int(max(set(years), key=years.count)) if years else SEASON
+
+
+def season_option(page: str, season: int) -> str | None:
+    """The site's internal ``filter_season_id`` for a calendar year."""
+    start = page.find('name="filter_season_id"')
+    if start < 0:
+        return None
+    options = page[start:page.find("</select>", start)]
+    match = re.search(rf'<option value="(\d+)"[^>]*>\s*{season}\s*<', options)
+    return match.group(1) if match else None
 
 
 def clean(value: str) -> str:
@@ -387,7 +402,7 @@ def session_key(name: str) -> str:
     return re.sub(r"^(?:free|official)practice", "practice", key)
 
 
-def race_minutes(series: str, event_name: str, session_name: str) -> int:
+def race_minutes(series: str, event_name: str, session_name: str, fallback: int | None = None) -> int:
     for text in (session_name, event_name):
         hours = re.search(r"(\d+)\s*(?:h|hr|hrs|hour|hours)\b", text, re.I)
         if hours and 1 <= int(hours.group(1)) <= 24:
@@ -399,13 +414,13 @@ def race_minutes(series: str, event_name: str, session_name: str) -> int:
         return 360
     if re.search(r"\b500\b", event_name):
         return 180
-    return int(SERIES[series]["race_minutes"])
+    return fallback or int(SERIES[series]["race_minutes"])
 
 
-def default_minutes(series: str, event_name: str, name: str) -> int:
+def default_minutes(series: str, event_name: str, name: str, race: int | None = None) -> int:
     lower = name.lower()
     if "race" in lower:
-        return race_minutes(series, event_name, name)
+        return race_minutes(series, event_name, name, race)
     if "combined" in lower:
         return 5
     if "group" in lower or "shootout" in lower or "superpole" in lower or "top" in lower:
@@ -417,12 +432,14 @@ def default_minutes(series: str, event_name: str, name: str) -> int:
     return 60
 
 
-def build_sessions(series: str, event_name: str, rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def build_sessions(
+    series: str, event_name: str, rows: list[dict[str, Any]], race: int | None = None
+) -> list[dict[str, Any]]:
     rows = sorted((row for row in rows if is_session(row["name"])), key=lambda row: row["utc"])
     sessions: list[dict[str, Any]] = []
     used: set[str] = set()
     for index, row in enumerate(rows):
-        minutes = default_minutes(series, event_name, row["name"])
+        minutes = default_minutes(series, event_name, row["name"], race)
         if "race" not in row["name"].lower():
             # Back-to-back qualifying groups: a session ends when the next starts.
             later = [other["utc"] for other in rows[index + 1:] if other["utc"] > row["utc"]]
@@ -568,7 +585,11 @@ def result_rows(
             components["gap"] = gap
         if best and race:
             components["bestLap"] = best
-        nations = [nationality.get(slugify(name), "") for name in crew]
+        nations = (
+            row["nations"].split(",")
+            if row.get("nations")
+            else [nationality.get(slugify(name), "") for name in crew]
+        )
         results.append(
             {
                 "position": position,
@@ -671,11 +692,18 @@ def natsoft_classification(text: str, known: dict[str, str]) -> tuple[str, list[
         else:
             index = next((i for i, token in enumerate(body) if re.match(r"^[A-Z][a-z]?\.", token)), None)
             if index is None:
-                continue
+                # A crew starting with a full name: "Klark Quinn/R.Quinn/...".
+                slash = next((i for i, token in enumerate(body) if i >= 2 and re.search(r"/[A-Z][a-z]?\.", token)), None)
+                if slash is None:
+                    continue
+                index = slash - 1
             end = index
             while end + 1 < len(body) and not BRANDS.match(body[end + 1]) and (
                 "/" in body[end + 1] or body[end].endswith("/")
             ):
+                end += 1
+            # ...ending with a full name too: ".../Kent Quinn".
+            if end + 1 < len(body) and re.search(r"/[A-Z][a-z]+$", body[end]) and not BRANDS.match(body[end + 1]):
                 end += 1
             team = body[:index]
             crew = " ".join(body[index:end + 1])
@@ -695,6 +723,14 @@ def natsoft_classification(text: str, known: dict[str, str]) -> tuple[str, list[
                 "best lap": (times[-1] if race else times[0]).rstrip("*") if times else "",
             }
         )
+    # GT4 cars share some grids (Bathurst): close the gaps they leave.
+    dropped = sorted(
+        int(match.group(1)) for line in merged
+        if (match := NATSOFT_ROW.match(line)) and match.group(1).isdigit() and re.search(r"\bGT4\b", line)
+    )
+    for row in rows:
+        if row["pos"].isdigit():
+            row["pos"] = str(int(row["pos"]) - sum(1 for value in dropped if value < int(row["pos"])))
     winner = rows[0] if rows else None
     if winner and winner.get("total"):
         lead = seconds(winner["total"]) or 0
@@ -715,14 +751,144 @@ def natsoft_classification(text: str, known: dict[str, str]) -> tuple[str, list[
     return title, rows
 
 
-def pdf_text(url: str) -> str:
+def pdf_text(url: str, pages: int = 4) -> str:
     import io
 
     import pdfplumber  # Lazy: only the PDF fallback needs it.
 
     raw = read(quote(url, safe=":/?&=%"), {"User-Agent": USER_AGENT}, timeout=60, attempts=3)
     with pdfplumber.open(io.BytesIO(raw)) as pdf:
-        return "\n".join(page.extract_text() or "" for page in pdf.pages[:4])
+        return "\n".join(page.extract_text() or "" for page in pdf.pages[:pages])
+
+
+GLUED_DRIVER = re.compile(r"([A-ZÀ-Ý][a-zà-ÿ'’.-]*(?:[A-Z][a-zà-ÿ'’.-]+)*)([A-ZÀ-Ý][A-ZÀ-Ý'’ -]+)\(([A-Z]{3})\)")
+
+
+def glued_crew(text: str) -> list[tuple[str, str]]:
+    """'AlessioPICARIELLO(BEL)/LaurinHEINRICH(DEU)' -> [(name, nation), ...]."""
+    crew = []
+    for given, family, nation in GLUED_DRIVER.findall(text):
+        surname = re.sub(r"\bMc([a-z])", lambda m: "Mc" + m.group(1).upper(), family.strip().title())
+        crew.append((f"{given} {surname}", country_code(nation) or ""))
+    return crew
+
+
+def asian_classification(text: str) -> tuple[str, list[dict[str, str]]]:
+    """Suzuka 1000km layout: 'POS NO CL PIC TEAM / DRIVERS CAR ...'.
+
+    Races list the team and car on the position line and the crew below it;
+    qualifying lists the team and car above the position line.
+    """
+    lines = [line.strip() for line in text.splitlines()]
+    heading = next((line for line in lines if "CLASSIFICATION" in line), "")
+    title = heading.split(" - ")[0].strip().title()
+    race = title.startswith("Race")
+    rows = []
+    entry = re.compile(
+        r"^(\d+|NC|DNF|DNS|DSQ|RET)\s+(\d+)\*?\s+(PRO-?AM|SILVER-?AM|PRO|BRONZE|SILVER|GOLD|AM)\s+\d+\s+(.*)$"
+    )
+    for index, line in enumerate(lines):
+        match = entry.match(line)
+        if not match:
+            continue
+        position, number, category, rest = match.groups()
+        if race:
+            body = re.match(r"(.+?)\s+\(([A-Z]{3})\)\s+(.+?)\s+(\d{1,3})\s+(\d+:\d\d:\d\d\.\d+)\s+(.*)$", rest)
+            if not body:
+                continue
+            team, _country, car, laps, total, tail = body.groups()
+            crew = glued_crew(lines[index + 1] if index + 1 < len(lines) else "")
+            lead = re.match(r"(\d+ Laps?|\S+)", tail)
+            gap = lead.group(1) if lead and position != "1" else ""
+            best = next((token for token in tail.split() if re.fullmatch(r"\d+:\d\d\.\d{3}", token)), "")
+        else:
+            body = re.match(r"(.+?)\s+(\d+:\d\d\.\d{3})\s+\d+\s+(\d+)(?:\s+(\d+\.\d{3}))?", rest)
+            if not body:
+                continue
+            crew = glued_crew(body.group(1))
+            previous = lines[index - 1] if index else ""
+            team_car = re.match(r"(.+?)\s+\(([A-Z]{3})\)\s+(.+)$", previous)
+            team, car = (team_car.group(1), team_car.group(3)) if team_car else ("", "")
+            laps, total, best, gap = body.group(3), "", body.group(2), body.group(4) or ""
+        rows.append(
+            {
+                "pos": position,
+                "car #": number,
+                "class": re.sub(r"^(Pro|Silver)-?am$", r"\1-Am", category.title()),
+                "drivers": ", ".join(name for name, _ in crew),
+                "nations": ",".join(nation for _, nation in crew),
+                "team": team.rstrip(" *"),
+                "car": car,
+                "laps": laps,
+                "total": total,
+                "best lap": best,
+                "gap": "" if position == "1" else (gap if "lap" in gap.lower() else f"+{gap}" if gap else ""),
+            }
+        )
+    return title, rows
+
+
+def nurburgring_classification(text: str) -> tuple[str, list[dict[str, str]]]:
+    """ADAC 24h N?rburgring overall result; only GT3 (class SP 9) cars.
+
+    Entry lines: ``[pos] car class E: entrant, licence  car  laps  total
+    fastest lapNo`` (unclassified cars have no position). Driver lines:
+    ``[IGTC] [PRO|PRO/AM|AM] Family Given, City[, ...], NAT, licence``; lap
+    gaps are given in German ("3 Runden").
+    """
+    lines = [line.strip() for line in text.splitlines()]
+    any_entry = re.compile(r"^(?:\d+\s+)?\d+\s+\S.*\s\d{1,3}\s+\d+:\d\d:\d\d\.\d+")
+    entry = re.compile(
+        r"^(?:(\d+)\s+)?(\d+)\s+(SP\s?9)\s+E:\s*(.+?),\s*\S+\s+(.+?)\s+(\d{1,3})\s+(\d+:\d\d:\d\d\.\d+)"
+        r"(?:\s+(\d+:\d\d\.\d{3}))?"
+    )
+    driver = re.compile(r"^(?:IGTC\s+)?(?:PRO/AM|PRO-AM|PRO|AM)?\s*([^,]+?)\s*,.*?,\s*([A-Z]{3}),")
+    rows: list[dict[str, Any]] = []
+    current: dict[str, Any] | None = None
+    for line in lines:
+        match = entry.match(line)
+        if match:
+            position, number, _category, entrant, car, laps, total, fastest = match.groups()
+            current = {
+                "pos": position or "NC", "car #": number, "class": "", "drivers": [], "nations": [],
+                "team": entrant, "car": car, "laps": laps, "total": total or "", "best lap": fastest or "",
+                "gap": "",
+            }
+            rows.append(current)
+            continue
+        if any_entry.match(line):
+            current = None  # another class
+            continue
+        if current is None:
+            continue
+        bare = re.sub(r"\s+\d+\.\d+ kph$", "", line)
+        sponsor = re.match(r"^(?:IGTC\s+)?S:\s*(.+?)(?:\s+(?:\d[\d:.]*|\d+ Runden?)(?:\s+\+.*)?)?$", bare)
+        if sponsor:
+            current["team"] = sponsor.group(1)
+        gap = re.search(r"(\d[\d:.]*|\d+ Runden?)(?:\s+\+\S+(?: Runden?)?)?\s+\d+\.\d+ kph", line)
+        if gap and not current["gap"] and current["pos"] != "1":
+            value = gap.group(1)
+            laps_down = re.match(r"(\d+) Runden?", value)
+            current["gap"] = (
+                f"{laps_down.group(1)} lap{'s' if laps_down.group(1) != '1' else ''}" if laps_down else value
+            )
+        klass = re.match(r"^(?:IGTC\s+)?(PRO/AM|PRO-AM|PRO|AM)\s", line)
+        if klass and not current["class"]:
+            current["class"] = {"PRO": "Pro", "AM": "Am"}.get(klass.group(1), "Pro-Am")
+        person = driver.match(line)
+        if person and " S:" not in f" {line}" and not line.startswith("E:"):
+            name = person.group(1).strip().rstrip("*").strip()
+            family, given = name.rsplit(" ", 1) if " " in name else (name, "")
+            current["drivers"].append(f"{given} {family}".strip())
+            current["nations"].append(country_code(person.group(2)) or "")
+    place = 0
+    for row in rows:
+        row["drivers"] = ", ".join(row["drivers"])
+        row["nations"] = ",".join(row["nations"])
+        if row["pos"].isdigit():  # GT3 positions within the overall field
+            place += 1
+            row["pos"] = str(place)
+    return "Race", rows
 
 
 # --------------------------------------------------------------------------
@@ -783,10 +949,16 @@ def standings_table(page: str) -> list[dict[str, Any]]:
 def driver_profile(base: str, profile: str) -> dict[str, str]:
     page = get(f"{base}{profile}")
     flag = re.search(r"profile__flag flag ([a-z]{3})", page)
-    photo = re.search(r"(?:/|%2F)images(?:/|%2F)drivers(?:/|%2F)(photo_\d+\.\w+)", page)
+    # Portraits are "photo_<id>" (GT World Challenge) or "driver_<id>"
+    # (British GT). Crew pages show team-mates too: prefer the profile's id.
+    photos = re.findall(r"(?:/|%2F)images(?:/|%2F)drivers(?:/|%2F)((?:photo|driver)_(\d+)\.\w+)", page)
+    own = re.search(r"/driver/(\d+)", profile)
+    photo = next((name for name, number in photos if own and number == own.group(1)), None)
+    if photo is None and len({name for name, _ in photos}) == 1:
+        photo = photos[0][0]
     return {
         "nationality": country_code(flag.group(1)) if flag else "",
-        "portraitSource": f"{base}/images/drivers/{photo.group(1)}" if photo else "",
+        "portraitSource": f"{base}/images/drivers/{photo}" if photo else "",
     }
 
 
@@ -833,33 +1005,38 @@ def document(source: str, url: str, data: Any, updated: str) -> dict[str, Any]:
 def known_profiles(data_root: Path) -> dict[str, dict[str, str]]:
     """Driver slug -> stored profile data across every GT3 series."""
     known: dict[str, dict[str, str]] = {}
-    for series in SERIES:
-        stored = load_json(data_root / series / str(SEASON) / "standings_drivers.json") or {}
-        for driver in stored.get("data", []):
-            slug = driver.get("id")
-            if slug and (driver.get("nationality") or driver.get("portraitSource")):
-                known.setdefault(
-                    slug,
-                    {
-                        "nationality": driver.get("nationality", ""),
-                        "portraitSource": driver.get("portraitSource", ""),
-                        "profile": driver.get("profile", ""),
-                    },
-                )
+    # Legacy folders of the former split GT Europe cups still carry profiles.
+    for series in (*SERIES, "gtwc-endurance", "gtwc-sprint"):
+        for path in sorted((data_root / series).glob("*/standings_drivers.json"), reverse=True):
+            stored = load_json(path) or {}
+            for driver in stored.get("data", []):
+                slug = driver.get("id")
+                if slug and (driver.get("nationality") or driver.get("portraitSource")):
+                    known.setdefault(
+                        slug,
+                        {
+                            "nationality": driver.get("nationality", ""),
+                            "portraitSource": driver.get("portraitSource", ""),
+                            "profile": driver.get("profile", ""),
+                        },
+                    )
     return known
 
 
 def import_series(series: str, data_root: Path, pool: ThreadPoolExecutor) -> None:
     config = SERIES[series]
     base = config["base"]
-    folder = data_root / series / str(SEASON)
     updated = iso(now_utc())
     profiles = known_profiles(data_root)
     nationality = {slug: info.get("nationality", "") for slug, info in profiles.items()}
 
     calendar_page = get(f"{base}/calendar")
+    # The sites switch to the next season once its calendar is published;
+    # each season is written to its own folder.
+    season = calendar_season(calendar_page)
+    folder = data_root / series / str(season)
     entries = calendar_entries(calendar_page)
-    cups = round_cups(base) if config.get("cup") else {}
+    cups = round_cups(base, season) if config.get("cups") else {}
     event_pages = dict(zip(
         [entry["eventId"] for entry in entries],
         pool.map(lambda entry: get(base + entry["path"]), entries),
@@ -870,12 +1047,15 @@ def import_series(series: str, data_root: Path, pool: ThreadPoolExecutor) -> Non
         name, country, start, end = event_header(page)
         if NOT_A_ROUND.search(name):
             continue
-        if config.get("cup") and event_cup(page, name, cups) != config["cup"]:
-            continue
+        cup = event_cup(page, name, cups) if config.get("cups") else None
+        race_default = config["cups"].get(cup) if cup else None
         # The URL slug can name the format ("indianpolis-8-hour") when the
         # page title only names the circuit.
         sessions = build_sessions(
-            series, f"{name} {entry['path'].replace('-', ' ')}", timetable_rows(page, start, end)
+            series,
+            f"{name} {entry['path'].replace('-', ' ')}",
+            timetable_rows(page, start, end),
+            race_default,
         )
         if not sessions:
             # Timetable not published yet: keep the round on its final day.
@@ -885,11 +1065,20 @@ def import_series(series: str, data_root: Path, pool: ThreadPoolExecutor) -> Non
                     "name": "Race",
                     "startTimeUtc": iso(datetime(end.year, end.month, end.day, 12, tzinfo=timezone.utc)),
                     "cancelled": False,
-                    "durationMinutes": race_minutes(series, name, "Race"),
+                    "durationMinutes": race_minutes(series, name, "Race", race_default),
                     "timeTbc": True,
                 }
             ]
         results_link = re.search(r'href="(/results\?filter_season_id=\d+&(?:amp;)?filter_meeting_id=\d+)"', page)
+        results_url = base + html_lib.unescape(results_link.group(1)) if results_link else None
+        links: list[tuple[str, str]] = []
+        if results_url and datetime(start.year, start.month, start.day, tzinfo=timezone.utc) <= now_utc():
+            try:
+                links = result_links(get(results_url))
+            except Exception as error:  # keep previous classifications on outages
+                print(f"{series} {name}: results index failed ({error})", file=sys.stderr)
+            if not sessions[0].get("timeTbc"):
+                sessions = add_result_only_sessions(series, name, sessions, links)
         events.append(
             {
                 "entry": entry,
@@ -897,7 +1086,8 @@ def import_series(series: str, data_root: Path, pool: ThreadPoolExecutor) -> Non
                 "country": country,
                 "start": start,
                 "sessions": sessions,
-                "resultsUrl": base + html_lib.unescape(results_link.group(1)) if results_link else None,
+                "resultsUrl": results_url,
+                "links": links,
             }
         )
     if not events:
@@ -905,7 +1095,7 @@ def import_series(series: str, data_root: Path, pool: ThreadPoolExecutor) -> Non
     events.sort(key=lambda item: item["sessions"][0]["startTimeUtc"])
 
     # Standings first: their full names resolve abbreviated PDF crews.
-    driver_pages, team_pages = standings_pages(series)
+    driver_pages, team_pages = standings_pages(series, season)
     standings_html = dict(zip(
         [url for url, _, _ in driver_pages + team_pages],
         pool.map(lambda page: get(page[0]), driver_pages + team_pages),
@@ -923,14 +1113,14 @@ def import_series(series: str, data_root: Path, pool: ThreadPoolExecutor) -> Non
     latest_crew: dict[str, dict[str, Any]] = {}
     now = now_utc()
     for round_number, item in enumerate(events, start=1):
-        event_id = f"{series}-{SEASON}-{round_number}"
+        event_id = f"{series}-{season}-{round_number}"
         results_path = f"events/{round_number:02d}-{slugify(item['name'])}.json"
         code = country_code(item["entry"]["flag"])
         calendar.append(
             {
                 "id": event_id,
                 "seriesId": series,
-                "season": SEASON,
+                "season": season,
                 "round": round_number,
                 "name": item["name"],
                 "cancelled": False,
@@ -950,8 +1140,10 @@ def import_series(series: str, data_root: Path, pool: ThreadPoolExecutor) -> Non
             <= now
         }
         imported = fetch_results(
-            series, item, ended, stored, now, pool, nationality, known_names, season_results, data_root, calendar[-1]
+            series, item, ended, stored, now, pool, nationality, known_names, season_results, data_root,
+            calendar[-1], season,
         )
+        imported = without_foreign_sessions(series, item["name"], imported, stored)
         sessions_out = []
         for session in item["sessions"]:
             kind = session["type"]
@@ -960,6 +1152,12 @@ def import_series(series: str, data_root: Path, pool: ThreadPoolExecutor) -> Non
                 chosen["name"] = session["name"]
                 chosen["startTimeUtc"] = session["startTimeUtc"]
                 sessions_out.append(chosen)
+        # Sessions known only from the results index stay only if classified.
+        classified = {session["type"] for session in sessions_out}
+        item["sessions"][:] = [
+            session for session in item["sessions"]
+            if not session.pop("resultsOnly", False) or session["type"] in classified
+        ]
         for session in sessions_out:
             for row in session["results"]:
                 crew = [part.strip() for part in row["driver"]["givenName"].split(" / ") if part.strip()]
@@ -990,6 +1188,8 @@ def import_series(series: str, data_root: Path, pool: ThreadPoolExecutor) -> Non
     write_standings(
         series, folder, pool, profiles, latest_crew, race_winners, team_wins, updated,
         driver_pages, team_pages, standings_html,
+        any(datetime.fromisoformat(event["sessions"][0]["startTimeUtc"].replace("Z", "+00:00")) <= now
+            for event in calendar),
     )
     print(f"{series}: {len(calendar)} rounds")
 
@@ -1012,6 +1212,7 @@ def fetch_results(
     season_results: dict[str, str],
     data_root: Path,
     event: dict[str, Any],
+    season: int,
 ) -> dict[str, dict[str, Any]]:
     """Fresh classifications for ended sessions that still need them.
 
@@ -1045,8 +1246,8 @@ def fetch_results(
         }
 
     # 1. HTML classifications linked from the meeting results page.
-    links: list[tuple[str, str]] = []
-    if item["resultsUrl"]:
+    links: list[tuple[str, str]] = item.get("links") or []
+    if not links and item["resultsUrl"]:
         try:
             links = result_links(get(item["resultsUrl"]))
         except Exception as error:  # keep previous classifications on outages
@@ -1086,22 +1287,68 @@ def fetch_results(
                 print(f"{series} {item['name']}: event results failed ({error})", file=sys.stderr)
         pdfs = [base + link for link in dict.fromkeys(pdfs)]
 
-        def parse(url: str) -> tuple[str, str, list[dict[str, str]], bool]:
+        def parse(url: str) -> tuple[str, str, list[dict[str, str]], bool, tuple | None]:
             try:
-                text = pdf_text(url)
+                text = pdf_text(url, pages=16)
             except Exception as error:
                 print(f"{series} pdf {url}: {error}", file=sys.stderr)
-                return url, "", [], False
-            title, rows = natsoft_classification(text, known_names)
-            final = bool(re.search(r"F\s*I\s*N\s*A\s*L", text[:600]))
-            return url, title, rows, final
+                return url, "", [], False, None
+            # Timing providers differ per event: Natsoft (Australia, Bathurst),
+            # the Suzuka timing service and the ADAC 24h Nürburgring office.
+            if "Entrant, Licence" in text:
+                title, rows = nurburgring_classification(text)
+            elif "TEAM / DRIVERS" in text:
+                title, rows = asian_classification(text)
+            else:
+                title, rows = natsoft_classification(text, known_names)
+            final = bool(re.search(r"F\s*I\s*N\s*A\s*L|Final", text[:600]))
+            started = re.search(r"Start\s+\w{3}\s+([A-Z][a-z]{2})\s+(\d{1,2})\s+(\d{1,2}:\d{2})", text[:800])
+            return url, title, rows, final, started.groups() if started else None
 
+        parsed = list(pool.map(parse, pdfs))
+        # Race PDFs may clip long crews; qualifying lists them in full.
+        crews: dict[str, str] = {}
+        placeholder = len(item["sessions"]) == 1 and item["sessions"][0].get("timeTbc")
+        if placeholder:
+            # No published timetable (e.g. GT Australia Darwin): the weekend's
+            # sessions are known only from their official classifications.
+            sessions = []
+            for _url, title, rows, _final, started in parsed:
+                if not rows or not title or not started or session_key(title) in {
+                    session_key(item["name"]) for item in sessions
+                }:
+                    continue
+                month, day, clock = started
+                stamp = f"{season}-{MONTHS[next(m for m in MONTHS if m.startswith(month.lower()))]:02d}-{int(day):02d}T{int(clock.split(':')[0]):02d}:{clock.split(':')[1]}:00Z"
+                sessions.append({
+                    "type": session_type(title), "name": title, "startTimeUtc": stamp, "cancelled": False,
+                    "durationMinutes": default_minutes(series, item["name"], title), "timeTbc": True,
+                })
+            if sessions:
+                sessions.sort(key=lambda session: session["startTimeUtc"])
+                item["sessions"][:] = sessions
+                for session in sessions:
+                    due[session["type"]] = ended[session["type"]] = session
+                    by_key[session_key(session["name"])] = session["type"]
+        for _url, title, rows, _final, _started in parsed:
+            if not re.fullmatch(r"Qualifying \d", title):
+                continue
+            for row in rows:
+                known_crew = crews.get(row["car #"])
+                if row["drivers"] and (known_crew is None or row["drivers"].count(",") > known_crew.count(",")):
+                    crews[row["car #"]] = row["drivers"]
         finals: set[str] = set()
-        for url, title, rows, final in pool.map(parse, pdfs):
+        for url, title, rows, final, _started in parsed:
             kind = by_key.get(session_key(title))
             if not kind or not rows or (kind in finals and not final):
                 continue
-            store(kind, url, result_rows(rows, kind.startswith("R"), nationality), "natsoft-official-classification")
+            for row in rows:
+                full = crews.get(row["car #"], "")
+                if full and full.count(",") >= row["drivers"].count(","):
+                    row["drivers"] = full
+                    row.pop("nations", None)
+            source = "official-timing-classification" if "nations" in rows[0] else "natsoft-official-classification"
+            store(kind, url, result_rows(rows, kind.startswith("R"), nationality), source)
             if final:
                 finals.add(kind)
 
@@ -1111,7 +1358,7 @@ def fetch_results(
         for sibling in SERIES:
             if sibling == series or not missing:
                 continue
-            calendar = (load_json(data_root / sibling / str(SEASON) / "calendar.json") or {}).get("data", [])
+            calendar = (load_json(data_root / sibling / str(season) / "calendar.json") or {}).get("data", [])
             for other in calendar:
                 if other["circuit"]["id"] != event["circuit"]["id"]:
                     continue
@@ -1121,7 +1368,7 @@ def fetch_results(
                 )
                 if gap > timedelta(days=1):
                     continue
-                document_ = load_json(data_root / sibling / str(SEASON) / other["resultsPath"]) or {}
+                document_ = load_json(data_root / sibling / str(season) / other["resultsPath"]) or {}
                 for session in document_.get("data", {}).get("sessions", []):
                     kind = missing.pop(session_key(session["name"]), None)
                     if kind and session.get("results"):
@@ -1129,20 +1376,106 @@ def fetch_results(
     return imported
 
 
-def standings_pages(series: str) -> tuple[list[tuple[str, str, str]], list[tuple[str, str, str]]]:
-    """(url, class, label) lists for driver and team standings."""
+def without_foreign_sessions(
+    series: str,
+    event_name: str,
+    imported: dict[str, dict[str, Any]],
+    stored: dict[str, dict[str, Any]],
+) -> dict[str, dict[str, Any]]:
+    """Drop classifications that belong to another championship.
+
+    The SRO sites occasionally link a support race's classification under a
+    GT World Challenge session (e.g. Paul Ricard FP1 listed Aston Martin V12
+    cars). A genuine session shares most car numbers with the race grid.
+    """
+    grid: set[str] = set()
+    for kind, session in {**stored, **imported}.items():
+        if re.fullmatch(r"R\d*", kind):
+            grid |= {row.get("carNumber", "") for row in session.get("results", [])}
+    if len(grid) < 5:
+        return imported
+    kept = {}
+    for kind, session in imported.items():
+        numbers = {row.get("carNumber", "") for row in session["results"]}
+        if re.fullmatch(r"R\d*", kind) or len(numbers & grid) >= 0.5 * len(numbers):
+            kept[kind] = session
+        else:
+            print(f"{series} {event_name} {kind}: not this championship's entry list, skipped", file=sys.stderr)
+    for kind in list(stored):
+        numbers = {row.get("carNumber", "") for row in stored[kind].get("results", [])}
+        if numbers and not re.fullmatch(r"R\d*", kind) and len(numbers & grid) < 0.5 * len(numbers):
+            del stored[kind]  # imported by an earlier version without this check
+    return kept
+
+
+def add_result_only_sessions(
+    series: str, event_name: str, sessions: list[dict[str, Any]], links: list[tuple[str, str]]
+) -> list[dict[str, Any]]:
+    """Add sessions that have an official classification but are missing from
+    the published timetable (e.g. Barcelona's Qualifying 2 groups).
+
+    Their start is estimated from the neighbouring timetable sessions in the
+    results order, and the time is marked as not confirmed.
+    """
+    known = {session_key(session["name"]): session for session in sessions}
+    ordered = [name for name, _ in reversed(links) if is_session(name)]
+    used = {session["type"] for session in sessions}
+    added = []
+    for index, name in enumerate(ordered):
+        if session_key(name) in known:
+            continue
+        before = next((known[session_key(n)] for n in reversed(ordered[:index]) if session_key(n) in known), None)
+        after = next((known[session_key(n)] for n in ordered[index + 1:] if session_key(n) in known), None)
+        if before is None and after is None:
+            continue
+        minutes = default_minutes(series, event_name, name)
+        if before is not None:
+            start = session_end(before)
+            if after is not None:
+                next_start = datetime.fromisoformat(after["startTimeUtc"].replace("Z", "+00:00"))
+                if start >= next_start:
+                    start = next_start - timedelta(minutes=1)
+        else:
+            start = datetime.fromisoformat(after["startTimeUtc"].replace("Z", "+00:00")) - timedelta(minutes=minutes)
+        kind = session_type(name)
+        unique, suffix = kind, 2
+        while unique in used:
+            unique, suffix = f"{kind}_{suffix}", suffix + 1
+        used.add(unique)
+        session = {
+            "type": unique,
+            "name": name,
+            "startTimeUtc": iso(start),
+            "cancelled": False,
+            "durationMinutes": minutes,
+            "timeTbc": True,
+            "resultsOnly": True,
+        }
+        known[session_key(name)] = session
+        added.append(session)
+    return sorted(sessions + added, key=lambda session: session["startTimeUtc"])
+
+
+def standings_pages(series: str, season: int = SEASON) -> tuple[list[tuple[str, str, str]], list[tuple[str, str, str]]]:
+    """(url, class, label) lists for driver and team standings of ``season``."""
     config = SERIES[series]
     base = config["base"]
-    if series == "igtc":
-        drivers = [(f"{base}/standings?filter_igtcstandingtype_id=2", "OVERALL", "Drivers")]
-        teams = [(f"{base}/standings?filter_igtcstandingtype_id=4", "OVERALL", "GT3 Manufacturers")]
-        return drivers, teams
     first = get(f"{base}/standings")
+    season_id = season_option(first, season)
+    year = f"&filter_season_id={season_id}" if season_id else ""
+    if series == "igtc":
+        drivers = [(f"{base}/standings?filter_igtcstandingtype_id=2{year}", "OVERALL", "Drivers")]
+        teams = [(f"{base}/standings?filter_igtcstandingtype_id=4{year}", "OVERALL", "GT3 Manufacturers")]
+        return drivers, teams
+    if season_id:
+        first = get(f"{base}/standings?filter_season_id={season_id}")
     options = standing_options(first)
     for value, _ in list(options):
         # Some sites only list the driver options on a drivers page.
         if value.endswith("_teams"):
-            options += standing_options(get(f"{base}/standings?filter_standing_type={value[:-6]}_drivers"))
+            options += standing_options(
+                get(f"{base}/standings?filter_standing_type={value[:-6]}_drivers{year}")
+            )
             break
     seen = set()
     drivers, teams = [], []
@@ -1150,15 +1483,17 @@ def standings_pages(series: str) -> tuple[list[tuple[str, str, str]], list[tuple
         if value in seen or SKIPPED_STANDINGS.search(label):
             continue
         seen.add(value)
-        if config.get("cup"):
-            if config["cup"].lower() not in label.lower():
+        category = standing_class(label)
+        cup = re.search(r"(endurance|sprint) cup", label, re.I)
+        if cup:
+            # GT Europe: only the overall classification of each cup.
+            if not config.get("cups") or category != "OVERALL":
                 continue
-        elif re.search(r"endurance cup|sprint cup", label, re.I):
-            continue
-        url = f"{base}/standings?filter_standing_type={value}"
+            category = cup.group(1).upper()
+        url = f"{base}/standings?filter_standing_type={value}{year}"
         target = drivers if value.endswith("_drivers") else teams if value.endswith("_teams") else None
         if target is not None:
-            target.append((url, standing_class(label), label))
+            target.append((url, category, label))
     return drivers, teams
 
 
@@ -1174,9 +1509,10 @@ def write_standings(
     driver_pages: list[tuple[str, str, str]],
     team_pages: list[tuple[str, str, str]],
     pages: dict[str, str],
+    started: bool = True,
 ) -> None:
     base = SERIES[series]["base"]
-    if not driver_pages:
+    if not driver_pages and started:
         raise RuntimeError(f"{series}: no driver standings found")
 
     driver_rows = []
@@ -1189,7 +1525,11 @@ def write_standings(
                 seen_rows.add(key)
                 driver_rows.append((category, row))
     missing = sorted(
-        {row["profile"] for _, row in driver_rows if row["profile"] and slugify(row["name"]) not in profiles}
+        {
+            row["profile"]
+            for _, row in driver_rows
+            if row["profile"] and not profiles.get(slugify(row["name"]), {}).get("portraitSource")
+        }
     )
 
     def lookup(profile: str) -> tuple[str, dict[str, str] | None]:
@@ -1259,10 +1599,34 @@ def write_standings(
                     "color": color or brand_color(row["name"]),
                 }
             )
-    if not drivers:
+    if not drivers and started:
         raise RuntimeError(f"{series}: driver standings are empty")
+    drivers = consistent_order(drivers)
+    teams = consistent_order(teams)
     write_json(folder / "standings_drivers.json", document("sro-official-standings", f"{base}/standings", drivers, updated))
     write_json(folder / "standings_teams.json", document("sro-official-standings", f"{base}/standings", teams, updated))
+
+
+def consistent_order(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Official tables occasionally list a class out of points order (GT Asia
+    Am: 33 points above 42). Such a class is re-ranked by points, crews with
+    equal points sharing a position as on the official pages."""
+    by_class: dict[str | None, list[dict[str, Any]]] = {}
+    for row in rows:
+        by_class.setdefault(row.get("category"), []).append(row)
+    result = []
+    for members in by_class.values():
+        ordered = all(
+            b["position"] >= a["position"] and b["points"] <= a["points"]
+            for a, b in zip(members, members[1:])
+        )
+        if not ordered:
+            members = sorted(members, key=lambda row: (-row["points"], row["position"]))
+            values = sorted({row["points"] for row in members}, reverse=True)
+            for row in members:
+                row["position"] = values.index(row["points"]) + 1
+        result.extend(members)
+    return result
 
 
 def main(argv: list[str] | None = None) -> int:

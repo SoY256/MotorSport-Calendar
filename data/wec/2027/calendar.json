@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 1,
+  "lastSuccessfulUpdate": "2026-10-22T11:50:43.822453Z",
+  "source": {
+    "name": "official-next-season-calendar",
+    "url": "https://www.fiawec.com/en/race"
+  },
+  "data": [
+    {
+      "id": "wec-2027-1",
+      "seriesId": "wec",
+      "season": 2027,
+      "round": 1,
+      "name": "Qatar 1812 km",
+      "cancelled": false,
+      "circuit": {
+        "id": "lusail-international-circuit",
+        "name": "Lusail International Circuit",
+        "locality": "Lusail",
+        "country": "Qatar",
+        "countryCode": "QAT"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-03-27T10:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 600
+        }
+      ],
+      "resultsPath": "events/01-qatar-1812-km.json"
+    },
+    {
+      "id": "wec-2027-2",
+      "seriesId": "wec",
+      "season": 2027,
+      "round": 2,
+      "name": "6 Hours of Imola",
+      "cancelled": false,
+      "circuit": {
+        "id": "imola-circuit",
+        "name": "Imola Circuit",
+        "locality": "Imola",
+        "country": "Italy",
+        "countryCode": "ITA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-04-11T11:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 360
+        }
+      ],
+      "resultsPath": "events/02-6-hours-of-imola.json"
+    },
+    {
+      "id": "wec-2027-3",
+      "seriesId": "wec",
+      "season": 2027,
+      "round": 3,
+      "name": "6 Hours of Silverstone",
+      "cancelled": false,
+      "circuit": {
+        "id": "silverstone-circuit",
+        "name": "Silverstone Circuit",
+        "locality": "Silverstone",
+        "country": "United Kingdom",
+        "countryCode": "GBR"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-04-25T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 360
+        }
+      ],
+      "resultsPath": "events/03-6-hours-of-silverstone.json"
+    },
+    {
+      "id": "wec-2027-4",
+      "seriesId": "wec",
+      "season": 2027,
+      "round": 4,
+      "name": "6 Hours of Spa-Francorchamps",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit-de-spa-francorchamps",
+        "name": "Circuit de Spa-Francorchamps",
+        "locality": "Stavelot",
+        "country": "Belgium",
+        "countryCode": "BEL"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-05-15T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 360
+        }
+      ],
+      "resultsPath": "events/04-6-hours-of-spa-francorchamps.json"
+    },
+    {
+      "id": "wec-2027-5",
+      "seriesId": "wec",
+      "season": 2027,
+      "round": 5,
+      "name": "24 Hours of Le Mans",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit-de-la-sarthe",
+        "name": "Circuit de la Sarthe",
+        "locality": "Le Mans",
+        "country": "France",
+        "countryCode": "FRA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-06-12T14:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 1440
+        }
+      ],
+      "resultsPath": "events/05-24-hours-of-le-mans.json"
+    },
+    {
+      "id": "wec-2027-6",
+      "seriesId": "wec",
+      "season": 2027,
+      "round": 6,
+      "name": "6 Hours of São Paulo",
+      "cancelled": false,
+      "circuit": {
+        "id": "autódromo-josé-carlos-pace",
+        "name": "Autódromo José Carlos Pace",
+        "locality": "São Paulo",
+        "country": "Brazil",
+        "countryCode": "BRA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "cancelled": false,
+          "timeTbc": true,
+          "startTimeUtc": "2027-07-11T12:00:00Z",
+          "durationMinutes": 360
+        }
+      ],
+      "resultsPath": "events/06-6-hours-of-sao-paulo.json"
+    },
+    {
+      "id": "wec-2027-7",
+      "seriesId": "wec",
+      "season": 2027,
+      "round": 7,
+      "name": "Lone Star Le Mans",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit-of-the-americas",
+        "name": "Circuit of the Americas",
+        "locality": "Austin",
+        "country": "United States",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "cancelled": false,
+          "timeTbc": true,
+          "startTimeUtc": "2027-09-12T12:00:00Z",
+          "durationMinutes": 360
+        }
+      ],
+      "resultsPath": "events/07-lone-star-le-mans.json"
+    },
+    {
+      "id": "wec-2027-8",
+      "seriesId": "wec",
+      "season": 2027,
+      "round": 8,
+      "name": "6 Hours of Fuji",
+      "cancelled": false,
+      "circuit": {
+        "id": "fuji-speedway",
+        "name": "Fuji Speedway",
+        "locality": "Oyama",
+        "country": "Japan",
+        "countryCode": "JPN"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "cancelled": false,
+          "timeTbc": true,
+          "startTimeUtc": "2027-09-26T12:00:00Z",
+          "durationMinutes": 360
+        }
+      ],
+      "resultsPath": "events/08-6-hours-of-fuji.json"
+    },
+    {
+      "id": "wec-2027-9",
+      "seriesId": "wec",
+      "season": 2027,
+      "round": 9,
+      "name": "8 Hours of Bahrain",
+      "cancelled": false,
+      "circuit": {
+        "id": "bahrain-international-circuit",
+        "name": "Bahrain International Circuit",
+        "locality": "Sakhir",
+        "country": "Bahrain",
+        "countryCode": "BHR"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "cancelled": false,
+          "timeTbc": true,
+          "startTimeUtc": "2027-11-06T12:00:00Z",
+          "durationMinutes": 480
+        }
+      ],
+      "resultsPath": "events/09-8-hours-of-bahrain.json"
+    }
+  ]
+}

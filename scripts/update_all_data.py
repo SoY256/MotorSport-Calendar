@@ -15,8 +15,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 from fetch_gt3_results import SERIES as GT3_SERIES  # noqa: E402
+from seasons import current_season, results_season, season_dirs, season_started  # noqa: E402
 
 SERIES = ("f1", "f2", "f3", "imsa", "indycar", "indynxt", "wec", *GT3_SERIES)
+
+
+DEFAULT_SEASON = 2026
 
 
 def run(script: str, env: dict[str, str], *args: str) -> None:
@@ -34,7 +38,17 @@ def write_indexes(data_root: Path) -> None:
         "schemaVersion": 1,
         "lastSuccessfulUpdate": updated,
         "source": {"name": "multi-source-official-refresh", "url": "https://github.com/SoY256/MotorSport-Calendar"},
-        "availableSeries": [{"id": series, "availableSeasons": [2026]} for series in SERIES],
+        # `availableSeasons` keeps only the season users follow now (older app
+        # versions load just that one); `publishedSeasons` lists every season
+        # with data, e.g. a next-season calendar.
+        "availableSeries": [
+            {
+                "id": series,
+                "availableSeasons": [current_season(data_root / series, DEFAULT_SEASON)],
+                "publishedSeasons": season_dirs(data_root / series) or [DEFAULT_SEASON],
+            }
+            for series in SERIES
+        ],
     }
     descriptions = {
         "f1": ("Formula 1", "F1", "#E10600"),
@@ -65,44 +79,54 @@ def write_indexes(data_root: Path) -> None:
 def validate(data_root: Path) -> None:
     now = datetime.now(timezone.utc)
     for series in SERIES:
-        season = data_root / series / "2026"
-        for name in ("calendar.json", "standings_drivers.json", "standings_teams.json"):
-            document = json.loads((season / name).read_text(encoding="utf-8"))
-            if document.get("schemaVersion") != 1 or not isinstance(document.get("data"), list):
-                raise RuntimeError(f"Invalid {series}/{name}")
-            if name.startswith("standings_") and not document["data"]:
-                raise RuntimeError(f"Empty {series}/{name}")
-        calendar = json.loads((season / "calendar.json").read_text(encoding="utf-8"))["data"]
-        if not calendar:
-            raise RuntimeError(f"Empty {series} calendar")
-        for event in calendar:
-            if any(int(session.get("durationMinutes", 0)) <= 0 for session in event.get("sessions", [])):
-                raise RuntimeError(f"Missing session duration: {series}/{event['id']}")
-            result = season / event["resultsPath"]
-            if not result.is_file():
-                raise RuntimeError(f"Missing result document: {result}")
-            result_document = json.loads(result.read_text(encoding="utf-8"))
-            result_data = result_document.get("data", {})
-            if result_data.get("eventId") != event["id"]:
-                raise RuntimeError(f"Wrong event id in result document: {result}")
-            scheduled = {session["type"]: session for session in event.get("sessions", [])}
-            for classification in result_data.get("sessions", []):
-                session_type = classification.get("type")
-                if session_type not in scheduled:
-                    raise RuntimeError(
-                        f"Unscheduled result type {session_type}: {series}/{event['id']}"
-                    )
-                start = datetime.fromisoformat(
-                    scheduled[session_type]["startTimeUtc"].replace("Z", "+00:00")
+        seasons = season_dirs(data_root / series)
+        if not seasons:
+            raise RuntimeError(f"No season data for {series}")
+        for year in seasons:
+            validate_season(data_root, series, year, now)
+
+
+def validate_season(data_root: Path, series: str, year: int, now: datetime) -> None:
+    season = data_root / series / str(year)
+    started = season_started(data_root / series, year, now)
+    for name in ("calendar.json", "standings_drivers.json", "standings_teams.json"):
+        document = json.loads((season / name).read_text(encoding="utf-8"))
+        if document.get("schemaVersion") != 1 or not isinstance(document.get("data"), list):
+            raise RuntimeError(f"Invalid {series}/{year}/{name}")
+        # A season that has not started yet has no standings.
+        if name.startswith("standings_") and not document["data"] and started:
+            raise RuntimeError(f"Empty {series}/{year}/{name}")
+    calendar = json.loads((season / "calendar.json").read_text(encoding="utf-8"))["data"]
+    if not calendar:
+        raise RuntimeError(f"Empty {series} calendar")
+    for event in calendar:
+        if any(int(session.get("durationMinutes", 0)) <= 0 for session in event.get("sessions", [])):
+            raise RuntimeError(f"Missing session duration: {series}/{event['id']}")
+        result = season / event["resultsPath"]
+        if not result.is_file():
+            raise RuntimeError(f"Missing result document: {result}")
+        result_document = json.loads(result.read_text(encoding="utf-8"))
+        result_data = result_document.get("data", {})
+        if result_data.get("eventId") != event["id"]:
+            raise RuntimeError(f"Wrong event id in result document: {result}")
+        scheduled = {session["type"]: session for session in event.get("sessions", [])}
+        for classification in result_data.get("sessions", []):
+            session_type = classification.get("type")
+            if session_type not in scheduled:
+                raise RuntimeError(
+                    f"Unscheduled result type {session_type}: {series}/{event['id']}"
                 )
-                end = start + timedelta(
-                    minutes=int(scheduled[session_type].get("durationMinutes", 120))
+            start = datetime.fromisoformat(
+                scheduled[session_type]["startTimeUtc"].replace("Z", "+00:00")
+            )
+            end = start + timedelta(
+                minutes=int(scheduled[session_type].get("durationMinutes", 120))
+            )
+            official_f1 = series == 'f1' and classification.get('source', {}).get('name') == 'formula1-official'
+            if classification.get("results") and (start if official_f1 else end) > now:
+                raise RuntimeError(
+                    f"Future session has results: {series}/{event['id']}/{session_type}"
                 )
-                official_f1 = series == 'f1' and classification.get('source', {}).get('name') == 'formula1-official'
-                if classification.get("results") and (start if official_f1 else end) > now:
-                    raise RuntimeError(
-                        f"Future session has results: {series}/{event['id']}/{session_type}"
-                    )
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -133,26 +157,36 @@ def main(argv: list[str] | None = None) -> int:
                     published = target / series
                     if not published.is_dir():
                         continue
+                    year = str(results_season(published, DEFAULT_SEASON))
                     try:
                         published_count = len(json.loads(
-                            (published / "2026" / "standings_drivers.json").read_text(encoding="utf-8")
+                            (published / year / "standings_drivers.json").read_text(encoding="utf-8")
                         )["data"])
-                        bundled_count = len(json.loads(
-                            (staged / series / "2026" / "standings_drivers.json").read_text(encoding="utf-8")
-                        )["data"])
+                        bundled_path = staged / series / year / "standings_drivers.json"
+                        bundled_count = (
+                            len(json.loads(bundled_path.read_text(encoding="utf-8"))["data"])
+                            if bundled_path.is_file()
+                            else 0
+                        )
                     except (FileNotFoundError, KeyError, json.JSONDecodeError):
                         continue
                     if published_count >= bundled_count:
-                        shutil.rmtree(staged / series)
+                        shutil.rmtree(staged / series, ignore_errors=True)
                         shutil.copytree(published, staged / series)
             f1_output = temp / "f1-output"
             if "f1" in selected:
                 shutil.copytree(staged / "f1", f1_output / "f1")
+                f1_year = results_season(staged / "f1", DEFAULT_SEASON)
                 try:
-                    run("fetch_data.py", os.environ.copy(), "--year", "2026", "--output", str(f1_output))
+                    run("fetch_data.py", os.environ.copy(), "--year", str(f1_year), "--output", str(f1_output))
                 except subprocess.CalledProcessError as error:
                     print(f"F1 refresh failed; retaining last verified F1 data: {error}", file=sys.stderr)
                 else:
+                    # fetch_data.py publishes a single season; keep the others
+                    # (e.g. the announced next-season calendar).
+                    for other in season_dirs(staged / "f1"):
+                        if not (f1_output / "f1" / str(other)).exists():
+                            shutil.copytree(staged / "f1" / str(other), f1_output / "f1" / str(other))
                     shutil.rmtree(staged / "f1")
                     shutil.copytree(f1_output / "f1", staged / "f1")
 
@@ -185,11 +219,16 @@ def main(argv: list[str] | None = None) -> int:
                     print(f"{script} failed; retaining last verified data: {error}", file=sys.stderr)
                 else:
                     for series in affected:
-                        shutil.rmtree(staged / series)
+                        shutil.rmtree(staged / series, ignore_errors=True)
                         shutil.copytree(candidate / series, staged / series)
 
             env = os.environ.copy()
             env["MOTORSPORT_DATA_ROOT"] = str(staged)
+            if full_refresh:
+                try:
+                    run("fetch_next_season.py", env)
+                except subprocess.CalledProcessError as error:
+                    print(f"Next-season calendars unavailable: {error}", file=sys.stderr)
             run("add_session_durations.py", env, str(staged))
             # Portrait URLs are identity-bound metadata from official series
             # profile pages and can change with driver line-ups.

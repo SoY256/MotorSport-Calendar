@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-22T01:57:34.203630Z",
+  "lastSuccessfulUpdate": "2026-10-22T11:50:44.626821Z",
   "source": {
     "name": "multi-source-official-refresh",
     "url": "https://github.com/SoY256/MotorSport-Calendar"
@@ -10,11 +10,18 @@
       "id": "f1",
       "availableSeasons": [
         2026
+      ],
+      "publishedSeasons": [
+        2026,
+        2027
       ]
     },
     {
       "id": "f2",
       "availableSeasons": [
+        2026
+      ],
+      "publishedSeasons": [
         2026
       ]
     },
@@ -22,11 +29,17 @@
       "id": "f3",
       "availableSeasons": [
         2026
+      ],
+      "publishedSeasons": [
+        2026
       ]
     },
     {
       "id": "imsa",
       "availableSeasons": [
+        2026
+      ],
+      "publishedSeasons": [
         2026
       ]
     },
@@ -34,11 +47,17 @@
       "id": "indycar",
       "availableSeasons": [
         2026
+      ],
+      "publishedSeasons": [
+        2026
       ]
     },
     {
       "id": "indynxt",
       "availableSeasons": [
+        2026
+      ],
+      "publishedSeasons": [
         2026
       ]
     },
@@ -46,17 +65,18 @@
       "id": "wec",
       "availableSeasons": [
         2026
+      ],
+      "publishedSeasons": [
+        2026,
+        2027
       ]
     },
     {
-      "id": "gtwc-endurance",
+      "id": "gtwc-europe",
       "availableSeasons": [
         2026
-      ]
-    },
-    {
-      "id": "gtwc-sprint",
-      "availableSeasons": [
+      ],
+      "publishedSeasons": [
         2026
       ]
     },
@@ -64,11 +84,17 @@
       "id": "gtwc-america",
       "availableSeasons": [
         2026
+      ],
+      "publishedSeasons": [
+        2026
       ]
     },
     {
       "id": "gtwc-asia",
       "availableSeasons": [
+        2026
+      ],
+      "publishedSeasons": [
         2026
       ]
     },
@@ -76,17 +102,26 @@
       "id": "gtwc-australia",
       "availableSeasons": [
         2026
+      ],
+      "publishedSeasons": [
+        2026
       ]
     },
     {
       "id": "british-gt",
       "availableSeasons": [
         2026
+      ],
+      "publishedSeasons": [
+        2026
       ]
     },
     {
       "id": "igtc",
       "availableSeasons": [
+        2026
+      ],
+      "publishedSeasons": [
         2026
       ]
     }

@@ -29,10 +29,9 @@ FOLLOWUP_LOOKAHEAD_HOURS = 8
 
 def missing_sessions(now: datetime) -> list[tuple[datetime, str]]:
     missing: list[tuple[datetime, str]] = []
-    for series_dir in DATA.iterdir():
-        calendar_path = series_dir / "2026" / "calendar.json"
-        if not calendar_path.is_file():
-            continue
+    # Every season, including an announced next season.
+    for calendar_path in sorted(DATA.glob("*/*/calendar.json")):
+        series_dir = calendar_path.parent.parent
         events = json.loads(calendar_path.read_text(encoding="utf-8"))["data"]
         for event in events:
             available = result_types(calendar_path.parent / event["resultsPath"])

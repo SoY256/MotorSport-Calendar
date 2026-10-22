@@ -9,8 +9,31 @@ import '../domain/race_event.dart';
 abstract interface class CalendarRepository {
   Future<CalendarData> load();
   Future<EventResults> loadResults(RaceEvent event);
-  Future<StandingsData> loadStandings(String seriesId);
+  Future<StandingsData> loadStandings(String seriesId, int season);
 }
+
+/// Every season of a manifest entry. `publishedSeasons` lists all seasons
+/// with data (e.g. the next season's calendar); `availableSeasons` holds
+/// only the current one so older app versions keep working.
+List<int> manifestSeasons(Map<String, dynamic> series) =>
+    ((series['publishedSeasons'] ?? series['availableSeasons'])
+            as List<dynamic>)
+        .cast<int>()
+        .toSet()
+        .toList()
+      ..sort();
+
+StandingsData _standingsFrom(
+  Map<String, dynamic> drivers,
+  Map<String, dynamic> teams,
+) => StandingsData(
+  drivers: (drivers['data'] as List<dynamic>)
+      .map((item) => DriverStanding.fromJson(item as Map<String, dynamic>))
+      .toList(growable: false),
+  teams: (teams['data'] as List<dynamic>)
+      .map((item) => TeamStanding.fromJson(item as Map<String, dynamic>))
+      .toList(growable: false),
+);
 
 class AssetCalendarRepository implements CalendarRepository {
   AssetCalendarRepository({AssetBundle? bundle})
@@ -26,16 +49,11 @@ class AssetCalendarRepository implements CalendarRepository {
   @override
   Future<CalendarData> load() async {
     final manifest = await _json('assets/data/manifest.json');
-    final calendars = await Future.wait(
-      (manifest['availableSeries'] as List<dynamic>).map((item) {
-        final series = item as Map<String, dynamic>;
-        final id = series['id'] as String;
-        final seasons = (series['availableSeasons'] as List<dynamic>)
-            .cast<int>();
-        final season = seasons.reduce((a, b) => a > b ? a : b);
-        return _json('assets/data/$id/$season/calendar.json');
-      }),
-    );
+    final calendars = await Future.wait([
+      for (final item in manifest['availableSeries'] as List<dynamic>)
+        for (final season in manifestSeasons(item as Map<String, dynamic>))
+          _json('assets/data/${item['id']}/$season/calendar.json'),
+    ]);
     return _mergeCalendars(calendars);
   }
 
@@ -48,20 +66,18 @@ class AssetCalendarRepository implements CalendarRepository {
       );
 
   @override
-  Future<StandingsData> loadStandings(String seriesId) async {
-    final seasonRoot = 'assets/data/$seriesId/2026';
-    final documents = await Future.wait([
-      _json('$seasonRoot/standings_drivers.json'),
-      _json('$seasonRoot/standings_teams.json'),
-    ]);
-    return StandingsData(
-      drivers: (documents[0]['data'] as List<dynamic>)
-          .map((item) => DriverStanding.fromJson(item as Map<String, dynamic>))
-          .toList(growable: false),
-      teams: (documents[1]['data'] as List<dynamic>)
-          .map((item) => TeamStanding.fromJson(item as Map<String, dynamic>))
-          .toList(growable: false),
-    );
+  Future<StandingsData> loadStandings(String seriesId, int season) async {
+    final seasonRoot = 'assets/data/$seriesId/$season';
+    try {
+      final documents = await Future.wait([
+        _json('$seasonRoot/standings_drivers.json'),
+        _json('$seasonRoot/standings_teams.json'),
+      ]);
+      return _standingsFrom(documents[0], documents[1]);
+    } on Object {
+      // A season that has not started yet ships no standings.
+      return const StandingsData(drivers: [], teams: []);
+    }
   }
 }
 
@@ -120,16 +136,11 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
     try {
       final manifest = await _remote('manifest.json');
       if (manifest == null) return local;
-      final calendars = await Future.wait(
-        (manifest['availableSeries'] as List<dynamic>).map((item) {
-          final series = item as Map<String, dynamic>;
-          final id = series['id'] as String;
-          final seasons = (series['availableSeasons'] as List<dynamic>)
-              .cast<int>();
-          final season = seasons.reduce((a, b) => a > b ? a : b);
-          return _remote('$id/$season/calendar.json');
-        }),
-      );
+      final calendars = await Future.wait([
+        for (final item in manifest['availableSeries'] as List<dynamic>)
+          for (final season in manifestSeasons(item as Map<String, dynamic>))
+            _remote('${item['id']}/$season/calendar.json'),
+      ]);
       if (calendars.any((calendar) => calendar == null)) return local;
       final remote = _mergeCalendars(calendars.cast<Map<String, dynamic>>());
       if (!remote.updatedAt.isAfter(local.updatedAt)) return local;
@@ -154,7 +165,9 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
     final local = await fallback.loadResults(event);
     var selected = local;
     try {
-      final json = await _remote('${event.seriesId}/2026/${event.resultsPath}');
+      final json = await _remote(
+        '${event.seriesId}/${event.season}/${event.resultsPath}',
+      );
       if (json != null) {
         final remote = EventResults.fromJson(json);
         // A missing optional flag must never hide an otherwise valid official
@@ -369,7 +382,7 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
     final matching = paths.where((p) => p.split('/').last == slug);
     if (matching.length != 1) return base;
     final path = matching.single;
-    final standings = await loadStandings('f1');
+    final standings = await loadStandings('f1', event.season);
     final drivers = {for (final d in standings.drivers) d.code: d};
     const routes = {
       'FP1': 'practice/1',
@@ -446,26 +459,17 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
   }
 
   @override
-  Future<StandingsData> loadStandings(String seriesId) async {
-    final local = await fallback.loadStandings(seriesId);
+  Future<StandingsData> loadStandings(String seriesId, int season) async {
+    final local = await fallback.loadStandings(seriesId, season);
     try {
       final documents = await Future.wait([
-        _remote('$seriesId/2026/standings_drivers.json'),
-        _remote('$seriesId/2026/standings_teams.json'),
+        _remote('$seriesId/$season/standings_drivers.json'),
+        _remote('$seriesId/$season/standings_teams.json'),
       ]);
       if (documents.any((document) => document == null)) {
         return local;
       }
-      final remote = StandingsData(
-        drivers: (documents[0]!['data'] as List<dynamic>)
-            .map(
-              (item) => DriverStanding.fromJson(item as Map<String, dynamic>),
-            )
-            .toList(growable: false),
-        teams: (documents[1]!['data'] as List<dynamic>)
-            .map((item) => TeamStanding.fromJson(item as Map<String, dynamic>))
-            .toList(growable: false),
-      );
+      final remote = _standingsFrom(documents[0]!, documents[1]!);
       final localDrivers = {
         for (final driver in local.drivers) driver.id: driver,
       };

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-19T14:22:20.472840Z",
+  "lastSuccessfulUpdate": "2026-10-22T11:49:44.806377Z",
   "source": {
     "name": "sro-official-standings",
     "url": "https://www.intercontinentalgtchallenge.com/standings"
@@ -9,7 +9,7 @@
     {
       "position": 1,
       "points": 72.0,
-      "wins": 1,
+      "wins": 2,
       "id": "maxime-martin",
       "code": "34",
       "givenName": "Maxime",
@@ -32,7 +32,7 @@
     {
       "position": 2,
       "points": 68.0,
-      "wins": 1,
+      "wins": 2,
       "id": "maro-engel",
       "code": "48",
       "givenName": "Maro",
@@ -55,7 +55,7 @@
     {
       "position": 3,
       "points": 61.0,
-      "wins": 0,
+      "wins": 1,
       "id": "luca-stolz",
       "code": "80",
       "givenName": "Luca",
@@ -78,7 +78,7 @@
     {
       "position": 4,
       "points": 56.0,
-      "wins": 0,
+      "wins": 1,
       "id": "laurin-heinrich",
       "code": "31",
       "givenName": "Laurin",
@@ -170,7 +170,7 @@
     {
       "position": 8,
       "points": 42.0,
-      "wins": 0,
+      "wins": 1,
       "id": "alessio-picariello",
       "code": "8",
       "givenName": "Alessio",
@@ -195,15 +195,15 @@
       "points": 39.0,
       "wins": 0,
       "id": "dorian-boccolacci",
-      "code": "2",
+      "code": "7",
       "givenName": "Dorian",
       "familyName": "Boccolacci",
       "nationality": "FRA",
       "teamIds": [
-        "boutsen-vds"
+        "absolute-racing"
       ],
       "teamNames": [
-        "Boutsen VDS"
+        "Absolute Racing"
       ],
       "teamColors": [
         "#D5001C"
@@ -218,15 +218,15 @@
       "points": 38.0,
       "wins": 0,
       "id": "max-hesse",
-      "code": "46",
+      "code": "89",
       "givenName": "Max",
       "familyName": "Hesse",
       "nationality": "DEU",
       "teamIds": [
-        "team-wrt"
+        "team-krc"
       ],
       "teamNames": [
-        "Team WRT"
+        "Team KRC"
       ],
       "teamColors": [
         "#0066B1"
@@ -338,10 +338,10 @@
       "familyName": "Olsen",
       "nationality": "",
       "teamIds": [
-        "hrt-ford-racing"
+        "miedecke-motorsport-by-team-mpc"
       ],
       "teamNames": [
-        "HRT Ford Racing"
+        "Miedecke Motorsport By Team MPC"
       ],
       "teamColors": [
         "#1F4E9C"
@@ -356,15 +356,15 @@
       "points": 28.0,
       "wins": 0,
       "id": "frederic-vervisch",
-      "code": "",
+      "code": "64",
       "givenName": "Frederic",
       "familyName": "Vervisch",
       "nationality": "",
       "teamIds": [
-        "ford"
+        "miedecke-motorsport-by-team-mpc"
       ],
       "teamNames": [
-        "Ford"
+        "Miedecke Motorsport By Team MPC"
       ],
       "teamColors": [
         "#1F4E9C"
@@ -393,7 +393,7 @@
         "#00A19C"
       ],
       "category": "OVERALL",
-      "imageUrl": null,
+      "imageUrl": "assets/portraits/faces/gt3/fabien-schiller.jpg",
       "portraitSource": "",
       "profile": ""
     },
@@ -439,7 +439,7 @@
         "#D5001C"
       ],
       "category": "OVERALL",
-      "imageUrl": null,
+      "imageUrl": "assets/portraits/faces/gt3/julian-andlauer.jpg",
       "portraitSource": "",
       "profile": ""
     },
@@ -485,7 +485,7 @@
         "#D5001C"
       ],
       "category": "OVERALL",
-      "imageUrl": null,
+      "imageUrl": "assets/portraits/faces/gt3/ricardo-pera.jpg",
       "portraitSource": "",
       "profile": ""
     },
@@ -508,7 +508,7 @@
         "#D5001C"
       ],
       "category": "OVERALL",
-      "imageUrl": null,
+      "imageUrl": "assets/portraits/faces/gt3/anders-fjordbach.jpg",
       "portraitSource": "",
       "profile": ""
     },
@@ -586,15 +586,15 @@
       "points": 19.0,
       "wins": 0,
       "id": "augusto-farfus",
-      "code": "98",
+      "code": "10",
       "givenName": "Augusto",
       "familyName": "Farfus",
       "nationality": "BRA",
       "teamIds": [
-        "rowe-racing"
+        "team-krc"
       ],
       "teamNames": [
-        "Rowe Racing"
+        "Team KRC"
       ],
       "teamColors": [
         "#0066B1"
@@ -632,15 +632,15 @@
       "points": 18.0,
       "wins": 0,
       "id": "dries-vanthoor",
-      "code": "",
+      "code": "99",
       "givenName": "Dries",
       "familyName": "Vanthoor",
       "nationality": "BEL",
       "teamIds": [
-        "bmw"
+        "rowe-racing"
       ],
       "teamNames": [
-        "BMW"
+        "ROWE RACING"
       ],
       "teamColors": [
         "#0066B1"
@@ -678,15 +678,15 @@
       "points": 18.0,
       "wins": 0,
       "id": "sheldon-van-der-linde",
-      "code": "",
+      "code": "99",
       "givenName": "Sheldon",
       "familyName": "van der Linde",
       "nationality": "",
       "teamIds": [
-        "bmw"
+        "rowe-racing"
       ],
       "teamNames": [
-        "BMW"
+        "ROWE RACING"
       ],
       "teamColors": [
         "#0066B1"
@@ -770,21 +770,21 @@
       "points": 16.0,
       "wins": 0,
       "id": "joel-sturm",
-      "code": "8",
+      "code": "86",
       "givenName": "Joel",
       "familyName": "Sturm",
       "nationality": "DEU",
       "teamIds": [
-        "car-collection-motorsport"
+        "high-class-racing"
       ],
       "teamNames": [
-        "Car Collection Motorsport"
+        "High Class Racing"
       ],
       "teamColors": [
         "#D5001C"
       ],
       "category": "OVERALL",
-      "imageUrl": null,
+      "imageUrl": "assets/portraits/faces/gt3/joel-sturm.jpg",
       "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_871.png",
       "profile": "https://www.gt-world-challenge-asia.com/driver/892/joel-sturm"
     },
@@ -793,15 +793,15 @@
       "points": 15.0,
       "wins": 0,
       "id": "alessio-rovera",
-      "code": "51",
+      "code": "555",
       "givenName": "Alessio",
       "familyName": "Rovera",
       "nationality": "ITA",
       "teamIds": [
-        "af-corse"
+        "maezawa-racing"
       ],
       "teamNames": [
-        "AF Corse"
+        "Maezawa Racing"
       ],
       "teamColors": [
         "#DC0000"
@@ -816,15 +816,15 @@
       "points": 15.0,
       "wins": 0,
       "id": "laurens-vanthoor",
-      "code": "",
+      "code": "24",
       "givenName": "Laurens",
       "familyName": "Vanthoor",
       "nationality": "",
       "teamIds": [
-        "porsche"
+        "lionspeed-gp"
       ],
       "teamNames": [
-        "Porsche"
+        "Lionspeed GP"
       ],
       "teamColors": [
         "#D5001C"
@@ -862,15 +862,15 @@
       "points": 15.0,
       "wins": 0,
       "id": "alessandro-ghiretti",
-      "code": "10",
+      "code": "7",
       "givenName": "Alessandro",
       "familyName": "Ghiretti",
       "nationality": "FRA",
       "teamIds": [
-        "boutsen-vds"
+        "absolute-racing"
       ],
       "teamNames": [
-        "Boutsen VDS"
+        "Absolute Racing"
       ],
       "teamColors": [
         "#D5001C"
@@ -1000,21 +1000,21 @@
       "points": 12.0,
       "wins": 0,
       "id": "maxime-oosten",
-      "code": "65",
+      "code": "89",
       "givenName": "Maxime",
       "familyName": "Oosten",
       "nationality": "NLD",
       "teamIds": [
-        "hrt-ford-racing"
+        "team-krc"
       ],
       "teamNames": [
-        "HRT Ford Racing"
+        "Team KRC"
       ],
       "teamColors": [
-        "#1F4E9C"
+        "#0066B1"
       ],
       "category": "OVERALL",
-      "imageUrl": null,
+      "imageUrl": "assets/portraits/faces/gt3/maxime-oosten.jpg",
       "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4179.png",
       "profile": "https://www.gt-world-challenge-europe.com/driver/4179/maxime-oosten"
     },
@@ -1054,7 +1054,7 @@
         "johor-motorsports-racing-jmr"
       ],
       "teamNames": [
-        "Johor Motorsports Racing JMR"
+        "Johor Motorsports Racing - JMR"
       ],
       "teamColors": [
         "#E8B500"
@@ -1069,15 +1069,15 @@
       "points": 12.0,
       "wins": 0,
       "id": "scott-mclaughlin",
-      "code": "",
+      "code": "2",
       "givenName": "Scott",
       "familyName": "McLaughlin",
       "nationality": "",
       "teamIds": [
-        "chevrolet"
+        "johor-motorsports-racing-jmr"
       ],
       "teamNames": [
-        "Chevrolet"
+        "Johor Motorsports Racing - JMR"
       ],
       "teamColors": [
         "#E8B500"
@@ -1100,7 +1100,7 @@
         "johor-motorsports-racing-jmr"
       ],
       "teamNames": [
-        "Johor Motorsports Racing JMR"
+        "Johor Motorsports Racing - JMR"
       ],
       "teamColors": [
         "#E8B500"
@@ -1161,15 +1161,15 @@
       "points": 10.0,
       "wins": 0,
       "id": "frank-stippler",
-      "code": "",
+      "code": "67",
       "givenName": "Frank",
       "familyName": "Stippler",
       "nationality": "",
       "teamIds": [
-        "ford"
+        "hrt-ford-racing"
       ],
       "teamNames": [
-        "Ford"
+        "HRT Ford Racing"
       ],
       "teamColors": [
         "#1F4E9C"
@@ -1230,15 +1230,15 @@
       "points": 10.0,
       "wins": 0,
       "id": "kakunoshin-ohta",
-      "code": "",
+      "code": "77",
       "givenName": "Kakunoshin",
       "familyName": "Ohta",
       "nationality": "",
       "teamIds": [
-        "mercedes-amg"
+        "mercedes-amg-team-craft-bamboo-racing"
       ],
       "teamNames": [
-        "Mercedes-AMG"
+        "Mercedes-AMG Team Craft-Bamboo Racing"
       ],
       "teamColors": [
         "#00A19C"
@@ -1373,10 +1373,10 @@
       "familyName": "Habul",
       "nationality": "",
       "teamIds": [
-        "75-express"
+        "express"
       ],
       "teamNames": [
-        "75 Express"
+        "Express"
       ],
       "teamColors": [
         "#00A19C"
@@ -1391,15 +1391,15 @@
       "points": 8.0,
       "wins": 0,
       "id": "marco-wittmann",
-      "code": "",
+      "code": "77",
       "givenName": "Marco",
       "familyName": "Wittmann",
       "nationality": "",
       "teamIds": [
-        "bmw"
+        "schubert-motorsport"
       ],
       "teamNames": [
-        "BMW"
+        "Schubert Motorsport"
       ],
       "teamColors": [
         "#0066B1"
@@ -1437,15 +1437,15 @@
       "points": 8.0,
       "wins": 0,
       "id": "robin-frijns",
-      "code": "",
+      "code": "77",
       "givenName": "Robin",
       "familyName": "Frijns",
       "nationality": "",
       "teamIds": [
-        "bmw"
+        "schubert-motorsport"
       ],
       "teamNames": [
-        "BMW"
+        "Schubert Motorsport"
       ],
       "teamColors": [
         "#0066B1"
@@ -1460,15 +1460,15 @@
       "points": 8.0,
       "wins": 0,
       "id": "takuro-shinohara",
-      "code": "",
+      "code": "45",
       "givenName": "Takuro",
       "familyName": "Shinohara",
       "nationality": "JPN",
       "teamIds": [
-        "ferrari"
+        "ponos-racing"
       ],
       "teamNames": [
-        "Ferrari"
+        "PONOS RACING"
       ],
       "teamColors": [
         "#DC0000"
@@ -1483,15 +1483,15 @@
       "points": 8.0,
       "wins": 0,
       "id": "seita-nonaka",
-      "code": "",
+      "code": "45",
       "givenName": "Seita",
       "familyName": "Nonaka",
       "nationality": "",
       "teamIds": [
-        "ferrari"
+        "ponos-racing"
       ],
       "teamNames": [
-        "Ferrari"
+        "PONOS RACING"
       ],
       "teamColors": [
         "#DC0000"
@@ -1506,15 +1506,15 @@
       "points": 8.0,
       "wins": 0,
       "id": "tadasuke-makino",
-      "code": "",
+      "code": "45",
       "givenName": "Tadasuke",
       "familyName": "Makino",
       "nationality": "",
       "teamIds": [
-        "ferrari"
+        "ponos-racing"
       ],
       "teamNames": [
-        "Ferrari"
+        "PONOS RACING"
       ],
       "teamColors": [
         "#DC0000"
@@ -1667,15 +1667,15 @@
       "points": 6.0,
       "wins": 0,
       "id": "klaus-bachler",
-      "code": "61",
+      "code": "44",
       "givenName": "Klaus",
       "familyName": "Bachler",
       "nationality": "DEU",
       "teamIds": [
-        "ebm"
+        "falken-motorsports"
       ],
       "teamNames": [
-        "EBM"
+        "Falken Motorsports"
       ],
       "teamColors": [
         "#D5001C"
@@ -1690,15 +1690,15 @@
       "points": 6.0,
       "wins": 0,
       "id": "patrick-assenheimer",
-      "code": "",
+      "code": "48",
       "givenName": "Patrick",
       "familyName": "Assenheimer",
       "nationality": "",
       "teamIds": [
-        "porsche"
+        "48-losch-motorsport-by-black-falcon"
       ],
       "teamNames": [
-        "Porsche"
+        "48 LOSCH MOTORSPORT by Black Falcon"
       ],
       "teamColors": [
         "#D5001C"
@@ -1736,15 +1736,15 @@
       "points": 6.0,
       "wins": 0,
       "id": "anthony-mcintosh",
-      "code": "",
+      "code": "69",
       "givenName": "Anthony",
       "familyName": "McIntosh",
       "nationality": "",
       "teamIds": [
-        "bmw"
+        "team-wrt"
       ],
       "teamNames": [
-        "BMW"
+        "Team WRT"
       ],
       "teamColors": [
         "#0066B1"
@@ -1759,15 +1759,15 @@
       "points": 6.0,
       "wins": 0,
       "id": "parker-thompson",
-      "code": "",
+      "code": "69",
       "givenName": "Parker",
       "familyName": "Thompson",
       "nationality": "",
       "teamIds": [
-        "bmw"
+        "team-wrt"
       ],
       "teamNames": [
-        "BMW"
+        "Team WRT"
       ],
       "teamColors": [
         "#0066B1"
@@ -1851,15 +1851,15 @@
       "points": 4.0,
       "wins": 0,
       "id": "jake-hill",
-      "code": "",
+      "code": "18",
       "givenName": "Jake",
       "familyName": "Hill",
       "nationality": "",
       "teamIds": [
-        "porsche"
+        "lionspeed-gp"
       ],
       "teamNames": [
-        "Porsche"
+        "Lionspeed GP"
       ],
       "teamColors": [
         "#D5001C"
@@ -1897,15 +1897,15 @@
       "points": 4.0,
       "wins": 0,
       "id": "kyle-tilley",
-      "code": "",
+      "code": "18",
       "givenName": "Kyle",
       "familyName": "Tilley",
       "nationality": "",
       "teamIds": [
-        "porsche"
+        "lionspeed-gp"
       ],
       "teamNames": [
-        "Porsche"
+        "Lionspeed GP"
       ],
       "teamColors": [
         "#D5001C"
@@ -1934,7 +1934,7 @@
         "#D5001C"
       ],
       "category": "OVERALL",
-      "imageUrl": null,
+      "imageUrl": "assets/portraits/faces/gt3/max-hofer.jpg",
       "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4183.png",
       "profile": "https://www.gt-world-challenge-europe.com/driver/4183/max-hofer"
     },
@@ -1980,7 +1980,7 @@
         "#D5001C"
       ],
       "category": "OVERALL",
-      "imageUrl": null,
+      "imageUrl": "assets/portraits/faces/gt3/thomas-merrill.jpg",
       "portraitSource": "",
       "profile": ""
     },
@@ -2026,7 +2026,7 @@
         "#D5001C"
       ],
       "category": "OVERALL",
-      "imageUrl": null,
+      "imageUrl": "assets/portraits/faces/gt3/alex-brundle.jpg",
       "portraitSource": "",
       "profile": ""
     },
@@ -2035,15 +2035,15 @@
       "points": 2.0,
       "wins": 0,
       "id": "ben-bunnagel",
-      "code": "",
+      "code": "123",
       "givenName": "Ben",
       "familyName": "Bünnagel",
       "nationality": "",
       "teamIds": [
-        "porsche"
+        "h-r-spezialfedern-gmbh-co-kg"
       ],
       "teamNames": [
-        "Porsche"
+        "H&R Spezialfedern GmbH & Co. KG"
       ],
       "teamColors": [
         "#D5001C"
@@ -2081,21 +2081,21 @@
       "points": 2.0,
       "wins": 0,
       "id": "chris-froggatt",
-      "code": "193",
+      "code": "93",
       "givenName": "Chris",
       "familyName": "Froggatt",
       "nationality": "",
       "teamIds": [
-        "ziggo-sport-tempesta-by-argt"
+        "ziggo-sport-tempesta-racing"
       ],
       "teamNames": [
-        "Ziggo Sport Tempesta by ARGT"
+        "Ziggo Sport Tempesta Racing"
       ],
       "teamColors": [
-        "#DC0000"
+        "#D5001C"
       ],
       "category": "OVERALL",
-      "imageUrl": null,
+      "imageUrl": "assets/portraits/faces/gt3/chris-froggatt.jpg",
       "portraitSource": "",
       "profile": ""
     },
@@ -2155,10 +2155,10 @@
       "familyName": "Hui",
       "nationality": "HKG",
       "teamIds": [
-        "ziggo-tempesta-racing"
+        "ziggo-sport-tempesta-racing"
       ],
       "teamNames": [
-        "Ziggo Tempesta Racing"
+        "Ziggo Sport Tempesta Racing"
       ],
       "teamColors": [
         "#D5001C"
@@ -2265,15 +2265,15 @@
       "points": 2.0,
       "wins": 0,
       "id": "kei-nakanishi",
-      "code": "",
+      "code": "60",
       "givenName": "Kei",
       "familyName": "Nakanishi",
       "nationality": "",
       "teamIds": [
-        "ferrari"
+        "lm-corsa"
       ],
       "teamNames": [
-        "Ferrari"
+        "LM Corsa"
       ],
       "teamColors": [
         "#DC0000"
@@ -2288,15 +2288,15 @@
       "points": 2.0,
       "wins": 0,
       "id": "shigekazu-wakisaka",
-      "code": "",
+      "code": "60",
       "givenName": "Shigekazu",
       "familyName": "Wakisaka",
       "nationality": "JPN",
       "teamIds": [
-        "ferrari"
+        "lm-corsa"
       ],
       "teamNames": [
-        "Ferrari"
+        "LM Corsa"
       ],
       "teamColors": [
         "#DC0000"
@@ -2311,15 +2311,15 @@
       "points": 2.0,
       "wins": 0,
       "id": "giancarlo-fisichella",
-      "code": "",
+      "code": "60",
       "givenName": "Giancarlo",
       "familyName": "Fisichella",
       "nationality": "",
       "teamIds": [
-        "ferrari"
+        "lm-corsa"
       ],
       "teamNames": [
-        "Ferrari"
+        "LM Corsa"
       ],
       "teamColors": [
         "#DC0000"
@@ -2403,15 +2403,15 @@
       "points": 1.0,
       "wins": 0,
       "id": "marco-seefried",
-      "code": "",
+      "code": "30",
       "givenName": "Marco",
       "familyName": "Seefried",
       "nationality": "",
       "teamIds": [
-        "porsche"
+        "hankook-competition"
       ],
       "teamNames": [
-        "Porsche"
+        "Hankook Competition"
       ],
       "teamColors": [
         "#D5001C"
@@ -2426,15 +2426,15 @@
       "points": 1.0,
       "wins": 0,
       "id": "roelof-bruins",
-      "code": "",
+      "code": "30",
       "givenName": "Roelof",
       "familyName": "Bruins",
       "nationality": "",
       "teamIds": [
-        "porsche"
+        "hankook-competition"
       ],
       "teamNames": [
-        "Porsche"
+        "Hankook Competition"
       ],
       "teamColors": [
         "#D5001C"
@@ -2449,15 +2449,15 @@
       "points": 1.0,
       "wins": 0,
       "id": "steven-cho",
-      "code": "",
+      "code": "30",
       "givenName": "Steven",
       "familyName": "Cho",
       "nationality": "",
       "teamIds": [
-        "porsche"
+        "hankook-competition"
       ],
       "teamNames": [
-        "Porsche"
+        "Hankook Competition"
       ],
       "teamColors": [
         "#D5001C"

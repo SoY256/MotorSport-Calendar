@@ -37,17 +37,17 @@ def local_face(series: str, driver: dict) -> str | None:
 
 
 def enrich(root: Path, series: str) -> int:
-    path = root / series / "2026" / "standings_drivers.json"
-    document = json.loads(path.read_text(encoding="utf-8"))
     matched = 0
-    for driver in document["data"]:
-        image = local_face(series, driver)
-        if image:
-            driver["imageUrl"] = image
-            matched += 1
-        else:
-            driver.pop("imageUrl", None)
-    path.write_text(json.dumps(document, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    for path in sorted((root / series).glob("*/standings_drivers.json")):
+        document = json.loads(path.read_text(encoding="utf-8"))
+        for driver in document["data"]:
+            image = local_face(series, driver)
+            if image:
+                driver["imageUrl"] = image
+                matched += 1
+            else:
+                driver.pop("imageUrl", None)
+        path.write_text(json.dumps(document, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return matched
 
 

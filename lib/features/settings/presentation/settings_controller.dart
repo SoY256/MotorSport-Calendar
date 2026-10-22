@@ -34,10 +34,12 @@ class SettingsController extends Notifier<AppSettings> {
     final categorySchema = await preferences.getInt('categorySchema');
     final esport = await preferences.getStringList('esportCategories');
     // Schema 5 added the GT3 championships: switch them on once for
-    // existing users, keeping every other choice they made.
+    // existing users, keeping every other choice they made. Schema 6 merged
+    // the two GT Europe cups into one series.
     final motorsportCategories = switch (categorySchema) {
-      5 => motorsport?.toSet() ?? defaultMotorsportCategories,
-      4 => {...?motorsport, ...gt3SeriesIds},
+      6 => motorsport?.toSet() ?? defaultMotorsportCategories,
+      5 => migrateSeriesIds(motorsport ?? defaultMotorsportCategories),
+      4 => migrateSeriesIds({...?motorsport, ...gt3SeriesIds}),
       _ => defaultMotorsportCategories,
     };
     state = AppSettings(
@@ -47,8 +49,8 @@ class SettingsController extends Notifier<AppSettings> {
       motorsportCategories: motorsportCategories,
       esportCategories: esport?.toSet() ?? const <String>{},
     );
-    if (categorySchema != 5) {
-      unawaited(preferences.setInt('categorySchema', 5));
+    if (categorySchema != 6) {
+      unawaited(preferences.setInt('categorySchema', 6));
       unawaited(
         preferences.setStringList(
           'motorsportCategories',

@@ -304,24 +304,57 @@ class Report:
         return "\n".join(lines)
 
 
+# Series whose next-season calendar is imported automatically once announced
+# (scripts/fetch_next_season.py and the self-switching GT3 importer).
+AUTO_NEXT_SEASON = {"f1", "wec"}
+
+
+def page_season(html: str) -> int | None:
+    """Season named in a page title ("F2 Calendar 2026"), if any."""
+    title = re.search(r"<title>([^<]*)</title>", html, re.I)
+    years = re.findall(r"\b(20\d\d)\b", title.group(1)) if title else []
+    return int(years[-1]) if years else None
+
+
+def seasons_to_check(data_root: Path, series: str, today: date) -> list[int]:
+    """Every season that still has upcoming events (the running one and an
+    announced next one), or the latest season when all are complete."""
+    years = sorted(int(path.name) for path in (data_root / series).glob("[0-9][0-9][0-9][0-9]")
+                   if (path / "calendar.json").is_file())
+    active = [
+        year for year in years
+        if any(event.date >= today - timedelta(days=1)
+               for event in calendar_events(load_calendar(data_root, series, year), lambda event: ""))
+    ]
+    return active or years[-1:]
+
+
 def run_checks(data_root: Path, today: date, fetch: Callable[[str], str] = fetch_page) -> Report:
     report = Report({}, {}, [])
     for series, source in SOURCES.items():
-        season = latest_season(data_root, series)
-        if season is None:
+        seasons = seasons_to_check(data_root, series, today)
+        if not seasons:
             report.failures[source.label] = f"no calendar under {data_root / series}"
             continue
-        label = f"{source.label} {season}"
-        url = source.url.format(season=season)
-        try:
-            ours = calendar_events(load_calendar(data_root, series, season), source.key)
-            official = source.parse(fetch(url), season)
-            if not official:
-                raise ParseError("no events found on the official page")
-        except Exception as error:  # noqa: BLE001 - every failure must be reported, never "no changes"
-            report.failures[label] = f"{url}: {error}"
-            continue
-        report.differences[label] = compare(ours, official, today, source.tolerance_days)
+        for season in seasons:
+            label = f"{source.label} {season}"
+            url = source.url.format(season=season)
+            try:
+                html = fetch(url)
+                shown = page_season(html)
+                if "{season}" not in source.url and shown is not None and shown != season:
+                    # The page shows a single (other) season.
+                    report.notes.append(f"{label}: official page shows {shown}, not checked")
+                    continue
+                ours = calendar_events(load_calendar(data_root, series, season), source.key)
+                official = source.parse(html, season)
+                if not official:
+                    raise ParseError("no events found on the official page")
+            except Exception as error:  # noqa: BLE001 - every failure must be reported, never "no changes"
+                report.failures[label] = f"{url}: {error}"
+                continue
+            report.differences[label] = compare(ours, official, today, source.tolerance_days)
+        check_next_season(data_root, series, source, max(seasons), fetch, report)
     for series in UNCHECKED_SERIES:
         season = latest_season(data_root, series)
         if season is None:
@@ -332,6 +365,27 @@ def run_checks(data_root: Path, today: date, fetch: Callable[[str], str] = fetch
         else:
             report.failures[f"{series} {season}"] = "upcoming events but no official schedule parser"
     return report
+
+
+def check_next_season(data_root: Path, series: str, source: Source, latest: int,
+                      fetch: Callable[[str], str], report: Report) -> None:
+    """Report an announced next-season calendar that is not in data/ yet."""
+    upcoming = latest + 1
+    if series in AUTO_NEXT_SEASON or (data_root / series / str(upcoming) / "calendar.json").is_file():
+        return
+    url = source.url.format(season=upcoming)
+    try:
+        html = fetch(url)
+        if page_season(html) not in (upcoming, None if "{season}" in source.url else -1):
+            return
+        events = source.parse(html, upcoming)
+    except Exception:  # noqa: BLE001 - not announced yet
+        return
+    if len(events) >= 3:
+        report.failures[f"{source.label} {upcoming}"] = (
+            f"the official {upcoming} calendar ({len(events)} events) is published at {url}; "
+            f"add data/{series}/{upcoming}/calendar.json"
+        )
 
 
 def gh(*args: str) -> str:

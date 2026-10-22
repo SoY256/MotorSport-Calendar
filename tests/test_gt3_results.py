@@ -142,7 +142,7 @@ class Gt3PipelineTests(unittest.TestCase):
             self.assertIn(f"id: '{series}'", dart)
 
     def test_every_gt3_session_is_polled_but_not_forever(self):
-        self.assertTrue(refresh_decision.expects_results("gtwc-sprint", "QUALIFYING_1_GROUP_A"))
+        self.assertTrue(refresh_decision.expects_results("gtwc-europe", "QUALIFYING_1_GROUP_A"))
         self.assertEqual(refresh_decision.POLL_WINDOW, timedelta(hours=6))
 
 

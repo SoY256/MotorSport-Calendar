@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-09-29T06:24:00.147029Z",
+  "lastSuccessfulUpdate": "2026-10-22T11:43:05.117141Z",
   "source": {
     "name": "official-formula-series",
     "url": "https://www.fiaformula2.com/en/racing/2026"
@@ -28,7 +28,8 @@
           "startTimeUtc": "2026-03-05T23:00:00Z",
           "startTimeTrack": "2026-03-06T10:00:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 45
         },
         {
           "type": "Q",
@@ -36,7 +37,8 @@
           "startTimeUtc": "2026-03-06T03:55:00Z",
           "startTimeTrack": "2026-03-06T14:55:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 30
         },
         {
           "type": "SPRINT",
@@ -44,7 +46,8 @@
           "startTimeUtc": "2026-03-07T03:10:00Z",
           "startTimeTrack": "2026-03-07T14:10:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 60
         },
         {
           "type": "R",
@@ -52,7 +55,8 @@
           "startTimeUtc": "2026-03-08T00:25:00Z",
           "startTimeTrack": "2026-03-08T11:25:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 120
         }
       ],
       "resultsPath": "events/01-australian-grand-prix.json"
@@ -79,7 +83,8 @@
           "startTimeUtc": "2026-05-01T13:30:00Z",
           "startTimeTrack": "2026-05-01T09:30:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 45
         },
         {
           "type": "Q",
@@ -87,7 +92,8 @@
           "startTimeUtc": "2026-05-01T18:30:00Z",
           "startTimeTrack": "2026-05-01T14:30:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 30
         },
         {
           "type": "SPRINT",
@@ -95,7 +101,8 @@
           "startTimeUtc": "2026-05-02T14:00:00Z",
           "startTimeTrack": "2026-05-02T10:00:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 60
         },
         {
           "type": "R",
@@ -103,7 +110,8 @@
           "startTimeUtc": "2026-05-03T13:25:00Z",
           "startTimeTrack": "2026-05-03T09:25:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 120
         }
       ],
       "resultsPath": "events/02-miami-grand-prix.json"
@@ -130,7 +138,8 @@
           "startTimeUtc": "2026-05-22T14:05:00Z",
           "startTimeTrack": "2026-05-22T10:05:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 45
         },
         {
           "type": "Q",
@@ -138,7 +147,8 @@
           "startTimeUtc": "2026-05-22T18:00:00Z",
           "startTimeTrack": "2026-05-22T14:00:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 30
         },
         {
           "type": "SPRINT",
@@ -146,7 +156,8 @@
           "startTimeUtc": "2026-05-23T18:10:00Z",
           "startTimeTrack": "2026-05-23T14:10:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 60
         },
         {
           "type": "R",
@@ -154,7 +165,8 @@
           "startTimeUtc": "2026-05-24T16:05:00Z",
           "startTimeTrack": "2026-05-24T12:05:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 120
         }
       ],
       "resultsPath": "events/03-canadian-grand-prix.json"
@@ -181,7 +193,8 @@
           "startTimeUtc": "2026-06-04T13:00:00Z",
           "startTimeTrack": "2026-06-04T15:00:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 45
         },
         {
           "type": "Q",
@@ -189,7 +202,8 @@
           "startTimeUtc": "2026-06-05T13:10:00Z",
           "startTimeTrack": "2026-06-05T15:10:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 30
         },
         {
           "type": "Q",
@@ -197,7 +211,8 @@
           "startTimeUtc": "2026-06-05T13:34:00Z",
           "startTimeTrack": "2026-06-05T15:34:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 30
         },
         {
           "type": "SPRINT",
@@ -205,7 +220,8 @@
           "startTimeUtc": "2026-06-06T12:15:00Z",
           "startTimeTrack": "2026-06-06T14:15:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 60
         },
         {
           "type": "R",
@@ -213,7 +229,8 @@
           "startTimeUtc": "2026-06-07T07:25:00Z",
           "startTimeTrack": "2026-06-07T09:25:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 120
         }
       ],
       "resultsPath": "events/04-monaco-grand-prix.json"
@@ -240,7 +257,8 @@
           "startTimeUtc": "2026-06-12T09:05:00Z",
           "startTimeTrack": "2026-06-12T11:05:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 45
         },
         {
           "type": "Q",
@@ -248,7 +266,8 @@
           "startTimeUtc": "2026-06-12T13:55:00Z",
           "startTimeTrack": "2026-06-12T15:55:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 30
         },
         {
           "type": "SPRINT",
@@ -256,7 +275,8 @@
           "startTimeUtc": "2026-06-13T12:15:00Z",
           "startTimeTrack": "2026-06-13T14:15:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 60
         },
         {
           "type": "R",
@@ -264,7 +284,8 @@
           "startTimeUtc": "2026-06-14T09:25:00Z",
           "startTimeTrack": "2026-06-14T11:25:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 120
         }
       ],
       "resultsPath": "events/05-barcelona-grand-prix.json"
@@ -291,7 +312,8 @@
           "startTimeUtc": "2026-06-26T09:05:00Z",
           "startTimeTrack": "2026-06-26T11:05:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 45
         },
         {
           "type": "Q",
@@ -299,7 +321,8 @@
           "startTimeUtc": "2026-06-26T13:55:00Z",
           "startTimeTrack": "2026-06-26T15:55:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 30
         },
         {
           "type": "SPRINT",
@@ -307,7 +330,8 @@
           "startTimeUtc": "2026-06-27T12:15:00Z",
           "startTimeTrack": "2026-06-27T14:15:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 60
         },
         {
           "type": "R",
@@ -315,7 +339,8 @@
           "startTimeUtc": "2026-06-28T08:10:00Z",
           "startTimeTrack": "2026-06-28T10:10:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 120
         }
       ],
       "resultsPath": "events/06-austrian-grand-prix.json"
@@ -342,7 +367,8 @@
           "startTimeUtc": "2026-07-03T09:00:00Z",
           "startTimeTrack": "2026-07-03T10:00:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 45
         },
         {
           "type": "Q",
@@ -350,7 +376,8 @@
           "startTimeUtc": "2026-07-03T13:55:00Z",
           "startTimeTrack": "2026-07-03T14:55:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 30
         },
         {
           "type": "SPRINT",
@@ -358,7 +385,8 @@
           "startTimeUtc": "2026-07-04T12:45:00Z",
           "startTimeTrack": "2026-07-04T13:45:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 60
         },
         {
           "type": "R",
@@ -366,7 +394,8 @@
           "startTimeUtc": "2026-07-05T10:15:00Z",
           "startTimeTrack": "2026-07-05T11:15:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 120
         }
       ],
       "resultsPath": "events/07-british-grand-prix.json"
@@ -393,7 +422,8 @@
           "startTimeUtc": "2026-07-17T09:05:00Z",
           "startTimeTrack": "2026-07-17T11:05:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 45
         },
         {
           "type": "Q",
@@ -401,7 +431,8 @@
           "startTimeUtc": "2026-07-17T13:55:00Z",
           "startTimeTrack": "2026-07-17T15:55:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 30
         },
         {
           "type": "SPRINT",
@@ -409,7 +440,8 @@
           "startTimeUtc": "2026-07-18T12:15:00Z",
           "startTimeTrack": "2026-07-18T14:15:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 60
         },
         {
           "type": "R",
@@ -417,7 +449,8 @@
           "startTimeUtc": "2026-07-19T08:00:00Z",
           "startTimeTrack": "2026-07-19T10:00:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 120
         }
       ],
       "resultsPath": "events/08-belgian-grand-prix.json"
@@ -444,7 +477,8 @@
           "startTimeUtc": "2026-07-24T09:05:00Z",
           "startTimeTrack": "2026-07-24T11:05:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 45
         },
         {
           "type": "Q",
@@ -452,7 +486,8 @@
           "startTimeUtc": "2026-07-24T13:55:00Z",
           "startTimeTrack": "2026-07-24T15:55:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 30
         },
         {
           "type": "SPRINT",
@@ -460,7 +495,8 @@
           "startTimeUtc": "2026-07-25T12:15:00Z",
           "startTimeTrack": "2026-07-25T14:15:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 60
         },
         {
           "type": "R",
@@ -468,7 +504,8 @@
           "startTimeUtc": "2026-07-26T09:25:00Z",
           "startTimeTrack": "2026-07-26T11:25:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 120
         }
       ],
       "resultsPath": "events/09-hungarian-grand-prix.json"
@@ -495,7 +532,8 @@
           "startTimeUtc": "2026-09-04T08:00:00Z",
           "startTimeTrack": "2026-09-04T10:00:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 45
         },
         {
           "type": "Q",
@@ -503,7 +541,8 @@
           "startTimeUtc": "2026-09-04T12:55:00Z",
           "startTimeTrack": "2026-09-04T14:55:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 30
         },
         {
           "type": "SPRINT",
@@ -511,7 +550,8 @@
           "startTimeUtc": "2026-09-05T12:15:00Z",
           "startTimeTrack": "2026-09-05T14:15:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 60
         },
         {
           "type": "R",
@@ -519,7 +559,8 @@
           "startTimeUtc": "2026-09-06T07:45:00Z",
           "startTimeTrack": "2026-09-06T09:45:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 120
         }
       ],
       "resultsPath": "events/10-italian-grand-prix.json"
@@ -546,7 +587,8 @@
           "startTimeUtc": "2026-09-11T09:05:00Z",
           "startTimeTrack": "2026-09-11T11:05:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 45
         },
         {
           "type": "Q",
@@ -554,7 +596,8 @@
           "startTimeUtc": "2026-09-11T13:00:00Z",
           "startTimeTrack": "2026-09-11T15:00:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 30
         },
         {
           "type": "SPRINT",
@@ -562,7 +605,8 @@
           "startTimeUtc": "2026-09-12T12:15:00Z",
           "startTimeTrack": "2026-09-12T14:15:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 60
         },
         {
           "type": "R",
@@ -570,7 +614,8 @@
           "startTimeUtc": "2026-09-13T09:25:00Z",
           "startTimeTrack": "2026-09-13T11:25:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 120
         }
       ],
       "resultsPath": "events/11-madrid-grand-prix.json"
@@ -597,7 +642,8 @@
           "startTimeUtc": "2026-09-24T06:00:00Z",
           "startTimeTrack": "2026-09-24T10:00:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 45
         },
         {
           "type": "Q1",
@@ -605,7 +651,8 @@
           "startTimeUtc": "2026-09-24T10:00:00Z",
           "startTimeTrack": "2026-09-24T14:00:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 30
         },
         {
           "type": "Q2",
@@ -613,7 +660,8 @@
           "startTimeUtc": "2026-09-24T10:30:00Z",
           "startTimeTrack": "2026-09-24T14:30:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 30
         },
         {
           "type": "SPRINT",
@@ -621,7 +669,8 @@
           "startTimeUtc": "2026-09-25T04:15:00Z",
           "startTimeTrack": "2026-09-25T08:15:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 60
         },
         {
           "type": "R1",
@@ -629,7 +678,8 @@
           "startTimeUtc": "2026-09-25T10:15:00Z",
           "startTimeTrack": "2026-09-25T14:15:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 120
         },
         {
           "type": "R2",
@@ -637,7 +687,8 @@
           "startTimeUtc": "2026-09-26T07:00:00Z",
           "startTimeTrack": "2026-09-26T11:00:00",
           "trackTimeZone": null,
-          "cancelled": false
+          "cancelled": false,
+          "durationMinutes": 120
         }
       ],
       "resultsPath": "events/12-azerbaijan-grand-prix.json"
@@ -718,7 +769,8 @@
           "startTimeTrack": "2026-12-04T00:00:00",
           "trackTimeZone": "Asia/Dubai",
           "cancelled": false,
-          "timeTbc": true
+          "timeTbc": true,
+          "durationMinutes": 45
         },
         {
           "type": "Q",
@@ -727,7 +779,8 @@
           "startTimeTrack": "2026-12-04T00:00:00",
           "trackTimeZone": "Asia/Dubai",
           "cancelled": false,
-          "timeTbc": true
+          "timeTbc": true,
+          "durationMinutes": 30
         },
         {
           "type": "SPRINT",
@@ -736,7 +789,8 @@
           "startTimeTrack": "2026-12-05T00:00:00",
           "trackTimeZone": "Asia/Dubai",
           "cancelled": false,
-          "timeTbc": true
+          "timeTbc": true,
+          "durationMinutes": 60
         },
         {
           "type": "R",
@@ -745,7 +799,8 @@
           "startTimeTrack": "2026-12-06T00:00:00",
           "trackTimeZone": "Asia/Dubai",
           "cancelled": false,
-          "timeTbc": true
+          "timeTbc": true,
+          "durationMinutes": 120
         }
       ],
       "resultsPath": "events/14-abu-dhabi-grand-prix.json"

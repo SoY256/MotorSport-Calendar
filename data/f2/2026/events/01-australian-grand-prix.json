@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-22T01:52:38.313408Z",
+  "lastSuccessfulUpdate": "2026-10-22T11:43:05.117141Z",
   "source": {
     "name": "official-formula-series",
     "url": "https://www.fiaformula2.com/en/racing/2026/melbourne"
@@ -921,29 +921,6 @@
             "position": 18,
             "positionText": "18",
             "driver": {
-              "id": "",
-              "code": null,
-              "givenName": null,
-              "familyName": null,
-              "nationality": null
-            },
-            "team": {
-              "id": "",
-              "name": "",
-              "color": "#777777"
-            },
-            "carNumber": "20",
-            "time": "1:30.490",
-            "laps": 13,
-            "points": null,
-            "status": "OK",
-            "classified": true,
-            "components": {}
-          },
-          {
-            "position": 18,
-            "positionText": "18",
-            "driver": {
               "id": "emerson-fittipaldi",
               "code": "FIT",
               "givenName": "Emerson",
@@ -958,29 +935,6 @@
             "carNumber": "20",
             "time": "1:30.490",
             "laps": 13,
-            "points": null,
-            "status": "OK",
-            "classified": true,
-            "components": {}
-          },
-          {
-            "position": 19,
-            "positionText": "19",
-            "driver": {
-              "id": "",
-              "code": null,
-              "givenName": null,
-              "familyName": null,
-              "nationality": null
-            },
-            "team": {
-              "id": "van-amersfoort-racing",
-              "name": "Van Amersfoort Racing",
-              "color": "#dc4600"
-            },
-            "carNumber": "22",
-            "time": "1:30.522",
-            "laps": 12,
             "points": null,
             "status": "OK",
             "classified": true,
@@ -1056,7 +1010,7 @@
             "components": {}
           },
           {
-            "position": 666,
+            "position": null,
             "positionText": "NC",
             "driver": {
               "id": "mari-boya",
@@ -1569,7 +1523,7 @@
             "components": {}
           },
           {
-            "position": 666,
+            "position": null,
             "positionText": "NC",
             "driver": {
               "id": "mari-boya",
@@ -2036,7 +1990,7 @@
             "components": {}
           },
           {
-            "position": 666,
+            "position": null,
             "positionText": "NC",
             "driver": {
               "id": "dino-beganovic",
@@ -2059,7 +2013,7 @@
             "components": {}
           },
           {
-            "position": 666,
+            "position": null,
             "positionText": "NC",
             "driver": {
               "id": "martinius-stenshorne",
@@ -2082,7 +2036,7 @@
             "components": {}
           },
           {
-            "position": 666,
+            "position": null,
             "positionText": "NC",
             "driver": {
               "id": "alexander-dunne",

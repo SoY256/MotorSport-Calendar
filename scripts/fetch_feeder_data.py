@@ -213,11 +213,18 @@ def time_tbc(session: dict) -> bool:
     return str(session.get("startTime") or "").endswith("T00:00:00")
 
 
+def classified_position(raw: dict, position: int) -> int | None:
+    """The official feed numbers unclassified cars 666 ("NC", "DNF", ...)."""
+    display = str(raw.get("displayPosition") or "")
+    number = int(raw.get("positionNumber") or position)
+    return number if display.isdigit() and number < 600 else None
+
+
 def result_row(raw: dict, position: int) -> dict:
     team_name = raw.get("teamName") or ""
     colour = raw.get("teamColourCode") or "777777"
     return {
-        "position": int(raw.get("positionNumber") or position), "positionText": raw.get("displayPosition") or str(position),
+        "position": classified_position(raw, position), "positionText": raw.get("displayPosition") or str(position),
         "driver": {"id": slug(f"{raw.get('driverFirstName', '')}-{raw.get('driverLastName', '')}"), "code": raw.get("driverTLA"), "givenName": raw.get("driverFirstName"), "familyName": raw.get("driverLastName"), "nationality": raw.get("driverCountryCode") or raw.get("countryCode") or DRIVER_NATIONALITIES.get(f"{raw.get('driverFirstName', '')} {raw.get('driverLastName', '')}")},
         "team": {"id": slug(team_name), "name": team_name, "color": f"#{colour.lstrip('#')}"},
         "carNumber": raw.get("racingNumber"), "time": raw.get("displayTime") or raw.get("raceTime") or raw.get("gapToLeader"),
@@ -254,7 +261,10 @@ def build(series: str) -> None:
             calendar_sessions.append({"type": classification, "name": short or item.get("session", "Session"), "startTimeUtc": stamp, "startTimeTrack": item.get("startTime"), "trackTimeZone": item.get("timezone"), "cancelled": False})
             if time_tbc(item):
                 calendar_sessions[-1]["timeTbc"] = True
-            rows = [result_row(raw, index) for index, raw in enumerate(item.get("results", []), 1)]
+            # The feed repeats a car without names when its driver was replaced.
+            named = [raw for raw in item.get("results", [])
+                     if f"{raw.get('driverFirstName') or ''}{raw.get('driverLastName') or ''}".strip()]
+            rows = [result_row(raw, index) for index, raw in enumerate(named, 1)]
             for raw in item.get("results", []):
                 candidate = timed_lap(raw)
                 if candidate is not None and (fastest_lap is None or candidate[0] < fastest_lap[0]):

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-22T01:52:38.313408Z",
+  "lastSuccessfulUpdate": "2026-10-22T11:43:05.117141Z",
   "source": {
     "name": "official-formula-series",
     "url": "https://www.fiaformula2.com/en/racing/2026/silverstone"
@@ -497,7 +497,7 @@
             "components": {}
           },
           {
-            "position": 66666,
+            "position": null,
             "positionText": "DQ",
             "driver": {
               "id": "sebastian-montoya",
@@ -1411,29 +1411,6 @@
             "position": 17,
             "positionText": "17",
             "driver": {
-              "id": "",
-              "code": null,
-              "givenName": null,
-              "familyName": null,
-              "nationality": null
-            },
-            "team": {
-              "id": "",
-              "name": "",
-              "color": "#777777"
-            },
-            "carNumber": "20",
-            "time": "+27.873s",
-            "laps": 21,
-            "points": 0,
-            "status": "OK",
-            "classified": true,
-            "components": {}
-          },
-          {
-            "position": 17,
-            "positionText": "17",
-            "driver": {
               "id": "emerson-fittipaldi",
               "code": "FIT",
               "givenName": "Emerson",
@@ -1447,29 +1424,6 @@
             },
             "carNumber": "20",
             "time": "+27.873s",
-            "laps": 21,
-            "points": 0,
-            "status": "OK",
-            "classified": true,
-            "components": {}
-          },
-          {
-            "position": 18,
-            "positionText": "18",
-            "driver": {
-              "id": "",
-              "code": null,
-              "givenName": null,
-              "familyName": null,
-              "nationality": null
-            },
-            "team": {
-              "id": "van-amersfoort-racing",
-              "name": "Van Amersfoort Racing",
-              "color": "#dc4600"
-            },
-            "carNumber": "22",
-            "time": "+28.559s",
             "laps": 21,
             "points": 0,
             "status": "OK",
@@ -1546,7 +1500,7 @@
             "components": {}
           },
           {
-            "position": 666,
+            "position": null,
             "positionText": "NC",
             "driver": {
               "id": "sebastian-montoya",
@@ -1569,7 +1523,7 @@
             "components": {}
           },
           {
-            "position": 666,
+            "position": null,
             "positionText": "NC",
             "driver": {
               "id": "john-bennett",
@@ -1878,29 +1832,6 @@
             "position": 13,
             "positionText": "13",
             "driver": {
-              "id": "",
-              "code": null,
-              "givenName": null,
-              "familyName": null,
-              "nationality": null
-            },
-            "team": {
-              "id": "van-amersfoort-racing",
-              "name": "Van Amersfoort Racing",
-              "color": "#dc4600"
-            },
-            "carNumber": "22",
-            "time": "+32.733s",
-            "laps": 29,
-            "points": 0,
-            "status": "OK",
-            "classified": true,
-            "components": {}
-          },
-          {
-            "position": 13,
-            "positionText": "13",
-            "driver": {
               "id": "nico-varrone",
               "code": "VAR",
               "givenName": "Nico",
@@ -2062,29 +1993,6 @@
             "position": 20,
             "positionText": "20",
             "driver": {
-              "id": "",
-              "code": null,
-              "givenName": null,
-              "familyName": null,
-              "nationality": null
-            },
-            "team": {
-              "id": "",
-              "name": "",
-              "color": "#777777"
-            },
-            "carNumber": "20",
-            "time": "+44.545s",
-            "laps": 29,
-            "points": 0,
-            "status": "OK",
-            "classified": true,
-            "components": {}
-          },
-          {
-            "position": 20,
-            "positionText": "20",
-            "driver": {
               "id": "emerson-fittipaldi",
               "code": "FIT",
               "givenName": "Emerson",
@@ -2105,7 +2013,7 @@
             "components": {}
           },
           {
-            "position": 666,
+            "position": null,
             "positionText": "NC",
             "driver": {
               "id": "sebastian-montoya",
@@ -2128,7 +2036,7 @@
             "components": {}
           },
           {
-            "position": 666,
+            "position": null,
             "positionText": "NC",
             "driver": {
               "id": "martinius-stenshorne",

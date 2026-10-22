@@ -194,6 +194,14 @@ const _circuitMetadata = <String, CircuitMetadata>{
     lengthKm: 5.412,
     lapRecord: null,
   ),
+  'Algarve International Circuit': CircuitMetadata(
+    lengthKm: 4.653,
+    lapRecord: '1:18.750 • Lewis Hamilton (2020)',
+  ),
+  'Istanbul Park': CircuitMetadata(
+    lengthKm: 5.338,
+    lapRecord: '1:24.770 • Juan Pablo Montoya (2005)',
+  ),
   'Daytona International Speedway': CircuitMetadata(
     lengthKm: 5.729,
     lapRecord: null,
@@ -298,6 +306,9 @@ String? circuitAssetFor(String name) {
     'Imola Circuit' => 'imola',
     'Fuji Speedway' => 'fuji',
     'Bahrain International Circuit' => 'bahrain',
+    'Algarve International Circuit' ||
+    'Autódromo Internacional do Algarve' => 'portimao',
+    'Istanbul Park' => 'istanbul',
     'Sebring International Raceway' => 'sebring',
     'Long Beach Street Circuit' => 'long-beach',
     'Detroit Street Circuit' => 'detroit',

@@ -17,7 +17,7 @@ PORTRAIT_EXEMPT: dict[str, set[str]] = {}
 # portrait show initials, circuits without a bundled map show none, and rounds
 # timed by third parties (e.g. the Nürburgring 24h) may have no classification.
 LENIENT_SERIES = frozenset(
-    {"gtwc-endurance", "gtwc-sprint", "gtwc-america", "gtwc-asia", "gtwc-australia", "british-gt", "igtc"}
+    {"gtwc-europe", "gtwc-america", "gtwc-asia", "gtwc-australia", "british-gt", "igtc"}
 )
 
 
@@ -29,6 +29,11 @@ def main() -> None:
     now = datetime.now(timezone.utc)
     manifest = load(DATA / "manifest.json")
     ids = [item["id"] for item in manifest["availableSeries"]]
+    pairs = [
+        (item["id"], season)
+        for item in manifest["availableSeries"]
+        for season in sorted(set(item.get("publishedSeasons") or item["availableSeasons"]))
+    ]
     if len(ids) != len(set(ids)) or not {"f1", "f2", "f3", "imsa", "indycar", "indynxt", "wec"}.issubset(ids):
         raise AssertionError(f"Incomplete or duplicate series manifest: {ids}")
 
@@ -37,13 +42,19 @@ def main() -> None:
     failures = []
     notes = []
     summary = []
-    for series_id in ids:
+    for series_id, season in pairs:
         lenient = series_id in LENIENT_SERIES
-        root = DATA / series_id / "2026"
+        root = DATA / series_id / str(season)
         calendar = load(root / "calendar.json")["data"]
         drivers = load(root / "standings_drivers.json")["data"]
         teams = load(root / "standings_teams.json")["data"]
-        if not calendar or not drivers or not teams:
+        started = any(
+            datetime.fromisoformat(item["startTimeUtc"].replace("Z", "+00:00")) <= now
+            for event in calendar
+            for item in event["sessions"]
+        )
+        # A season that has not started yet (next-season calendar) has no standings.
+        if not calendar or (started and (not drivers or not teams)):
             failures.append(f"{series_id}: empty calendar/driver/team standings")
         driver_keys = [(item.get("category"), item["id"]) for item in drivers]
         team_keys = [(item.get("category"), item["id"]) for item in teams]
@@ -94,7 +105,7 @@ def main() -> None:
                 failures.append(f"{series_id} R{event['round']}: missing {event['resultsPath']}")
                 continue
             sessions = load(result_path)["data"]["sessions"]
-            published_path = PUBLISHED_DATA / series_id / "2026" / event["resultsPath"]
+            published_path = PUBLISHED_DATA / series_id / str(season) / event["resultsPath"]
             if published_path.exists():
                 published_sessions = load(published_path)["data"]["sessions"]
                 bundled_types = {
@@ -124,7 +135,7 @@ def main() -> None:
                     (notes if lenient else failures).append(message)
                 else:
                     populated += 1
-        summary.append(f"{series_id}: {len(calendar)} rounds, {populated}/{completed} completed with results, {len(drivers)} drivers, {len(teams)} teams")
+        summary.append(f"{series_id} {season}: {len(calendar)} rounds, {populated}/{completed} completed with results, {len(drivers)} drivers, {len(teams)} teams")
     if failures:
         raise AssertionError("\n".join(failures))
     print("\n".join(summary + [f"note: {note}" for note in notes]))

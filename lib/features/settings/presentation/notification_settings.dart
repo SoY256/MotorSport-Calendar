@@ -18,7 +18,9 @@ class NotificationPreferences {
     if (kIsWeb || defaultTargetPlatform != TargetPlatform.android) return;
     final prefs = SharedPreferencesAsync();
     final enabled = await prefs.getBool('notificationsEnabled') ?? false;
-    final series = await prefs.getStringList('notificationSeries') ?? ['f1'];
+    final series = migrateSeriesIds(
+      await prefs.getStringList('notificationSeries') ?? ['f1'],
+    );
     final types = await prefs.getStringList('notificationTypes') ?? ['race'];
     final pl = await prefs.getString('language') == 'pl';
     final leadMinutes = await prefs.getInt('notificationLeadMinutes') ?? 0;
@@ -112,7 +114,7 @@ class _NotificationSettingsState extends State<NotificationSettings> {
     if (mounted) {
       setState(() {
         enabled = e;
-        series = s.toSet();
+        series = migrateSeriesIds(s);
         types = t.toSet();
         leadMinutes = lead;
         loaded = true;

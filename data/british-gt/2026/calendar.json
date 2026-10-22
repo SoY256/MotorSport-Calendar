@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-22T01:57:08.887091Z",
+  "lastSuccessfulUpdate": "2026-10-22T11:49:25.781290Z",
   "source": {
     "name": "sro-official-calendar",
     "url": "https://www.britishgt.com/calendar"
@@ -60,6 +60,14 @@
           "startTimeTrack": "2026-04-25 15:45:00+01:00",
           "cancelled": false,
           "durationMinutes": 14
+        },
+        {
+          "type": "GT3_QUALIFYING_COMBINED",
+          "name": "GT3 Qualifying Combined",
+          "startTimeUtc": "2026-04-25T14:58:00Z",
+          "cancelled": false,
+          "durationMinutes": 5,
+          "timeTbc": true
         },
         {
           "type": "GT3_QUALIFYING_2",
@@ -232,6 +240,14 @@
           "startTimeTrack": "2026-06-20 18:35:00+02:00",
           "cancelled": false,
           "durationMinutes": 20
+        },
+        {
+          "type": "GT3_QUALIFYING_COMBINED",
+          "name": "GT3 Qualifying Combined",
+          "startTimeUtc": "2026-06-20T17:14:00Z",
+          "cancelled": false,
+          "durationMinutes": 5,
+          "timeTbc": true
         },
         {
           "type": "GT3_QUALIFYING_2",
@@ -414,6 +430,14 @@
           "durationMinutes": 14
         },
         {
+          "type": "GT3_QUALIFYING_COMBINED",
+          "name": "GT3 Qualifying Combined",
+          "startTimeUtc": "2026-09-05T14:58:00Z",
+          "cancelled": false,
+          "durationMinutes": 5,
+          "timeTbc": true
+        },
+        {
           "type": "GT3_QUALIFYING_2",
           "name": "GT3 Qualifying 2",
           "startTimeUtc": "2026-09-05T14:59:00Z",
@@ -478,6 +502,14 @@
           "startTimeTrack": "2026-09-26 16:15:00+01:00",
           "cancelled": false,
           "durationMinutes": 14
+        },
+        {
+          "type": "GT3_QUALIFYING_COMBINED",
+          "name": "GT3 Qualifying Combined",
+          "startTimeUtc": "2026-09-26T15:28:00Z",
+          "cancelled": false,
+          "durationMinutes": 5,
+          "timeTbc": true
         },
         {
           "type": "GT3_QUALIFYING_2",

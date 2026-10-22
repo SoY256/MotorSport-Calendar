@@ -14,6 +14,8 @@ from pathlib import Path
 from http_retry import read
 
 ROOT = Path(__file__).resolve().parents[1]
+from seasons import results_season  # noqa: E402
+
 DATA = Path(os.environ.get("MOTORSPORT_DATA_ROOT", ROOT / "data"))
 BASE = "https://www.formula1.com"
 HEADERS = {"User-Agent": "MotorSport-Calendar/0.1 (+https://github.com/SoY256/MotorSport-Calendar)"}
@@ -172,11 +174,12 @@ def official_rows(body: str, session_type: str, drivers: dict[str, dict], teams:
 
 
 def official_standings(root: Path) -> None:
+    year = int(root.name)
     driver_path = root / "standings_drivers.json"
     driver_document = json.loads(driver_path.read_text(encoding="utf-8"))
     drivers = {item.get("code"): item for item in driver_document["data"]}
     parser = Tables()
-    parser.feed(fetch(f"{BASE}/en/results/2026/drivers"))
+    parser.feed(fetch(f"{BASE}/en/results/{year}/drivers"))
     ordered_drivers: list[dict] = []
     for cells in parser.rows[1:]:
         if len(cells) < 5 or not cells[0].isdigit():
@@ -190,7 +193,7 @@ def official_standings(root: Path) -> None:
         ordered_drivers.append(item)
     if ordered_drivers:
         driver_document["data"] = ordered_drivers
-        driver_document["source"] = {"name": "formula1-official", "url": f"{BASE}/en/results/2026/drivers"}
+        driver_document["source"] = {"name": "formula1-official", "url": f"{BASE}/en/results/{year}/drivers"}
         driver_path.write_text(json.dumps(driver_document, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     team_path = root / "standings_teams.json"
@@ -202,12 +205,12 @@ def official_standings(root: Path) -> None:
         "alpine": "alpine f1 team",
     }
     teams = {item["name"].casefold(): item for item in team_document["data"]}
-    bundled_team_path = ROOT / "assets" / "data" / "f1" / "2026" / "standings_teams.json"
+    bundled_team_path = ROOT / "assets" / "data" / "f1" / str(year) / "standings_teams.json"
     if bundled_team_path.is_file():
         for item in json.loads(bundled_team_path.read_text(encoding="utf-8"))["data"]:
             teams.setdefault(item["name"].casefold(), item)
     parser = Tables()
-    parser.feed(fetch(f"{BASE}/en/results/2026/team"))
+    parser.feed(fetch(f"{BASE}/en/results/{year}/team"))
     ordered_teams: list[dict] = []
     for cells in parser.rows[1:]:
         if len(cells) < 3 or not cells[0].isdigit():
@@ -221,14 +224,16 @@ def official_standings(root: Path) -> None:
         ordered_teams.append(item)
     if ordered_teams:
         team_document["data"] = ordered_teams
-        team_document["source"] = {"name": "formula1-official", "url": f"{BASE}/en/results/2026/team"}
+        team_document["source"] = {"name": "formula1-official", "url": f"{BASE}/en/results/{year}/team"}
         team_path.write_text(json.dumps(team_document, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 def main(live: bool = False) -> None:
-    root = DATA / "f1" / "2026"
+    # The latest season that has started (the next one only has a calendar).
+    year = results_season(DATA / "f1", 2026)
+    root = DATA / "f1" / str(year)
     calendar = json.loads((root / "calendar.json").read_text(encoding="utf-8"))["data"]
-    pages = race_pages(2026)
+    pages = race_pages(year)
     drivers, teams = metadata(root)
     if not live:
         official_standings(root)
@@ -262,7 +267,7 @@ def main(live: bool = False) -> None:
             if live and datetime.now(timezone.utc) - start > timedelta(days=3):
                 continue
             try:
-                body = fetch(f"{BASE}/en/results/2026/races/{race_id}/{slug}/{route}")
+                body = fetch(f"{BASE}/en/results/{year}/races/{race_id}/{slug}/{route}")
             except RuntimeError:
                 continue
             rows = official_rows(body, session_type, drivers, teams)
@@ -277,12 +282,12 @@ def main(live: bool = False) -> None:
                 }
                 document["data"].setdefault("sessions", []).append(target)
             target["results"] = rows
-            target["source"] = {"name": "formula1-official", "url": f"{BASE}/en/results/2026/races/{race_id}/{slug}/{route}"}
+            target["source"] = {"name": "formula1-official", "url": f"{BASE}/en/results/{year}/races/{race_id}/{slug}/{route}"}
             document["updatedAt"] = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
             changed = True
             print(f"{event['name']} {session_type}: {len(rows)} official rows")
         if changed:
-            document["source"] = {"name": "formula1-official", "url": f"{BASE}/en/results/2026/races/{race_id}/{slug}/race-result"}
+            document["source"] = {"name": "formula1-official", "url": f"{BASE}/en/results/{year}/races/{race_id}/{slug}/race-result"}
             path.write_text(json.dumps(document, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
