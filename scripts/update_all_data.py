@@ -230,6 +230,7 @@ def main(argv: list[str] | None = None) -> int:
                 except subprocess.CalledProcessError as error:
                     print(f"Next-season calendars unavailable: {error}", file=sys.stderr)
             run("add_session_durations.py", env, str(staged))
+            run("carry_lap_records.py", env, str(staged))
             # Portrait URLs are identity-bound metadata from official series
             # profile pages and can change with driver line-ups.
             portrait_env = os.environ.copy()

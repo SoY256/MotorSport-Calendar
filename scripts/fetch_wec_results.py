@@ -414,7 +414,9 @@ def fastest_lap_record(pdf: bytes) -> str:
     )
     if not match:
         raise RuntimeError("No overall WEC fastest lap parsed")
-    return f"{match.group(2)} • {display_name(match.group(1))} ({SEASON})"
+    # Hybrid cars carry an "H" marker glued to the name: "HNyck DE VRIES".
+    driver = re.sub(r"^H(?=[A-ZÀ-Ý][a-zà-ÿ])", "", match.group(1))
+    return f"{match.group(2)} • {display_name(driver)} ({SEASON})"
 
 
 def manufacturer_color(car: str) -> str:

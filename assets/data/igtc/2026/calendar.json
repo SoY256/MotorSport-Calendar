@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-22T11:49:44.806377Z",
+  "lastSuccessfulUpdate": "2026-10-22T14:37:02.982122Z",
   "source": {
     "name": "sro-official-calendar",
     "url": "https://www.intercontinentalgtchallenge.com/calendar"
@@ -18,7 +18,8 @@
         "name": "Mount Panorama Circuit",
         "locality": "Bathurst",
         "country": "Australia",
-        "countryCode": "AUS"
+        "countryCode": "AUS",
+        "lapRecord": "2:02.3071 • Alexander Sims / Nicky Catsburg / E. Bamber (2026)"
       },
       "sessions": [
         {
@@ -112,11 +113,12 @@
       "name": "ADAC RAVENOL 24h Nürburgring",
       "cancelled": false,
       "circuit": {
-        "id": "nurburgring",
-        "name": "Nürburgring",
+        "id": "nurburgring-nordschleife",
+        "name": "Nürburgring Nordschleife",
         "locality": "Nürburg",
         "country": "Germany",
-        "countryCode": "DEU"
+        "countryCode": "DEU",
+        "lapRecord": "8:08.758 • Luca Engstler / Mirko Bortolotti / Patric Niederhauser (2026)"
       },
       "sessions": [
         {
@@ -198,7 +200,8 @@
         "name": "Circuit de Spa-Francorchamps",
         "locality": "Stavelot",
         "country": "Belgium",
-        "countryCode": "BEL"
+        "countryCode": "BEL",
+        "lapRecord": "2:17.340 • Alessio Rovera / Tommaso Mosca / Nicklas Nielsen (2026)"
       },
       "sessions": [
         {
@@ -312,7 +315,8 @@
         "name": "Suzuka Circuit",
         "locality": "Suzuka",
         "country": "Japan",
-        "countryCode": "JPN"
+        "countryCode": "JPN",
+        "lapRecord": "1:59.966 • Ayhancan Güven / Alessandro Ghiretti / Dorian Boccolacci (2026)"
       },
       "sessions": [
         {
@@ -394,7 +398,8 @@
         "name": "Indianapolis Motor Speedway Road Course",
         "locality": "Indianapolis",
         "country": "United States of America",
-        "countryCode": "USA"
+        "countryCode": "USA",
+        "lapRecord": "1:23.573 • Kyle Washington / Riccardo Pera / Ayhancan Guven (2026)"
       },
       "sessions": [
         {

@@ -116,6 +116,8 @@ CIRCUITS = (
     ("spa", "Circuit de Spa-Francorchamps", "Stavelot"),
     ("misano", "Misano World Circuit", "Misano Adriatico"),
     ("magny", "Circuit de Nevers Magny-Cours", "Magny-Cours"),
+    # The 24h race runs on the combined Nordschleife and GP circuit.
+    ("24h nurburgring", "Nürburgring Nordschleife", "Nürburg"),
     ("nurburgring", "Nürburgring", "Nürburg"),
     ("zandvoort", "Circuit Park Zandvoort", "Zandvoort"),
     ("barcelona", "Circuit de Barcelona-Catalunya", "Montmeló"),
@@ -546,6 +548,21 @@ def is_gt3_class(value: str) -> bool:
     return not re.search(r"\bgt4\b|\bgt2\b|\btcr?\b", value, re.I)
 
 
+LAP_TIME = re.compile(r"\d{1,2}:\d\d\.\d{3,4}")
+
+
+def race_best_lap(row: dict[str, str]) -> str | None:
+    """A car's fastest race lap, if the classification publishes it.
+
+    GT Europe lists it as "time" and GT America as "best lap"; GT Asia and
+    British GT tables give the total race time there (with an average speed
+    column) and their best laps come from the timing PDFs instead.
+    """
+    value = row.get("best lap") or ("" if {"av kph", "av mph"} & row.keys() else row.get("time", ""))
+    value = value.strip().rstrip("*")
+    return value if LAP_TIME.fullmatch(value) and (seconds(value) or 0) > 0 else None
+
+
 def result_rows(
     rows: list[dict[str, str]],
     race: bool,
@@ -583,8 +600,9 @@ def result_rows(
             components["category"] = category
         if gap:
             components["gap"] = gap
-        if best and race:
-            components["bestLap"] = best
+        lap = race_best_lap(row) if race else None
+        if lap:
+            components["bestLap"] = lap
         nations = (
             row["nations"].split(",")
             if row.get("nations")
@@ -800,7 +818,9 @@ def asian_classification(text: str) -> tuple[str, list[dict[str, str]]]:
             crew = glued_crew(lines[index + 1] if index + 1 < len(lines) else "")
             lead = re.match(r"(\d+ Laps?|\S+)", tail)
             gap = lead.group(1) if lead and position != "1" else ""
-            best = next((token for token in tail.split() if re.fullmatch(r"\d+:\d\d\.\d{3}", token)), "")
+            # "[gap diff] kph best lapNo ...": a gap can look like a lap time.
+            fastest = re.search(r"\d+\.\d{2,3}\s+(\d{1,2}:\d\d\.\d{3})\b", tail)
+            best = fastest.group(1) if fastest else ""
         else:
             body = re.match(r"(.+?)\s+(\d+:\d\d\.\d{3})\s+\d+\s+(\d+)(?:\s+(\d+\.\d{3}))?", rest)
             if not body:
@@ -889,6 +909,101 @@ def nurburgring_classification(text: str) -> tuple[str, list[dict[str, str]]]:
             place += 1
             row["pos"] = str(place)
     return "Race", rows
+
+
+# --------------------------------------------------------------------------
+# TSL Timing (GT World Challenge Asia, British GT): the championship sites
+# give only total race times, the timing PDFs add each car's best lap.
+# --------------------------------------------------------------------------
+
+TSL_BASE = "https://www.tsl-timing.com"
+TSL = {"gtwc-asia": ("gtasia", "bga"), "british-gt": ("bf3gt", "bgt")}
+TSL_ROW = re.compile(r"^(?:\d+|NC|DNF|DNS|DSQ|DQ|RET)\s+(\d+)\*?\D.*?\s\d+\.\d{2,3}\s+(\d{1,2}:\d\d\.\d{3})\b")
+TSL_DATES = re.compile(r"(\d{1,2})\w*\s+([A-Z][a-z]{2})\w*\s*-\s*(\d{1,2})\w*\s+([A-Z][a-z]{2})\w*\s+(\d{4})")
+
+
+def tsl_race_pdfs(series: str, start: date, season: int) -> dict[str, str]:
+    """Race classification PDFs of the TSL event covering ``start``, by session type."""
+    code, suffix = TSL[series]
+    listing = get(f"{TSL_BASE}/Results/{code}/{season}")
+    for event_id, dates in re.findall(r'<a href="/event/(\d+)">[\s\S]*?<i>([^<]+)</i>', listing):
+        match = TSL_DATES.search(dates)
+        if not match:
+            continue
+        day1, month1, day2, month2, year = match.groups()
+
+        def month(short: str) -> int:
+            return next(index for name, index in MONTHS.items() if name.startswith(short.lower()))
+
+        last = date(int(year), month(month2), int(day2))
+        first = date(int(year), month(month1), int(day1))
+        if first > last:
+            first = first.replace(year=first.year - 1)
+        if not first - timedelta(days=1) <= start <= last:
+            continue
+        page = get(f"{TSL_BASE}/event/{event_id}")
+        pdfs = {}
+        for href, label in re.findall(r'<a class="sessionName" href="([^"]+)"[^>]*>([^<]+)</a>', page):
+            race = re.fullmatch(r"Race(?: (\d))? Result", label.strip())
+            if race and href.lower().endswith(f"{suffix}.pdf"):
+                pdfs[f"R{race.group(1) or ''}"] = TSL_BASE + html_lib.unescape(href)
+        return pdfs
+    return {}
+
+
+def tsl_best_laps(url: str) -> dict[str, str]:
+    """Car number -> best lap from a TSL race classification."""
+    laps = {}
+    for line in pdf_text(url, pages=6).splitlines():
+        row = TSL_ROW.match(line.strip())
+        if row:
+            laps.setdefault(row.group(1), row.group(2))
+    return laps
+
+
+def add_tsl_best_laps(series: str, start: date, season: int, sessions: list[dict[str, Any]]) -> None:
+    races = [
+        session for session in sessions
+        if session["type"].startswith("R") and session["results"] and session.get("bestLapSource") != "tsl-timing"
+    ]
+    if series not in TSL or not races:
+        return
+    for session in races:
+        for row in session["results"]:
+            row.get("components", {}).pop("bestLap", None)
+    try:
+        pdfs = tsl_race_pdfs(series, start, season)
+        for session in races:
+            if session["type"] not in pdfs:
+                continue
+            laps = tsl_best_laps(pdfs[session["type"]])
+            if not laps:
+                continue
+            for row in session["results"]:
+                if row["carNumber"] in laps:
+                    row.setdefault("components", {})["bestLap"] = laps[row["carNumber"]]
+            session["bestLapSource"] = "tsl-timing"
+    except Exception as error:  # best laps are optional
+        print(f"{series} {start}: TSL best laps unavailable ({error})", file=sys.stderr)
+
+
+def event_lap_record(sessions: list[dict[str, Any]], season: int) -> str | None:
+    """Fastest race lap of the meeting: 'm:ss.sss • crew (season)'."""
+    best: tuple[float, str, str] | None = None
+    for session in sessions:
+        if not session["type"].startswith("R"):
+            continue
+        for row in session.get("results", []):
+            lap = (row.get("components") or {}).get("bestLap") or ""
+            value = seconds(lap) if LAP_TIME.fullmatch(lap) else None
+            if value and (best is None or value < best[0]):
+                best = (value, lap, row["driver"]["givenName"])
+    if not best:
+        return None
+    # GT Asia/British GT write family names in capitals: "Wei LU".
+    crew = re.sub(r"\b[A-ZÀ-Ý][A-ZÀ-Ý'’-]+\b", lambda word: word.group(0).title(), best[2])
+    crew = re.sub(r"\bMc([a-z])", lambda m: "Mc" + m.group(1).upper(), crew)
+    return f"{best[1]} • {crew} ({season})"
 
 
 # --------------------------------------------------------------------------
@@ -1132,6 +1247,18 @@ def import_series(series: str, data_root: Path, pool: ThreadPoolExecutor) -> Non
         previous = load_json(folder / results_path) or {}
         previous_data = previous.get("data", {}) if previous.get("data", {}).get("eventId") == event_id else {}
         stored = {session["type"]: session for session in previous_data.get("sessions", [])}
+        placeholder = item["sessions"][0]
+        if len(item["sessions"]) == 1 and placeholder.get("timeTbc") and stored and placeholder["type"] not in stored:
+            # No timetable (e.g. GT Australia Darwin): keep the sessions
+            # rebuilt from the official classifications on the first import.
+            item["sessions"][:] = [
+                {
+                    "type": session["type"], "name": session["name"], "startTimeUtc": session["startTimeUtc"],
+                    "cancelled": False, "durationMinutes": default_minutes(series, item["name"], session["name"]),
+                    "timeTbc": True,
+                }
+                for session in sorted(stored.values(), key=lambda session: session["startTimeUtc"])
+            ]
         ended = {
             session["type"]: session
             for session in item["sessions"]
@@ -1158,6 +1285,10 @@ def import_series(series: str, data_root: Path, pool: ThreadPoolExecutor) -> Non
             session for session in item["sessions"]
             if not session.pop("resultsOnly", False) or session["type"] in classified
         ]
+        add_tsl_best_laps(series, item["start"], season, sessions_out)
+        record = event_lap_record(sessions_out, season)
+        if record:
+            calendar[-1]["circuit"]["lapRecord"] = record
         for session in sessions_out:
             for row in session["results"]:
                 crew = [part.strip() for part in row["driver"]["givenName"].split(" / ") if part.strip()]

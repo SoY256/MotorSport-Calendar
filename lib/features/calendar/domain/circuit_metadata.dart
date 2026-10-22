@@ -150,7 +150,10 @@ const _circuitMetadata = <String, CircuitMetadata>{
     lengthKm: 6.003,
     lapRecord: '1:43.009 • Charles Leclerc (2019)',
   ),
-  'Madring': CircuitMetadata(lengthKm: 5.474, lapRecord: null),
+  'Madring': CircuitMetadata(
+    lengthKm: 5.474,
+    lapRecord: '1:35.587 • George Russell (2026)',
+  ),
   'Marina Bay Street Circuit': CircuitMetadata(
     lengthKm: 4.940,
     lapRecord: '1:35.867 • Lewis Hamilton (2023)',
@@ -192,7 +195,11 @@ const _circuitMetadata = <String, CircuitMetadata>{
   'Fuji Speedway': CircuitMetadata(lengthKm: 4.563, lapRecord: null),
   'Bahrain International Circuit': CircuitMetadata(
     lengthKm: 5.412,
-    lapRecord: null,
+    lapRecord: '1:31.447 • Pedro de la Rosa (2005)',
+  ),
+  'Jeddah Corniche Circuit': CircuitMetadata(
+    lengthKm: 6.174,
+    lapRecord: '1:30.734 • Lewis Hamilton (2021)',
   ),
   'Algarve International Circuit': CircuitMetadata(
     lengthKm: 4.653,
@@ -270,6 +277,42 @@ const _circuitMetadata = <String, CircuitMetadata>{
     lapRecord: null,
   ),
   'Milwaukee Mile': CircuitMetadata(lengthKm: 1.609, lapRecord: null),
+  // GT3 venues (lengths as published by the SRO championship sites).
+  'Brands Hatch': CircuitMetadata(lengthKm: 3.916, lapRecord: null),
+  'Donington Park': CircuitMetadata(lengthKm: 4.020, lapRecord: null),
+  'Oulton Park': CircuitMetadata(lengthKm: 4.332, lapRecord: null),
+  'Snetterton Circuit': CircuitMetadata(lengthKm: 4.778, lapRecord: null),
+  'Sonoma Raceway': CircuitMetadata(lengthKm: 4.056, lapRecord: null),
+  'Okayama International Circuit': CircuitMetadata(
+    lengthKm: 3.703,
+    lapRecord: null,
+  ),
+  'Pertamina Mandalika International Circuit': CircuitMetadata(
+    lengthKm: 4.310,
+    lapRecord: null,
+  ),
+  'Beijing Street Circuit': CircuitMetadata(lengthKm: 4.9, lapRecord: null),
+  'Adelaide Street Circuit': CircuitMetadata(lengthKm: 3.219, lapRecord: null),
+  'Hidden Valley Raceway': CircuitMetadata(lengthKm: 2.870, lapRecord: null),
+  'Phillip Island Grand Prix Circuit': CircuitMetadata(
+    lengthKm: 4.445,
+    lapRecord: null,
+  ),
+  'Queensland Raceway': CircuitMetadata(lengthKm: 3.126, lapRecord: null),
+  'Sydney Motorsport Park': CircuitMetadata(lengthKm: 3.930, lapRecord: null),
+  'The Bend Motorsport Park': CircuitMetadata(lengthKm: 4.950, lapRecord: null),
+  'Circuit Paul Ricard': CircuitMetadata(lengthKm: 5.791, lapRecord: null),
+  'Circuit de Nevers Magny-Cours': CircuitMetadata(
+    lengthKm: 4.411,
+    lapRecord: null,
+  ),
+  'Misano World Circuit': CircuitMetadata(lengthKm: 4.226, lapRecord: null),
+  'Nürburgring': CircuitMetadata(lengthKm: 5.148, lapRecord: null),
+  'Nürburgring Nordschleife': CircuitMetadata(
+    lengthKm: 25.378,
+    lapRecord: null,
+  ),
+  'Mount Panorama Circuit': CircuitMetadata(lengthKm: 6.213, lapRecord: null),
 };
 
 CircuitMetadata metadataForCircuit(String name) =>
@@ -329,6 +372,25 @@ String? circuitAssetFor(String name) {
     'Phoenix Raceway' => 'phoenix',
     'Milwaukee Mile' => 'milwaukee',
     'World Wide Technology Raceway' => 'gateway',
+    'Brands Hatch' => 'brands-hatch',
+    'Donington Park' => 'donington',
+    'Oulton Park' => 'oulton-park',
+    'Snetterton Circuit' => 'snetterton',
+    'Sonoma Raceway' => 'sonoma',
+    'Okayama International Circuit' => 'okayama',
+    'Pertamina Mandalika International Circuit' => 'mandalika',
+    'Adelaide Street Circuit' => 'adelaide',
+    'Hidden Valley Raceway' => 'hidden-valley',
+    'Phillip Island Grand Prix Circuit' => 'phillip-island',
+    'Queensland Raceway' => 'queensland-raceway',
+    'Sydney Motorsport Park' => 'sydney-motorsport-park',
+    'The Bend Motorsport Park' => 'the-bend',
+    'Circuit Paul Ricard' => 'paul-ricard',
+    'Circuit de Nevers Magny-Cours' => 'magny-cours',
+    'Misano World Circuit' => 'misano',
+    'Nürburgring' => 'nurburgring',
+    'Nürburgring Nordschleife' => 'nordschleife',
+    'Mount Panorama Circuit' => 'mount-panorama',
     'Streets of St. Petersburg' => 'st-petersburg.png',
     'Streets of Arlington' => 'arlington.png',
     'Streets of Markham' => 'markham.jpg',

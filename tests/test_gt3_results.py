@@ -131,6 +131,40 @@ class Gt3ResultTests(unittest.TestCase):
         self.assertEqual(rows[1]["best lap"], "1:39.7667")
 
 
+class Gt3LapRecordTests(unittest.TestCase):
+    def test_best_lap_column_but_not_total_race_time(self):
+        self.assertEqual(gt3.race_best_lap({"time": "1:33.413", "laps": "35"}), "1:33.413")
+        self.assertEqual(gt3.race_best_lap({"best lap": "1:34.966", "time": ""}), "1:34.966")
+        # GT Asia / British GT: "time" is the race time next to an average speed.
+        self.assertIsNone(gt3.race_best_lap({"time": "18:40.266", "av mph": "103.000"}))
+        self.assertIsNone(gt3.race_best_lap({"time": "1:00:28.625"}))
+        self.assertIsNone(gt3.race_best_lap({"time": "0.000"}))
+
+    def test_tsl_rows_give_the_lap_after_the_average_speed(self):
+        lines = [
+            "1 16 SILVER 1 C F o A n W gfu Audi R8 LMS GT3 EVO II 33 1:01:24.358 119.40 1:29.569 24 2 1",
+            "2 500*SILVER 2 T T a E k Nissan GT-R NISMO GT3 33 1:01:26.341 1.983 1.983 119.33 1:29.654 23 5 3",
+            "9 15 PRO-AM 5 A A n Audi R8 LMS GT3 EVO II 32 1:01:44.152 1 Lap 1:05.123 118.76 1:30.377 24 13 4",
+        ]
+        parsed = [gt3.TSL_ROW.match(line).groups() for line in lines]
+        self.assertEqual(parsed, [("16", "1:29.569"), ("500", "1:29.654"), ("15", "1:30.377")])
+
+    def test_event_record_is_the_fastest_race_lap_with_its_crew(self):
+        def row(car, crew, lap):
+            return {"carNumber": car, "driver": {"givenName": crew}, "components": {"bestLap": lap}}
+
+        sessions = [
+            {"type": "Q1", "results": [row("1", "Fast QUALIFIER", "1:20.000")]},
+            {"type": "R1", "results": [row("2", "Wei LU / Ben MCDONALD", "1:28.486"), row("3", "B / C", "1:29.000")]},
+            {"type": "R2", "results": [row("4", "D / E", "1:28.900"), row("5", "F", "1:00:00.000")]},
+        ]
+        self.assertEqual(gt3.event_lap_record(sessions, 2026), "1:28.486 • Wei Lu / Ben McDonald (2026)")
+        self.assertIsNone(gt3.event_lap_record([{"type": "R", "results": []}], 2026))
+
+    def test_24h_nurburgring_runs_on_the_nordschleife(self):
+        self.assertEqual(gt3.circuit_for("ADAC Ravenol 24h Nürburgring", "Germany", "DE")["name"], "Nürburgring Nordschleife")
+        self.assertEqual(gt3.circuit_for("Nürburgring", "Germany", "DE")["name"], "Nürburgring")
+
 class Gt3PipelineTests(unittest.TestCase):
     def test_series_lists_stay_in_sync(self):
         self.assertEqual(refresh_decision.GT3_SERIES, frozenset(gt3.SERIES))
