@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-24T13:02:15.504568Z",
+  "lastSuccessfulUpdate": "2026-10-24T18:32:00.208695Z",
   "source": {
     "name": "formula1-official",
     "url": "https://www.formula1.com/en/results/2026/races/1297/united-states/race-result"
@@ -1041,8 +1041,14 @@
           "name": "formula1-official",
           "url": "https://www.formula1.com/en/results/2026/races/1297/united-states/practice/2"
         }
+      },
+      {
+        "type": "FP3",
+        "name": "Practice 3",
+        "startTimeUtc": "2026-10-24T17:30:00Z",
+        "results": []
       }
     ]
   },
-  "updatedAt": "2026-10-24T13:03:53.874230Z"
+  "updatedAt": "2026-10-24T18:33:38.819910Z"
 }
