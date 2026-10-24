@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-24T19:45:04.982258Z",
+  "lastSuccessfulUpdate": "2026-10-24T22:02:00.357738Z",
   "source": {
     "name": "formula1-official",
     "url": "https://www.formula1.com/en/results/2026/races/1297/united-states/race-result"
@@ -1558,8 +1558,14 @@
           "name": "formula1-official",
           "url": "https://www.formula1.com/en/results/2026/races/1297/united-states/practice/3"
         }
+      },
+      {
+        "type": "Q",
+        "name": "Qualifying",
+        "startTimeUtc": "2026-10-24T21:00:00Z",
+        "results": []
       }
     ]
   },
-  "updatedAt": "2026-10-24T19:46:16.142980Z"
+  "updatedAt": "2026-10-24T22:03:22.578069Z"
 }
