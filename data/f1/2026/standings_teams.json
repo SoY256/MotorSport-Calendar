@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-25T22:02:00.240511Z",
+  "lastSuccessfulUpdate": "2026-10-25T22:04:06.800106Z",
   "source": {
     "name": "formula1-official",
     "url": "https://www.formula1.com/en/results/2026/team"
@@ -8,7 +8,7 @@
   "data": [
     {
       "position": 1,
-      "points": 607.0,
+      "points": 578.0,
       "wins": 11,
       "id": "mercedes",
       "name": "Mercedes",
@@ -16,7 +16,7 @@
     },
     {
       "position": 2,
-      "points": 474.0,
+      "points": 444.0,
       "wins": 2,
       "id": "ferrari",
       "name": "Ferrari",
@@ -24,23 +24,23 @@
     },
     {
       "position": 3,
-      "points": 355.0,
-      "wins": 2,
-      "id": "red_bull",
-      "name": "Red Bull",
-      "nationality": "Austrian"
-    },
-    {
-      "position": 4,
-      "points": 355.0,
+      "points": 339.0,
       "wins": 2,
       "id": "mclaren",
       "name": "McLaren",
       "nationality": "British"
     },
     {
+      "position": 4,
+      "points": 332.0,
+      "wins": 2,
+      "id": "red_bull",
+      "name": "Red Bull",
+      "nationality": "Austrian"
+    },
+    {
       "position": 5,
-      "points": 102.0,
+      "points": 100.0,
       "wins": 0,
       "id": "rb",
       "name": "RB F1 Team",
@@ -48,7 +48,7 @@
     },
     {
       "position": 6,
-      "points": 69.0,
+      "points": 68.0,
       "wins": 0,
       "id": "alpine",
       "name": "Alpine F1 Team",
