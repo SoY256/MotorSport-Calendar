@@ -33,6 +33,7 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen>
   int _page = 0;
   String? _selectedEventId;
   String? _activeSeriesId;
+  int? _season;
   final List<_NavigationSnapshot> _navigationHistory = [];
   bool _handlingBack = false;
   Timer? _sixHourRefresh;
@@ -65,6 +66,7 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen>
     page: _page,
     selectedEventId: _selectedEventId,
     activeSeriesId: _activeSeriesId,
+    season: _season,
   );
 
   void _navigate({
@@ -76,6 +78,7 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen>
       page: page,
       selectedEventId: updateSelectedEvent ? selectedEventId : _selectedEventId,
       activeSeriesId: _activeSeriesId,
+      season: _season,
     );
     if (next == _navigationSnapshot) return;
     setState(() {
@@ -88,6 +91,26 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen>
   void _navigateToEvent(RaceEvent event) =>
       _navigate(page: 2, selectedEventId: event.id, updateSelectedEvent: true);
 
+  /// Switches every page to [season]; the calendar jumps into it.
+  void _selectSeason(int season, List<RaceEvent> seasonEvents) {
+    if (season == _season) return;
+    final now = DateTime.now();
+    final starts = seasonEvents.map((event) => event.startsAt.toLocal());
+    final ends = seasonEvents.map((event) => event.endsAt.toLocal());
+    final first = starts.isEmpty ? now : starts.reduce(_earlier);
+    final last = ends.isEmpty ? now : ends.reduce(_later);
+    setState(() {
+      _navigationHistory.add(_navigationSnapshot);
+      _season = season;
+      _selectedEventId = null;
+      _calendarAnchor = now.isBefore(first)
+          ? first
+          : now.isAfter(last)
+          ? last
+          : now;
+    });
+  }
+
   Future<void> _handleSystemBack() async {
     if (_handlingBack) return;
     if (_navigationHistory.isNotEmpty) {
@@ -96,6 +119,7 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen>
         _page = previous.page;
         _selectedEventId = previous.selectedEventId;
         _activeSeriesId = previous.activeSeriesId;
+        _season = previous.season;
       });
       return;
     }
@@ -202,7 +226,27 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen>
         final selectedSeries = _activeSeriesId == null
             ? enabledSeries
             : {_activeSeriesId!};
-        final visibleEvents = data.events
+        final seriesEvents = data.events
+            .where((event) => selectedSeries.contains(event.seriesId))
+            .toList();
+        // Every page shows one season; it follows the calendar (the season
+        // still being raced, then the next one) until the user picks another.
+        final seasonSource = seriesEvents.isEmpty ? data.events : seriesEvents;
+        final seasons = {
+          for (final event in seasonSource) event.season,
+        }.toList()..sort();
+        final currentSeason = seasonSource.isEmpty
+            ? DateTime.now().year
+            : _currentSeason(seasonSource);
+        final season = seasons.contains(_season) ? _season! : currentSeason;
+        final seasonData = CalendarData(
+          schemaVersion: data.schemaVersion,
+          updatedAt: data.updatedAt,
+          events: data.events
+              .where((event) => event.season == season)
+              .toList(growable: false),
+        );
+        final visibleEvents = seasonData.events
             .where((event) => selectedSeries.contains(event.seriesId))
             .toList();
         final selected = visibleEvents.isEmpty
@@ -213,7 +257,7 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen>
               );
         final page = switch (_page) {
           0 => _ListPage(
-            data: data,
+            data: seasonData,
             availableSeries: availableSeries,
             selectedSeries: selectedSeries,
             onSeriesChanged: ref
@@ -224,7 +268,8 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen>
             onEventTap: _navigateToEvent,
           ),
           1 => _CalendarGridPage(
-            data: data,
+            key: ValueKey('calendar-$season'),
+            data: seasonData,
             availableSeries: availableSeries,
             selectedSeries: selectedSeries,
             onSeriesChanged: ref
@@ -241,7 +286,7 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen>
             },
           ),
           2 when selected != null => _ResultsPage(
-            data: data,
+            data: seasonData,
             selected: selected,
             selectedSeries: selectedSeries,
             settings: settings,
@@ -259,10 +304,31 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen>
           3 => _StandingsPage(
             strings: strings,
             availableSeries: selectedSeries,
-            events: data.events,
+            events: seasonData.events,
+            season: season,
           ),
           _ => _SettingsPage(settings: settings, strings: strings),
         };
+        final scoped = _page > 3
+            ? page
+            : _SeasonScope(
+                seasons: [
+                  for (final item in seasons)
+                    _SeasonOption(
+                      year: item,
+                      status: _seasonStatus(
+                        seasonSource.where((event) => event.season == item),
+                      ),
+                    ),
+                ],
+                selected: season,
+                strings: strings,
+                onSelected: (value) => _selectSeason(
+                  value,
+                  seasonSource.where((event) => event.season == value).toList(),
+                ),
+                child: page,
+              );
         return Column(
           children: [
             _SeriesTabsBar(
@@ -274,7 +340,7 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen>
                 _selectedEventId = null;
               }),
             ),
-            Expanded(child: page),
+            Expanded(child: scoped),
           ],
         );
       },
@@ -336,21 +402,25 @@ class _NavigationSnapshot {
     required this.page,
     required this.selectedEventId,
     required this.activeSeriesId,
+    required this.season,
   });
 
   final int page;
   final String? selectedEventId;
   final String? activeSeriesId;
+  final int? season;
 
   @override
   bool operator ==(Object other) =>
       other is _NavigationSnapshot &&
       page == other.page &&
       selectedEventId == other.selectedEventId &&
-      activeSeriesId == other.activeSeriesId;
+      activeSeriesId == other.activeSeriesId &&
+      season == other.season;
 
   @override
-  int get hashCode => Object.hash(page, selectedEventId, activeSeriesId);
+  int get hashCode =>
+      Object.hash(page, selectedEventId, activeSeriesId, season);
 }
 
 class _RacingBackdrop extends StatelessWidget {
@@ -656,6 +726,11 @@ class _PageFrame extends StatelessWidget {
                       ),
                     ),
                   ],
+                  if (_SeasonScope.maybeOf(context) case final scope?
+                      when scope.seasons.isNotEmpty) ...[
+                    const SizedBox(height: 14),
+                    _SeasonSelector(scope: scope),
+                  ],
                 ],
               ),
             ),
@@ -739,8 +814,10 @@ class _ListPage extends ConsumerWidget {
     final upcoming = matching
         .where((event) => event.endsAt.isAfter(now))
         .toList();
-    // Most recent results first, below everything that is still to come.
-    final completedEvents = settings.showPastEvents
+    // Most recent results first, below everything that is still to come. A
+    // season with nothing left to race always lists its completed rounds.
+    final seasonOver = upcoming.isEmpty && matching.isNotEmpty;
+    final completedEvents = settings.showPastEvents || seasonOver
         ? matching.where((event) => !event.endsAt.isAfter(now)).toList()
         : <RaceEvent>[];
     completedEvents.sort((a, b) => b.endsAt.compareTo(a.endsAt));
@@ -795,36 +872,37 @@ class _ListPage extends ConsumerWidget {
               onTap: () => onEventTap(nextEvent),
             ),
           const SizedBox(height: 12),
-          Material(
-            color: scheme.surfaceContainer,
-            shape: SlantBorder(
-              slant: 10,
-              side: BorderSide(color: Theme.of(context).dividerColor),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(22, 2, 14, 2),
-              child: Row(
-                children: [
-                  const Icon(Icons.sports_score, size: 20),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: Text(
-                      strings.hideCompletedRaces,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontWeight: FontWeight.w800),
+          if (!seasonOver)
+            Material(
+              color: scheme.surfaceContainer,
+              shape: SlantBorder(
+                slant: 10,
+                side: BorderSide(color: Theme.of(context).dividerColor),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(22, 2, 14, 2),
+                child: Row(
+                  children: [
+                    const Icon(Icons.sports_score, size: 20),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Text(
+                        strings.hideCompletedRaces,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(fontWeight: FontWeight.w800),
+                      ),
                     ),
-                  ),
-                  Switch(
-                    value: !settings.showPastEvents,
-                    onChanged: (hide) => ref
-                        .read(settingsProvider.notifier)
-                        .setShowPastEvents(!hide),
-                  ),
-                ],
+                    Switch(
+                      value: !settings.showPastEvents,
+                      onChanged: (hide) => ref
+                          .read(settingsProvider.notifier)
+                          .setShowPastEvents(!hide),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
           const SizedBox(height: 6),
         ],
       ),
@@ -1113,6 +1191,17 @@ class _NextRaceHero extends StatelessWidget {
                     Text(
                       focus.live
                           ? '${strings.onTrackNow}: ${_sessionLabel(focus.session.type, focus.session.name, strings)}'
+                                .toUpperCase()
+                          : focus.session.timeTbc
+                          ? strings
+                                .startsTbc(
+                                  _sessionLabel(
+                                    focus.session.type,
+                                    focus.session.name,
+                                    strings,
+                                  ),
+                                  _daysUntil(focus.session.startTimeUtc),
+                                )
                                 .toUpperCase()
                           : strings
                                 .startsIn(
@@ -1430,6 +1519,7 @@ class _EventCard extends StatelessWidget {
 
 class _CalendarGridPage extends StatefulWidget {
   const _CalendarGridPage({
+    super.key,
     required this.data,
     required this.settings,
     required this.strings,
@@ -2385,10 +2475,14 @@ class _StandingsPage extends ConsumerStatefulWidget {
     required this.strings,
     required this.availableSeries,
     required this.events,
+    required this.season,
   });
   final AppStrings strings;
   final Set<String> availableSeries;
+
+  /// The selected season's events.
   final List<RaceEvent> events;
+  final int season;
   @override
   ConsumerState<_StandingsPage> createState() => _StandingsPageState();
 }
@@ -2396,7 +2490,6 @@ class _StandingsPage extends ConsumerStatefulWidget {
 class _StandingsPageState extends ConsumerState<_StandingsPage> {
   bool _drivers = true;
   String _standingsCategory = 'GTP';
-  int? _season;
 
   @override
   Widget build(BuildContext context) {
@@ -2411,14 +2504,30 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
         ),
       );
     }
-    final series = widget.availableSeries.contains('f1')
+    // Series raced in this season come first (a series may not have
+    // published the next season yet).
+    final inSeason = {
+      for (final event in widget.events)
+        if (widget.availableSeries.contains(event.seriesId)) event.seriesId,
+    };
+    final candidates = inSeason.isEmpty ? widget.availableSeries : inSeason;
+    final series = candidates.contains('f1')
         ? 'f1'
-        : (widget.availableSeries.toList()
+        : (candidates.toList()
                 ..sort((a, b) => seriesOrder(a).compareTo(seriesOrder(b))))
               .first;
     final gt3 = gt3SeriesIds.contains(series);
-    final seasons = _standingsSeasons(widget.events, series);
-    final season = seasons.contains(_season) ? _season! : seasons.last;
+    final season = widget.season;
+    final now = DateTime.now().toUtc();
+    final seriesEvents = widget.events
+        .where((event) => event.seriesId == series && !event.cancelled)
+        .toList();
+    final started = seriesEvents.any((event) => !event.startsAt.isAfter(now));
+    final firstRace = seriesEvents.isEmpty
+        ? null
+        : seriesEvents
+              .map((event) => event.startsAt)
+              .reduce((a, b) => a.isBefore(b) ? a : b);
     final key = (seriesId: series, season: season);
     final standings = ref.watch(standingsProvider(key));
     final supportsTeams = {'f1', 'wec', 'imsa'}.contains(series) || gt3;
@@ -2500,18 +2609,6 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
         final rows = <WidgetBuilder>[
           (context) => Column(
             children: [
-              if (seasons.length > 1) ...[
-                SegmentedButton<int>(
-                  segments: [
-                    for (final item in seasons)
-                      ButtonSegment(value: item, label: Text('$item')),
-                  ],
-                  selected: {season},
-                  onSelectionChanged: (value) =>
-                      setState(() => _season = value.first),
-                ),
-                const SizedBox(height: 12),
-              ],
               if (supportsTeams) ...[
                 SegmentedButton<bool>(
                   segments: [
@@ -2596,8 +2693,15 @@ class _StandingsPageState extends ConsumerState<_StandingsPage> {
         if (rows.length == 1) {
           rows.add(
             (context) => _EmptyCard(
-              icon: Icons.emoji_events_outlined,
-              message: strings.noResults,
+              icon: started
+                  ? Icons.emoji_events_outlined
+                  : Icons.hourglass_empty,
+              message: started || firstRace == null
+                  ? strings.noResults
+                  : strings.seasonNotStarted(
+                      season,
+                      _date(firstRace.toLocal(), strings.language),
+                    ),
             ),
           );
         }
@@ -3627,21 +3731,165 @@ RaceEvent? _nextEvent(List<RaceEvent> events, DateTime now) {
   return null;
 }
 
-/// Seasons of a series whose standings can be shown, oldest first: every
-/// season that has started, or the first upcoming one before any has.
-List<int> _standingsSeasons(List<RaceEvent> events, String seriesId) {
+DateTime _earlier(DateTime a, DateTime b) => a.isBefore(b) ? a : b;
+DateTime _later(DateTime a, DateTime b) => a.isAfter(b) ? a : b;
+
+int _daysUntil(DateTime startUtc) {
+  final now = DateTime.now();
+  final today = DateTime(now.year, now.month, now.day);
+  final start = startUtc.toLocal();
+  final day = DateTime(start.year, start.month, start.day);
+  final days = (day.difference(today).inHours / 24).round();
+  return days < 0 ? 0 : days;
+}
+
+enum _SeasonStatus { upcoming, live, finished }
+
+_SeasonStatus _seasonStatus(Iterable<RaceEvent> events) {
   final now = DateTime.now().toUtc();
-  final all = {
-    for (final event in events)
-      if (event.seriesId == seriesId) event.season,
-  }.toList()..sort();
-  final started = {
-    for (final event in events)
-      if (event.seriesId == seriesId && !event.startsAt.isAfter(now))
-        event.season,
-  }.toList()..sort();
-  if (started.isNotEmpty) return started;
-  return all.isEmpty ? [now.year] : [all.first];
+  final active = events.where((event) => !event.cancelled);
+  if (active.isEmpty || active.every((event) => event.startsAt.isAfter(now))) {
+    return _SeasonStatus.upcoming;
+  }
+  return active.every((event) => !event.endsAt.isAfter(now))
+      ? _SeasonStatus.finished
+      : _SeasonStatus.live;
+}
+
+class _SeasonOption {
+  const _SeasonOption({required this.year, required this.status});
+  final int year;
+  final _SeasonStatus status;
+}
+
+/// The season every page shows, and how to switch it; read by [_PageFrame].
+class _SeasonScope extends InheritedWidget {
+  const _SeasonScope({
+    required this.seasons,
+    required this.selected,
+    required this.strings,
+    required this.onSelected,
+    required super.child,
+  });
+
+  final List<_SeasonOption> seasons;
+  final int selected;
+  final AppStrings strings;
+  final ValueChanged<int> onSelected;
+
+  static _SeasonScope? maybeOf(BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<_SeasonScope>();
+
+  @override
+  bool updateShouldNotify(_SeasonScope oldWidget) =>
+      selected != oldWidget.selected ||
+      seasons.length != oldWidget.seasons.length ||
+      strings.language != oldWidget.strings.language;
+}
+
+/// Year pills under the page title: one per season, with its state.
+class _SeasonSelector extends StatelessWidget {
+  const _SeasonSelector({required this.scope});
+  final _SeasonScope scope;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final strings = scope.strings;
+    return SizedBox(
+      height: 58,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.only(right: 12),
+        itemCount: scope.seasons.length,
+        separatorBuilder: (_, _) => const SizedBox(width: 8),
+        itemBuilder: (context, index) {
+          final option = scope.seasons[index];
+          final selected = option.year == scope.selected;
+          final (label, dot) = switch (option.status) {
+            _SeasonStatus.live => (strings.seasonLive, const Color(0xFF22C55E)),
+            _SeasonStatus.upcoming => (
+              strings.seasonUpcoming,
+              const Color(0xFF38BDF8),
+            ),
+            _SeasonStatus.finished => (
+              strings.seasonFinished,
+              scheme.onSurfaceVariant,
+            ),
+          };
+          final shape = SlantBorder(
+            slant: 12,
+            side: BorderSide(
+              color: selected
+                  ? Colors.transparent
+                  : Theme.of(context).dividerColor,
+            ),
+          );
+          final foreground = selected ? Colors.white : scheme.onSurface;
+          return Semantics(
+            selected: selected,
+            button: true,
+            label: '${strings.season} ${option.year}, $label',
+            child: Material(
+              color: selected ? scheme.primary : scheme.surfaceContainer,
+              shape: shape,
+              elevation: selected ? 5 : 0,
+              shadowColor: scheme.primary.withValues(alpha: .55),
+              child: InkWell(
+                customBorder: shape,
+                onTap: () => scope.onSelected(option.year),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(22, 6, 24, 6),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '${option.year}',
+                        style: racingDisplay(
+                          size: 24,
+                          height: 1,
+                          color: foreground,
+                        ),
+                      ),
+                      const SizedBox(height: 3),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            width: 7,
+                            height: 7,
+                            decoration: BoxDecoration(
+                              color:
+                                  selected &&
+                                      option.status != _SeasonStatus.live
+                                  ? Colors.white70
+                                  : dot,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                          const SizedBox(width: 5),
+                          Text(
+                            label.toUpperCase(),
+                            style: TextStyle(
+                              color: foreground.withValues(alpha: .85),
+                              fontSize: 9.5,
+                              fontWeight: FontWeight.w900,
+                              letterSpacing: 1.1,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
 }
 
 /// The season a list of events is about: the next event's, otherwise the

@@ -488,6 +488,67 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
+  testWidgets('one season at a time: list, details and standings per year', (
+    tester,
+  ) async {
+    final calendar = await tester.runAsync(
+      () => AssetCalendarRepository().load(),
+    );
+    expect(calendar!.events.map((event) => event.season).toSet(), {2026, 2027});
+    SharedPreferences.setMockInitialValues({});
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          calendarRepositoryProvider.overrideWithValue(
+            _LoadedCalendarRepository(calendar),
+          ),
+        ],
+        child: const MotorsportCalendarApp(),
+      ),
+    );
+    addTearDown(() => tester.pumpWidget(const SizedBox.shrink()));
+    await tester.pump(const Duration(seconds: 1));
+    final title = RegExp(r'^(SEASON|SEZON) (\d{4})$');
+    String season() => find
+        .textContaining(title)
+        .evaluate()
+        .map((element) => (element.widget as Text).data!)
+        .first
+        .split(' ')
+        .last;
+
+    // The season being raced is shown first; the next one is one tap away.
+    expect(season(), '2026');
+    expect(find.text('2026'), findsOneWidget);
+    expect(find.text('2027'), findsOneWidget);
+    await tester.tap(find.text('2027'));
+    await tester.pump(const Duration(milliseconds: 500));
+    expect(season(), '2027');
+
+    await tester.tap(
+      find.descendant(
+        of: find.byType(NavigationBar),
+        matching: find.byIcon(Icons.emoji_events_outlined),
+      ),
+    );
+    for (var i = 0; i < 10; i++) {
+      await tester.runAsync(
+        () => Future<void>.delayed(const Duration(milliseconds: 100)),
+      );
+      await tester.pump(const Duration(milliseconds: 100));
+    }
+    expect(find.textContaining(RegExp('starts on|rusza')), findsOneWidget);
+
+    await tester.tap(find.text('2026'));
+    for (var i = 0; i < 10; i++) {
+      await tester.runAsync(
+        () => Future<void>.delayed(const Duration(milliseconds: 100)),
+      );
+      await tester.pump(const Duration(milliseconds: 100));
+    }
+    expect(find.text('Andrea Kimi Antonelli'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
   test('saved GT Europe cup selections migrate to the merged series', () {
     expect(migrateSeriesIds({'f1', 'gtwc-sprint', 'gtwc-endurance'}), {
       'f1',

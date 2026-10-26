@@ -18,7 +18,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from refresh_decision import expects_results, result_types, timestamp
-from standings_progress import progress, results_points, standings_behind
+from standings_progress import PENDING, progress, standings_due
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
@@ -50,18 +50,17 @@ def missing_sessions(now: datetime) -> list[tuple[datetime, str]]:
                 missing.append(
                     (due, f"{series_dir.name}/{event['id']}/{session_type}")
                 )
-    # Standings that do not include a race classified in the last day yet
-    # (F1 has its own lane that polls formula1.com every minute).
+    # Standings that do not include a recently classified race yet, in every
+    # series (F1 also has its own lane that polls formula1.com every minute).
     for series_dir in sorted(path for path in DATA.iterdir() if path.is_dir() and path.name != "f1"):
         for season_dir in sorted(path for path in series_dir.iterdir() if (path / "calendar.json").is_file()):
             try:
-                behind = standings_behind(season_dir, now)
-                _awarded, latest = results_points(season_dir) if behind else (0, None)
+                due = standings_due(season_dir, now)
             except (KeyError, ValueError):
                 continue
-            if behind and latest is not None:
+            if due is not None:
                 missing.append(
-                    (latest + timedelta(minutes=LIVE_GRACE_MINUTES), f"{series_dir.name}/{season_dir.name}/standings")
+                    (due + timedelta(minutes=LIVE_GRACE_MINUTES), f"{series_dir.name}/{season_dir.name}/standings")
                 )
     return sorted(missing)
 
@@ -232,6 +231,16 @@ def rebase_data() -> None:
                 # run; the snapshot being replayed is the most recent one.
                 # (During a rebase "--theirs" is the commit being replayed.)
                 # Standings keep whichever snapshot includes more races.
+                if Path(name).name == PENDING:
+                    # Keep a pending-standings marker if either side has one;
+                    # it expires by itself once the standings move.
+                    for side in ('--theirs', '--ours'):
+                        if subprocess.run(['git', 'checkout', side, '--', name], cwd=ROOT).returncode == 0:
+                            subprocess.run(['git', 'add', '--', name], cwd=ROOT, check=True)
+                            break
+                    else:
+                        subprocess.run(['git', 'rm', '-q', '--', name], cwd=ROOT, check=True)
+                    continue
                 side = '--theirs'
                 if Path(name).name.startswith('standings_'):
                     def staged(number):

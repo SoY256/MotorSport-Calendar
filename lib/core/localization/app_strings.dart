@@ -31,6 +31,9 @@ class AppStrings {
   }
 
   String startsIn(String session) => _en ? '$session in' : '$session za';
+  String startsTbc(String session, int days) => _en
+      ? '$session · time TBC · in $days ${days == 1 ? 'day' : 'days'}'
+      : '$session · godzina do potwierdzenia · za $days ${days == 1 ? 'dzień' : 'dni'}';
   String get liveNow => _en ? 'LIVE' : 'NA ŻYWO';
   String get onTrackNow => _en ? 'On track now' : 'Teraz na torze';
   List<String> get countdownUnits => _en
@@ -66,6 +69,12 @@ class AppStrings {
   String get next => _en ? 'Next' : 'Następny';
   String get plannedSessions =>
       _en ? 'Scheduled sessions' : 'Zaplanowane sesje';
+  String get seasonLive => _en ? 'In progress' : 'Trwa';
+  String get seasonUpcoming => _en ? 'Upcoming' : 'Nadchodzący';
+  String get seasonFinished => _en ? 'Finished' : 'Zakończony';
+  String seasonNotStarted(int season, String firstRace) => _en
+      ? 'The $season season starts on $firstRace. Standings appear after the first race.'
+      : 'Sezon $season rusza $firstRace. Klasyfikacja pojawi się po pierwszym wyścigu.';
   String get noOfficialClassification => _en
       ? 'Completed – no classification available'
       : 'Zakończone – brak klasyfikacji';

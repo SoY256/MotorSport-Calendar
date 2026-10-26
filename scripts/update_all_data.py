@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 from fetch_gt3_results import SERIES as GT3_SERIES  # noqa: E402
 from seasons import current_season, results_season, season_dirs, season_started  # noqa: E402
-from standings_progress import file_progress  # noqa: E402
+from standings_progress import file_progress, mark_pending_standings  # noqa: E402
 
 SERIES = ("f1", "f2", "f3", "imsa", "indycar", "indynxt", "wec", *GT3_SERIES)
 
@@ -186,6 +186,13 @@ def keep_published_standings(staged: Path, target: Path, now: datetime | None = 
             print(f"Kept published {path.relative_to(staged)} ({before} ahead of {after})", file=sys.stderr)
 
 
+def mark_standings_lag(staged: Path, target: Path, now: datetime | None = None) -> None:
+    """Flag every series whose new race results are not in its standings yet,
+    so the live watcher keeps refreshing it until they are."""
+    for season in sorted(path.parent for path in staged.glob("*/*/calendar.json")):
+        mark_pending_standings(season, target / season.relative_to(staged), now)
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -300,6 +307,7 @@ def main(argv: list[str] | None = None) -> int:
                 write_indexes(staged)
             keep_published_results(staged, target)
             keep_published_standings(staged, target)
+            mark_standings_lag(staged, target)
             validate(staged)
             backup = ROOT / "data.previous"
             if backup.exists():
