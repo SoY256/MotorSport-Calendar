@@ -66,6 +66,17 @@ On Windows, `run_app.bat` starts the web version using the bundled Flutter SDK. 
 
 CI verifies formatting, static analysis, widget and visual-regression tests, and both web and Android builds.
 
+## Publishing to Google Play
+
+Releases are published through the Google Play Developer API, without a browser login:
+
+```powershell
+python -m pip install google-auth requests cryptography
+powershell -File scripts/release_android.ps1 -Notes "What changed"
+```
+
+The script builds the bundle for the version in `pubspec.yaml`, checks it is signed with the Secar upload key, uploads it to the closed testing track (Alpha) at 100% and sends it for Google's review (`-NoCommit` validates and discards instead; `python scripts/publish_play.py --check` lists the tracks). It authenticates as the `secar-play-publisher@secar-publishing.iam.gserviceaccount.com` service account (Google Cloud project `secar-publishing`), which in Play Console can only view Secar and release it to testing tracks. Its key is stored outside the repository in `%USERPROFILE%\.secar\play-publisher.json` (or `SECAR_PLAY_KEY`); never commit it. To revoke access, remove the user in Play Console ? Users and permissions or delete the key in Google Cloud.
+
 ## Circuit assets
 
 The bundled circuit layout SVGs come from the open-source [F1DB](https://github.com/f1db/f1db) project and are used under CC BY 4.0. A copy of the license is included at `assets/circuits/F1DB-LICENSE.txt`.
