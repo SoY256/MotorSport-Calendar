@@ -1975,10 +1975,23 @@ class _ResultsPageState extends ConsumerState<_ResultsPage>
                         _publishesResults(selected.seriesId, session),
                   )
                   .toList();
-              // Sessions without an official results feed (e.g. WEC practice
-              // and qualifying) stay in the timetable instead of "waiting".
+              // Sessions that are still to come stay in the timetable; past
+              // ones the organiser never classified (tests, warm-ups,
+              // qualifying published only as a combined result) are listed
+              // as held, never as "scheduled".
               final planned = withoutResults
-                  .where((session) => !awaiting.contains(session))
+                  .where(
+                    (session) =>
+                        !awaiting.contains(session) &&
+                        session.expectedEnd.isAfter(now),
+                  )
+                  .toList();
+              final unclassified = withoutResults
+                  .where(
+                    (session) =>
+                        !awaiting.contains(session) &&
+                        !planned.contains(session),
+                  )
                   .toList();
 
               return Column(
@@ -1998,7 +2011,8 @@ class _ResultsPageState extends ConsumerState<_ResultsPage>
                     ),
                     if (index < sessions.length - 1 ||
                         awaiting.isNotEmpty ||
-                        planned.isNotEmpty)
+                        planned.isNotEmpty ||
+                        unclassified.isNotEmpty)
                       const SizedBox(height: 12),
                   ],
                   if (awaiting.isNotEmpty) ...[
@@ -2011,7 +2025,7 @@ class _ResultsPageState extends ConsumerState<_ResultsPage>
                     ),
                     if (planned.isNotEmpty) const SizedBox(height: 12),
                   ],
-                  if (planned.isNotEmpty)
+                  if (planned.isNotEmpty) ...[
                     _SessionsScheduleCard(
                       title: strings.plannedSessions,
                       icon: Icons.schedule,
@@ -2019,7 +2033,20 @@ class _ResultsPageState extends ConsumerState<_ResultsPage>
                       settings: settings,
                       strings: strings,
                     ),
-                  if (sessions.isEmpty && awaiting.isEmpty && planned.isEmpty)
+                    if (unclassified.isNotEmpty) const SizedBox(height: 12),
+                  ],
+                  if (unclassified.isNotEmpty)
+                    _SessionsScheduleCard(
+                      title: strings.noOfficialClassification,
+                      icon: Icons.flag_outlined,
+                      sessions: unclassified,
+                      settings: settings,
+                      strings: strings,
+                    ),
+                  if (sessions.isEmpty &&
+                      awaiting.isEmpty &&
+                      planned.isEmpty &&
+                      unclassified.isEmpty)
                     _EmptyCard(
                       icon: Icons.hourglass_empty,
                       message: strings.noResults,

@@ -1,4 +1,5 @@
-"""Independent official F1 results lane: no standings, portraits or other series."""
+"""Independent official F1 results lane: classifications as soon as they are
+published, then the standings until they include the race."""
 from __future__ import annotations
 
 import os
@@ -8,6 +9,8 @@ from datetime import datetime, timedelta, timezone
 import json
 
 from fetch_f1_official_results import DATA, ROOT, main as fetch_results
+from seasons import results_season
+from standings_progress import standings_behind
 from watch_live_results import publish_changed_data
 
 MAX_SECONDS = 19_800
@@ -57,11 +60,22 @@ def dispatch_followup() -> None:
         subprocess.run(['gh', 'workflow', 'run', 'f1-live-results.yml', '--ref', 'main'], cwd=ROOT, check=False)
 
 
+def standings_pending(now: datetime) -> bool:
+    """A race classified in the last day is not in the standings yet."""
+    root = DATA / 'f1' / str(results_season(DATA / 'f1', now.year))
+    return standings_behind(root, now)
+
+
 def main() -> None:
     deadline = time.monotonic() + MAX_SECONDS
     while True:
         now = datetime.now(timezone.utc)
         starts = pending_starts(now, timedelta(seconds=MAX_SECONDS))
+        if not starts and standings_pending(now):
+            # formula1.com can publish the standings a few minutes after the
+            # race classification: keep polling them, never wait for the
+            # regular refresh.
+            starts = [now]
         if not starts:
             upcoming = pending_starts(now, FOLLOWUP_LOOKAHEAD, timedelta(0))
             if upcoming:

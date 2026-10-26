@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 from fetch_gt3_results import SERIES as GT3_SERIES  # noqa: E402
 from seasons import current_season, results_season, season_dirs, season_started  # noqa: E402
+from standings_progress import file_progress  # noqa: E402
 
 SERIES = ("f1", "f2", "f3", "imsa", "indycar", "indynxt", "wec", *GT3_SERIES)
 
@@ -127,6 +128,62 @@ def validate_season(data_root: Path, series: str, year: int, now: datetime) -> N
                 raise RuntimeError(
                     f"Future session has results: {series}/{event['id']}/{session_type}"
                 )
+
+
+def classified_sessions(series_dir: Path) -> int:
+    count = 0
+    for path in series_dir.glob("*/events/*.json"):
+        try:
+            sessions = json.loads(path.read_text(encoding="utf-8"))["data"].get("sessions", [])
+        except (KeyError, ValueError):
+            continue
+        count += sum(1 for session in sessions if session.get("results"))
+    return count
+
+
+def keep_published_results(staged: Path, target: Path) -> None:
+    """Keep a series' published data when its new output lost most of its
+    classifications: a changed or failing source (the FIA WEC timing site in
+    October 2026) must never be published as "no results"."""
+    if not target.is_dir():
+        return
+    for published in sorted(path for path in target.iterdir() if path.is_dir() and path.name != "sources"):
+        before = classified_sessions(published)
+        after = classified_sessions(staged / published.name)
+        if before >= 4 and after < before / 2:
+            print(
+                f"{published.name}: new data has {after} of {before} published classifications; keeping the published data",
+                file=sys.stderr,
+            )
+            shutil.rmtree(staged / published.name, ignore_errors=True)
+            shutil.copytree(published, staged / published.name)
+
+
+def keep_published_standings(staged: Path, target: Path, now: datetime | None = None) -> None:
+    """Do not publish a standings table that is behind one published in the
+    last 12 hours.
+
+    Sources update at different speeds after a race (formula1.com within
+    minutes, Jolpica hours later); a lagging source must not undo the
+    standings a faster one already published. Older tables can go down
+    (a post-race disqualification).
+    """
+    if not target.is_dir():
+        return
+    now = now or datetime.now(timezone.utc)
+    for path in sorted(staged.glob("*/*/standings_*.json")):
+        published = target / path.relative_to(staged)
+        before, after = file_progress(published), file_progress(path)
+        if before is None or after is None or after >= before:
+            continue
+        try:
+            written = json.loads(published.read_text(encoding="utf-8"))["lastSuccessfulUpdate"]
+            recent = now - datetime.fromisoformat(written.replace("Z", "+00:00")) < timedelta(hours=12)
+        except (KeyError, ValueError, TypeError):
+            recent = False
+        if recent:
+            shutil.copy2(published, path)
+            print(f"Kept published {path.relative_to(staged)} ({before} ahead of {after})", file=sys.stderr)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -241,6 +298,8 @@ def main(argv: list[str] | None = None) -> int:
                 # Targeted live refreshes must not hide that other series are
                 # still waiting for their regular six-hour update.
                 write_indexes(staged)
+            keep_published_results(staged, target)
+            keep_published_standings(staged, target)
             validate(staged)
             backup = ROOT / "data.previous"
             if backup.exists():

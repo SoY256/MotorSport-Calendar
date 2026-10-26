@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-26T00:13:30.700805Z",
+  "lastSuccessfulUpdate": "2026-10-26T08:42:40.943353Z",
   "source": {
     "name": "sro-official-calendar",
     "url": "https://www.intercontinentalgtchallenge.com/calendar"
@@ -77,6 +77,13 @@
           "startTimeTrack": "2026-02-14 13:05:00+10:00",
           "cancelled": false,
           "durationMinutes": 20
+        },
+        {
+          "type": "QUALIFYING_COMBINED",
+          "name": "Qualifying Combined",
+          "startTimeUtc": "2026-02-14T03:05:00Z",
+          "cancelled": false,
+          "durationMinutes": 5
         },
         {
           "type": "Q2",
@@ -160,6 +167,13 @@
           "startTimeTrack": "2026-05-15 12:00:00+02:00",
           "cancelled": false,
           "durationMinutes": 20
+        },
+        {
+          "type": "QUALIFYING_COMBINED",
+          "name": "Qualifying Combined",
+          "startTimeUtc": "2026-05-15T10:20:00Z",
+          "cancelled": false,
+          "durationMinutes": 5
         },
         {
           "type": "TOP_QUALIFYING_3",

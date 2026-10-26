@@ -29,6 +29,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Queued runs start from the newest data, not from the commit that
+          # was current when they were scheduled (stale standings).
+          ref: main
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"

@@ -79,3 +79,74 @@ class PublicationTests(unittest.TestCase):
     def test_wrong_event_is_rejected(self):
         with self.assertRaises(ValueError):
             merge_event_results({'data': {'eventId': 'a'}}, {'data': {'eventId': 'b'}})
+
+class StandingsPublicationTests(unittest.TestCase):
+    """A job that started before the race must not overwrite the standings a
+    faster job published after it (US GP 2026: 365 points replaced by 340)."""
+
+    def repository(self, directory):
+        root = Path(directory)
+        def git(*args):
+            return subprocess.run(['git', *args], cwd=root, check=True, capture_output=True, text=True).stdout.strip()
+        git('init', '-b', 'main')
+        git('config', 'user.name', 'Test')
+        git('config', 'user.email', 'test@example.invalid')
+        return root, git
+
+    def standings(self, root, points, stamp, wins=8):
+        path = root / 'data/f1/2026/standings_drivers.json'
+        path.parent.mkdir(parents=True, exist_ok=True)
+        rows = [{'code': 'ANT', 'points': points, 'wins': wins}, {'code': 'RUS', 'points': 238}]
+        path.write_text(json.dumps({'lastSuccessfulUpdate': stamp, 'data': rows}, indent=2), encoding='utf-8')
+        return path
+
+    def publish(self, root, git):
+        base = git('merge-base', 'HEAD', 'origin/main')
+        with patch.object(watch_live_results, 'ROOT', root), patch.object(watch_live_results, 'DATA', root / 'data'):
+            watch_live_results.rebase_data()
+            return watch_live_results.keep_newest_standings(base)
+
+    def test_stale_job_keeps_the_newer_published_standings(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root, git = self.repository(directory)
+            path = self.standings(root, 340, 't0')
+            git('add', 'data'); git('commit', '-m', 'before the race')
+            git('branch', 'stale-job')
+            self.standings(root, 365, 't1', wins=9)
+            git('add', 'data'); git('commit', '-m', 'fast job after the race')
+            git('update-ref', 'refs/remotes/origin/main', git('rev-parse', 'HEAD'))
+            git('checkout', 'stale-job')
+            self.standings(root, 340, 't2-later-but-stale')
+            calendar = root / 'data/f1/2026/calendar.json'
+            calendar.write_text('{"data": []}', encoding='utf-8')
+            git('add', 'data'); git('commit', '-m', 'slow job')
+            self.assertTrue(self.publish(root, git))
+            self.assertEqual(json.loads(path.read_text())['data'][0]['points'], 365)
+            self.assertTrue(calendar.is_file())
+
+    def test_only_stale_standings_leave_nothing_to_publish(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root, git = self.repository(directory)
+            path = self.standings(root, 340, 't0')
+            git('add', 'data'); git('commit', '-m', 'before the race')
+            git('branch', 'stale-job')
+            self.standings(root, 365, 't1', wins=9)
+            git('add', 'data'); git('commit', '-m', 'fast job after the race')
+            git('update-ref', 'refs/remotes/origin/main', git('rev-parse', 'HEAD'))
+            git('checkout', 'stale-job')
+            self.standings(root, 340, 't2', wins=8)
+            path.write_text(path.read_text().replace('"RUS"', '"RUS", "x": 1'), encoding='utf-8')
+            git('add', 'data'); git('commit', '-m', 'slow job')
+            self.assertFalse(self.publish(root, git))
+            self.assertEqual(json.loads(path.read_text())['data'][0]['points'], 365)
+
+    def test_a_correction_that_lowers_points_is_published(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root, git = self.repository(directory)
+            path = self.standings(root, 365, 't0', wins=9)
+            git('add', 'data'); git('commit', '-m', 'race')
+            git('update-ref', 'refs/remotes/origin/main', git('rev-parse', 'HEAD'))
+            self.standings(root, 340, 't1', wins=8)
+            git('add', 'data'); git('commit', '-m', 'winner disqualified')
+            self.assertTrue(self.publish(root, git))
+            self.assertEqual(json.loads(path.read_text())['data'][0]['points'], 340)

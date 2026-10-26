@@ -66,6 +66,9 @@ class AppStrings {
   String get next => _en ? 'Next' : 'Następny';
   String get plannedSessions =>
       _en ? 'Scheduled sessions' : 'Zaplanowane sesje';
+  String get noOfficialClassification => _en
+      ? 'Completed – no classification available'
+      : 'Zakończone – brak klasyfikacji';
   String get circuitLength => _en ? 'Circuit length' : 'Długość toru';
   String get lapRecord => _en ? 'Lap record' : 'Rekord toru';
   String get categories => _en ? 'Categories' : 'Kategorie';

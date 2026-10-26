@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-22T14:36:38.410248Z",
+  "lastSuccessfulUpdate": "2026-10-26T08:42:31.411358Z",
   "source": {
     "name": "sro-official-calendar",
     "url": "https://www.britishgt.com/calendar"
@@ -63,20 +63,19 @@
           "durationMinutes": 14
         },
         {
-          "type": "GT3_QUALIFYING_COMBINED",
-          "name": "GT3 Qualifying Combined",
-          "startTimeUtc": "2026-04-25T14:58:00Z",
-          "cancelled": false,
-          "durationMinutes": 5,
-          "timeTbc": true
-        },
-        {
           "type": "GT3_QUALIFYING_2",
           "name": "GT3 Qualifying 2",
           "startTimeUtc": "2026-04-25T14:59:00Z",
           "startTimeTrack": "2026-04-25 15:59:00+01:00",
           "cancelled": false,
           "durationMinutes": 20
+        },
+        {
+          "type": "GT3_QUALIFYING_COMBINED",
+          "name": "GT3 Qualifying Combined",
+          "startTimeUtc": "2026-04-25T15:19:00Z",
+          "cancelled": false,
+          "durationMinutes": 5
         },
         {
           "type": "WARM_UP",
@@ -244,20 +243,19 @@
           "durationMinutes": 20
         },
         {
-          "type": "GT3_QUALIFYING_COMBINED",
-          "name": "GT3 Qualifying Combined",
-          "startTimeUtc": "2026-06-20T17:14:00Z",
-          "cancelled": false,
-          "durationMinutes": 5,
-          "timeTbc": true
-        },
-        {
           "type": "GT3_QUALIFYING_2",
           "name": "GT3 Qualifying 2",
           "startTimeUtc": "2026-06-20T17:15:00Z",
           "startTimeTrack": "2026-06-20 19:15:00+02:00",
           "cancelled": false,
           "durationMinutes": 20
+        },
+        {
+          "type": "GT3_QUALIFYING_COMBINED",
+          "name": "GT3 Qualifying Combined",
+          "startTimeUtc": "2026-06-20T17:35:00Z",
+          "cancelled": false,
+          "durationMinutes": 5
         },
         {
           "type": "R",
@@ -434,20 +432,19 @@
           "durationMinutes": 14
         },
         {
-          "type": "GT3_QUALIFYING_COMBINED",
-          "name": "GT3 Qualifying Combined",
-          "startTimeUtc": "2026-09-05T14:58:00Z",
-          "cancelled": false,
-          "durationMinutes": 5,
-          "timeTbc": true
-        },
-        {
           "type": "GT3_QUALIFYING_2",
           "name": "GT3 Qualifying 2",
           "startTimeUtc": "2026-09-05T14:59:00Z",
           "startTimeTrack": "2026-09-05 15:59:00+01:00",
           "cancelled": false,
           "durationMinutes": 20
+        },
+        {
+          "type": "GT3_QUALIFYING_COMBINED",
+          "name": "GT3 Qualifying Combined",
+          "startTimeUtc": "2026-09-05T15:19:00Z",
+          "cancelled": false,
+          "durationMinutes": 5
         },
         {
           "type": "WARM_UP",
@@ -509,20 +506,19 @@
           "durationMinutes": 14
         },
         {
-          "type": "GT3_QUALIFYING_COMBINED",
-          "name": "GT3 Qualifying Combined",
-          "startTimeUtc": "2026-09-26T15:28:00Z",
-          "cancelled": false,
-          "durationMinutes": 5,
-          "timeTbc": true
-        },
-        {
           "type": "GT3_QUALIFYING_2",
           "name": "GT3 Qualifying 2",
           "startTimeUtc": "2026-09-26T15:29:00Z",
           "startTimeTrack": "2026-09-26 16:29:00+01:00",
           "cancelled": false,
           "durationMinutes": 20
+        },
+        {
+          "type": "GT3_QUALIFYING_COMBINED",
+          "name": "GT3 Qualifying Combined",
+          "startTimeUtc": "2026-09-26T15:49:00Z",
+          "cancelled": false,
+          "durationMinutes": 5
         },
         {
           "type": "WARM_UP",

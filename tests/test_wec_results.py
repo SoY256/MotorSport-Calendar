@@ -3,6 +3,7 @@ import sys
 import unittest
 from pathlib import Path
 from unittest.mock import patch
+from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -10,9 +11,12 @@ import fetch_wec_results
 
 
 def index(*names, event="06_X"):
-    return "".join(
-        f'<a href="Results/15_2026/{event}/679_FIA%20WEC/202609271100_Race/{name}">pdf</a>' for name in names
-    )
+    """Al Kamel results manifest (files.alkamelcloud.com) listing ``names``."""
+    files = [
+        {"url": f"wec/results/15_2026/{event}/679_FIA WEC/202609271100_Race/{unquote(name)}", "isFolder": False}
+        for name in names
+    ]
+    return json.dumps({"folders": [{"name": None, "children": [{"name": event, "children": files}]}]})
 
 
 QUALIFYING = """FIA WEC
@@ -77,6 +81,7 @@ class WecParserTests(unittest.TestCase):
 
     def test_documents_of_another_event_are_ignored(self):
         html = index("06_Hour%206/03_Classification_Race_Hour%206_Final.PDF", event="07_OTHER")
+        fetch_wec_results._DOCUMENTS.clear()
         with patch.object(fetch_wec_results, "fetch", return_value=html.encode()):
             with self.assertRaises(fetch_wec_results.ClassificationUnavailable):
                 fetch_wec_results.classification_url("06_X", 6)
@@ -95,6 +100,7 @@ class WecParserTests(unittest.TestCase):
 
 class WecClassificationTests(unittest.TestCase):
     def _url(self, html, hours=6):
+        fetch_wec_results._DOCUMENTS.clear()
         with patch.object(fetch_wec_results, "fetch", return_value=html.encode()):
             return fetch_wec_results.classification_url("06_X", hours)
 
@@ -125,6 +131,51 @@ class WecClassificationTests(unittest.TestCase):
         html = index("23_Hour%2023/03_Classification_Race_Hour%2023.PDF")
         with self.assertRaises(fetch_wec_results.ClassificationUnavailable):
             self._url(html, 24)
+
+
+
+class WecDocumentSourceTests(unittest.TestCase):
+    def setUp(self):
+        fetch_wec_results._DOCUMENTS.clear()
+
+    def test_event_codes_and_documents_come_from_the_gzipped_manifest(self):
+        import gzip
+
+        manifest = json.dumps({"folders": [{"children": [
+            {"url": "wec/results/15_2026/01_IMOLA/644_FIA WEC Prologue/202604140900_Morning Session/"
+                    "03_Classification_Morning Session.PDF"},
+            {"url": "wec/results/15_2026/01_IMOLA/650_FIA WEC/202604191300_Race/06_Hour 6/"
+                    "03_Classification_Race_Hour 6_Final.PDF"},
+            {"url": "wec/results/15_2026/01_IMOLA/650_FIA WEC/202604191300_Race/06_Hour 6/"
+                    "03_Classification_Race_Hour 6_Final.CSV"},
+            {"url": "wec/results/15_2026/02_SPA/651_ELMS/202605081300_Race/03_Classification_Race.PDF"},
+        ]}]}).encode()
+        with patch.object(fetch_wec_results, "fetch", return_value=gzip.compress(manifest)):
+            self.assertEqual(fetch_wec_results.completed_event_codes(), ["01_IMOLA", "02_SPA"])
+            hrefs = fetch_wec_results.event_hrefs("01_IMOLA")
+            url = fetch_wec_results.classification_url("01_IMOLA", 6, hrefs)
+        self.assertEqual(len(hrefs), 1)
+        self.assertEqual(
+            url,
+            "https://files.alkamelcloud.com/wec/results/15_2026/01_IMOLA/650_FIA%20WEC/202604191300_Race/"
+            "06_Hour%206/03_Classification_Race_Hour%206_Final.PDF",
+        )
+
+    def test_an_empty_documents_list_never_erases_published_results(self):
+        import os
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as directory:
+            season = Path(directory) / "wec" / "2026"
+            season.mkdir(parents=True)
+            event = {"id": "wec-2026-1", "name": "6 Hours of Imola", "resultsPath": "events/01.json",
+                     "sessions": [{"type": "R", "name": "Race", "startTimeUtc": "2026-04-19T11:00:00Z",
+                                   "durationMinutes": 360}]}
+            (season / "calendar.json").write_text(json.dumps({"data": [event]}), encoding="utf-8")
+            with patch.dict(os.environ, {"MOTORSPORT_DATA_ROOT": directory}), \
+                    patch.object(fetch_wec_results, "completed_event_codes", return_value=[]):
+                with self.assertRaises(RuntimeError):
+                    fetch_wec_results.main()
 
 
 class WecCalendarTests(unittest.TestCase):

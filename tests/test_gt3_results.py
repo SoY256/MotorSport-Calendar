@@ -165,6 +165,99 @@ class Gt3LapRecordTests(unittest.TestCase):
         self.assertEqual(gt3.circuit_for("ADAC Ravenol 24h Nürburgring", "Germany", "DE")["name"], "Nürburgring Nordschleife")
         self.assertEqual(gt3.circuit_for("Nürburgring", "Germany", "DE")["name"], "Nürburgring")
 
+ADAC_QUALIFYING = """54th ADAC RAVENOL 24h N\u00fcrburgring
+Started: 20 Qualified: 19 Not Qualified: 1 Not Started: 0
+Provisional Result Top Q2
+Pos. No. Cl. Entrant, Licence | Sponsor, Licence Car Laps Best time Average fasted lap
+Driver, City, Nation, Licence Interval GAP time
+1 130 SP 9 E: Red Bull Team ABT, 1 Lamborghini Huracan GT3 EVO2 3 8:10.485 186.268 kph
+IGTC Mapelli Marco, Monaco, ITA, 1 11:02:03
+PRO Catsburg Nicky, Eindhoven, NED, 2
+2 24 SP 9 E: Lionspeed GP, 48829 Porsche 911 GT3 R (992) Evo26 3 8:30.917 178.817 kph
+IGTC Heinrich Laurin, Feldkirchen bei Graz, GER, 62420 20.432 +20.432 11:15:34
+PRO Vanthoor Laurens, Heusden Zolder, BEL, 903410
+Feller Ricardo, SUI, 1239
+3 170 SP 10 E: Other Team, 1 BMW M4 GT4 4 9:01.000 170.000 kph
+Gt4 Driver, Town, GER, 5
+DNQ
+80 SP 9 E: Winward Racing, E6091-I Mercedes-AMG GT3
+IGTC S: Mercedes-AMG Team RAVENOL
+PRO Engel Maro, Monaco, GER, 11293
+"""
+
+
+class Gt3MissingSessionTests(unittest.TestCase):
+    def test_adac_qualifying_classification(self):
+        title, rows = gt3.nurburgring_classification(ADAC_QUALIFYING)
+        self.assertEqual(title, "Top Qualifying 2")
+        self.assertEqual([row["car #"] for row in rows], ["130", "24"])
+        self.assertEqual(rows[1]["drivers"], "Laurin Heinrich, Laurens Vanthoor, Ricardo Feller")
+        self.assertEqual((rows[1]["best lap"], rows[1]["gap"], rows[1]["team"]), ("8:30.917", "+20.432", "Lionspeed GP"))
+        combined = ADAC_QUALIFYING.replace("Provisional Result Top Q2", "Provisional Result Qualifying 1&2&3")
+        self.assertEqual(gt3.nurburgring_classification(combined)[0], "Qualifying Combined")
+
+    def test_natsoft_title_without_space_after_the_dash(self):
+        text = NATSOFT_RACE.replace("2026 GT World Challenge Australia - Race 1", "2026 Bathurst 12 Hour -Practice 5")
+        self.assertEqual(gt3.natsoft_classification(text, {})[0], "Practice 5")
+
+    def test_qualifying_driver_without_brackets_and_with_name_particles(self):
+        text = (
+            "2026 Meguiar's Bathurst 12 Hour\nMOUNT PANORAMA - BATHURST\n"
+            "2026 Meguiar's Bathurst 12 Hour - Qualifying\nCLASSIFICATION\n"
+            "Pos Car Competitor/Team Driver Vehicle Cap CL Laps Fastest...Lap Gap\n"
+            "11 89 Team KRC Max Hesse (GER) BMW M4 GT3 EVO BRO 8 7 2:02.0234 0:00.4603\n"
+            "12 32 Team WRT Kelvin van der Linde ZAF BMW M4 GT3 EVO PRO 8 7 2:02.0361 0:00.4730\n"
+            "30 50 KTM Vantage Racing Glen Wood (AUS) KTM X-BOW GT2 I 6 4 2:05.7656 0:04.2025\n"
+        )
+        _title, rows = gt3.natsoft_classification(text, {})
+        self.assertEqual([(row["car #"], row["drivers"], row["team"]) for row in rows[:2]], [
+            ("89", "Max Hesse", "Team KRC"), ("32", "Kelvin van der Linde", "Team WRT"),
+        ])
+        # Bathurst's Invitational class is not GT3.
+        self.assertEqual([row["carNumber"] for row in gt3.result_rows(rows, False, {})], ["89", "32"])
+    def test_paid_test_session_is_the_timetable_test_session(self):
+        self.assertEqual(gt3.session_key("Paid Test Session 1"), gt3.session_key("Test Session 1"))
+
+    def test_classifications_missing_from_the_timetable_become_sessions(self):
+        item = {
+            "name": "Meguiar's Bathurst 12 Hour",
+            "start": date(2026, 2, 12),
+            "sessions": [
+                {"type": "Q1", "name": "Qualifying 1", "startTimeUtc": "2026-02-14T03:05:00Z",
+                 "startTimeTrack": "2026-02-14 14:05:00+11:00", "durationMinutes": 20},
+                {"type": "R", "name": "Race", "startTimeUtc": "2026-02-14T19:45:00Z", "durationMinutes": 720},
+            ],
+        }
+        rows = [{"class": "PRO", "drivers": "Cameron Waters"}]
+        parsed = [
+            ("a.pdf", "Qualifying", rows, False, ("Feb", "14", "13:05")),
+            ("b.pdf", "Pirelli Pole Battle", rows, False, ("Feb", "14", "16:15")),
+            ("c.pdf", "Qualifying 1", rows, False, ("Feb", "14", "14:05")),
+            ("d.pdf", "Race 1", [{"class": "GT4", "drivers": "X"}], False, None),
+        ]
+        added = gt3.pdf_only_sessions("igtc", item, parsed)
+        self.assertEqual(
+            [(title, session["type"], session["startTimeUtc"]) for title, session in added],
+            [("Qualifying", "QUALIFYING_COMBINED", "2026-02-14T02:05:00Z"),
+             ("Pirelli Pole Battle", "PIRELLI_POLE_BATTLE", "2026-02-14T05:15:00Z")],
+        )
+        self.assertFalse(any(session.get("timeTbc") for _title, session in added))
+        # A PDF starting exactly when an unclassified timetable session starts
+        # is that session under another name (Bathurst: Q3 = Pole Battle).
+        item["sessions"].insert(1, {"type": "Q3", "name": "Qualifying 3", "startTimeUtc": "2026-02-14T05:15:00Z",
+                                    "durationMinutes": 20})
+        mapped = dict(gt3.pdf_only_sessions("igtc", item, parsed))
+        self.assertIs(mapped["Pirelli Pole Battle"], item["sessions"][1])
+
+    def test_combined_qualifying_follows_the_sessions_it_combines(self):
+        sessions = [
+            {"name": "Qualifying 1", "startTimeUtc": "2026-09-27T13:30:00Z", "durationMinutes": 20},
+            {"name": "Qualifying 2", "startTimeUtc": "2026-09-27T13:50:00Z", "durationMinutes": 20},
+            {"name": "Top Qualifying 1", "startTimeUtc": "2026-09-27T16:00:00Z", "durationMinutes": 20},
+        ]
+        self.assertEqual(gt3.combined_start("Qualifying Combined", sessions), datetime(2026, 9, 27, 14, 10, tzinfo=timezone.utc))
+        self.assertIsNone(gt3.combined_start("Pirelli Pole Battle", sessions))
+
 class Gt3PipelineTests(unittest.TestCase):
     def test_series_lists_stay_in_sync(self):
         self.assertEqual(refresh_decision.GT3_SERIES, frozenset(gt3.SERIES))

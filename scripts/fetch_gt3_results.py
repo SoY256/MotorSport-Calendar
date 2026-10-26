@@ -401,6 +401,8 @@ def session_key(name: str) -> str:
     # "Free Practice 1" (results) and "Practice 1" (timetable) are one session,
     # as are "Main Race" (GTWC Europe) and "Race" (IGTC) on a shared weekend.
     key = re.sub(r"^mainrace", "race", key)
+    # "Paid Test Session 1" (timing PDF) is the timetable's "Test Session 1".
+    key = re.sub(r"^paid(?=test)", "", key)
     return re.sub(r"^(?:free|official)practice", "practice", key)
 
 
@@ -545,7 +547,8 @@ def classification(page: str) -> list[dict[str, str]]:
 
 
 def is_gt3_class(value: str) -> bool:
-    return not re.search(r"\bgt4\b|\bgt2\b|\btcr?\b", value, re.I)
+    # Natsoft class "I" is Bathurst's Invitational class (GT2, IRC GT, ...).
+    return not re.search(r"\bgt4\b|\bgt2\b|\btcr?\b", value, re.I) and value.strip().upper() != "I"
 
 
 LAP_TIME = re.compile(r"\d{1,2}:\d\d\.\d{3,4}")
@@ -642,6 +645,7 @@ BRANDS = re.compile(
     re.I,
 )
 NATSOFT_ROW = re.compile(r"^(\d+|NC|DNF|DNS|DSQ|DQ|RET)\s+(\d+)\s+(.+)$")
+NAME_PARTICLES = {"van", "der", "den", "de", "da", "di", "von", "le", "la", "du", "dos", "del"}
 CLOCK = re.compile(r"^(?:(\d+):)?(\d+):(\d+(?:\.\d+)?)\*?$")
 
 
@@ -668,7 +672,8 @@ def full_name(abbreviated: str, known: dict[str, str]) -> str:
 def natsoft_classification(text: str, known: dict[str, str]) -> tuple[str, list[dict[str, str]]]:
     """Session title and rows from a Natsoft CLASSIFICATION page."""
     lines = [line.strip() for line in text.splitlines()]
-    title = lines[2].split(" - ")[-1].strip() if len(lines) > 2 else ""
+    # "... 12 Hour - Practice 6" but also "... 12 Hour -Practice 5".
+    title = re.split(r"\s+-\s*", lines[2])[-1].strip() if len(lines) > 2 else ""
     race = "Race.Time" in text
     merged: list[str] = []
     for line in lines:
@@ -694,15 +699,24 @@ def natsoft_classification(text: str, known: dict[str, str]) -> tuple[str, list[
         drivers: list[str] = []
         team: list[str] = []
         vehicle: list[str] = []
-        nation = re.search(r"\(([A-Z]{3})\)", " ".join(body))
+        nation = re.search(r"\(([A-Z]{3})\)", " ".join(body)) or re.search(
+            # Some sheets print the nationality without brackets:
+            # "Kelvin van der Linde ZAF BMW M4 GT3 EVO".
+            r"\s([A-Z]{3})\s+(?=(?i:" + BRANDS.pattern.lstrip("^") + r"))", " ".join(body)
+        )
         if nation:
             # Qualifying lists the driver who set the time: "Jayden Ojeda (AUS)".
             before = " ".join(body).split(nation.group(0))[0].strip()
             after = " ".join(body).split(nation.group(0), 1)[1].strip()
+            words = before.split()
+            start = len(words) - 2
+            # "Kelvin van der Linde": family-name particles belong to the name.
+            while start > 0 and words[start].lower() in NAME_PARTICLES:
+                start -= 1
             name = next(
                 (known_name for known_name in sorted(known.values(), key=len, reverse=True)
                  if before.endswith(known_name)),
-                " ".join(before.split()[-2:]),
+                " ".join(words[max(start, 0):]),
             )
             drivers = [name]
             team = [before[: len(before) - len(name)].strip()]
@@ -857,27 +871,48 @@ def nurburgring_classification(text: str) -> tuple[str, list[dict[str, str]]]:
     gaps are given in German ("3 Runden").
     """
     lines = [line.strip() for line in text.splitlines()]
-    any_entry = re.compile(r"^(?:\d+\s+)?\d+\s+\S.*\s\d{1,3}\s+\d+:\d\d:\d\d\.\d+")
+    heading = next(
+        (match.group(1) for line in lines[:12] if (match := re.match(r"^(?:Provisional\s+)?Result\s+(.+)$", line))),
+        "",
+    )
+    # Qualifying: "laps best-time average kph" instead of "laps total fastest".
+    qualifying = re.match(r"(Qualifying\s+[\d&]+|Top\s*Q(?:uali(?:fying)?)?\s*\d)$", heading.strip(), re.I)
+    if qualifying:
+        label = re.sub(r"\s+", " ", qualifying.group(1))
+        title = (
+            "Qualifying Combined" if "&" in label
+            else re.sub(r"^Top\s*Q\w*\s*(\d)$", r"Top Qualifying \1", label, flags=re.I)
+        )
+    else:
+        title = "Race"
+    any_entry = re.compile(r"^(?:\d+\s+)?\d+\s+\S.*\s\d{1,3}\s+\d+:\d\d(?::\d\d)?\.\d+")
     entry = re.compile(
+        r"^(?:(\d+)\s+)?(\d+)\s+(SP\s?9)\s+E:\s*(.+?),\s*\S+\s+(.+?)\s+(\d{1,3})\s+(\d+:\d\d\.\d{3})\s+\d+\.\d+\s*kph"
+        if qualifying else
         r"^(?:(\d+)\s+)?(\d+)\s+(SP\s?9)\s+E:\s*(.+?),\s*\S+\s+(.+?)\s+(\d{1,3})\s+(\d+:\d\d:\d\d\.\d+)"
         r"(?:\s+(\d+:\d\d\.\d{3}))?"
     )
-    driver = re.compile(r"^(?:IGTC\s+)?(?:PRO/AM|PRO-AM|PRO|AM)?\s*([^,]+?)\s*,.*?,\s*([A-Z]{3}),")
+    # "Family Given, City[, ...], NAT, licence" (the city can be missing).
+    driver = re.compile(r"^(?:IGTC\s+)?(?:PRO/AM|PRO-AM|PRO|AM)?\s*([^,]+?)\s*,(?:[^,]*,)*?\s*([A-Z]{3})\s*,")
     rows: list[dict[str, Any]] = []
     current: dict[str, Any] | None = None
     for line in lines:
         match = entry.match(line)
         if match:
-            position, number, _category, entrant, car, laps, total, fastest = match.groups()
+            if qualifying:
+                position, number, _category, entrant, car, laps, fastest = match.groups()
+                total = ""
+            else:
+                position, number, _category, entrant, car, laps, total, fastest = match.groups()
             current = {
                 "pos": position or "NC", "car #": number, "class": "", "drivers": [], "nations": [],
                 "team": entrant, "car": car, "laps": laps, "total": total or "", "best lap": fastest or "",
-                "gap": "",
+                "gap": "", "provider": "adac",
             }
             rows.append(current)
             continue
-        if any_entry.match(line):
-            current = None  # another class
+        if any_entry.match(line) or re.match(r"^(?:\d+\s+)?\d+\s+\S.*\bE:", line) or line in {"DNQ", "DNS", "NC"}:
+            current = None  # another class, or the non-qualified list
             continue
         if current is None:
             continue
@@ -886,11 +921,15 @@ def nurburgring_classification(text: str) -> tuple[str, list[dict[str, str]]]:
         if sponsor:
             current["team"] = sponsor.group(1)
         gap = re.search(r"(\d[\d:.]*|\d+ Runden?)(?:\s+\+\S+(?: Runden?)?)?\s+\d+\.\d+ kph", line)
+        if qualifying:
+            # "... licence  gap-to-leader  +interval  time-of-day"
+            gap = re.search(r"(\d[\d:.]*)\s+\+\S+\s+\d{1,2}:\d\d:\d\d$", line)
         if gap and not current["gap"] and current["pos"] != "1":
             value = gap.group(1)
             laps_down = re.match(r"(\d+) Runden?", value)
             current["gap"] = (
-                f"{laps_down.group(1)} lap{'s' if laps_down.group(1) != '1' else ''}" if laps_down else value
+                f"{laps_down.group(1)} lap{'s' if laps_down.group(1) != '1' else ''}" if laps_down
+                else "+" + re.sub(r"^0(?=\d)", "", value) if qualifying else value
             )
         klass = re.match(r"^(?:IGTC\s+)?(PRO/AM|PRO-AM|PRO|AM)\s", line)
         if klass and not current["class"]:
@@ -908,7 +947,7 @@ def nurburgring_classification(text: str) -> tuple[str, list[dict[str, str]]]:
         if row["pos"].isdigit():  # GT3 positions within the overall field
             place += 1
             row["pos"] = str(place)
-    return "Race", rows
+    return title, rows
 
 
 # --------------------------------------------------------------------------
@@ -1227,6 +1266,9 @@ def import_series(series: str, data_root: Path, pool: ThreadPoolExecutor) -> Non
     team_wins: dict[str, int] = {}
     latest_crew: dict[str, dict[str, Any]] = {}
     now = now_utc()
+    previous_calendar = {
+        event["id"]: event for event in (load_json(folder / "calendar.json") or {}).get("data", [])
+    }
     for round_number, item in enumerate(events, start=1):
         event_id = f"{series}-{season}-{round_number}"
         results_path = f"events/{round_number:02d}-{slugify(item['name'])}.json"
@@ -1259,6 +1301,21 @@ def import_series(series: str, data_root: Path, pool: ThreadPoolExecutor) -> Non
                 }
                 for session in sorted(stored.values(), key=lambda session: session["startTimeUtc"])
             ]
+        # Classified sessions that the timetable does not list (combined
+        # qualifying, Pole Battle, ...) are kept once they were imported.
+        listed_types = {session["type"] for session in item["sessions"]}
+        listed_keys = {session_key(session["name"]) for session in item["sessions"]}
+        earlier = {session["type"]: session for session in previous_calendar.get(event_id, {}).get("sessions", [])}
+        for kind, session in stored.items():
+            if session.get("results") and kind not in listed_types and session_key(session["name"]) not in listed_keys:
+                kept = dict(earlier.get(kind) or {
+                    "type": kind, "name": session["name"], "startTimeUtc": session["startTimeUtc"],
+                    "cancelled": False, "durationMinutes": default_minutes(series, item["name"], session["name"]),
+                    "timeTbc": True,
+                })
+                kept.pop("resultsOnly", None)
+                item["sessions"].append(kept)
+        item["sessions"].sort(key=lambda session: session["startTimeUtc"])
         ended = {
             session["type"]: session
             for session in item["sessions"]
@@ -1461,6 +1518,26 @@ def fetch_results(
                 for session in sessions:
                     due[session["type"]] = ended[session["type"]] = session
                     by_key[session_key(session["name"])] = session["type"]
+        else:
+            # "Bronze Practice" (PDF) is the timetable's "Practice 2 (Bronze
+            # Drivers Only)" when the event has a single bronze session.
+            bronze = [session for session in item["sessions"] if "bronze" in session_key(session["name"])]
+            aliases: set[str] = set()
+            for _url, title, _rows, _final, _started in parsed:
+                key = session_key(title)
+                if key not in by_key and "bronze" in key and len(bronze) == 1:
+                    aliases.add(key)
+                    if bronze[0]["type"] in due:
+                        by_key[key] = bronze[0]["type"]
+            for title, session in pdf_only_sessions(series, item, parsed, set(by_key) | aliases):
+                if any(session is listed for listed in item["sessions"]):
+                    if session["type"] in due:
+                        by_key[session_key(title)] = session["type"]
+                    continue
+                item["sessions"].append(session)
+                due[session["type"]] = ended[session["type"]] = session
+                by_key[session_key(title)] = session["type"]
+            item["sessions"].sort(key=lambda session: session["startTimeUtc"])
         for _url, title, rows, _final, _started in parsed:
             if not re.fullmatch(r"Qualifying \d", title):
                 continue
@@ -1475,7 +1552,10 @@ def fetch_results(
                 continue
             for row in rows:
                 full = crews.get(row["car #"], "")
-                if full and full.count(",") >= row["drivers"].count(","):
+                # Natsoft ("B.Feeney/...") and Suzuka (glued names) crews are
+                # completed from qualifying; the ADAC 24h result prints every
+                # driver in full (its qualifying sheets use other spellings).
+                if row.get("provider") != "adac" and full and full.count(",") >= row["drivers"].count(","):
                     row["drivers"] = full
                     row.pop("nations", None)
             source = "official-timing-classification" if "nations" in rows[0] else "natsoft-official-classification"
@@ -1539,6 +1619,100 @@ def without_foreign_sessions(
     return kept
 
 
+def combined_start(name: str, sessions: list[dict[str, Any]]) -> datetime | None:
+    """A combined classification ("Qualifying Combined", "Qualifying 1&2&3")
+    is complete when the last of the sessions it combines ends."""
+    if not re.search(r"combined|&", name, re.I):
+        return None
+    base = session_key(re.sub(r"combined|[\d&\s]+$", "", name, flags=re.I))
+    parts = [
+        session for session in sessions
+        if session_key(session["name"]).startswith(base) and not re.search(r"combined", session["name"], re.I)
+    ]
+    return max((session_end(session) for session in parts), default=None)
+
+
+def pdf_only_sessions(
+    series: str, item: dict[str, Any], parsed: list[tuple], matched: set[str] = frozenset()
+) -> list[tuple[str, dict[str, Any]]]:
+    """(PDF title, session) for official PDF classifications missing from the
+    timetable: Bathurst's combined qualifying and Pirelli Pole Battle, the 24h
+    Nürburgring's combined qualifying.
+
+    The start comes from the PDF ("Start Sat Feb 14 13:05", track time) with
+    the timetable's UTC offset; otherwise the session is placed after the last
+    qualifying session and its time is marked as not confirmed.
+    """
+    sessions = item["sessions"]
+    known = {session_key(session["name"]) for session in sessions} | set(matched)
+    numbered_qualifying = any(re.fullmatch(r"qualifying\d+", key) for key in known)
+    offsets = [
+        re.search(r"([+-])(\d\d):(\d\d)$", session.get("startTimeTrack") or "") for session in sessions
+    ]
+    offset = next(
+        (
+            (1 if match.group(1) == "+" else -1) * timedelta(hours=int(match.group(2)), minutes=int(match.group(3)))
+            for match in offsets if match
+        ),
+        None,
+    )
+    used = {session["type"] for session in sessions}
+    titles = {session_key(title) for _url, title, _rows, _final, _started in parsed if title}
+    added: list[tuple[str, dict[str, Any]]] = []
+    for _url, title, rows, _final, started in parsed:
+        if not title or not rows or not is_session(title) or not any(is_gt3_class(row.get("class", "")) for row in rows):
+            continue
+        name = "Qualifying Combined" if re.fullmatch(r"qualifying", title, re.I) and numbered_qualifying else title
+        if session_key(title) in known or session_key(name) in known:
+            continue
+        minutes = default_minutes(series, item["name"], name)
+        combined = combined_start(name, sessions)
+        exact = started is not None and offset is not None
+        if exact:
+            month_name, day, clock = started
+            month = next(index for full, index in MONTHS.items() if full.startswith(month_name.lower()))
+            hour, minute = (int(part) for part in clock.split(":"))
+            local = datetime(item["start"].year, month, int(day), hour, minute, tzinfo=timezone.utc)
+            start = local - offset
+            same_time = next(
+                (
+                    session for session in sessions
+                    if session["startTimeUtc"] == iso(start) and session_key(session["name"]) not in titles
+                ),
+                None,
+            )
+            if combined is None and same_time is not None:
+                # Another name for a timetable session: Bathurst's "Qualifying
+                # 3" is the Pirelli Pole Battle.
+                known.add(session_key(title))
+                added.append((title, same_time))
+                continue
+        elif combined is not None:
+            start, exact = combined, True
+        else:
+            qualifying = [
+                session for session in sessions
+                if "qualif" in session["name"].lower() and not session["type"].startswith("R")
+            ]
+            if not qualifying:
+                continue
+            start = max(session_end(session) for session in qualifying)
+        kind = session_type(name)
+        unique, suffix = kind, 2
+        while unique in used:
+            unique, suffix = f"{kind}_{suffix}", suffix + 1
+        used.add(unique)
+        known.update({session_key(title), session_key(name)})
+        session = {
+            "type": unique, "name": name, "startTimeUtc": iso(start), "cancelled": False,
+            "durationMinutes": minutes, "resultsOnly": True,
+        }
+        if not exact:
+            session["timeTbc"] = True
+        added.append((title, session))
+    return added
+
+
 def add_result_only_sessions(
     series: str, event_name: str, sessions: list[dict[str, Any]], links: list[tuple[str, str]]
 ) -> list[dict[str, Any]]:
@@ -1560,7 +1734,10 @@ def add_result_only_sessions(
         if before is None and after is None:
             continue
         minutes = default_minutes(series, event_name, name)
-        if before is not None:
+        combined = combined_start(name, sessions)
+        if combined is not None:
+            start = combined
+        elif before is not None:
             start = session_end(before)
             if after is not None:
                 next_start = datetime.fromisoformat(after["startTimeUtc"].replace("Z", "+00:00"))
@@ -1579,9 +1756,10 @@ def add_result_only_sessions(
             "startTimeUtc": iso(start),
             "cancelled": False,
             "durationMinutes": minutes,
-            "timeTbc": True,
             "resultsOnly": True,
         }
+        if combined is None:
+            session["timeTbc"] = True
         known[session_key(name)] = session
         added.append(session)
     return sorted(sessions + added, key=lambda session: session["startTimeUtc"])

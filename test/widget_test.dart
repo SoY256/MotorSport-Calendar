@@ -703,14 +703,58 @@ void main() {
       expect(tester.takeException(), isNull);
     },
   );
+
+  testWidgets(
+    'past sessions without a classification are not shown as scheduled',
+    (tester) async {
+      SharedPreferences.setMockInitialValues({});
+      final repository = _InProgressWeekendRepository(
+        seriesId: 'gtwc-america',
+        extraSessions: [
+          RaceSession(
+            type: 'Q1',
+            name: 'Qualifying 1',
+            startTimeUtc: DateTime.now().toUtc().subtract(
+              const Duration(days: 3),
+            ),
+            cancelled: false,
+            durationMinutes: 15,
+          ),
+        ],
+      );
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [calendarRepositoryProvider.overrideWithValue(repository)],
+          child: const MotorsportCalendarApp(),
+        ),
+      );
+      addTearDown(() => tester.pumpWidget(const SizedBox.shrink()));
+      await tester.pump(const Duration(milliseconds: 500));
+
+      await tester.tap(find.text('Details'));
+      await tester.pumpAndSettle();
+
+      expect(
+        find.text('Completed – no classification available'),
+        findsOneWidget,
+      );
+      expect(find.text('Qualifying 1'), findsOneWidget);
+      // Only the race that is still to come is scheduled.
+      expect(find.text('Scheduled sessions'), findsOneWidget);
+      expect(tester.takeException(), isNull);
+    },
+  );
 }
 
 class _InProgressWeekendRepository implements CalendarRepository {
-  _InProgressWeekendRepository() {
+  _InProgressWeekendRepository({
+    String seriesId = 'f1',
+    List<RaceSession> extraSessions = const [],
+  }) {
     final now = DateTime.now().toUtc();
     event = RaceEvent(
       id: 'test-weekend',
-      seriesId: 'f1',
+      seriesId: seriesId,
       season: 2026,
       round: 1,
       name: 'Test Grand Prix',
@@ -721,6 +765,7 @@ class _InProgressWeekendRepository implements CalendarRepository {
         countryCode: 'POL',
       ),
       sessions: [
+        ...extraSessions,
         RaceSession(
           type: 'Q',
           name: 'Qualifying',
@@ -756,7 +801,9 @@ class _InProgressWeekendRepository implements CalendarRepository {
       SessionResults(
         type: 'Q',
         name: 'Qualifying',
-        startTimeUtc: event.sessions.first.startTimeUtc,
+        startTimeUtc: event.sessions
+            .firstWhere((session) => session.type == 'Q')
+            .startTimeUtc,
         results: const [
           SessionResult(
             position: 1,

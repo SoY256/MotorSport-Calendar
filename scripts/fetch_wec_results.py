@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import gzip
 import io
 import html as html_lib
 import json
@@ -18,7 +19,10 @@ from seasons import results_season
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = "https://fiawec.alkamelsystems.com/"
+# Al Kamel's timing site became a JavaScript app on 23 Oct 2026; the
+# documents are listed in a public JSON manifest per season.
+FILES = "https://files.alkamelcloud.com/"
+BASE = FILES + "wec/"
 HEADERS = {"User-Agent": "MotorSport-Calendar/0.1 (+https://github.com/SoY256/MotorSport-Calendar)"}
 ENTRY_LIST_URL = "https://www.fiawec.com/umbrella_media/wec26-entrylist-a4-6936d72065269710536636.pdf"
 # The season being imported; main() moves it to the latest started season.
@@ -83,9 +87,33 @@ def entry_list_url() -> str:
     return urljoin("https://www.fiawec.com", links[0]) if links else ENTRY_LIST_URL
 
 
+def season_documents(season: str | None = None) -> list[str]:
+    """Every published document of the season as a path below ``BASE``
+    (``results/15_2026/01_IMOLA/.../03_Classification_....PDF``)."""
+    season = season or timing_season()
+    if season not in _DOCUMENTS:
+        raw = fetch(f"{FILES}wec/manifests/results_{season}.json")
+        if raw[:2] == b"\x1f\x8b":
+            raw = gzip.decompress(raw)
+        urls: list[str] = []
+
+        def walk(nodes) -> None:
+            for node in nodes or []:
+                if node.get("url"):
+                    urls.append(node["url"])
+                walk(node.get("children"))
+
+        walk(json.loads(raw).get("folders"))
+        _DOCUMENTS[season] = [quote(url.removeprefix("wec/")) for url in urls]
+    return _DOCUMENTS[season]
+
+
+_DOCUMENTS: dict[str, list[str]] = {}
+
+
 def completed_event_codes() -> list[str]:
-    html = fetch(f"{BASE}?season={timing_season()}").decode("utf-8", "replace")
-    codes = set(re.findall(r'<option[^>]+value="(\d+_[^"]+)"', html, re.I))
+    prefix = re.compile(rf"^results/{re.escape(timing_season())}/([^/]+)/", re.I)
+    codes = {match.group(1) for document in season_documents() if (match := prefix.match(unquote(document)))}
     return sorted(code for code in codes if not re.fullmatch(r"\d+_20\d{2}(?:-20\d{2})?", code))
 
 
@@ -366,17 +394,22 @@ def fastest_lap_url(code: str, hrefs: list[str] | None = None) -> str:
 def event_hrefs(code: str, html: str | None = None) -> list[str]:
     """FIA WEC timing documents that belong to ``code`` itself.
 
-    The timing site answers requests for an older event with the documents of
-    the current one, so every link is checked against the event folder; the
-    support-series folders on the same page are ignored as well.
+    Only the event's own folder counts, and of it only the FIA WEC session
+    folders (not the support series or the Prologue).
     """
     if html is None:
-        html = fetch(f"{BASE}?evvent={quote(code)}&season={timing_season()}").decode("utf-8", "replace")
+        candidates = season_documents()
+    else:
+        candidates = re.findall(r'href="([^"]+\.PDF)"', html, re.I)
     prefix = f"Results/{timing_season()}/{code}/".casefold()
     hrefs = []
-    for href in re.findall(r'href="([^"]+\.PDF)"', html, re.I):
+    for href in candidates:
         plain = unquote(html_lib.unescape(href))
-        if plain.casefold().startswith(prefix) and re.search(r"/\d+_FIA WEC/", plain):
+        if (
+            plain.casefold().startswith(prefix)
+            and plain.casefold().endswith(".pdf")
+            and re.search(r"/\d+_FIA WEC/", plain)
+        ):
             hrefs.append(href)
     return hrefs
 
@@ -553,11 +586,19 @@ def main() -> None:
     calendar_doc = json.loads(calendar_path.read_text(encoding="utf-8"))
     calendar = calendar_doc["data"]
     events = completed_event_codes()
+    now = datetime.now(timezone.utc)
+    started = [
+        event for event in calendar
+        if min(datetime.fromisoformat(item["startTimeUtc"].replace("Z", "+00:00")) for item in event["sessions"]) <= now
+    ]
+    if started and not events:
+        # A changed or unavailable timing source must never be read as "no
+        # results": fail so the pipeline keeps the last verified data.
+        raise RuntimeError("FIA WEC timing documents list is empty")
     updated = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
     nationalities = entry_nationalities(fetch(entry_list_url()))
     driver_wins: dict[tuple[str, str], int] = {}
     team_wins: dict[tuple[str, str], int] = {}
-    now = datetime.now(timezone.utc)
     try:
         pages = race_pages(fetch(STANDINGS_URL).decode("utf-8", "replace"))
     except Exception as error:
@@ -581,7 +622,7 @@ def main() -> None:
         first_start = min(
             datetime.fromisoformat(item["startTimeUtc"].replace("Z", "+00:00")) for item in event["sessions"]
         )
-        if code is None or first_start > now:
+        if first_start > now or (code is None and not previous):
             payload = {"schemaVersion": 1, "lastSuccessfulUpdate": updated,
                        "source": {"name": "fia-wec-official", "url": STANDINGS_URL},
                        "data": {"eventId": event["id"], "sessions": []}}
@@ -589,7 +630,13 @@ def main() -> None:
                 json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
             )
             continue
-        hrefs = event_hrefs(code)
+        if code is None:
+            # A venue missing from the documents list must not erase the
+            # results already published: every session keeps its last one.
+            print(f"{event['name']}: no timing documents found; keeping published results", file=sys.stderr)
+            hrefs = []
+        else:
+            hrefs = event_hrefs(code)
         sessions_out: dict[str, dict] = {}
         source_url = STANDINGS_URL
         # Practice, qualifying, Hyperpole and warm-up classifications.

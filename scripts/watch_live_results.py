@@ -18,6 +18,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from refresh_decision import expects_results, result_types, timestamp
+from standings_progress import progress, results_points, standings_behind
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
@@ -48,6 +49,19 @@ def missing_sessions(now: datetime) -> list[tuple[datetime, str]]:
                 )
                 missing.append(
                     (due, f"{series_dir.name}/{event['id']}/{session_type}")
+                )
+    # Standings that do not include a race classified in the last day yet
+    # (F1 has its own lane that polls formula1.com every minute).
+    for series_dir in sorted(path for path in DATA.iterdir() if path.is_dir() and path.name != "f1"):
+        for season_dir in sorted(path for path in series_dir.iterdir() if (path / "calendar.json").is_file()):
+            try:
+                behind = standings_behind(season_dir, now)
+                _awarded, latest = results_points(season_dir) if behind else (0, None)
+            except (KeyError, ValueError):
+                continue
+            if behind and latest is not None:
+                missing.append(
+                    (latest + timedelta(minutes=LIVE_GRACE_MINUTES), f"{series_dir.name}/{season_dir.name}/standings")
                 )
     return sorted(missing)
 
@@ -116,10 +130,74 @@ def publish_changed_data() -> None:
         subprocess.run(command, cwd=ROOT, check=True)
     for attempt in range(3):
         subprocess.run(['git', 'fetch', 'origin', 'main'], cwd=ROOT, check=True)
+        base = subprocess.run(
+            ['git', 'merge-base', 'HEAD', 'origin/main'], cwd=ROOT, check=True, capture_output=True, text=True
+        ).stdout.strip()
         rebase_data()
+        if not keep_newest_standings(base):
+            print('Nothing newer than the published data to publish', flush=True)
+            return
         if subprocess.run(['git', 'push', 'origin', 'HEAD:main'], cwd=ROOT).returncode == 0:
             return
     raise RuntimeError('Remote changed during three publication attempts; local results retained')
+
+
+def git_json(revision: str, name: str) -> dict | None:
+    shown = subprocess.run(
+        ['git', 'show', f'{revision}:{name}'], cwd=ROOT, capture_output=True, text=True, encoding='utf-8'
+    )
+    if shown.returncode:
+        return None
+    try:
+        return json.loads(shown.stdout)
+    except ValueError:
+        return None
+
+
+def newer_standings(upstream: dict | None, local: dict | None) -> str:
+    """'upstream' or 'local': the standings snapshot that includes more races.
+
+    A job that started before a race can finish after a faster one; its table
+    must not replace the updated one (points only grow during a season).
+    """
+    if upstream is None:
+        return 'local'
+    if local is None:
+        return 'upstream'
+    return 'upstream' if progress(upstream) > progress(local) else 'local'
+
+
+def keep_newest_standings(base: str) -> bool:
+    """Restore standings that another job published while this one ran and
+    that are ahead of this job's snapshot (a correction that lowers points,
+    e.g. a disqualification, still goes through when nobody else touched the
+    table in the meantime).
+
+    Returns False when nothing of this job's commit is left to publish.
+    """
+    changed = subprocess.run(
+        ['git', 'diff', '--name-only', 'origin/main', 'HEAD', '--', 'data'],
+        cwd=ROOT, check=True, capture_output=True, text=True,
+    ).stdout.split()
+
+    def published_meanwhile(name: str) -> bool:
+        return subprocess.run(['git', 'diff', '--quiet', base, 'origin/main', '--', name], cwd=ROOT).returncode == 1
+
+    restored = [
+        name for name in changed
+        if Path(name).name.startswith('standings_')
+        and published_meanwhile(name)
+        and newer_standings(git_json('origin/main', name), git_json('HEAD', name)) == 'upstream'
+    ]
+    if restored:
+        subprocess.run(['git', 'checkout', 'origin/main', '--', *restored], cwd=ROOT, check=True)
+        for name in restored:
+            print(f'Kept the newer published {name}', flush=True)
+        if len(restored) == len(changed):
+            subprocess.run(['git', 'reset', '--hard', 'origin/main'], cwd=ROOT, check=True)
+            return False
+        subprocess.run(['git', 'commit', '--amend', '--no-edit'], cwd=ROOT, check=True)
+    return bool(changed)
 
 
 def merge_event_results(upstream: dict, local: dict) -> dict:
@@ -150,10 +228,17 @@ def rebase_data() -> None:
             if not path.is_relative_to(DATA.resolve()) or path.suffix != '.json':
                 raise RuntimeError(f'Refusing to auto-resolve non-data conflict: {name}')
             if '/events/' not in name.replace('\\', '/'):
-                # Calendars, standings and indexes are regenerated as a whole by
-                # each run; the snapshot being replayed is the most recent one.
+                # Calendars and indexes are regenerated as a whole by each
+                # run; the snapshot being replayed is the most recent one.
                 # (During a rebase "--theirs" is the commit being replayed.)
-                subprocess.run(['git', 'checkout', '--theirs', '--', name], cwd=ROOT, check=True)
+                # Standings keep whichever snapshot includes more races.
+                side = '--theirs'
+                if Path(name).name.startswith('standings_'):
+                    def staged(number):
+                        return git_json(f':{number}', name)
+                    if newer_standings(staged(2), staged(3)) == 'upstream':
+                        side = '--ours'
+                subprocess.run(['git', 'checkout', side, '--', name], cwd=ROOT, check=True)
                 subprocess.run(['git', 'add', '--', name], cwd=ROOT, check=True)
                 continue
             def stage(number):

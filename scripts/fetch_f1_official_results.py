@@ -7,6 +7,7 @@ import argparse
 import json
 import os
 import re
+from collections import Counter
 from html.parser import HTMLParser
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -15,6 +16,7 @@ from http_retry import read
 
 ROOT = Path(__file__).resolve().parents[1]
 from seasons import results_season  # noqa: E402
+from standings_progress import standings_behind  # noqa: E402
 
 DATA = Path(os.environ.get("MOTORSPORT_DATA_ROOT", ROOT / "data"))
 BASE = "https://www.formula1.com"
@@ -173,11 +175,30 @@ def official_rows(body: str, session_type: str, drivers: dict[str, dict], teams:
     return rows
 
 
+def race_wins(root: Path) -> tuple[Counter, Counter]:
+    """Grand Prix wins per driver code and team name from the official race
+    classifications (the standings pages list points only, and Jolpica's
+    wins lag hours behind)."""
+    drivers: Counter = Counter()
+    teams: Counter = Counter()
+    for event_path in (root / "events").glob("*.json"):
+        document = json.loads(event_path.read_text(encoding="utf-8"))["data"]
+        for session in document.get("sessions", []):
+            if session.get("type") != "R" or session.get("source", {}).get("name") != "formula1-official":
+                continue
+            winner = next((row for row in session.get("results", []) if row.get("position") == 1), None)
+            if winner:
+                drivers[winner["driver"].get("code")] += 1
+                teams[(winner.get("team") or {}).get("name", "").casefold()] += 1
+    return drivers, teams
+
+
 def official_standings(root: Path) -> None:
     year = int(root.name)
     driver_path = root / "standings_drivers.json"
     driver_document = json.loads(driver_path.read_text(encoding="utf-8"))
     drivers = {item.get("code"): item for item in driver_document["data"]}
+    driver_wins, team_wins = race_wins(root)
     parser = Tables()
     parser.feed(fetch(f"{BASE}/en/results/{year}/drivers"))
     ordered_drivers: list[dict] = []
@@ -190,6 +211,7 @@ def official_standings(root: Path) -> None:
         item = drivers[match.group(1)]
         item["position"] = int(cells[0])
         item["points"] = float(cells[4])
+        item["wins"] = max(int(item.get("wins") or 0), driver_wins.get(match.group(1), 0))
         ordered_drivers.append(item)
     if ordered_drivers:
         driver_document["data"] = ordered_drivers
@@ -221,6 +243,8 @@ def official_standings(root: Path) -> None:
             continue
         item["position"] = int(cells[0])
         item["points"] = float(cells[2])
+        wins = team_wins.get(key) or team_wins.get(item["name"].casefold(), 0)
+        item["wins"] = max(int(item.get("wins") or 0), wins)
         ordered_teams.append(item)
     if ordered_teams:
         team_document["data"] = ordered_teams
@@ -235,8 +259,6 @@ def main(live: bool = False) -> None:
     calendar = json.loads((root / "calendar.json").read_text(encoding="utf-8"))["data"]
     pages = race_pages(year)
     drivers, teams = metadata(root)
-    if not live:
-        official_standings(root)
     for event in calendar:
         if event.get("round") is None or event.get("cancelled"):
             continue
@@ -289,6 +311,10 @@ def main(live: bool = False) -> None:
         if changed:
             document["source"] = {"name": "formula1-official", "url": f"{BASE}/en/results/{year}/races/{race_id}/{slug}/race-result"}
             path.write_text(json.dumps(document, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    # After the classifications, so a race imported just now counts. The live
+    # lane fetches the standings only until they include the latest race.
+    if not live or standings_behind(root):
+        official_standings(root)
 
 
 if __name__ == "__main__":
