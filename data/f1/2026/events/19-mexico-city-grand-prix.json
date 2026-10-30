@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-30T19:46:01.859912Z",
+  "lastSuccessfulUpdate": "2026-10-30T23:02:00.547709Z",
   "source": {
     "name": "formula1-official",
     "url": "https://www.formula1.com/en/results/2026/races/1298/mexico/race-result"
@@ -524,8 +524,14 @@
           "name": "formula1-official",
           "url": "https://www.formula1.com/en/results/2026/races/1298/mexico/practice/1"
         }
+      },
+      {
+        "type": "FP2",
+        "name": "Practice 2",
+        "startTimeUtc": "2026-10-30T22:00:00Z",
+        "results": []
       }
     ]
   },
-  "updatedAt": "2026-10-30T19:47:46.401719Z"
+  "updatedAt": "2026-10-30T23:02:47.241671Z"
 }
