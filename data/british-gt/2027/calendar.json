@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "lastSuccessfulUpdate": "2026-10-30T19:52:57.185942Z",
+  "source": {
+    "name": "sro-official-calendar",
+    "url": "https://www.britishgt.com/calendar"
+  },
+  "data": [
+    {
+      "id": "british-gt-2027-1",
+      "seriesId": "british-gt",
+      "season": 2027,
+      "round": 1,
+      "name": "Snetterton",
+      "cancelled": false,
+      "circuit": {
+        "id": "snetterton-circuit",
+        "name": "Snetterton Circuit",
+        "locality": "Snetterton",
+        "country": "Great Britain",
+        "countryCode": "GBR",
+        "lapRecord": "1:46.833 • Morgan Tillbrook / Ben Barnicoat (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-04-11T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/01-snetterton.json"
+    },
+    {
+      "id": "british-gt-2027-2",
+      "seriesId": "british-gt",
+      "season": 2027,
+      "round": 2,
+      "name": "Oulton Park",
+      "cancelled": false,
+      "circuit": {
+        "id": "oulton-park",
+        "name": "Oulton Park",
+        "locality": "Little Budworth",
+        "country": "Great Britain",
+        "countryCode": "GBR",
+        "lapRecord": "1:33.708 • Andrew Howard / Ross Gunn (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-05-31T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/02-oulton-park.json"
+    },
+    {
+      "id": "british-gt-2027-3",
+      "seriesId": "british-gt",
+      "season": 2027,
+      "round": 3,
+      "name": "Spa-Francorchamps",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit-de-spa-francorchamps",
+        "name": "Circuit de Spa-Francorchamps",
+        "locality": "Stavelot",
+        "country": "Belgium",
+        "countryCode": "BEL"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-06-20T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/03-spa-francorchamps.json"
+    },
+    {
+      "id": "british-gt-2027-4",
+      "seriesId": "british-gt",
+      "season": 2027,
+      "round": 4,
+      "name": "Silverstone 500",
+      "cancelled": false,
+      "circuit": {
+        "id": "silverstone-circuit",
+        "name": "Silverstone Circuit",
+        "locality": "Silverstone",
+        "country": "Great Britain",
+        "countryCode": "GBR",
+        "lapRecord": "1:57.730 • Morgan Tillbrook / Ben Barnicoat (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-08-08T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 180,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/04-silverstone-500.json"
+    },
+    {
+      "id": "british-gt-2027-5",
+      "seriesId": "british-gt",
+      "season": 2027,
+      "round": 5,
+      "name": "Brands Hatch",
+      "cancelled": false,
+      "circuit": {
+        "id": "brands-hatch",
+        "name": "Brands Hatch",
+        "locality": "West Kingsdown",
+        "country": "Great Britain",
+        "countryCode": "GBR",
+        "lapRecord": "1:23.855 • Morgan Tillbrook / Ben Barnicoat (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-09-12T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/05-brands-hatch.json"
+    },
+    {
+      "id": "british-gt-2027-6",
+      "seriesId": "british-gt",
+      "season": 2027,
+      "round": 6,
+      "name": "Donington Park",
+      "cancelled": false,
+      "circuit": {
+        "id": "donington-park",
+        "name": "Donington Park",
+        "locality": "Castle Donington",
+        "country": "Great Britain",
+        "countryCode": "GBR",
+        "lapRecord": "1:27.485 • Kevin Tse / Chris Lulham (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-10-17T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 120,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/06-donington-park.json"
+    }
+  ]
+}
