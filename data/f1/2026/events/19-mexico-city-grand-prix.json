@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-30T19:44:00.140314Z",
+  "lastSuccessfulUpdate": "2026-10-30T19:45:00.260392Z",
   "source": {
-    "name": "jolpica-f1",
-    "url": "https://api.jolpi.ca/f1/alpha/schedules/2026/"
+    "name": "formula1-official",
+    "url": "https://www.formula1.com/en/results/2026/races/1298/mexico/race-result"
   },
   "data": {
     "eventId": "round_FoE51DGC",
@@ -12,8 +12,520 @@
         "type": "FP1",
         "name": "Practice 1",
         "startTimeUtc": "2026-10-30T18:30:00Z",
-        "results": []
+        "results": [
+          {
+            "position": 1,
+            "positionText": "1",
+            "driver": {
+              "id": "leclerc",
+              "code": "LEC",
+              "givenName": "Charles",
+              "familyName": "Leclerc",
+              "nationality": "Monegasque"
+            },
+            "team": {
+              "id": "team_LjEBz7Xq",
+              "name": "Ferrari",
+              "color": "#ED1131"
+            },
+            "carNumber": 16,
+            "time": "1:18.128",
+            "laps": 29,
+            "points": null,
+            "status": null,
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 2,
+            "positionText": "2",
+            "driver": {
+              "id": "antonelli",
+              "code": "ANT",
+              "givenName": "Andrea Kimi",
+              "familyName": "Antonelli",
+              "nationality": "Italian"
+            },
+            "team": {
+              "id": "team_tdiMmtQx",
+              "name": "Mercedes",
+              "color": "#00D7B6"
+            },
+            "carNumber": 12,
+            "time": "+0.659s",
+            "laps": 30,
+            "points": null,
+            "status": null,
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 3,
+            "positionText": "3",
+            "driver": {
+              "id": "f1-VES",
+              "code": "VES",
+              "givenName": "Frederik",
+              "familyName": "Vesti",
+              "nationality": null
+            },
+            "team": {
+              "id": "team_tdiMmtQx",
+              "name": "Mercedes",
+              "color": "#00D7B6"
+            },
+            "carNumber": 72,
+            "time": "+0.733s",
+            "laps": 24,
+            "points": null,
+            "status": null,
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 4,
+            "positionText": "4",
+            "driver": {
+              "id": "hamilton",
+              "code": "HAM",
+              "givenName": "Lewis",
+              "familyName": "Hamilton",
+              "nationality": "British"
+            },
+            "team": {
+              "id": "team_LjEBz7Xq",
+              "name": "Ferrari",
+              "color": "#ED1131"
+            },
+            "carNumber": 44,
+            "time": "+0.738s",
+            "laps": 25,
+            "points": null,
+            "status": null,
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 5,
+            "positionText": "5",
+            "driver": {
+              "id": "f1-IWA",
+              "code": "IWA",
+              "givenName": "Ayumu",
+              "familyName": "Iwasa",
+              "nationality": null
+            },
+            "team": {
+              "id": "team_SYB8m2Vp",
+              "name": "Red Bull",
+              "color": "#4781D7"
+            },
+            "carNumber": 36,
+            "time": "+0.985s",
+            "laps": 23,
+            "points": null,
+            "status": null,
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 6,
+            "positionText": "6",
+            "driver": {
+              "id": "gasly",
+              "code": "GAS",
+              "givenName": "Pierre",
+              "familyName": "Gasly",
+              "nationality": "French"
+            },
+            "team": {
+              "id": null,
+              "name": "Alpine",
+              "color": null
+            },
+            "carNumber": 10,
+            "time": "+1.082s",
+            "laps": 33,
+            "points": null,
+            "status": null,
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 7,
+            "positionText": "7",
+            "driver": {
+              "id": "alonso",
+              "code": "ALO",
+              "givenName": "Fernando",
+              "familyName": "Alonso",
+              "nationality": "Spanish"
+            },
+            "team": {
+              "id": "team_fhnXl3cF",
+              "name": "Aston Martin",
+              "color": "#229971"
+            },
+            "carNumber": 14,
+            "time": "+1.229s",
+            "laps": 29,
+            "points": null,
+            "status": null,
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 8,
+            "positionText": "8",
+            "driver": {
+              "id": "piastri",
+              "code": "PIA",
+              "givenName": "Oscar",
+              "familyName": "Piastri",
+              "nationality": "Australian"
+            },
+            "team": {
+              "id": "team_jJ6cuwXz",
+              "name": "McLaren",
+              "color": "#F47600"
+            },
+            "carNumber": 81,
+            "time": "+1.248s",
+            "laps": 30,
+            "points": null,
+            "status": null,
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 9,
+            "positionText": "9",
+            "driver": {
+              "id": "bearman",
+              "code": "BEA",
+              "givenName": "Oliver",
+              "familyName": "Bearman",
+              "nationality": "British"
+            },
+            "team": {
+              "id": "team_aDYlrycX",
+              "name": "Haas F1 Team",
+              "color": "#9C9FA2"
+            },
+            "carNumber": 87,
+            "time": "+1.284s",
+            "laps": 28,
+            "points": null,
+            "status": null,
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 10,
+            "positionText": "10",
+            "driver": {
+              "id": "arvid_lindblad",
+              "code": "LIN",
+              "givenName": "Arvid",
+              "familyName": "Lindblad",
+              "nationality": "British"
+            },
+            "team": {
+              "id": "team_M2xA0S6V",
+              "name": "RB F1 Team",
+              "color": "#6C98FF"
+            },
+            "carNumber": 41,
+            "time": "+1.350s",
+            "laps": 30,
+            "points": null,
+            "status": null,
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 11,
+            "positionText": "11",
+            "driver": {
+              "id": "hadjar",
+              "code": "HAD",
+              "givenName": "Isack",
+              "familyName": "Hadjar",
+              "nationality": "French"
+            },
+            "team": {
+              "id": "team_SYB8m2Vp",
+              "name": "Red Bull",
+              "color": "#4781D7"
+            },
+            "carNumber": 6,
+            "time": "+1.417s",
+            "laps": 21,
+            "points": null,
+            "status": null,
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 12,
+            "positionText": "12",
+            "driver": {
+              "id": "f1-TSO",
+              "code": "TSO",
+              "givenName": "Nikola",
+              "familyName": "Tsolov",
+              "nationality": null
+            },
+            "team": {
+              "id": "team_M2xA0S6V",
+              "name": "RB F1 Team",
+              "color": "#6C98FF"
+            },
+            "carNumber": 91,
+            "time": "+1.476s",
+            "laps": 29,
+            "points": null,
+            "status": null,
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 13,
+            "positionText": "13",
+            "driver": {
+              "id": "hulkenberg",
+              "code": "HUL",
+              "givenName": "Nico",
+              "familyName": "Hülkenberg",
+              "nationality": "German"
+            },
+            "team": {
+              "id": "team_D9V5gkPb",
+              "name": "Audi",
+              "color": "#FF2D00"
+            },
+            "carNumber": 27,
+            "time": "+1.480s",
+            "laps": 27,
+            "points": null,
+            "status": null,
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 14,
+            "positionText": "14",
+            "driver": {
+              "id": "f1-MIN",
+              "code": "MIN",
+              "givenName": "Gabriele",
+              "familyName": "Mini",
+              "nationality": null
+            },
+            "team": {
+              "id": null,
+              "name": "Alpine",
+              "color": null
+            },
+            "carNumber": 62,
+            "time": "+1.818s",
+            "laps": 22,
+            "points": null,
+            "status": null,
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 15,
+            "positionText": "15",
+            "driver": {
+              "id": "f1-HIR",
+              "code": "HIR",
+              "givenName": "Ryo",
+              "familyName": "Hirakawa",
+              "nationality": null
+            },
+            "team": {
+              "id": "team_aDYlrycX",
+              "name": "Haas F1 Team",
+              "color": "#9C9FA2"
+            },
+            "carNumber": 50,
+            "time": "+1.854s",
+            "laps": 30,
+            "points": null,
+            "status": null,
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 16,
+            "positionText": "16",
+            "driver": {
+              "id": "sainz",
+              "code": "SAI",
+              "givenName": "Carlos",
+              "familyName": "Sainz",
+              "nationality": "Spanish"
+            },
+            "team": {
+              "id": "team_IJAI583X",
+              "name": "Williams",
+              "color": "#1868DB"
+            },
+            "carNumber": 55,
+            "time": "+1.878s",
+            "laps": 31,
+            "points": null,
+            "status": null,
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 17,
+            "positionText": "17",
+            "driver": {
+              "id": "f1-FOR",
+              "code": "FOR",
+              "givenName": "Leonardo",
+              "familyName": "Fornaroli",
+              "nationality": null
+            },
+            "team": {
+              "id": "team_jJ6cuwXz",
+              "name": "McLaren",
+              "color": "#F47600"
+            },
+            "carNumber": 67,
+            "time": "+2.107s",
+            "laps": 25,
+            "points": null,
+            "status": null,
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 18,
+            "positionText": "18",
+            "driver": {
+              "id": "perez",
+              "code": "PER",
+              "givenName": "Sergio",
+              "familyName": "Pérez",
+              "nationality": "Mexican"
+            },
+            "team": {
+              "id": "team_nVXl8xvk",
+              "name": "Cadillac F1 Team",
+              "color": "#AAAAAD"
+            },
+            "carNumber": 11,
+            "time": "+2.267s",
+            "laps": 31,
+            "points": null,
+            "status": null,
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 19,
+            "positionText": "19",
+            "driver": {
+              "id": "f1-CRA",
+              "code": "CRA",
+              "givenName": "Jak",
+              "familyName": "Crawford",
+              "nationality": null
+            },
+            "team": {
+              "id": "team_fhnXl3cF",
+              "name": "Aston Martin",
+              "color": "#229971"
+            },
+            "carNumber": 34,
+            "time": "+2.675s",
+            "laps": 15,
+            "points": null,
+            "status": null,
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 20,
+            "positionText": "20",
+            "driver": {
+              "id": "f1-BRO",
+              "code": "BRO",
+              "givenName": "Luke",
+              "familyName": "Browning",
+              "nationality": null
+            },
+            "team": {
+              "id": "team_IJAI583X",
+              "name": "Williams",
+              "color": "#1868DB"
+            },
+            "carNumber": 46,
+            "time": "+2.741s",
+            "laps": 33,
+            "points": null,
+            "status": null,
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 21,
+            "positionText": "21",
+            "driver": {
+              "id": "f1-SLA",
+              "code": "SLA",
+              "givenName": "Freddie",
+              "familyName": "Slater",
+              "nationality": null
+            },
+            "team": {
+              "id": "team_D9V5gkPb",
+              "name": "Audi",
+              "color": "#FF2D00"
+            },
+            "carNumber": 98,
+            "time": "+2.817s",
+            "laps": 14,
+            "points": null,
+            "status": null,
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 22,
+            "positionText": "22",
+            "driver": {
+              "id": "f1-HER",
+              "code": "HER",
+              "givenName": "Colton",
+              "familyName": "Herta",
+              "nationality": null
+            },
+            "team": {
+              "id": "team_nVXl8xvk",
+              "name": "Cadillac F1 Team",
+              "color": "#AAAAAD"
+            },
+            "carNumber": 25,
+            "time": "+3.237s",
+            "laps": 30,
+            "points": null,
+            "status": null,
+            "classified": true,
+            "components": {}
+          }
+        ],
+        "source": {
+          "name": "formula1-official",
+          "url": "https://www.formula1.com/en/results/2026/races/1298/mexico/practice/1"
+        }
       }
     ]
-  }
+  },
+  "updatedAt": "2026-10-30T19:45:41.176302Z"
 }
