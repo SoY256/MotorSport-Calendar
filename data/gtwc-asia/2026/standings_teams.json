@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-31T11:12:26.200617Z",
+  "lastSuccessfulUpdate": "2026-10-31T11:13:26.353181Z",
   "source": {
     "name": "sro-official-standings",
     "url": "https://www.gt-world-challenge-asia.com/standings"
@@ -8,7 +8,7 @@
   "data": [
     {
       "position": 1,
-      "points": 184.0,
+      "points": 208.0,
       "wins": 2,
       "id": "absolute-racing",
       "name": "Absolute Racing",
@@ -17,7 +17,7 @@
     },
     {
       "position": 2,
-      "points": 165.0,
+      "points": 173.0,
       "wins": 1,
       "id": "audi-sport-asia-team-phantom",
       "name": "Audi Sport Asia Team Phantom",
@@ -26,7 +26,7 @@
     },
     {
       "position": 3,
-      "points": 128.0,
+      "points": 143.0,
       "wins": 2,
       "id": "origine-motorsport",
       "name": "Origine Motorsport",
@@ -35,7 +35,7 @@
     },
     {
       "position": 4,
-      "points": 114.0,
+      "points": 141.0,
       "wins": 3,
       "id": "harmony-racing",
       "name": "Harmony Racing",
@@ -44,21 +44,21 @@
     },
     {
       "position": 5,
-      "points": 101.0,
-      "wins": 0,
-      "id": "team-krc",
-      "name": "Team KRC",
-      "category": "OVERALL",
-      "color": "#0066B1"
-    },
-    {
-      "position": 6,
-      "points": 96.0,
+      "points": 108.0,
       "wins": 1,
       "id": "phantom-global-racing",
       "name": "Phantom Global Racing",
       "category": "OVERALL",
       "color": "#D5001C"
+    },
+    {
+      "position": 6,
+      "points": 105.0,
+      "wins": 0,
+      "id": "team-krc",
+      "name": "Team KRC",
+      "category": "OVERALL",
+      "color": "#0066B1"
     },
     {
       "position": 7,
@@ -71,7 +71,7 @@
     },
     {
       "position": 8,
-      "points": 26.0,
+      "points": 36.0,
       "wins": 0,
       "id": "craft-bamboo-racing",
       "name": "Craft-Bamboo Racing",
@@ -89,7 +89,7 @@
     },
     {
       "position": 10,
-      "points": 25.0,
+      "points": 26.0,
       "wins": 0,
       "id": "climax-racing",
       "name": "Climax Racing",
@@ -136,19 +136,19 @@
       "position": 15,
       "points": 6.0,
       "wins": 0,
-      "id": "plus-with-bmw-m-team-studie",
-      "name": "PLUS with BMW M Team Studie",
+      "id": "amac-motorsport",
+      "name": "AMAC Motorsport",
       "category": "OVERALL",
-      "color": "#0066B1"
+      "color": "#D5001C"
     },
     {
       "position": 16,
       "points": 6.0,
       "wins": 0,
-      "id": "amac-motorsport",
-      "name": "AMAC Motorsport",
+      "id": "plus-with-bmw-m-team-studie",
+      "name": "PLUS with BMW M Team Studie",
       "category": "OVERALL",
-      "color": "#D5001C"
+      "color": "#0066B1"
     }
   ]
 }
