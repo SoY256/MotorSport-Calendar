@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-31T13:02:19.886672Z",
+  "lastSuccessfulUpdate": "2026-10-31T22:02:00.540007Z",
   "source": {
     "name": "formula1-official",
     "url": "https://www.formula1.com/en/results/2026/races/1298/mexico/race-result"
@@ -1558,8 +1558,14 @@
           "name": "formula1-official",
           "url": "https://www.formula1.com/en/results/2026/races/1298/mexico/practice/3"
         }
+      },
+      {
+        "type": "Q",
+        "name": "Qualifying",
+        "startTimeUtc": "2026-10-31T21:00:00Z",
+        "results": []
       }
     ]
   },
-  "updatedAt": "2026-10-31T18:48:34.505980Z"
+  "updatedAt": "2026-10-31T22:03:54.314152Z"
 }
