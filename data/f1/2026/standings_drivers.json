@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-11-01T22:42:02.140117Z",
+  "lastSuccessfulUpdate": "2026-11-01T22:45:01.805642Z",
   "source": {
     "name": "formula1-official",
     "url": "https://www.formula1.com/en/results/2026/drivers"
@@ -314,6 +314,20 @@
         "cadillac"
       ],
       "imageUrl": "assets/portraits/faces/f1/valtteri-bottas.jpg"
+    },
+    {
+      "position": 24,
+      "points": 0.0,
+      "wins": 0,
+      "id": "ryo_hirakawa",
+      "code": "HIR",
+      "givenName": "Ryo",
+      "familyName": "Hirakawa",
+      "nationality": "Japanese",
+      "teamIds": [
+        "haas"
+      ],
+      "imageUrl": "assets/portraits/faces/wec/ryo-hirakawa.jpg"
     },
     {
       "position": 24,
