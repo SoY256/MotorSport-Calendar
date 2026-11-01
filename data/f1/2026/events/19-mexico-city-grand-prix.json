@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-11-01T14:31:05.952805Z",
+  "lastSuccessfulUpdate": "2026-11-01T20:01:38.830456Z",
   "source": {
     "name": "formula1-official",
     "url": "https://www.formula1.com/en/results/2026/races/1298/mexico/race-result"
@@ -339,11 +339,11 @@
             "position": 15,
             "positionText": "15",
             "driver": {
-              "id": "f1-HIR",
+              "id": "ryo_hirakawa",
               "code": "HIR",
               "givenName": "Ryo",
               "familyName": "Hirakawa",
-              "nationality": null
+              "nationality": "Japanese"
             },
             "team": {
               "id": "team_aDYlrycX",
@@ -1465,11 +1465,11 @@
             "position": 19,
             "positionText": "19",
             "driver": {
-              "id": "f1-HIR",
+              "id": "ryo_hirakawa",
               "code": "HIR",
               "givenName": "Ryo",
               "familyName": "Hirakawa",
-              "nationality": null
+              "nationality": "Japanese"
             },
             "team": {
               "id": "team_aDYlrycX",
@@ -1959,11 +1959,11 @@
             "position": 18,
             "positionText": "18",
             "driver": {
-              "id": "f1-HIR",
+              "id": "ryo_hirakawa",
               "code": "HIR",
               "givenName": "Ryo",
               "familyName": "Hirakawa",
-              "nationality": null
+              "nationality": "Japanese"
             },
             "team": {
               "id": "team_aDYlrycX",
@@ -2075,8 +2075,14 @@
           "name": "formula1-official",
           "url": "https://www.formula1.com/en/results/2026/races/1298/mexico/qualifying"
         }
+      },
+      {
+        "type": "R",
+        "name": "Race",
+        "startTimeUtc": "2026-11-01T20:00:00Z",
+        "results": []
       }
     ]
   },
-  "updatedAt": "2026-11-01T14:33:05.294855Z"
+  "updatedAt": "2026-11-01T20:03:34.623098Z"
 }
