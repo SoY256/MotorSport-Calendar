@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-11-01T22:45:01.805642Z",
+  "lastSuccessfulUpdate": "2026-11-02T08:26:30.031362Z",
   "source": {
     "name": "formula1-official",
     "url": "https://www.formula1.com/en/results/2026/races/1298/mexico/race-result"
@@ -2223,52 +2223,6 @@
             "position": 7,
             "positionText": "7",
             "driver": {
-              "id": "piastri",
-              "code": "PIA",
-              "givenName": "Oscar",
-              "familyName": "Piastri",
-              "nationality": "Australian"
-            },
-            "team": {
-              "id": "team_jJ6cuwXz",
-              "name": "McLaren",
-              "color": "#F47600"
-            },
-            "carNumber": 81,
-            "time": "+19.475s",
-            "laps": 71,
-            "points": 6.0,
-            "status": null,
-            "classified": true,
-            "components": {}
-          },
-          {
-            "position": 8,
-            "positionText": "8",
-            "driver": {
-              "id": "colapinto",
-              "code": "COL",
-              "givenName": "Franco",
-              "familyName": "Colapinto",
-              "nationality": "Argentine"
-            },
-            "team": {
-              "id": null,
-              "name": "Alpine",
-              "color": null
-            },
-            "carNumber": 43,
-            "time": "+20.204s",
-            "laps": 71,
-            "points": 4.0,
-            "status": null,
-            "classified": true,
-            "components": {}
-          },
-          {
-            "position": 9,
-            "positionText": "9",
-            "driver": {
               "id": "lawson",
               "code": "LAW",
               "givenName": "Liam",
@@ -2283,37 +2237,14 @@
             "carNumber": 30,
             "time": "+20.899s",
             "laps": 71,
-            "points": 2.0,
+            "points": 6.0,
             "status": null,
             "classified": true,
             "components": {}
           },
           {
-            "position": 10,
-            "positionText": "10",
-            "driver": {
-              "id": "gasly",
-              "code": "GAS",
-              "givenName": "Pierre",
-              "familyName": "Gasly",
-              "nationality": "French"
-            },
-            "team": {
-              "id": null,
-              "name": "Alpine",
-              "color": null
-            },
-            "carNumber": 10,
-            "time": "+21.483s",
-            "laps": 71,
-            "points": 1.0,
-            "status": null,
-            "classified": true,
-            "components": {}
-          },
-          {
-            "position": 11,
-            "positionText": "11",
+            "position": 8,
+            "positionText": "8",
             "driver": {
               "id": "bortoleto",
               "code": "BOR",
@@ -2329,14 +2260,14 @@
             "carNumber": 5,
             "time": "+22.041s",
             "laps": 71,
-            "points": 0.0,
+            "points": 4.0,
             "status": null,
             "classified": true,
             "components": {}
           },
           {
-            "position": 12,
-            "positionText": "12",
+            "position": 9,
+            "positionText": "9",
             "driver": {
               "id": "hadjar",
               "code": "HAD",
@@ -2352,14 +2283,14 @@
             "carNumber": 6,
             "time": "+22.503s",
             "laps": 71,
-            "points": 0.0,
+            "points": 2.0,
             "status": null,
             "classified": true,
             "components": {}
           },
           {
-            "position": 13,
-            "positionText": "13",
+            "position": 10,
+            "positionText": "10",
             "driver": {
               "id": "ryo_hirakawa",
               "code": "HIR",
@@ -2375,14 +2306,14 @@
             "carNumber": 50,
             "time": "+25.373s",
             "laps": 71,
-            "points": 0.0,
+            "points": 1.0,
             "status": null,
             "classified": true,
             "components": {}
           },
           {
-            "position": 14,
-            "positionText": "14",
+            "position": 11,
+            "positionText": "11",
             "driver": {
               "id": "albon",
               "code": "ALB",
@@ -2404,8 +2335,8 @@
             "components": {}
           },
           {
-            "position": 15,
-            "positionText": "15",
+            "position": 12,
+            "positionText": "12",
             "driver": {
               "id": "sainz",
               "code": "SAI",
@@ -2427,8 +2358,31 @@
             "components": {}
           },
           {
-            "position": 16,
-            "positionText": "16",
+            "position": 13,
+            "positionText": "13",
+            "driver": {
+              "id": "piastri",
+              "code": "PIA",
+              "givenName": "Oscar",
+              "familyName": "Piastri",
+              "nationality": "Australian"
+            },
+            "team": {
+              "id": "team_jJ6cuwXz",
+              "name": "McLaren",
+              "color": "#F47600"
+            },
+            "carNumber": 81,
+            "time": "+29.475s",
+            "laps": 71,
+            "points": 0.0,
+            "status": null,
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 14,
+            "positionText": "14",
             "driver": {
               "id": "hulkenberg",
               "code": "HUL",
@@ -2450,8 +2404,31 @@
             "components": {}
           },
           {
-            "position": 17,
-            "positionText": "17",
+            "position": 15,
+            "positionText": "15",
+            "driver": {
+              "id": "colapinto",
+              "code": "COL",
+              "givenName": "Franco",
+              "familyName": "Colapinto",
+              "nationality": "Argentine"
+            },
+            "team": {
+              "id": null,
+              "name": "Alpine",
+              "color": null
+            },
+            "carNumber": 43,
+            "time": "+30.204s",
+            "laps": 71,
+            "points": 0.0,
+            "status": null,
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 16,
+            "positionText": "16",
             "driver": {
               "id": "perez",
               "code": "PER",
@@ -2466,6 +2443,29 @@
             },
             "carNumber": 11,
             "time": "+30.695s",
+            "laps": 71,
+            "points": 0.0,
+            "status": null,
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 17,
+            "positionText": "17",
+            "driver": {
+              "id": "gasly",
+              "code": "GAS",
+              "givenName": "Pierre",
+              "familyName": "Gasly",
+              "nationality": "French"
+            },
+            "team": {
+              "id": null,
+              "name": "Alpine",
+              "color": null
+            },
+            "carNumber": 10,
+            "time": "+51.483s",
             "laps": 71,
             "points": 0.0,
             "status": null,
@@ -2595,5 +2595,5 @@
       }
     ]
   },
-  "updatedAt": "2026-11-01T22:46:40.133995Z"
+  "updatedAt": "2026-11-02T08:27:18.299280Z"
 }
