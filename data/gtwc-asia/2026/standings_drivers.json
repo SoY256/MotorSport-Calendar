@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-11-03T01:22:13.216504Z",
+  "lastSuccessfulUpdate": "2026-11-03T08:05:23.280686Z",
   "source": {
     "name": "sro-official-standings",
     "url": "https://www.gt-world-challenge-asia.com/standings"
@@ -8,7 +8,7 @@
   "data": [
     {
       "position": 1,
-      "points": 139.0,
+      "points": 164.0,
       "wins": 0,
       "id": "lyu-wei",
       "code": "",
@@ -25,7 +25,7 @@
     },
     {
       "position": 2,
-      "points": 125.0,
+      "points": 143.0,
       "wins": 0,
       "id": "huang-ruohan",
       "code": "911",
@@ -48,7 +48,7 @@
     },
     {
       "position": 2,
-      "points": 125.0,
+      "points": 143.0,
       "wins": 2,
       "id": "alessandro-ghiretti",
       "code": "911",
@@ -94,7 +94,7 @@
     },
     {
       "position": 4,
-      "points": 108.0,
+      "points": 118.0,
       "wins": 0,
       "id": "anthony-liu-xu",
       "code": "37",
@@ -117,7 +117,30 @@
     },
     {
       "position": 5,
-      "points": 106.0,
+      "points": 110.0,
+      "wins": 2,
+      "id": "laurin-heinrich",
+      "code": "11",
+      "givenName": "Laurin",
+      "familyName": "Heinrich",
+      "nationality": "DEU",
+      "teamIds": [
+        "origine-motorsport"
+      ],
+      "teamNames": [
+        "Origine Motorsport"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/laurin-heinrich.jpg",
+      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_873.png",
+      "profile": "https://www.gt-world-challenge-asia.com/driver/873/laurin-heinrich"
+    },
+    {
+      "position": 6,
+      "points": 107.0,
       "wins": 0,
       "id": "cheng-congfu",
       "code": "16",
@@ -139,8 +162,8 @@
       "profile": "https://www.gt-world-challenge-asia.com/driver/835/cheng-congfu"
     },
     {
-      "position": 5,
-      "points": 106.0,
+      "position": 6,
+      "points": 107.0,
       "wins": 0,
       "id": "yu-kuai",
       "code": "16",
@@ -160,29 +183,6 @@
       "imageUrl": "assets/portraits/faces/gt3/yu-kuai.jpg",
       "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_836.png",
       "profile": "https://www.gt-world-challenge-asia.com/driver/836/james-yu-kuai"
-    },
-    {
-      "position": 6,
-      "points": 85.0,
-      "wins": 2,
-      "id": "laurin-heinrich",
-      "code": "11",
-      "givenName": "Laurin",
-      "familyName": "Heinrich",
-      "nationality": "DEU",
-      "teamIds": [
-        "origine-motorsport"
-      ],
-      "teamNames": [
-        "Origine Motorsport"
-      ],
-      "teamColors": [
-        "#D5001C"
-      ],
-      "category": "OVERALL",
-      "imageUrl": "assets/portraits/faces/gt3/laurin-heinrich.jpg",
-      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_873.png",
-      "profile": "https://www.gt-world-challenge-asia.com/driver/873/laurin-heinrich"
     },
     {
       "position": 7,
@@ -209,24 +209,24 @@
     },
     {
       "position": 8,
-      "points": 71.0,
+      "points": 80.0,
       "wins": 0,
-      "id": "chen-weian",
+      "id": "ruan-cun-fan",
       "code": "",
-      "givenName": "Chen",
-      "familyName": "Weian",
+      "givenName": "Ruan",
+      "familyName": "Cun Fan",
       "nationality": "CHN",
       "teamIds": [],
       "teamNames": [],
       "teamColors": [],
       "category": "OVERALL",
-      "imageUrl": null,
-      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_882.png",
-      "profile": "https://www.gt-world-challenge-asia.com/driver/882/chen-weian"
+      "imageUrl": "assets/portraits/faces/gt3/ruan-cun-fan.jpg",
+      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_852.png",
+      "profile": "https://www.gt-world-challenge-asia.com/driver/852/ruan-cun-fan"
     },
     {
       "position": 9,
-      "points": 71.0,
+      "points": 73.0,
       "wins": 0,
       "id": "takayuki-aoki",
       "code": "500",
@@ -249,7 +249,7 @@
     },
     {
       "position": 10,
-      "points": 70.0,
+      "points": 72.0,
       "wins": 0,
       "id": "atsushi-miyake",
       "code": "500",
@@ -272,20 +272,20 @@
     },
     {
       "position": 11,
-      "points": 68.0,
+      "points": 71.0,
       "wins": 0,
-      "id": "ruan-cun-fan",
+      "id": "chen-weian",
       "code": "",
-      "givenName": "Ruan",
-      "familyName": "Cun Fan",
+      "givenName": "Chen",
+      "familyName": "Weian",
       "nationality": "CHN",
       "teamIds": [],
       "teamNames": [],
       "teamColors": [],
       "category": "OVERALL",
-      "imageUrl": "assets/portraits/faces/gt3/ruan-cun-fan.jpg",
-      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_852.png",
-      "profile": "https://www.gt-world-challenge-asia.com/driver/852/ruan-cun-fan"
+      "imageUrl": null,
+      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_882.png",
+      "profile": "https://www.gt-world-challenge-asia.com/driver/882/chen-weian"
     },
     {
       "position": 12,
@@ -335,7 +335,7 @@
     },
     {
       "position": 13,
-      "points": 55.0,
+      "points": 65.0,
       "wins": 1,
       "id": "loek-hartog",
       "code": "37",
@@ -381,6 +381,144 @@
     },
     {
       "position": 15,
+      "points": 44.0,
+      "wins": 1,
+      "id": "alessio-picariello",
+      "code": "918",
+      "givenName": "Alessio",
+      "familyName": "Picariello",
+      "nationality": "BEL",
+      "teamIds": [
+        "absolute-racing"
+      ],
+      "teamNames": [
+        "Absolute Racing"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/alessio-picariello.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4052.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4052/alessio-picariello"
+    },
+    {
+      "position": 16,
+      "points": 41.0,
+      "wins": 0,
+      "id": "brian-lee",
+      "code": "10",
+      "givenName": "Brian",
+      "familyName": "Lee",
+      "nationality": "CTP",
+      "teamIds": [
+        "gto-with-krc"
+      ],
+      "teamNames": [
+        "GTO with KRC"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/brian-lee.jpg",
+      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_830.png",
+      "profile": "https://www.gt-world-challenge-asia.com/driver/830/brian-lee"
+    },
+    {
+      "position": 16,
+      "points": 41.0,
+      "wins": 0,
+      "id": "maxime-oosten",
+      "code": "10",
+      "givenName": "Maxime",
+      "familyName": "Oosten",
+      "nationality": "NLD",
+      "teamIds": [
+        "gto-with-krc"
+      ],
+      "teamNames": [
+        "GTO with KRC"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/maxime-oosten.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4179.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4179/maxime-oosten"
+    },
+    {
+      "position": 17,
+      "points": 41.0,
+      "wins": 0,
+      "id": "lichao-li",
+      "code": "81",
+      "givenName": "Lichao",
+      "familyName": "Li",
+      "nationality": "CHN",
+      "teamIds": [
+        "climax-racing"
+      ],
+      "teamNames": [
+        "Climax Racing"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/lichao-li.jpg",
+      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_843.png",
+      "profile": "https://www.gt-world-challenge-asia.com/driver/843/li-lichao"
+    },
+    {
+      "position": 17,
+      "points": 41.0,
+      "wins": 0,
+      "id": "elias-seppanen",
+      "code": "81",
+      "givenName": "Elias",
+      "familyName": "Seppanen",
+      "nationality": "FIN",
+      "teamIds": [
+        "climax-racing"
+      ],
+      "teamNames": [
+        "Climax Racing"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/elias-seppanen.jpg",
+      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_844.png",
+      "profile": "https://www.gt-world-challenge-asia.com/driver/844/elias-seppanen"
+    },
+    {
+      "position": 18,
+      "points": 40.0,
+      "wins": 0,
+      "id": "jiatong-liang",
+      "code": "77",
+      "givenName": "Jiatong",
+      "familyName": "Liang",
+      "nationality": "CHN",
+      "teamIds": [
+        "craft-bamboo-racing"
+      ],
+      "teamNames": [
+        "Craft-Bamboo Racing"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/jiatong-liang.jpg",
+      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_847.png",
+      "profile": "https://www.gt-world-challenge-asia.com/driver/847/jiatong-liang"
+    },
+    {
+      "position": 19,
       "points": 37.0,
       "wins": 1,
       "id": "takuro-shinohara",
@@ -403,99 +541,7 @@
       "profile": "https://www.gt-world-challenge-asia.com/driver/893/takuro-shinohara"
     },
     {
-      "position": 16,
-      "points": 36.0,
-      "wins": 1,
-      "id": "alessio-picariello",
-      "code": "918",
-      "givenName": "Alessio",
-      "familyName": "Picariello",
-      "nationality": "BEL",
-      "teamIds": [
-        "absolute-racing"
-      ],
-      "teamNames": [
-        "Absolute Racing"
-      ],
-      "teamColors": [
-        "#D5001C"
-      ],
-      "category": "OVERALL",
-      "imageUrl": "assets/portraits/faces/gt3/alessio-picariello.jpg",
-      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4052.png",
-      "profile": "https://www.gt-world-challenge-europe.com/driver/4052/alessio-picariello"
-    },
-    {
-      "position": 17,
-      "points": 36.0,
-      "wins": 0,
-      "id": "jiatong-liang",
-      "code": "77",
-      "givenName": "Jiatong",
-      "familyName": "Liang",
-      "nationality": "CHN",
-      "teamIds": [
-        "craft-bamboo-racing"
-      ],
-      "teamNames": [
-        "Craft-Bamboo Racing"
-      ],
-      "teamColors": [
-        "#00A19C"
-      ],
-      "category": "OVERALL",
-      "imageUrl": "assets/portraits/faces/gt3/jiatong-liang.jpg",
-      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_847.png",
-      "profile": "https://www.gt-world-challenge-asia.com/driver/847/jiatong-liang"
-    },
-    {
-      "position": 18,
-      "points": 35.0,
-      "wins": 0,
-      "id": "brian-lee",
-      "code": "10",
-      "givenName": "Brian",
-      "familyName": "Lee",
-      "nationality": "CTP",
-      "teamIds": [
-        "gto-with-krc"
-      ],
-      "teamNames": [
-        "GTO with KRC"
-      ],
-      "teamColors": [
-        "#0066B1"
-      ],
-      "category": "OVERALL",
-      "imageUrl": "assets/portraits/faces/gt3/brian-lee.jpg",
-      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_830.png",
-      "profile": "https://www.gt-world-challenge-asia.com/driver/830/brian-lee"
-    },
-    {
-      "position": 18,
-      "points": 35.0,
-      "wins": 0,
-      "id": "maxime-oosten",
-      "code": "10",
-      "givenName": "Maxime",
-      "familyName": "Oosten",
-      "nationality": "NLD",
-      "teamIds": [
-        "gto-with-krc"
-      ],
-      "teamNames": [
-        "GTO with KRC"
-      ],
-      "teamColors": [
-        "#0066B1"
-      ],
-      "category": "OVERALL",
-      "imageUrl": "assets/portraits/faces/gt3/maxime-oosten.jpg",
-      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4179.png",
-      "profile": "https://www.gt-world-challenge-europe.com/driver/4179/maxime-oosten"
-    },
-    {
-      "position": 19,
+      "position": 20,
       "points": 27.0,
       "wins": 0,
       "id": "neil-verhagen",
@@ -518,7 +564,7 @@
       "profile": "https://www.gt-world-challenge-asia.com/driver/861/neil-verhagen"
     },
     {
-      "position": 20,
+      "position": 21,
       "points": 26.0,
       "wins": 0,
       "id": "shigekazu-wakisaka",
@@ -541,7 +587,7 @@
       "profile": "https://www.gt-world-challenge-asia.com/driver/878/shigekazu-wakisaka"
     },
     {
-      "position": 20,
+      "position": 21,
       "points": 26.0,
       "wins": 0,
       "id": "ryo-ogawa",
@@ -564,7 +610,7 @@
       "profile": "https://www.gt-world-challenge-asia.com/driver/879/ryo-ogawa"
     },
     {
-      "position": 21,
+      "position": 22,
       "points": 26.0,
       "wins": 0,
       "id": "sandy-stuvik",
@@ -587,7 +633,7 @@
       "profile": "https://www.gt-world-challenge-asia.com/driver/883/sandy-stuvik"
     },
     {
-      "position": 22,
+      "position": 23,
       "points": 26.0,
       "wins": 0,
       "id": "dean-yu-hao-chen",
@@ -608,52 +654,6 @@
       "imageUrl": "assets/portraits/faces/gt3/dean-yu-hao-chen.jpg",
       "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_860.png",
       "profile": "https://www.gt-world-challenge-asia.com/driver/860/dean-chen-yu-hao"
-    },
-    {
-      "position": 23,
-      "points": 26.0,
-      "wins": 0,
-      "id": "lichao-li",
-      "code": "81",
-      "givenName": "Lichao",
-      "familyName": "Li",
-      "nationality": "CHN",
-      "teamIds": [
-        "climax-racing"
-      ],
-      "teamNames": [
-        "Climax Racing"
-      ],
-      "teamColors": [
-        "#00A19C"
-      ],
-      "category": "OVERALL",
-      "imageUrl": "assets/portraits/faces/gt3/lichao-li.jpg",
-      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_843.png",
-      "profile": "https://www.gt-world-challenge-asia.com/driver/843/li-lichao"
-    },
-    {
-      "position": 23,
-      "points": 26.0,
-      "wins": 0,
-      "id": "elias-seppanen",
-      "code": "81",
-      "givenName": "Elias",
-      "familyName": "Seppanen",
-      "nationality": "FIN",
-      "teamIds": [
-        "climax-racing"
-      ],
-      "teamNames": [
-        "Climax Racing"
-      ],
-      "teamColors": [
-        "#00A19C"
-      ],
-      "category": "OVERALL",
-      "imageUrl": "assets/portraits/faces/gt3/elias-seppanen.jpg",
-      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_844.png",
-      "profile": "https://www.gt-world-challenge-asia.com/driver/844/elias-seppanen"
     },
     {
       "position": 24,
@@ -794,6 +794,29 @@
       "profile": "https://www.gt-world-challenge-asia.com/driver/870/jesse-krohn"
     },
     {
+      "position": 28,
+      "points": 16.0,
+      "wins": 0,
+      "id": "tim-tramnitz",
+      "code": "89",
+      "givenName": "Tim",
+      "familyName": "Tramnitz",
+      "nationality": "DEU",
+      "teamIds": [
+        "team-krc"
+      ],
+      "teamNames": [
+        "TEAM KRC"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/tim-tramnitz.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4247.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4247/tim-tramnitz"
+    },
+    {
       "position": 29,
       "points": 15.0,
       "wins": 0,
@@ -820,6 +843,29 @@
       "position": 30,
       "points": 14.0,
       "wins": 0,
+      "id": "melvin-moh",
+      "code": "77",
+      "givenName": "Melvin",
+      "familyName": "Moh",
+      "nationality": "MYS",
+      "teamIds": [
+        "craft-bamboo-racing"
+      ],
+      "teamNames": [
+        "Craft-Bamboo Racing"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": null,
+      "portraitSource": "",
+      "profile": "https://www.gt-world-challenge-asia.com/driver/894/melvin-moh"
+    },
+    {
+      "position": 31,
+      "points": 14.0,
+      "wins": 0,
       "id": "kiyoshi-uchiyama",
       "code": "25",
       "givenName": "Kiyoshi",
@@ -840,7 +886,7 @@
       "profile": "https://www.gt-world-challenge-asia.com/driver/822/kiyoshi-uchiyama"
     },
     {
-      "position": 30,
+      "position": 31,
       "points": 14.0,
       "wins": 0,
       "id": "tsubasa-kondo",
@@ -863,7 +909,7 @@
       "profile": "https://www.gt-world-challenge-asia.com/driver/823/tsubasa-kondo"
     },
     {
-      "position": 31,
+      "position": 32,
       "points": 12.0,
       "wins": 0,
       "id": "deng-yi",
@@ -884,29 +930,6 @@
       "imageUrl": "assets/portraits/faces/gt3/deng-yi.jpg",
       "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_853.png",
       "profile": "https://www.gt-world-challenge-asia.com/driver/853/yi-deng"
-    },
-    {
-      "position": 32,
-      "points": 10.0,
-      "wins": 0,
-      "id": "melvin-moh",
-      "code": "77",
-      "givenName": "Melvin",
-      "familyName": "Moh",
-      "nationality": "MYS",
-      "teamIds": [
-        "craft-bamboo-racing"
-      ],
-      "teamNames": [
-        "Craft-Bamboo Racing"
-      ],
-      "teamColors": [
-        "#00A19C"
-      ],
-      "category": "OVERALL",
-      "imageUrl": null,
-      "portraitSource": "",
-      "profile": "https://www.gt-world-challenge-asia.com/driver/894/melvin-moh"
     },
     {
       "position": 33,
@@ -953,6 +976,29 @@
       "imageUrl": "assets/portraits/faces/gt3/joel-sturm.jpg",
       "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_871.png",
       "profile": "https://www.gt-world-challenge-asia.com/driver/892/joel-sturm"
+    },
+    {
+      "position": 33,
+      "points": 8.0,
+      "wins": 0,
+      "id": "kevin-tse",
+      "code": "918",
+      "givenName": "Kevin",
+      "familyName": "Tse",
+      "nationality": "",
+      "teamIds": [
+        "absolute-racing"
+      ],
+      "teamNames": [
+        "Absolute Racing"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "OVERALL",
+      "imageUrl": "assets/portraits/faces/gt3/kevin-tse.jpg",
+      "portraitSource": "https://www.britishgt.com/images/drivers/driver_1319.png",
+      "profile": "https://www.britishgt.com/driver/1319/kevin-tse"
     },
     {
       "position": 34,
@@ -1142,29 +1188,6 @@
       "position": 38,
       "points": 4.0,
       "wins": 0,
-      "id": "tim-tramnitz",
-      "code": "89",
-      "givenName": "Tim",
-      "familyName": "Tramnitz",
-      "nationality": "DEU",
-      "teamIds": [
-        "team-krc"
-      ],
-      "teamNames": [
-        "TEAM KRC"
-      ],
-      "teamColors": [
-        "#0066B1"
-      ],
-      "category": "OVERALL",
-      "imageUrl": "assets/portraits/faces/gt3/tim-tramnitz.jpg",
-      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4247.png",
-      "profile": "https://www.gt-world-challenge-europe.com/driver/4247/tim-tramnitz"
-    },
-    {
-      "position": 39,
-      "points": 4.0,
-      "wins": 0,
       "id": "hiroaki-nagai",
       "code": "18",
       "givenName": "Hiroaki",
@@ -1185,7 +1208,7 @@
       "profile": "https://www.gt-world-challenge-asia.com/driver/820/hiroaki-nagai"
     },
     {
-      "position": 39,
+      "position": 38,
       "points": 4.0,
       "wins": 0,
       "id": "kazuto-kotaka",
@@ -1208,7 +1231,7 @@
       "profile": "https://www.gt-world-challenge-asia.com/driver/821/kazuto-kotaka"
     },
     {
-      "position": 40,
+      "position": 39,
       "points": 1.0,
       "wins": 0,
       "id": "liu-hangcheng",
@@ -1231,7 +1254,7 @@
       "profile": "https://www.gt-world-challenge-asia.com/driver/846/liu-hangcheng"
     },
     {
-      "position": 40,
+      "position": 39,
       "points": 1.0,
       "wins": 0,
       "id": "wang-zhongwei",
@@ -1254,7 +1277,7 @@
       "profile": "https://www.gt-world-challenge-asia.com/driver/845/wang-zhongwei"
     },
     {
-      "position": 41,
+      "position": 40,
       "points": 1.0,
       "wins": 0,
       "id": "kimiya-sato",
@@ -1278,7 +1301,7 @@
     },
     {
       "position": 1,
-      "points": 182.0,
+      "points": 207.0,
       "wins": 0,
       "id": "lyu-wei",
       "code": "",
@@ -1295,7 +1318,7 @@
     },
     {
       "position": 2,
-      "points": 170.0,
+      "points": 188.0,
       "wins": 0,
       "id": "huang-ruohan",
       "code": "911",
@@ -1318,7 +1341,7 @@
     },
     {
       "position": 2,
-      "points": 170.0,
+      "points": 188.0,
       "wins": 0,
       "id": "alessandro-ghiretti",
       "code": "911",
@@ -1341,7 +1364,7 @@
     },
     {
       "position": 3,
-      "points": 163.0,
+      "points": 175.0,
       "wins": 0,
       "id": "anthony-liu-xu",
       "code": "37",
@@ -1364,7 +1387,7 @@
     },
     {
       "position": 4,
-      "points": 131.0,
+      "points": 146.0,
       "wins": 0,
       "id": "ruan-cun-fan",
       "code": "",
@@ -1381,6 +1404,29 @@
     },
     {
       "position": 5,
+      "points": 129.0,
+      "wins": 0,
+      "id": "laurin-heinrich",
+      "code": "11",
+      "givenName": "Laurin",
+      "familyName": "Heinrich",
+      "nationality": "DEU",
+      "teamIds": [
+        "origine-motorsport"
+      ],
+      "teamNames": [
+        "Origine Motorsport"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/laurin-heinrich.jpg",
+      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_873.png",
+      "profile": "https://www.gt-world-challenge-asia.com/driver/873/laurin-heinrich"
+    },
+    {
+      "position": 6,
       "points": 109.0,
       "wins": 0,
       "id": "andres-pato",
@@ -1403,7 +1449,7 @@
       "profile": "https://www.gt-world-challenge-asia.com/driver/858/andres-pato"
     },
     {
-      "position": 5,
+      "position": 6,
       "points": 109.0,
       "wins": 0,
       "id": "jaxon-evans",
@@ -1426,31 +1472,8 @@
       "profile": "https://www.gt-world-challenge-asia.com/driver/857/jaxon-evans"
     },
     {
-      "position": 6,
-      "points": 104.0,
-      "wins": 0,
-      "id": "laurin-heinrich",
-      "code": "11",
-      "givenName": "Laurin",
-      "familyName": "Heinrich",
-      "nationality": "DEU",
-      "teamIds": [
-        "origine-motorsport"
-      ],
-      "teamNames": [
-        "Origine Motorsport"
-      ],
-      "teamColors": [
-        "#D5001C"
-      ],
-      "category": "PRO-AM",
-      "imageUrl": "assets/portraits/faces/gt3/laurin-heinrich.jpg",
-      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_873.png",
-      "profile": "https://www.gt-world-challenge-asia.com/driver/873/laurin-heinrich"
-    },
-    {
       "position": 7,
-      "points": 94.0,
+      "points": 102.0,
       "wins": 0,
       "id": "song-jiajun",
       "code": "72",
@@ -1473,7 +1496,7 @@
     },
     {
       "position": 7,
-      "points": 94.0,
+      "points": 102.0,
       "wins": 0,
       "id": "brendon-leitch",
       "code": "72",
@@ -1496,30 +1519,7 @@
     },
     {
       "position": 8,
-      "points": 66.0,
-      "wins": 0,
-      "id": "alessio-picariello",
-      "code": "918",
-      "givenName": "Alessio",
-      "familyName": "Picariello",
-      "nationality": "BEL",
-      "teamIds": [
-        "absolute-racing"
-      ],
-      "teamNames": [
-        "Absolute Racing"
-      ],
-      "teamColors": [
-        "#D5001C"
-      ],
-      "category": "PRO-AM",
-      "imageUrl": "assets/portraits/faces/gt3/alessio-picariello.jpg",
-      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4052.png",
-      "profile": "https://www.gt-world-challenge-europe.com/driver/4052/alessio-picariello"
-    },
-    {
-      "position": 9,
-      "points": 65.0,
+      "points": 77.0,
       "wins": 0,
       "id": "loek-hartog",
       "code": "37",
@@ -1539,6 +1539,29 @@
       "imageUrl": "assets/portraits/faces/gt3/loek-hartog.jpg",
       "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4264.png",
       "profile": "https://www.gt-world-challenge-europe.com/driver/4264/loek-hartog"
+    },
+    {
+      "position": 9,
+      "points": 76.0,
+      "wins": 0,
+      "id": "alessio-picariello",
+      "code": "918",
+      "givenName": "Alessio",
+      "familyName": "Picariello",
+      "nationality": "BEL",
+      "teamIds": [
+        "absolute-racing"
+      ],
+      "teamNames": [
+        "Absolute Racing"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/alessio-picariello.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4052.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4052/alessio-picariello"
     },
     {
       "position": 10,
@@ -1565,6 +1588,52 @@
     },
     {
       "position": 11,
+      "points": 58.0,
+      "wins": 0,
+      "id": "hiroaki-nagai",
+      "code": "18",
+      "givenName": "Hiroaki",
+      "familyName": "Nagai",
+      "nationality": "JPN",
+      "teamIds": [
+        "porsche-center-okazaki"
+      ],
+      "teamNames": [
+        "Porsche Center Okazaki"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/hiroaki-nagai.jpg",
+      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_820.png",
+      "profile": "https://www.gt-world-challenge-asia.com/driver/820/hiroaki-nagai"
+    },
+    {
+      "position": 12,
+      "points": 54.0,
+      "wins": 0,
+      "id": "kazuto-kotaka",
+      "code": "18",
+      "givenName": "Kazuto",
+      "familyName": "Kotaka",
+      "nationality": "JPN",
+      "teamIds": [
+        "porsche-center-okazaki"
+      ],
+      "teamNames": [
+        "Porsche Center Okazaki"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/kazuto-kotaka.jpg",
+      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_821.png",
+      "profile": "https://www.gt-world-challenge-asia.com/driver/821/kazuto-kotaka"
+    },
+    {
+      "position": 13,
       "points": 52.0,
       "wins": 0,
       "id": "ayhancan-guven",
@@ -1587,30 +1656,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4303/ayhancan-guven"
     },
     {
-      "position": 12,
-      "points": 52.0,
-      "wins": 0,
-      "id": "hiroaki-nagai",
-      "code": "18",
-      "givenName": "Hiroaki",
-      "familyName": "Nagai",
-      "nationality": "JPN",
-      "teamIds": [
-        "porsche-center-okazaki"
-      ],
-      "teamNames": [
-        "Porsche Center Okazaki"
-      ],
-      "teamColors": [
-        "#D5001C"
-      ],
-      "category": "PRO-AM",
-      "imageUrl": "assets/portraits/faces/gt3/hiroaki-nagai.jpg",
-      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_820.png",
-      "profile": "https://www.gt-world-challenge-asia.com/driver/820/hiroaki-nagai"
-    },
-    {
-      "position": 13,
+      "position": 14,
       "points": 49.0,
       "wins": 0,
       "id": "neil-verhagen",
@@ -1631,29 +1677,6 @@
       "imageUrl": "assets/portraits/faces/gt3/neil-verhagen.jpg",
       "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_861.png",
       "profile": "https://www.gt-world-challenge-asia.com/driver/861/neil-verhagen"
-    },
-    {
-      "position": 14,
-      "points": 48.0,
-      "wins": 0,
-      "id": "kazuto-kotaka",
-      "code": "18",
-      "givenName": "Kazuto",
-      "familyName": "Kotaka",
-      "nationality": "JPN",
-      "teamIds": [
-        "porsche-center-okazaki"
-      ],
-      "teamNames": [
-        "Porsche Center Okazaki"
-      ],
-      "teamColors": [
-        "#D5001C"
-      ],
-      "category": "PRO-AM",
-      "imageUrl": "assets/portraits/faces/gt3/kazuto-kotaka.jpg",
-      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_821.png",
-      "profile": "https://www.gt-world-challenge-asia.com/driver/821/kazuto-kotaka"
     },
     {
       "position": 15,
@@ -1843,6 +1866,29 @@
       "position": 20,
       "points": 27.0,
       "wins": 0,
+      "id": "tim-tramnitz",
+      "code": "89",
+      "givenName": "Tim",
+      "familyName": "Tramnitz",
+      "nationality": "DEU",
+      "teamIds": [
+        "team-krc"
+      ],
+      "teamNames": [
+        "TEAM KRC"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "PRO-AM",
+      "imageUrl": "assets/portraits/faces/gt3/tim-tramnitz.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4247.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4247/tim-tramnitz"
+    },
+    {
+      "position": 21,
+      "points": 27.0,
+      "wins": 0,
       "id": "vutthikorn-inthraphuvasak",
       "code": "918",
       "givenName": "Vutthikorn",
@@ -1863,7 +1909,7 @@
       "profile": "https://www.gt-world-challenge-asia.com/driver/856/vutthikorn-inthraphuvasak"
     },
     {
-      "position": 21,
+      "position": 22,
       "points": 26.0,
       "wins": 0,
       "id": "klaus-bachler",
@@ -1886,7 +1932,7 @@
       "profile": "https://www.gt-world-challenge-asia.com/driver/871/klaus-bachler"
     },
     {
-      "position": 22,
+      "position": 23,
       "points": 23.0,
       "wins": 0,
       "id": "kerong-li",
@@ -1909,7 +1955,7 @@
       "profile": "https://www.gt-world-challenge-asia.com/driver/891/kerong-li"
     },
     {
-      "position": 22,
+      "position": 23,
       "points": 23.0,
       "wins": 0,
       "id": "joel-sturm",
@@ -1932,30 +1978,30 @@
       "profile": "https://www.gt-world-challenge-asia.com/driver/892/joel-sturm"
     },
     {
-      "position": 23,
-      "points": 12.0,
+      "position": 24,
+      "points": 16.0,
       "wins": 0,
-      "id": "tim-tramnitz",
-      "code": "89",
-      "givenName": "Tim",
-      "familyName": "Tramnitz",
-      "nationality": "DEU",
+      "id": "kevin-tse",
+      "code": "918",
+      "givenName": "Kevin",
+      "familyName": "Tse",
+      "nationality": "",
       "teamIds": [
-        "team-krc"
+        "absolute-racing"
       ],
       "teamNames": [
-        "TEAM KRC"
+        "Absolute Racing"
       ],
       "teamColors": [
-        "#0066B1"
+        "#D5001C"
       ],
       "category": "PRO-AM",
-      "imageUrl": "assets/portraits/faces/gt3/tim-tramnitz.jpg",
-      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4247.png",
-      "profile": "https://www.gt-world-challenge-europe.com/driver/4247/tim-tramnitz"
+      "imageUrl": "assets/portraits/faces/gt3/kevin-tse.jpg",
+      "portraitSource": "https://www.britishgt.com/images/drivers/driver_1319.png",
+      "profile": "https://www.britishgt.com/driver/1319/kevin-tse"
     },
     {
-      "position": 24,
+      "position": 25,
       "points": 7.0,
       "wins": 0,
       "id": "bastian-buus",
@@ -1976,29 +2022,6 @@
       "imageUrl": "assets/portraits/faces/gt3/bastian-buus.jpg",
       "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4087.png",
       "profile": "https://www.gt-world-challenge-europe.com/driver/4087/bastian-buus"
-    },
-    {
-      "position": 25,
-      "points": 6.0,
-      "wins": 0,
-      "id": "kevin-tse",
-      "code": "918",
-      "givenName": "Kevin",
-      "familyName": "Tse",
-      "nationality": "",
-      "teamIds": [
-        "absolute-racing"
-      ],
-      "teamNames": [
-        "Absolute Racing"
-      ],
-      "teamColors": [
-        "#D5001C"
-      ],
-      "category": "PRO-AM",
-      "imageUrl": "assets/portraits/faces/gt3/kevin-tse.jpg",
-      "portraitSource": "https://www.britishgt.com/images/drivers/driver_1319.png",
-      "profile": "https://www.britishgt.com/driver/1319/kevin-tse"
     },
     {
       "position": 26,
@@ -2048,30 +2071,7 @@
     },
     {
       "position": 1,
-      "points": 198.0,
-      "wins": 0,
-      "id": "liu-kaishun",
-      "code": "96",
-      "givenName": "Liu",
-      "familyName": "Kaishun",
-      "nationality": "HKG",
-      "teamIds": [
-        "winhere-harmony-racing"
-      ],
-      "teamNames": [
-        "Winhere Harmony Racing"
-      ],
-      "teamColors": [
-        "#DC0000"
-      ],
-      "category": "SILVER",
-      "imageUrl": "assets/portraits/faces/gt3/liu-kaishun.jpg",
-      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_862.png",
-      "profile": "https://www.gt-world-challenge-asia.com/driver/862/liu-kaishun"
-    },
-    {
-      "position": 2,
-      "points": 195.0,
+      "points": 213.0,
       "wins": 0,
       "id": "cheng-congfu",
       "code": "16",
@@ -2093,8 +2093,8 @@
       "profile": "https://www.gt-world-challenge-asia.com/driver/835/cheng-congfu"
     },
     {
-      "position": 2,
-      "points": 195.0,
+      "position": 1,
+      "points": 213.0,
       "wins": 0,
       "id": "yu-kuai",
       "code": "16",
@@ -2116,31 +2116,31 @@
       "profile": "https://www.gt-world-challenge-asia.com/driver/836/james-yu-kuai"
     },
     {
-      "position": 3,
-      "points": 163.0,
+      "position": 2,
+      "points": 210.0,
       "wins": 0,
-      "id": "akash-nandy",
-      "code": "29",
-      "givenName": "Akash",
-      "familyName": "Nandy",
-      "nationality": "MYS",
+      "id": "liu-kaishun",
+      "code": "96",
+      "givenName": "Liu",
+      "familyName": "Kaishun",
+      "nationality": "HKG",
       "teamIds": [
-        "absolute-racing"
+        "winhere-harmony-racing"
       ],
       "teamNames": [
-        "Absolute Racing"
+        "Winhere Harmony Racing"
       ],
       "teamColors": [
-        "#C9A227"
+        "#DC0000"
       ],
       "category": "SILVER",
-      "imageUrl": null,
-      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_840.png",
-      "profile": "https://www.gt-world-challenge-asia.com/driver/840/akash-neil-nandy"
+      "imageUrl": "assets/portraits/faces/gt3/liu-kaishun.jpg",
+      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_862.png",
+      "profile": "https://www.gt-world-challenge-asia.com/driver/862/liu-kaishun"
     },
     {
-      "position": 4,
-      "points": 160.0,
+      "position": 3,
+      "points": 185.0,
       "wins": 0,
       "id": "takayuki-aoki",
       "code": "500",
@@ -2162,8 +2162,31 @@
       "profile": "https://www.gt-world-challenge-asia.com/driver/864/takayuki-aoki"
     },
     {
+      "position": 4,
+      "points": 178.0,
+      "wins": 0,
+      "id": "akash-nandy",
+      "code": "29",
+      "givenName": "Akash",
+      "familyName": "Nandy",
+      "nationality": "MYS",
+      "teamIds": [
+        "absolute-racing"
+      ],
+      "teamNames": [
+        "Absolute Racing"
+      ],
+      "teamColors": [
+        "#C9A227"
+      ],
+      "category": "SILVER",
+      "imageUrl": null,
+      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_840.png",
+      "profile": "https://www.gt-world-challenge-asia.com/driver/840/akash-neil-nandy"
+    },
+    {
       "position": 5,
-      "points": 133.0,
+      "points": 158.0,
       "wins": 0,
       "id": "atsushi-miyake",
       "code": "500",
@@ -2186,7 +2209,7 @@
     },
     {
       "position": 6,
-      "points": 102.0,
+      "points": 114.0,
       "wins": 0,
       "id": "chen-weian",
       "code": "",
@@ -2341,7 +2364,7 @@
     },
     {
       "position": 1,
-      "points": 205.0,
+      "points": 223.0,
       "wins": 0,
       "id": "brian-lee",
       "code": "10",
@@ -2364,7 +2387,7 @@
     },
     {
       "position": 1,
-      "points": 205.0,
+      "points": 223.0,
       "wins": 0,
       "id": "maxime-oosten",
       "code": "10",
@@ -2387,7 +2410,7 @@
     },
     {
       "position": 2,
-      "points": 205.0,
+      "points": 220.0,
       "wins": 0,
       "id": "jiatong-liang",
       "code": "77",
@@ -2410,7 +2433,7 @@
     },
     {
       "position": 3,
-      "points": 160.0,
+      "points": 185.0,
       "wins": 0,
       "id": "lichao-li",
       "code": "81",
@@ -2433,7 +2456,7 @@
     },
     {
       "position": 3,
-      "points": 160.0,
+      "points": 185.0,
       "wins": 0,
       "id": "elias-seppanen",
       "code": "81",
@@ -2588,7 +2611,7 @@
     },
     {
       "position": 8,
-      "points": 25.0,
+      "points": 40.0,
       "wins": 0,
       "id": "melvin-moh",
       "code": "77",
@@ -2657,7 +2680,7 @@
     },
     {
       "position": 1,
-      "points": 221.0,
+      "points": 233.0,
       "wins": 0,
       "id": "zhou-bihuang",
       "code": "",
@@ -2674,7 +2697,7 @@
     },
     {
       "position": 1,
-      "points": 221.0,
+      "points": 233.0,
       "wins": 0,
       "id": "setiawan-santoso",
       "code": "8",
@@ -2697,7 +2720,7 @@
     },
     {
       "position": 2,
-      "points": 202.0,
+      "points": 220.0,
       "wins": 0,
       "id": "liu-hangcheng",
       "code": "22",
@@ -2720,7 +2743,7 @@
     },
     {
       "position": 2,
-      "points": 202.0,
+      "points": 220.0,
       "wins": 0,
       "id": "wang-zhongwei",
       "code": "22",
@@ -2743,7 +2766,7 @@
     },
     {
       "position": 3,
-      "points": 148.0,
+      "points": 163.0,
       "wins": 0,
       "id": "william-ben-porter",
       "code": "51",
@@ -2766,7 +2789,7 @@
     },
     {
       "position": 3,
-      "points": 148.0,
+      "points": 163.0,
       "wins": 0,
       "id": "andrew-macpherson",
       "code": "51",
@@ -2789,6 +2812,52 @@
     },
     {
       "position": 4,
+      "points": 82.0,
+      "wins": 0,
+      "id": "aaron-lim-say-joon",
+      "code": "20",
+      "givenName": "Aaron",
+      "familyName": "Lim Say Joon",
+      "nationality": "MYS",
+      "teamIds": [
+        "hzo-fortis-racing-by-absolute-racing"
+      ],
+      "teamNames": [
+        "HZO Fortis Racing by Absolute Racing"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "AM",
+      "imageUrl": "assets/portraits/faces/gt3/aaron-lim-say-joon.jpg",
+      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_874.png",
+      "profile": "https://www.gt-world-challenge-asia.com/driver/874/aaron-lim-say-joon"
+    },
+    {
+      "position": 4,
+      "points": 82.0,
+      "wins": 0,
+      "id": "haziq-zairel-oh",
+      "code": "20",
+      "givenName": "Haziq",
+      "familyName": "Zairel Oh",
+      "nationality": "MYS",
+      "teamIds": [
+        "hzo-fortis-racing-by-absolute-racing"
+      ],
+      "teamNames": [
+        "HZO Fortis Racing by Absolute Racing"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "AM",
+      "imageUrl": "assets/portraits/faces/gt3/haziq-zairel-oh.jpg",
+      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_875.png",
+      "profile": "https://www.gt-world-challenge-asia.com/driver/875/haziq-zairel-oh"
+    },
+    {
+      "position": 5,
       "points": 66.0,
       "wins": 0,
       "id": "david-tjiptobiantoro",
@@ -2811,7 +2880,7 @@
       "profile": "https://www.gt-world-challenge-asia.com/driver/850/david-tjiptobiantoro"
     },
     {
-      "position": 4,
+      "position": 5,
       "points": 66.0,
       "wins": 0,
       "id": "christian-colombo",
@@ -2832,52 +2901,6 @@
       "imageUrl": null,
       "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_851.png",
       "profile": "https://www.gt-world-challenge-asia.com/driver/851/christian-colombo"
-    },
-    {
-      "position": 5,
-      "points": 57.0,
-      "wins": 0,
-      "id": "aaron-lim-say-joon",
-      "code": "20",
-      "givenName": "Aaron",
-      "familyName": "Lim Say Joon",
-      "nationality": "MYS",
-      "teamIds": [
-        "hzo-fortis-racing-by-absolute-racing"
-      ],
-      "teamNames": [
-        "HZO Fortis Racing by Absolute Racing"
-      ],
-      "teamColors": [
-        "#D5001C"
-      ],
-      "category": "AM",
-      "imageUrl": "assets/portraits/faces/gt3/aaron-lim-say-joon.jpg",
-      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_874.png",
-      "profile": "https://www.gt-world-challenge-asia.com/driver/874/aaron-lim-say-joon"
-    },
-    {
-      "position": 5,
-      "points": 57.0,
-      "wins": 0,
-      "id": "haziq-zairel-oh",
-      "code": "20",
-      "givenName": "Haziq",
-      "familyName": "Zairel Oh",
-      "nationality": "MYS",
-      "teamIds": [
-        "hzo-fortis-racing-by-absolute-racing"
-      ],
-      "teamNames": [
-        "HZO Fortis Racing by Absolute Racing"
-      ],
-      "teamColors": [
-        "#D5001C"
-      ],
-      "category": "AM",
-      "imageUrl": "assets/portraits/faces/gt3/haziq-zairel-oh.jpg",
-      "portraitSource": "https://www.gt-world-challenge-asia.com/images/drivers/photo_875.png",
-      "profile": "https://www.gt-world-challenge-asia.com/driver/875/haziq-zairel-oh"
     },
     {
       "position": 6,
