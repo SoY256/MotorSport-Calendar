@@ -42,6 +42,13 @@ def main() -> None:
     failures = []
     notes = []
     summary = []
+    # Flutter bundles only the folders listed in pubspec.yaml; an undeclared
+    # season folder makes the offline fallback fail to load.
+    declared = set(re.findall(r"^\s*-\s*(assets/data/\S+/)\s*$", (ROOT / "pubspec.yaml").read_text(encoding="utf-8"), re.M))
+    for series_id, season in pairs:
+        for folder in (f"assets/data/{series_id}/{season}/", f"assets/data/{series_id}/{season}/events/"):
+            if folder not in declared:
+                failures.append(f"pubspec.yaml does not bundle {folder}")
     for series_id, season in pairs:
         lenient = series_id in LENIENT_SERIES
         root = DATA / series_id / str(season)

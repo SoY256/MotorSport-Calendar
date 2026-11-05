@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-26T00:06:59.126790Z",
+  "lastSuccessfulUpdate": "2026-11-05T16:47:24.664414Z",
   "source": {
     "name": "formula1-official",
     "url": "https://www.formula1.com/en/results/2026/drivers"
@@ -8,7 +8,7 @@
   "data": [
     {
       "position": 1,
-      "points": 365.0,
+      "points": 380.0,
       "wins": 9,
       "id": "antonelli",
       "code": "ANT",
@@ -22,21 +22,21 @@
     },
     {
       "position": 2,
-      "points": 242.0,
+      "points": 261.0,
       "wins": 3,
-      "id": "russell",
-      "code": "RUS",
-      "givenName": "George",
-      "familyName": "Russell",
-      "nationality": "British",
+      "id": "max_verstappen",
+      "code": "VER",
+      "givenName": "Max",
+      "familyName": "Verstappen",
+      "nationality": "Dutch",
       "teamIds": [
-        "mercedes"
+        "red_bull"
       ],
-      "imageUrl": "assets/portraits/faces/f1/george-russell.jpg"
+      "imageUrl": "assets/portraits/faces/f1/max-verstappen.jpg"
     },
     {
       "position": 3,
-      "points": 241.0,
+      "points": 259.0,
       "wins": 1,
       "id": "hamilton",
       "code": "HAM",
@@ -50,21 +50,21 @@
     },
     {
       "position": 4,
-      "points": 236.0,
-      "wins": 2,
-      "id": "max_verstappen",
-      "code": "VER",
-      "givenName": "Max",
-      "familyName": "Verstappen",
-      "nationality": "Dutch",
+      "points": 250.0,
+      "wins": 3,
+      "id": "russell",
+      "code": "RUS",
+      "givenName": "George",
+      "familyName": "Russell",
+      "nationality": "British",
       "teamIds": [
-        "red_bull"
+        "mercedes"
       ],
-      "imageUrl": "assets/portraits/faces/f1/max-verstappen.jpg"
+      "imageUrl": "assets/portraits/faces/f1/george-russell.jpg"
     },
     {
       "position": 5,
-      "points": 233.0,
+      "points": 245.0,
       "wins": 1,
       "id": "leclerc",
       "code": "LEC",
@@ -78,7 +78,7 @@
     },
     {
       "position": 6,
-      "points": 211.0,
+      "points": 221.0,
       "wins": 2,
       "id": "norris",
       "code": "NOR",
@@ -106,7 +106,7 @@
     },
     {
       "position": 8,
-      "points": 105.0,
+      "points": 107.0,
       "wins": 0,
       "id": "hadjar",
       "code": "HAD",
@@ -120,7 +120,7 @@
     },
     {
       "position": 9,
-      "points": 77.0,
+      "points": 83.0,
       "wins": 0,
       "id": "lawson",
       "code": "LAW",
@@ -191,6 +191,20 @@
     },
     {
       "position": 14,
+      "points": 14.0,
+      "wins": 0,
+      "id": "bortoleto",
+      "code": "BOR",
+      "givenName": "Gabriel",
+      "familyName": "Bortoleto",
+      "nationality": "Brazilian",
+      "teamIds": [
+        "audi"
+      ],
+      "imageUrl": "assets/portraits/faces/f1/gabriel-bortoleto.jpg"
+    },
+    {
+      "position": 15,
       "points": 13.0,
       "wins": 0,
       "id": "hulkenberg",
@@ -202,20 +216,6 @@
         "audi"
       ],
       "imageUrl": "assets/portraits/faces/f1/nico-hulkenberg.jpg"
-    },
-    {
-      "position": 15,
-      "points": 10.0,
-      "wins": 0,
-      "id": "bortoleto",
-      "code": "BOR",
-      "givenName": "Gabriel",
-      "familyName": "Bortoleto",
-      "nationality": "Brazilian",
-      "teamIds": [
-        "audi"
-      ],
-      "imageUrl": "assets/portraits/faces/f1/gabriel-bortoleto.jpg"
     },
     {
       "position": 16,
@@ -289,6 +289,20 @@
     },
     {
       "position": 21,
+      "points": 1.0,
+      "wins": 0,
+      "id": "ryo_hirakawa",
+      "code": "HIR",
+      "givenName": "Ryo",
+      "familyName": "Hirakawa",
+      "nationality": "Japanese",
+      "teamIds": [
+        "haas"
+      ],
+      "imageUrl": "assets/portraits/faces/wec/ryo-hirakawa.jpg"
+    },
+    {
+      "position": 22,
       "points": 0.0,
       "wins": 0,
       "id": "stroll",
@@ -302,7 +316,7 @@
       "imageUrl": "assets/portraits/faces/f1/lance-stroll.jpg"
     },
     {
-      "position": 22,
+      "position": 23,
       "points": 0.0,
       "wins": 0,
       "id": "bottas",
@@ -316,7 +330,7 @@
       "imageUrl": "assets/portraits/faces/f1/valtteri-bottas.jpg"
     },
     {
-      "position": 23,
+      "position": 24,
       "points": 0.0,
       "wins": 0,
       "id": "perez",

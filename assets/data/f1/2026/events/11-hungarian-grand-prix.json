@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-26T00:06:59.126790Z",
+  "lastSuccessfulUpdate": "2026-11-05T16:47:24.664414Z",
   "source": {
     "name": "formula1-official",
     "url": "https://www.formula1.com/en/results/2026/races/1291/hungary/race-result"
@@ -385,11 +385,11 @@
             "position": 17,
             "positionText": "17",
             "driver": {
-              "id": "f1-HIR",
+              "id": "ryo_hirakawa",
               "code": "HIR",
               "givenName": "Ryo",
               "familyName": "Hirakawa",
-              "nationality": null
+              "nationality": "Japanese"
             },
             "team": {
               "id": "team_aDYlrycX",
@@ -2572,5 +2572,5 @@
       }
     ]
   },
-  "updatedAt": "2026-10-26T00:08:42.844678Z"
+  "updatedAt": "2026-11-05T16:49:06.320767Z"
 }

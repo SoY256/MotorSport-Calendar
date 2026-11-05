@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-10-26T08:42:19.459807Z",
+  "lastSuccessfulUpdate": "2026-11-05T16:53:20.346644Z",
   "source": {
     "name": "sro-official-calendar",
     "url": "https://www.gt-world-challenge-asia.com/calendar"
@@ -473,7 +473,8 @@
         "name": "Shanghai International Circuit",
         "locality": "Shanghai",
         "country": "China",
-        "countryCode": "CHN"
+        "countryCode": "CHN",
+        "lapRecord": "1:59.932 • Wei Lu / Laurin Heinrich (2026)"
       },
       "sessions": [
         {
@@ -487,8 +488,8 @@
         {
           "type": "OFFICIAL_PRACTICE",
           "name": "Official Practice",
-          "startTimeUtc": "2026-10-30T02:38:00Z",
-          "startTimeTrack": "2026-10-30 10:38:00+08:00",
+          "startTimeUtc": "2026-10-30T02:48:00Z",
+          "startTimeTrack": "2026-10-30 10:48:00+08:00",
           "cancelled": false,
           "durationMinutes": 60
         },
