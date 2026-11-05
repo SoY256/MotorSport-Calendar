@@ -59,6 +59,29 @@ IMSA_HTML = """
 """
 
 
+
+def imsa_article(name, venue, label):
+    return (f'<li><article><header><hgroup><h3 class="x">{name}</h3><p class="y"> <svg><use href="#location"></use></svg> '
+            f'{venue} </p></hgroup></header><p aria-label="{label}"><span>Jan</span></p></article></li>')
+
+
+IMSA_TABS_HTML = (
+    '<input type="radio" value="weathertech" checked data-series-index="0">'
+    '<input type="radio" value="imsa-michelin-pilot-challenge" data-series-index="1">'
+    '<ul id="c-0" data-series-index="0">'
+    + imsa_article("Roar Before The Rolex 24", "Daytona International Speedway, Daytona Beach, FL",
+                   "January 16, 2026 through January 18, 2026")
+    + imsa_article("Rolex 24 At Daytona", "Daytona International Speedway, Daytona Beach, FL",
+                   "January 21, 2026 through January 25, 2026")
+    + imsa_article("Motul Petit Le Mans", "Michelin Raceway Road Atlanta, Braselton, GA",
+                   "September 30, 2026 through October 3, 2026")
+    + '</ul><ul id="c-1" data-series-index="1">'
+    + imsa_article("BMW M Endurance Challenge", "Daytona International Speedway, Daytona Beach, FL",
+                   "January 22, 2026 through January 23, 2026")
+    + '</ul>'
+)
+
+
 class ParserTests(unittest.TestCase):
     def test_wec_ignores_next_season_and_prologue_and_dedupes(self):
         events = check_schedules.parse_wec(WEC_HTML, 2026)
@@ -84,6 +107,14 @@ class ParserTests(unittest.TestCase):
         html = "<p>ROUND 1</p><span>Flag of Atlantis</span><p>01 - 03 May</p>"
         with self.assertRaises(check_schedules.ParseError):
             check_schedules.parse_fia_feeder(html, 2026)
+
+    def test_imsa_redesigned_page_reads_only_the_weathertech_tab(self):
+        events = check_schedules.parse_imsa(IMSA_TABS_HTML, 2026)
+        self.assertEqual(
+            [(event.name, event.key, event.date) for event in events],
+            [("Rolex 24 At Daytona", "daytona international speedway", date(2026, 1, 25)),
+             ("Motul Petit Le Mans", "michelin raceway road atlanta", date(2026, 10, 3))],
+        )
 
     def test_imsa_skips_roar_test_and_uses_final_day(self):
         events = check_schedules.parse_imsa(IMSA_HTML, 2026)

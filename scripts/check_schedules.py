@@ -155,11 +155,41 @@ def parse_fia_feeder(html: str, season: int) -> list[OfficialEvent]:
     return [events[number] for number in sorted(events)]
 
 
+def imsa_series_list(html: str, series: str = "weathertech") -> str | None:
+    """The event list of one series on the imsa.com schedule page (since the
+    November 2026 redesign it lists WeatherTech, Pilot Challenge and VP Racing
+    in tabs), or None for the older single-series layout."""
+    tab = re.search(rf'<input\b[^>]*value="{series}"[^>]*data-series-index="(\d+)"', html)
+    if tab is None:
+        return None
+    start = re.search(rf'<ul\b[^>]*data-series-index="{tab.group(1)}"[^>]*>', html)
+    if start is None:
+        return None
+    end = re.search(r'<ul\b[^>]*data-series-index="\d+"[^>]*>', html[start.end():])
+    return html[start.end(): start.end() + end.start() if end else len(html)]
+
+
 def parse_imsa(html: str, season: int) -> list[OfficialEvent]:
     """Race days from the IMSA WeatherTech schedule page, keyed by venue.
 
     All rounds but one are in the USA, so the venue name is the identity.
     """
+    listing = imsa_series_list(html)
+    if listing is not None:
+        events: dict[tuple[str, date], OfficialEvent] = {}
+        for article in re.findall(r"<article\b.*?</article>", listing, re.S):
+            name = re.search(r"<h3\b[^>]*>(.*?)</h3>", article, re.S)
+            venue = re.search(r'href="#location".*?</svg>(.*?)</p>', article, re.S)
+            days = re.search(r'aria-label="[^"]*?through (\w+) (\d{1,2}), (\d{4})"', article)
+            if not (name and venue and days):
+                continue
+            title = page_text(name.group(1))
+            if re.search(r"\b(?:Roar|Test)\b", title, re.I):
+                continue
+            event = OfficialEvent(title, venue_key(page_text(venue.group(1)).split(",")[0]),
+                                  date(int(days.group(3)), month_number(days.group(1)), int(days.group(2))))
+            events.setdefault((event.key, event.date), event)
+        return sorted(events.values(), key=lambda item: item.date)
     text = page_text(html)
     pattern = re.compile(
         rf"(?:Print Schedule|Buy Tickets|Event Details)\s+(?P<name>[^|]+?)\s+"
