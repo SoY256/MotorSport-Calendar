@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-11-06T16:46:14.570146Z",
+  "lastSuccessfulUpdate": "2026-11-06T20:02:00.326372Z",
   "source": {
     "name": "formula1-official",
     "url": "https://www.formula1.com/en/results/2026/races/1299/brazil/race-result"
@@ -524,8 +524,14 @@
           "name": "formula1-official",
           "url": "https://www.formula1.com/en/results/2026/races/1299/brazil/practice/1"
         }
+      },
+      {
+        "type": "FP2",
+        "name": "Practice 2",
+        "startTimeUtc": "2026-11-06T19:00:00Z",
+        "results": []
       }
     ]
   },
-  "updatedAt": "2026-11-06T16:47:03.124789Z"
+  "updatedAt": "2026-11-06T20:04:07.505338Z"
 }
