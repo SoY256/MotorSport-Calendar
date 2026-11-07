@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-11-07T15:48:15.492680Z",
+  "lastSuccessfulUpdate": "2026-11-07T19:02:00.394232Z",
   "source": {
     "name": "formula1-official",
     "url": "https://www.formula1.com/en/results/2026/races/1299/brazil/race-result"
@@ -1535,8 +1535,14 @@
           "name": "formula1-official",
           "url": "https://www.formula1.com/en/results/2026/races/1299/brazil/practice/3"
         }
+      },
+      {
+        "type": "Q",
+        "name": "Qualifying",
+        "startTimeUtc": "2026-11-07T18:00:00Z",
+        "results": []
       }
     ]
   },
-  "updatedAt": "2026-11-07T15:50:26.947656Z"
+  "updatedAt": "2026-11-07T19:04:14.197022Z"
 }
