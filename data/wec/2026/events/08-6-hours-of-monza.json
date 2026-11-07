@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-11-07T14:57:36.541407Z",
+  "lastSuccessfulUpdate": "2026-11-07T14:58:36.716249Z",
   "source": {
     "name": "fia-wec-alkamel-official-timing",
     "url": "https://www.fiawec.com/en/season/2026"
@@ -2873,6 +2873,501 @@
             },
             "time": "1:58.418",
             "laps": 23
+          }
+        ]
+      },
+      {
+        "type": "QUALIFYING_LMGT3",
+        "name": "Qualifying - LMGT3",
+        "startTimeUtc": "2026-11-07T13:20:00Z",
+        "source": {
+          "name": "fia-wec-alkamel-official-timing",
+          "url": "https://files.alkamelcloud.com/wec/results/15_2026/08_AUTODROMO%20NAZIONALE%20DI%20MONZA/689_FIA%20WEC/202611071420_Qualifying%20LMGT3/03_Classification_Qualifying%20LMGT3.PDF",
+          "parser": 3
+        },
+        "results": [
+          {
+            "position": 1,
+            "positionText": "1",
+            "driver": {
+              "id": "p-dempsey-s-yoluc-c-eastwood",
+              "code": "34",
+              "givenName": "P. DEMPSEY / S. YOLUÇ / C. EASTWOOD",
+              "familyName": "",
+              "nationality": "USA,TUR,IRL"
+            },
+            "team": {
+              "id": "racing-team-turkey-by-tf",
+              "name": "Racing Team Turkey by TF",
+              "color": "#F2C500"
+            },
+            "carNumber": "34",
+            "points": null,
+            "status": "LMGT3",
+            "classified": true,
+            "components": {
+              "car": "Corvette Z06 LMGT3.R",
+              "category": "LMGT3"
+            },
+            "time": "1:48.440",
+            "laps": 7
+          },
+          {
+            "position": 2,
+            "positionText": "2",
+            "driver": {
+              "id": "s-gattuso-g-levorato-l-sargeant",
+              "code": "88",
+              "givenName": "S. GATTUSO / G. LEVORATO / L. SARGEANT",
+              "familyName": "",
+              "nationality": "ITA,ITA,USA"
+            },
+            "team": {
+              "id": "proton-competition",
+              "name": "Proton Competition",
+              "color": "#003478"
+            },
+            "carNumber": "88",
+            "points": null,
+            "status": "LMGT3",
+            "classified": true,
+            "components": {
+              "car": "Ford Mustang LMGT3",
+              "category": "LMGT3",
+              "gap": "+0.449"
+            },
+            "time": "1:48.889",
+            "laps": 7
+          },
+          {
+            "position": 3,
+            "positionText": "3",
+            "driver": {
+              "id": "e-powell-b-tuck-s-priaulx",
+              "code": "77",
+              "givenName": "E. POWELL / B. TUCK / S. PRIAULX",
+              "familyName": "",
+              "nationality": "GBR,GBR,GBR"
+            },
+            "team": {
+              "id": "proton-competition",
+              "name": "Proton Competition",
+              "color": "#003478"
+            },
+            "carNumber": "77",
+            "points": null,
+            "status": "LMGT3",
+            "classified": true,
+            "components": {
+              "car": "Ford Mustang LMGT3",
+              "category": "LMGT3",
+              "gap": "+0.944"
+            },
+            "time": "1:49.384",
+            "laps": 7
+          },
+          {
+            "position": 4,
+            "positionText": "4",
+            "driver": {
+              "id": "g-newell-e-barrichello-j-adam",
+              "code": "23",
+              "givenName": "G. NEWELL / E. BARRICHELLO / J. ADAM",
+              "familyName": "",
+              "nationality": "USA,BRA,GBR"
+            },
+            "team": {
+              "id": "heart-of-racing-team",
+              "name": "Heart of Racing Team",
+              "color": "#006F62"
+            },
+            "carNumber": "23",
+            "points": null,
+            "status": "LMGT3",
+            "classified": true,
+            "components": {
+              "car": "Aston Martin Vantage AMR LMGT3",
+              "category": "LMGT3",
+              "gap": "+1.050"
+            },
+            "time": "1:49.490",
+            "laps": 7
+          },
+          {
+            "position": 5,
+            "positionText": "5",
+            "driver": {
+              "id": "i-james-z-robichon-m-drudi",
+              "code": "27",
+              "givenName": "I. JAMES / Z. ROBICHON / M. DRUDI",
+              "familyName": "",
+              "nationality": "USA,CAN,ITA"
+            },
+            "team": {
+              "id": "heart-of-racing-team",
+              "name": "Heart of Racing Team",
+              "color": "#006F62"
+            },
+            "carNumber": "27",
+            "points": null,
+            "status": "LMGT3",
+            "classified": true,
+            "components": {
+              "car": "Aston Martin Vantage AMR LMGT3",
+              "category": "LMGT3",
+              "gap": "+1.691"
+            },
+            "time": "1:50.131",
+            "laps": 7
+          },
+          {
+            "position": 6,
+            "positionText": "6",
+            "driver": {
+              "id": "p-umbrarescu-c-schmid-j-lopez",
+              "code": "87",
+              "givenName": "P. UMBRÄRESCU / C. SCHMID / J. LÓPEZ",
+              "familyName": "",
+              "nationality": "CHE,ARG"
+            },
+            "team": {
+              "id": "akkodis-asp-team",
+              "name": "Akkodis ASP Team",
+              "color": "#222222"
+            },
+            "carNumber": "87",
+            "points": null,
+            "status": "LMGT3",
+            "classified": true,
+            "components": {
+              "car": "Lexus RC F LMGT3",
+              "category": "LMGT3",
+              "gap": "+1.707"
+            },
+            "time": "1:50.147",
+            "laps": 7
+          },
+          {
+            "position": 7,
+            "positionText": "7",
+            "driver": {
+              "id": "m-berry-r-andrade-m-martin",
+              "code": "61",
+              "givenName": "M. BERRY / R. ANDRADE / M. MARTIN",
+              "familyName": "",
+              "nationality": "AUS,ANG,BEL"
+            },
+            "team": {
+              "id": "iron-lynx",
+              "name": "Iron Lynx",
+              "color": "#00A19C"
+            },
+            "carNumber": "61",
+            "points": null,
+            "status": "LMGT3",
+            "classified": true,
+            "components": {
+              "car": "Mercedes-AMG LMGT3",
+              "category": "LMGT3",
+              "gap": "+1.835"
+            },
+            "time": "1:50.275",
+            "laps": 6
+          },
+          {
+            "position": 8,
+            "positionText": "8",
+            "driver": {
+              "id": "t-van-rompuy-h-david-e-masson",
+              "code": "78",
+              "givenName": "T. VAN ROMPUY / H. DAVID / E. MASSON",
+              "familyName": "",
+              "nationality": "BEL,FRA,FRA"
+            },
+            "team": {
+              "id": "akkodis-asp-team",
+              "name": "Akkodis ASP Team",
+              "color": "#222222"
+            },
+            "carNumber": "78",
+            "points": null,
+            "status": "LMGT3",
+            "classified": true,
+            "components": {
+              "car": "Lexus RC F LMGT3",
+              "category": "LMGT3",
+              "gap": "+1.916"
+            },
+            "time": "1:50.356",
+            "laps": 7
+          },
+          {
+            "position": 9,
+            "positionText": "9",
+            "driver": {
+              "id": "b-keating-j-edgar-n-catsburg",
+              "code": "33",
+              "givenName": "B. KEATING / J. EDGAR / N. CATSBURG",
+              "familyName": "",
+              "nationality": "USA,GBR,NED"
+            },
+            "team": {
+              "id": "tf-sport",
+              "name": "TF Sport",
+              "color": "#F2C500"
+            },
+            "carNumber": "33",
+            "points": null,
+            "status": "LMGT3",
+            "classified": true,
+            "components": {
+              "car": "Corvette Z06 LMGT3.R",
+              "category": "LMGT3",
+              "gap": "+2.207"
+            },
+            "time": "1:50.647",
+            "laps": 6
+          },
+          {
+            "position": 10,
+            "positionText": "10",
+            "driver": {
+              "id": "j-cottingham-t-boguslavskiy-a-guven",
+              "code": "91",
+              "givenName": "J. COTTINGHAM / T. BOGUSLAVSKIY / A. GÜVEN",
+              "familyName": "",
+              "nationality": "GBR,RUS,TUR"
+            },
+            "team": {
+              "id": "manthey-dk-engineering",
+              "name": "Manthey DK Engineering",
+              "color": "#D5001C"
+            },
+            "carNumber": "91",
+            "points": null,
+            "status": "LMGT3",
+            "classified": true,
+            "components": {
+              "car": "Porsche 911 GT3 R LMGT3",
+              "category": "LMGT3",
+              "gap": "+2.302"
+            },
+            "time": "1:50.742",
+            "laps": 6
+          },
+          {
+            "position": 11,
+            "positionText": "11",
+            "driver": {
+              "id": "y-shahin-r-pera-r-lietz",
+              "code": "92",
+              "givenName": "Y. SHAHIN / R. PERA / R. LIETZ",
+              "familyName": "",
+              "nationality": "AUS,ITA,AUT"
+            },
+            "team": {
+              "id": "the-bend-manthey",
+              "name": "The Bend Manthey",
+              "color": "#D5001C"
+            },
+            "carNumber": "92",
+            "points": null,
+            "status": "LMGT3",
+            "classified": true,
+            "components": {
+              "car": "Porsche 911 GT3 R LMGT3",
+              "category": "LMGT3",
+              "gap": "+2.380"
+            },
+            "time": "1:50.820",
+            "laps": 6
+          },
+          {
+            "position": 12,
+            "positionText": "12",
+            "driver": {
+              "id": "d-leung-s-gelael-a-farfus",
+              "code": "32",
+              "givenName": "D. LEUNG / S. GELAEL / A. FARFUS",
+              "familyName": "",
+              "nationality": "GBR,IDN,BRA"
+            },
+            "team": {
+              "id": "team-wrt",
+              "name": "Team WRT",
+              "color": "#0066B1"
+            },
+            "carNumber": "32",
+            "points": null,
+            "status": "LMGT3",
+            "classified": true,
+            "components": {
+              "car": "BMW M4 LMGT3 Evo",
+              "category": "LMGT3",
+              "gap": "+2.607"
+            },
+            "time": "1:51.047",
+            "laps": 6
+          },
+          {
+            "position": 13,
+            "positionText": "13",
+            "driver": {
+              "id": "j-zelger-m-cressoni-l-hodenius",
+              "code": "79",
+              "givenName": "J. ZELGER / M. CRESSONI / L. HODENIUS",
+              "familyName": "",
+              "nationality": "ITA,ITA,NED"
+            },
+            "team": {
+              "id": "iron-lynx",
+              "name": "Iron Lynx",
+              "color": "#00A19C"
+            },
+            "carNumber": "79",
+            "points": null,
+            "status": "LMGT3",
+            "classified": true,
+            "components": {
+              "car": "Mercedes-AMG LMGT3",
+              "category": "LMGT3",
+              "gap": "+2.750"
+            },
+            "time": "1:51.190",
+            "laps": 6
+          },
+          {
+            "position": 14,
+            "positionText": "14",
+            "driver": {
+              "id": "a-west-f-gehrsitz-b-goethe",
+              "code": "58",
+              "givenName": "A. WEST / F. GEHRSITZ / B. GOETHE",
+              "familyName": "",
+              "nationality": "SWE,GER,GER"
+            },
+            "team": {
+              "id": "garage-59",
+              "name": "Garage 59",
+              "color": "#FF8000"
+            },
+            "carNumber": "58",
+            "points": null,
+            "status": "LMGT3",
+            "classified": true,
+            "components": {
+              "car": "McLaren 720S LMGT3 Evo",
+              "category": "LMGT3",
+              "gap": "+2.845"
+            },
+            "time": "1:51.285",
+            "laps": 6
+          },
+          {
+            "position": 15,
+            "positionText": "15",
+            "driver": {
+              "id": "t-flohr-f-castellacci-d-rigon",
+              "code": "54",
+              "givenName": "T. FLOHR / F. CASTELLACCI / D. RIGON",
+              "familyName": "",
+              "nationality": "SUI,ITA,ITA"
+            },
+            "team": {
+              "id": "vista-af-corse",
+              "name": "Vista AF Corse",
+              "color": "#E10600"
+            },
+            "carNumber": "54",
+            "points": null,
+            "status": "LMGT3",
+            "classified": true,
+            "components": {
+              "car": "Ferrari 296 LMGT3 Evo",
+              "category": "LMGT3",
+              "gap": "+2.875"
+            },
+            "time": "1:51.315",
+            "laps": 6
+          },
+          {
+            "position": 16,
+            "positionText": "16",
+            "driver": {
+              "id": "a-mcintosh-p-thompson-d-harper",
+              "code": "69",
+              "givenName": "A. MCINTOSH / P. THOMPSON / D. HARPER",
+              "familyName": "",
+              "nationality": "USA,CAN,GBR"
+            },
+            "team": {
+              "id": "team-wrt",
+              "name": "Team WRT",
+              "color": "#0066B1"
+            },
+            "carNumber": "69",
+            "points": null,
+            "status": "LMGT3",
+            "classified": true,
+            "components": {
+              "car": "BMW M4 LMGT3 Evo",
+              "category": "LMGT3",
+              "gap": "+2.892"
+            },
+            "time": "1:51.332",
+            "laps": 6
+          },
+          {
+            "position": 17,
+            "positionText": "17",
+            "driver": {
+              "id": "a-au-t-fleming-m-kirchhofer",
+              "code": "10",
+              "givenName": "A. AU / T. FLEMING / M. KIRCHHÖFER",
+              "familyName": "",
+              "nationality": "HKG,GBR,GER"
+            },
+            "team": {
+              "id": "garage-59",
+              "name": "Garage 59",
+              "color": "#FF8000"
+            },
+            "carNumber": "10",
+            "points": null,
+            "status": "LMGT3",
+            "classified": true,
+            "components": {
+              "car": "McLaren 720S LMGT3 Evo",
+              "category": "LMGT3"
+            },
+            "time": null,
+            "laps": null
+          },
+          {
+            "position": 18,
+            "positionText": "18",
+            "driver": {
+              "id": "f-heriau-s-mann-a-rovera",
+              "code": "21",
+              "givenName": "F. HÉRIAU / S. MANN / A. ROVERA",
+              "familyName": "",
+              "nationality": "FRA,USA,ITA"
+            },
+            "team": {
+              "id": "vista-af-corse",
+              "name": "Vista AF Corse",
+              "color": "#E10600"
+            },
+            "carNumber": "21",
+            "points": null,
+            "status": "LMGT3",
+            "classified": true,
+            "components": {
+              "car": "Ferrari 296 LMGT3 Evo",
+              "category": "LMGT3"
+            },
+            "time": null,
+            "laps": null
           }
         ]
       }
