@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-11-08T20:59:35.905390Z",
+  "lastSuccessfulUpdate": "2026-11-08T21:00:36.057369Z",
   "source": {
     "name": "fia-wec-official-championship",
     "url": "https://www.fiawec.com/en/season/2026"
@@ -8,7 +8,7 @@
   "data": [
     {
       "position": 1,
-      "points": 114.0,
+      "points": 115.0,
       "wins": 3,
       "id": "brendon-hartley",
       "code": "8",
@@ -29,7 +29,7 @@
     },
     {
       "position": 1,
-      "points": 114.0,
+      "points": 115.0,
       "wins": 3,
       "id": "ryo-hirakawa",
       "code": "8",
@@ -50,7 +50,7 @@
     },
     {
       "position": 1,
-      "points": 114.0,
+      "points": 115.0,
       "wins": 3,
       "id": "sebastien-buemi",
       "code": "8",
@@ -134,7 +134,7 @@
     },
     {
       "position": 3,
-      "points": 83.0,
+      "points": 85.0,
       "wins": 1,
       "id": "kevin-magnussen",
       "code": "15",
@@ -155,7 +155,7 @@
     },
     {
       "position": 3,
-      "points": 83.0,
+      "points": 85.0,
       "wins": 1,
       "id": "raffaele-marciello",
       "code": "15",
@@ -218,7 +218,49 @@
     },
     {
       "position": 5,
-      "points": 77.0,
+      "points": 81.0,
+      "wins": 1,
+      "id": "rene-rast",
+      "code": "20",
+      "givenName": "René",
+      "familyName": "Rast",
+      "nationality": "GER",
+      "teamIds": [
+        "bmw"
+      ],
+      "teamNames": [
+        "BMW"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "assets/portraits/faces/wec/rene-rast.jpg"
+    },
+    {
+      "position": 5,
+      "points": 81.0,
+      "wins": 1,
+      "id": "robin-frijns",
+      "code": "20",
+      "givenName": "Robin",
+      "familyName": "Frijns",
+      "nationality": "NED",
+      "teamIds": [
+        "bmw"
+      ],
+      "teamNames": [
+        "BMW"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "assets/portraits/faces/wec/robin-frijns.jpg"
+    },
+    {
+      "position": 6,
+      "points": 79.0,
       "wins": 1,
       "id": "dries-vanthoor",
       "code": "15",
@@ -238,7 +280,7 @@
       "imageUrl": "assets/portraits/faces/wec/dries-vanthoor.jpg"
     },
     {
-      "position": 6,
+      "position": 7,
       "points": 77.0,
       "wins": 1,
       "id": "jack-aitken",
@@ -259,112 +301,7 @@
       "imageUrl": "assets/portraits/faces/wec/jack-aitken.jpg"
     },
     {
-      "position": 7,
-      "points": 77.0,
-      "wins": 1,
-      "id": "rene-rast",
-      "code": "20",
-      "givenName": "René",
-      "familyName": "Rast",
-      "nationality": "GER",
-      "teamIds": [
-        "bmw"
-      ],
-      "teamNames": [
-        "BMW"
-      ],
-      "teamColors": [
-        "#0066B1"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/rene-rast.jpg"
-    },
-    {
-      "position": 7,
-      "points": 77.0,
-      "wins": 1,
-      "id": "robin-frijns",
-      "code": "20",
-      "givenName": "Robin",
-      "familyName": "Frijns",
-      "nationality": "NED",
-      "teamIds": [
-        "bmw"
-      ],
-      "teamNames": [
-        "BMW"
-      ],
-      "teamColors": [
-        "#0066B1"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/robin-frijns.jpg"
-    },
-    {
       "position": 8,
-      "points": 76.0,
-      "wins": 1,
-      "id": "antonio-fuoco",
-      "code": "50",
-      "givenName": "Antonio",
-      "familyName": "Fuoco",
-      "nationality": "ITA",
-      "teamIds": [
-        "ferrari"
-      ],
-      "teamNames": [
-        "Ferrari"
-      ],
-      "teamColors": [
-        "#E10600"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/antonio-fuoco.jpg"
-    },
-    {
-      "position": 8,
-      "points": 76.0,
-      "wins": 1,
-      "id": "miguel-molina",
-      "code": "50",
-      "givenName": "Miguel",
-      "familyName": "Molina",
-      "nationality": "ESP",
-      "teamIds": [
-        "ferrari"
-      ],
-      "teamNames": [
-        "Ferrari"
-      ],
-      "teamColors": [
-        "#E10600"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/miguel-molina.jpg"
-    },
-    {
-      "position": 8,
-      "points": 76.0,
-      "wins": 1,
-      "id": "nicklas-nielsen",
-      "code": "50",
-      "givenName": "Nicklas",
-      "familyName": "Nielsen",
-      "nationality": "DEN",
-      "teamIds": [
-        "ferrari"
-      ],
-      "teamNames": [
-        "Ferrari"
-      ],
-      "teamColors": [
-        "#E10600"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/nicklas-nielsen.jpg"
-    },
-    {
-      "position": 9,
       "points": 74.0,
       "wins": 0,
       "id": "alessandro-pier-guidi",
@@ -385,7 +322,7 @@
       "imageUrl": "assets/portraits/faces/wec/alessandro-pier-guidi.jpg"
     },
     {
-      "position": 9,
+      "position": 8,
       "points": 74.0,
       "wins": 0,
       "id": "antonio-giovinazzi",
@@ -406,7 +343,7 @@
       "imageUrl": "assets/portraits/faces/wec/antonio-giovinazzi.jpg"
     },
     {
-      "position": 9,
+      "position": 8,
       "points": 74.0,
       "wins": 0,
       "id": "james-calado",
@@ -427,8 +364,71 @@
       "imageUrl": "assets/portraits/faces/wec/james-calado.jpg"
     },
     {
+      "position": 9,
+      "points": 72.0,
+      "wins": 1,
+      "id": "antonio-fuoco",
+      "code": "50",
+      "givenName": "Antonio",
+      "familyName": "Fuoco",
+      "nationality": "ITA",
+      "teamIds": [
+        "ferrari"
+      ],
+      "teamNames": [
+        "Ferrari"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "assets/portraits/faces/wec/antonio-fuoco.jpg"
+    },
+    {
+      "position": 9,
+      "points": 72.0,
+      "wins": 1,
+      "id": "miguel-molina",
+      "code": "50",
+      "givenName": "Miguel",
+      "familyName": "Molina",
+      "nationality": "ESP",
+      "teamIds": [
+        "ferrari"
+      ],
+      "teamNames": [
+        "Ferrari"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "assets/portraits/faces/wec/miguel-molina.jpg"
+    },
+    {
+      "position": 9,
+      "points": 72.0,
+      "wins": 1,
+      "id": "nicklas-nielsen",
+      "code": "50",
+      "givenName": "Nicklas",
+      "familyName": "Nielsen",
+      "nationality": "DEN",
+      "teamIds": [
+        "ferrari"
+      ],
+      "teamNames": [
+        "Ferrari"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "assets/portraits/faces/wec/nicklas-nielsen.jpg"
+    },
+    {
       "position": 10,
-      "points": 67.0,
+      "points": 71.0,
       "wins": 1,
       "id": "sheldon-van-der-linde",
       "code": "20",
@@ -575,49 +575,7 @@
     },
     {
       "position": 14,
-      "points": 54.0,
-      "wins": 0,
-      "id": "harry-tincknell",
-      "code": "007",
-      "givenName": "Harry",
-      "familyName": "Tincknell",
-      "nationality": "GBR",
-      "teamIds": [
-        "aston-martin"
-      ],
-      "teamNames": [
-        "Aston Martin"
-      ],
-      "teamColors": [
-        "#006F62"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/harry-tincknell.jpg"
-    },
-    {
-      "position": 14,
-      "points": 54.0,
-      "wins": 0,
-      "id": "tom-gamble",
-      "code": "007",
-      "givenName": "Tom",
-      "familyName": "Gamble",
-      "nationality": "GBR",
-      "teamIds": [
-        "aston-martin"
-      ],
-      "teamNames": [
-        "Aston Martin"
-      ],
-      "teamColors": [
-        "#006F62"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/tom-gamble.jpg"
-    },
-    {
-      "position": 15,
-      "points": 45.0,
+      "points": 49.0,
       "wins": 0,
       "id": "philip-hanson",
       "code": "83",
@@ -637,8 +595,8 @@
       "imageUrl": "assets/portraits/faces/wec/philip-hanson.jpg"
     },
     {
-      "position": 15,
-      "points": 45.0,
+      "position": 14,
+      "points": 49.0,
       "wins": 0,
       "id": "robert-kubica",
       "code": "83",
@@ -658,8 +616,8 @@
       "imageUrl": "assets/portraits/faces/wec/robert-kubica.jpg"
     },
     {
-      "position": 15,
-      "points": 45.0,
+      "position": 14,
+      "points": 49.0,
       "wins": 0,
       "id": "yifei-ye",
       "code": "83",
@@ -679,7 +637,7 @@
       "imageUrl": "assets/portraits/faces/wec/yifei-ye.jpg"
     },
     {
-      "position": 16,
+      "position": 15,
       "points": 44.0,
       "wins": 0,
       "id": "antonio-felix-da-costa",
@@ -698,6 +656,48 @@
       ],
       "category": "HYPERCAR",
       "imageUrl": "assets/portraits/faces/wec/antonio-felix-da-costa.jpg"
+    },
+    {
+      "position": 16,
+      "points": 42.0,
+      "wins": 0,
+      "id": "harry-tincknell",
+      "code": "007",
+      "givenName": "Harry",
+      "familyName": "Tincknell",
+      "nationality": "GBR",
+      "teamIds": [
+        "aston-martin"
+      ],
+      "teamNames": [
+        "Aston Martin"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "assets/portraits/faces/wec/harry-tincknell.jpg"
+    },
+    {
+      "position": 16,
+      "points": 42.0,
+      "wins": 0,
+      "id": "tom-gamble",
+      "code": "007",
+      "givenName": "Tom",
+      "familyName": "Gamble",
+      "nationality": "GBR",
+      "teamIds": [
+        "aston-martin"
+      ],
+      "teamNames": [
+        "Aston Martin"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "assets/portraits/faces/wec/tom-gamble.jpg"
     },
     {
       "position": 17,
@@ -722,7 +722,7 @@
     },
     {
       "position": 18,
-      "points": 22.0,
+      "points": 24.0,
       "wins": 0,
       "id": "loic-duval",
       "code": "94",
@@ -743,7 +743,7 @@
     },
     {
       "position": 18,
-      "points": 22.0,
+      "points": 24.0,
       "wins": 0,
       "id": "malthe-jakobsen",
       "code": "94",
@@ -764,7 +764,7 @@
     },
     {
       "position": 18,
-      "points": 22.0,
+      "points": 24.0,
       "wins": 0,
       "id": "theo-pourchaire",
       "code": "94",
@@ -869,6 +869,48 @@
     },
     {
       "position": 21,
+      "points": 10.0,
+      "wins": 0,
+      "id": "nick-cassidy",
+      "code": "93",
+      "givenName": "Nick",
+      "familyName": "Cassidy",
+      "nationality": "NZL",
+      "teamIds": [
+        "peugeot"
+      ],
+      "teamNames": [
+        "Peugeot"
+      ],
+      "teamColors": [
+        "#003B70"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "assets/portraits/faces/wec/nick-cassidy.jpg"
+    },
+    {
+      "position": 21,
+      "points": 10.0,
+      "wins": 0,
+      "id": "paul-di-resta",
+      "code": "93",
+      "givenName": "Paul di",
+      "familyName": "Resta",
+      "nationality": "GBR",
+      "teamIds": [
+        "peugeot"
+      ],
+      "teamNames": [
+        "Peugeot"
+      ],
+      "teamColors": [
+        "#003B70"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "assets/portraits/faces/wec/paul-di-resta.jpg"
+    },
+    {
+      "position": 22,
       "points": 8.0,
       "wins": 0,
       "id": "alex-lynn",
@@ -889,7 +931,7 @@
       "imageUrl": "assets/portraits/faces/wec/alex-lynn.jpg"
     },
     {
-      "position": 22,
+      "position": 23,
       "points": 8.0,
       "wins": 0,
       "id": "ross-gunn",
@@ -908,48 +950,6 @@
       ],
       "category": "HYPERCAR",
       "imageUrl": "assets/portraits/faces/wec/ross-gunn.jpg"
-    },
-    {
-      "position": 23,
-      "points": 7.0,
-      "wins": 0,
-      "id": "nick-cassidy",
-      "code": "93",
-      "givenName": "Nick",
-      "familyName": "Cassidy",
-      "nationality": "NZL",
-      "teamIds": [
-        "peugeot"
-      ],
-      "teamNames": [
-        "Peugeot"
-      ],
-      "teamColors": [
-        "#003B70"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/nick-cassidy.jpg"
-    },
-    {
-      "position": 23,
-      "points": 7.0,
-      "wins": 0,
-      "id": "paul-di-resta",
-      "code": "93",
-      "givenName": "Paul di",
-      "familyName": "Resta",
-      "nationality": "GBR",
-      "teamIds": [
-        "peugeot"
-      ],
-      "teamNames": [
-        "Peugeot"
-      ],
-      "teamColors": [
-        "#003B70"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/paul-di-resta.jpg"
     },
     {
       "position": 24,
@@ -1016,6 +1016,27 @@
     },
     {
       "position": 26,
+      "points": 4.0,
+      "wins": 0,
+      "id": "alex-quinn",
+      "code": "93",
+      "givenName": "Alex",
+      "familyName": "Quinn",
+      "nationality": "GBR",
+      "teamIds": [
+        "peugeot"
+      ],
+      "teamNames": [
+        "Peugeot"
+      ],
+      "teamColors": [
+        "#003B70"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "assets/portraits/faces/imsa/alex-quinn.jpg"
+    },
+    {
+      "position": 27,
       "points": 2.0,
       "wins": 0,
       "id": "ricky-taylor",
@@ -1034,27 +1055,6 @@
       ],
       "category": "HYPERCAR",
       "imageUrl": "assets/portraits/faces/wec/ricky-taylor.jpg"
-    },
-    {
-      "position": 27,
-      "points": 1.0,
-      "wins": 0,
-      "id": "alex-quinn",
-      "code": "93",
-      "givenName": "Alex",
-      "familyName": "Quinn",
-      "nationality": "GBR",
-      "teamIds": [
-        "peugeot"
-      ],
-      "teamNames": [
-        "Peugeot"
-      ],
-      "teamColors": [
-        "#003B70"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/imsa/alex-quinn.jpg"
     },
     {
       "position": 28,
