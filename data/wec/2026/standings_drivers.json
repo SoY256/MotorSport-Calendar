@@ -1,11 +1,32 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-11-08T16:02:00.748776Z",
+  "lastSuccessfulUpdate": "2026-11-08T16:31:24.635365Z",
   "source": {
     "name": "fia-wec-official-championship",
     "url": "https://www.fiawec.com/en/season/2026"
   },
   "data": [
+    {
+      "position": 1,
+      "points": 114.0,
+      "wins": 3,
+      "id": "sebastien-buemi",
+      "code": "8",
+      "givenName": "Sébastien",
+      "familyName": "Buemi",
+      "nationality": "SUI",
+      "teamIds": [
+        "toyota"
+      ],
+      "teamNames": [
+        "Toyota"
+      ],
+      "teamColors": [
+        "#EB0A1E"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "assets/portraits/faces/wec/sebastien-buemi.jpg"
+    },
     {
       "position": 1,
       "points": 114.0,
@@ -49,14 +70,14 @@
       "imageUrl": "assets/portraits/faces/wec/ryo-hirakawa.jpg"
     },
     {
-      "position": 1,
-      "points": 114.0,
-      "wins": 3,
-      "id": "sebastien-buemi",
-      "code": "8",
-      "givenName": "Sébastien",
-      "familyName": "Buemi",
-      "nationality": "SUI",
+      "position": 2,
+      "points": 97.0,
+      "wins": 1,
+      "id": "mike-conway",
+      "code": "7",
+      "givenName": "Mike",
+      "familyName": "Conway",
+      "nationality": "GBR",
       "teamIds": [
         "toyota"
       ],
@@ -67,7 +88,7 @@
         "#EB0A1E"
       ],
       "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/sebastien-buemi.jpg"
+      "imageUrl": "assets/portraits/faces/wec/mike-conway.jpg"
     },
     {
       "position": 2,
@@ -94,27 +115,6 @@
       "position": 2,
       "points": 97.0,
       "wins": 1,
-      "id": "mike-conway",
-      "code": "7",
-      "givenName": "Mike",
-      "familyName": "Conway",
-      "nationality": "GBR",
-      "teamIds": [
-        "toyota"
-      ],
-      "teamNames": [
-        "Toyota"
-      ],
-      "teamColors": [
-        "#EB0A1E"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/mike-conway.jpg"
-    },
-    {
-      "position": 2,
-      "points": 97.0,
-      "wins": 1,
       "id": "nyck-de-vries",
       "code": "7",
       "givenName": "Nyck de",
@@ -134,7 +134,7 @@
     },
     {
       "position": 3,
-      "points": 75.0,
+      "points": 83.0,
       "wins": 1,
       "id": "kevin-magnussen",
       "code": "15",
@@ -155,7 +155,7 @@
     },
     {
       "position": 3,
-      "points": 75.0,
+      "points": 83.0,
       "wins": 1,
       "id": "raffaele-marciello",
       "code": "15",
@@ -176,49 +176,49 @@
     },
     {
       "position": 4,
-      "points": 75.0,
-      "wins": 1,
-      "id": "rene-rast",
-      "code": "20",
-      "givenName": "René",
-      "familyName": "Rast",
-      "nationality": "GER",
+      "points": 81.0,
+      "wins": 0,
+      "id": "sebastien-bourdais",
+      "code": "38",
+      "givenName": "Sébastien",
+      "familyName": "Bourdais",
+      "nationality": "FRA",
       "teamIds": [
-        "bmw"
+        "cadillac"
       ],
       "teamNames": [
-        "BMW"
+        "Cadillac"
       ],
       "teamColors": [
-        "#0066B1"
+        "#C6A15B"
       ],
       "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/rene-rast.jpg"
+      "imageUrl": "assets/portraits/faces/wec/sebastien-bourdais.jpg"
     },
     {
       "position": 4,
-      "points": 75.0,
-      "wins": 1,
-      "id": "robin-frijns",
-      "code": "20",
-      "givenName": "Robin",
-      "familyName": "Frijns",
-      "nationality": "NED",
+      "points": 81.0,
+      "wins": 0,
+      "id": "earl-bamber",
+      "code": "38",
+      "givenName": "Earl",
+      "familyName": "Bamber",
+      "nationality": "NZL",
       "teamIds": [
-        "bmw"
+        "cadillac"
       ],
       "teamNames": [
-        "BMW"
+        "Cadillac"
       ],
       "teamColors": [
-        "#0066B1"
+        "#C6A15B"
       ],
       "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/robin-frijns.jpg"
+      "imageUrl": "assets/portraits/faces/wec/earl-bamber.jpg"
     },
     {
       "position": 5,
-      "points": 69.0,
+      "points": 77.0,
       "wins": 1,
       "id": "dries-vanthoor",
       "code": "15",
@@ -239,49 +239,70 @@
     },
     {
       "position": 6,
-      "points": 69.0,
+      "points": 77.0,
       "wins": 1,
-      "id": "antonio-fuoco",
-      "code": "50",
-      "givenName": "Antonio",
-      "familyName": "Fuoco",
-      "nationality": "ITA",
+      "id": "rene-rast",
+      "code": "20",
+      "givenName": "René",
+      "familyName": "Rast",
+      "nationality": "GER",
       "teamIds": [
-        "ferrari"
+        "bmw"
       ],
       "teamNames": [
-        "Ferrari"
+        "BMW"
       ],
       "teamColors": [
-        "#E10600"
+        "#0066B1"
       ],
       "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/antonio-fuoco.jpg"
+      "imageUrl": "assets/portraits/faces/wec/rene-rast.jpg"
     },
     {
       "position": 6,
-      "points": 69.0,
+      "points": 77.0,
       "wins": 1,
-      "id": "miguel-molina",
-      "code": "50",
-      "givenName": "Miguel",
-      "familyName": "Molina",
-      "nationality": "ESP",
+      "id": "robin-frijns",
+      "code": "20",
+      "givenName": "Robin",
+      "familyName": "Frijns",
+      "nationality": "NED",
       "teamIds": [
-        "ferrari"
+        "bmw"
       ],
       "teamNames": [
-        "Ferrari"
+        "BMW"
       ],
       "teamColors": [
-        "#E10600"
+        "#0066B1"
       ],
       "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/miguel-molina.jpg"
+      "imageUrl": "assets/portraits/faces/wec/robin-frijns.jpg"
     },
     {
-      "position": 6,
-      "points": 69.0,
+      "position": 7,
+      "points": 77.0,
+      "wins": 0,
+      "id": "jack-aitken",
+      "code": "38",
+      "givenName": "Jack",
+      "familyName": "Aitken",
+      "nationality": "GBR",
+      "teamIds": [
+        "cadillac"
+      ],
+      "teamNames": [
+        "Cadillac"
+      ],
+      "teamColors": [
+        "#C6A15B"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "assets/portraits/faces/wec/jack-aitken.jpg"
+    },
+    {
+      "position": 8,
+      "points": 76.0,
       "wins": 1,
       "id": "nicklas-nielsen",
       "code": "50",
@@ -301,34 +322,34 @@
       "imageUrl": "assets/portraits/faces/wec/nicklas-nielsen.jpg"
     },
     {
-      "position": 7,
-      "points": 65.0,
+      "position": 8,
+      "points": 76.0,
       "wins": 1,
-      "id": "sheldon-van-der-linde",
-      "code": "20",
-      "givenName": "Sheldon van der",
-      "familyName": "Linde",
-      "nationality": "RSA",
+      "id": "miguel-molina",
+      "code": "50",
+      "givenName": "Miguel",
+      "familyName": "Molina",
+      "nationality": "ESP",
       "teamIds": [
-        "bmw"
+        "ferrari"
       ],
       "teamNames": [
-        "BMW"
+        "Ferrari"
       ],
       "teamColors": [
-        "#0066B1"
+        "#E10600"
       ],
       "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/sheldon-van-der-linde.jpg"
+      "imageUrl": "assets/portraits/faces/wec/miguel-molina.jpg"
     },
     {
       "position": 8,
-      "points": 59.0,
-      "wins": 0,
-      "id": "alessandro-pier-guidi",
-      "code": "51",
-      "givenName": "Alessandro Pier",
-      "familyName": "Guidi",
+      "points": 76.0,
+      "wins": 1,
+      "id": "antonio-fuoco",
+      "code": "50",
+      "givenName": "Antonio",
+      "familyName": "Fuoco",
       "nationality": "ITA",
       "teamIds": [
         "ferrari"
@@ -340,11 +361,11 @@
         "#E10600"
       ],
       "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/alessandro-pier-guidi.jpg"
+      "imageUrl": "assets/portraits/faces/wec/antonio-fuoco.jpg"
     },
     {
-      "position": 8,
-      "points": 59.0,
+      "position": 9,
+      "points": 71.0,
       "wins": 0,
       "id": "antonio-giovinazzi",
       "code": "51",
@@ -364,8 +385,8 @@
       "imageUrl": "assets/portraits/faces/wec/antonio-giovinazzi.jpg"
     },
     {
-      "position": 8,
-      "points": 59.0,
+      "position": 9,
+      "points": 71.0,
       "wins": 0,
       "id": "james-calado",
       "code": "51",
@@ -386,6 +407,48 @@
     },
     {
       "position": 9,
+      "points": 71.0,
+      "wins": 0,
+      "id": "alessandro-pier-guidi",
+      "code": "51",
+      "givenName": "Alessandro Pier",
+      "familyName": "Guidi",
+      "nationality": "ITA",
+      "teamIds": [
+        "ferrari"
+      ],
+      "teamNames": [
+        "Ferrari"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "assets/portraits/faces/wec/alessandro-pier-guidi.jpg"
+    },
+    {
+      "position": 10,
+      "points": 67.0,
+      "wins": 1,
+      "id": "sheldon-van-der-linde",
+      "code": "20",
+      "givenName": "Sheldon van der",
+      "familyName": "Linde",
+      "nationality": "RSA",
+      "teamIds": [
+        "bmw"
+      ],
+      "teamNames": [
+        "BMW"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "assets/portraits/faces/wec/sheldon-van-der-linde.jpg"
+    },
+    {
+      "position": 11,
       "points": 58.0,
       "wins": 0,
       "id": "norman-nato",
@@ -406,7 +469,7 @@
       "imageUrl": "assets/portraits/faces/wec/norman-nato.jpg"
     },
     {
-      "position": 9,
+      "position": 11,
       "points": 58.0,
       "wins": 0,
       "id": "will-stevens",
@@ -427,7 +490,7 @@
       "imageUrl": "assets/portraits/faces/wec/will-stevens.jpg"
     },
     {
-      "position": 10,
+      "position": 12,
       "points": 57.0,
       "wins": 0,
       "id": "charles-milesi",
@@ -448,7 +511,7 @@
       "imageUrl": "assets/portraits/faces/wec/charles-milesi.jpg"
     },
     {
-      "position": 10,
+      "position": 12,
       "points": 57.0,
       "wins": 0,
       "id": "ferdinand-habsburg",
@@ -469,92 +532,29 @@
       "imageUrl": "assets/portraits/faces/wec/ferdinand-habsburg.jpg"
     },
     {
-      "position": 11,
-      "points": 56.0,
+      "position": 13,
+      "points": 57.0,
       "wins": 0,
-      "id": "earl-bamber",
-      "code": "38",
-      "givenName": "Earl",
-      "familyName": "Bamber",
-      "nationality": "NZL",
-      "teamIds": [
-        "cadillac"
-      ],
-      "teamNames": [
-        "Cadillac"
-      ],
-      "teamColors": [
-        "#C6A15B"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/earl-bamber.jpg"
-    },
-    {
-      "position": 11,
-      "points": 56.0,
-      "wins": 0,
-      "id": "sebastien-bourdais",
-      "code": "38",
-      "givenName": "Sébastien",
-      "familyName": "Bourdais",
-      "nationality": "FRA",
-      "teamIds": [
-        "cadillac"
-      ],
-      "teamNames": [
-        "Cadillac"
-      ],
-      "teamColors": [
-        "#C6A15B"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/sebastien-bourdais.jpg"
-    },
-    {
-      "position": 12,
-      "points": 52.0,
-      "wins": 0,
-      "id": "jack-aitken",
-      "code": "38",
-      "givenName": "Jack",
-      "familyName": "Aitken",
+      "id": "tom-gamble",
+      "code": "007",
+      "givenName": "Tom",
+      "familyName": "Gamble",
       "nationality": "GBR",
       "teamIds": [
-        "cadillac"
+        "aston-martin"
       ],
       "teamNames": [
-        "Cadillac"
+        "Aston Martin"
       ],
       "teamColors": [
-        "#C6A15B"
+        "#006F62"
       ],
       "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/jack-aitken.jpg"
+      "imageUrl": "assets/portraits/faces/wec/tom-gamble.jpg"
     },
     {
       "position": 13,
-      "points": 44.0,
-      "wins": 0,
-      "id": "antonio-felix-da-costa",
-      "code": "35",
-      "givenName": "António Félix da",
-      "familyName": "Costa",
-      "nationality": "POR",
-      "teamIds": [
-        "alpine"
-      ],
-      "teamNames": [
-        "Alpine"
-      ],
-      "teamColors": [
-        "#005BAA"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/antonio-felix-da-costa.jpg"
-    },
-    {
-      "position": 14,
-      "points": 42.0,
+      "points": 57.0,
       "wins": 0,
       "id": "harry-tincknell",
       "code": "007",
@@ -575,34 +575,55 @@
     },
     {
       "position": 14,
-      "points": 42.0,
+      "points": 54.0,
       "wins": 0,
-      "id": "tom-gamble",
-      "code": "007",
-      "givenName": "Tom",
-      "familyName": "Gamble",
-      "nationality": "GBR",
+      "id": "jules-gounon",
+      "code": "36",
+      "givenName": "Jules",
+      "familyName": "Gounon",
+      "nationality": "FRA",
       "teamIds": [
-        "aston-martin"
+        "alpine"
       ],
       "teamNames": [
-        "Aston Martin"
+        "Alpine"
       ],
       "teamColors": [
-        "#006F62"
+        "#005BAA"
       ],
       "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/tom-gamble.jpg"
+      "imageUrl": "assets/portraits/faces/wec/jules-gounon.jpg"
+    },
+    {
+      "position": 14,
+      "points": 54.0,
+      "wins": 0,
+      "id": "victor-martins",
+      "code": "36",
+      "givenName": "Victor",
+      "familyName": "Martins",
+      "nationality": "FRA",
+      "teamIds": [
+        "alpine"
+      ],
+      "teamNames": [
+        "Alpine"
+      ],
+      "teamColors": [
+        "#005BAA"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "assets/portraits/faces/wec/victor-martins.jpg"
     },
     {
       "position": 15,
-      "points": 41.0,
+      "points": 45.0,
       "wins": 0,
-      "id": "philip-hanson",
+      "id": "yifei-ye",
       "code": "83",
-      "givenName": "Philip",
-      "familyName": "Hanson",
-      "nationality": "GBR",
+      "givenName": "Yifei",
+      "familyName": "Ye",
+      "nationality": "CHN",
       "teamIds": [
         "ferrari"
       ],
@@ -613,11 +634,11 @@
         "#E10600"
       ],
       "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/philip-hanson.jpg"
+      "imageUrl": "assets/portraits/faces/wec/yifei-ye.jpg"
     },
     {
       "position": 15,
-      "points": 41.0,
+      "points": 45.0,
       "wins": 0,
       "id": "robert-kubica",
       "code": "83",
@@ -638,13 +659,13 @@
     },
     {
       "position": 15,
-      "points": 41.0,
+      "points": 45.0,
       "wins": 0,
-      "id": "yifei-ye",
+      "id": "philip-hanson",
       "code": "83",
-      "givenName": "Yifei",
-      "familyName": "Ye",
-      "nationality": "CHN",
+      "givenName": "Philip",
+      "familyName": "Hanson",
+      "nationality": "GBR",
       "teamIds": [
         "ferrari"
       ],
@@ -655,17 +676,17 @@
         "#E10600"
       ],
       "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/yifei-ye.jpg"
+      "imageUrl": "assets/portraits/faces/wec/philip-hanson.jpg"
     },
     {
       "position": 16,
-      "points": 36.0,
+      "points": 44.0,
       "wins": 0,
-      "id": "jules-gounon",
-      "code": "36",
-      "givenName": "Jules",
-      "familyName": "Gounon",
-      "nationality": "FRA",
+      "id": "antonio-felix-da-costa",
+      "code": "35",
+      "givenName": "António Félix da",
+      "familyName": "Costa",
+      "nationality": "POR",
       "teamIds": [
         "alpine"
       ],
@@ -676,28 +697,7 @@
         "#005BAA"
       ],
       "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/jules-gounon.jpg"
-    },
-    {
-      "position": 16,
-      "points": 36.0,
-      "wins": 0,
-      "id": "victor-martins",
-      "code": "36",
-      "givenName": "Victor",
-      "familyName": "Martins",
-      "nationality": "FRA",
-      "teamIds": [
-        "alpine"
-      ],
-      "teamNames": [
-        "Alpine"
-      ],
-      "teamColors": [
-        "#005BAA"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/victor-martins.jpg"
+      "imageUrl": "assets/portraits/faces/wec/antonio-felix-da-costa.jpg"
     },
     {
       "position": 17,
@@ -722,6 +722,69 @@
     },
     {
       "position": 18,
+      "points": 22.0,
+      "wins": 0,
+      "id": "malthe-jakobsen",
+      "code": "94",
+      "givenName": "Malthe",
+      "familyName": "Jakobsen",
+      "nationality": "DNK",
+      "teamIds": [
+        "peugeot"
+      ],
+      "teamNames": [
+        "Peugeot"
+      ],
+      "teamColors": [
+        "#003B70"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "assets/portraits/faces/wec/malthe-jakobsen.jpg"
+    },
+    {
+      "position": 18,
+      "points": 22.0,
+      "wins": 0,
+      "id": "loic-duval",
+      "code": "94",
+      "givenName": "Loïc",
+      "familyName": "Duval",
+      "nationality": "FRA",
+      "teamIds": [
+        "peugeot"
+      ],
+      "teamNames": [
+        "Peugeot"
+      ],
+      "teamColors": [
+        "#003B70"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "assets/portraits/faces/wec/loic-duval.jpg"
+    },
+    {
+      "position": 18,
+      "points": 22.0,
+      "wins": 0,
+      "id": "theo-pourchaire",
+      "code": "94",
+      "givenName": "Théo",
+      "familyName": "Pourchaire",
+      "nationality": "FRA",
+      "teamIds": [
+        "peugeot"
+      ],
+      "teamNames": [
+        "Peugeot"
+      ],
+      "teamColors": [
+        "#003B70"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "assets/portraits/faces/wec/theo-pourchaire.jpg"
+    },
+    {
+      "position": 19,
       "points": 14.0,
       "wins": 0,
       "id": "frederic-makowiecki",
@@ -742,77 +805,14 @@
       "imageUrl": "assets/portraits/faces/wec/frederic-makowiecki.jpg"
     },
     {
-      "position": 19,
-      "points": 12.0,
-      "wins": 0,
-      "id": "loic-duval",
-      "code": "94",
-      "givenName": "Loïc",
-      "familyName": "Duval",
-      "nationality": "FRA",
-      "teamIds": [
-        "peugeot"
-      ],
-      "teamNames": [
-        "Peugeot"
-      ],
-      "teamColors": [
-        "#003B70"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/loic-duval.jpg"
-    },
-    {
-      "position": 19,
-      "points": 12.0,
-      "wins": 0,
-      "id": "malthe-jakobsen",
-      "code": "94",
-      "givenName": "Malthe",
-      "familyName": "Jakobsen",
-      "nationality": "DNK",
-      "teamIds": [
-        "peugeot"
-      ],
-      "teamNames": [
-        "Peugeot"
-      ],
-      "teamColors": [
-        "#003B70"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/malthe-jakobsen.jpg"
-    },
-    {
-      "position": 19,
-      "points": 12.0,
-      "wins": 0,
-      "id": "theo-pourchaire",
-      "code": "94",
-      "givenName": "Théo",
-      "familyName": "Pourchaire",
-      "nationality": "FRA",
-      "teamIds": [
-        "peugeot"
-      ],
-      "teamNames": [
-        "Peugeot"
-      ],
-      "teamColors": [
-        "#003B70"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/theo-pourchaire.jpg"
-    },
-    {
       "position": 20,
       "points": 11.0,
       "wins": 0,
-      "id": "andre-lotterer",
+      "id": "mathys-jaubert",
       "code": "17",
-      "givenName": "André",
-      "familyName": "Lotterer",
-      "nationality": "GER",
+      "givenName": "Mathys",
+      "familyName": "Jaubert",
+      "nationality": "FRA",
       "teamIds": [
         "genesis"
       ],
@@ -823,7 +823,7 @@
         "#C36B28"
       ],
       "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/andre-lotterer.jpg"
+      "imageUrl": "assets/portraits/faces/wec/mathys-jaubert.jpg"
     },
     {
       "position": 20,
@@ -850,11 +850,11 @@
       "position": 20,
       "points": 11.0,
       "wins": 0,
-      "id": "mathys-jaubert",
+      "id": "andre-lotterer",
       "code": "17",
-      "givenName": "Mathys",
-      "familyName": "Jaubert",
-      "nationality": "FRA",
+      "givenName": "André",
+      "familyName": "Lotterer",
+      "nationality": "GER",
       "teamIds": [
         "genesis"
       ],
@@ -865,7 +865,7 @@
         "#C36B28"
       ],
       "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/mathys-jaubert.jpg"
+      "imageUrl": "assets/portraits/faces/wec/andre-lotterer.jpg"
     },
     {
       "position": 21,
@@ -911,7 +911,7 @@
     },
     {
       "position": 23,
-      "points": 6.0,
+      "points": 7.0,
       "wins": 0,
       "id": "nick-cassidy",
       "code": "93",
@@ -932,7 +932,7 @@
     },
     {
       "position": 23,
-      "points": 6.0,
+      "points": 7.0,
       "wins": 0,
       "id": "paul-di-resta",
       "code": "93",
@@ -976,27 +976,6 @@
       "position": 25,
       "points": 6.0,
       "wins": 0,
-      "id": "alex-riberas",
-      "code": "009",
-      "givenName": "Alex",
-      "familyName": "Riberas",
-      "nationality": "ESP",
-      "teamIds": [
-        "aston-martin"
-      ],
-      "teamNames": [
-        "Aston Martin"
-      ],
-      "teamColors": [
-        "#006F62"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/alex-riberas.jpg"
-    },
-    {
-      "position": 25,
-      "points": 6.0,
-      "wins": 0,
       "id": "marco-srensen",
       "code": "009",
       "givenName": "Marco",
@@ -1013,6 +992,27 @@
       ],
       "category": "HYPERCAR",
       "imageUrl": "assets/portraits/faces/wec/marco-srensen.jpg"
+    },
+    {
+      "position": 25,
+      "points": 6.0,
+      "wins": 0,
+      "id": "alex-riberas",
+      "code": "009",
+      "givenName": "Alex",
+      "familyName": "Riberas",
+      "nationality": "ESP",
+      "teamIds": [
+        "aston-martin"
+      ],
+      "teamNames": [
+        "Aston Martin"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "assets/portraits/faces/wec/alex-riberas.jpg"
     },
     {
       "position": 26,
@@ -1037,48 +1037,27 @@
     },
     {
       "position": 27,
-      "points": 0.0,
+      "points": 1.0,
       "wins": 0,
-      "id": "daniel-juncadella",
-      "code": "19",
-      "givenName": "Daniel",
-      "familyName": "Juncadella",
-      "nationality": "ESP",
+      "id": "alex-quinn",
+      "code": "93",
+      "givenName": "Alex",
+      "familyName": "Quinn",
+      "nationality": "GBR",
       "teamIds": [
-        "genesis"
+        "peugeot"
       ],
       "teamNames": [
-        "Genesis"
+        "Peugeot"
       ],
       "teamColors": [
-        "#C36B28"
+        "#003B70"
       ],
       "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/daniel-juncadella.jpg"
+      "imageUrl": "assets/portraits/faces/imsa/alex-quinn.jpg"
     },
     {
-      "position": 27,
-      "points": 0.0,
-      "wins": 0,
-      "id": "mathieu-jaminet",
-      "code": "19",
-      "givenName": "Mathieu",
-      "familyName": "Jaminet",
-      "nationality": "FRA",
-      "teamIds": [
-        "genesis"
-      ],
-      "teamNames": [
-        "Genesis"
-      ],
-      "teamColors": [
-        "#C36B28"
-      ],
-      "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/wec/mathieu-jaminet.jpg"
-    },
-    {
-      "position": 27,
+      "position": 28,
       "points": 0.0,
       "wins": 0,
       "id": "paul-loup-chatin",
@@ -1102,22 +1081,43 @@
       "position": 28,
       "points": 0.0,
       "wins": 0,
-      "id": "alex-quinn",
-      "code": "93",
-      "givenName": "Alex",
-      "familyName": "Quinn",
-      "nationality": "GBR",
+      "id": "daniel-juncadella",
+      "code": "19",
+      "givenName": "Daniel",
+      "familyName": "Juncadella",
+      "nationality": "ESP",
       "teamIds": [
-        "peugeot"
+        "genesis"
       ],
       "teamNames": [
-        "Peugeot"
+        "Genesis"
       ],
       "teamColors": [
-        "#003B70"
+        "#C36B28"
       ],
       "category": "HYPERCAR",
-      "imageUrl": "assets/portraits/faces/imsa/alex-quinn.jpg"
+      "imageUrl": "assets/portraits/faces/wec/daniel-juncadella.jpg"
+    },
+    {
+      "position": 28,
+      "points": 0.0,
+      "wins": 0,
+      "id": "mathieu-jaminet",
+      "code": "19",
+      "givenName": "Mathieu",
+      "familyName": "Jaminet",
+      "nationality": "FRA",
+      "teamIds": [
+        "genesis"
+      ],
+      "teamNames": [
+        "Genesis"
+      ],
+      "teamColors": [
+        "#C36B28"
+      ],
+      "category": "HYPERCAR",
+      "imageUrl": "assets/portraits/faces/wec/mathieu-jaminet.jpg"
     },
     {
       "position": 29,
@@ -1142,7 +1142,7 @@
     },
     {
       "position": 1,
-      "points": 92.0,
+      "points": 107.0,
       "wins": 1,
       "id": "jonny-edgar",
       "code": "33",
@@ -1163,7 +1163,7 @@
     },
     {
       "position": 2,
-      "points": 88.0,
+      "points": 103.0,
       "wins": 1,
       "id": "nicky-catsburg",
       "code": "33",
@@ -1184,28 +1184,7 @@
     },
     {
       "position": 3,
-      "points": 74.0,
-      "wins": 1,
-      "id": "riccardo-pera",
-      "code": "92",
-      "givenName": "Riccardo",
-      "familyName": "Pera",
-      "nationality": "ITA",
-      "teamIds": [
-        "porsche"
-      ],
-      "teamNames": [
-        "Porsche"
-      ],
-      "teamColors": [
-        "#D5001C"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/riccardo-pera.jpg"
-    },
-    {
-      "position": 3,
-      "points": 74.0,
+      "points": 99.0,
       "wins": 1,
       "id": "richard-lietz",
       "code": "92",
@@ -1226,7 +1205,28 @@
     },
     {
       "position": 3,
-      "points": 74.0,
+      "points": 99.0,
+      "wins": 1,
+      "id": "riccardo-pera",
+      "code": "92",
+      "givenName": "Riccardo",
+      "familyName": "Pera",
+      "nationality": "ITA",
+      "teamIds": [
+        "porsche"
+      ],
+      "teamNames": [
+        "Porsche"
+      ],
+      "teamColors": [
+        "#D5001C"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "assets/portraits/faces/wec/riccardo-pera.jpg"
+    },
+    {
+      "position": 3,
+      "points": 99.0,
       "wins": 1,
       "id": "yasser-shahin",
       "code": "92",
@@ -1247,70 +1247,7 @@
     },
     {
       "position": 4,
-      "points": 70.0,
-      "wins": 1,
-      "id": "charlie-eastwood",
-      "code": "34",
-      "givenName": "Charlie",
-      "familyName": "Eastwood",
-      "nationality": "IRL",
-      "teamIds": [
-        "corvette"
-      ],
-      "teamNames": [
-        "Corvette"
-      ],
-      "teamColors": [
-        "#F2C500"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/charlie-eastwood.jpg"
-    },
-    {
-      "position": 4,
-      "points": 70.0,
-      "wins": 1,
-      "id": "peter-dempsey",
-      "code": "34",
-      "givenName": "Peter",
-      "familyName": "Dempsey",
-      "nationality": "USA",
-      "teamIds": [
-        "corvette"
-      ],
-      "teamNames": [
-        "Corvette"
-      ],
-      "teamColors": [
-        "#F2C500"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/peter-dempsey.jpg"
-    },
-    {
-      "position": 4,
-      "points": 70.0,
-      "wins": 1,
-      "id": "salih-yoluc",
-      "code": "34",
-      "givenName": "Salih",
-      "familyName": "Yoluç",
-      "nationality": "TUR",
-      "teamIds": [
-        "corvette"
-      ],
-      "teamNames": [
-        "Corvette"
-      ],
-      "teamColors": [
-        "#F2C500"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/salih-yoluc.jpg"
-    },
-    {
-      "position": 5,
-      "points": 70.0,
+      "points": 85.0,
       "wins": 1,
       "id": "ben-keating",
       "code": "33",
@@ -1330,8 +1267,50 @@
       "imageUrl": "assets/portraits/faces/wec/ben-keating.jpg"
     },
     {
-      "position": 6,
-      "points": 66.0,
+      "position": 5,
+      "points": 78.0,
+      "wins": 1,
+      "id": "parker-thompson",
+      "code": "69",
+      "givenName": "Parker",
+      "familyName": "Thompson",
+      "nationality": "CAN",
+      "teamIds": [
+        "bmw"
+      ],
+      "teamNames": [
+        "BMW"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "assets/portraits/faces/wec/parker-thompson.jpg"
+    },
+    {
+      "position": 5,
+      "points": 78.0,
+      "wins": 1,
+      "id": "daniel-harper",
+      "code": "69",
+      "givenName": "Daniel",
+      "familyName": "Harper",
+      "nationality": "GBR",
+      "teamIds": [
+        "bmw"
+      ],
+      "teamNames": [
+        "BMW"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "assets/portraits/faces/wec/daniel-harper.jpg"
+    },
+    {
+      "position": 5,
+      "points": 78.0,
       "wins": 1,
       "id": "anthony-mcintosh",
       "code": "69",
@@ -1352,70 +1331,112 @@
     },
     {
       "position": 6,
-      "points": 66.0,
+      "points": 70.0,
       "wins": 1,
-      "id": "daniel-harper",
-      "code": "69",
-      "givenName": "Daniel",
-      "familyName": "Harper",
-      "nationality": "GBR",
+      "id": "peter-dempsey",
+      "code": "34",
+      "givenName": "Peter",
+      "familyName": "Dempsey",
+      "nationality": "USA",
       "teamIds": [
-        "bmw"
+        "corvette"
       ],
       "teamNames": [
-        "BMW"
+        "Corvette"
       ],
       "teamColors": [
-        "#0066B1"
+        "#F2C500"
       ],
       "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/daniel-harper.jpg"
+      "imageUrl": "assets/portraits/faces/wec/peter-dempsey.jpg"
     },
     {
       "position": 6,
-      "points": 66.0,
+      "points": 70.0,
       "wins": 1,
-      "id": "parker-thompson",
-      "code": "69",
-      "givenName": "Parker",
-      "familyName": "Thompson",
-      "nationality": "CAN",
+      "id": "salih-yoluc",
+      "code": "34",
+      "givenName": "Salih",
+      "familyName": "Yoluç",
+      "nationality": "TUR",
       "teamIds": [
-        "bmw"
+        "corvette"
       ],
       "teamNames": [
-        "BMW"
+        "Corvette"
       ],
       "teamColors": [
-        "#0066B1"
+        "#F2C500"
       ],
       "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/parker-thompson.jpg"
+      "imageUrl": "assets/portraits/faces/wec/salih-yoluc.jpg"
+    },
+    {
+      "position": 6,
+      "points": 70.0,
+      "wins": 1,
+      "id": "charlie-eastwood",
+      "code": "34",
+      "givenName": "Charlie",
+      "familyName": "Eastwood",
+      "nationality": "IRL",
+      "teamIds": [
+        "corvette"
+      ],
+      "teamNames": [
+        "Corvette"
+      ],
+      "teamColors": [
+        "#F2C500"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "assets/portraits/faces/wec/charlie-eastwood.jpg"
     },
     {
       "position": 7,
-      "points": 64.0,
+      "points": 69.0,
       "wins": 0,
-      "id": "alessio-rovera",
-      "code": "21",
-      "givenName": "Alessio",
-      "familyName": "Rovera",
-      "nationality": "ITA",
+      "id": "gray-newell",
+      "code": "23",
+      "givenName": "Gray",
+      "familyName": "Newell",
+      "nationality": "USA",
       "teamIds": [
-        "ferrari"
+        "aston-martin"
       ],
       "teamNames": [
-        "Ferrari"
+        "Aston Martin"
       ],
       "teamColors": [
-        "#E10600"
+        "#006F62"
       ],
       "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/alessio-rovera.jpg"
+      "imageUrl": "assets/portraits/faces/wec/gray-newell.jpg"
     },
     {
       "position": 7,
-      "points": 64.0,
+      "points": 69.0,
+      "wins": 0,
+      "id": "jonny-adam",
+      "code": "23",
+      "givenName": "Jonny",
+      "familyName": "Adam",
+      "nationality": "GBR",
+      "teamIds": [
+        "aston-martin"
+      ],
+      "teamNames": [
+        "Aston Martin"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "assets/portraits/faces/wec/jonny-adam.jpg"
+    },
+    {
+      "position": 8,
+      "points": 66.0,
       "wins": 0,
       "id": "francois-heriau",
       "code": "21",
@@ -1435,8 +1456,8 @@
       "imageUrl": "assets/portraits/faces/wec/francois-heriau.jpg"
     },
     {
-      "position": 7,
-      "points": 64.0,
+      "position": 8,
+      "points": 66.0,
       "wins": 0,
       "id": "simon-mann",
       "code": "21",
@@ -1457,13 +1478,34 @@
     },
     {
       "position": 8,
-      "points": 62.0,
-      "wins": 1,
-      "id": "ian-james",
-      "code": "27",
-      "givenName": "Ian",
-      "familyName": "James",
-      "nationality": "USA",
+      "points": 66.0,
+      "wins": 0,
+      "id": "alessio-rovera",
+      "code": "21",
+      "givenName": "Alessio",
+      "familyName": "Rovera",
+      "nationality": "ITA",
+      "teamIds": [
+        "ferrari"
+      ],
+      "teamNames": [
+        "Ferrari"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "assets/portraits/faces/wec/alessio-rovera.jpg"
+    },
+    {
+      "position": 9,
+      "points": 66.0,
+      "wins": 0,
+      "id": "eduardo-barrichello",
+      "code": "23",
+      "givenName": "Eduardo",
+      "familyName": "Barrichello",
+      "nationality": "BRA",
       "teamIds": [
         "aston-martin"
       ],
@@ -1474,11 +1516,11 @@
         "#006F62"
       ],
       "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/ian-james.jpg"
+      "imageUrl": "assets/portraits/faces/wec/eduardo-barrichello.jpg"
     },
     {
-      "position": 8,
-      "points": 62.0,
+      "position": 10,
+      "points": 63.0,
       "wins": 1,
       "id": "mattia-drudi",
       "code": "27",
@@ -1498,8 +1540,29 @@
       "imageUrl": "assets/portraits/faces/wec/mattia-drudi.jpg"
     },
     {
-      "position": 8,
-      "points": 62.0,
+      "position": 10,
+      "points": 63.0,
+      "wins": 1,
+      "id": "ian-james",
+      "code": "27",
+      "givenName": "Ian",
+      "familyName": "James",
+      "nationality": "USA",
+      "teamIds": [
+        "aston-martin"
+      ],
+      "teamNames": [
+        "Aston Martin"
+      ],
+      "teamColors": [
+        "#006F62"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "assets/portraits/faces/wec/ian-james.jpg"
+    },
+    {
+      "position": 10,
+      "points": 63.0,
       "wins": 1,
       "id": "zacharie-robichon",
       "code": "27",
@@ -1519,71 +1582,8 @@
       "imageUrl": "assets/portraits/faces/wec/zacharie-robichon.jpg"
     },
     {
-      "position": 9,
-      "points": 57.0,
-      "wins": 1,
-      "id": "antares-au",
-      "code": "10",
-      "givenName": "Antares",
-      "familyName": "Au",
-      "nationality": "HKG",
-      "teamIds": [
-        "mclaren"
-      ],
-      "teamNames": [
-        "McLaren"
-      ],
-      "teamColors": [
-        "#FF8000"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/antares-au.jpg"
-    },
-    {
-      "position": 9,
-      "points": 57.0,
-      "wins": 1,
-      "id": "marvin-kirchhofer",
-      "code": "10",
-      "givenName": "Marvin",
-      "familyName": "Kirchhöfer",
-      "nationality": "GER",
-      "teamIds": [
-        "mclaren"
-      ],
-      "teamNames": [
-        "McLaren"
-      ],
-      "teamColors": [
-        "#FF8000"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/marvin-kirchhofer.jpg"
-    },
-    {
-      "position": 9,
-      "points": 57.0,
-      "wins": 1,
-      "id": "thomas-fleming",
-      "code": "10",
-      "givenName": "Thomas",
-      "familyName": "Fleming",
-      "nationality": "GBR",
-      "teamIds": [
-        "mclaren"
-      ],
-      "teamNames": [
-        "McLaren"
-      ],
-      "teamColors": [
-        "#FF8000"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/thomas-fleming.jpg"
-    },
-    {
-      "position": 10,
-      "points": 54.0,
+      "position": 11,
+      "points": 62.0,
       "wins": 0,
       "id": "ayhancan-guven",
       "code": "91",
@@ -1603,29 +1603,8 @@
       "imageUrl": "assets/portraits/faces/wec/ayhancan-guven.jpg"
     },
     {
-      "position": 10,
-      "points": 54.0,
-      "wins": 0,
-      "id": "james-cottingham",
-      "code": "91",
-      "givenName": "James",
-      "familyName": "Cottingham",
-      "nationality": "GBR",
-      "teamIds": [
-        "porsche"
-      ],
-      "teamNames": [
-        "Porsche"
-      ],
-      "teamColors": [
-        "#D5001C"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/james-cottingham.jpg"
-    },
-    {
-      "position": 10,
-      "points": 54.0,
+      "position": 11,
+      "points": 62.0,
       "wins": 0,
       "id": "timur-boguslavskiy",
       "code": "91",
@@ -1646,133 +1625,112 @@
     },
     {
       "position": 11,
-      "points": 51.0,
+      "points": 62.0,
       "wins": 0,
-      "id": "gray-newell",
-      "code": "23",
-      "givenName": "Gray",
-      "familyName": "Newell",
-      "nationality": "USA",
-      "teamIds": [
-        "aston-martin"
-      ],
-      "teamNames": [
-        "Aston Martin"
-      ],
-      "teamColors": [
-        "#006F62"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/gray-newell.jpg"
-    },
-    {
-      "position": 11,
-      "points": 51.0,
-      "wins": 0,
-      "id": "jonny-adam",
-      "code": "23",
-      "givenName": "Jonny",
-      "familyName": "Adam",
+      "id": "james-cottingham",
+      "code": "91",
+      "givenName": "James",
+      "familyName": "Cottingham",
       "nationality": "GBR",
       "teamIds": [
-        "aston-martin"
+        "porsche"
       ],
       "teamNames": [
-        "Aston Martin"
+        "Porsche"
       ],
       "teamColors": [
-        "#006F62"
+        "#D5001C"
       ],
       "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/jonny-adam.jpg"
+      "imageUrl": "assets/portraits/faces/wec/james-cottingham.jpg"
     },
     {
       "position": 12,
-      "points": 48.0,
+      "points": 57.0,
       "wins": 1,
-      "id": "augusto-farfus",
-      "code": "32",
-      "givenName": "Augusto",
-      "familyName": "Farfus",
-      "nationality": "BRA",
-      "teamIds": [
-        "bmw"
-      ],
-      "teamNames": [
-        "BMW"
-      ],
-      "teamColors": [
-        "#0066B1"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/augusto-farfus.jpg"
-    },
-    {
-      "position": 12,
-      "points": 48.0,
-      "wins": 1,
-      "id": "darren-leung",
-      "code": "32",
-      "givenName": "Darren",
-      "familyName": "Leung",
+      "id": "thomas-fleming",
+      "code": "10",
+      "givenName": "Thomas",
+      "familyName": "Fleming",
       "nationality": "GBR",
       "teamIds": [
-        "bmw"
+        "mclaren"
       ],
       "teamNames": [
-        "BMW"
+        "McLaren"
       ],
       "teamColors": [
-        "#0066B1"
+        "#FF8000"
       ],
       "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/darren-leung.jpg"
+      "imageUrl": "assets/portraits/faces/wec/thomas-fleming.jpg"
     },
     {
       "position": 12,
-      "points": 48.0,
+      "points": 57.0,
       "wins": 1,
-      "id": "sean-gelael",
-      "code": "32",
-      "givenName": "Sean",
-      "familyName": "Gelael",
-      "nationality": "IDN",
+      "id": "antares-au",
+      "code": "10",
+      "givenName": "Antares",
+      "familyName": "Au",
+      "nationality": "HKG",
       "teamIds": [
-        "bmw"
+        "mclaren"
       ],
       "teamNames": [
-        "BMW"
+        "McLaren"
       ],
       "teamColors": [
-        "#0066B1"
+        "#FF8000"
       ],
       "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/sean-gelael.jpg"
+      "imageUrl": "assets/portraits/faces/wec/antares-au.jpg"
+    },
+    {
+      "position": 12,
+      "points": 57.0,
+      "wins": 1,
+      "id": "marvin-kirchhofer",
+      "code": "10",
+      "givenName": "Marvin",
+      "familyName": "Kirchhöfer",
+      "nationality": "GER",
+      "teamIds": [
+        "mclaren"
+      ],
+      "teamNames": [
+        "McLaren"
+      ],
+      "teamColors": [
+        "#FF8000"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "assets/portraits/faces/wec/marvin-kirchhofer.jpg"
     },
     {
       "position": 13,
-      "points": 48.0,
+      "points": 50.0,
       "wins": 0,
-      "id": "eduardo-barrichello",
-      "code": "23",
-      "givenName": "Eduardo",
-      "familyName": "Barrichello",
-      "nationality": "BRA",
+      "id": "tom-van-rompuy",
+      "code": "78",
+      "givenName": "Tom van",
+      "familyName": "Rompuy",
+      "nationality": "BEL",
       "teamIds": [
-        "aston-martin"
+        "lexus"
       ],
       "teamNames": [
-        "Aston Martin"
+        "Lexus"
       ],
       "teamColors": [
-        "#006F62"
+        "#222222"
       ],
       "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/eduardo-barrichello.jpg"
+      "imageUrl": "assets/portraits/faces/wec/tom-van-rompuy.jpg"
     },
     {
-      "position": 14,
-      "points": 39.0,
+      "position": 13,
+      "points": 50.0,
       "wins": 0,
       "id": "hadrien-david",
       "code": "78",
@@ -1793,45 +1751,66 @@
     },
     {
       "position": 14,
-      "points": 39.0,
-      "wins": 0,
-      "id": "tom-van-rompuy",
-      "code": "78",
-      "givenName": "Tom van",
-      "familyName": "Rompuy",
-      "nationality": "BEL",
+      "points": 48.0,
+      "wins": 1,
+      "id": "augusto-farfus",
+      "code": "32",
+      "givenName": "Augusto",
+      "familyName": "Farfus",
+      "nationality": "BRA",
       "teamIds": [
-        "lexus"
+        "bmw"
       ],
       "teamNames": [
-        "Lexus"
+        "BMW"
       ],
       "teamColors": [
-        "#222222"
+        "#0066B1"
       ],
       "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/tom-van-rompuy.jpg"
+      "imageUrl": "assets/portraits/faces/wec/augusto-farfus.jpg"
     },
     {
-      "position": 15,
-      "points": 38.0,
-      "wins": 0,
-      "id": "clemens-schmid",
-      "code": "87",
-      "givenName": "Clemens",
-      "familyName": "Schmid",
-      "nationality": "CHE",
+      "position": 14,
+      "points": 48.0,
+      "wins": 1,
+      "id": "sean-gelael",
+      "code": "32",
+      "givenName": "Sean",
+      "familyName": "Gelael",
+      "nationality": "IDN",
       "teamIds": [
-        "lexus"
+        "bmw"
       ],
       "teamNames": [
-        "Lexus"
+        "BMW"
       ],
       "teamColors": [
-        "#222222"
+        "#0066B1"
       ],
       "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/clemens-schmid.jpg"
+      "imageUrl": "assets/portraits/faces/wec/sean-gelael.jpg"
+    },
+    {
+      "position": 14,
+      "points": 48.0,
+      "wins": 1,
+      "id": "darren-leung",
+      "code": "32",
+      "givenName": "Darren",
+      "familyName": "Leung",
+      "nationality": "GBR",
+      "teamIds": [
+        "bmw"
+      ],
+      "teamNames": [
+        "BMW"
+      ],
+      "teamColors": [
+        "#0066B1"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "assets/portraits/faces/wec/darren-leung.jpg"
     },
     {
       "position": 15,
@@ -1853,6 +1832,27 @@
       ],
       "category": "LMGT3",
       "imageUrl": "assets/portraits/faces/wec/jose-maria-lopez.jpg"
+    },
+    {
+      "position": 15,
+      "points": 38.0,
+      "wins": 0,
+      "id": "clemens-schmid",
+      "code": "87",
+      "givenName": "Clemens",
+      "familyName": "Schmid",
+      "nationality": "CHE",
+      "teamIds": [
+        "lexus"
+      ],
+      "teamNames": [
+        "Lexus"
+      ],
+      "teamColors": [
+        "#222222"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "assets/portraits/faces/wec/clemens-schmid.jpg"
     },
     {
       "position": 15,
@@ -1898,7 +1898,7 @@
     },
     {
       "position": 17,
-      "points": 25.0,
+      "points": 31.0,
       "wins": 0,
       "id": "martin-berry",
       "code": "61",
@@ -1919,28 +1919,7 @@
     },
     {
       "position": 17,
-      "points": 25.0,
-      "wins": 0,
-      "id": "maxime-martin",
-      "code": "61",
-      "givenName": "Maxime",
-      "familyName": "Martin",
-      "nationality": "BEL",
-      "teamIds": [
-        "mercedes"
-      ],
-      "teamNames": [
-        "Mercedes"
-      ],
-      "teamColors": [
-        "#00A19C"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/maxime-martin.jpg"
-    },
-    {
-      "position": 17,
-      "points": 25.0,
+      "points": 31.0,
       "wins": 0,
       "id": "rui-andrade",
       "code": "61",
@@ -1958,6 +1937,27 @@
       ],
       "category": "LMGT3",
       "imageUrl": "assets/portraits/faces/wec/rui-andrade.jpg"
+    },
+    {
+      "position": 17,
+      "points": 31.0,
+      "wins": 0,
+      "id": "maxime-martin",
+      "code": "61",
+      "givenName": "Maxime",
+      "familyName": "Martin",
+      "nationality": "BEL",
+      "teamIds": [
+        "mercedes"
+      ],
+      "teamNames": [
+        "Mercedes"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "assets/portraits/faces/wec/maxime-martin.jpg"
     },
     {
       "position": 18,
@@ -1984,11 +1984,11 @@
       "position": 19,
       "points": 22.0,
       "wins": 0,
-      "id": "alexander-west",
+      "id": "finn-gehrsitz",
       "code": "58",
-      "givenName": "Alexander",
-      "familyName": "West",
-      "nationality": "SWE",
+      "givenName": "Finn",
+      "familyName": "Gehrsitz",
+      "nationality": "GER",
       "teamIds": [
         "mclaren"
       ],
@@ -1999,7 +1999,7 @@
         "#FF8000"
       ],
       "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/alexander-west.jpg"
+      "imageUrl": "assets/portraits/faces/wec/finn-gehrsitz.jpg"
     },
     {
       "position": 19,
@@ -2026,11 +2026,11 @@
       "position": 19,
       "points": 22.0,
       "wins": 0,
-      "id": "finn-gehrsitz",
+      "id": "alexander-west",
       "code": "58",
-      "givenName": "Finn",
-      "familyName": "Gehrsitz",
-      "nationality": "GER",
+      "givenName": "Alexander",
+      "familyName": "West",
+      "nationality": "SWE",
       "teamIds": [
         "mclaren"
       ],
@@ -2041,28 +2041,7 @@
         "#FF8000"
       ],
       "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/finn-gehrsitz.jpg"
-    },
-    {
-      "position": 20,
-      "points": 16.0,
-      "wins": 0,
-      "id": "giammarco-levorato",
-      "code": "88",
-      "givenName": "Giammarco",
-      "familyName": "Levorato",
-      "nationality": "ITA",
-      "teamIds": [
-        "ford"
-      ],
-      "teamNames": [
-        "Ford"
-      ],
-      "teamColors": [
-        "#003478"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/giammarco-levorato.jpg"
+      "imageUrl": "assets/portraits/faces/wec/alexander-west.jpg"
     },
     {
       "position": 20,
@@ -2107,134 +2086,50 @@
       "imageUrl": "assets/portraits/faces/wec/stefano-gattuso.jpg"
     },
     {
-      "position": 21,
-      "points": 13.0,
+      "position": 20,
+      "points": 16.0,
       "wins": 0,
-      "id": "davide-rigon",
-      "code": "54",
-      "givenName": "Davide",
-      "familyName": "Rigon",
+      "id": "giammarco-levorato",
+      "code": "88",
+      "givenName": "Giammarco",
+      "familyName": "Levorato",
       "nationality": "ITA",
       "teamIds": [
-        "ferrari"
+        "ford"
       ],
       "teamNames": [
-        "Ferrari"
+        "Ford"
       ],
       "teamColors": [
-        "#E10600"
+        "#003478"
       ],
       "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/davide-rigon.jpg"
+      "imageUrl": "assets/portraits/faces/wec/giammarco-levorato.jpg"
     },
     {
       "position": 21,
-      "points": 13.0,
+      "points": 14.0,
       "wins": 0,
-      "id": "francesco-castellacci",
-      "code": "54",
-      "givenName": "Francesco",
-      "familyName": "Castellacci",
-      "nationality": "ITA",
+      "id": "esteban-masson",
+      "code": "78",
+      "givenName": "Esteban",
+      "familyName": "Masson",
+      "nationality": "FRA",
       "teamIds": [
-        "ferrari"
+        "lexus"
       ],
       "teamNames": [
-        "Ferrari"
+        "Lexus"
       ],
       "teamColors": [
-        "#E10600"
+        "#222222"
       ],
       "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/francesco-castellacci.jpg"
-    },
-    {
-      "position": 21,
-      "points": 13.0,
-      "wins": 0,
-      "id": "thomas-flohr",
-      "code": "54",
-      "givenName": "Thomas",
-      "familyName": "Flohr",
-      "nationality": "SUI",
-      "teamIds": [
-        "ferrari"
-      ],
-      "teamNames": [
-        "Ferrari"
-      ],
-      "teamColors": [
-        "#E10600"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/thomas-flohr.jpg"
+      "imageUrl": "assets/portraits/faces/wec/esteban-masson.jpg"
     },
     {
       "position": 22,
-      "points": 13.0,
-      "wins": 0,
-      "id": "ben-tuck",
-      "code": "77",
-      "givenName": "Ben",
-      "familyName": "Tuck",
-      "nationality": "GBR",
-      "teamIds": [
-        "ford"
-      ],
-      "teamNames": [
-        "Ford"
-      ],
-      "teamColors": [
-        "#003478"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/ben-tuck.jpg"
-    },
-    {
-      "position": 22,
-      "points": 13.0,
-      "wins": 0,
-      "id": "eric-powell",
-      "code": "77",
-      "givenName": "Eric",
-      "familyName": "Powell",
-      "nationality": "GBR",
-      "teamIds": [
-        "ford"
-      ],
-      "teamNames": [
-        "Ford"
-      ],
-      "teamColors": [
-        "#003478"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/eric-powell.jpg"
-    },
-    {
-      "position": 22,
-      "points": 13.0,
-      "wins": 0,
-      "id": "sebastian-priaulx",
-      "code": "77",
-      "givenName": "Sebastian",
-      "familyName": "Priaulx",
-      "nationality": "GBR",
-      "teamIds": [
-        "ford"
-      ],
-      "teamNames": [
-        "Ford"
-      ],
-      "teamColors": [
-        "#003478"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/sebastian-priaulx.jpg"
-    },
-    {
-      "position": 23,
-      "points": 10.0,
+      "points": 14.0,
       "wins": 0,
       "id": "johannes-zelger",
       "code": "79",
@@ -2254,8 +2149,29 @@
       "imageUrl": "assets/portraits/faces/wec/johannes-zelger.jpg"
     },
     {
-      "position": 23,
-      "points": 10.0,
+      "position": 22,
+      "points": 14.0,
+      "wins": 0,
+      "id": "matteo-cressoni",
+      "code": "79",
+      "givenName": "Matteo",
+      "familyName": "Cressoni",
+      "nationality": "ITA",
+      "teamIds": [
+        "mercedes"
+      ],
+      "teamNames": [
+        "Mercedes"
+      ],
+      "teamColors": [
+        "#00A19C"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "assets/portraits/faces/wec/matteo-cressoni.jpg"
+    },
+    {
+      "position": 22,
+      "points": 14.0,
       "wins": 0,
       "id": "lin-hodenius",
       "code": "79",
@@ -2276,27 +2192,132 @@
     },
     {
       "position": 23,
-      "points": 10.0,
+      "points": 13.0,
       "wins": 0,
-      "id": "matteo-cressoni",
-      "code": "79",
-      "givenName": "Matteo",
-      "familyName": "Cressoni",
-      "nationality": "ITA",
+      "id": "thomas-flohr",
+      "code": "54",
+      "givenName": "Thomas",
+      "familyName": "Flohr",
+      "nationality": "SUI",
       "teamIds": [
-        "mercedes"
+        "ferrari"
       ],
       "teamNames": [
-        "Mercedes"
+        "Ferrari"
       ],
       "teamColors": [
-        "#00A19C"
+        "#E10600"
       ],
       "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/matteo-cressoni.jpg"
+      "imageUrl": "assets/portraits/faces/wec/thomas-flohr.jpg"
+    },
+    {
+      "position": 23,
+      "points": 13.0,
+      "wins": 0,
+      "id": "davide-rigon",
+      "code": "54",
+      "givenName": "Davide",
+      "familyName": "Rigon",
+      "nationality": "ITA",
+      "teamIds": [
+        "ferrari"
+      ],
+      "teamNames": [
+        "Ferrari"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "assets/portraits/faces/wec/davide-rigon.jpg"
+    },
+    {
+      "position": 23,
+      "points": 13.0,
+      "wins": 0,
+      "id": "francesco-castellacci",
+      "code": "54",
+      "givenName": "Francesco",
+      "familyName": "Castellacci",
+      "nationality": "ITA",
+      "teamIds": [
+        "ferrari"
+      ],
+      "teamNames": [
+        "Ferrari"
+      ],
+      "teamColors": [
+        "#E10600"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "assets/portraits/faces/wec/francesco-castellacci.jpg"
     },
     {
       "position": 24,
+      "points": 13.0,
+      "wins": 0,
+      "id": "eric-powell",
+      "code": "77",
+      "givenName": "Eric",
+      "familyName": "Powell",
+      "nationality": "GBR",
+      "teamIds": [
+        "ford"
+      ],
+      "teamNames": [
+        "Ford"
+      ],
+      "teamColors": [
+        "#003478"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "assets/portraits/faces/wec/eric-powell.jpg"
+    },
+    {
+      "position": 24,
+      "points": 13.0,
+      "wins": 0,
+      "id": "ben-tuck",
+      "code": "77",
+      "givenName": "Ben",
+      "familyName": "Tuck",
+      "nationality": "GBR",
+      "teamIds": [
+        "ford"
+      ],
+      "teamNames": [
+        "Ford"
+      ],
+      "teamColors": [
+        "#003478"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "assets/portraits/faces/wec/ben-tuck.jpg"
+    },
+    {
+      "position": 24,
+      "points": 13.0,
+      "wins": 0,
+      "id": "sebastian-priaulx",
+      "code": "77",
+      "givenName": "Sebastian",
+      "familyName": "Priaulx",
+      "nationality": "GBR",
+      "teamIds": [
+        "ford"
+      ],
+      "teamNames": [
+        "Ford"
+      ],
+      "teamColors": [
+        "#003478"
+      ],
+      "category": "LMGT3",
+      "imageUrl": "assets/portraits/faces/wec/sebastian-priaulx.jpg"
+    },
+    {
+      "position": 25,
       "points": 4.0,
       "wins": 0,
       "id": "nicolas-varrone",
@@ -2315,27 +2336,6 @@
       ],
       "category": "LMGT3",
       "imageUrl": "assets/portraits/faces/wec/nicolas-varrone.jpg"
-    },
-    {
-      "position": 25,
-      "points": 3.0,
-      "wins": 0,
-      "id": "esteban-masson",
-      "code": "78",
-      "givenName": "Esteban",
-      "familyName": "Masson",
-      "nationality": "FRA",
-      "teamIds": [
-        "lexus"
-      ],
-      "teamNames": [
-        "Lexus"
-      ],
-      "teamColors": [
-        "#222222"
-      ],
-      "category": "LMGT3",
-      "imageUrl": "assets/portraits/faces/wec/esteban-masson.jpg"
     },
     {
       "position": 26,
