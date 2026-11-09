@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-11-08T21:01:24.405339Z",
+  "lastSuccessfulUpdate": "2026-11-09T09:57:30.528487Z",
   "source": {
     "name": "formula1-official",
     "url": "https://www.formula1.com/en/results/2026/races/1299/brazil/race-result"
@@ -2166,7 +2166,7 @@
               "color": "#00D7B6"
             },
             "carNumber": 12,
-            "time": "+36.017s",
+            "time": "+41.017s",
             "laps": 71,
             "points": 10.0,
             "status": null,
@@ -2200,29 +2200,6 @@
             "position": 7,
             "positionText": "7",
             "driver": {
-              "id": "leclerc",
-              "code": "LEC",
-              "givenName": "Charles",
-              "familyName": "Leclerc",
-              "nationality": "Monegasque"
-            },
-            "team": {
-              "id": "team_LjEBz7Xq",
-              "name": "Ferrari",
-              "color": "#ED1131"
-            },
-            "carNumber": 16,
-            "time": "+73.586s",
-            "laps": 71,
-            "points": 6.0,
-            "status": null,
-            "classified": true,
-            "components": {}
-          },
-          {
-            "position": 8,
-            "positionText": "8",
-            "driver": {
               "id": "lawson",
               "code": "LAW",
               "givenName": "Liam",
@@ -2236,6 +2213,29 @@
             },
             "carNumber": 30,
             "time": "+75.402s",
+            "laps": 71,
+            "points": 6.0,
+            "status": null,
+            "classified": true,
+            "components": {}
+          },
+          {
+            "position": 8,
+            "positionText": "8",
+            "driver": {
+              "id": "leclerc",
+              "code": "LEC",
+              "givenName": "Charles",
+              "familyName": "Leclerc",
+              "nationality": "Monegasque"
+            },
+            "team": {
+              "id": "team_LjEBz7Xq",
+              "name": "Ferrari",
+              "color": "#ED1131"
+            },
+            "carNumber": 16,
+            "time": "+78.586s",
             "laps": 71,
             "points": 4.0,
             "status": null,
@@ -2572,5 +2572,5 @@
       }
     ]
   },
-  "updatedAt": "2026-11-08T21:03:32.668020Z"
+  "updatedAt": "2026-11-09T09:59:27.969893Z"
 }
