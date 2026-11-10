@@ -75,7 +75,24 @@ python -m pip install google-auth requests cryptography
 powershell -File scripts/release_android.ps1 -Notes "What changed"
 ```
 
-The script builds the bundle for the version in `pubspec.yaml`, checks it is signed with the Secar upload key, uploads it to the closed testing track (Alpha) at 100% and sends it for Google's review (`-NoCommit` validates and discards instead; `python scripts/publish_play.py --check` lists the tracks). It authenticates as the `secar-play-publisher@secar-publishing.iam.gserviceaccount.com` service account (Google Cloud project `secar-publishing`), which in Play Console can only view Secar and release it to testing tracks. Its key is stored outside the repository in `%USERPROFILE%\.secar\play-publisher.json` (or `SECAR_PLAY_KEY`); never commit it. To revoke access, remove the user in Play Console ? Users and permissions or delete the key in Google Cloud.
+The script builds the bundle for the version in `pubspec.yaml`, checks it is signed with the Secar upload key, uploads it to the closed testing track (Alpha) at 100% and sends it for Google's review (`-NoCommit` validates and discards instead; `python scripts/publish_play.py --check` lists the tracks). It authenticates as the `secar-play-publisher@secar-publishing.iam.gserviceaccount.com` service account (Google Cloud project `secar-publishing`). Release publishing needs app-scoped read and testing-release access; store-listing publishing additionally needs "Manage store presence" (which Google couples with policy-declaration access). Neither script needs administrator, production-release or financial-report access. Its key is stored outside the repository in `%USERPROFILE%\.secar\play-publisher.json` (or `SECAR_PLAY_KEY`); never commit it. To revoke access, remove the user in Play Console > Users and permissions or delete the key in Google Cloud.
+
+### Store listing and promotion assets
+
+The PL/EN descriptions are in `play_store/listing-<locale>.txt`. Localized screenshots and feature graphics are generated from the actual Flutter app and bundled published data, not concept art. They do not claim live timing, immediate classifications or available e-sports integrations.
+
+```powershell
+flutter test test\play_store_screenshots_test.dart --dart-define=STORE_VIDEO=true
+python scripts\create_play_store_assets.py --video --ffmpeg "D:\path\to\ffmpeg.exe"
+python scripts\publish_store_listing.py
+python scripts\publish_store_listing.py --commit
+```
+
+Capture files stay in `.tmp/marketing-captures`; only final JPEGs, previews and the short MP4s belong in `play_store/`. The compositor uses Pillow and the bundled licensed fonts. Screenshots are 1080x1920 RGB JPEGs; feature graphics are 1024x500. The video is a 1080x1920, 24 fps demonstration with actual in-app scrolling and localized captions, without music or broadcast footage.
+
+The listing publisher reuses the existing Play credentials, validates text and images, backs up the old copy and graphics under ignored `release/store-backups`, and verifies content hashes and ordering before and after commit. `--expect-backup <metadata.json>` refuses concurrent edits. `--commit` sends the store changes for review: this app's Play configuration rejects the API's `changesNotSentForReview` parameter, so API commits cannot be treated as unsubmitted drafts. It never uploads a bundle or changes release tracks, prices, countries or permissions. The publisher account's ability to edit store listings must be verified separately from its release permissions.
+
+Accessibility descriptions are prepared in each locale's `alt-text.txt`. The Developer API does not expose image alt text; use the descriptions if an alt-text field is available in Play Console. The current asset viewer exposes private organizational tags instead, which are not a substitute for public alt text and do not influence ranking. A store video requires a real YouTube URL, not an MP4 upload: public or unlisted, age-unrestricted, embeddable and ad-free. Approved links are saved as `play_store/<locale>/video-url.txt`. Unchanged image hashes are retained on subsequent edits so their ordering, IDs and any Console-only metadata are not needlessly replaced. Community/media copy is in `promotion-<locale>.txt`; preparing it does not authorize posting, messaging or paid advertising.
 
 ## Circuit assets
 
