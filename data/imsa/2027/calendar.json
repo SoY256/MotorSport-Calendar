@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-11-10T09:55:18.377579Z",
+  "lastSuccessfulUpdate": "2026-11-10T10:09:17.756891Z",
   "source": {
     "name": "official-next-season-calendar",
     "url": "https://www.imsa.com/2027/schedule/"
@@ -217,7 +217,7 @@
           "startTimeUtc": "2027-08-08T12:00:00Z",
           "cancelled": false,
           "timeTbc": true,
-          "durationMinutes": 360
+          "durationMinutes": 160
         }
       ],
       "resultsPath": "events/08-motul-sportscar-endurance-grand-prix.json"
@@ -271,7 +271,7 @@
           "startTimeUtc": "2027-09-19T12:00:00Z",
           "cancelled": false,
           "timeTbc": true,
-          "durationMinutes": 160
+          "durationMinutes": 360
         }
       ],
       "resultsPath": "events/10-battle-on-the-bricks.json"
