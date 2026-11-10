@@ -1,8 +1,8 @@
 """Publish next-season calendars as soon as the organisers announce them.
 
 The regular importers produce the season that is running. Before the next
-season starts, its official calendar is often already published (F1 and FIA
-WEC announce it during the current season). This importer writes those
+season starts, its official calendar is often already published (F1, FIA
+WEC and IMSA announce it during the current season). This importer writes those
 calendars to ``data/<series>/<next season>/`` so the app can show them; the
 regular importer takes the folder over once the season has started.
 
@@ -17,12 +17,12 @@ import os
 import re
 import sys
 from concurrent.futures import ThreadPoolExecutor
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from fetch_data import slugify, write_json
 from fetch_wec_results import RACE_PAGE_ALIASES, official_timetable
-from check_schedules import parse_wec
+from check_schedules import SOURCES, ParseError, circuit_key, imsa_event_cards, page_text, parse_wec
 from http_retry import read
 from seasons import results_season
 
@@ -200,7 +200,41 @@ def wec_calendar(season: int, previous: list[dict]) -> list[dict]:
     return sorted(events, key=lambda event: event["sessions"][-1]["startTimeUtc"])
 
 
-BUILDERS = {"f1": f1_calendar, "wec": wec_calendar}
+def imsa_calendar(season: int, previous: list[dict]) -> list[dict]:
+    url = SOURCES["imsa"].url.format(season=season)
+    cards = imsa_event_cards(get(url), season)
+    if cards is None or len(cards) < 8:
+        raise ParseError(f"IMSA {season}: incomplete WeatherTech calendar")
+    events = []
+    for race, article in cards:
+        known = next((event for event in previous if circuit_key(event) == race.key), None)
+        if known is None:
+            raise ParseError(f"IMSA {season}: unknown venue {race.key}")
+        duration = re.search(r'href="#imsa-time-rush".*?</svg>(.*?)</span>', article, re.S)
+        length = re.fullmatch(
+            r"(?:(\d+)\s*HRS?)?(?:\s*(\d+)\s*MIN)?",
+            page_text(duration.group(1)).upper() if duration else "",
+        )
+        minutes = (int(length.group(1) or 0) * 60 + int(length.group(2) or 0)) if length else 0
+        link = re.search(r'href="(/events/[^"?]+)\?[^"]*\bseries=weathertech\b', article)
+        if not minutes or link is None:
+            raise ParseError(f"IMSA {season}: missing race duration or event link for {race.name}")
+        # The card gives the weekend's last day. A 24-hour race starts the
+        # preceding day; the time remains explicitly unconfirmed.
+        day = race.date - timedelta(days=minutes // 1440)
+        events.append({
+            "name": known["name"],
+            "circuit": {key: known["circuit"][key] for key in ("id", "name", "locality", "country", "countryCode")},
+            "sessions": [{
+                "type": "R", "name": "Race", "startTimeUtc": f"{day.isoformat()}T12:00:00Z",
+                "cancelled": False, "timeTbc": True, "durationMinutes": minutes,
+            }],
+            "url": "https://www.imsa.com" + link.group(1),
+        })
+    return events
+
+
+BUILDERS = {"f1": f1_calendar, "wec": wec_calendar, "imsa": imsa_calendar}
 
 
 def publish(series: str, season: int, events: list[dict], data_root: Path) -> None:
@@ -221,7 +255,9 @@ def publish(series: str, season: int, events: list[dict], data_root: Path) -> No
     for stale in (folder / "events").glob("*.json"):
         if stale.relative_to(folder).as_posix() not in {event["resultsPath"] for event in calendar}:
             stale.unlink()
-    write_json(folder / "calendar.json", document(calendar, events[0]["url"].rsplit("/", 1)[0], updated))
+    calendar_url = (SOURCES["imsa"].url.format(season=season) if series == "imsa"
+                    else events[0]["url"].rsplit("/", 1)[0])
+    write_json(folder / "calendar.json", document(calendar, calendar_url, updated))
     for name in ("standings_drivers.json", "standings_teams.json"):
         if not (folder / name).is_file():
             write_json(folder / name, document([], events[0]["url"], updated))

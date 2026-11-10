@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-11-05T16:47:24.664414Z",
+  "lastSuccessfulUpdate": "2026-11-10T02:51:02.011027Z",
   "source": {
     "name": "formula1-official",
     "url": "https://www.formula1.com/en/results/2026/drivers"
@@ -8,7 +8,7 @@
   "data": [
     {
       "position": 1,
-      "points": 380.0,
+      "points": 390.0,
       "wins": 9,
       "id": "antonelli",
       "code": "ANT",
@@ -22,7 +22,7 @@
     },
     {
       "position": 2,
-      "points": 261.0,
+      "points": 279.0,
       "wins": 3,
       "id": "max_verstappen",
       "code": "VER",
@@ -36,21 +36,7 @@
     },
     {
       "position": 3,
-      "points": 259.0,
-      "wins": 1,
-      "id": "hamilton",
-      "code": "HAM",
-      "givenName": "Lewis",
-      "familyName": "Hamilton",
-      "nationality": "British",
-      "teamIds": [
-        "ferrari"
-      ],
-      "imageUrl": "assets/portraits/faces/f1/lewis-hamilton.jpg"
-    },
-    {
-      "position": 4,
-      "points": 250.0,
+      "points": 262.0,
       "wins": 3,
       "id": "russell",
       "code": "RUS",
@@ -63,8 +49,22 @@
       "imageUrl": "assets/portraits/faces/f1/george-russell.jpg"
     },
     {
+      "position": 4,
+      "points": 261.0,
+      "wins": 1,
+      "id": "hamilton",
+      "code": "HAM",
+      "givenName": "Lewis",
+      "familyName": "Hamilton",
+      "nationality": "British",
+      "teamIds": [
+        "ferrari"
+      ],
+      "imageUrl": "assets/portraits/faces/f1/lewis-hamilton.jpg"
+    },
+    {
       "position": 5,
-      "points": 245.0,
+      "points": 249.0,
       "wins": 1,
       "id": "leclerc",
       "code": "LEC",
@@ -78,8 +78,8 @@
     },
     {
       "position": 6,
-      "points": 221.0,
-      "wins": 2,
+      "points": 246.0,
+      "wins": 3,
       "id": "norris",
       "code": "NOR",
       "givenName": "Lando",
@@ -92,7 +92,7 @@
     },
     {
       "position": 7,
-      "points": 144.0,
+      "points": 152.0,
       "wins": 0,
       "id": "piastri",
       "code": "PIA",
@@ -106,7 +106,7 @@
     },
     {
       "position": 8,
-      "points": 107.0,
+      "points": 122.0,
       "wins": 0,
       "id": "hadjar",
       "code": "HAD",
@@ -120,7 +120,7 @@
     },
     {
       "position": 9,
-      "points": 83.0,
+      "points": 89.0,
       "wins": 0,
       "id": "lawson",
       "code": "LAW",
@@ -205,7 +205,7 @@
     },
     {
       "position": 15,
-      "points": 13.0,
+      "points": 14.0,
       "wins": 0,
       "id": "hulkenberg",
       "code": "HUL",

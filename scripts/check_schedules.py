@@ -169,27 +169,39 @@ def imsa_series_list(html: str, series: str = "weathertech") -> str | None:
     return html[start.end(): start.end() + end.start() if end else len(html)]
 
 
+def imsa_event_cards(html: str, season: int) -> list[tuple[OfficialEvent, str]] | None:
+    """WeatherTech races and their source cards, excluding tests and other years."""
+    listing = imsa_series_list(html)
+    if listing is None:
+        return None
+    events: dict[tuple[str, date], tuple[OfficialEvent, str]] = {}
+    for article in re.findall(r"<article\b.*?</article>", listing, re.S):
+        name = re.search(r"<h3\b[^>]*>(.*?)</h3>", article, re.S)
+        if name is None:
+            raise ParseError("IMSA event card has no name")
+        title = page_text(name.group(1))
+        if re.search(r"\b(?:Roar|Test)\b", title, re.I):
+            continue
+        venue = re.search(r'href="#location".*?</svg>(.*?)</p>', article, re.S)
+        days = re.search(r'aria-label="[^"]*?through (\w+) (\d{1,2}), (\d{4})"', article)
+        if not (venue and days):
+            raise ParseError(f"IMSA event card has no venue or date: {title}")
+        day = date(int(days.group(3)), month_number(days.group(1)), int(days.group(2)))
+        if day.year != season:
+            continue
+        event = OfficialEvent(title, venue_key(page_text(venue.group(1)).split(",")[0]), day)
+        events.setdefault((event.key, event.date), (event, article))
+    return sorted(events.values(), key=lambda item: item[0].date)
+
+
 def parse_imsa(html: str, season: int) -> list[OfficialEvent]:
     """Race days from the IMSA WeatherTech schedule page, keyed by venue.
 
     All rounds but one are in the USA, so the venue name is the identity.
     """
-    listing = imsa_series_list(html)
-    if listing is not None:
-        events: dict[tuple[str, date], OfficialEvent] = {}
-        for article in re.findall(r"<article\b.*?</article>", listing, re.S):
-            name = re.search(r"<h3\b[^>]*>(.*?)</h3>", article, re.S)
-            venue = re.search(r'href="#location".*?</svg>(.*?)</p>', article, re.S)
-            days = re.search(r'aria-label="[^"]*?through (\w+) (\d{1,2}), (\d{4})"', article)
-            if not (name and venue and days):
-                continue
-            title = page_text(name.group(1))
-            if re.search(r"\b(?:Roar|Test)\b", title, re.I):
-                continue
-            event = OfficialEvent(title, venue_key(page_text(venue.group(1)).split(",")[0]),
-                                  date(int(days.group(3)), month_number(days.group(1)), int(days.group(2))))
-            events.setdefault((event.key, event.date), event)
-        return sorted(events.values(), key=lambda item: item.date)
+    cards = imsa_event_cards(html, season)
+    if cards is not None:
+        return [event for event, _article in cards]
     text = page_text(html)
     pattern = re.compile(
         rf"(?:Print Schedule|Buy Tickets|Event Details)\s+(?P<name>[^|]+?)\s+"
@@ -219,7 +231,7 @@ SOURCES = {
     "f2": Source("f2", "FIA Formula 2", "https://www.fiaformula2.com/Calendar", parse_fia_feeder, country_key),
     "f3": Source("f3", "FIA Formula 3", "https://www.fiaformula3.com/Calendar", parse_fia_feeder, country_key),
     "imsa": Source("imsa", "IMSA WeatherTech",
-                   "https://www.imsa.com/weathertech/weathertech-{season}-schedule/", parse_imsa, circuit_key),
+                   "https://www.imsa.com/{season}/schedule/", parse_imsa, circuit_key),
 }
 # Curated calendars without a parseable official schedule page.  They are only
 # reported as unchecked while they still contain upcoming events.
@@ -348,7 +360,7 @@ def page_season(html: str) -> int | None:
 
 def seasons_to_check(data_root: Path, series: str, today: date) -> list[int]:
     """Every season that still has upcoming events (the running one and an
-    announced next one), or the latest season when all are complete."""
+    announced next one). Completed seasons may no longer have an official page."""
     years = sorted(int(path.name) for path in (data_root / series).glob("[0-9][0-9][0-9][0-9]")
                    if (path / "calendar.json").is_file())
     active = [
@@ -356,26 +368,30 @@ def seasons_to_check(data_root: Path, series: str, today: date) -> list[int]:
         if any(event.date >= today - timedelta(days=1)
                for event in calendar_events(load_calendar(data_root, series, year), lambda event: ""))
     ]
-    return active or years[-1:]
+    return active
 
 
 def run_checks(data_root: Path, today: date, fetch: Callable[[str], str] = fetch_page) -> Report:
     report = Report({}, {}, [])
     for series, source in SOURCES.items():
-        seasons = seasons_to_check(data_root, series, today)
-        if not seasons:
+        latest = latest_season(data_root, series)
+        if latest is None:
             report.failures[source.label] = f"no calendar under {data_root / series}"
             continue
+        if not load_calendar(data_root, series, latest):
+            report.failures[f"{source.label} {latest}"] = "empty local calendar"
+            continue
+        seasons = seasons_to_check(data_root, series, today)
+        if not seasons:
+            report.notes.append(f"{series} {latest}: season complete, nothing to check")
         for season in seasons:
             label = f"{source.label} {season}"
             url = source.url.format(season=season)
             try:
                 html = fetch(url)
                 shown = page_season(html)
-                if "{season}" not in source.url and shown is not None and shown != season:
-                    # The page shows a single (other) season.
-                    report.notes.append(f"{label}: official page shows {shown}, not checked")
-                    continue
+                if shown is not None and shown != season:
+                    raise ParseError(f"official page shows {shown}, expected {season}")
                 ours = calendar_events(load_calendar(data_root, series, season), source.key)
                 official = source.parse(html, season)
                 if not official:
@@ -384,7 +400,7 @@ def run_checks(data_root: Path, today: date, fetch: Callable[[str], str] = fetch
                 report.failures[label] = f"{url}: {error}"
                 continue
             report.differences[label] = compare(ours, official, today, source.tolerance_days)
-        check_next_season(data_root, series, source, max(seasons), fetch, report)
+        check_next_season(data_root, series, source, latest, fetch, report)
     for series in UNCHECKED_SERIES:
         season = latest_season(data_root, series)
         if season is None:

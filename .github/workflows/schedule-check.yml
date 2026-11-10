@@ -2,6 +2,15 @@ name: Check official schedules
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/schedule-check.yml"
+      - "scripts/check_schedules.py"
+      - "scripts/fetch_imsa_results.py"
+      - "scripts/fetch_next_season.py"
+      - "tests/test_check_schedules.py"
+      - "tests/test_next_season_schedule.py"
   schedule:
     # Once per day: compare the curated F2/F3, WEC and IMSA calendars in data/
     # with the official schedules and track differences in a single issue.
@@ -23,6 +32,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Test schedule checking and next-season imports
+        run: python -m unittest discover -s tests -p "test_*schedule*.py"
       - name: Compare calendars with official schedules
         env:
           PYTHONPATH: scripts

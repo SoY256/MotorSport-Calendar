@@ -1,4 +1,4 @@
-"""Store completed 2026 IMSA classifications from official Alkamel JSON."""
+"""Store completed IMSA classifications from official Alkamel JSON."""
 
 from __future__ import annotations
 
@@ -11,10 +11,12 @@ from pathlib import Path
 from urllib.parse import quote, urljoin
 
 from http_retry import read
+from seasons import results_season
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "https://imsa.results.alkamelcloud.com/"
 HEADERS = {"User-Agent": "MotorSport-Calendar/0.1 (+https://github.com/SoY256/MotorSport-Calendar)"}
+SEASON = 2026
 MANUFACTURER_COLORS = {"Acura": "#E40521", "Aston Martin": "#006F62", "BMW": "#0066B1",
                        "Cadillac": "#D4AF37", "Chevrolet": "#F2C500", "Corvette": "#F2C500",
                        "Ferrari": "#E10600", "Ford": "#003478", "Lamborghini": "#DDB321",
@@ -30,8 +32,12 @@ def fetch(url: str) -> bytes:
     return read(url, HEADERS)
 
 
+def timing_season() -> str:
+    return f"{SEASON - 2000}_{SEASON}"
+
+
 def completed_event_codes() -> list[str]:
-    html = fetch(f"{BASE}?season=26_2026").decode("utf-8", "replace")
+    html = fetch(f"{BASE}?season={timing_season()}").decode("utf-8", "replace")
     codes = set(re.findall(r'<option[^>]+value="(\d+_[^"]+)"', html, re.I))
     excluded = ("(AEC)", "Test", "ROAR")
     return sorted(
@@ -47,7 +53,7 @@ def slug(value: str) -> str:
 
 
 def result_url(event_code: str) -> str:
-    html = fetch(f"{BASE}?season=26_2026&evvent={quote(event_code)}").decode("utf-8", "replace")
+    html = fetch(f"{BASE}?season={timing_season()}&evvent={quote(event_code)}").decode("utf-8", "replace")
     hrefs = re.findall(r'href="([^"]+/\d{8,}_Race/(?:[^"/]+/)?03_Results_Race_[^"/]+\.JSON)"', html, re.I)
     if not hrefs:
         raise RuntimeError(f"No IMSA race JSON for {event_code}")
@@ -128,8 +134,10 @@ def deduplicate_standings(entries: list[dict], kind: str) -> list[dict]:
 
 
 def main() -> None:
+    global SEASON
     data_root = Path(os.environ.get("MOTORSPORT_DATA_ROOT", ROOT / "assets" / "data"))
-    root = data_root / "imsa" / "2026"
+    SEASON = results_season(data_root / "imsa", 2026)
+    root = data_root / "imsa" / str(SEASON)
     calendar_path = root / "calendar.json"
     calendar_doc = json.loads(calendar_path.read_text(encoding="utf-8"))
     calendar = calendar_doc["data"]
@@ -160,7 +168,7 @@ def main() -> None:
         fastest = raw.get("fastest_lap") or {}
         if fastest.get("time") and fastest.get("driver_surname"):
             driver = f"{fastest.get('driver_firstname', '')} {fastest['driver_surname']}".strip()
-            event["circuit"]["lapRecord"] = f"{fastest['time']} • {driver} (2026)"
+            event["circuit"]["lapRecord"] = f"{fastest['time']} • {driver} ({SEASON})"
         rows = []
         winning_classes: set[str] = set()
         for item in raw.get("classification", []):
@@ -207,7 +215,7 @@ def main() -> None:
 
     if not events:
         raise RuntimeError("No completed official IMSA events found")
-    standings_html = fetch(f"{BASE}?season=26_2026&evvent={quote(events[-1][0])}").decode("utf-8", "replace")
+    standings_html = fetch(f"{BASE}?season={timing_season()}&evvent={quote(events[-1][0])}").decode("utf-8", "replace")
     for kind, pattern, filename in (
         ("drivers", r'href="([^"]+IWSC[^\"]+Drivers\.json)"', "standings_drivers.json"),
         ("teams", r'href="([^"]+IWSC[^\"]+Teams\.json)"', "standings_teams.json"),

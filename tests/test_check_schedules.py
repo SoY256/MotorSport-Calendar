@@ -1,5 +1,6 @@
 import json
 import sys
+import tempfile
 import unittest
 from datetime import date
 from pathlib import Path
@@ -124,6 +125,14 @@ class ParserTests(unittest.TestCase):
              ("Motul Petit Le Mans", "michelin raceway road atlanta", date(2026, 10, 3))],
         )
 
+    def test_imsa_does_not_assign_cards_to_another_season(self):
+        self.assertEqual(check_schedules.parse_imsa(IMSA_TABS_HTML, 2027), [])
+
+    def test_imsa_malformed_race_card_fails_instead_of_omitting_a_round(self):
+        html = IMSA_TABS_HTML.replace('aria-label="January 21, 2026 through January 25, 2026"', '')
+        with self.assertRaisesRegex(check_schedules.ParseError, "no venue or date"):
+            check_schedules.parse_imsa(html, 2026)
+
 
 class CompareTests(unittest.TestCase):
     today = date(2026, 10, 16)
@@ -178,6 +187,80 @@ class CompareTests(unittest.TestCase):
 
 
 class RunChecksTests(unittest.TestCase):
+    def write_calendar(self, root, series, season, day):
+        path = root / series / str(season) / "calendar.json"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps({"data": [{
+            "name": "Race",
+            "circuit": {"name": "Daytona International Speedway"},
+            "sessions": [{"startTimeUtc": f"{day}T12:00:00Z"}],
+        }]}), encoding="utf-8")
+
+    def imsa_check(self, root, fetch):
+        with patch.object(check_schedules, "SOURCES", {"imsa": check_schedules.SOURCES["imsa"]}), \
+                patch.object(check_schedules, "UNCHECKED_SERIES", ()):
+            return check_schedules.run_checks(root, date(2026, 11, 10), fetch)
+
+    def test_all_series_check_only_unfinished_seasons(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for series in check_schedules.SOURCES:
+                with self.subTest(series=series):
+                    self.write_calendar(root, series, 2026, "2026-10-03")
+                    self.assertEqual(check_schedules.seasons_to_check(root, series, date(2026, 11, 10)), [])
+                    self.write_calendar(root, series, 2027, "2027-01-31")
+                    self.assertEqual(check_schedules.seasons_to_check(root, series, date(2026, 11, 10)), [2027])
+
+    def test_finished_season_skips_retired_page_but_still_discovers_next_season(self):
+        html = (
+            '<title>2027 Schedule</title>'
+            '<input value="weathertech" data-series-index="0"><ul data-series-index="0">'
+            + "".join(imsa_article(f"Race {index}", f"Circuit {index}, City, FL",
+                                 f"January {index}, 2027 through January {index}, 2027")
+                      for index in range(1, 4))
+            + "</ul>"
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.write_calendar(root, "imsa", 2026, "2026-10-03")
+            with patch("check_schedules.fetch_page", return_value=html) as fetch:
+                report = self.imsa_check(root, fetch)
+            fetch.assert_called_once_with("https://www.imsa.com/2027/schedule/")
+        self.assertIn("imsa 2026: season complete, nothing to check", report.notes)
+        self.assertEqual(report.exit_code, 2)
+        self.assertIn("IMSA WeatherTech 2027", report.failures)
+        self.assertIn("add data/imsa/2027/calendar.json", report.failures["IMSA WeatherTech 2027"])
+
+    def test_unreachable_upcoming_schedule_is_still_an_error(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.write_calendar(root, "imsa", 2027, "2027-01-31")
+            with patch("check_schedules.fetch_page", side_effect=RuntimeError("HTTP Error 404")) as fetch:
+                report = self.imsa_check(root, fetch)
+        self.assertEqual(report.exit_code, 2)
+        self.assertIn("HTTP Error 404", report.failures["IMSA WeatherTech 2027"])
+        self.assertNotIn("IMSA WeatherTech 2027", report.differences)
+
+    def test_empty_calendar_is_not_treated_as_a_finished_season(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.write_calendar(root, "imsa", 2026, "2026-10-03")
+            (root / "imsa" / "2026" / "calendar.json").write_text('{"data": []}', encoding="utf-8")
+            with patch("check_schedules.fetch_page") as fetch:
+                report = self.imsa_check(root, fetch)
+            fetch.assert_not_called()
+        self.assertEqual(report.exit_code, 2)
+        self.assertEqual(report.failures["IMSA WeatherTech 2026"], "empty local calendar")
+
+    def test_redirect_to_another_year_is_not_reported_as_matching(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.write_calendar(root, "imsa", 2027, "2027-01-31")
+            with patch("check_schedules.fetch_page", return_value="<title>2026 Schedule</title>") as fetch:
+                report = self.imsa_check(root, fetch)
+        self.assertEqual(report.exit_code, 2)
+        self.assertIn("official page shows 2026, expected 2027", report.failures["IMSA WeatherTech 2027"])
+
     def test_parse_failures_are_not_reported_as_no_changes(self):
         def fetch(url):
             if "fiawec" in url:

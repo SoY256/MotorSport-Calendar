@@ -1,0 +1,307 @@
+{
+  "schemaVersion": 1,
+  "lastSuccessfulUpdate": "2026-11-10T09:55:18.377579Z",
+  "source": {
+    "name": "official-next-season-calendar",
+    "url": "https://www.imsa.com/2027/schedule/"
+  },
+  "data": [
+    {
+      "id": "imsa-2027-1",
+      "seriesId": "imsa",
+      "season": 2027,
+      "round": 1,
+      "name": "Rolex 24 at Daytona",
+      "cancelled": false,
+      "circuit": {
+        "id": "daytona-international-speedway",
+        "name": "Daytona International Speedway",
+        "locality": "Daytona Beach",
+        "country": "United States",
+        "countryCode": "USA",
+        "lapRecord": "1:35.826 • Matt Campbell (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-01-30T12:00:00Z",
+          "cancelled": false,
+          "timeTbc": true,
+          "durationMinutes": 1440
+        }
+      ],
+      "resultsPath": "events/01-rolex-24-at-daytona.json"
+    },
+    {
+      "id": "imsa-2027-2",
+      "seriesId": "imsa",
+      "season": 2027,
+      "round": 2,
+      "name": "Twelve Hours of Sebring",
+      "cancelled": false,
+      "circuit": {
+        "id": "sebring-international-raceway",
+        "name": "Sebring International Raceway",
+        "locality": "Sebring",
+        "country": "United States",
+        "countryCode": "USA",
+        "lapRecord": "1:49.020 • Felipe Nasr (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-03-20T12:00:00Z",
+          "cancelled": false,
+          "timeTbc": true,
+          "durationMinutes": 720
+        }
+      ],
+      "resultsPath": "events/02-twelve-hours-of-sebring.json"
+    },
+    {
+      "id": "imsa-2027-3",
+      "seriesId": "imsa",
+      "season": 2027,
+      "round": 3,
+      "name": "Acura Grand Prix of Long Beach",
+      "cancelled": false,
+      "circuit": {
+        "id": "long-beach-street-circuit",
+        "name": "Long Beach Street Circuit",
+        "locality": "Long Beach",
+        "country": "United States",
+        "countryCode": "USA",
+        "lapRecord": "1:12.918 • Laurin Heinrich (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-04-17T12:00:00Z",
+          "cancelled": false,
+          "timeTbc": true,
+          "durationMinutes": 100
+        }
+      ],
+      "resultsPath": "events/03-acura-grand-prix-of-long-beach.json"
+    },
+    {
+      "id": "imsa-2027-4",
+      "seriesId": "imsa",
+      "season": 2027,
+      "round": 4,
+      "name": "WeatherTech Raceway Laguna Seca",
+      "cancelled": false,
+      "circuit": {
+        "id": "weathertech-raceway-laguna-seca",
+        "name": "WeatherTech Raceway Laguna Seca",
+        "locality": "Monterey",
+        "country": "United States",
+        "countryCode": "USA",
+        "lapRecord": "1:15.315 • Jack Aitken (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-05-02T12:00:00Z",
+          "cancelled": false,
+          "timeTbc": true,
+          "durationMinutes": 160
+        }
+      ],
+      "resultsPath": "events/04-weathertech-raceway-laguna-seca.json"
+    },
+    {
+      "id": "imsa-2027-5",
+      "seriesId": "imsa",
+      "season": 2027,
+      "round": 5,
+      "name": "Detroit Sports Car Classic",
+      "cancelled": false,
+      "circuit": {
+        "id": "detroit-street-circuit",
+        "name": "Detroit Street Circuit",
+        "locality": "Detroit",
+        "country": "United States",
+        "countryCode": "USA",
+        "lapRecord": "1:06.234 • Earl Bamber (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-06-05T12:00:00Z",
+          "cancelled": false,
+          "timeTbc": true,
+          "durationMinutes": 100
+        }
+      ],
+      "resultsPath": "events/05-detroit-sports-car-classic.json"
+    },
+    {
+      "id": "imsa-2027-6",
+      "seriesId": "imsa",
+      "season": 2027,
+      "round": 6,
+      "name": "Six Hours of The Glen",
+      "cancelled": false,
+      "circuit": {
+        "id": "watkins-glen-international",
+        "name": "Watkins Glen International",
+        "locality": "Watkins Glen",
+        "country": "United States",
+        "countryCode": "USA",
+        "lapRecord": "1:34.967 • Jack Aitken (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-06-27T12:00:00Z",
+          "cancelled": false,
+          "timeTbc": true,
+          "durationMinutes": 360
+        }
+      ],
+      "resultsPath": "events/06-six-hours-of-the-glen.json"
+    },
+    {
+      "id": "imsa-2027-7",
+      "seriesId": "imsa",
+      "season": 2027,
+      "round": 7,
+      "name": "Chevrolet Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "canadian-tire-motorsport-park",
+        "name": "Canadian Tire Motorsport Park",
+        "locality": "Bowmanville",
+        "country": "Canada",
+        "countryCode": "CAN",
+        "lapRecord": "1:08.481 • Sebastian Alvarez (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-07-11T12:00:00Z",
+          "cancelled": false,
+          "timeTbc": true,
+          "durationMinutes": 160
+        }
+      ],
+      "resultsPath": "events/07-chevrolet-grand-prix.json"
+    },
+    {
+      "id": "imsa-2027-8",
+      "seriesId": "imsa",
+      "season": 2027,
+      "round": 8,
+      "name": "Motul SportsCar Endurance Grand Prix",
+      "cancelled": false,
+      "circuit": {
+        "id": "road-america",
+        "name": "Road America",
+        "locality": "Elkhart Lake",
+        "country": "United States",
+        "countryCode": "USA",
+        "lapRecord": "1:52.124 • Sheldon van der Linde (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-08-08T12:00:00Z",
+          "cancelled": false,
+          "timeTbc": true,
+          "durationMinutes": 360
+        }
+      ],
+      "resultsPath": "events/08-motul-sportscar-endurance-grand-prix.json"
+    },
+    {
+      "id": "imsa-2027-9",
+      "seriesId": "imsa",
+      "season": 2027,
+      "round": 9,
+      "name": "Michelin GT Challenge at VIR",
+      "cancelled": false,
+      "circuit": {
+        "id": "virginia-international-raceway",
+        "name": "Virginia International Raceway",
+        "locality": "Alton",
+        "country": "United States",
+        "countryCode": "USA",
+        "lapRecord": "1:46.686 • Andrea Caldarelli (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-08-22T12:00:00Z",
+          "cancelled": false,
+          "timeTbc": true,
+          "durationMinutes": 160
+        }
+      ],
+      "resultsPath": "events/09-michelin-gt-challenge-at-vir.json"
+    },
+    {
+      "id": "imsa-2027-10",
+      "seriesId": "imsa",
+      "season": 2027,
+      "round": 10,
+      "name": "Battle on the Bricks",
+      "cancelled": false,
+      "circuit": {
+        "id": "indianapolis-motor-speedway",
+        "name": "Indianapolis Motor Speedway",
+        "locality": "Indianapolis",
+        "country": "United States",
+        "countryCode": "USA",
+        "lapRecord": "1:16.610 • Renger van der Zande (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-09-19T12:00:00Z",
+          "cancelled": false,
+          "timeTbc": true,
+          "durationMinutes": 160
+        }
+      ],
+      "resultsPath": "events/10-battle-on-the-bricks.json"
+    },
+    {
+      "id": "imsa-2027-11",
+      "seriesId": "imsa",
+      "season": 2027,
+      "round": 11,
+      "name": "Motul Petit Le Mans",
+      "cancelled": false,
+      "circuit": {
+        "id": "michelin-raceway-road-atlanta",
+        "name": "Michelin Raceway Road Atlanta",
+        "locality": "Braselton",
+        "country": "United States",
+        "countryCode": "USA",
+        "lapRecord": "1:11.897 • Ross Gunn (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-10-09T12:00:00Z",
+          "cancelled": false,
+          "timeTbc": true,
+          "durationMinutes": 600
+        }
+      ],
+      "resultsPath": "events/11-motul-petit-le-mans.json"
+    }
+  ]
+}

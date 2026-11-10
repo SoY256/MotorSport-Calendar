@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-11-05T16:54:09.070378Z",
+  "lastSuccessfulUpdate": "2026-11-10T02:58:59.066977Z",
   "source": {
     "name": "multi-source-official-refresh",
     "url": "https://github.com/SoY256/MotorSport-Calendar"
@@ -37,10 +37,11 @@
     {
       "id": "imsa",
       "availableSeasons": [
-        2026
+        2027
       ],
       "publishedSeasons": [
-        2026
+        2026,
+        2027
       ]
     },
     {
@@ -64,7 +65,7 @@
     {
       "id": "wec",
       "availableSeasons": [
-        2026
+        2027
       ],
       "publishedSeasons": [
         2026,
