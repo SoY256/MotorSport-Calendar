@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 1,
+  "lastSuccessfulUpdate": "2026-11-13T16:45:43.738647Z",
+  "source": {
+    "name": "sro-official-calendar",
+    "url": "https://www.gt-world-challenge-america.com/calendar"
+  },
+  "data": [
+    {
+      "id": "gtwc-america-2027-1",
+      "seriesId": "gtwc-america",
+      "season": 2027,
+      "round": 1,
+      "name": "Sonoma Raceway",
+      "cancelled": false,
+      "circuit": {
+        "id": "sonoma-raceway",
+        "name": "Sonoma Raceway",
+        "locality": "Sonoma",
+        "country": "United States of America",
+        "countryCode": "USA",
+        "lapRecord": "1:33.936 • Kyle Washington / Tom Sargent (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-04-04T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 90,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/01-sonoma-raceway.json"
+    },
+    {
+      "id": "gtwc-america-2027-2",
+      "seriesId": "gtwc-america",
+      "season": 2027,
+      "round": 2,
+      "name": "Circuit of The Americas",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit-of-the-americas",
+        "name": "Circuit of the Americas",
+        "locality": "Austin",
+        "country": "United States of America",
+        "countryCode": "USA",
+        "lapRecord": "2:04.138 • Kyle Washington / Tom Sargent (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-05-08T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 90,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/02-circuit-of-the-americas.json"
+    },
+    {
+      "id": "gtwc-america-2027-3",
+      "seriesId": "gtwc-america",
+      "season": 2027,
+      "round": 3,
+      "name": "Watkins Glen International",
+      "cancelled": false,
+      "circuit": {
+        "id": "watkins-glen-international",
+        "name": "Watkins Glen International",
+        "locality": null,
+        "country": "United States of America",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-05-23T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 90,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/03-watkins-glen-international.json"
+    },
+    {
+      "id": "gtwc-america-2027-4",
+      "seriesId": "gtwc-america",
+      "season": 2027,
+      "round": 4,
+      "name": "Michelin Raceway Road Atlanta",
+      "cancelled": false,
+      "circuit": {
+        "id": "michelin-raceway-road-atlanta",
+        "name": "Michelin Raceway Road Atlanta",
+        "locality": "Braselton",
+        "country": "United States of America",
+        "countryCode": "USA",
+        "lapRecord": "1:20.277 • Kyle Washington / Tom Sargent (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-06-20T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 90,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/04-michelin-raceway-road-atlanta.json"
+    },
+    {
+      "id": "gtwc-america-2027-5",
+      "seriesId": "gtwc-america",
+      "season": 2027,
+      "round": 5,
+      "name": "Road America",
+      "cancelled": false,
+      "circuit": {
+        "id": "road-america",
+        "name": "Road America",
+        "locality": "Elkhart Lake",
+        "country": "United States of America",
+        "countryCode": "USA",
+        "lapRecord": "2:06.912 • Justin Rothberg / Robby Foley (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-08-29T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 90,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/05-road-america.json"
+    },
+    {
+      "id": "gtwc-america-2027-6",
+      "seriesId": "gtwc-america",
+      "season": 2027,
+      "round": 6,
+      "name": "Barber Motorsports Park",
+      "cancelled": false,
+      "circuit": {
+        "id": "barber-motorsports-park",
+        "name": "Barber Motorsports Park",
+        "locality": "Birmingham",
+        "country": "United States of America",
+        "countryCode": "USA",
+        "lapRecord": "1:21.654 • Todd Coleman / Aaron Telitz (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-09-12T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 90,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/06-barber-motorsports-park.json"
+    },
+    {
+      "id": "gtwc-america-2027-7",
+      "seriesId": "gtwc-america",
+      "season": 2027,
+      "round": 7,
+      "name": "Indianapolis Motor Speedway",
+      "cancelled": false,
+      "circuit": {
+        "id": "indianapolis-motor-speedway-road-course",
+        "name": "Indianapolis Motor Speedway Road Course",
+        "locality": "Indianapolis",
+        "country": "United States of America",
+        "countryCode": "USA",
+        "lapRecord": "1:23.573 • Kyle Washington / Riccardo Pera / Ayhancan Guven (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-10-03T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 90,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/07-indianapolis-motor-speedway.json"
+    }
+  ]
+}
