@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-11-21T01:48:33.680021Z",
+  "lastSuccessfulUpdate": "2026-11-21T05:02:00.317010Z",
   "source": {
     "name": "formula1-official",
     "url": "https://www.formula1.com/en/results/2026/races/1300/las-vegas/race-result"
@@ -1047,8 +1047,14 @@
           "name": "formula1-official",
           "url": "https://www.formula1.com/en/results/2026/races/1300/las-vegas/practice/3"
         }
+      },
+      {
+        "type": "Q",
+        "name": "Qualifying",
+        "startTimeUtc": "2026-11-21T04:00:00Z",
+        "results": []
       }
     ]
   },
-  "updatedAt": "2026-11-21T01:50:33.661569Z"
+  "updatedAt": "2026-11-21T05:04:20.607488Z"
 }
