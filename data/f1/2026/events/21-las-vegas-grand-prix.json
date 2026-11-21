@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-11-20T20:44:49.199511Z",
+  "lastSuccessfulUpdate": "2026-11-21T01:32:00.556817Z",
   "source": {
     "name": "formula1-official",
     "url": "https://www.formula1.com/en/results/2026/races/1300/las-vegas/race-result"
@@ -530,8 +530,14 @@
           "name": "formula1-official",
           "url": "https://www.formula1.com/en/results/2026/races/1300/las-vegas/practice/2"
         }
+      },
+      {
+        "type": "FP3",
+        "name": "Practice 3",
+        "startTimeUtc": "2026-11-21T00:30:00Z",
+        "results": []
       }
     ]
   },
-  "updatedAt": "2026-11-20T20:47:08.277552Z"
+  "updatedAt": "2026-11-21T01:34:21.197222Z"
 }
