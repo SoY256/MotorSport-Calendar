@@ -83,6 +83,12 @@ def main(root: Path) -> None:
         document = json.loads(calendar_path.read_text(encoding="utf-8"))
         for event in document["data"]:
             for session in event["sessions"]:
+                minutes = session.get("durationMinutes")
+                if type(minutes) is int and minutes > 0:
+                    continue
+                if minutes is not None:
+                    print(f"{series} {event['name']} {session['type']}: invalid duration {minutes!r}; using an estimate",
+                          file=sys.stderr)
                 session["durationMinutes"] = duration(
                     series, event["name"], session["type"], session["name"]
                 )

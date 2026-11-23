@@ -264,6 +264,7 @@ def official_standings(root: Path) -> None:
     year = int(root.name)
     driver_path = root / "standings_drivers.json"
     driver_document = json.loads(driver_path.read_text(encoding="utf-8"))
+    previous_drivers = json.dumps(driver_document["data"], sort_keys=True)
     drivers = {item.get("code"): item for item in driver_document["data"]}
     driver_wins, team_wins = race_wins(root)
     parser = Tables()
@@ -281,12 +282,15 @@ def official_standings(root: Path) -> None:
         item["wins"] = max(int(item.get("wins") or 0), driver_wins.get(match.group(1), 0))
         ordered_drivers.append(item)
     if ordered_drivers:
+        if json.dumps(ordered_drivers, sort_keys=True) != previous_drivers:
+            driver_document["lastSuccessfulUpdate"] = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
         driver_document["data"] = ordered_drivers
         driver_document["source"] = {"name": "formula1-official", "url": f"{BASE}/en/results/{year}/drivers"}
         driver_path.write_text(json.dumps(driver_document, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     team_path = root / "standings_teams.json"
     team_document = json.loads(team_path.read_text(encoding="utf-8"))
+    previous_teams = json.dumps(team_document["data"], sort_keys=True)
     aliases = {
         "red bull racing": "red bull",
         "racing bulls": "rb f1 team",
@@ -314,6 +318,8 @@ def official_standings(root: Path) -> None:
         item["wins"] = max(int(item.get("wins") or 0), wins)
         ordered_teams.append(item)
     if ordered_teams:
+        if json.dumps(ordered_teams, sort_keys=True) != previous_teams:
+            team_document["lastSuccessfulUpdate"] = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
         team_document["data"] = ordered_teams
         team_document["source"] = {"name": "formula1-official", "url": f"{BASE}/en/results/{year}/team"}
         team_path.write_text(json.dumps(team_document, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

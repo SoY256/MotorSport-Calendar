@@ -59,7 +59,13 @@ The application uses a feature-first structure with Riverpod, a shared light/dar
 - Polish and English interfaces;
 - event times displayed either in the user's local time or the circuit's local time.
 
-It tries the versioned GitHub data first and falls back to the bundled files when the network is unavailable.
+It tries the versioned GitHub data first, checking freshness independently for each series and season. A missing, malformed or older feed keeps only its own bundled fallback without blocking other updates. A valid newer calendar replaces that series-season's event list, so removed rounds do not reappear from the offline snapshot. Newly published seasons do not need to be newer than an unrelated bundled series.
+
+During the app session, later outages and overlapping older responses retain the last verified online calendar instead of reviving an older bundled snapshot. Restarting offline still uses the bundled snapshot.
+
+Standings keep the incomplete-table safeguards but accept a complete, newer official correction even when points or wins decrease. Neither the driver nor the team document may be older than its bundled counterpart, and at least one must be newer; undated legacy feeds retain the conservative points/wins checks. Official F1 standings changes refresh those timestamps. Duration enrichment preserves positive published session lengths and estimates only missing or invalid values, so official race lengths are not overwritten by event-name guesses.
+
+Track-local displays use the year and wall-clock fields in the circuit timestamp, independently of the phone's time zone and daylight-saving transitions. Driver portraits use only the verified bundled face crops; obsolete remote-image cropping and zoom paths are not used.
 
 ```bash
 flutter pub get

@@ -13,6 +13,38 @@ import fetch_f1_official_results as official
 
 
 class OfficialF1ResultsTests(unittest.TestCase):
+    def test_changed_official_standings_refresh_the_timestamp_without_unchanged_churn(self):
+        pages = [
+            "<table><tr><th>Pos</th></tr><tr><td>1</td><td>Test Driver DRV</td>"
+            "<td>XX</td><td>Test Team</td><td>90</td></tr></table>",
+            "<table><tr><th>Pos</th></tr><tr><td>1</td><td>Test Team</td><td>90</td></tr></table>",
+        ]
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "2099"
+            root.mkdir()
+            old_timestamp = "2026-11-22T00:00:00Z"
+            now = datetime(2026, 11, 23, tzinfo=timezone.utc)
+            for name, row in [
+                ("drivers", {"code": "DRV", "position": 1, "points": 110, "wins": 1}),
+                ("teams", {"name": "Test Team", "position": 1, "points": 110, "wins": 1}),
+            ]:
+                (root / f"standings_{name}.json").write_text(json.dumps({
+                    "lastSuccessfulUpdate": old_timestamp, "data": [row],
+                }), encoding="utf-8")
+            with patch.object(official, "fetch", side_effect=pages * 2), \
+                    patch.object(official, "datetime", wraps=datetime) as clock:
+                clock.now.return_value = now
+                official.official_standings(root)
+                for name in ("drivers", "teams"):
+                    document = json.loads((root / f"standings_{name}.json").read_text(encoding="utf-8"))
+                    self.assertEqual(document["data"][0]["points"], 90)
+                    self.assertEqual(document["lastSuccessfulUpdate"], "2026-11-23T00:00:00Z")
+                clock.now.return_value = datetime(2026, 11, 24, tzinfo=timezone.utc)
+                official.official_standings(root)
+            for name in ("drivers", "teams"):
+                document = json.loads((root / f"standings_{name}.json").read_text(encoding="utf-8"))
+                self.assertEqual(document["lastSuccessfulUpdate"], "2026-11-23T00:00:00Z")
+
     def test_race_identity_not_round_order_selects_official_page(self):
         pages = {1: ('1', 'australia'), 2: ('2', 'singapore')}
         self.assertEqual(page_for_event({'round': 1, 'name': 'Singapore Grand Prix'}, pages), ('2', 'singapore'))

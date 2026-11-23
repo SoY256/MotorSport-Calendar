@@ -334,27 +334,45 @@ class TeamStanding {
 }
 
 class StandingsData {
-  const StandingsData({required this.drivers, required this.teams});
+  const StandingsData({
+    required this.drivers,
+    required this.teams,
+    this.sourceUpdatedAt,
+  });
   final List<DriverStanding> drivers;
   final List<TeamStanding> teams;
+  final ({DateTime drivers, DateTime teams})? sourceUpdatedAt;
 }
+
+typedef CalendarSource = ({String seriesId, int season});
 
 class CalendarData {
   const CalendarData({
     required this.schemaVersion,
     required this.updatedAt,
     required this.events,
+    this.sourceUpdatedAt = const {},
   });
 
-  factory CalendarData.fromJson(Map<String, dynamic> json) => CalendarData(
-    schemaVersion: json['schemaVersion'] as int,
-    updatedAt: DateTime.parse(json['lastSuccessfulUpdate'] as String).toUtc(),
-    events: (json['data'] as List<dynamic>)
+  factory CalendarData.fromJson(Map<String, dynamic> json) {
+    final updatedAt = DateTime.parse(json['lastSuccessfulUpdate'] as String)
+        .toUtc();
+    final events = (json['data'] as List<dynamic>)
         .map((item) => RaceEvent.fromJson(item as Map<String, dynamic>))
-        .toList(growable: false),
-  );
+        .toList(growable: false);
+    return CalendarData(
+      schemaVersion: json['schemaVersion'] as int,
+      updatedAt: updatedAt,
+      events: events,
+      sourceUpdatedAt: {
+        for (final event in events)
+          (seriesId: event.seriesId, season: event.season): updatedAt,
+      },
+    );
+  }
 
   final int schemaVersion;
   final DateTime updatedAt;
   final List<RaceEvent> events;
+  final Map<CalendarSource, DateTime> sourceUpdatedAt;
 }

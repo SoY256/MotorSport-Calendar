@@ -35,14 +35,25 @@ List<int> manifestSeasons(Map<String, dynamic> series) =>
 StandingsData _standingsFrom(
   Map<String, dynamic> drivers,
   Map<String, dynamic> teams,
-) => StandingsData(
-  drivers: (drivers['data'] as List<dynamic>)
-      .map((item) => DriverStanding.fromJson(item as Map<String, dynamic>))
-      .toList(growable: false),
-  teams: (teams['data'] as List<dynamic>)
-      .map((item) => TeamStanding.fromJson(item as Map<String, dynamic>))
-      .toList(growable: false),
-);
+) {
+  final driverUpdate = DateTime.tryParse(
+    drivers['lastSuccessfulUpdate'] as String? ?? '',
+  );
+  final teamUpdate = DateTime.tryParse(
+    teams['lastSuccessfulUpdate'] as String? ?? '',
+  );
+  return StandingsData(
+    sourceUpdatedAt: driverUpdate == null || teamUpdate == null
+        ? null
+        : (drivers: driverUpdate.toUtc(), teams: teamUpdate.toUtc()),
+    drivers: (drivers['data'] as List<dynamic>)
+        .map((item) => DriverStanding.fromJson(item as Map<String, dynamic>))
+        .toList(growable: false),
+    teams: (teams['data'] as List<dynamic>)
+        .map((item) => TeamStanding.fromJson(item as Map<String, dynamic>))
+        .toList(growable: false),
+  );
+}
 
 class AssetCalendarRepository implements CalendarRepository {
   AssetCalendarRepository({AssetBundle? bundle})
@@ -100,6 +111,7 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
 
   final CalendarRepository fallback;
   final http.Client _client;
+  CalendarData? _lastCalendar;
 
   Future<Map<String, dynamic>?> _absoluteJson(Uri uri) async {
     try {
@@ -141,32 +153,102 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
 
   @override
   Future<CalendarData> load() async {
-    final local = await fallback.load();
+    var local = _lastCalendar ?? await fallback.load();
     try {
       final manifest = await _remote('manifest.json');
-      if (manifest == null) return local;
-      final calendars = await Future.wait([
+      if (manifest == null) return _lastCalendar ?? local;
+      final sources = {
         for (final item in manifest['availableSeries'] as List<dynamic>)
           for (final season in manifestSeasons(item as Map<String, dynamic>))
-            _remote('${item['id']}/$season/calendar.json'),
+            (seriesId: item['id'] as String, season: season),
+      }.toList();
+      final calendars = await Future.wait([
+        for (final source in sources)
+          _loadCalendarSource(source, local.schemaVersion),
       ]);
-      if (calendars.any((calendar) => calendar == null)) return local;
-      final remote = _mergeCalendars(calendars.cast<Map<String, dynamic>>());
-      if (!remote.updatedAt.isAfter(local.updatedAt)) return local;
-      final events = <String, RaceEvent>{
-        for (final event in local.events) event.id: event,
-        for (final event in remote.events) event.id: event,
-      }.values.toList()..sort((a, b) => a.startsAt.compareTo(b.startsAt));
-      return CalendarData(
+      local = _lastCalendar ?? local;
+      final events = [...local.events];
+      final updates = {
+        for (final event in local.events)
+          (seriesId: event.seriesId, season: event.season):
+              local.sourceUpdatedAt[(
+                seriesId: event.seriesId,
+                season: event.season,
+              )] ??
+              local.updatedAt,
+      };
+      var updatedAt = local.updatedAt;
+      for (var index = 0; index < sources.length; index++) {
+        final source = sources[index];
+        final calendar = calendars[index];
+        final bundledUpdate = updates[source];
+        if (calendar == null ||
+            (bundledUpdate != null &&
+                !calendar.updatedAt.isAfter(bundledUpdate))) {
+          continue;
+        }
+        events.removeWhere(
+          (event) =>
+              event.seriesId == source.seriesId &&
+              event.season == source.season,
+        );
+        events.addAll(calendar.events);
+        updates[source] = calendar.updatedAt;
+        if (calendar.updatedAt.isAfter(updatedAt)) {
+          updatedAt = calendar.updatedAt;
+        }
+      }
+      events.sort((a, b) => a.startsAt.compareTo(b.startsAt));
+      final updated = CalendarData(
         schemaVersion: local.schemaVersion,
-        updatedAt: remote.updatedAt.isAfter(local.updatedAt)
-            ? remote.updatedAt
-            : local.updatedAt,
+        updatedAt: updatedAt,
         events: events,
+        sourceUpdatedAt: updates,
       );
-    } on Object {
-      return local;
+      _lastCalendar = updated;
+      return updated;
+    } on FormatException catch (error) {
+      debugPrint('Invalid published calendar manifest: $error');
+      return _lastCalendar ?? local;
+    } on TypeError catch (error) {
+      debugPrint('Invalid published calendar manifest: $error');
+      return _lastCalendar ?? local;
     }
+  }
+
+  Future<CalendarData?> _loadCalendarSource(
+    CalendarSource source,
+    int schemaVersion,
+  ) async {
+    final path = '${source.seriesId}/${source.season}/calendar.json';
+    final document = await _remote(path);
+    if (document == null) {
+      debugPrint('Calendar $path unavailable; keeping its bundled data');
+      return null;
+    }
+    try {
+      final calendar = CalendarData.fromJson(document);
+      if (calendar.schemaVersion != schemaVersion ||
+          calendar.events.isEmpty ||
+          calendar.events.any(
+            (event) =>
+                event.seriesId != source.seriesId ||
+                event.season != source.season ||
+                event.sessions.isEmpty,
+          ) ||
+          calendar.events.map((event) => event.id).toSet().length !=
+              calendar.events.length) {
+        throw const FormatException(
+          'Incomplete, mismatched or duplicate calendar events',
+        );
+      }
+      return calendar;
+    } on FormatException catch (error) {
+      debugPrint('Rejected calendar $path: $error');
+    } on TypeError catch (error) {
+      debugPrint('Rejected calendar $path: $error');
+    }
+    return null;
   }
 
   @override
@@ -520,6 +602,7 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
         for (final driver in local.drivers) driver.id: driver,
       };
       final enrichedRemote = StandingsData(
+        sourceUpdatedAt: remote.sourceUpdatedAt,
         drivers: remote.drivers
             .map((driver) {
               final bundled = localDrivers[driver.id];
@@ -561,11 +644,24 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
         0,
         (value, item) => value + item.wins,
       );
+      final localUpdate = local.sourceUpdatedAt;
+      final remoteUpdate = remote.sourceUpdatedAt;
+      if (localUpdate != null &&
+          remoteUpdate != null &&
+          (remoteUpdate.drivers.isBefore(localUpdate.drivers) ||
+              remoteUpdate.teams.isBefore(localUpdate.teams))) {
+        return local;
+      }
+      final newer =
+          localUpdate != null &&
+          remoteUpdate != null &&
+          (remoteUpdate.drivers.isAfter(localUpdate.drivers) ||
+              remoteUpdate.teams.isAfter(localUpdate.teams));
       final complete =
           remote.drivers.length >= local.drivers.length &&
           remote.teams.length >= local.teams.length &&
-          remoteMaxPoints >= localMaxPoints &&
-          remoteWins >= localWins;
+          ((remoteMaxPoints >= localMaxPoints && remoteWins >= localWins) ||
+              newer);
       return complete ? enrichedRemote : local;
     } on Object {
       return local;
@@ -584,5 +680,8 @@ CalendarData _mergeCalendars(List<Map<String, dynamic>> documents) {
     schemaVersion: calendars.first.schemaVersion,
     updatedAt: updatedAt,
     events: events,
+    sourceUpdatedAt: {
+      for (final calendar in calendars) ...calendar.sourceUpdatedAt,
+    },
   );
 }

@@ -1569,22 +1569,13 @@ class _CalendarGridPageState extends State<_CalendarGridPage> {
     }
   }
 
-  DateTime _dateFor(RaceSession session) {
-    final parts = widget.settings.timeMode == EventTimeMode.track
-        ? _trackParts(session)
-        : null;
-    return parts == null
-        ? session.startTimeUtc.toLocal()
-        : DateTime(_anchor.year, parts[0], parts[1]);
-  }
-
   List<RaceEvent> _eventsOn(DateTime day) => widget.data.events
       .where(
         (event) =>
             widget.selectedSeries.contains(event.seriesId) &&
             !event.cancelled &&
             event.sessions.any((session) {
-              final date = _dateFor(session);
+              final date = _sessionDisplayDate(session, widget.settings);
               return date.year == day.year &&
                   date.month == day.month &&
                   date.day == day.day;
@@ -3000,64 +2991,6 @@ class _DriverPortrait extends StatelessWidget {
   final String imageUrl;
   final String initials;
 
-  String get _faceUrl {
-    if (imageUrl.contains('res.cloudinary.com/') &&
-        !imageUrl.contains('/image/upload/')) {
-      final cloudNameEnd = imageUrl.indexOf(
-        '/',
-        'https://res.cloudinary.com/'.length,
-      );
-      final version = imageUrl.indexOf('/v', cloudNameEnd);
-      if (cloudNameEnd > 0 && version > cloudNameEnd) {
-        return '${imageUrl.substring(0, cloudNameEnd)}/image/upload/c_thumb,g_face,w_320,h_320,q_auto,f_auto${imageUrl.substring(version)}';
-      }
-    }
-    if (!imageUrl.contains('/image/upload/')) return imageUrl;
-    final upload = imageUrl.indexOf('/image/upload/') + '/image/upload/'.length;
-    final version = imageUrl.indexOf('/v', upload);
-    if (version < 0) return imageUrl;
-    return '${imageUrl.substring(0, upload)}c_thumb,g_face,w_320,h_320,q_auto,f_auto${imageUrl.substring(version)}';
-  }
-
-  double get _scale {
-    if (imageUrl.contains('assets/portraits/indycar/') ||
-        imageUrl.contains('assets/portraits/indynxt/')) {
-      return 3;
-    }
-    if (imageUrl.contains('imsa.com/')) return 1.28;
-    if (imageUrl.contains('wikimedia.org/')) return 2.2;
-    return 1;
-  }
-
-  Alignment get _alignment {
-    if (imageUrl.contains('assets/portraits/indycar/') ||
-        imageUrl.contains('assets/portraits/indynxt/')) {
-      return const Alignment(0, -0.35);
-    }
-    return imageUrl.contains('imsa.com/') ||
-            imageUrl.contains('indycar.com/') ||
-            imageUrl.contains('indynxt.com/')
-        ? Alignment.topCenter
-        : Alignment.center;
-  }
-
-  Widget _image() {
-    if (imageUrl.startsWith('assets/portraits/')) {
-      return Image.asset(
-        imageUrl,
-        fit: BoxFit.cover,
-        alignment: _alignment,
-        errorBuilder: (_, _, _) => _DriverInitials(initials: initials),
-      );
-    }
-    return Image.network(
-      _faceUrl,
-      fit: BoxFit.cover,
-      alignment: _alignment,
-      errorBuilder: (_, _, _) => _DriverInitials(initials: initials),
-    );
-  }
-
   @override
   Widget build(BuildContext context) => Container(
     width: 58,
@@ -3067,10 +3000,10 @@ class _DriverPortrait extends StatelessWidget {
       color: Theme.of(context).colorScheme.surfaceContainerHighest,
       borderRadius: BorderRadius.circular(14),
     ),
-    child: Transform.scale(
-      scale: _scale,
-      alignment: _alignment,
-      child: _image(),
+    child: Image.asset(
+      imageUrl,
+      fit: BoxFit.cover,
+      errorBuilder: (_, _, _) => _DriverInitials(initials: initials),
     ),
   );
 }
@@ -4117,15 +4050,17 @@ String _zoneName(
       strings.trackTime;
 }
 
-List<int>? _trackParts(RaceSession session) {
+DateTime? _trackWallTime(RaceSession session) {
   final value = session.startTimeTrack;
-  if (value == null || value.length < 16) return null;
-  return [
-    int.parse(value.substring(5, 7)),
-    int.parse(value.substring(8, 10)),
-    int.parse(value.substring(11, 13)),
-    int.parse(value.substring(14, 16)),
-  ];
+  if (value == null) return null;
+  // These are civil-time fields, not an instant to convert to the host zone.
+  final wallTime = value.length < 16
+      ? null
+      : DateTime.tryParse('${value.substring(0, 16)}Z');
+  if (wallTime == null) {
+    debugPrint('Invalid track-local time for ${session.type}: $value');
+  }
+  return wallTime;
 }
 
 String _sessionDate(RaceSession session, AppSettings settings) {
@@ -4134,12 +4069,9 @@ String _sessionDate(RaceSession session, AppSettings settings) {
 
 DateTime _sessionDisplayDate(RaceSession session, AppSettings settings) {
   final track = settings.timeMode == EventTimeMode.track
-      ? _trackParts(session)
+      ? _trackWallTime(session)
       : null;
-  if (track != null) {
-    return DateTime(session.startTimeUtc.year, track[0], track[1]);
-  }
-  return session.startTimeUtc.toLocal();
+  return track ?? session.startTimeUtc.toLocal();
 }
 
 String _sessionDateRange(
@@ -4163,8 +4095,8 @@ String _sessionDateRange(
 
 String _sessionTime(RaceSession session, EventTimeMode mode) {
   if (session.timeTbc) return 'TBC';
-  final track = mode == EventTimeMode.track ? _trackParts(session) : null;
-  if (track != null) return '${_two(track[2])}:${_two(track[3])}';
+  final track = mode == EventTimeMode.track ? _trackWallTime(session) : null;
+  if (track != null) return _time(track);
   return _time(session.startTimeUtc.toLocal());
 }
 
