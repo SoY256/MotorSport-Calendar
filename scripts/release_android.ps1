@@ -9,7 +9,8 @@
 param(
     [Parameter(Mandatory = $true)][string]$Notes,
     [string]$Track = "alpha",
-    [switch]$NoCommit
+    [switch]$NoCommit,
+    [switch]$BuildOnly
 )
 $ErrorActionPreference = "Stop"
 $root = Split-Path -Parent $PSScriptRoot
@@ -54,6 +55,11 @@ Copy-Item build\app\outputs\bundle\release\app-release.aab $bundle -Force
 
 $certificate = python -c "import sys,zipfile,hashlib;from cryptography.hazmat.primitives.serialization import pkcs7,Encoding;c=pkcs7.load_der_pkcs7_certificates(zipfile.ZipFile(sys.argv[1]).read('META-INF/UPLOAD.RSA'))[0];print(hashlib.sha256(c.public_bytes(Encoding.DER)).hexdigest()[:16])" $bundle
 if ($certificate -ne $expectedCertificate) { throw "Bundle is not signed with the Secar upload key ($certificate)" }
+
+if ($BuildOnly) {
+    Write-Output "Built and verified signed bundle: $bundle (not uploaded)"
+    return
+}
 
 $arguments = @("scripts/publish_play.py", "--aab", $bundle, "--notes", $Notes, "--track", $Track)
 if ($NoCommit) { $arguments += "--no-commit" }
