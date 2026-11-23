@@ -2047,124 +2047,80 @@ class _ResultsPageState extends ConsumerState<_ResultsPage>
             ),
             data: (data) {
               final now = DateTime.now().toUtc();
-              final sessions = data
-                  .newestFirst(selected)
-                  .where((session) => session.results.isNotEmpty)
-                  .toList();
-              final notClassified = selected.sessions
-                  .where(
-                    (session) => data.sessions.any(
-                      (result) =>
-                          result.type == session.type &&
-                          result.noClassificationReason != null,
-                    ),
-                  )
-                  .toList();
-              final withoutResults =
+              final classifications = {
+                for (final session in data.sessions) session.type: session,
+              };
+              final sessions =
                   selected.sessions
-                      .where(
-                        (session) =>
-                            !session.cancelled &&
-                            !_hasPublishedOutcomeForSession(session, data),
-                      )
+                      .where((session) => !session.cancelled)
                       .toList()
-                    ..sort((a, b) => a.startTimeUtc.compareTo(b.startTimeUtc));
-              final awaiting = withoutResults
+                    ..sort((a, b) {
+                      final time = b.startTimeUtc.compareTo(a.startTimeUtc);
+                      return time != 0 ? time : a.type.compareTo(b.type);
+                    });
+              final classified = sessions
                   .where(
                     (session) =>
-                        !session.expectedEnd.isAfter(now) &&
-                        !_gaveUpWaiting(selected.seriesId, session, now) &&
-                        _publishesResults(selected.seriesId, session),
+                        classifications[session.type]?.results.isNotEmpty ??
+                        false,
                   )
                   .toList();
-              // Sessions that are still to come stay in the timetable; past
-              // ones the organiser never classified (tests, warm-ups,
-              // qualifying published only as a combined result) are listed
-              // as held, never as "scheduled".
-              final planned = withoutResults
-                  .where(
-                    (session) =>
-                        !awaiting.contains(session) &&
-                        session.expectedEnd.isAfter(now),
-                  )
-                  .toList();
-              final unclassified = withoutResults
-                  .where(
-                    (session) =>
-                        !awaiting.contains(session) &&
-                        !planned.contains(session),
-                  )
-                  .toList();
+              final races = classified.where(
+                (session) =>
+                    RegExp(r'^(?:R\d*|SPRINT)$').hasMatch(session.type),
+              );
+              // Before the first race result, keep the newest available
+              // classification open (e.g. qualifying during a live weekend).
+              final expanded =
+                  (races.firstOrNull ?? classified.firstOrNull)?.type;
+
+              Widget sessionCard(RaceSession session) {
+                final result = classifications[session.type];
+                final key = ValueKey(
+                  'event-session-${selected.id}-${session.type}',
+                );
+                if (result != null && result.results.isNotEmpty) {
+                  return _SessionResultsCard(
+                    key: key,
+                    session: result,
+                    strings: strings,
+                    timeLabel: _sessionTime(session, settings.timeMode),
+                    initiallyExpanded: session.type == expanded,
+                  );
+                }
+                final ended = !session.expectedEnd.isAfter(now);
+                final unclassified =
+                    result?.noClassificationReason != null ||
+                    (ended &&
+                        (_gaveUpWaiting(selected.seriesId, session, now) ||
+                            !_publishesResults(selected.seriesId, session)));
+                return _SessionStatusCard(
+                  key: key,
+                  session: session,
+                  status: unclassified
+                      ? strings.noOfficialClassification
+                      : ended
+                      ? strings.awaitingResults
+                      : strings.plannedSessions,
+                  icon: unclassified
+                      ? Icons.flag_outlined
+                      : ended
+                      ? Icons.hourglass_top_rounded
+                      : Icons.schedule,
+                  reason: result?.noClassificationReason,
+                  settings: settings,
+                  strings: strings,
+                );
+              }
 
               return Column(
+                key: ValueKey('event-sessions-${selected.id}-$expanded'),
                 children: [
-                  if (notClassified.isNotEmpty) ...[
-                    _SessionsScheduleCard(
-                      title: strings.noOfficialClassification,
-                      icon: Icons.flag_outlined,
-                      sessions: notClassified,
-                      settings: settings,
-                      strings: strings,
-                      classificationReasons: {
-                        for (final result in data.sessions)
-                          if (result.noClassificationReason != null)
-                            result.type: result.noClassificationReason!,
-                      },
-                    ),
-                    const SizedBox(height: 12),
-                  ],
                   for (var index = 0; index < sessions.length; index++) ...[
-                    _SessionResultsCard(
-                      session: sessions[index],
-                      strings: strings,
-                      timeLabel: _sessionTime(
-                        selected.sessions.firstWhere(
-                          (s) => s.type == sessions[index].type,
-                          orElse: () => selected.sessions.first,
-                        ),
-                        settings.timeMode,
-                      ),
-                      initiallyExpanded: index == 0,
-                    ),
-                    if (index < sessions.length - 1 ||
-                        awaiting.isNotEmpty ||
-                        planned.isNotEmpty ||
-                        unclassified.isNotEmpty)
-                      const SizedBox(height: 12),
+                    sessionCard(sessions[index]),
+                    if (index < sessions.length - 1) const SizedBox(height: 12),
                   ],
-                  if (awaiting.isNotEmpty) ...[
-                    _SessionsScheduleCard(
-                      title: strings.awaitingResults,
-                      icon: Icons.hourglass_top_rounded,
-                      sessions: awaiting,
-                      settings: settings,
-                      strings: strings,
-                    ),
-                    if (planned.isNotEmpty) const SizedBox(height: 12),
-                  ],
-                  if (planned.isNotEmpty) ...[
-                    _SessionsScheduleCard(
-                      title: strings.plannedSessions,
-                      icon: Icons.schedule,
-                      sessions: planned,
-                      settings: settings,
-                      strings: strings,
-                    ),
-                    if (unclassified.isNotEmpty) const SizedBox(height: 12),
-                  ],
-                  if (unclassified.isNotEmpty)
-                    _SessionsScheduleCard(
-                      title: strings.noOfficialClassification,
-                      icon: Icons.flag_outlined,
-                      sessions: unclassified,
-                      settings: settings,
-                      strings: strings,
-                    ),
-                  if (sessions.isEmpty &&
-                      notClassified.isEmpty &&
-                      awaiting.isEmpty &&
-                      planned.isEmpty &&
-                      unclassified.isEmpty)
+                  if (sessions.isEmpty)
                     _EmptyCard(
                       icon: Icons.hourglass_empty,
                       message: strings.noResults,
@@ -2186,55 +2142,55 @@ bool _hasPublishedOutcomeForSession(
   (result) => result.type == session.type && result.hasPublishedOutcome,
 );
 
-class _SessionsScheduleCard extends StatelessWidget {
-  const _SessionsScheduleCard({
-    required this.title,
+class _SessionStatusCard extends StatelessWidget {
+  const _SessionStatusCard({
+    super.key,
+    required this.session,
+    required this.status,
     required this.icon,
-    required this.sessions,
     required this.settings,
     required this.strings,
-    this.classificationReasons = const {},
+    this.reason,
   });
 
-  final String title;
+  final RaceSession session;
+  final String status;
   final IconData icon;
-  final List<RaceSession> sessions;
   final AppSettings settings;
   final AppStrings strings;
-  final Map<String, NoClassificationReason> classificationReasons;
+  final NoClassificationReason? reason;
 
   @override
   Widget build(BuildContext context) => Card(
-    child: Column(
+    child: ExpansionTile(
+      shape: const Border(),
+      collapsedShape: const Border(),
+      leading: Icon(icon),
+      title: Text(
+        _sessionLabel(session.type, session.name, strings),
+        style: racingDisplay(size: 20),
+      ),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '${_sessionDate(session, settings)} • '
+            '${_sessionTime(session, settings.timeMode)}',
+          ),
+          Text(status),
+        ],
+      ),
       children: [
-        ListTile(
-          leading: Icon(icon),
-          title: Text(
-            title,
-            style: const TextStyle(fontWeight: FontWeight.w900),
+        const Divider(height: 1),
+        Padding(
+          padding: const EdgeInsets.all(16),
+          child: Text(
+            reason == NoClassificationReason.noTimedLaps
+                ? strings.noTimedLaps
+                : '${_zoneName(session, settings, strings)} • '
+                      '${strings.expectedDuration}: ${strings.duration(session.durationMinutes)}',
           ),
         ),
-        const Divider(height: 1),
-        for (final session in sessions)
-          ListTile(
-            title: Text(
-              _sessionLabel(session.type, session.name, strings),
-              style: const TextStyle(fontWeight: FontWeight.w800),
-            ),
-            subtitle: Text(
-              classificationReasons[session.type] ==
-                      NoClassificationReason.noTimedLaps
-                  ? strings.noTimedLaps
-                  : '${_zoneName(session, settings, strings)} • '
-                        '${strings.expectedDuration}: ${strings.duration(session.durationMinutes)}',
-            ),
-            trailing: Text(
-              '${_sessionDate(session, settings)}\n'
-              '${_sessionTime(session, settings.timeMode)}',
-              textAlign: TextAlign.end,
-              style: const TextStyle(fontWeight: FontWeight.w800),
-            ),
-          ),
       ],
     ),
   );
@@ -2395,6 +2351,7 @@ class _CircuitInfoCard extends StatelessWidget {
 
 class _SessionResultsCard extends StatelessWidget {
   const _SessionResultsCard({
+    super.key,
     required this.session,
     required this.strings,
     this.initiallyExpanded = false,
@@ -2410,8 +2367,7 @@ class _SessionResultsCard extends StatelessWidget {
     child: ExpansionTile(
       shape: const Border(),
       collapsedShape: const Border(),
-      initiallyExpanded:
-          initiallyExpanded || session.type == 'R' || session.type == 'SPRINT',
+      initiallyExpanded: initiallyExpanded,
       leading: Container(
         width: 6,
         height: 30,

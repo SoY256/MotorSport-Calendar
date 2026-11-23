@@ -756,7 +756,10 @@ void main() {
 
       expect(find.text('Qualifying'), findsOneWidget);
       final tile = tester.widget<ExpansionTile>(
-        find.byType(ExpansionTile).first,
+        find.descendant(
+          of: find.byKey(const ValueKey('event-session-test-weekend-Q')),
+          matching: find.byType(ExpansionTile),
+        ),
       );
       expect((tile.subtitle as Text).data, matches(RegExp(r' • \d{2}:\d{2}$')));
       expect(find.text('Scheduled sessions'), findsOneWidget);

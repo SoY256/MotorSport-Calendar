@@ -8,6 +8,7 @@ import 'package:http/testing.dart';
 import 'package:secar/app/app.dart';
 import 'package:secar/core/localization/app_strings.dart';
 import 'package:secar/core/series_catalog.dart';
+import 'package:secar/core/widgets/racing_ui.dart';
 import 'package:secar/features/calendar/data/calendar_repository.dart';
 import 'package:secar/features/calendar/domain/race_event.dart';
 import 'package:secar/features/calendar/presentation/calendar_providers.dart';
@@ -312,6 +313,12 @@ void main() {
             .onDestinationSelected!(2);
         await tester.pumpAndSettle();
         final strings = AppStrings(language);
+        expect(find.text(strings.noTimedLaps), findsNothing);
+        final tile = find.byType(ExpansionTile).first;
+        await Scrollable.ensureVisible(tester.element(tile), alignment: .5);
+        await tester.pumpAndSettle();
+        await tester.tap(tile);
+        await tester.pumpAndSettle();
         expect(find.text(strings.noTimedLaps), findsOneWidget);
         expect(find.text(strings.awaitingResults), findsNothing);
         expect(find.text(strings.noResults), findsNothing);
@@ -320,6 +327,132 @@ void main() {
       },
     );
   }
+
+  testWidgets('Vegas sessions are newest first with only the race expanded', (
+    tester,
+  ) async {
+    final assets = AssetCalendarRepository();
+    final calendar = (await tester.runAsync(assets.load))!;
+    final vegas = calendar.events.firstWhere(
+      (event) =>
+          event.seriesId == 'f1' &&
+          event.season == 2026 &&
+          event.name == 'Las Vegas Grand Prix',
+    );
+    final results = (await tester.runAsync(() => assets.loadResults(vegas)))!;
+    await _showTimeline(tester, SingleEventRepository(vegas, results: results));
+
+    expect(_timelineKinds(vegas), ['R', 'Q', 'FP3', 'FP2', 'FP1']);
+    _expectExpandedResults(vegas, results, 'R');
+    expect(
+      find.text(AppStrings(AppLanguage.english).noTimedLaps),
+      findsNothing,
+    );
+    final firstHeader = _sessionTile(vegas, 'R');
+    final noticeHeader = _sessionTile(vegas, 'FP1');
+    expect(
+      tester.getTopLeft(firstHeader).dy,
+      lessThan(tester.getTopLeft(noticeHeader).dy),
+    );
+    await _tapSession(tester, vegas, 'FP1');
+    expect(
+      find.text(AppStrings(AppLanguage.english).noTimedLaps),
+      findsOneWidget,
+    );
+  });
+
+  for (final (series, kinds, race) in [
+    ('f1', ['FP1', 'SPRINT', 'Q', 'R'], 'R'),
+    ('gtwc-asia', ['FP1', 'R1', 'Q2', 'R2'], 'R2'),
+  ]) {
+    testWidgets(
+      '$series opens only its newest race and resets when changing events',
+      (tester) async {
+        final first = _timelineEvent(series, kinds, 'first');
+        final second = _timelineEvent(series, kinds, 'second');
+        final firstResults = _timelineResults(first);
+        final secondResults = _timelineResults(second);
+        await _showTimeline(
+          tester,
+          _TimelineRepository(
+            [first, second],
+            {first.id: firstResults, second.id: secondResults},
+          ),
+        );
+        tester
+            .widget<DropdownButtonFormField<String>>(
+              find.byType(DropdownButtonFormField<String>),
+            )
+            .onChanged!(first.id);
+        await tester.pumpAndSettle();
+
+        expect(_timelineKinds(first), kinds.reversed.toList());
+        _expectExpandedResults(first, firstResults, race);
+
+        final qualifying = kinds[kinds.length - 2];
+        await _tapSession(tester, first, qualifying);
+        final opened = firstResults.sessions
+            .firstWhere((session) => session.type == qualifying)
+            .results
+            .single
+            .driver;
+        expect(
+          find.text('${opened.givenName} ${opened.familyName}'),
+          findsOneWidget,
+        );
+        await _tapSession(tester, first, race);
+        tester
+            .widget<DropdownButtonFormField<String>>(
+              find.byType(DropdownButtonFormField<String>),
+            )
+            .onChanged!(second.id);
+        await tester.pumpAndSettle();
+
+        _expectExpandedResults(second, secondResults, race);
+        expect(tester.takeException(), isNull);
+      },
+    );
+  }
+
+  testWidgets('a newly received race opens while the older race collapses', (
+    tester,
+  ) async {
+    final event = _timelineEvent('gtwc-europe', [
+      'FP1',
+      'R1',
+      'Q2',
+      'R2',
+    ], 'live');
+    final all = _timelineResults(event);
+    final repository = _TimelineRepository(
+      [event],
+      {
+        event.id: EventResults(
+          eventId: event.id,
+          sessions: all.sessions
+              .where((session) => session.type != 'R2')
+              .toList(),
+        ),
+      },
+    );
+    await _showTimeline(tester, repository);
+    _expectExpandedResults(event, repository.results[event.id]!, 'R1');
+    expect(_timelineKinds(event), ['R2', 'Q2', 'R1', 'FP1']);
+
+    repository.results[event.id] = all;
+    final container = ProviderScope.containerOf(
+      tester.element(find.byType(MotorsportCalendarApp)),
+    );
+    container.invalidate(eventResultsProvider(event));
+    await tester.pumpAndSettle();
+
+    _expectExpandedResults(event, all, 'R2');
+    expect(
+      find.text(AppStrings(AppLanguage.english).awaitingResults),
+      findsNothing,
+    );
+    expect(tester.takeException(), isNull);
+  });
 
   testWidgets(
     'download errors show retry instructions instead of an asset path',
@@ -350,4 +483,149 @@ void main() {
       await tester.pumpWidget(const SizedBox.shrink());
     },
   );
+}
+
+Finder _sessionCard(RaceEvent event, String kind) =>
+    find.byKey(ValueKey('event-session-${event.id}-$kind'));
+
+Finder _sessionTile(RaceEvent event, String kind) => find.descendant(
+  of: _sessionCard(event, kind),
+  matching: find.byType(ExpansionTile),
+);
+
+List<String> _timelineKinds(RaceEvent event) {
+  final prefix = 'event-session-${event.id}-';
+  return find
+      .byWidgetPredicate(
+        (widget) =>
+            widget.key is ValueKey<String> &&
+            (widget.key! as ValueKey<String>).value.startsWith(prefix),
+      )
+      .evaluate()
+      .map(
+        (element) => (element.widget.key! as ValueKey<String>).value.substring(
+          prefix.length,
+        ),
+      )
+      .toList();
+}
+
+void _expectExpandedResults(
+  RaceEvent event,
+  EventResults data,
+  String expanded,
+) {
+  for (final session in data.sessions) {
+    final tile = _sessionTile(event, session.type);
+    final hasResults = session.results.isNotEmpty;
+    expect(
+      find.descendant(of: tile, matching: find.byType(PositionBadge)),
+      hasResults && session.type == expanded ? findsWidgets : findsNothing,
+      reason: '${session.type}: only $expanded should be expanded',
+    );
+  }
+}
+
+Future<void> _tapSession(
+  WidgetTester tester,
+  RaceEvent event,
+  String kind,
+) async {
+  final header = find
+      .descendant(of: _sessionTile(event, kind), matching: find.byType(Text))
+      .first;
+  await Scrollable.ensureVisible(tester.element(header), alignment: .5);
+  await tester.pumpAndSettle();
+  await tester.tap(header);
+  await tester.pumpAndSettle();
+}
+
+Future<void> _showTimeline(
+  WidgetTester tester,
+  CalendarRepository repository,
+) async {
+  SharedPreferences.setMockInitialValues({});
+  await tester.pumpWidget(
+    ProviderScope(
+      overrides: [calendarRepositoryProvider.overrideWithValue(repository)],
+      child: const MotorsportCalendarApp(),
+    ),
+  );
+  addTearDown(() => tester.pumpWidget(const SizedBox.shrink()));
+  await tester.pumpAndSettle();
+  tester
+      .widget<NavigationBar>(find.byType(NavigationBar))
+      .onDestinationSelected!(2);
+  await tester.pumpAndSettle();
+}
+
+RaceEvent _timelineEvent(String series, List<String> kinds, String id) {
+  final start = DateTime.now().toUtc().subtract(const Duration(days: 3));
+  return RaceEvent(
+    id: id,
+    seriesId: series,
+    season: start.year,
+    round: 1,
+    name: 'Race weekend $id',
+    cancelled: false,
+    circuit: const Circuit(name: 'Test Raceway'),
+    sessions: [
+      for (var index = kinds.length - 1; index >= 0; index--)
+        RaceSession(
+          type: kinds[index],
+          name: kinds[index],
+          startTimeUtc: start.add(Duration(hours: index)),
+          cancelled: false,
+          durationMinutes: 30,
+        ),
+    ],
+    resultsPath: 'events/$id.json',
+  );
+}
+
+EventResults _timelineResults(RaceEvent event) => EventResults.fromJson({
+  'data': {
+    'eventId': event.id,
+    'sessions': [
+      for (final scheduled in event.sessions)
+        {
+          'type': scheduled.type,
+          'name': scheduled.name,
+          'startTimeUtc': scheduled.startTimeUtc.toIso8601String(),
+          'results': [
+            {
+              'position': 1,
+              'positionText': '1',
+              'driver': {
+                'id': '${event.id}-${scheduled.type}',
+                'givenName': scheduled.type,
+                'familyName': event.id,
+              },
+              'team': {'name': 'Team'},
+              'time': '1:20.123',
+            },
+          ],
+        },
+    ],
+  },
+});
+
+class _TimelineRepository implements CalendarRepository {
+  _TimelineRepository(this.events, this.results);
+  final List<RaceEvent> events;
+  final Map<String, EventResults> results;
+
+  @override
+  Future<CalendarData> load() async => CalendarData(
+    schemaVersion: 1,
+    updatedAt: DateTime.now().toUtc(),
+    events: events,
+  );
+
+  @override
+  Future<EventResults> loadResults(RaceEvent event) async => results[event.id]!;
+
+  @override
+  Future<StandingsData> loadStandings(String seriesId, int season) async =>
+      const StandingsData(drivers: [], teams: []);
 }
