@@ -62,6 +62,12 @@ class AppStrings {
       _en ? 'Results are not available yet' : 'Wyniki nie są jeszcze dostępne';
   String get awaitingResults =>
       _en ? 'Waiting for results' : 'Oczekiwanie na wyniki';
+  String get resultsDownloadFailed => _en
+      ? 'Results could not be downloaded. Check your connection and retry.'
+      : 'Nie udało się pobrać wyników. Sprawdź połączenie i spróbuj ponownie.';
+  String get noTimedLaps => _en
+      ? 'No timed laps were recorded. FIA issued no classification.'
+      : 'Nie było okrążeń pomiarowych. FIA nie opublikowała klasyfikacji.';
   String get results => _en ? 'Details' : 'Szczegóły';
   String get month => _en ? 'Month' : 'Miesiąc';
   String get week => _en ? 'Week' : 'Tydzień';

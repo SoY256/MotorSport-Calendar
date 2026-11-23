@@ -170,27 +170,52 @@ class SessionResult {
   final String? category;
 }
 
+enum NoClassificationReason { noTimedLaps }
+
 class SessionResults {
   const SessionResults({
     required this.type,
     required this.name,
     required this.startTimeUtc,
     required this.results,
+    this.noClassificationReason,
   });
 
-  factory SessionResults.fromJson(Map<String, dynamic> json) => SessionResults(
-    type: json['type'] as String,
-    name: json['name'] as String,
-    startTimeUtc: DateTime.parse(json['startTimeUtc'] as String).toUtc(),
-    results: (json['results'] as List<dynamic>)
-        .map((item) => SessionResult.fromJson(item as Map<String, dynamic>))
-        .toList(growable: false),
-  );
+  factory SessionResults.fromJson(Map<String, dynamic> json) {
+    final rows = json['results'] as List<dynamic>;
+    NoClassificationReason? reason;
+    if (json['classificationStatus'] == 'not-issued') {
+      final source = json['source'] as Map<String, dynamic>?;
+      if (!{'FP1', 'FP2', 'FP3'}.contains(json['type']) ||
+          rows.isNotEmpty ||
+          json['classificationReason'] != 'no-timed-laps' ||
+          source?['name'] != 'fia-official-timing' ||
+          !(source?['url'] as String? ?? '').startsWith(
+            'https://www.fia.com/sites/default/files/',
+          )) {
+        throw const FormatException('Unverified non-classification notice');
+      }
+      reason = NoClassificationReason.noTimedLaps;
+    }
+    return SessionResults(
+      type: json['type'] as String,
+      name: json['name'] as String,
+      startTimeUtc: DateTime.parse(json['startTimeUtc'] as String).toUtc(),
+      results: rows
+          .map((item) => SessionResult.fromJson(item as Map<String, dynamic>))
+          .toList(growable: false),
+      noClassificationReason: reason,
+    );
+  }
 
   final String type;
   final String name;
   final DateTime startTimeUtc;
   final List<SessionResult> results;
+  final NoClassificationReason? noClassificationReason;
+
+  bool get hasPublishedOutcome =>
+      results.isNotEmpty || noClassificationReason != null;
 }
 
 class EventResults {

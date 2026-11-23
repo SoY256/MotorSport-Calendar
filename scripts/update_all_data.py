@@ -17,6 +17,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from fetch_gt3_results import SERIES as GT3_SERIES  # noqa: E402
 from seasons import current_season, results_season, season_dirs, season_started  # noqa: E402
 from standings_progress import file_progress, mark_pending_standings  # noqa: E402
+from result_status import no_classification  # noqa: E402
 
 SERIES = ("f1", "f2", "f3", "imsa", "indycar", "indynxt", "wec", *GT3_SERIES)
 
@@ -123,6 +124,11 @@ def validate_season(data_root: Path, series: str, year: int, now: datetime) -> N
             end = start + timedelta(
                 minutes=int(scheduled[session_type].get("durationMinutes", 120))
             )
+            if classification.get("classificationStatus") == "not-issued":
+                if not no_classification(classification) or end > now:
+                    raise RuntimeError(
+                        f"Unverified or premature non-classification: {series}/{event['id']}/{session_type}"
+                    )
             official_f1 = series == 'f1' and classification.get('source', {}).get('name') == 'formula1-official'
             if classification.get("results") and (start if official_f1 else end) > now:
                 raise RuntimeError(
@@ -214,6 +220,11 @@ def main(argv: list[str] | None = None) -> int:
             temp = Path(temp_name)
             staged = temp / "data"
             shutil.copytree(ROOT / "assets" / "data", staged)
+            for name in ("manifest.json", "series.json"):
+                if (target / name).is_file():
+                    # A targeted live refresh must keep the published indexes,
+                    # not roll their freshness/season coverage back to the bundle.
+                    shutil.copy2(target / name, staged / name)
             if (target / "sources").is_dir():
                 shutil.copytree(target / "sources", staged / "sources", dirs_exist_ok=True)
             if target.is_dir():

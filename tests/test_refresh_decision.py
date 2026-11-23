@@ -38,6 +38,28 @@ class RefreshDecisionTests(unittest.TestCase):
         with patch.object(refresh_decision, "DATA", root):
             self.assertEqual(refresh_decision.decision(now), (False, "not-due"))
 
+    def test_confirmed_no_classification_resolves_the_session_without_fake_results(self):
+        now = datetime(2026, 8, 25, 12, 0, tzinfo=timezone.utc)
+        temp, root = self._data(now - timedelta(hours=1), now - timedelta(hours=3))
+        self.addCleanup(temp.cleanup)
+        path = root / "f1" / "2026" / "events" / "event.json"
+        calendar_path = root / "f1" / "2026" / "calendar.json"
+        calendar = json.loads(calendar_path.read_text())
+        calendar["data"][0]["sessions"][0]["type"] = "FP1"
+        calendar_path.write_text(json.dumps(calendar))
+        session = {
+            "type": "FP1", "results": [], "classificationStatus": "not-issued",
+            "classificationReason": "no-timed-laps",
+            "source": {"name": "fia-official-timing", "url": "https://www.fia.com/sites/default/files/laps.pdf"},
+        }
+        path.write_text(json.dumps({"data": {"sessions": [session]}}))
+        with patch.object(refresh_decision, "DATA", root):
+            self.assertEqual(refresh_decision.decision(now), (False, "not-due"))
+            self.assertEqual(refresh_decision.result_types(path), set())
+            session.pop("source")
+            path.write_text(json.dumps({"data": {"sessions": [session]}}))
+            self.assertEqual(refresh_decision.decision(now)[1], "awaiting-f1-race-FP1")
+
     def test_missing_result_keeps_polling_after_seven_days(self):
         now = datetime(2026, 8, 25, 12, 0, tzinfo=timezone.utc)
         temp, root = self._data(

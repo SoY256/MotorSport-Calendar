@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-11-23T02:45:56.668750Z",
+  "lastSuccessfulUpdate": "2026-11-23T07:54:31.882260Z",
   "source": {
     "name": "sro-official-calendar",
     "url": "https://www.gt-world-challenge-asia.com/calendar"
@@ -535,48 +535,6 @@
         }
       ],
       "resultsPath": "events/06-shanghai-international-circuit.json"
-    },
-    {
-      "id": "gtwc-asia-2026-7",
-      "seriesId": "gtwc-asia",
-      "season": 2026,
-      "round": 7,
-      "name": "Greater Bay Area GT Cup (SRO GT Cup)",
-      "cancelled": false,
-      "circuit": {
-        "id": "greater-bay-area-gt-cup-sro-gt-cup",
-        "name": "Greater Bay Area GT Cup (SRO GT Cup)",
-        "locality": null,
-        "country": "Macau",
-        "countryCode": "MAC"
-      },
-      "sessions": [
-        {
-          "type": "OFFICIAL_PRACTICE",
-          "name": "Official Practice",
-          "startTimeUtc": "2026-11-19T05:45:00Z",
-          "startTimeTrack": "2026-11-19 13:45:00+08:00",
-          "cancelled": false,
-          "durationMinutes": 60
-        },
-        {
-          "type": "Q",
-          "name": "Qualifying",
-          "startTimeUtc": "2026-11-20T03:20:00Z",
-          "startTimeTrack": "2026-11-20 11:20:00+08:00",
-          "cancelled": false,
-          "durationMinutes": 20
-        },
-        {
-          "type": "R",
-          "name": "Race",
-          "startTimeUtc": "2026-11-22T00:00:00Z",
-          "startTimeTrack": "2026-11-22 08:00:00+08:00",
-          "cancelled": false,
-          "durationMinutes": 60
-        }
-      ],
-      "resultsPath": "events/07-greater-bay-area-gt-cup-sro-gt-cup.json"
     }
   ]
 }

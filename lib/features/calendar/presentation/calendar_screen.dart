@@ -12,6 +12,7 @@ import '../../../core/widgets/racing_ui.dart';
 import '../../settings/domain/app_settings.dart';
 import '../../settings/presentation/settings_controller.dart';
 import '../../settings/presentation/theme_controller.dart';
+import '../data/calendar_repository.dart';
 import '../domain/circuit_metadata.dart';
 import '../domain/race_event.dart';
 import 'calendar_providers.dart';
@@ -1950,7 +1951,7 @@ class _ResultsPageState extends ConsumerState<_ResultsPage>
       if (_gaveUpWaiting(widget.selected.seriesId, session, now)) {
         return false;
       }
-      final received = _hasResultsForSession(session, results);
+      final received = _hasPublishedOutcomeForSession(session, results);
       return !received;
     }).toList();
     if (missing.isEmpty) return;
@@ -2038,7 +2039,9 @@ class _ResultsPageState extends ConsumerState<_ResultsPage>
               child: CircularProgressIndicator(),
             ),
             error: (error, _) => _ErrorState(
-              message: error.toString(),
+              message: error is ResultsUnavailableException
+                  ? strings.resultsDownloadFailed
+                  : error.toString(),
               strings: strings,
               onRetry: () => ref.invalidate(eventResultsProvider(selected)),
             ),
@@ -2048,12 +2051,21 @@ class _ResultsPageState extends ConsumerState<_ResultsPage>
                   .newestFirst(selected)
                   .where((session) => session.results.isNotEmpty)
                   .toList();
+              final notClassified = selected.sessions
+                  .where(
+                    (session) => data.sessions.any(
+                      (result) =>
+                          result.type == session.type &&
+                          result.noClassificationReason != null,
+                    ),
+                  )
+                  .toList();
               final withoutResults =
                   selected.sessions
                       .where(
                         (session) =>
                             !session.cancelled &&
-                            !_hasResultsForSession(session, data),
+                            !_hasPublishedOutcomeForSession(session, data),
                       )
                       .toList()
                     ..sort((a, b) => a.startTimeUtc.compareTo(b.startTimeUtc));
@@ -2086,6 +2098,21 @@ class _ResultsPageState extends ConsumerState<_ResultsPage>
 
               return Column(
                 children: [
+                  if (notClassified.isNotEmpty) ...[
+                    _SessionsScheduleCard(
+                      title: strings.noOfficialClassification,
+                      icon: Icons.flag_outlined,
+                      sessions: notClassified,
+                      settings: settings,
+                      strings: strings,
+                      classificationReasons: {
+                        for (final result in data.sessions)
+                          if (result.noClassificationReason != null)
+                            result.type: result.noClassificationReason!,
+                      },
+                    ),
+                    const SizedBox(height: 12),
+                  ],
                   for (var index = 0; index < sessions.length; index++) ...[
                     _SessionResultsCard(
                       session: sessions[index],
@@ -2134,6 +2161,7 @@ class _ResultsPageState extends ConsumerState<_ResultsPage>
                       strings: strings,
                     ),
                   if (sessions.isEmpty &&
+                      notClassified.isEmpty &&
                       awaiting.isEmpty &&
                       planned.isEmpty &&
                       unclassified.isEmpty)
@@ -2151,9 +2179,12 @@ class _ResultsPageState extends ConsumerState<_ResultsPage>
   }
 }
 
-bool _hasResultsForSession(RaceSession session, EventResults results) => results
-    .sessions
-    .any((result) => result.type == session.type && result.results.isNotEmpty);
+bool _hasPublishedOutcomeForSession(
+  RaceSession session,
+  EventResults results,
+) => results.sessions.any(
+  (result) => result.type == session.type && result.hasPublishedOutcome,
+);
 
 class _SessionsScheduleCard extends StatelessWidget {
   const _SessionsScheduleCard({
@@ -2162,6 +2193,7 @@ class _SessionsScheduleCard extends StatelessWidget {
     required this.sessions,
     required this.settings,
     required this.strings,
+    this.classificationReasons = const {},
   });
 
   final String title;
@@ -2169,6 +2201,7 @@ class _SessionsScheduleCard extends StatelessWidget {
   final List<RaceSession> sessions;
   final AppSettings settings;
   final AppStrings strings;
+  final Map<String, NoClassificationReason> classificationReasons;
 
   @override
   Widget build(BuildContext context) => Card(
@@ -2189,8 +2222,11 @@ class _SessionsScheduleCard extends StatelessWidget {
               style: const TextStyle(fontWeight: FontWeight.w800),
             ),
             subtitle: Text(
-              '${_zoneName(session, settings, strings)} • '
-              '${strings.expectedDuration}: ${strings.duration(session.durationMinutes)}',
+              classificationReasons[session.type] ==
+                      NoClassificationReason.noTimedLaps
+                  ? strings.noTimedLaps
+                  : '${_zoneName(session, settings, strings)} • '
+                        '${strings.expectedDuration}: ${strings.duration(session.durationMinutes)}',
             ),
             trailing: Text(
               '${_sessionDate(session, settings)}\n'

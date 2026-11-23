@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/parser.dart' as html;
@@ -10,6 +11,14 @@ abstract interface class CalendarRepository {
   Future<CalendarData> load();
   Future<EventResults> loadResults(RaceEvent event);
   Future<StandingsData> loadStandings(String seriesId, int season);
+}
+
+class ResultsUnavailableException implements Exception {
+  const ResultsUnavailableException(this.eventId);
+  final String eventId;
+
+  @override
+  String toString() => 'Results could not be downloaded for $eventId';
 }
 
 /// Every season of a manifest entry. `publishedSeasons` lists all seasons
@@ -162,27 +171,56 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
 
   @override
   Future<EventResults> loadResults(RaceEvent event) async {
-    final local = await fallback.loadResults(event);
-    var selected = local;
+    EventResults? remote;
     try {
       final json = await _remote(
         '${event.seriesId}/${event.season}/${event.resultsPath}',
       );
       if (json != null) {
-        final remote = EventResults.fromJson(json);
+        final result = EventResults.fromJson(json);
         // A missing optional flag must never hide an otherwise valid official
         // classification. Metadata is enriched separately. An event mismatch,
         // however, means the classification belongs to a different round.
-        if (remote.eventId == event.id) {
-          selected = _mergeVerifiedResults(event, local, remote);
+        if (result.eventId == event.id) {
+          remote = result;
+        } else {
+          debugPrint(
+            'Rejected results for ${result.eventId}; expected ${event.id}',
+          );
         }
       }
-    } on Object {
-      // Keep the bundled fallback and try the live F1 endpoint below.
+    } on FormatException catch (error) {
+      debugPrint('Invalid published results for ${event.id}: $error');
+    } on TypeError catch (error) {
+      debugPrint('Invalid published results for ${event.id}: $error');
     }
+
+    EventResults? local;
+    try {
+      local = await fallback.loadResults(event);
+    } on FlutterError catch (error) {
+      // A newly announced event is not in an already-installed app bundle.
+      // Its valid online document must not depend on that file existing.
+      if (!error.message.contains('Unable to load asset:') ||
+          !error.message.contains(event.resultsPath)) {
+        rethrow;
+      }
+      debugPrint('No bundled results for ${event.id}; online data is required');
+    } on FormatException catch (error) {
+      debugPrint('Invalid bundled results for ${event.id}: $error');
+    } on TypeError catch (error) {
+      debugPrint('Invalid bundled results for ${event.id}: $error');
+    }
+    final base = local ?? EventResults(eventId: event.id, sessions: const []);
+    final selected = remote == null
+        ? base
+        : _mergeVerifiedResults(event, base, remote);
     final loaded = event.seriesId == 'f1'
         ? await _withLiveF1Results(event, selected)
         : selected;
+    if (local == null && remote == null && loaded.sessions.isEmpty) {
+      throw ResultsUnavailableException(event.id);
+    }
     return _onlyCompletedScheduledSessions(event, loaded);
   }
 
@@ -193,13 +231,21 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
   ) {
     // A CDN/cache can temporarily return an older event document. Never let
     // an empty or partial response erase a classification already shipped in
-    // the app; only non-empty remote sessions may add to or update it.
+    // the app. A verified non-classification notice resolves an otherwise
+    // empty session, but cannot erase actual classification rows.
     final merged = <String, SessionResults>{
       for (final session in bundled.sessions)
-        if (session.results.isNotEmpty) session.type: session,
-      for (final session in remote.sessions)
-        if (session.results.isNotEmpty) session.type: session,
+        if (session.hasPublishedOutcome) session.type: session,
     };
+    for (final session in remote.sessions) {
+      final previous = merged[session.type];
+      if (session.hasPublishedOutcome &&
+          !(previous != null &&
+              previous.results.isNotEmpty &&
+              session.results.isEmpty)) {
+        merged[session.type] = session;
+      }
+    }
     final order = {
       for (var index = 0; index < event.sessions.length; index++)
         event.sessions[index].type: index,
@@ -222,11 +268,11 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
           final session = scheduled[result.type];
           return session != null &&
               !session.cancelled &&
-              !(event.seriesId == 'f1'
+              !(event.seriesId == 'f1' && result.noClassificationReason == null
                       ? session.startTimeUtc
                       : session.expectedEnd)
                   .isAfter(now) &&
-              result.results.isNotEmpty;
+              result.hasPublishedOutcome;
         })
         .toList(growable: false);
     return EventResults(eventId: event.id, sessions: verified);
@@ -240,7 +286,7 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
     final now = DateTime.now().toUtc();
     final available = {
       for (final session in base.sessions)
-        if (session.results.isNotEmpty) session.type,
+        if (session.hasPublishedOutcome) session.type,
     };
     final missing = event.sessions.where(
       (session) =>
@@ -326,7 +372,7 @@ class NetworkFirstCalendarRepository implements CalendarRepository {
     final now = DateTime.now().toUtc();
     final received = {
       for (final session in base.sessions)
-        if (session.results.isNotEmpty) session.type,
+        if (session.hasPublishedOutcome) session.type,
     };
     final missing = event.sessions
         .where(

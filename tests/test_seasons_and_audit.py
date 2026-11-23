@@ -90,6 +90,26 @@ class Gt3FixTests(unittest.TestCase):
 
 
 class AuditTests(unittest.TestCase):
+    def test_confirmed_untimed_practice_is_not_a_missing_result(self):
+        now = datetime(2026, 11, 22, tzinfo=timezone.utc)
+        event = {
+            "round": 21, "name": "Las Vegas", "sessions": [{
+                "type": "FP1", "name": "Practice 1", "startTimeUtc": "2026-11-20T00:30:00Z",
+                "durationMinutes": 60,
+            }],
+        }
+        session = {
+            "type": "FP1", "results": [], "classificationStatus": "not-issued",
+            "classificationReason": "no-timed-laps",
+            "source": {"name": "fia-official-timing", "url": "https://www.fia.com/sites/default/files/laps.pdf"},
+        }
+        errors, warnings = [], []
+        audit_results.event_checks("f1", 2026, event, {"data": {"sessions": [session]}}, now, errors, warnings)
+        self.assertEqual((errors, warnings), ([], []))
+        session.pop("source")
+        audit_results.event_checks("f1", 2026, event, {"data": {"sessions": [session]}}, now, errors, warnings)
+        self.assertTrue(any("unverified" in error for error in errors))
+
     def test_gaps_duplicates_and_missing_names_are_errors(self):
         errors, warnings = [], []
         session = {"type": "R", "results": [

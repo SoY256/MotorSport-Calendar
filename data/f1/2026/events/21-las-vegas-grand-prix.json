@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-11-23T02:40:21.520227Z",
+  "lastSuccessfulUpdate": "2026-11-23T07:54:31.430079Z",
   "source": {
     "name": "formula1-official",
     "url": "https://www.formula1.com/en/results/2026/races/1300/las-vegas/race-result"
@@ -12,7 +12,17 @@
         "type": "FP1",
         "name": "Practice 1",
         "startTimeUtc": "2026-11-20T00:30:00Z",
-        "results": []
+        "results": [],
+        "classificationStatus": "not-issued",
+        "classificationReason": "no-timed-laps",
+        "source": {
+          "name": "fia-official-timing",
+          "url": "https://www.fia.com/sites/default/files/2026_21_usa_f1_p1_timing_firstpracticesessionlaptimes_v01.pdf"
+        },
+        "evidenceUrls": [
+          "https://www.fia.com/events/fia-formula-one-world-championship/season-2026/las-vegas-grand-prix/eventtiming-information",
+          "https://www.fia.com/sites/default/files/2026_21_usa_f1_p1_timing_firstpracticesessionracecontrolmessages_v01.pdf"
+        ]
       },
       {
         "type": "FP2",
@@ -2084,5 +2094,5 @@
       }
     ]
   },
-  "updatedAt": "2026-11-23T02:42:40.985422Z"
+  "updatedAt": "2026-11-23T07:54:31.430079Z"
 }

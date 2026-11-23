@@ -82,6 +82,31 @@ class KeepPublishedStandingsTests(unittest.TestCase):
     def test_a_later_correction_is_published(self):
         self.assertEqual(self.run_guard(365, 340, NOW - timedelta(hours=13)), 340)
 
+    def test_targeted_refresh_preserves_published_index_freshness_and_new_seasons(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            bundled = root / "assets" / "data"
+            target = root / "data"
+            old = {"lastSuccessfulUpdate": "2026-10-01T00:00:00Z", "availableSeries": [
+                {"id": "gtwc-america", "publishedSeasons": [2026]},
+            ]}
+            published = {"lastSuccessfulUpdate": "2026-11-22T16:50:00Z", "availableSeries": [
+                {"id": "gtwc-america", "publishedSeasons": [2026, 2027]},
+            ]}
+            for name in ("manifest.json", "series.json"):
+                write(bundled / name, old)
+                write(target / name, published)
+            for base in (bundled, target):
+                season = base / "imsa" / "2026"
+                write(season / "calendar.json", {"data": []})
+                write(season / "standings_drivers.json", {"data": [{"points": 100}]})
+            with unittest.mock.patch.object(update_all_data, "ROOT", root), \
+                    unittest.mock.patch.object(update_all_data, "run"), \
+                    unittest.mock.patch.object(update_all_data, "validate"):
+                self.assertEqual(update_all_data.main(["--series", "imsa"]), 0)
+            for name in ("manifest.json", "series.json"):
+                self.assertEqual(json.loads((target / name).read_text()), published)
+
 
 def wec_season(root: Path, standings_points: float, race_results: bool) -> Path:
     """A series whose race results carry no points (WEC, IMSA, GT)."""

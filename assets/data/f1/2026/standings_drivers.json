@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-11-10T02:51:02.011027Z",
+  "lastSuccessfulUpdate": "2026-11-23T07:53:57.962730Z",
   "source": {
     "name": "formula1-official",
     "url": "https://www.formula1.com/en/results/2026/drivers"
@@ -8,7 +8,7 @@
   "data": [
     {
       "position": 1,
-      "points": 390.0,
+      "points": 402.0,
       "wins": 9,
       "id": "antonelli",
       "code": "ANT",
@@ -22,8 +22,8 @@
     },
     {
       "position": 2,
-      "points": 279.0,
-      "wins": 3,
+      "points": 304.0,
+      "wins": 4,
       "id": "max_verstappen",
       "code": "VER",
       "givenName": "Max",
@@ -36,21 +36,7 @@
     },
     {
       "position": 3,
-      "points": 262.0,
-      "wins": 3,
-      "id": "russell",
-      "code": "RUS",
-      "givenName": "George",
-      "familyName": "Russell",
-      "nationality": "British",
-      "teamIds": [
-        "mercedes"
-      ],
-      "imageUrl": "assets/portraits/faces/f1/george-russell.jpg"
-    },
-    {
-      "position": 4,
-      "points": 261.0,
+      "points": 267.0,
       "wins": 1,
       "id": "hamilton",
       "code": "HAM",
@@ -63,22 +49,22 @@
       "imageUrl": "assets/portraits/faces/f1/lewis-hamilton.jpg"
     },
     {
-      "position": 5,
-      "points": 249.0,
-      "wins": 1,
-      "id": "leclerc",
-      "code": "LEC",
-      "givenName": "Charles",
-      "familyName": "Leclerc",
-      "nationality": "Monegasque",
+      "position": 4,
+      "points": 264.0,
+      "wins": 3,
+      "id": "russell",
+      "code": "RUS",
+      "givenName": "George",
+      "familyName": "Russell",
+      "nationality": "British",
       "teamIds": [
-        "ferrari"
+        "mercedes"
       ],
-      "imageUrl": "assets/portraits/faces/f1/charles-leclerc.jpg"
+      "imageUrl": "assets/portraits/faces/f1/george-russell.jpg"
     },
     {
-      "position": 6,
-      "points": 246.0,
+      "position": 5,
+      "points": 264.0,
       "wins": 3,
       "id": "norris",
       "code": "NOR",
@@ -91,8 +77,22 @@
       "imageUrl": "assets/portraits/faces/f1/lando-norris.jpg"
     },
     {
+      "position": 6,
+      "points": 250.0,
+      "wins": 1,
+      "id": "leclerc",
+      "code": "LEC",
+      "givenName": "Charles",
+      "familyName": "Leclerc",
+      "nationality": "Monegasque",
+      "teamIds": [
+        "ferrari"
+      ],
+      "imageUrl": "assets/portraits/faces/f1/charles-leclerc.jpg"
+    },
+    {
       "position": 7,
-      "points": 152.0,
+      "points": 167.0,
       "wins": 0,
       "id": "piastri",
       "code": "PIA",
@@ -135,7 +135,7 @@
     },
     {
       "position": 10,
-      "points": 42.0,
+      "points": 52.0,
       "wins": 0,
       "id": "gasly",
       "code": "GAS",
@@ -163,7 +163,7 @@
     },
     {
       "position": 12,
-      "points": 27.0,
+      "points": 35.0,
       "wins": 0,
       "id": "colapinto",
       "code": "COL",
@@ -219,6 +219,20 @@
     },
     {
       "position": 16,
+      "points": 11.0,
+      "wins": 0,
+      "id": "sainz",
+      "code": "SAI",
+      "givenName": "Carlos",
+      "familyName": "Sainz",
+      "nationality": "Spanish",
+      "teamIds": [
+        "williams"
+      ],
+      "imageUrl": "assets/portraits/faces/f1/carlos-sainz.jpg"
+    },
+    {
+      "position": 17,
       "points": 7.0,
       "wins": 0,
       "id": "ocon",
@@ -232,7 +246,7 @@
       "imageUrl": "assets/portraits/faces/f1/esteban-ocon.jpg"
     },
     {
-      "position": 17,
+      "position": 18,
       "points": 7.0,
       "wins": 0,
       "id": "alonso",
@@ -244,20 +258,6 @@
         "aston_martin"
       ],
       "imageUrl": "assets/portraits/faces/f1/fernando-alonso.jpg"
-    },
-    {
-      "position": 18,
-      "points": 7.0,
-      "wins": 0,
-      "id": "sainz",
-      "code": "SAI",
-      "givenName": "Carlos",
-      "familyName": "Sainz",
-      "nationality": "Spanish",
-      "teamIds": [
-        "williams"
-      ],
-      "imageUrl": "assets/portraits/faces/f1/carlos-sainz.jpg"
     },
     {
       "position": 19,
@@ -342,6 +342,20 @@
         "cadillac"
       ],
       "imageUrl": "assets/portraits/faces/f1/sergio-perez.jpg"
+    },
+    {
+      "position": 25,
+      "points": 0.0,
+      "wins": 0,
+      "id": "rafael_camara",
+      "code": "CAM",
+      "givenName": "Rafael",
+      "familyName": "Camara",
+      "nationality": "Brazilian",
+      "teamIds": [
+        "haas"
+      ],
+      "imageUrl": "assets/portraits/faces/f2/rafael-camara.jpg"
     }
   ]
 }

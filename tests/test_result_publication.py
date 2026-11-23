@@ -80,6 +80,22 @@ class PublicationTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             merge_event_results({'data': {'eventId': 'a'}}, {'data': {'eventId': 'b'}})
 
+    def test_verified_no_classification_survives_empty_sources_but_not_real_results(self):
+        notice = {
+            "type": "FP1", "results": [], "classificationStatus": "not-issued",
+            "classificationReason": "no-timed-laps",
+            "source": {"name": "fia-official-timing", "url": "https://www.fia.com/sites/default/files/laps.pdf"},
+        }
+
+        def document(session):
+            return {"data": {"eventId": "same", "sessions": [session]}}
+
+        empty = {"type": "FP1", "results": []}
+        self.assertEqual(merge_event_results(document(notice), document(empty))["data"]["sessions"], [notice])
+        actual = {"type": "FP1", "results": [{"position": 1}], "source": {"name": "formula1-official"}}
+        self.assertEqual(merge_event_results(document(notice), document(actual))["data"]["sessions"], [actual])
+        self.assertEqual(merge_event_results(document(actual), document(notice))["data"]["sessions"], [actual])
+
 class StandingsPublicationTests(unittest.TestCase):
     """A job that started before the race must not overwrite the standings a
     faster job published after it (US GP 2026: 365 points replaced by 340)."""

@@ -11,6 +11,7 @@ import json
 from fetch_f1_official_results import DATA, ROOT, main as fetch_results
 from seasons import results_season
 from standings_progress import standings_behind
+from result_status import no_classification
 from watch_live_results import publish_changed_data
 
 MAX_SECONDS = 19_800
@@ -37,7 +38,9 @@ def pending_starts(
         document = json.loads((root / event['resultsPath']).read_text(encoding='utf-8'))
         received = {
             session['type'] for session in document['data'].get('sessions', [])
-            if session.get('results') and session.get('source', {}).get('name') == 'formula1-official'
+            if (
+                session.get('results') and session.get('source', {}).get('name') == 'formula1-official'
+            ) or no_classification(session)
         }
         for session in event.get('sessions', []):
             start = datetime.fromisoformat(session['startTimeUtc'].replace('Z', '+00:00'))

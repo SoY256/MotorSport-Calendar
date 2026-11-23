@@ -65,6 +65,31 @@ class F1WatcherTests(unittest.TestCase):
                 self.assertEqual(watch_f1_results.pending_starts(now, timedelta(hours=5)), [start])
                 self.assertEqual(watch_f1_results.pending_starts(now, timedelta(hours=1)), [])
 
+    def test_verified_non_classification_stops_both_watchers(self):
+        now = datetime(2026, 11, 22, tzinfo=timezone.utc)
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name)
+            write_series(root, "f1", now - timedelta(hours=4))
+            calendar_path = root / "f1" / "2026" / "calendar.json"
+            calendar = json.loads(calendar_path.read_text())
+            calendar["data"][0]["sessions"][0]["type"] = "FP1"
+            calendar_path.write_text(json.dumps(calendar))
+            result = root / "f1" / "2026" / "events" / "1.json"
+            document = {"data": {"eventId": "f1-1", "sessions": [{
+                "type": "FP1", "results": [], "classificationStatus": "not-issued",
+                "classificationReason": "no-timed-laps",
+                "source": {"name": "fia-official-timing", "url": "https://www.fia.com/sites/default/files/laps.pdf"},
+            }]}}
+            result.write_text(json.dumps(document))
+            with patch.object(watch_f1_results, "DATA", root), patch.object(watch_live_results, "DATA", root):
+                self.assertEqual(watch_f1_results.pending_starts(now, timedelta(hours=1)), [])
+                self.assertEqual(watch_live_results.missing_sessions(now), [])
+                # A bare empty response is not proof that no classification exists.
+                document["data"]["sessions"][0].pop("source")
+                result.write_text(json.dumps(document))
+                self.assertEqual(len(watch_f1_results.pending_starts(now, timedelta(hours=1))), 1)
+                self.assertEqual(len(watch_live_results.missing_sessions(now)), 1)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -19,8 +19,10 @@ from urllib.request import Request, urlopen
 
 try:
     from http_retry import read
+    from result_status import prefer_session, published_outcome
 except ModuleNotFoundError:  # Imported as scripts.fetch_data by unit tests.
     from scripts.http_retry import read
+    from scripts.result_status import prefer_session, published_outcome
 
 SCHEMA_VERSION = 1
 SOURCE_NAME = "jolpica-f1"
@@ -234,15 +236,23 @@ def build(client: JsonClient, output: Path, year: int) -> None:
                 # Historical classifications are immutable. Re-query only missing
                 # sessions and the current live window, which avoids upstream rate
                 # limits during the six-hour refresh.
-                if existing_session is not None and start < now - timedelta(hours=12):
+                if existing_session is not None and published_outcome(existing_session) and start < now - timedelta(hours=12):
                     continue
                 code = {"SPRINT": "SR"}.get(session["type"], session["type"])
                 url = f"{API_ROOT}/f1/alpha/results/{event['id']}/{code}/"
-                jobs[pool.submit(client.get, url)] = (event["id"], session["type"], existing_session is not None)
+                jobs[pool.submit(client.get, url)] = (
+                    event["id"], session["type"],
+                    existing_session is not None and published_outcome(existing_session),
+                )
         for future in as_completed(jobs):
             event_id, session_type, had_existing = jobs[future]
             try:
                 fresh = adapt_result(future.result())
+                previous = next(
+                    (item for item in results_by_event[event_id] if item.get("type") == session_type),
+                    None,
+                )
+                fresh = prefer_session(previous, fresh)
                 results_by_event[event_id] = [
                     item for item in results_by_event[event_id] if item.get("type") != session_type
                 ] + [fresh]
@@ -282,6 +292,9 @@ def publish(client: JsonClient, data_dir: Path, year: int) -> None:
     data_dir.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="motorsport-data-", dir=data_dir.parent) as temp:
         staged = Path(temp) / "data"
+        existing_season = data_dir / "f1" / str(year)
+        if existing_season.is_dir():
+            shutil.copytree(existing_season, staged / "f1" / str(year))
         build(client, staged, year)
         backup = data_dir.with_name(f"{data_dir.name}.previous")
         if backup.exists():

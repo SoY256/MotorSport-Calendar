@@ -6,6 +6,8 @@ import json
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
+from result_status import published_outcome
+
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 # Kept in sync with scripts/fetch_gt3_results.py (not imported: this module
@@ -43,6 +45,15 @@ def result_types(path: Path) -> set[str]:
         return set()
 
 
+def resolved_types(path: Path) -> set[str]:
+    """Sessions whose outcome is published, without calling absent rankings results."""
+    try:
+        sessions = json.loads(path.read_text(encoding="utf-8"))["data"]["sessions"]
+        return {session["type"] for session in sessions if published_outcome(session)}
+    except (FileNotFoundError, KeyError, TypeError, json.JSONDecodeError):
+        return set()
+
+
 def decision(now: datetime) -> tuple[bool, str]:
     try:
         manifest = json.loads((DATA / "manifest.json").read_text(encoding="utf-8"))
@@ -57,7 +68,7 @@ def decision(now: datetime) -> tuple[bool, str]:
         series_dir = calendar_path.parent.parent
         events = json.loads(calendar_path.read_text(encoding="utf-8"))["data"]
         for event in events:
-            available = result_types(calendar_path.parent / event["resultsPath"])
+            available = resolved_types(calendar_path.parent / event["resultsPath"])
             for session in event.get("sessions", []):
                 session_type = session.get("type")
                 if (

@@ -93,6 +93,7 @@ NOT_A_SESSION = re.compile(
     r"pit ?walk|parade|autograph|podium|grid|ceremony|gt4|finish|end of|after \d", re.I
 )
 NOT_A_ROUND = re.compile(r"gala|media day|test days?\b|prologue|awards", re.I)
+NON_GT3_CUP = re.compile(r"\bSRO\s+GT\s+Cup\b", re.I)
 TIME = re.compile(r"(\d{1,2}):(\d{2})\s*([ap]\.?m\.?)?", re.I)
 MONTHS = {
     name: index
@@ -280,6 +281,16 @@ def calendar_entries(page: str) -> list[dict[str, Any]]:
         code = (flag.group(1) or flag.group(2)) if flag else None
         entries.setdefault(link.group(2), {"path": link.group(1), "eventId": link.group(2), "flag": code})
     return list(entries.values())
+
+
+def gt3_round(name: str) -> bool:
+    """A shared SRO calendar may also advertise GT2/GT4-only cups.
+    The SRO GT Cup is GT4; mixed British GT weekends still contain GT3."""
+    if NOT_A_ROUND.search(name):
+        return False
+    if re.search(r"\bGT3\b", name, re.I):
+        return True
+    return not NON_GT3_CUP.search(name) and not re.search(r"\bGT[24]\b", name, re.I)
 
 
 def parse_date_range(text: str) -> tuple[date, date]:
@@ -1199,7 +1210,8 @@ def import_series(series: str, data_root: Path, pool: ThreadPoolExecutor) -> Non
     for entry in entries:
         page = strip_scripts(event_pages[entry["eventId"]])
         name, country, start, end = event_header(page)
-        if NOT_A_ROUND.search(name):
+        if not gt3_round(name):
+            print(f"{series}: skipping non-GT3 round {name}")
             continue
         cup = event_cup(page, name, cups) if config.get("cups") else None
         race_default = config["cups"].get(cup) if cup else None

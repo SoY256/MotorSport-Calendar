@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-11-10T02:56:52.616558Z",
+  "lastSuccessfulUpdate": "2026-11-22T16:48:20.321928Z",
   "source": {
     "name": "sro-official-standings",
     "url": "https://www.gt-world-challenge-europe.com/standings"
@@ -5292,29 +5292,6 @@
     },
     {
       "position": 1,
-      "points": 171.5,
-      "wins": 0,
-      "id": "dennis-marschall",
-      "code": "74",
-      "givenName": "Dennis",
-      "familyName": "Marschall",
-      "nationality": "DEU",
-      "teamIds": [
-        "kessel-racing"
-      ],
-      "teamNames": [
-        "Kessel Racing"
-      ],
-      "teamColors": [
-        "#DC0000"
-      ],
-      "category": "BRONZE",
-      "imageUrl": "assets/portraits/faces/gt3/dennis-marschall.jpg",
-      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4088.png",
-      "profile": "https://www.gt-world-challenge-europe.com/driver/4088/dennis-marschall"
-    },
-    {
-      "position": 2,
       "points": 159.0,
       "wins": 0,
       "id": "marvin-dienst",
@@ -5337,7 +5314,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4129/marvin-dienst"
     },
     {
-      "position": 2,
+      "position": 1,
       "points": 159.0,
       "wins": 0,
       "id": "rinat-salikhov",
@@ -5360,7 +5337,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4085/rinat-salikhov"
     },
     {
-      "position": 3,
+      "position": 2,
       "points": 151.5,
       "wins": 0,
       "id": "charles-dawson",
@@ -5383,7 +5360,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4072/charles-dawson"
     },
     {
-      "position": 3,
+      "position": 2,
       "points": 151.5,
       "wins": 0,
       "id": "kiern-jewiss",
@@ -5406,7 +5383,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4070/kiern-jewiss"
     },
     {
-      "position": 4,
+      "position": 3,
       "points": 149.0,
       "wins": 0,
       "id": "darren-leung",
@@ -5429,7 +5406,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4059/darren-leung"
     },
     {
-      "position": 5,
+      "position": 4,
       "points": 135.0,
       "wins": 0,
       "id": "eddie-cheever",
@@ -5452,7 +5429,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4081/eddie-cheever"
     },
     {
-      "position": 6,
+      "position": 5,
       "points": 132.5,
       "wins": 0,
       "id": "dustin-blattner",
@@ -5475,7 +5452,30 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4089/dustin-blattner"
     },
     {
-      "position": 7,
+      "position": 5,
+      "points": 132.5,
+      "wins": 0,
+      "id": "dennis-marschall",
+      "code": "74",
+      "givenName": "Dennis",
+      "familyName": "Marschall",
+      "nationality": "DEU",
+      "teamIds": [
+        "kessel-racing"
+      ],
+      "teamNames": [
+        "Kessel Racing"
+      ],
+      "teamColors": [
+        "#DC0000"
+      ],
+      "category": "BRONZE",
+      "imageUrl": "assets/portraits/faces/gt3/dennis-marschall.jpg",
+      "portraitSource": "https://www.gt-world-challenge-europe.com/images/drivers/photo_4088.png",
+      "profile": "https://www.gt-world-challenge-europe.com/driver/4088/dennis-marschall"
+    },
+    {
+      "position": 6,
       "points": 116.0,
       "wins": 0,
       "id": "peter-dempsey",
@@ -5498,7 +5498,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4318/peter-dempsey"
     },
     {
-      "position": 8,
+      "position": 7,
       "points": 84.0,
       "wins": 0,
       "id": "james-kellett",
@@ -5521,7 +5521,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4175/james-kellett"
     },
     {
-      "position": 9,
+      "position": 8,
       "points": 82.0,
       "wins": 0,
       "id": "reece-barr",
@@ -5544,7 +5544,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4115/reece-barr"
     },
     {
-      "position": 10,
+      "position": 9,
       "points": 76.0,
       "wins": 0,
       "id": "gabriele-piana",
@@ -5567,7 +5567,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4128/gabriele-piana"
     },
     {
-      "position": 11,
+      "position": 10,
       "points": 65.0,
       "wins": 0,
       "id": "augusto-farfus",
@@ -5590,7 +5590,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4117/augusto-farfus"
     },
     {
-      "position": 12,
+      "position": 11,
       "points": 63.0,
       "wins": 0,
       "id": "gabriel-rindone",
@@ -5613,7 +5613,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4154/gabriel-rindone"
     },
     {
-      "position": 13,
+      "position": 12,
       "points": 62.0,
       "wins": 0,
       "id": "lorenzo-patrese",
@@ -5636,7 +5636,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4131/lorenzo-patrese"
     },
     {
-      "position": 14,
+      "position": 13,
       "points": 50.0,
       "wins": 0,
       "id": "antares-au",
@@ -5659,7 +5659,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4121/antares-au"
     },
     {
-      "position": 15,
+      "position": 14,
       "points": 50.0,
       "wins": 0,
       "id": "mathys-jaubert",
@@ -5682,7 +5682,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4321/mathys-jaubert"
     },
     {
-      "position": 15,
+      "position": 14,
       "points": 50.0,
       "wins": 0,
       "id": "ben-tuck",
@@ -5705,7 +5705,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4320/ben-tuck"
     },
     {
-      "position": 16,
+      "position": 15,
       "points": 49.0,
       "wins": 0,
       "id": "calan-williams",
@@ -5728,7 +5728,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4203/calan-williams"
     },
     {
-      "position": 16,
+      "position": 15,
       "points": 49.0,
       "wins": 0,
       "id": "javier-sagrera",
@@ -5751,7 +5751,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4202/javier-sagrera"
     },
     {
-      "position": 16,
+      "position": 15,
       "points": 49.0,
       "wins": 0,
       "id": "ahmad-al-harthy",
@@ -5774,7 +5774,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4200/ahmad-al-harthy"
     },
     {
-      "position": 17,
+      "position": 16,
       "points": 46.0,
       "wins": 0,
       "id": "fabian-schiller",
@@ -5797,7 +5797,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4151/fabian-schiller"
     },
     {
-      "position": 19,
+      "position": 18,
       "points": 36.5,
       "wins": 0,
       "id": "dmitry-gvazava",
@@ -5820,7 +5820,7 @@
       "profile": ""
     },
     {
-      "position": 19,
+      "position": 18,
       "points": 36.5,
       "wins": 0,
       "id": "loris-cabirou",
@@ -5843,7 +5843,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4098/loris-cabirou-"
     },
     {
-      "position": 20,
+      "position": 19,
       "points": 36.0,
       "wins": 0,
       "id": "leyton-fourie",
@@ -5866,7 +5866,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4366/leyton-fourie"
     },
     {
-      "position": 20,
+      "position": 19,
       "points": 36.0,
       "wins": 0,
       "id": "david-pittard",
@@ -5889,7 +5889,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4273/david-pittard"
     },
     {
-      "position": 21,
+      "position": 20,
       "points": 33.0,
       "wins": 0,
       "id": "riccardo-pera",
@@ -5912,7 +5912,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4239/riccardo-pera"
     },
     {
-      "position": 21,
+      "position": 20,
       "points": 33.0,
       "wins": 0,
       "id": "loek-hartog",
@@ -5935,7 +5935,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4264/loek-hartog"
     },
     {
-      "position": 22,
+      "position": 21,
       "points": 33.0,
       "wins": 0,
       "id": "giacomo-petrobelli",
@@ -5958,7 +5958,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4214/giacomo-petrobelli"
     },
     {
-      "position": 22,
+      "position": 21,
       "points": 33.0,
       "wins": 0,
       "id": "jonathan-adam",
@@ -5981,7 +5981,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4216/jonathan-adam"
     },
     {
-      "position": 23,
+      "position": 22,
       "points": 32.0,
       "wins": 0,
       "id": "lorcan-hanafin",
@@ -6004,7 +6004,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4215/lorcan-hanafin"
     },
     {
-      "position": 24,
+      "position": 23,
       "points": 31.0,
       "wins": 0,
       "id": "alex-fontana",
@@ -6027,7 +6027,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4238/alex-fontana"
     },
     {
-      "position": 24,
+      "position": 23,
       "points": 31.0,
       "wins": 0,
       "id": "patrick-kolb",
@@ -6050,7 +6050,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4127/patrick-kolb"
     },
     {
-      "position": 24,
+      "position": 23,
       "points": 31.0,
       "wins": 0,
       "id": "bashar-mardini",
@@ -6073,7 +6073,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4083/bashar-mardini"
     },
     {
-      "position": 25,
+      "position": 24,
       "points": 31.0,
       "wins": 0,
       "id": "christopher-froggatt",
@@ -6096,7 +6096,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4176/chris-froggatt"
     },
     {
-      "position": 26,
+      "position": 25,
       "points": 29.0,
       "wins": 0,
       "id": "carrie-schreiner",
@@ -6119,7 +6119,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4237/carrie-schreiner"
     },
     {
-      "position": 27,
+      "position": 26,
       "points": 27.0,
       "wins": 0,
       "id": "huub-van-eijndhoven",
@@ -6142,7 +6142,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4266/huub-van-eijndhoven"
     },
     {
-      "position": 27,
+      "position": 26,
       "points": 27.0,
       "wins": 0,
       "id": "ralf-bohn",
@@ -6165,7 +6165,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4124/ralf-bohn"
     },
     {
-      "position": 28,
+      "position": 27,
       "points": 25.0,
       "wins": 0,
       "id": "dries-vanthoor",
@@ -6188,7 +6188,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4265/dries-vanthoor"
     },
     {
-      "position": 29,
+      "position": 28,
       "points": 23.0,
       "wins": 0,
       "id": "robert-de-haan",
@@ -6211,7 +6211,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4260/robert-de-haan"
     },
     {
-      "position": 30,
+      "position": 29,
       "points": 23.0,
       "wins": 0,
       "id": "robert-renauer",
@@ -6234,7 +6234,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4126/robert-renauer"
     },
     {
-      "position": 31,
+      "position": 30,
       "points": 21.0,
       "wins": 0,
       "id": "axcil-jefferies",
@@ -6257,7 +6257,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4327/axcil-jefferies"
     },
     {
-      "position": 32,
+      "position": 31,
       "points": 19.0,
       "wins": 0,
       "id": "jonathan-hui",
@@ -6280,7 +6280,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4082/jonathan-hui"
     },
     {
-      "position": 33,
+      "position": 32,
       "points": 17.0,
       "wins": 0,
       "id": "sebastian-gaard",
@@ -6303,7 +6303,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4084/sebastian-ogaard"
     },
     {
-      "position": 34,
+      "position": 33,
       "points": 17.0,
       "wins": 0,
       "id": "martin-rump",
@@ -6326,7 +6326,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4330/martin-rump"
     },
     {
-      "position": 34,
+      "position": 33,
       "points": 17.0,
       "wins": 0,
       "id": "michelle-gatting",
@@ -6349,7 +6349,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4331/michelle-gatting"
     },
     {
-      "position": 34,
+      "position": 33,
       "points": 17.0,
       "wins": 0,
       "id": "sven-muller",
@@ -6372,7 +6372,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4122/sven-müller"
     },
     {
-      "position": 35,
+      "position": 34,
       "points": 17.0,
       "wins": 0,
       "id": "mikael-grenier",
@@ -6395,7 +6395,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4187/mikael-grenier"
     },
     {
-      "position": 35,
+      "position": 34,
       "points": 17.0,
       "wins": 0,
       "id": "tom-kalender",
@@ -6418,7 +6418,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4267/tom-kalender"
     },
     {
-      "position": 36,
+      "position": 35,
       "points": 16.5,
       "wins": 0,
       "id": "marco-pulcini",
@@ -6441,7 +6441,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4069/marco-pulcini"
     },
     {
-      "position": 36,
+      "position": 35,
       "points": 16.5,
       "wins": 0,
       "id": "david-fumanelli",
@@ -6464,7 +6464,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4068/david-fumanelli"
     },
     {
-      "position": 37,
+      "position": 36,
       "points": 16.0,
       "wins": 0,
       "id": "garnet-patterson",
@@ -6487,7 +6487,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4333/garnet-patterson"
     },
     {
-      "position": 38,
+      "position": 37,
       "points": 15.0,
       "wins": 0,
       "id": "daan-arrow",
@@ -6510,7 +6510,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4326/daan-arrow"
     },
     {
-      "position": 39,
+      "position": 38,
       "points": 14.0,
       "wins": 0,
       "id": "romain-leroux",
@@ -6533,7 +6533,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4142/romain-leroux"
     },
     {
-      "position": 40,
+      "position": 39,
       "points": 12.0,
       "wins": 0,
       "id": "daniele-di-amato",
@@ -6556,7 +6556,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4092/daniele-di-amato"
     },
     {
-      "position": 41,
+      "position": 40,
       "points": 11.0,
       "wins": 0,
       "id": "jarrod-waberski",
@@ -6579,7 +6579,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4292/jarrod-waberski"
     },
     {
-      "position": 42,
+      "position": 41,
       "points": 10.0,
       "wins": 0,
       "id": "marcelo-tomasoni",
@@ -6602,7 +6602,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4167/marcelo-jover-tomasoni"
     },
     {
-      "position": 43,
+      "position": 42,
       "points": 9.0,
       "wins": 0,
       "id": "thomas-kiefer",
@@ -6625,7 +6625,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4275/thomas-kiefer"
     },
     {
-      "position": 43,
+      "position": 42,
       "points": 9.0,
       "wins": 0,
       "id": "rolf-ineichen",
@@ -6648,7 +6648,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4138/rolf-ineichen"
     },
     {
-      "position": 43,
+      "position": 42,
       "points": 9.0,
       "wins": 0,
       "id": "tim-heinemann",
@@ -6671,7 +6671,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4139/tim-heinemann"
     },
     {
-      "position": 44,
+      "position": 43,
       "points": 8.0,
       "wins": 0,
       "id": "jop-rappange",
@@ -6694,7 +6694,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4272/hop-rappange"
     },
     {
-      "position": 45,
+      "position": 44,
       "points": 8.0,
       "wins": 0,
       "id": "gerhard-tweraser",
@@ -6717,7 +6717,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4268/gerhard-tweraser"
     },
     {
-      "position": 46,
+      "position": 45,
       "points": 7.0,
       "wins": 0,
       "id": "felice-jelmini",
@@ -6740,7 +6740,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4168/felice-jelmini"
     },
     {
-      "position": 47,
+      "position": 46,
       "points": 7.0,
       "wins": 0,
       "id": "mex-jansen",
@@ -6763,7 +6763,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4359/mex-jansen"
     },
     {
-      "position": 48,
+      "position": 47,
       "points": 6.0,
       "wins": 0,
       "id": "aleksei-nesov",
@@ -6786,7 +6786,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4063/alexey-nesov"
     },
     {
-      "position": 49,
+      "position": 48,
       "points": 4.0,
       "wins": 0,
       "id": "lewis-williamson",
@@ -6809,7 +6809,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4309/lewis-williamson"
     },
     {
-      "position": 49,
+      "position": 48,
       "points": 4.0,
       "wins": 0,
       "id": "aaron-walker",
@@ -6832,7 +6832,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4310/aaron-walker"
     },
     {
-      "position": 49,
+      "position": 48,
       "points": 4.0,
       "wins": 0,
       "id": "scott-noble",
@@ -6855,7 +6855,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4221/scott-noble"
     },
     {
-      "position": 49,
+      "position": 48,
       "points": 4.0,
       "wins": 0,
       "id": "jason-hart",
@@ -6878,7 +6878,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4222/jason-hart"
     },
     {
-      "position": 50,
+      "position": 49,
       "points": 4.0,
       "wins": 0,
       "id": "alfred-renauer",
@@ -6901,7 +6901,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4125/alfred-renauer"
     },
     {
-      "position": 50,
+      "position": 49,
       "points": 4.0,
       "wins": 0,
       "id": "mathieu-jaminet",
@@ -6924,7 +6924,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4152/mathieu-jaminet"
     },
     {
-      "position": 51,
+      "position": 50,
       "points": 3.0,
       "wins": 0,
       "id": "aaron-muss",
@@ -6947,7 +6947,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4185/aaron-muss"
     },
     {
-      "position": 52,
+      "position": 51,
       "points": 3.0,
       "wins": 0,
       "id": "pierre-louis-chovet",
@@ -6970,7 +6970,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4355/pierre-louis-chovet"
     },
     {
-      "position": 53,
+      "position": 52,
       "points": 2.0,
       "wins": 0,
       "id": "andres-latorre",
@@ -6993,7 +6993,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4362/andres-latorre"
     },
     {
-      "position": 53,
+      "position": 52,
       "points": 2.0,
       "wins": 0,
       "id": "bayley-hall",
@@ -7016,7 +7016,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4360/bayley-hall"
     },
     {
-      "position": 53,
+      "position": 52,
       "points": 2.0,
       "wins": 0,
       "id": "tobias-muller",
@@ -7039,7 +7039,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4342/tobias-mueller"
     },
     {
-      "position": 53,
+      "position": 52,
       "points": 2.0,
       "wins": 0,
       "id": "benjamin-paque",
@@ -7062,7 +7062,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4270/benjamin-paque"
     },
     {
-      "position": 53,
+      "position": 52,
       "points": 2.0,
       "wins": 0,
       "id": "armand-fumal",
@@ -7085,7 +7085,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4361/armand-fumal"
     },
     {
-      "position": 53,
+      "position": 52,
       "points": 2.0,
       "wins": 0,
       "id": "dominik-olbert",
@@ -7106,7 +7106,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4269/dominik-olbert"
     },
     {
-      "position": 54,
+      "position": 53,
       "points": 1.0,
       "wins": 0,
       "id": "michael-blanchemain",
@@ -7129,7 +7129,7 @@
       "profile": ""
     },
     {
-      "position": 54,
+      "position": 53,
       "points": 1.0,
       "wins": 0,
       "id": "jim-pla",
@@ -7152,7 +7152,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4076/jim-pla"
     },
     {
-      "position": 55,
+      "position": 54,
       "points": 1.0,
       "wins": 0,
       "id": "sergio-sette-camara",
@@ -7175,7 +7175,7 @@
       "profile": "https://www.gt-world-challenge-europe.com/driver/4357/sergio-sette-camara"
     },
     {
-      "position": 55,
+      "position": 54,
       "points": 1.0,
       "wins": 0,
       "id": "tom-wood",

@@ -2,8 +2,9 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
-from scripts.fetch_data import DataValidationError, adapt_result, adapt_schedule, adapt_standings, publish, utc_timestamp
+from scripts.fetch_data import DataValidationError, adapt_result, adapt_schedule, adapt_standings, build, publish, utc_timestamp
 
 
 def schedule_payload():
@@ -66,6 +67,50 @@ class AdapterTests(unittest.TestCase):
             with self.assertRaises(RuntimeError):
                 publish(FailingClient(), data, 2026)
             self.assertEqual('{"old": true}', (data / "manifest.json").read_text(encoding="utf-8"))
+
+    def test_staging_keeps_published_sessions_available_to_the_builder(self):
+        with tempfile.TemporaryDirectory() as directory:
+            data = Path(directory) / "data"
+            event = data / "f1" / "2026" / "events" / "race.json"
+            event.parent.mkdir(parents=True)
+            event.write_text('{"verified": true}', encoding="utf-8")
+
+            def verify_existing(_client, staged, _year):
+                self.assertEqual(json.loads((staged / "f1" / "2026" / "events" / "race.json").read_text()), {"verified": True})
+
+            with patch("scripts.fetch_data.build", side_effect=verify_existing):
+                publish(object(), data, 2026)
+            self.assertTrue(json.loads(event.read_text())["verified"])
+
+    def test_empty_historical_session_is_retried_and_filled(self):
+        class Client:
+            def __init__(self):
+                self.requested = []
+
+            def get(self, url):
+                self.requested.append(url)
+                if "/schedules/" in url:
+                    return schedule_payload()
+                if "/results/" in url:
+                    code = url.rstrip("/").rsplit("/", 1)[1]
+                    return {"data": {"code": code, "title": code, "timestamp": "2026-03-06T01:30:00Z",
+                                     "results": [{"position": 1, "driver": {"id": "driver"}, "team": {"name": "Team"}}]}}
+                key = "DriverStandings" if "driverstandings" in url else "ConstructorStandings"
+                return {"MRData": {"StandingsTable": {"StandingsLists": [{key: []}]}}}
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            event = root / "f1" / "2026" / "events" / "01-australian-grand-prix.json"
+            event.parent.mkdir(parents=True)
+            event.write_text(json.dumps({"data": {"eventId": "round_1", "sessions": [
+                {"type": "FP1", "results": []},
+            ]}}), encoding="utf-8")
+            client = Client()
+            with patch("scripts.fetch_data.official_f1_portraits", return_value={}):
+                build(client, root, 2026)
+            fp1 = next(s for s in json.loads(event.read_text())["data"]["sessions"] if s["type"] == "FP1")
+            self.assertEqual(len(fp1["results"]), 1)
+            self.assertTrue(any(url.endswith("/FP1/") for url in client.requested))
 
 
 if __name__ == "__main__":

@@ -1,7 +1,11 @@
 import sys
+import json
+import tempfile
 import unittest
+from concurrent.futures import ThreadPoolExecutor
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
@@ -45,6 +49,20 @@ Pos Car Competitor/Team Driver Vehicle Cap CL Laps Fastest...Lap Gap
 
 
 class Gt3TimetableTests(unittest.TestCase):
+    def test_shared_calendars_do_not_turn_gt4_cups_into_gt3_rounds(self):
+        for name in (
+            "Greater Bay Area GT Cup (SRO GT Cup)",
+            "SRO GT Cup Macau",
+            "GT4 Cup",
+            "GT2 European Series",
+        ):
+            with self.subTest(name=name):
+                self.assertFalse(gt3.gt3_round(name))
+        for name in ("GT World Challenge Asia", "British GT", "British GT3 and GT4",
+                     "FIA GT World Cup", "SRO GT Cup GT3"):
+            with self.subTest(name=name):
+                self.assertTrue(gt3.gt3_round(name))
+
     def test_twelve_hour_clock_and_gmt_across_midnight(self):
         rows = gt3.timetable_rows(TIMETABLE, date(2026, 10, 8), date(2026, 10, 11))
         first = rows[0]
@@ -259,6 +277,31 @@ class Gt3MissingSessionTests(unittest.TestCase):
         self.assertIsNone(gt3.combined_start("Pirelli Pole Battle", sessions))
 
 class Gt3PipelineTests(unittest.TestCase):
+    def test_importer_excludes_the_gt4_round_before_publishing_calendar(self):
+        calendar = (
+            "<title>2026 Calendar</title>"
+            '<li class="calendar__list-item"><a href="/event/1/sepang">Round 1</a><i class="flag mys"></i></li>'
+            '<li class="calendar__list-item"><a href="/event/2/sro-gt-cup">Round 2</a><i class="flag mac"></i></li>'
+        )
+        pages = {
+            gt3.SERIES["gtwc-asia"]["base"] + "/calendar": calendar,
+            gt3.SERIES["gtwc-asia"]["base"] + "/event/1/sepang":
+                "<title>Sepang, Malaysia, 10 - 12 April 2026 | GTWC Asia</title>",
+            gt3.SERIES["gtwc-asia"]["base"] + "/event/2/sro-gt-cup":
+                "<title>Greater Bay Area GT Cup (SRO GT Cup), Macau, 19 - 22 November 2026 | GTWC Asia</title>",
+        }
+        with tempfile.TemporaryDirectory() as directory, ThreadPoolExecutor(max_workers=1) as pool:
+            root = Path(directory)
+            with patch.object(gt3, "get", side_effect=pages.__getitem__), \
+                    patch.object(gt3, "standings_pages", return_value=([], [])), \
+                    patch.object(gt3, "write_standings"), \
+                    patch.object(gt3, "fetch_results", return_value={}), \
+                    patch.object(gt3, "add_tsl_best_laps"):
+                gt3.import_series("gtwc-asia", root, pool)
+            events = json.loads((root / "gtwc-asia" / "2026" / "calendar.json").read_text())["data"]
+            self.assertEqual([event["name"] for event in events], ["Sepang"])
+            self.assertEqual(len(list((root / "gtwc-asia" / "2026" / "events").glob("*.json"))), 1)
+
     def test_series_lists_stay_in_sync(self):
         self.assertEqual(refresh_decision.GT3_SERIES, frozenset(gt3.SERIES))
         self.assertEqual(validate_data.LENIENT_SERIES, frozenset(gt3.SERIES))

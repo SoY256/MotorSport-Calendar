@@ -1,7 +1,7 @@
 name: secar
 description: Secar — a modern, multi-series motorsport calendar.
 publish_to: "none"
-version: 0.1.22+25
+version: 0.1.23+26
 
 environment:
   sdk: ^3.13.0
@@ -72,6 +72,8 @@ flutter:
     - assets/data/gtwc-europe/2026/events/
     - assets/data/gtwc-america/2026/
     - assets/data/gtwc-america/2026/events/
+    - assets/data/gtwc-america/2027/
+    - assets/data/gtwc-america/2027/events/
     - assets/data/gtwc-asia/2026/
     - assets/data/gtwc-asia/2026/events/
     - assets/data/gtwc-australia/2026/

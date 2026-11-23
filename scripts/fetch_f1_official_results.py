@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import html
 import argparse
+import io
 import json
 import os
 import re
@@ -17,9 +18,11 @@ from http_retry import read
 ROOT = Path(__file__).resolve().parents[1]
 from seasons import results_season  # noqa: E402
 from standings_progress import standings_behind  # noqa: E402
+from result_status import no_classification  # noqa: E402
 
 DATA = Path(os.environ.get("MOTORSPORT_DATA_ROOT", ROOT / "data"))
 BASE = "https://www.formula1.com"
+FIA = "https://www.fia.com"
 HEADERS = {"User-Agent": "MotorSport-Calendar/0.1 (+https://github.com/SoY256/MotorSport-Calendar)"}
 ROUTES = {
     "FP1": "practice/1",
@@ -175,6 +178,70 @@ def official_rows(body: str, session_type: str, drivers: dict[str, dict], teams:
     return rows
 
 
+def untimed_practice(lap_times: str, race_control: str, session_type: str, year: int) -> bool:
+    ordinal = {"FP1": "First", "FP2": "Second", "FP3": "Third"}.get(session_type)
+    if ordinal is None:
+        return False
+    lap_times = lap_times.split("©", 1)[0]
+    race_control = race_control.split("©", 1)[0]
+    if (
+        f"{ordinal} Practice Session Lap Times" not in lap_times
+        or str(year) not in lap_times[:200]
+        or str(year) not in race_control[:200]
+        or "Race Control Messages" not in race_control
+        or "CHEQUERED FLAG" not in race_control
+        or "NO TIME" not in lap_times
+    ):
+        return False
+    # Pit-lap durations (e.g. "2 P 31:07.424") are not classified lap times.
+    timed = re.findall(r"\b\d+\s+(P\s+)?((?:\d+:){0,2}\d{2}\.\d{3})\b", lap_times)
+    return not any(not pit for pit, _time in timed)
+
+
+def fia_practice_notice(
+    event: dict, scheduled: dict, year: int, index_cache: dict[str, str]
+) -> dict | None:
+    """Only a finished FIA timing report can establish that no ranking was issued.
+    An empty formula1.com page alone is never treated as a terminal outcome."""
+    kind = scheduled["type"]
+    if kind not in {"FP1", "FP2", "FP3"}:
+        return None
+    slug = event["name"].lower().replace(" ", "-")
+    slug = {"brazilian-grand-prix": "sao-paulo-grand-prix"}.get(slug, slug)
+    url = f"{FIA}/events/fia-formula-one-world-championship/season-{year}/{slug}/eventtiming-information"
+    if url not in index_cache:
+        index_cache[url] = fetch(url)
+    index = index_cache[url]
+    prefix = re.compile(rf"/{year}_\d+_[a-z]+_f1_p{kind[-1]}_timing_", re.I)
+    links = [
+        html.unescape(link)
+        for link in re.findall(r'href="([^"]+\.pdf)"', index, re.I)
+        if prefix.search(link) and link.startswith(f"{FIA}/sites/default/files/")
+    ]
+    if any("classification" in link.lower() for link in links):
+        return None
+    laps = next((link for link in links if "laptimes" in link.lower()), None)
+    control = next((link for link in links if "racecontrolmessages" in link.lower()), None)
+    if laps is None or control is None:
+        return None
+
+    import pdfplumber
+
+    def text(link: str) -> str:
+        content = read(link, HEADERS, timeout=15, attempts=2)
+        with pdfplumber.open(io.BytesIO(content)) as pdf:
+            return "\n".join(page.extract_text() or "" for page in pdf.pages)
+
+    if not untimed_practice(text(laps), text(control), kind, year):
+        return None
+    return {
+        "type": kind, "name": scheduled["name"], "startTimeUtc": scheduled["startTimeUtc"],
+        "results": [], "classificationStatus": "not-issued", "classificationReason": "no-timed-laps",
+        "source": {"name": "fia-official-timing", "url": laps},
+        "evidenceUrls": [url, control],
+    }
+
+
 def race_wins(root: Path) -> tuple[Counter, Counter]:
     """Grand Prix wins per driver code and team name from the official race
     classifications (the standings pages list points only, and Jolpica's
@@ -259,6 +326,7 @@ def main(live: bool = False) -> None:
     calendar = json.loads((root / "calendar.json").read_text(encoding="utf-8"))["data"]
     pages = race_pages(year)
     drivers, teams = metadata(root)
+    fia_indexes: dict[str, str] = {}
     for event in calendar:
         if event.get("round") is None or event.get("cancelled"):
             continue
@@ -271,6 +339,8 @@ def main(live: bool = False) -> None:
         sessions = {session["type"]: session for session in document["data"].get("sessions", [])}
         changed = False
         for scheduled in event.get("sessions", []):
+            if scheduled.get("cancelled") or scheduled.get("timeTbc"):
+                continue
             session_type = scheduled["type"]
             route = ROUTES.get(session_type)
             if route is None:
@@ -279,7 +349,10 @@ def main(live: bool = False) -> None:
             # Existing classifications have already been verified. During the
             # live weekend query only completed, still-missing sessions so the
             # five-minute job reaches F1 quickly and does not hammer old pages.
-            if live and target is not None and target.get("results") and target.get("source", {}).get("name") == "formula1-official":
+            if live and target is not None and (
+                target.get("results") and target.get("source", {}).get("name") == "formula1-official"
+                or no_classification(target)
+            ):
                 continue
             start = datetime.fromisoformat(
                 scheduled["startTimeUtc"].replace("Z", "+00:00")
@@ -290,10 +363,32 @@ def main(live: bool = False) -> None:
                 continue
             try:
                 body = fetch(f"{BASE}/en/results/{year}/races/{race_id}/{slug}/{route}")
-            except RuntimeError:
+            except RuntimeError as error:
+                print(f"{event['name']} {session_type}: official source unavailable ({error})", file=sys.stderr)
                 continue
             rows = official_rows(body, session_type, drivers, teams)
             if not rows:
+                end = start + timedelta(minutes=int(scheduled.get("durationMinutes") or 60))
+                if (
+                    end <= datetime.now(timezone.utc)
+                    and session_type in {"FP1", "FP2", "FP3"}
+                    and "No results available" in body
+                    and not (target and (target.get("results") or no_classification(target)))
+                ):
+                    try:
+                        notice = fia_practice_notice(event, scheduled, year, fia_indexes)
+                    except (RuntimeError, ValueError, OSError) as error:
+                        print(f"{event['name']} {session_type}: FIA evidence unavailable ({error})", file=sys.stderr)
+                        notice = None
+                    if notice:
+                        if target is None:
+                            document["data"].setdefault("sessions", []).append(notice)
+                        else:
+                            target.clear()
+                            target.update(notice)
+                        sessions[session_type] = notice
+                        changed = True
+                        print(f"{event['name']} {session_type}: FIA confirms no timed laps; no classification issued")
                 continue
             if target is None:
                 target = {
@@ -304,11 +399,15 @@ def main(live: bool = False) -> None:
                 }
                 document["data"].setdefault("sessions", []).append(target)
             target["results"] = rows
+            target.pop("classificationStatus", None)
+            target.pop("classificationReason", None)
+            target.pop("evidenceUrls", None)
             target["source"] = {"name": "formula1-official", "url": f"{BASE}/en/results/{year}/races/{race_id}/{slug}/{route}"}
             document["updatedAt"] = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
             changed = True
             print(f"{event['name']} {session_type}: {len(rows)} official rows")
         if changed:
+            document["lastSuccessfulUpdate"] = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
             document["source"] = {"name": "formula1-official", "url": f"{BASE}/en/results/{year}/races/{race_id}/{slug}/race-result"}
             path.write_text(json.dumps(document, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     # After the classifications, so a race imported just now counts. The live

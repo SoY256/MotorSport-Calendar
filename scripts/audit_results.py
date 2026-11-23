@@ -27,6 +27,7 @@ from pathlib import Path
 
 from http_retry import read
 from refresh_decision import GT3_SERIES, expects_results
+from result_status import no_classification
 from seasons import parse_time
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -70,6 +71,9 @@ def session_checks(label: str, session: dict, errors: list[str], warnings: list[
 def event_checks(series: str, season: int, event: dict, document: dict, now: datetime,
                  errors: list[str], warnings: list[str]) -> None:
     sessions = {item["type"]: item for item in document["data"].get("sessions", []) if item.get("results")}
+    not_issued = {
+        item["type"] for item in document["data"].get("sessions", []) if no_classification(item)
+    }
     prefix = f"{series} {season} R{event['round']} {event['name']}"
     for scheduled in event.get("sessions", []):
         if scheduled.get("cancelled") or event.get("cancelled"):
@@ -77,12 +81,15 @@ def event_checks(series: str, season: int, event: dict, document: dict, now: dat
         end = parse_time(scheduled["startTimeUtc"]) + timedelta(minutes=int(scheduled.get("durationMinutes", 120)))
         if end + GRACE > now or not expects_results(series, scheduled["type"]):
             continue
-        if scheduled["type"] not in sessions:
+        if scheduled["type"] not in sessions and scheduled["type"] not in not_issued:
             message = f"{prefix}: no classification for {scheduled['name']} ({scheduled['type']})"
             # GT3 timetables list sessions (tests, bronze practice) that are
             # often never classified; races must always be.
             race = re.fullmatch(r"R\d*|SPRINT", scheduled["type"])
             (errors if race or series not in GT3_SERIES else warnings).append(message)
+    for session in document["data"].get("sessions", []):
+        if session.get("classificationStatus") == "not-issued" and not no_classification(session):
+            errors.append(f"{prefix}: unverified non-classification for {session.get('type')}")
     for kind, session in sessions.items():
         session_checks(f"{prefix} {kind}", session, errors, warnings)
     grid = {row.get("carNumber") for kind, item in sessions.items() if re.fullmatch(r"R\d*", kind)

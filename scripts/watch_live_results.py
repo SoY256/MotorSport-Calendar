@@ -17,7 +17,8 @@ import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from refresh_decision import expects_results, result_types, timestamp
+from refresh_decision import expects_results, resolved_types, timestamp
+from result_status import prefer_session
 from standings_progress import PENDING, progress, standings_due
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -35,7 +36,7 @@ def missing_sessions(now: datetime) -> list[tuple[datetime, str]]:
         series_dir = calendar_path.parent.parent
         events = json.loads(calendar_path.read_text(encoding="utf-8"))["data"]
         for event in events:
-            available = result_types(calendar_path.parent / event["resultsPath"])
+            available = resolved_types(calendar_path.parent / event["resultsPath"])
             for session in event.get("sessions", []):
                 session_type = session.get("type")
                 if (
@@ -207,11 +208,7 @@ def merge_event_results(upstream: dict, local: dict) -> dict:
     sessions = {s['type']: s for s in upstream['data'].get('sessions', [])}
     for session in local['data'].get('sessions', []):
         previous = sessions.get(session['type'])
-        if not session.get('results') and previous and previous.get('results'):
-            continue
-        if previous and previous.get('results') and previous.get('source', {}).get('name') == 'formula1-official' and session.get('source', {}).get('name') != 'formula1-official':
-            continue
-        sessions[session['type']] = session
+        sessions[session['type']] = prefer_session(previous, session)
     merged['data'] = {**local['data'], 'sessions': list(sessions.values())}
     return merged
 

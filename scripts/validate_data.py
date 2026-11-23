@@ -12,7 +12,11 @@ DATA = ROOT / "assets" / "data"
 PUBLISHED_DATA = ROOT / "data"
 # Drivers without an identity-verified face photo show initials instead of a
 # guessed or shared portrait.
-PORTRAIT_EXEMPT: dict[str, set[str]] = {}
+PORTRAIT_EXEMPT: dict[str, set[str]] = {
+    # His 2026 profile (/en/driver/2026/10878) serves Martin Berry's portrait.
+    # Show initials until an identity-verified Christian Ried crop is available.
+    "wec": {"Christian Ried"},
+}
 # GT3 grids are large and partly amateur: drivers without an official studio
 # portrait show initials, circuits without a bundled map show none, and rounds
 # timed by third parties (e.g. the Nürburgring 24h) may have no classification.
