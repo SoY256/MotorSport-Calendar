@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "lastSuccessfulUpdate": "2026-11-25T11:30:53.941291Z",
+  "source": {
+    "name": "sro-official-calendar",
+    "url": "https://www.intercontinentalgtchallenge.com/calendar"
+  },
+  "data": [
+    {
+      "id": "igtc-2027-1",
+      "seriesId": "igtc",
+      "season": 2027,
+      "round": 1,
+      "name": "Meguiar's Bathurst 12 Hour",
+      "cancelled": false,
+      "circuit": {
+        "id": "mount-panorama-circuit",
+        "name": "Mount Panorama Circuit",
+        "locality": "Bathurst",
+        "country": "Australia",
+        "countryCode": "AUS",
+        "lapRecord": "2:02.3071 • Alexander Sims / Nicky Catsburg / E. Bamber (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-02-14T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 720,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/01-meguiar-s-bathurst-12-hour.json"
+    },
+    {
+      "id": "igtc-2027-2",
+      "seriesId": "igtc",
+      "season": 2027,
+      "round": 2,
+      "name": "Texas 8 Hour",
+      "cancelled": false,
+      "circuit": {
+        "id": "texas-8-hour",
+        "name": "Texas 8 Hour",
+        "locality": null,
+        "country": "United States of America",
+        "countryCode": "USA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-05-08T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 480,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/02-texas-8-hour.json"
+    },
+    {
+      "id": "igtc-2027-3",
+      "seriesId": "igtc",
+      "season": 2027,
+      "round": 3,
+      "name": "ADAC RAVENOL 24h Nürburgring",
+      "cancelled": false,
+      "circuit": {
+        "id": "nurburgring-nordschleife",
+        "name": "Nürburgring Nordschleife",
+        "locality": "Nürburg",
+        "country": "Germany",
+        "countryCode": "DEU",
+        "lapRecord": "8:08.758 • Luca Engstler / Mirko Bortolotti / Patric Niederhauser (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-05-30T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 1440,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/03-adac-ravenol-24h-nurburgring.json"
+    },
+    {
+      "id": "igtc-2027-4",
+      "seriesId": "igtc",
+      "season": 2027,
+      "round": 4,
+      "name": "24 Hours of Spa",
+      "cancelled": false,
+      "circuit": {
+        "id": "circuit-de-spa-francorchamps",
+        "name": "Circuit de Spa-Francorchamps",
+        "locality": "Stavelot",
+        "country": "Belgium",
+        "countryCode": "BEL",
+        "lapRecord": "2:17.340 • Alessio Rovera / Tommaso Mosca / Nicklas Nielsen (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-06-27T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 1440,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/04-24-hours-of-spa.json"
+    },
+    {
+      "id": "igtc-2027-5",
+      "seriesId": "igtc",
+      "season": 2027,
+      "round": 5,
+      "name": "Suzuka 1000km",
+      "cancelled": false,
+      "circuit": {
+        "id": "suzuka-circuit",
+        "name": "Suzuka Circuit",
+        "locality": "Suzuka",
+        "country": "Japan",
+        "countryCode": "JPN",
+        "lapRecord": "1:59.966 • Ayhancan Güven / Alessandro Ghiretti / Dorian Boccolacci (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-09-05T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 360,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/05-suzuka-1000km.json"
+    }
+  ]
+}

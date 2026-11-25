@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-11-25T02:21:21.542278Z",
+  "lastSuccessfulUpdate": "2026-11-25T11:31:13.637685Z",
   "source": {
     "name": "multi-source-official-refresh",
     "url": "https://github.com/SoY256/MotorSport-Calendar"
@@ -94,10 +94,11 @@
     {
       "id": "gtwc-asia",
       "availableSeasons": [
-        2026
+        2027
       ],
       "publishedSeasons": [
-        2026
+        2026,
+        2027
       ]
     },
     {
@@ -122,10 +123,11 @@
     {
       "id": "igtc",
       "availableSeasons": [
-        2026
+        2027
       ],
       "publishedSeasons": [
-        2026
+        2026,
+        2027
       ]
     }
   ]

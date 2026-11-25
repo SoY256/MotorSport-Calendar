@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "lastSuccessfulUpdate": "2026-11-25T11:30:37.886387Z",
+  "source": {
+    "name": "sro-official-calendar",
+    "url": "https://www.gt-world-challenge-asia.com/calendar"
+  },
+  "data": [
+    {
+      "id": "gtwc-asia-2027-1",
+      "seriesId": "gtwc-asia",
+      "season": 2027,
+      "round": 1,
+      "name": "Sepang International Circuit",
+      "cancelled": false,
+      "circuit": {
+        "id": "sepang-international-circuit",
+        "name": "Sepang International Circuit",
+        "locality": "Sepang",
+        "country": "Malaysia",
+        "countryCode": "MYS",
+        "lapRecord": "2:04.656 • Wei Lu / Alessio Picariello (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-04-04T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 60,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/01-sepang-international-circuit.json"
+    },
+    {
+      "id": "gtwc-asia-2027-2",
+      "seriesId": "gtwc-asia",
+      "season": 2027,
+      "round": 2,
+      "name": "Chang International Circuit",
+      "cancelled": false,
+      "circuit": {
+        "id": "chang-international-circuit",
+        "name": "Chang International Circuit",
+        "locality": null,
+        "country": "Thailand",
+        "countryCode": "THA"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-05-02T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 60,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/02-chang-international-circuit.json"
+    },
+    {
+      "id": "gtwc-asia-2027-3",
+      "seriesId": "gtwc-asia",
+      "season": 2027,
+      "round": 3,
+      "name": "Suzuka International Circuit",
+      "cancelled": false,
+      "circuit": {
+        "id": "suzuka-circuit",
+        "name": "Suzuka Circuit",
+        "locality": "Suzuka",
+        "country": "Japan",
+        "countryCode": "JPN"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-06-13T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 60,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/03-suzuka-international-circuit.json"
+    },
+    {
+      "id": "gtwc-asia-2027-4",
+      "seriesId": "gtwc-asia",
+      "season": 2027,
+      "round": 4,
+      "name": "Fuji International Speedway",
+      "cancelled": false,
+      "circuit": {
+        "id": "fuji-speedway",
+        "name": "Fuji Speedway",
+        "locality": "Oyama",
+        "country": "Japan",
+        "countryCode": "JPN",
+        "lapRecord": "1:38.880 • Jiajun Song / Brendon Leitch (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-07-11T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 60,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/04-fuji-international-speedway.json"
+    },
+    {
+      "id": "gtwc-asia-2027-5",
+      "seriesId": "gtwc-asia",
+      "season": 2027,
+      "round": 5,
+      "name": "Beijing Street Circuit",
+      "cancelled": false,
+      "circuit": {
+        "id": "beijing-street-circuit",
+        "name": "Beijing Street Circuit",
+        "locality": "Beijing",
+        "country": "China",
+        "countryCode": "CHN",
+        "lapRecord": "1:44.984 • Ruohan Huang / Alessandro Ghiretti (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-10-03T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 60,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/05-beijing-street-circuit.json"
+    },
+    {
+      "id": "gtwc-asia-2027-6",
+      "seriesId": "gtwc-asia",
+      "season": 2027,
+      "round": 6,
+      "name": "Shanghai International Circuit",
+      "cancelled": false,
+      "circuit": {
+        "id": "shanghai-international-circuit",
+        "name": "Shanghai International Circuit",
+        "locality": "Shanghai",
+        "country": "China",
+        "countryCode": "CHN",
+        "lapRecord": "1:59.932 • Wei Lu / Laurin Heinrich (2026)"
+      },
+      "sessions": [
+        {
+          "type": "R",
+          "name": "Race",
+          "startTimeUtc": "2027-10-24T12:00:00Z",
+          "cancelled": false,
+          "durationMinutes": 60,
+          "timeTbc": true
+        }
+      ],
+      "resultsPath": "events/06-shanghai-international-circuit.json"
+    }
+  ]
+}
