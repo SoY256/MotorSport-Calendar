@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-11-26T07:15:58.126036Z",
+  "lastSuccessfulUpdate": "2026-11-26T21:33:32.279152Z",
   "source": {
     "name": "official-formula-series",
     "url": "https://www.fiaformula2.com/en/racing/2026"
@@ -765,41 +765,37 @@
         {
           "type": "FP1",
           "name": "Practice",
-          "startTimeUtc": "2026-12-04T08:00:00Z",
-          "startTimeTrack": "2026-12-04T00:00:00",
+          "startTimeUtc": "2026-12-04T07:05:00Z",
+          "startTimeTrack": "2026-12-04T11:05:00",
           "trackTimeZone": "Asia/Dubai",
           "cancelled": false,
-          "timeTbc": true,
           "durationMinutes": 45
         },
         {
           "type": "Q",
           "name": "Qualifying",
-          "startTimeUtc": "2026-12-04T08:00:00Z",
-          "startTimeTrack": "2026-12-04T00:00:00",
+          "startTimeUtc": "2026-12-04T11:00:00Z",
+          "startTimeTrack": "2026-12-04T15:00:00",
           "trackTimeZone": "Asia/Dubai",
           "cancelled": false,
-          "timeTbc": true,
           "durationMinutes": 30
         },
         {
           "type": "SPRINT",
           "name": "Sprint Race",
-          "startTimeUtc": "2026-12-05T08:00:00Z",
-          "startTimeTrack": "2026-12-05T00:00:00",
+          "startTimeUtc": "2026-12-05T12:15:59Z",
+          "startTimeTrack": "2026-12-05T16:15:59",
           "trackTimeZone": "Asia/Dubai",
           "cancelled": false,
-          "timeTbc": true,
           "durationMinutes": 60
         },
         {
           "type": "R",
           "name": "Feature Race",
-          "startTimeUtc": "2026-12-06T08:00:00Z",
-          "startTimeTrack": "2026-12-06T00:00:00",
+          "startTimeUtc": "2026-12-06T09:15:00Z",
+          "startTimeTrack": "2026-12-06T13:15:00",
           "trackTimeZone": "Asia/Dubai",
           "cancelled": false,
-          "timeTbc": true,
           "durationMinutes": 120
         }
       ],
