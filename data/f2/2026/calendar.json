@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-11-27T12:06:51.091585Z",
+  "lastSuccessfulUpdate": "2026-11-27T12:07:51.202241Z",
   "source": {
     "name": "official-formula-series",
     "url": "https://www.fiaformula2.com/en/racing/2026"
@@ -705,7 +705,8 @@
         "name": "Lusail International Circuit",
         "locality": "Lusail",
         "country": "Qatar",
-        "countryCode": "QAT"
+        "countryCode": "QAT",
+        "lapRecord": "1:38.030 • Martinius Stenshorne (2026)"
       },
       "sessions": [
         {
@@ -713,7 +714,7 @@
           "name": "Practice",
           "startTimeUtc": "2026-11-27T11:00:00Z",
           "startTimeTrack": "2026-11-27T14:00:00",
-          "trackTimeZone": "Asia/Qatar",
+          "trackTimeZone": null,
           "cancelled": false,
           "durationMinutes": 45
         },
