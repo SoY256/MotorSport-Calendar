@@ -50,10 +50,14 @@ class ImsaNextSeasonTests(unittest.TestCase):
         )
 
     def build(self, html=None):
-        with patch.object(next_season, "get", return_value=self.page() if html is None else html) as get:
-            events = next_season.imsa_calendar(2027, self.previous)
-        get.assert_called_once_with("https://www.imsa.com/2027/schedule/")
-        return events
+        def read_schedule(url, headers, **_):
+            if url != "https://www.imsa.com/2027/schedule" or "text/html" not in headers.get("Accept", ""):
+                raise RuntimeError("HTTP Error 403: Forbidden")
+            return (self.page() if html is None else html).encode("utf-8")
+
+        with patch("check_schedules.read", side_effect=read_schedule), \
+                patch.object(next_season, "read", side_effect=read_schedule):
+            return next_season.imsa_calendar(2027, self.previous)
 
     def test_reads_all_weathertech_rounds_with_official_durations_and_unconfirmed_times(self):
         events = self.build()
@@ -85,7 +89,7 @@ class ImsaNextSeasonTests(unittest.TestCase):
             next_season.publish("imsa", 2027, self.build(), root)
             folder = root / "imsa" / "2027"
             calendar = json.loads((folder / "calendar.json").read_text(encoding="utf-8"))
-            self.assertEqual(calendar["source"]["url"], "https://www.imsa.com/2027/schedule/")
+            self.assertEqual(calendar["source"]["url"], "https://www.imsa.com/2027/schedule")
             self.assertEqual(len(calendar["data"]), 11)
             for event in calendar["data"]:
                 result = json.loads((folder / event["resultsPath"]).read_text(encoding="utf-8"))

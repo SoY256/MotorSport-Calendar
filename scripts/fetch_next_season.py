@@ -22,7 +22,7 @@ from pathlib import Path
 
 from fetch_data import slugify, write_json
 from fetch_wec_results import RACE_PAGE_ALIASES, official_timetable
-from check_schedules import SOURCES, ParseError, circuit_key, imsa_event_cards, page_text, parse_wec
+from check_schedules import SOURCES, ParseError, circuit_key, fetch_page, imsa_event_cards, page_text, parse_wec
 from http_retry import read
 from seasons import results_season
 
@@ -202,7 +202,7 @@ def wec_calendar(season: int, previous: list[dict]) -> list[dict]:
 
 def imsa_calendar(season: int, previous: list[dict]) -> list[dict]:
     url = SOURCES["imsa"].url.format(season=season)
-    cards = imsa_event_cards(get(url), season)
+    cards = imsa_event_cards(fetch_page(url), season)
     if cards is None or len(cards) < 8:
         raise ParseError(f"IMSA {season}: incomplete WeatherTech calendar")
     events = []

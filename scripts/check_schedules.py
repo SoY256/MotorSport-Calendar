@@ -231,7 +231,7 @@ SOURCES = {
     "f2": Source("f2", "FIA Formula 2", "https://www.fiaformula2.com/Calendar", parse_fia_feeder, country_key),
     "f3": Source("f3", "FIA Formula 3", "https://www.fiaformula3.com/Calendar", parse_fia_feeder, country_key),
     "imsa": Source("imsa", "IMSA WeatherTech",
-                   "https://www.imsa.com/{season}/schedule/", parse_imsa, circuit_key),
+                   "https://www.imsa.com/{season}/schedule", parse_imsa, circuit_key),
 }
 # Curated calendars without a parseable official schedule page.  They are only
 # reported as unchecked while they still contain upcoming events.

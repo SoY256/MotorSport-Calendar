@@ -225,11 +225,38 @@ class RunChecksTests(unittest.TestCase):
             self.write_calendar(root, "imsa", 2026, "2026-10-03")
             with patch("check_schedules.fetch_page", return_value=html) as fetch:
                 report = self.imsa_check(root, fetch)
-            fetch.assert_called_once_with("https://www.imsa.com/2027/schedule/")
+            fetch.assert_called_once_with("https://www.imsa.com/2027/schedule")
         self.assertIn("imsa 2026: season complete, nothing to check", report.notes)
         self.assertEqual(report.exit_code, 2)
         self.assertIn("IMSA WeatherTech 2027", report.failures)
         self.assertIn("add data/imsa/2027/calendar.json", report.failures["IMSA WeatherTech 2027"])
+
+    def test_imsa_canonical_page_is_compared_when_the_old_route_is_forbidden(self):
+        html = (
+            '<title>2027 Schedule</title>'
+            '<input value="weathertech" data-series-index="0"><ul data-series-index="0">'
+            + imsa_article("Rolex 24 At Daytona", "Daytona International Speedway, Daytona Beach, FL",
+                           "January 27, 2027 through January 31, 2027")
+            + "</ul>"
+        )
+
+        def fetch(url):
+            if url == "https://www.imsa.com/2027/schedule":
+                return html
+            if "/2027/" in url:
+                raise RuntimeError("HTTP Error 403: Forbidden")
+            return "<title>2027 Schedule</title>"
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.write_calendar(root, "imsa", 2027, "2027-01-30")
+            report = self.imsa_check(root, fetch)
+            self.assertEqual(report.exit_code, 0, report.render())
+
+            self.write_calendar(root, "imsa", 2027, "2027-01-23")
+            report = self.imsa_check(root, fetch)
+            self.assertEqual(report.exit_code, 1, report.render())
+            self.assertIn("official 2027-01-31", report.render())
 
     def test_unreachable_upcoming_schedule_is_still_an_error(self):
         with tempfile.TemporaryDirectory() as directory:

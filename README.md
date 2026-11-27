@@ -30,7 +30,7 @@ GitHub Actions runs the same tests and refreshes data every six hours. Because G
 
 Portraits are uniform head-and-shoulders crops of official studio photos (F1/F2/F3, FIA WEC, ELMS, IMSA, INDYCAR, INDY NXT, GT World Challenge) built by `scripts/official_headshots.py --collect --build` into `assets/portraits/faces/<series>/`; `scripts/enrich_driver_portraits.py` links them by driver name and drivers without a verified face fall back to initials.
 
-The bundled 2026 WEC and IMSA calendars are curated from the official [FIA WEC](https://www.fiawec.com/) and [IMSA](https://www.imsa.com/) schedules by `scripts/seed_endurance_data.py`. Announced F1, WEC and IMSA next-season calendars are imported by `scripts/fetch_next_season.py`; IMSA uses `https://www.imsa.com/<season>/schedule/`, reads only the WeatherTech tab and marks unconfirmed start times as TBC.
+The bundled 2026 WEC and IMSA calendars are curated from the official [FIA WEC](https://www.fiawec.com/) and [IMSA](https://www.imsa.com/) schedules by `scripts/seed_endurance_data.py`. Announced F1, WEC and IMSA next-season calendars are imported by `scripts/fetch_next_season.py`. The IMSA importer and daily checker both request the HTML at `https://www.imsa.com/<season>/schedule` (no trailing slash) and read the WeatherTech tab. The importer marks unconfirmed start times as TBC.
 
 The 2026 INDYCAR and INDY NXT calendars and driver standings come from the official [INDYCAR](https://www.indycar.com/) and [INDY NXT](https://www.indynxt.com/) sites and are published by `scripts/seed_indy_data.py`.
 
