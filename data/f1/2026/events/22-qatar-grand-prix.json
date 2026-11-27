@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-11-27T16:02:05.966663Z",
+  "lastSuccessfulUpdate": "2026-11-27T18:02:22.072160Z",
   "source": {
     "name": "formula1-official",
     "url": "https://www.formula1.com/en/results/2026/races/1301/qatar/race-result"
@@ -524,8 +524,14 @@
           "name": "formula1-official",
           "url": "https://www.formula1.com/en/results/2026/races/1301/qatar/practice/1"
         }
+      },
+      {
+        "type": "FP2",
+        "name": "Practice 2",
+        "startTimeUtc": "2026-11-27T17:00:00Z",
+        "results": []
       }
     ]
   },
-  "updatedAt": "2026-11-27T16:02:05.966625Z"
+  "updatedAt": "2026-11-27T18:02:21.097621Z"
 }
