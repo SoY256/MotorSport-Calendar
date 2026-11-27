@@ -97,6 +97,20 @@ IMSA_COMPETITORS_HTML = """
 </div>
 """
 
+IMSA_BACKUP_HTML = """
+<title>2027 IMSA WeatherTech SportsCar Championship | RacingCalendar.net</title>
+<table class="rc-table margin-centre">
+<tr><th>Date</th><th>Event</th></tr>
+<tr><td class='rc-table-date-td'><span class='no-wrap'>28&ndash;31 Jan</span></td>
+  <td><a href='/circuit/daytona-international-speedway'>Daytona International Speedway</a>
+  <span class='eventname'>Rolex 24 at Daytona</span></td></tr>
+<tr id="calendarAdInsideWrapper" class="display-none"><td colspan="100%"></td></tr>
+<tr><td class='rc-table-date-td'><span class='no-wrap'>30 Apr&ndash;2 May</span></td>
+  <td><a href='/circuit/weathertech-raceway-laguna-seca'>WeatherTech Raceway Laguna Seca</a>
+  <span class='eventname'>Monterey SportsCar Championship</span></td></tr>
+</table>
+"""
+
 
 class ParserTests(unittest.TestCase):
     def test_wec_ignores_next_season_and_prologue_and_dedupes(self):
@@ -162,6 +176,14 @@ class ParserTests(unittest.TestCase):
         with self.assertRaisesRegex(check_schedules.ParseError, "no readable location or date"):
             check_schedules.parse_imsa_competitors(html, 2027)
 
+    def test_imsa_racingcalendar_uses_venues_and_weekend_end_dates(self):
+        events = check_schedules.parse_imsa_racingcalendar(IMSA_BACKUP_HTML, 2027)
+        self.assertEqual(
+            [(event.key, event.date) for event in events],
+            [("daytona international speedway", date(2027, 1, 31)),
+             ("weathertech raceway laguna seca", date(2027, 5, 2))],
+        )
+
 
 class CompareTests(unittest.TestCase):
     today = date(2026, 10, 16)
@@ -216,14 +238,21 @@ class CompareTests(unittest.TestCase):
 
 
 class RunChecksTests(unittest.TestCase):
-    def write_calendar(self, root, series, season, day):
+    def write_calendar(self, root, series, season, day, *, include_laguna=False):
         path = root / series / str(season) / "calendar.json"
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(json.dumps({"data": [{
+        events = [{
             "name": "Race",
             "circuit": {"name": "Daytona International Speedway", "locality": "Daytona Beach"},
             "sessions": [{"startTimeUtc": f"{day}T12:00:00Z"}],
-        }]}), encoding="utf-8")
+        }]
+        if include_laguna:
+            events.append({
+                "name": "Monterey SportsCar Championship",
+                "circuit": {"name": "WeatherTech Raceway Laguna Seca"},
+                "sessions": [{"startTimeUtc": f"{season}-05-02T12:00:00Z"}],
+            })
+        path.write_text(json.dumps({"data": events}), encoding="utf-8")
 
     def imsa_check(self, root, fetch):
         with patch.object(check_schedules, "SOURCES", {"imsa": check_schedules.SOURCES["imsa"]}), \
@@ -304,7 +333,7 @@ class RunChecksTests(unittest.TestCase):
             self.assertEqual(report.exit_code, 1, report.render())
             self.assertIn("official 2027-01-31", report.render())
 
-    def test_primary_and_competitor_403_remain_unverified(self):
+    def test_all_sources_returning_403_remain_unverified(self):
         def fetch(url):
             raise HTTPError(url, 403, "Forbidden", None, None)
 
@@ -316,6 +345,45 @@ class RunChecksTests(unittest.TestCase):
         self.assertNotIn("IMSA WeatherTech 2027", report.differences)
         self.assertIn("2027/schedule: HTTP Error 403", report.render())
         self.assertIn("event-information/: HTTP Error 403", report.render())
+        self.assertIn("racingcalendar.net/championship/imsa-sportscar-championship/2027: HTTP Error 403",
+                      report.render())
+
+    def test_both_official_pages_blocked_uses_only_an_explicit_unofficial_comparison(self):
+        def fetch(url):
+            if url == "https://racingcalendar.net/championship/imsa-sportscar-championship/2027":
+                return IMSA_BACKUP_HTML
+            raise HTTPError(url, 403, "Forbidden", None, None)
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.write_calendar(root, "imsa", 2027, "2027-01-30", include_laguna=True)
+            report = self.imsa_check(root, fetch)
+            self.assertEqual(report.exit_code, 0, report.render())
+            text = report.render()
+            self.assertIn("Unofficial comparison", text)
+            self.assertIn("no differences", text)
+            self.assertIn("HTTP Error 403", text)
+            self.assertNotIn("Matching the official schedule", text)
+
+            self.write_calendar(root, "imsa", 2027, "2027-01-23", include_laguna=True)
+            report = self.imsa_check(root, fetch)
+            self.assertEqual(report.exit_code, 1, report.render())
+            self.assertIn("RacingCalendar.net 2027-01-31", report.render())
+            self.assertNotIn("official 2027-01-31", report.render())
+
+    def test_invalid_unofficial_page_does_not_hide_the_official_failures(self):
+        def fetch(url):
+            if "racingcalendar.net" in url:
+                return IMSA_BACKUP_HTML.replace("2027", "2026")
+            raise HTTPError(url, 403, "Forbidden", None, None)
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.write_calendar(root, "imsa", 2027, "2027-01-30")
+            report = self.imsa_check(root, fetch)
+        self.assertEqual(report.exit_code, 2)
+        self.assertIn("expected IMSA 2027", report.render())
+        self.assertNotIn("Matching the official schedule", report.render())
 
     def test_unreachable_upcoming_schedule_is_still_an_error(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -395,6 +463,14 @@ class GitHubIssueTests(unittest.TestCase):
         report = check_schedules.Report({"X": []}, {}, [])
         calls = self._sync(report, [{"number": 7, "title": "Official schedule changed", "body": "old"}])
         self.assertEqual(calls[0][:3], ("issue", "close", "7"))
+
+    def test_matching_unofficial_calendar_updates_issue_without_closing_it(self):
+        report = check_schedules.Report({"IMSA 2027": []}, {}, [],
+                                        unofficial={"IMSA 2027": "Both official URLs returned HTTP 403"})
+        calls = self._sync(report, [{"number": 7, "title": "Official schedule changed", "body": "old"}])
+        self.assertEqual(len(calls), 1)
+        self.assertEqual(calls[0][:3], ("issue", "edit", "7"))
+        self.assertIn("Unofficial comparison", calls[0][-1])
 
 
 if __name__ == "__main__":

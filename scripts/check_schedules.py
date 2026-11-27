@@ -6,8 +6,8 @@ and add rounds mid-season (WEC replaced Qatar/Bahrain with Barcelona/Monza in
 2026), so this script is run once per day to flag any upcoming difference
 between ``data/<series>/<season>/calendar.json`` and the official schedule.
 
-Exit codes: 0 everything matches, 1 differences found, 2 a source could not
-be checked (and no differences were found in the sources that could).
+Exit codes: 0 no differences (an unofficial backup comparison is explicitly
+noted), 1 differences found, 2 a source could not be checked.
 """
 
 from __future__ import annotations
@@ -19,7 +19,7 @@ import os
 import re
 import subprocess
 import sys
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Callable
@@ -37,6 +37,7 @@ ISSUE_TITLE = "Official schedule changed"
 IMSA_COMPETITORS_URL = (
     "https://www.imsa.com/competitors/{season}-imsa-weathertech-sportscar-championship-event-information/"
 )
+IMSA_RACINGCALENDAR_URL = "https://racingcalendar.net/championship/imsa-sportscar-championship/{season}"
 PAIRING_WINDOW_DAYS = 10
 MONTHS = {name: number for number, name in enumerate(
     ("jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"), 1)}
@@ -254,6 +255,41 @@ def parse_imsa_competitors(html: str, season: int) -> list[OfficialEvent]:
     return sorted(events.values(), key=lambda item: item.date)
 
 
+def parse_imsa_racingcalendar(html: str, season: int) -> list[OfficialEvent]:
+    title = re.search(r"<title>(.*?)</title>", html, re.I | re.S)
+    if not title or page_text(title[1]) != f"{season} IMSA WeatherTech SportsCar Championship | RacingCalendar.net":
+        raise ParseError(f"expected IMSA {season} on RacingCalendar.net")
+    tables = [table for table in re.findall(r"<table\b[^>]*>.*?</table>", html, re.I | re.S)
+              if "rc-table-date-td" in table]
+    if len(tables) != 1:
+        raise ParseError("expected one complete RacingCalendar race table")
+    date_range = re.compile(
+        rf"(?:\d{{1,2}}(?:\s+{MONTH_PATTERN})?\s*[-\u2013\u2014]\s*)?(\d{{1,2}})\s+({MONTH_PATTERN})",
+        re.I,
+    )
+    events: dict[tuple[str, date], OfficialEvent] = {}
+    for row in re.findall(r"<tr\b[^>]*>.*?</tr>", tables[0], re.I | re.S):
+        if not re.search(r"<td\b", row, re.I) or re.match(
+            r"""<tr\b[^>]*\bid=['"]calendarAdInsideWrapper['"]""", row
+        ):
+            continue
+        days = re.search(r"""<td\b[^>]*class=['"]rc-table-date-td['"][^>]*>(.*?)</td>""", row, re.S)
+        circuit = re.search(r"""<a\b[^>]*href=['"]/circuit/[^'"]+['"][^>]*>(.*?)</a>""", row, re.S)
+        name = re.search(r"""<span\b[^>]*class=['"]eventname['"][^>]*>(.*?)</span>""", row, re.S)
+        last_day = date_range.fullmatch(page_text(days[1])) if days else None
+        key = venue_key(page_text(circuit[1])) if circuit else ""
+        event_name = page_text(name[1]) if name else ""
+        if not last_day or not key or not event_name:
+            raise ParseError("RacingCalendar race row has no readable date, circuit or name")
+        day = date(season, month_number(last_day[2]), int(last_day[1]))
+        if (key, day) in events:
+            raise ParseError(f"duplicate RacingCalendar entry for {key} on {day}")
+        events[key, day] = OfficialEvent(event_name, key, day)
+    if not events:
+        raise ParseError("no races found on RacingCalendar.net")
+    return sorted(events.values(), key=lambda item: item.date)
+
+
 def country_key(event: dict) -> str:
     return event["circuit"]["countryCode"]
 
@@ -291,8 +327,8 @@ def calendar_events(calendar: list[dict], key: Callable[[dict], str]) -> list[Ca
 
 
 def compare(ours: list[CalendarEvent], official: list[OfficialEvent], today: date,
-            tolerance_days: int = 1) -> list[str]:
-    """Upcoming differences between our calendar and the official schedule.
+            tolerance_days: int = 1, *, reference: str = "official") -> list[str]:
+    """Upcoming differences between our calendar and the reference schedule.
 
     Events are paired by identity key (country or venue) and the closest date
     within ``PAIRING_WINDOW_DAYS``; position in the list is never used.  Only
@@ -319,7 +355,7 @@ def compare(ours: list[CalendarEvent], official: list[OfficialEvent], today: dat
         if theirs_index is None:
             if mine.date >= horizon:
                 differences.append(
-                    f"{mine.name} ({mine.key}, {mine.date.isoformat()}) is no longer on the official "
+                    f"{mine.name} ({mine.key}, {mine.date.isoformat()}) is no longer on the {reference} "
                     "schedule (cancelled or moved)")
             continue
         theirs = official[theirs_index]
@@ -327,11 +363,12 @@ def compare(ours: list[CalendarEvent], official: list[OfficialEvent], today: dat
                 abs((mine.date - theirs.date).days) > tolerance_days:
             differences.append(
                 f"{mine.name} ({mine.key}): our race day {mine.date.isoformat()}, "
-                f"official {theirs.date.isoformat()} ({theirs.name})")
+                f"{reference} {theirs.date.isoformat()} ({theirs.name})")
     for theirs_index, theirs in enumerate(official):
         if theirs_index not in paired_official and theirs.date >= horizon:
             differences.append(
-                f"Official event {theirs.name} ({theirs.key}, {theirs.date.isoformat()}) is missing "
+                f"{reference[:1].upper() + reference[1:]} event "
+                f"{theirs.name} ({theirs.key}, {theirs.date.isoformat()}) is missing "
                 "from our calendar (new or moved)")
     return differences
 
@@ -356,6 +393,7 @@ class Report:
     differences: dict[str, list[str]]
     failures: dict[str, str]
     notes: list[str]
+    unofficial: dict[str, str] = field(default_factory=dict)
 
     @property
     def exit_code(self) -> int:
@@ -367,15 +405,21 @@ class Report:
         lines = []
         for label, items in self.differences.items():
             if items:
-                lines.append(f"### {label}: differences")
+                qualifier = " (unofficial)" if label in self.unofficial else ""
+                lines.append(f"### {label}: differences{qualifier}")
                 lines.extend(f"- {item}" for item in items)
         if self.failures:
             lines.append("### Could not be checked")
             lines.extend(f"- {label}: {error}" for label, error in self.failures.items())
-        matched = [label for label, items in self.differences.items() if not items]
+        matched = [label for label, items in self.differences.items() if not items and label not in self.unofficial]
         if matched:
             lines.append("### Matching the official schedule")
             lines.extend(f"- {label}" for label in matched)
+        if self.unofficial:
+            lines.append("### Unofficial comparison (official sources unavailable)")
+            for label, detail in self.unofficial.items():
+                outcome = "differences found" if self.differences[label] else "no differences"
+                lines.append(f"- {label}: {outcome}. {detail}")
         if self.notes:
             lines.append("### Notes")
             lines.extend(f"- {note}" for note in self.notes)
@@ -412,6 +456,22 @@ def imsa_access_denied(error: Exception) -> bool:
     return isinstance(cause, HTTPError) and cause.code == 403
 
 
+def check_imsa_unofficial(data_root: Path, label: str, season: int, today: date,
+                         fetch: Callable[[str], str], source: Source, report: Report) -> None:
+    url = IMSA_RACINGCALENDAR_URL.format(season=season)
+    try:
+        reference = parse_imsa_racingcalendar(fetch(url), season)
+    except (OSError, RuntimeError, ValueError) as error:
+        report.failures[label] += f"; {url}: {error}"
+        return
+    ours = calendar_events(load_calendar(data_root, source.series, season), source.key)
+    report.differences[label] = compare(ours, reference, today, source.tolerance_days,
+                                        reference="RacingCalendar.net")
+    report.unofficial[label] = (
+        f"Compared {len(reference)} rounds at {url}. Official checks failed: {report.failures.pop(label)}"
+    )
+
+
 def check_imsa_competitors(data_root: Path, label: str, season: int, today: date,
                            fetch: Callable[[str], str], source: Source, report: Report) -> None:
     url = IMSA_COMPETITORS_URL.format(season=season)
@@ -419,6 +479,8 @@ def check_imsa_competitors(data_root: Path, label: str, season: int, today: date
         official = parse_imsa_competitors(fetch(url), season)
     except (OSError, RuntimeError, ValueError) as error:
         report.failures[label] += f"; {url}: {error}"
+        if imsa_access_denied(error):
+            check_imsa_unofficial(data_root, label, season, today, fetch, source, report)
         return
     ours = calendar_events(
         load_calendar(data_root, source.series, season),
@@ -502,14 +564,13 @@ def sync_github_issue(report: Report) -> None:
     issues = json.loads(gh("issue", "list", "--state", "open", "--search", f"{ISSUE_TITLE} in:title",
                            "--json", "number,title,body"))
     existing = next((issue for issue in issues if issue.get("title") == ISSUE_TITLE), None)
-    if report.exit_code == 0:
+    if report.exit_code == 0 and not report.unofficial:
         if existing:
             gh("issue", "close", str(existing["number"]), "--comment",
                "The daily check now matches the official schedules again.")
             print(f"Closed issue #{existing['number']}")
         return
-    body = ("The daily official schedule check (`scripts/check_schedules.py`) found differences "
-            "between the curated calendars in `data/` and the official schedules.\n\n"
+    body = ("The daily official schedule check (`scripts/check_schedules.py`) reported:\n\n"
             f"{report.render()}\n")
     if existing is None:
         print(gh("issue", "create", "--title", ISSUE_TITLE, "--body", body).strip())
@@ -529,10 +590,16 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     report = run_checks(args.data_root, args.today)
     print(report.render())
-    print({0: "All checked calendars match the official schedules.",
-           1: "Differences found.", 2: "Some sources could not be checked."}[report.exit_code])
+    if report.exit_code == 0 and report.unofficial:
+        print("No differences found, but IMSA could only be compared against an unofficial source.")
+    else:
+        print({0: "All checked calendars match the official schedules.",
+               1: "Differences found.", 2: "Some sources could not be checked."}[report.exit_code])
     if args.github_issue:
         if os.environ.get("GITHUB_ACTIONS") == "true":
+            if report.unofficial:
+                print("::warning title=IMSA official sources unavailable::"
+                      "Used RacingCalendar.net for comparison only. See the tracking issue.")
             sync_github_issue(report)
         else:
             print("--github-issue ignored outside GitHub Actions")
