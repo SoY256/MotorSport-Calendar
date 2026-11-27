@@ -1,12 +1,19 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-11-27T06:17:19.308460Z",
+  "lastSuccessfulUpdate": "2026-11-27T14:32:00.360422Z",
   "source": {
     "name": "jolpica-f1",
     "url": "https://api.jolpi.ca/f1/alpha/schedules/2026/"
   },
   "data": {
     "eventId": "round_GLPBnOq8",
-    "sessions": []
+    "sessions": [
+      {
+        "type": "FP1",
+        "name": "Practice 1",
+        "startTimeUtc": "2026-11-27T13:30:00Z",
+        "results": []
+      }
+    ]
   }
 }
