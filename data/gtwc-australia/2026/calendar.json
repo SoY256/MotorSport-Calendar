@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-11-27T05:02:00.571156Z",
+  "lastSuccessfulUpdate": "2026-11-27T05:03:00.701369Z",
   "source": {
     "name": "sro-official-calendar",
     "url": "https://www.gt-world-challenge-australia.com/calendar"
@@ -409,6 +409,14 @@
           "name": "Qualifying 1",
           "startTimeUtc": "2026-11-27T00:45:00Z",
           "startTimeTrack": "2026-11-27 11:15:00+10:30",
+          "cancelled": false,
+          "durationMinutes": 20
+        },
+        {
+          "type": "Q2",
+          "name": "Qualifying 2",
+          "startTimeUtc": "2026-11-27T01:05:00Z",
+          "startTimeTrack": "2026-11-27 11:35:00+10:30",
           "cancelled": false,
           "durationMinutes": 20
         },
