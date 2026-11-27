@@ -5,6 +5,7 @@ import unittest
 from datetime import date
 from pathlib import Path
 from unittest.mock import patch
+from urllib.error import HTTPError
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -82,6 +83,20 @@ IMSA_TABS_HTML = (
     + '</ul>'
 )
 
+IMSA_COMPETITORS_HTML = """
+<title>2027 IMSA WeatherTech SportsCar Championship Event Information | IMSA</title>
+<div class="event-details" data-post-id="1">
+  <h3 class="event-name">Roar Before The Rolex 24</h3>
+  <span class="event-date">Jan 22 to Jan 24</span><br>
+  <span class="event-loc">Daytona Beach, FL</span>
+</div>
+<div class="event-details" data-post-id="2">
+  <h3 class="event-name">Rolex 24 At Daytona</h3>
+  <span class="event-date">Jan 27 to Jan 31</span><br>
+  <span class="event-loc">Daytona Beach, FL</span>
+</div>
+"""
+
 
 class ParserTests(unittest.TestCase):
     def test_wec_ignores_next_season_and_prologue_and_dedupes(self):
@@ -132,6 +147,20 @@ class ParserTests(unittest.TestCase):
         html = IMSA_TABS_HTML.replace('aria-label="January 21, 2026 through January 25, 2026"', '')
         with self.assertRaisesRegex(check_schedules.ParseError, "no venue or date"):
             check_schedules.parse_imsa(html, 2026)
+
+    def test_imsa_competitor_page_skips_the_roar_and_handles_cross_month_dates(self):
+        html = IMSA_COMPETITORS_HTML.replace("Jan 27 to Jan 31", "Sep 30 to Oct 03")
+        self.assertEqual(
+            check_schedules.parse_imsa_competitors(html, 2027),
+            [OfficialEvent("Rolex 24 At Daytona", "daytona beach", date(2027, 10, 3))],
+        )
+
+    def test_imsa_competitor_page_rejects_wrong_season_and_malformed_date(self):
+        with self.assertRaisesRegex(check_schedules.ParseError, "for 2026"):
+            check_schedules.parse_imsa_competitors(IMSA_COMPETITORS_HTML, 2026)
+        html = IMSA_COMPETITORS_HTML.replace("Jan 27 to Jan 31", "TBC")
+        with self.assertRaisesRegex(check_schedules.ParseError, "no readable location or date"):
+            check_schedules.parse_imsa_competitors(html, 2027)
 
 
 class CompareTests(unittest.TestCase):
@@ -192,7 +221,7 @@ class RunChecksTests(unittest.TestCase):
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps({"data": [{
             "name": "Race",
-            "circuit": {"name": "Daytona International Speedway"},
+            "circuit": {"name": "Daytona International Speedway", "locality": "Daytona Beach"},
             "sessions": [{"startTimeUtc": f"{day}T12:00:00Z"}],
         }]}), encoding="utf-8")
 
@@ -257,6 +286,36 @@ class RunChecksTests(unittest.TestCase):
             report = self.imsa_check(root, fetch)
             self.assertEqual(report.exit_code, 1, report.render())
             self.assertIn("official 2027-01-31", report.render())
+
+    def test_primary_403_compares_the_competitor_schedule_instead(self):
+        def fetch(url):
+            if "/competitors/" in url:
+                return IMSA_COMPETITORS_HTML
+            raise RuntimeError("Failed to fetch schedule") from HTTPError(url, 403, "Forbidden", None, None)
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.write_calendar(root, "imsa", 2027, "2027-01-30")
+            report = self.imsa_check(root, fetch)
+            self.assertEqual(report.exit_code, 0, report.render())
+            self.assertIn("compared IMSA competitor weekend dates", report.render())
+            self.write_calendar(root, "imsa", 2027, "2027-01-23")
+            report = self.imsa_check(root, fetch)
+            self.assertEqual(report.exit_code, 1, report.render())
+            self.assertIn("official 2027-01-31", report.render())
+
+    def test_primary_and_competitor_403_remain_unverified(self):
+        def fetch(url):
+            raise HTTPError(url, 403, "Forbidden", None, None)
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.write_calendar(root, "imsa", 2027, "2027-01-30")
+            report = self.imsa_check(root, fetch)
+        self.assertEqual(report.exit_code, 2)
+        self.assertNotIn("IMSA WeatherTech 2027", report.differences)
+        self.assertIn("2027/schedule: HTTP Error 403", report.render())
+        self.assertIn("event-information/: HTTP Error 403", report.render())
 
     def test_unreachable_upcoming_schedule_is_still_an_error(self):
         with tempfile.TemporaryDirectory() as directory:

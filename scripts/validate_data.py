@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 import re
-from datetime import datetime, timezone
+from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -29,9 +29,22 @@ def load(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def timestamp(value: str) -> datetime:
+    return datetime.fromisoformat(value.replace("Z", "+00:00"))
+
+
+def missing_bundled_results(bundled: dict, published: dict, snapshot_at: datetime) -> set[str]:
+    # Data-only jobs publish after the app's offline snapshot is frozen.
+    if timestamp(published["lastSuccessfulUpdate"]) > snapshot_at:
+        return set()
+    bundled_types = {session["type"] for session in bundled["data"]["sessions"] if session.get("results")}
+    published_types = {session["type"] for session in published["data"]["sessions"] if session.get("results")}
+    return published_types - bundled_types
+
+
 def main() -> None:
-    now = datetime.now(timezone.utc)
     manifest = load(DATA / "manifest.json")
+    snapshot_at = timestamp(manifest["lastSuccessfulUpdate"])
     ids = [item["id"] for item in manifest["availableSeries"]]
     pairs = [
         (item["id"], season)
@@ -56,11 +69,13 @@ def main() -> None:
     for series_id, season in pairs:
         lenient = series_id in LENIENT_SERIES
         root = DATA / series_id / str(season)
-        calendar = load(root / "calendar.json")["data"]
+        calendar_doc = load(root / "calendar.json")
+        calendar = calendar_doc["data"]
+        season_snapshot_at = max(snapshot_at, timestamp(calendar_doc["lastSuccessfulUpdate"]))
         drivers = load(root / "standings_drivers.json")["data"]
         teams = load(root / "standings_teams.json")["data"]
         started = any(
-            datetime.fromisoformat(item["startTimeUtc"].replace("Z", "+00:00")) <= now
+            timestamp(item["startTimeUtc"]) <= season_snapshot_at
             for event in calendar
             for item in event["sessions"]
         )
@@ -115,21 +130,12 @@ def main() -> None:
             if not result_path.exists():
                 failures.append(f"{series_id} R{event['round']}: missing {event['resultsPath']}")
                 continue
-            sessions = load(result_path)["data"]["sessions"]
+            result_doc = load(result_path)
+            sessions = result_doc["data"]["sessions"]
+            event_snapshot_at = max(season_snapshot_at, timestamp(result_doc["lastSuccessfulUpdate"]))
             published_path = PUBLISHED_DATA / series_id / str(season) / event["resultsPath"]
             if published_path.exists():
-                published_sessions = load(published_path)["data"]["sessions"]
-                bundled_types = {
-                    session["type"]
-                    for session in sessions
-                    if session.get("results")
-                }
-                published_types = {
-                    session["type"]
-                    for session in published_sessions
-                    if session.get("results")
-                }
-                missing_types = published_types - bundled_types
+                missing_types = missing_bundled_results(result_doc, load(published_path), event_snapshot_at)
                 if missing_types:
                     failures.append(
                         f"{series_id} R{event['round']}: bundled fallback is missing "
@@ -137,7 +143,7 @@ def main() -> None:
                     )
             ended = (
                 not event.get("cancelled", False)
-                and max(datetime.fromisoformat(item["startTimeUtc"].replace("Z", "+00:00")) for item in event["sessions"]) < now
+                and max(timestamp(item["startTimeUtc"]) for item in event["sessions"]) < event_snapshot_at
             )
             if ended:
                 completed += 1

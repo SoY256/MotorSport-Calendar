@@ -23,6 +23,7 @@ from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Callable
+from urllib.error import HTTPError
 
 from http_retry import read
 
@@ -33,6 +34,9 @@ HEADERS = {
     "Accept": "text/html,application/xhtml+xml",
 }
 ISSUE_TITLE = "Official schedule changed"
+IMSA_COMPETITORS_URL = (
+    "https://www.imsa.com/competitors/{season}-imsa-weathertech-sportscar-championship-event-information/"
+)
 PAIRING_WINDOW_DAYS = 10
 MONTHS = {name: number for number, name in enumerate(
     ("jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"), 1)}
@@ -218,6 +222,38 @@ def parse_imsa(html: str, season: int) -> list[OfficialEvent]:
     return sorted(events.values(), key=lambda item: item.date)
 
 
+def parse_imsa_competitors(html: str, season: int) -> list[OfficialEvent]:
+    """Weekend end dates from IMSA's separate WeatherTech competitor calendar."""
+    if not re.search(
+        rf"<title>\s*{season} IMSA WeatherTech SportsCar Championship Event Information\b", html, re.I
+    ):
+        raise ParseError(f"expected IMSA WeatherTech competitor schedule for {season}")
+    date_range = re.compile(
+        rf"{MONTH_PATTERN}\s+\d{{1,2}}\s+to\s+({MONTH_PATTERN})\s+(\d{{1,2}})", re.I
+    )
+    events: dict[tuple[str, date], OfficialEvent] = {}
+    for card in re.split(r'<div\b[^>]*class="event-details"[^>]*>', html)[1:]:
+        name = re.search(r'<h3 class="event-name">(.*?)</h3>', card, re.S)
+        if not name or not (title := page_text(name.group(1))):
+            raise ParseError("IMSA competitor event has no name")
+        if re.search(r"\b(?:Roar|Test)\b", title, re.I):
+            continue
+        days = re.search(r'<span class="event-date">(.*?)</span>', card, re.S)
+        location = re.search(r'<span class="event-loc">(.*?)</span>', card, re.S)
+        last_day = date_range.fullmatch(page_text(days.group(1))) if days else None
+        city = venue_key(page_text(location.group(1)).split(",")[0]) if location else ""
+        if not last_day or not city:
+            raise ParseError(f"IMSA competitor event has no readable location or date: {title}")
+        day = date(season, month_number(last_day.group(1)), int(last_day.group(2)))
+        event = OfficialEvent(title, city, day)
+        previous = events.setdefault((city, day), event)
+        if previous != event:
+            raise ParseError(f"conflicting IMSA competitor entries for {city} on {day}")
+    if not events:
+        raise ParseError("no races found on the IMSA competitor page")
+    return sorted(events.values(), key=lambda item: item.date)
+
+
 def country_key(event: dict) -> str:
     return event["circuit"]["countryCode"]
 
@@ -371,6 +407,28 @@ def seasons_to_check(data_root: Path, series: str, today: date) -> list[int]:
     return active
 
 
+def imsa_access_denied(error: Exception) -> bool:
+    cause = error if isinstance(error, HTTPError) else error.__cause__
+    return isinstance(cause, HTTPError) and cause.code == 403
+
+
+def check_imsa_competitors(data_root: Path, label: str, season: int, today: date,
+                           fetch: Callable[[str], str], source: Source, report: Report) -> None:
+    url = IMSA_COMPETITORS_URL.format(season=season)
+    try:
+        official = parse_imsa_competitors(fetch(url), season)
+    except (OSError, RuntimeError, ValueError) as error:
+        report.failures[label] += f"; {url}: {error}"
+        return
+    ours = calendar_events(
+        load_calendar(data_root, source.series, season),
+        lambda event: venue_key(event["circuit"]["locality"]),
+    )
+    report.differences[label] = compare(ours, official, today, source.tolerance_days)
+    del report.failures[label]
+    report.notes.append(f"{label}: primary page returned HTTP 403; compared IMSA competitor weekend dates at {url}")
+
+
 def run_checks(data_root: Path, today: date, fetch: Callable[[str], str] = fetch_page) -> Report:
     report = Report({}, {}, [])
     for series, source in SOURCES.items():
@@ -398,6 +456,8 @@ def run_checks(data_root: Path, today: date, fetch: Callable[[str], str] = fetch
                     raise ParseError("no events found on the official page")
             except Exception as error:  # noqa: BLE001 - every failure must be reported, never "no changes"
                 report.failures[label] = f"{url}: {error}"
+                if series == "imsa" and imsa_access_denied(error):
+                    check_imsa_competitors(data_root, label, season, today, fetch, source, report)
                 continue
             report.differences[label] = compare(ours, official, today, source.tolerance_days)
         check_next_season(data_root, series, source, latest, fetch, report)

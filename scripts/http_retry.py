@@ -18,4 +18,4 @@ def read(url: str, headers: dict[str, str], timeout: float = 60, attempts: int =
             if attempt + 1 < attempts:
                 retry_after = error.headers.get("Retry-After") if isinstance(error, HTTPError) else None
                 time.sleep(float(retry_after) if retry_after and retry_after.isdigit() else 2 ** attempt)
-    raise RuntimeError(f"Failed to fetch {url} after {attempts} attempts: {last_error}")
+    raise RuntimeError(f"Failed to fetch {url} after {attempts} attempts: {last_error}") from last_error
