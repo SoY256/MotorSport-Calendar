@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulUpdate": "2026-11-28T00:07:26.568764Z",
+  "lastSuccessfulUpdate": "2026-11-28T10:02:20.164801Z",
   "source": {
     "name": "official-formula-series",
     "url": "https://www.fiaformula2.com/en/racing/2026"
@@ -705,8 +705,7 @@
         "name": "Lusail International Circuit",
         "locality": "Lusail",
         "country": "Qatar",
-        "countryCode": "QAT",
-        "lapRecord": "1:35.818 • Ugo Ugochukwu (2026)"
+        "countryCode": "QAT"
       },
       "sessions": [
         {
@@ -714,7 +713,7 @@
           "name": "Practice",
           "startTimeUtc": "2026-11-27T11:00:00Z",
           "startTimeTrack": "2026-11-27T14:00:00",
-          "trackTimeZone": null,
+          "trackTimeZone": "Asia/Qatar",
           "cancelled": false,
           "durationMinutes": 45
         },
@@ -723,7 +722,7 @@
           "name": "Qualifying",
           "startTimeUtc": "2026-11-27T15:00:00Z",
           "startTimeTrack": "2026-11-27T18:00:00",
-          "trackTimeZone": null,
+          "trackTimeZone": "Asia/Qatar",
           "cancelled": false,
           "durationMinutes": 30
         },
